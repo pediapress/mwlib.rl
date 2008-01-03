@@ -13,7 +13,7 @@ def read_long_description():
 
 setup(
     name="mwlib.rl",
-    version="0.3.0",
+    version="0.3.1.dev",
     entry_points = dict(console_scripts=['mw-pdf = mwlib.rl.apps:pdf',
                                          'mw-pdfall = mwlib.rl.apps:pdfall',
                                          'mw-pdfcollection = mwlib.rl.apps:pdfcollection',
