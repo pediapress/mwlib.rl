@@ -29,8 +29,12 @@ def main():
         
     mb = metabook.MetaBook(title=title, subtitle=subtitle)
     mb.addArticles([unicode(article, 'utf-8') for article in args])
-    
-    f = open(options.output, 'w') if options.output else sys.stdout
+
+    if options.output:
+        f = open(options.output, 'w') 
+    else:
+        f = sys.stdout
+
     f.write(mb.dumpJson())
     
 if __name__ == '__main__':

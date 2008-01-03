@@ -74,9 +74,15 @@ def serializeStyleInfo(styleHash):
     for k,v in styleHash.items():
         if isinstance(v,dict):
             for _k,_v in v.items():
-                res[_k.lower()] = _v.lower() if isinstance(_v, basestring) else _v
+                if isinstance(_v, basestring):
+                    res[_k.lower()] = _v.lower() 
+                else:
+                    res[_k.lower()]= _v
         else:
-            res[k.lower()] = v.lower() if isinstance(v, basestring) else v
+            if isinstance(v, basestring):
+                res[k.lower()] = v.lower() 
+            else:
+                res[k.lower()] = v
     return res
 
 
@@ -340,7 +346,10 @@ class RlWriter(object):
                         w,h = img.size
                         ar = w/h
                         arPage = printWidth/printHeight
-                        height = 1/4*printHeight if printWidth >= 1/4 *printHeight * ar else printWidth / ar
+                        if printWidth >= 1/4 *printHeight * ar:
+                            height = 1/4*printHeight 
+                        else:
+                            height = printWidth / ar
                         width = height * ar
                     return [Image(src, width=width, height=height)]
                 except:
