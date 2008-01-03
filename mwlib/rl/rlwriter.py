@@ -872,7 +872,7 @@ class RlWriter(object):
         counterID = self.listCounterID           
         for (i,node) in enumerate(lst):
             if isinstance(node,parser.Item): 
-                resetCounter = True if i==0 else False # we have to manually reset sequence counters. due to w/h calcs with wrap reportlab gets confused
+                resetCounter = i==0 # we have to manually reset sequence counters. due to w/h calcs with wrap reportlab gets confused
                 items.extend(self.writeItem(node,numbered=numbered, counterID=counterID, style=style, resetCounter=resetCounter))
             else:
                 items.extend(self.write(node))

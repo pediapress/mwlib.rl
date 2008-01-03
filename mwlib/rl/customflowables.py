@@ -116,7 +116,10 @@ class FiguresAndParagraphs(Flowable):
             p.blPara = p.breakLines(nfloatLines*[floatWidth] + [fullWidth])
             if self.figAlign=='left':
                 self._offsets.append([maxWf]*(nfloatLines) + [0])
-            autoLeading = getattr(p.style, 'autoLeading') if  hasattr(p, 'style') else ''
+            if hasattr(p, 'style'):
+                autoLeading = getattr(p.style, 'autoLeading')
+            else:
+                autoLeading = ''
             if hasattr(p, 'style') and autoLeading == 'max' and p.blPara.kind == 1:
                 pHeight = 0
                 for l in p.blPara.lines:
