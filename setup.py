@@ -5,7 +5,7 @@ import ez_setup
 ez_setup.use_setuptools()
 from setuptools import setup
 
-install_requires=["simplejson>=1.7", "mwlib>=0.2.0"]
+install_requires=["mwlib>=0.3.0"]
 
 def read_long_description():
     fn = os.path.join(os.path.dirname(os.path.abspath(__file__)), "README.txt")
@@ -13,7 +13,7 @@ def read_long_description():
 
 setup(
     name="mwlib.rl",
-    version="0.0.2",
+    version="0.3.0",
     entry_points = dict(console_scripts=['mw-pdf = mwlib.rl.apps:pdf',
                                          'mw-pdfall = mwlib.rl.apps:pdfall',
                                          'mw-pdfcollection = mwlib.rl.apps:pdfcollection',
