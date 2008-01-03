@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#!python
 """Bootstrap setuptools installation
 
 If you want to use setuptools in your package's setup.py, just include this
@@ -14,8 +14,8 @@ the appropriate options to ``use_setuptools()``.
 This file can also be run as a script to install or upgrade setuptools.
 """
 import sys
-DEFAULT_VERSION = "0.6c5"
-DEFAULT_URL     = "http://cheeseshop.python.org/packages/%s/s/setuptools/" % sys.version[:3]
+DEFAULT_VERSION = "0.6c7"
+DEFAULT_URL     = "http://pypi.python.org/packages/%s/s/setuptools/" % sys.version[:3]
 
 md5_data = {
     'setuptools-0.6b1-py2.3.egg': '8822caf901250d848b996b7f25c6e6ca',
@@ -39,6 +39,9 @@ md5_data = {
     'setuptools-0.6c5-py2.3.egg': 'ee9fd80965da04f2f3e6b3576e9d8167',
     'setuptools-0.6c5-py2.4.egg': 'afe2adf1c01701ee841761f5bcd8aa64',
     'setuptools-0.6c5-py2.5.egg': 'a8d3f61494ccaa8714dfed37bccd3d5d',
+    'setuptools-0.6c6-py2.3.egg': '35686b78116a668847237b69d549ec20',
+    'setuptools-0.6c6-py2.4.egg': '3c56af57be3225019260a644430065ab',
+    'setuptools-0.6c6-py2.5.egg': 'b2f8a7520709a5b34f80946de5f02f53',
 }
 
 import sys, os
@@ -57,7 +60,7 @@ def _validate_md5(egg_name, data):
 
 
 def use_setuptools(
-    version=DEFAULT_VERSION, download_base=DEFAULT_URL, to_dir=os.curdir,
+    version=DEFAULT_VERSION, download_base=DEFAULT_URL, to_dir=os.curdir, min_version=None,
     download_delay=15
 ):
     """Automatically find/download setuptools and make it available on sys.path
@@ -86,7 +89,9 @@ def use_setuptools(
 
     import pkg_resources
     try:
-        pkg_resources.require("setuptools>="+version)
+        if not min_version:
+            min_version = version
+        pkg_resources.require("setuptools>="+min_version)
 
     except pkg_resources.VersionConflict, e:
         # XXX could we install in a subprocess here?
@@ -94,7 +99,7 @@ def use_setuptools(
             "The required version of setuptools (>=%s) is not available, and\n"
             "can't be installed while this script is running. Please install\n"
             " a more recent version first.\n\n(Currently using %r)"
-        ) % (version, e.args[0])
+        ) % (min_version, e.args[0])
         sys.exit(2)
 
 def download_setuptools(
