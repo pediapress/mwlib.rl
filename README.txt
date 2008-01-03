@@ -8,7 +8,7 @@ mwlib.rl - reportlab pdf writer
 Overview
 ======================================================================
 mwlib.rl provides a library for writing pdf documents from mediawiki_ 
-articles which were parsed by the mylib library. 
+articles which were parsed by the mwlib library. 
 
 
 Installation
