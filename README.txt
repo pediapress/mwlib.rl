@@ -48,7 +48,7 @@ The current development version can also be found there.
 
 License
 ======================================================================
-Copyright (c) 2007, PediaPress GmbH
+Copyright (c) 2007, 2008 PediaPress GmbH
 
 All rights reserved.
 
