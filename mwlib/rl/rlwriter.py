@@ -27,7 +27,7 @@ from reportlab.lib.units import cm, inch
 from reportlab.lib import colors
 
 from customflowables import Figure, FiguresAndParagraphs, PreformattedBox
-from pdfstyles import p_style, li_style, p_indent_style, pre_style, pre_style_small, articleTitle_style, h1_style, h2_style, h3_style, h4_style, heading_styles, figure_caption_style, table_p_style, table_style, reference_style, hr_style, chapter_style, bookTitle_style, bookSubTitle_style, bookAuthor_style, leftIndent, pageMarginHor, pageMarginVert, filterText, pageWidth, pageHeight, standardSansSerif, standardMonoFont, license_title_style, license_heading_style, license_text_style, license_li_style, gfdlfile, printWidth, printHeight, dl_style, SMALLFONTSIZE
+from pdfstyles import p_style, li_style, p_indent_style, pre_style, pre_style_small, articleTitle_style, h1_style, h2_style, h3_style, h4_style, heading_styles, figure_caption_style, table_p_style, table_style, reference_style, hr_style, chapter_style, bookTitle_style, bookSubTitle_style, bookAuthor_style, leftIndent, pageMarginHor, pageMarginVert, filterText, pageWidth, pageHeight, standardSansSerif, standardMonoFont, license_title_style, license_heading_style, license_text_style, license_li_style, gfdlfile, printWidth, printHeight, dl_style, SMALLFONTSIZE, p_center_style
 import rltables
 from pagetemplates import WikiPage, TitlePage
 
@@ -487,6 +487,7 @@ class RlWriter(object):
             else:
                 log.warning('Preformatted Node contained BLOCK element %s' % type(res))
         t = ''.join(txt)
+        t = re.sub( "<br */>", "\n", t.strip())
         if len(t):
             # fixme: if any line is too long, we decrease fontsize to try to fit preformatted text on the page
             # PreformattedBox flowable should do intelligent and visible splitting when necessary
@@ -690,6 +691,12 @@ class RlWriter(object):
         img.save(path)
     
     def writeImageLink(self,obj):
+        if obj.colon == True:
+            items = []
+            for node in obj.children:
+                items.extend(self.write(node))
+            return items
+
         targetWidth = 400
         if self.imgDB:
             imgPath = self.imgDB.getDiskPath(obj.target, targetWidth)
@@ -787,7 +794,11 @@ class RlWriter(object):
         elif t.caption == 'references':
             if self.references:                
                 return self.writeItemList(self.references, numbered=True, style=reference_style)
-        elif t.caption == 'div': 
+        elif t.caption == 'div' or t.caption == 'center':
+            if t.caption =='center':
+                style = p_center_style
+            else:
+                style = p_style
             txt = []
             items = []
             for node in t.children:
@@ -795,13 +806,13 @@ class RlWriter(object):
                 if isInline(res):
                     txt.extend(res)
                 else:
-                    items.extend(buildPara(txt, p_style)) #filter
+                    items.extend(buildPara(txt, style)) #filter
                     items.extend(res)
                     txt = []
             if not len(items):
-                return txt
+                return buildPara(txt, style)
             else:
-                items.extend(buildPara(txt, p_style)) #filter
+                items.extend(buildPara(txt, style)) #filter
                 return items
             
             

@@ -202,6 +202,9 @@ def p_indent_style(indent):
 p_style = BaseStyle(name='p_style',
                     #alignment=TA_JUSTIFY,
                     )          
+p_center_style = BaseStyle(name='p_style',
+                           alignment=TA_CENTER,
+                    )          
 dl_style = BaseStyle(name='dl_style',
                      #alignment=TA_JUSTIFY,
                      spaceBefore = 8,
