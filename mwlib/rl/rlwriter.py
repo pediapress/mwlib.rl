@@ -475,7 +475,14 @@ class RlWriter(object):
                         finalNodes.append(figures[0])
                         figures = []
                     finalNodes.append(n)
-        finalNodes.extend(figures)
+        if len(figures)>1:
+            data = [  [figures[i],figures[i+1]]  for i in range(int(len(figures)/2))]
+            if len(figures) % 2 != 0:
+                data.append( [figures[-1],''] )                   
+            table = Table(data)
+            finalNodes.append(table)                    
+        else:
+            finalNodes.extend(figures)
         return finalNodes
 
     def writePreFormatted(self, obj): 
@@ -768,9 +775,36 @@ class RlWriter(object):
         # FIXME: make margins and padding configurable
         captionTxt = '<i>%s</i>' % ''.join(txt)  #filter
         return [Figure(imgPath, captionTxt=captionTxt,  captionStyle=figure_caption_style, imgWidth=width, imgHeight=height, margin=(0.2*cm, 0.2*cm, 0.2*cm, 0.2*cm), padding=(0.2*cm, 0.2*cm, 0.2*cm, 0.2*cm), align=align)]
-        
+
+
+    def writeGallery(self,obj):
+        data = []
+        row = []
+        for node in obj.children:
+            if isinstance(node,parser.ImageLink):
+                node.align='center' # this is a hack. otherwise writeImage thinks this is an inline image
+                res = self.write(node)
+            else:
+                res = self.write(node)
+                try:
+                    res = buildPara(res)
+                except:
+                    res = Paragraph('',p_style)
+            if len(row) == 0:
+                row.append(res)
+            else:
+                row.append(res)
+                data.append(row)
+                row = []
+        if len(row) == 1:
+            row.append(Paragraph('',p_style))
+            data.append(row)
+        table = Table(data)
+        return [table]
+
 
     def writeTagNode(self,t):
+        # FIXME: this method has totally gotten out of control! needs to be broken down into pieces...
         if t.caption == 'br':
             return ['<br />']
         elif t.caption == 'hr':
@@ -813,9 +847,7 @@ class RlWriter(object):
                 return buildPara(txt, style)
             else:
                 items.extend(buildPara(txt, style)) #filter
-                return items
-            
-            
+                return items                     
             #return self.writeParagraph(t)           
         elif t.caption == 'span':
             txt = []
@@ -839,6 +871,8 @@ class RlWriter(object):
             level = int(t.caption[1])
             t.level = level
             return self.writeSection(t)
+        elif t.caption == 'gallery':
+            return self.writeGallery(t)
         
         log.warning("Unhandled TagNode:", t.caption)
         return []
@@ -994,7 +1028,7 @@ class RlWriter(object):
             'width': w/density,
             'height': h/density,
             'valign': imgAlign, }
-    
+
     writeLangLink = ignore
     writeTimeline = ignore
     writeControl = ignore
