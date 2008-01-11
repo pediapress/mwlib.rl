@@ -873,7 +873,10 @@ class RlWriter(object):
             return self.writeSection(t)
         elif t.caption == 'gallery':
             return self.writeGallery(t)
-        
+        elif t.caption == "imagemap":
+            if t.imagemap.imagelink:
+                return self.write(t.imagemap.imagelink)
+
         log.warning("Unhandled TagNode:", t.caption)
         return []
 
