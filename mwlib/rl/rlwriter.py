@@ -267,9 +267,9 @@ class RlWriter(object):
         elements = [Paragraph(xmlescape(title), bookTitle_style)]
         if subtitle:
             elements.append(Paragraph(xmlescape(subtitle), bookSubTitle_style))
-        firstArticle = self.book.getFirstArticleTitle().encode('utf-8')
+        firstArticle = self.book.getFirstArticleTitle()
         self.doc.addPageTemplates(WikiPage(firstArticle))
-        elements.append(NextPageTemplate(firstArticle))
+        elements.append(NextPageTemplate(firstArticle.encode('utf-8')))
         elements.append(PageBreak())
         return elements
 

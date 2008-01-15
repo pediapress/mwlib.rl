@@ -23,7 +23,10 @@ class WikiPage(PageTemplate):
 
     def __init__(self,title=None,id=None,onPage=_doNothing, onPageEnd=_doNothing,
                  pagesize=defaultPageSize):
-
+        """
+        @type title: unicode
+        """
+        
         id = title.encode('utf-8')
         frames = Frame(pageMarginHor,pageMarginVert,pageWidth - 2*pageMarginHor, pageHeight - 2*pageMarginVert)
         
