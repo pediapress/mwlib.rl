@@ -135,7 +135,10 @@ class RlWriter(object):
             else:
                 last = group[-1]
                 if not isHeading(last):
-                    w,h = last.wrap(printWidth,printHeight)
+                    try:
+                        w,h = last.wrap(printWidth,printHeight)
+                    except:
+                        h = 0
                     groupHeight += h
                     if groupHeight > printHeight / 10: # 10 % of pageHeight               
                         groupedElements.append(KeepTogether(group))
