@@ -106,12 +106,12 @@ class RlWriter(object):
         self.tmpImages = set()
         self.namedLinkCount = 1   
         self.nestingLevel = -1       
-        self.renderer = rendermath.Renderer(basedir=self.imgDB.localpath)
+        self.renderer = rendermath.Renderer()
         self.sectionTitle = False
-        
+    
     def ignore(self, obj):
         return []
-
+    
     def groupElements(self, elements):
         """Group reportlab flowables into KeepTogether flowables
         to achieve meaningful pagebreaks
@@ -711,7 +711,7 @@ class RlWriter(object):
 
         targetWidth = 400
         if self.imgDB:
-            imgPath = self.imgDB.getDiskPath(obj.target, targetWidth)
+            imgPath = self.imgDB.getDiskPath(obj.target, size=targetWidth)
             if imgPath:
                 #self._cleanImage(imgPath)
                 self.tmpImages.add(imgPath)
