@@ -696,9 +696,11 @@ class RlWriter(object):
                     if data[i][1] == 0:
                         data[i] = (255,255)
         except:
-            return
+            return        
         img.putdata(data)
         img.save(path)
+        log.info('corrected image alpha channel')
+
     
     def writeImageLink(self,obj):
         if obj.colon == True:
@@ -711,7 +713,7 @@ class RlWriter(object):
         if self.imgDB:
             imgPath = self.imgDB.getDiskPath(obj.target, targetWidth)
             if imgPath:
-                self._cleanImage(imgPath)
+                #self._cleanImage(imgPath)
                 self.tmpImages.add(imgPath)
         else:
             imgPath = ''
