@@ -14,7 +14,7 @@ import shutil
 from zipfile import ZipFile
 
 import mwlib.log
-from mwlib.metabook import MetaBook, mwcollection_to_metabook
+from mwlib.metabook import MetaBook
 from mwlib.utils import daemonize
 from mwlib import parser, uparser
 
@@ -30,7 +30,7 @@ def buildBook(metabook, wikidb):
             if item.has_key('displaytitle'):
                 a.caption = item['displaytitle']
             bookParseTree.children.append(a)                             
-    metabook.parseTree = bookParseTree
+    return bookParseTree
  
 def pdfall():
     """
@@ -71,7 +71,6 @@ def pdfall():
             article = unicode(line,'utf-8').strip()
             bookParseTree = parser.Book()
             bookParseTree.children.append(uparser.parseString(title=article, wikidb=w['wiki']))
-            metabook.parseTree = bookParseTree
             metabook.addArticles([article])
             metabook.source = {'url':'http://caramba.brainbot.com/'}
         except:
@@ -82,7 +81,7 @@ def pdfall():
         # RENDER
         try:
             removedarticles = "testpdf.removed"           
-            r.writeBook(metabook, output='test.pdf', removedArticlesFile=removedarticles)
+            r.writeBook(metabook, bookParseTree, output='test.pdf', removedArticlesFile=removedarticles)
             print "(",count,") OK:", repr(article)
             ok += 1
         except:
@@ -147,24 +146,24 @@ OR
             'name': cp.get('wiki', 'name'),
             'url': cp.get('wiki', 'url'),
         }    
+        coverimage = None
         if not metabookfile:
             article = unicode(args[0],'utf-8').strip()
             bookParseTree = parser.Book()
             bookParseTree.children.append(uparser.parseString(title=article, wikidb=w['wiki']))
-            metabook.parseTree = bookParseTree
             metabook.addArticles([article])
         else:
             metabook.readJsonFile(metabookfile)
             if cp.has_section('pdf'):
-                metabook.coverimage = cp.get('pdf','coverimage',None)
-            buildBook(metabook, w['wiki'])
+                coverimage = cp.get('pdf','coverimage',None)
+            bookParseTree = buildBook(metabook, w['wiki'])
 
         if not output: #fixme: this only exists for debugging purposes
             output = 'test.pdf'
         if not removedarticles and output: # FIXME
             removedarticles = output + ".removed"
             
-        r.writeBook(metabook, output=output + '.tmp', removedArticlesFile=removedarticles)
+        r.writeBook(metabook, bookParseTree, output=output + '.tmp', removedArticlesFile=removedarticles, coverimage=coverimage)
             
         os.rename(output + '.tmp', output)
     except Exception, e:
@@ -199,11 +198,16 @@ def pdfcollection():
     
     cp=ConfigParser()
     cp.read(config)  
-    metabook = mwcollection_to_metabook(cp, w['wiki'].getRawArticle(collectiontitle))
+    metabook = MetaBook()
+    metabook.source = {
+        'name': cp.get('wiki', 'name'),
+        'url': cp.get('wiki', 'url'),
+    }
+    metabook.loadCollectionPage(w['wiki'].getRawArticle(collectiontitle))
     
-    buildBook(metabook, w['wiki'])
+    bookParseTree = buildBook(metabook, w['wiki'])
     r=rlwriter.RlWriter(images=w['images'] )    
-    r.writeBook(metabook, output=output)
+    r.writeBook(metabook, bookParseTree, output=output)
  
 def zip2pdf():
     parser = optparse.OptionParser(usage="%prog ZIPFILE OUTPUT")
@@ -227,11 +231,11 @@ def zip2pdf():
             if item['type'] == 'chapter':
                 bookParseTree.children.append(parser.Chapter(item['title'].strip()))
             elif item['type'] == 'article':
-                a=uparser.parseString(title=item['title'], revision=item.get('revision', None), wikidb=wikidb)
+                a = wikidb.getParsedArticle(title=item['title'], revision=item.get('revision'))
                 bookParseTree.children.append(a)
-        wikidb.metabook.parseTree = bookParseTree
+        return bookParseTree
     
     r=rlwriter.RlWriter(images=imagedb)    
-    buildBook(wikidb)
+    bookParseTree = buildBook(wikidb)
 
-    r.writeBook(wikidb.metabook, output=output)
+    r.writeBook(wikidb.metabook, bookParseTree, output=output)

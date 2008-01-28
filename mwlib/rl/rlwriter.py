@@ -186,16 +186,17 @@ class RlWriter(object):
         m=getattr(self, m)
         return m(obj)
 
-    def writeBook(self, book, output, removedArticlesFile=None):
-        #debughelper.showParseTree(sys.stdout, book.parseTree)
+    def writeBook(self, book, bookParseTree, output, removedArticlesFile=None,
+                  coverimage=None):
+        #debughelper.showParseTree(sys.stdout, bookParseTree)
         try:
-            self.renderBook(book, output)
+            self.renderBook(book, bookParseTree, output, coverimage=coverimage)
             log.info('###### RENDERING OK')
             return 0       
         except:
             try:
-                book = self.removeBadArticles(book, output, removedArticlesFile)
-                self.renderBook(book,output)
+                self.removeBadArticles(book, bookParseTree, output, removedArticlesFile)
+                self.renderBook(book, bookParseTree, output, coverimage=coverimage)
                 log.info('###### RENDERING OK - REMOVED ARTICLES:')#, repr(open(removedArticlesFile).read()))            
                 return 0
             except Exception, err: # cant render book
@@ -204,14 +205,14 @@ class RlWriter(object):
                 log.error(err)
                 raise
 
-    def renderBook(self, book, output):
+    def renderBook(self, book, bookParseTree, output, coverimage=None):
         self.book = book
         self.baseUrl = book.source['url']
         elements = []
         self.doc = BaseDocTemplate(output, topMargin=pageMarginVert, leftMargin=pageMarginHor, rightMargin=pageMarginHor, bottomMargin=pageMarginVert,title=book.title)
-        elements.extend(self.writeTitlePage())        
+        elements.extend(self.writeTitlePage(coverimage=coverimage))
         try:
-            for e in book.parseTree.children:
+            for e in bookParseTree.children:
                 r = self.write(e)
                 elements.extend(r)
         except:
@@ -230,12 +231,12 @@ class RlWriter(object):
             traceback.print_exc()
             raise
 
-    def removeBadArticles(self, book, output, removedArticlesFile):
+    def removeBadArticles(self, book, bookParseTree, output, removedArticlesFile):
         from mwlib.parser import Article
         log.warning("unable to render book - removing problematic articles")
         removed_articles = []
         ok_articles = []
-        for (i,node) in enumerate(book.parseTree):
+        for (i,node) in enumerate(bookParseTree):
             if isinstance(node, Article):
                 elements = []
                 elements.extend(self.writeArticle(node))
@@ -248,29 +249,31 @@ class RlWriter(object):
                     log.error('article failed:' , node.caption)
                     tr = traceback.format_exc()
                     log.error(tr)
-                    book.parseTree.children.remove(node)
+                    bookParseTree.children.remove(node)
                     removed_articles.append(node.caption)
         if not removedArticlesFile:
             log.warning('removed Articles:' + ' '.join(removed_articles))
-            return book
+            return
         f = open(removedArticlesFile,"w")
         for a in removed_articles:
             f.write("%s\n" % a.encode("utf-8"))
         f.close()
         if len(ok_articles) == 0:
             raise ReportlabError('all articles in book can\'t be rendered')
-        return book
-                
-    def writeTitlePage(self):       
+    
+    def writeTitlePage(self, coverimage=None):       
         title = self.book.title
         subtitle =  self.book.subtitle
         if not title:
             return []
-        self.doc.addPageTemplates(TitlePage(cover=getattr(self.book, 'coverimage', None)))
+        self.doc.addPageTemplates(TitlePage(cover=coverimage))
         elements = [Paragraph(xmlescape(title), bookTitle_style)]
         if subtitle:
             elements.append(Paragraph(xmlescape(subtitle), bookSubTitle_style))
-        firstArticle = self.book.getFirstArticleTitle()
+        for item in book.getItems():
+            if item['type'] == 'article':
+                firstArticle = item['title']
+                break
         self.doc.addPageTemplates(WikiPage(firstArticle))
         elements.append(NextPageTemplate(firstArticle.encode('utf-8')))
         elements.append(PageBreak())

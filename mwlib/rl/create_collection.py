@@ -27,7 +27,9 @@ def main():
     if options.subtitle:
         subtitle = unicode(options.subtitle, 'utf-8')
         
-    mb = metabook.MetaBook(title=title, subtitle=subtitle)
+    mb = metabook.MetaBook()
+    mb.title = title
+    mb.subtitle = subtitle
     mb.addArticles([unicode(article, 'utf-8') for article in args])
 
     if options.output:
