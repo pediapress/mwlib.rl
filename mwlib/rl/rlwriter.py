@@ -209,7 +209,7 @@ class RlWriter(object):
         self.book = book
         self.baseUrl = book.source['url']
         elements = []
-        self.doc = BaseDocTemplate(output, topMargin=pageMarginVert, leftMargin=pageMarginHor, rightMargin=pageMarginHor, bottomMargin=pageMarginVert,title=book.get('title'))
+        self.doc = BaseDocTemplate(output, topMargin=pageMarginVert, leftMargin=pageMarginHor, rightMargin=pageMarginHor, bottomMargin=pageMarginVert,title=getattr(book, 'title', None))
         elements.extend(self.writeTitlePage(coverimage=coverimage))
         try:
             for e in bookParseTree.children:
@@ -241,7 +241,7 @@ class RlWriter(object):
                 elements = []
                 elements.extend(self.writeArticle(node))
                 try:
-                    testdoc = BaseDocTemplate(output, topMargin=pageMarginVert, leftMargin=pageMarginHor, rightMargin=pageMarginHor, bottomMargin=pageMarginVert, title=book.get('title'))
+                    testdoc = BaseDocTemplate(output, topMargin=pageMarginVert, leftMargin=pageMarginHor, rightMargin=pageMarginHor, bottomMargin=pageMarginVert, title=getattr(book, 'title', None))
                     testdoc.addPageTemplates(WikiPage(title=node.caption))
                     testdoc.build(elements)
                     ok_articles.append(node.caption)
@@ -262,8 +262,8 @@ class RlWriter(object):
             raise ReportlabError('all articles in book can\'t be rendered')
     
     def writeTitlePage(self, coverimage=None):       
-        title = self.book.get('title')
-        subtitle =  self.book.get('subtitle')
+        title = getattr(self.book, 'title', None)
+        subtitle =  getattr(self.book, 'subtitle', None)
         if not title:
             return []
         self.doc.addPageTemplates(TitlePage(cover=coverimage))
