@@ -270,7 +270,7 @@ class RlWriter(object):
         elements = [Paragraph(xmlescape(title), bookTitle_style)]
         if subtitle:
             elements.append(Paragraph(xmlescape(subtitle), bookSubTitle_style))
-        for item in book.getItems():
+        for item in self.book.getItems():
             if item['type'] == 'article':
                 firstArticle = item['title']
                 break
