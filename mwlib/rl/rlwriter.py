@@ -343,7 +343,7 @@ class RlWriter(object):
             if res:
                 try:                    
                     src = res.group('src')
-                    log.info('got image only paragraph:', src)
+                    log.info('got image only paragraph:', src, 'width', res.group('width'), 'height', res.group('height'))
                     if self.nestingLevel > -1:
                         width = float(res.group('width')) * inch
                         height = float(res.group('height')) * inch
@@ -353,9 +353,9 @@ class RlWriter(object):
                         ar = w/h
                         arPage = printWidth/printHeight
                         if printWidth >= 1/4 *printHeight * ar:
-                            height = 1/4*printHeight 
+                            height = min(1/4*printHeight, h * inch/100) # min res is 100dpi
                         else:
-                            height = printWidth / ar
+                            height = min(printWidth / ar, h * inch/100)
                         width = height * ar
                     return [Image(src, width=width, height=height)]
                 except:
@@ -744,7 +744,7 @@ class RlWriter(object):
                 log.warning("got interlaced PNG which can't be handeled by PIL")
                 return []
         except IOError:
-            log.warning('img size can not be read by PIL')
+            log.warning('img can not be opened by PIL')
             return []
         (_w,_h) = img.size
         if _h == 0 or _w == 0:
@@ -759,7 +759,6 @@ class RlWriter(object):
             w, h = _w, _h
 
         (width, height) = sizeImage( w, h)
-        
         align = obj.align
         #if not align:
         #    align = 'right' # FIXME: make this configurable
