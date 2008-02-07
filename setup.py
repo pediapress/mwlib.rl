@@ -4,8 +4,13 @@ import os
 import ez_setup
 ez_setup.use_setuptools()
 from setuptools import setup
+import distutils.util
 
-install_requires=["mwlib>=0.3.0"]
+version=None
+execfile(distutils.util.convert_path('mwlib/rl/__init__.py')) 
+# adds 'version' to local namespace
+
+install_requires=["mwlib>=0.3.2.dev"]
 
 def read_long_description():
     fn = os.path.join(os.path.dirname(os.path.abspath(__file__)), "README.txt")
@@ -13,7 +18,7 @@ def read_long_description():
 
 setup(
     name="mwlib.rl",
-    version="0.3.1.dev",
+    version=str(version),
     entry_points = dict(console_scripts=['mw-pdf = mwlib.rl.apps:pdf',
                                          'mw-pdfall = mwlib.rl.apps:pdfall',
                                          'mw-pdfcollection = mwlib.rl.apps:pdfcollection',
@@ -31,6 +36,4 @@ setup(
     license="BSD License",
     maintainer="pediapress.com",
     maintainer_email="info@pediapress.com",
-
 )
-
