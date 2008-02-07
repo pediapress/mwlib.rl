@@ -38,6 +38,9 @@ from mwlib import rendermath
 log = log.Log('rlwriter')
 
 from mwlib.rl import debughelper
+from mwlib.rl import version as rlwriterversion
+from mwlib._version import version as  mwlibversion
+
 
 #try:
 #    import psyco
@@ -209,7 +212,9 @@ class RlWriter(object):
         self.book = book
         self.baseUrl = book.source['url']
         elements = []
-        self.doc = BaseDocTemplate(output, topMargin=pageMarginVert, leftMargin=pageMarginHor, rightMargin=pageMarginHor, bottomMargin=pageMarginVert,title=getattr(book, 'title', None))
+        version = 'mwlib version: %s , rlwriter version: %s' % (rlwriterversion, mwlibversion)
+        self.doc = BaseDocTemplate(output, topMargin=pageMarginVert, leftMargin=pageMarginHor, rightMargin=pageMarginHor, bottomMargin=pageMarginVert,title=getattr(book, 'title', None), keywords=version)
+
         elements.extend(self.writeTitlePage(coverimage=coverimage))
         try:
             for e in bookParseTree.children:
