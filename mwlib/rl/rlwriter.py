@@ -973,6 +973,10 @@ class RlWriter(object):
             r.append(self.write(x))
         return r
 
+
+    def writeCaption(self,node):
+        pass
+
     
     def writeTable(self, t):
         self.nestingLevel += 1
@@ -980,9 +984,7 @@ class RlWriter(object):
         for x in t:
             r = self.write(x)
             if r: # FIXME: workaround for parser bug: empty rows are skipped
-                data.append(r)
-
-        
+                data.append(r)       
 
         (data, span_styles) = rltables.checkSpans(data)            
         (gotData, onlyListItems, maxCellContent, maxCols) = rltables.checkData(data)
