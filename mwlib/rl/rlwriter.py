@@ -974,18 +974,28 @@ class RlWriter(object):
         return r
 
 
-    def writeCaption(self,node):
-        pass
+    def writeCaption(self,node): 
+        txt = []
+        for x in node.children:
+            res = self.write(x)
+            if isInline(res):
+                txt.extend(res)
+        return buildPara(txt, p_style)              
 
     
     def writeTable(self, t):
         self.nestingLevel += 1
+        elements = []
         data = []        
         for x in t:
             r = self.write(x)
-            if r: # FIXME: workaround for parser bug: empty rows are skipped
-                data.append(r)       
-
+            print x.__class__
+            if r:
+                if isinstance(x,parser.Row): # FIXME: workaround for parser bug: empty rows are skipped
+                    data.append(r)
+                elif isinstance(x, parser.Caption):
+                    elements.extend(r)
+                
         (data, span_styles) = rltables.checkSpans(data)            
         (gotData, onlyListItems, maxCellContent, maxCols) = rltables.checkData(data)
         if not gotData:
@@ -1015,7 +1025,6 @@ class RlWriter(object):
             self.nestingLevel -= 1
             return flatData 
        
-        elements = []
         if table_style.get('spaceBefore', 0) > 0:
             elements.append(Spacer(0, table_style['spaceBefore']))
         elements.append(table)
@@ -1023,6 +1032,7 @@ class RlWriter(object):
             elements.append(Spacer(0, table_style['spaceAfter']))
 
         self.nestingLevel -= 1
+        
         return elements
     
    
