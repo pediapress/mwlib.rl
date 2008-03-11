@@ -11,43 +11,43 @@ import os
 import re
 import urllib
 import traceback
-import string
+import tempfile
 
 from xml.sax.saxutils import escape as xmlescape
 from PIL import Image as PilImage
 
-from reportlab.rl_config import defaultPageSize
+#from reportlab.rl_config import defaultPageSize
 from reportlab.platypus.paragraph import Paragraph
-from reportlab.platypus.doctemplate import SimpleDocTemplate, BaseDocTemplate, NextPageTemplate, NotAtTopPageBreak, LayoutError
+from reportlab.platypus.doctemplate import BaseDocTemplate, NextPageTemplate, NotAtTopPageBreak
 from reportlab.platypus.tables import Table
 from reportlab.platypus.flowables import Spacer, HRFlowable, PageBreak, KeepTogether, Image
 from reportlab.platypus.xpreformatted import XPreformatted
-from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
+#from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.lib.units import cm, inch
 from reportlab.lib import colors
 
-from customflowables import Figure, FiguresAndParagraphs, PreformattedBox
-from pdfstyles import p_style, li_style, p_indent_style, pre_style, pre_style_small, articleTitle_style, h1_style, h2_style, h3_style, h4_style, heading_styles, figure_caption_style, table_p_style, table_style, reference_style, hr_style, chapter_style, bookTitle_style, bookSubTitle_style, bookAuthor_style, leftIndent, pageMarginHor, pageMarginVert, filterText, pageWidth, pageHeight, standardSansSerif, standardMonoFont, license_title_style, license_heading_style, license_text_style, license_li_style, gfdlfile, printWidth, printHeight, dl_style, SMALLFONTSIZE, p_center_style
+from customflowables import Figure, FiguresAndParagraphs
+from pdfstyles import p_style, li_style, p_indent_style, pre_style, pre_style_small, articleTitle_style
+from pdfstyles import h1_style, h2_style, h3_style, h4_style, heading_styles, figure_caption_style, table_p_style, table_style
+from pdfstyles import reference_style, chapter_style, bookTitle_style, bookSubTitle_style
+from pdfstyles import leftIndent, pageMarginHor, pageMarginVert, filterText, standardSansSerif, standardMonoFont
+from pdfstyles import license_title_style, license_heading_style, license_text_style, license_li_style, gfdlfile
+from pdfstyles import printWidth, printHeight, dl_style, SMALLFONTSIZE, BIGFONTSIZE, p_center_style
+#from pdfstyles import pageWidth, pageHeight, bookAuthor_style
+
 import rltables
 from pagetemplates import WikiPage, TitlePage
 
-from mwlib import dummydb, parser, scanner, netdb, log
+from mwlib import parser, log
 from mwlib import rendermath
 
 
 log = log.Log('rlwriter')
 
 from mwlib.rl import debughelper
+from mwlib.rl.rltreecleaner import buildAdvancedTree
 from mwlib.rl import version as rlwriterversion
 from mwlib._version import version as  mwlibversion
-
-
-#try:
-#    import psyco
-#except ImportError:
-#    pass
-#else:
-#    psyco.full()
 
 def flatten(x):
     result = []
@@ -111,7 +111,8 @@ class RlWriter(object):
         self.nestingLevel = -1       
         self.renderer = rendermath.Renderer()
         self.sectionTitle = False
-    
+        self.tmpdir = tempfile.mkdtemp()
+        
     def ignore(self, obj):
         return []
     
@@ -191,6 +192,9 @@ class RlWriter(object):
 
     def writeBook(self, book, bookParseTree, output, removedArticlesFile=None,
                   coverimage=None):
+        self.outputdir = output
+        debughelper.showParseTree(sys.stdout, bookParseTree)
+        buildAdvancedTree(bookParseTree)
         #debughelper.showParseTree(sys.stdout, bookParseTree)
         try:
             self.renderBook(book, bookParseTree, output, coverimage=coverimage)
@@ -292,7 +296,9 @@ class RlWriter(object):
                 hr]
 
     def writeSection(self,obj):
-        headingStyle = heading_styles[min(obj.level-1,3)]
+        level = min(obj.getSectionLevel() + 1,3)
+        #level = min(obj.level-1,3)
+        headingStyle = heading_styles[level]
         self.sectionTitle = True
         headingTxt = ''.join(self.write(obj.children[0])).strip()
         self.sectionTitle = False
@@ -498,12 +504,7 @@ class RlWriter(object):
 
     def writePreFormatted(self, obj): 
         txt = []
-        for node in obj:
-            res = self.write(node)
-            if isInline(res):
-                txt.extend(res)
-            else:
-                log.warning('Preformatted Node contained BLOCK element %s' % type(res))
+        txt.extend(self.renderInline(obj))
         t = ''.join(txt)
         t = re.sub( "<br */>", "\n", t.strip())
         if len(t):
@@ -541,65 +542,96 @@ class RlWriter(object):
         if self.sectionTitle:
             return [filterText(xmlescape(txt), defaultFont=standardSansSerif)]
         return [filterText(xmlescape(txt))]
-        
-    def writeStyle(self, s):
+
+    def renderInline(self, node):
         txt = []
-        if s.caption == "''": 
-            tag = 'i'
-        elif s.caption == 'small':
-            txt.append('<font size=%d>' % SMALLFONTSIZE)
-            for node in s:
-                res = self.write(node)
-                if isInline(res):
-                    txt.extend(res)
-                else:
-                    log.warning('small style node contained block element: %s' % type(res))
-            txt.append("</font>")
-            return txt
-        elif s.caption=="'''''":
-            txt.append("<b><i>")
-            for node in s:
-                res = self.write(node)
-                if isInline(res):
-                    txt.extend(res)
-                else:
-                    log.warning('bold-italic style node contained block element: %s' % type(res))
-            txt.append("</i></b>")
-            return txt
-        elif s.caption == "'''":
-            tag = 'b'
-        elif s.caption == ";":
-            txt.append("<b>") # fixme: definition list should be handeled more elegantly
-            for node in s:
-                res = self.write(node)
-                if isInline(res):
-                    txt.extend(res)
-                else:
-                    log.warning('definition list element contained block element: %s' % type(res))
-            txt.append("</b>")
-            return buildPara(txt, dl_style)
-        elif s.caption.startswith(":"):
-            txt = []
-            for node in s:
-                res = self.write(node)
-                if isInline(res):
-                    txt.extend(res)
-                else: # fixme: it should not matter if block elements are inside...
-                    log.warning('indented paragraph contained block element: %s' % type(res))
-            return [Paragraph(''.join(txt),p_indent_style(leftIndent))] # filter
-
- 
-        else:
-            tag = s.caption
-
-        txt.append("<%s>" % tag)
-        for node in s:
-            res = self.write(node)
+        for child in node.children:
+            res = self.write(child)
             if isInline(res):
                 txt.extend(res)
             else:
-                log.warning('tag %s contained block element: %s' %(tag, type(res)))
-        txt.append("</%s>" % tag)
+                log.warning(node.__class__.__name__, ' contained block element: ', child.__class__.__name__)
+        return txt
+
+
+    def renderMixed(self,node, para_style=p_style):
+        txt = []
+        items = []
+        for c in node:
+            res = self.write(c)
+            if isInline(res):
+                txt.extend(res)
+            else:
+                items.extend(buildPara(txt, para_style)) #filter
+                items.extend(res)
+                txt = []
+        if not len(items):
+            return buildPara(txt, para_style)
+        else:
+            items.extend(buildPara(txt, para_style)) #filter
+            return items      
+   
+    def renderChildren(self, n):
+        items = []
+        for c in n:
+            items.extend(self.write(c))
+        return items
+
+    def renderInlineTag(self, node, tag, tag_attrs=''):
+        txt = ['<%s %s>' % (tag, tag_attrs)]
+        txt.extend(self.renderInline(node))
+        txt.append('</%s>' % tag)
+        return txt
+        
+    def writeEmphasized(self, n):
+        return self.renderInlineTag(n, 'i')
+
+    def writeStrong(self, n):
+        return self.renderInlineTag(n, 'b')
+
+    def writeDefinitionList(self, n):
+        return self.renderChildren(n)
+
+    def writeDefinitionTerm(self, n):
+        txt = self.writeStrong(n)
+        return [Paragraph(''.join(txt), p_style)]
+
+    def writeDefinitionDescription(self, n):
+        return self.writeIndented(n)
+
+    def writeIndented(self, n):
+        txt = self.renderInline(n)
+        return [Paragraph(''.join(txt), p_indent_style(leftIndent))]
+        
+    def writeBlockquote(self, n):
+        txt = self.writeEmphasized(n)
+        return [Paragraph(''.join(txt), p_indent_style(leftIndent))]
+
+    def writeOverline(self, n):
+        pass
+
+    def writeUnderline(self, n):
+        return self.renderInlineTag(n, 'u')
+
+    def writeSub(self, n):
+        return self.renderInlineTag(n, 'sub')
+
+    def writeSup(self, n):
+        return self.renderInlineTag(n, 'super')
+        
+    def writeSmall(self, n):
+        return self.renderInlineTag(n, 'font', tag_attrs=' size=%d' % SMALLFONTSIZE)
+
+    def writeBig(self, n):
+        return self.renderInlineTag(n, 'font', tag_attrs=' size=%d' % BIGFONTSIZE)
+        
+    def writeCite(self, n):
+        self.writeDefinitionDescription(n)
+
+    def writeStyle(self, s):
+        txt = []
+        txt.extend(self.renderInline(s))
+        log.warning('unknown tag node', repr(s))
         return txt
 
     def writeLink(self,obj):
@@ -609,16 +641,15 @@ class RlWriter(object):
             href = ''
         txt = []
         if obj.children:
-            for node in obj.children:
-                res = self.write(node)
-                if isInline(res):
-                    txt.extend(res)
-                else:
-                    log.warning('link contained block element: %s' % type(res))
+            txt.extend(self.renderInline(obj))
+            t = ''.join(txt).strip()
         else:
-            txt = [href]    
+            txt = [href]
+            t = ''.join(txt).strip().encode('utf-8')
+            t = unicode(urllib.unquote(t), 'utf-8')
+            
         url = u"%s%s" % (self.baseUrl, urllib.quote(href.encode('utf-8')))
-        return ['<link href="%s">%s</link>' % ( url, ''.join(txt).strip())] #filter
+        return ['<link href="%s">%s</link>' % ( url, t)] #filter
 
     def writeSpecialLink(self,obj):
         return self.writeLink(obj)
@@ -626,12 +657,7 @@ class RlWriter(object):
     def writeURL(self, obj):
         txt = []       
         if obj.children:
-            for node in obj.children:
-                res = self.write(node)
-                if isInline(res):
-                    txt.extend(res)
-                else:
-                    log.warning('URL contained block element: %s' % type(res))
+            txt.extend(self.renderInline(obj))
         else:
             txt.append(filterText(xmlescape(obj.caption)))
             
@@ -639,17 +665,11 @@ class RlWriter(object):
             'href':urllib.quote(obj.caption.encode('utf-8'),safe=':/'),
             'text': ''.join(txt).strip()
             }]
-
     
     def writeNamedURL(self,obj):
         txt = []
         if obj.children:
-            for node in obj.children:
-                res = self.write(node)
-                if isInline(res):
-                    txt.extend(res)
-                else:
-                    log.warning('namedURL contained block element: %s' % type(res))
+            txt.extend(self.renderInline(obj))
         else:
             name = "[%s]" % self.namedLinkCount
             self.namedLinkCount += 1
@@ -663,12 +683,7 @@ class RlWriter(object):
         txt = []
         if obj.colon: # CategoryLink inside the article
             if obj.children:
-                for node in obj.children:
-                    res = self.write(node)
-                    if isInline(res):
-                        txt.extend(res)
-                    else:
-                        log.warning('categoryLink contained block element: %s' % type(res))
+                txt.extend(self.renderInline(obj))
             else:
                 txt.append(obj.target)
         else: # category of the article which is suppressed
@@ -722,6 +737,7 @@ class RlWriter(object):
             imgPath = self.imgDB.getDiskPath(obj.target, size=targetWidth)
             if imgPath:
                 #self._cleanImage(imgPath)
+                imgPath = imgPath.encode('utf-8')
                 self.tmpImages.add(imgPath)
         else:
             imgPath = ''
@@ -815,76 +831,61 @@ class RlWriter(object):
         return [table]
 
 
+
+    def writeCode(self, n):
+        return self.writePreFormatted(n)
+
+    def writeTeletyped(self, n):
+        return self.renderInlineTag(n, 'font', tag_attrs='fontName=%s' % standardMonoFont)
+        
+    def writeBreakingReturn(self, n):
+        return ['<br />']
+
+    def writeHorizontalRule(self, n):
+        return [HRFlowable(width="100%", spaceBefore=3, spaceAfter=6, color=colors.black, thickness=0.25)]
+
+    def writeIndex(self, n):
+        log.warning('unhandled Index Node - rendering child nodes')
+        return self.writeChildren(n) #fixme: handle index nodes properly
+
+    def writeReference(self, n):
+        i = parser.Item()
+        i.children = [c for c in n.children]
+        self.references.append(i)
+        return ['<super><font size="10">[%s]</font></super> ' % len(self.references)]
+    
+    def writeReferenceList(self, n):
+        if self.references:                
+            return self.writeItemList(self.references, numbered=True, style=reference_style)
+        else:
+            return []
+
+    def writeCenter(self, n):
+        return self.renderMixed(n, para_style=p_center_style)
+
+    def writeDiv(self, n):
+        return self.renderMixed(n, para_style=p_style) 
+
+    def writeSpan(self, n):
+        return self.renderInline(n)
+
+    def writeStrike(self, n):
+        return self.renderInlineTag(n, 'strike')
+
+
+    def writeImageMap(self, n):
+        return []
+    
     def writeTagNode(self,t):
-        # FIXME: this method has totally gotten out of control! needs to be broken down into pieces...
-        if t.caption == 'br':
-            return ['<br />']
-        elif t.caption == 'hr':
-            return [HRFlowable(width="100%", spaceBefore=3, spaceAfter=6, color=colors.black, thickness=0.25)]
-        elif t.caption == 'ref':
-            i = parser.Item()
-            i.children = [c for c in t.children]
-            self.references.append(i)
-            return ['<super><font size="10">[%s]</font></super> ' % len(self.references)]  # FIXME: quickhack
-        elif t.caption =='rss':
+        if t.caption =='rss':
             items = []
             for node in t.children:
                 items.extend(self.write(node))
-            return items
-        elif t.caption == 'strike':
-            txt = ['<strike>']
-            for node in t.children:
-                txt.extend(self.write(node))
-            txt.append('</strike>')
-            return buildPara(txt, p_style)
-        elif t.caption == 'references':
-            if self.references:                
-                return self.writeItemList(self.references, numbered=True, style=reference_style)
-        elif t.caption == 'div' or t.caption == 'center':
-            if t.caption =='center':
-                style = p_center_style
-            else:
-                style = p_style
-            txt = []
-            items = []
-            for node in t.children:
-                res = self.write(node)
-                if isInline(res):
-                    txt.extend(res)
-                else:
-                    items.extend(buildPara(txt, style)) #filter
-                    items.extend(res)
-                    txt = []
-            if not len(items):
-                return buildPara(txt, style)
-            else:
-                items.extend(buildPara(txt, style)) #filter
-                return items                     
-            #return self.writeParagraph(t)           
-        elif t.caption == 'span':
-            txt = []
-            for node in t.children:
-                res = self.write(node)
-                if isInline(res):
-                    txt.extend(res)
-                else:
-                    log.warning('span contained block element')
-            return txt
-        elif t.caption == 'tt':
-            txt = []
-            for node in t.children:
-                res = self.write(node)
-                if isInline(res):
-                    txt.extend(res)
-                else:
-                    log.warning('tt node contained block element')
-            return ['<font name="%s">%s</font>' % (standardMonoFont, ''.join(txt))]
+            return items        
         elif t.caption in ['h1','h2','h3','h4']:
             level = int(t.caption[1])
             t.level = level
             return self.writeSection(t)
-        elif t.caption == 'gallery':
-            return self.writeGallery(t)
         elif t.caption == "imagemap":
             if t.imagemap.imagelink:
                 return self.write(t.imagemap.imagelink)
@@ -987,9 +988,11 @@ class RlWriter(object):
         self.nestingLevel += 1
         elements = []
         data = []        
+
+        t = rltables.reformatTable(t)
+
         for x in t:
             r = self.write(x)
-            print x.__class__
             if r:
                 if isinstance(x,parser.Row): # FIXME: workaround for parser bug: empty rows are skipped
                     data.append(r)
@@ -1036,25 +1039,33 @@ class RlWriter(object):
         return elements
     
    
-    def writeMath(self,obj):           
-        latex = obj.caption
-        try:
-            p=self.renderer.render(latex, lazy=False)
-        except RuntimeError, err:
-            #return [XPreformatted('RENDERING FAILED: %s' % latex, pre_style)]
-            raise ReportlabError('Render math failed: %s' % latex)
-        img = PilImage.open(p)
-        log.info("math png at:", p)
+    def writeMath(self, node):
+        source = node.caption.strip()
+        source = re.compile("\n+").sub("\n", source)
+        source = source.replace("'","'\\''").encode('utf-8') # escape single quotes 
+
+        #fixme: we should use the texvc that's bundled with the mediawiki installation
+        texvc = os.path.join(os.path.dirname(__file__), '../math/') + 'texvc' 
+        cmd = "%s %s %s '%s' utf-8" % (texvc, self.tmpdir, self.tmpdir, source)
+        f = os.popen(cmd)
+        renderoutput = f.read()
+        imgpath = os.path.join(self.tmpdir, renderoutput[1:33] + '.png')
+
+        img = PilImage.open(imgpath)
+        log.info("math png at:", imgpath)
         w,h = img.size
-        density = 300 # resolution in dpi in which math images are rendered by latex
+        #density = 300 # resolution in dpi in which math images are rendered by latex
+        density = 120
         # the vertical image placement is calculated below:
-        # the "normal" height of a single-line formula is 32px. 
-        imgAlign = '%fin' % (- (h - 32) / (2 * density))
+        # the "normal" height of a single-line formula is 32px. UPDATE: is now 17 
+        #imgAlign = '%fin' % (- (h - 32) / (2 * density))
+        imgAlign = '%fin' % (- (h - 15) / (2 * density))
         return ' <img src="%(path)s" width="%(width)fin" height="%(height)fin" valign="%(valign)s" /> ' % {
-            'path': p.encode(sys.getfilesystemencoding()), # FIXME: imgPath needs to be configurable
+            'path': imgpath.encode(sys.getfilesystemencoding()), # FIXME: imgPath needs to be configurable
             'width': w/density,
             'height': h/density,
             'valign': imgAlign, }
+    
 
     writeLangLink = ignore
     writeTimeline = ignore

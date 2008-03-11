@@ -8,6 +8,8 @@ from __future__ import division
 
 import re
 
+from mwlib.advtree import Text, ItemList, Item, Table, Row, Cell
+
 from reportlab.platypus.paragraph import Paragraph
 from reportlab.lib import colors
 from customflowables import Figure
@@ -207,3 +209,89 @@ def splitCellContent(data):
         else:
             n_data.append(row)
     return n_data
+
+
+
+def getContentType(t):
+    nodeInfo = []
+    for row in t.children:
+        rowNodeInfo = []
+        for cell in row:
+            cellNodeTypes = []
+            cellTextLen = 0
+            for item in cell.children:
+                if not item.isblocknode: # any inline node is treated as a regular TextNode for simplicity
+                    cellNodeTypes.append(Text)
+                else:
+                    cellNodeTypes.append(item.__class__)            
+                cellTextLen += len(item.getAllDisplayText())
+            rowNodeInfo.append( (cellNodeTypes, cellTextLen) )
+        nodeInfo.append(rowNodeInfo)       
+    return nodeInfo
+
+def reformatTable(t):
+    nodeInfo = getContentType(t)
+    numCols = t.numcols
+    numRows = len(t.rows)
+
+    onlyTables = True
+    onlyLists = True    
+    for row in nodeInfo:
+        for cell in row:
+            cellNodeTypes, cellTextLen = cell
+            if not all(nodetype==Table for nodetype in cellNodeTypes):
+                onlyTables = False
+            if not all(nodetype==ItemList for nodetype in cellNodeTypes):
+                onlyLists = False
+            
+    if onlyTables and numCols > 1:
+        t = reduceCols(t,colnum=1)
+    if onlyLists and numCols > 2 :
+        t = reduceCols(t, colnum=2)
+    if onlyLists:
+        t = splitListItems(t)
+    return t
+
+def splitListItems(t):
+    nt = t.copy()
+    nt.children = []
+    for r in t.children:
+        nr = Row()
+        cols = []
+        maxItems = 0
+        for cell in r:           
+            items = cell.getChildNodesByClass(Item)
+            cols.append(items)
+            maxItems = max(maxItems,len(items))
+        for i in range(maxItems):            
+            for (j,col) in enumerate(cols):
+                try:
+                    item = cols[j][i]
+                    il = ItemList()
+                    il.appendChild(item)
+                    nc = Cell()                    
+                    nc.appendChild(il)
+                    nr.appendChild(nc)
+                except:                    
+                    nr.appendChild(Cell())
+            nt.appendChild(nr)
+            nr = Row()        
+    return nt
+    
+def reduceCols(t, colnum=2):
+    nt = t.copy()
+    nt.children = []
+    for r in t.children:
+        nr = Row()
+        for c in r:
+            nc = c.copy()
+            if len(nr.children) == colnum:
+                nt.appendChild(nr)
+                nr=Row()
+            nr.appendChild(nc)
+        if len(nr.children)>0:
+            while len(nr.children) < colnum:
+                nr.appendChild(Cell())
+            nt.appendChild(nr)
+    return nt
+

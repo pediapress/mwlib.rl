@@ -67,6 +67,7 @@ standardSansSerif = "DejaVuSans"
 standardMonoFont = "DejaVuSansMono"
 STANDARDFONTSIZE = 10
 SMALLFONTSIZE = 8
+BIGFONTSIZE = 12
 ########## / REGISTER FONTS
 
 
@@ -78,7 +79,7 @@ def filterText(txt, defaultFont=standardFont):
 
     def addZWSP(txt): #add ZeroWidthSpace -> this allows to split text in case not enough space is present
         return txt.replace("-", u"-\u200B").replace("/",u"/\u200B")
-    txt = addZWSP(txt)
+    #txt = addZWSP(txt)
     t = []   
     def getScript(letter):
         o = ord(letter)
