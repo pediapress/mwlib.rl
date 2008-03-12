@@ -16,7 +16,7 @@ from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.lib.colors import black
 
-from reportlab.rl_config import defaultPageSize
+#from reportlab.rl_config import defaultPageSize
 
 
 ########## REGISTER FONTS
@@ -123,9 +123,12 @@ def filterText(txt, defaultFont=standardFont):
 ########## / FONT SWITCHER METHOD
 
 ######### PAGE CONFIGURATION
+from reportlab.lib.pagesizes import A4
 
-pageHeight=defaultPageSize[1]
-pageWidth=defaultPageSize[0]
+#pageHeight=defaultPageSize[1]
+#pageWidth=defaultPageSize[0]
+
+pageWidth, pageHeight = A4
 
 pageMarginHor = 2 * cm
 pageMarginVert= 2 * cm

@@ -18,13 +18,15 @@ from PIL import Image as PilImage
 
 #from reportlab.rl_config import defaultPageSize
 from reportlab.platypus.paragraph import Paragraph
-from reportlab.platypus.doctemplate import BaseDocTemplate, NextPageTemplate, NotAtTopPageBreak
+from reportlab.platypus.doctemplate import BaseDocTemplate, SimpleDocTemplate, NextPageTemplate, NotAtTopPageBreak
 from reportlab.platypus.tables import Table
 from reportlab.platypus.flowables import Spacer, HRFlowable, PageBreak, KeepTogether, Image
 from reportlab.platypus.xpreformatted import XPreformatted
 #from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.lib.units import cm, inch
 from reportlab.lib import colors
+from reportlab.platypus.doctemplate import LayoutError
+from reportlab.lib.pagesizes import A4, A3
 
 from customflowables import Figure, FiguresAndParagraphs
 from pdfstyles import p_style, li_style, p_indent_style, pre_style, pre_style_small, articleTitle_style
@@ -36,7 +38,7 @@ from pdfstyles import printWidth, printHeight, dl_style, SMALLFONTSIZE, BIGFONTS
 #from pdfstyles import pageWidth, pageHeight, bookAuthor_style
 
 import rltables
-from pagetemplates import WikiPage, TitlePage
+from pagetemplates import WikiPage, TitlePage, SimplePage
 
 from mwlib import parser, log
 from mwlib import rendermath
@@ -48,6 +50,7 @@ from mwlib.rl import debughelper
 from mwlib.rl.rltreecleaner import buildAdvancedTree
 from mwlib.rl import version as rlwriterversion
 from mwlib._version import version as  mwlibversion
+from mwlib import advtree
 
 def flatten(x):
     result = []
@@ -111,7 +114,7 @@ class RlWriter(object):
         self.nestingLevel = -1       
         self.renderer = rendermath.Renderer()
         self.sectionTitle = False
-        self.tmpdir = tempfile.mkdtemp()
+        self.tablecount = 0
         
     def ignore(self, obj):
         return []
@@ -184,8 +187,23 @@ class RlWriter(object):
                     elements.append( Paragraph(line, license_text_style) )           
         return elements
 
+
+    def displayNode(self, n):
+        """
+        check if a node has styling info, that prevents rendering of item
+        """
+        if not hasattr(n, 'vlist'):
+            return True
+        style = n.vlist.get('style',None)
+        if style:
+            display = style.get('display', '').lower()
+            if display == 'none':
+                return False
+        return True
                     
     def write(self, obj, required=None):
+        if not self.displayNode(obj):
+            return []
         m = "write" + obj.__class__.__name__
         m=getattr(self, m)
         return m(obj)
@@ -193,9 +211,9 @@ class RlWriter(object):
     def writeBook(self, book, bookParseTree, output, removedArticlesFile=None,
                   coverimage=None):
         self.outputdir = output
-        debughelper.showParseTree(sys.stdout, bookParseTree)
-        buildAdvancedTree(bookParseTree)
         #debughelper.showParseTree(sys.stdout, bookParseTree)
+        buildAdvancedTree(bookParseTree)
+        debughelper.showParseTree(sys.stdout, bookParseTree)
         try:
             self.renderBook(book, bookParseTree, output, coverimage=coverimage)
             log.info('###### RENDERING OK')
@@ -218,6 +236,9 @@ class RlWriter(object):
         elements = []
         version = 'mwlib version: %s , rlwriter version: %s' % (rlwriterversion, mwlibversion)
         self.doc = BaseDocTemplate(output, topMargin=pageMarginVert, leftMargin=pageMarginHor, rightMargin=pageMarginHor, bottomMargin=pageMarginVert,title=getattr(book, 'title', None), keywords=version)
+
+        self.output = output
+        self.tmpdir = tempfile.mkdtemp()
 
         elements.extend(self.writeTitlePage(coverimage=coverimage))
         try:
@@ -368,7 +389,7 @@ class RlWriter(object):
                         else:
                             height = min(printWidth / ar, h * inch/100)
                         width = height * ar
-                    return [Image(src, width=width, height=height)]
+                    return [Image(src, width=width, height=height, lazy=0)]
                 except:
                     traceback.print_exc()
                     pass
@@ -794,7 +815,7 @@ class RlWriter(object):
         if obj.isInline(): 
             #log.info('got inline image:',  imgPath,"w:",width,"h:",height)
             txt = '<img src="%(src)s" width="%(width)fin" height="%(height)fin" valign="%(align)s"/>' % {
-                'src':imgPath,
+                'src':unicode(imgPath, 'utf-8'),
                 'width':width/100,
                 'height':height/100,
                 'align':'bottom',
@@ -830,8 +851,6 @@ class RlWriter(object):
         table = Table(data)
         return [table]
 
-
-
     def writeCode(self, n):
         return self.writePreFormatted(n)
 
@@ -846,7 +865,7 @@ class RlWriter(object):
 
     def writeIndex(self, n):
         log.warning('unhandled Index Node - rendering child nodes')
-        return self.writeChildren(n) #fixme: handle index nodes properly
+        return self.renderChildren(n) #fixme: handle index nodes properly
 
     def writeReference(self, n):
         i = parser.Item()
@@ -917,6 +936,8 @@ class RlWriter(object):
         
         for x in item:
             res = self.write(x)
+            if not res:
+                continue
             if isInline(res):
                 txt.append(res)
             else:
@@ -964,14 +985,18 @@ class RlWriter(object):
                 elements.extend(res)
         if txt:
             elements.extend(buildPara(txt,table_p_style)) #filter
+
         return {'content':elements,
                 'rowspan':rowspan,
                 'colspan':colspan}
 
     def writeRow(self,row):
         r = []
-        for x in row:
-            r.append(self.write(x))
+        for cell in row:
+            if cell.__class__ == advtree.Cell:
+                r.append(self.writeCell(cell))
+            else:
+                log.warning('table row contains: %s - node skipped' % x.__class__.__name__)
         return r
 
 
@@ -990,14 +1015,21 @@ class RlWriter(object):
         data = []        
 
         t = rltables.reformatTable(t)
+        # if a table contains only tables it is transformed to a list of the containing tables - that is handled below
+        if t.__class__ != advtree.Table and all([c.__class__==advtree.Table for c in t]):
+            tables = []
+            self.nestingLevel -= 1
+            for c in t:
+                tables.extend(self.writeTable(c))
+            return tables
 
-        for x in t:
-            r = self.write(x)
-            if r:
-                if isinstance(x,parser.Row): # FIXME: workaround for parser bug: empty rows are skipped
-                    data.append(r)
-                elif isinstance(x, parser.Caption):
-                    elements.extend(r)
+
+        for r in t.children:
+            if r.__class__ == advtree.Row:
+                data.append(self.writeRow(r))
+            elif r.__class__ == advtree.Caption:
+                elements.extend(self.writeCaption(r))
+
                 
         (data, span_styles) = rltables.checkSpans(data)            
         (gotData, onlyListItems, maxCellContent, maxCols) = rltables.checkData(data)
@@ -1005,13 +1037,9 @@ class RlWriter(object):
             log.info('got empty table')
             self.nestingLevel -= 1
             return []
-        if onlyListItems:
-            data = rltables.splitData(data, maxCellContent)
+
         colwidthList = rltables.getColWidths(data, nestingLevel=self.nestingLevel)
-
         data = rltables.splitCellContent(data)
-
-        #debughelper.dumpTableData(data)
 
         table = Table(data, colWidths=colwidthList, splitByRow=1)
 
@@ -1035,10 +1063,51 @@ class RlWriter(object):
             elements.append(Spacer(0, table_style['spaceAfter']))
 
         self.nestingLevel -= 1
-        
+
+        (renderingOk, renderedTable) = self.renderTable(table)
+        if not renderingOk:
+            return []
+        if renderingOk and renderedTable:
+            return [renderedTable]
         return elements
-    
-   
+
+    def renderTable(self, table):
+        """
+        method that checks if a table can be rendered by reportlab. this is done, b/c large tables cause problems.
+        if a large table is detected, it is rendered on a doublesize canvas and - on success - embedded as an
+        scaled down image.
+        """
+
+        fn = os.path.join(self.tmpdir, 'table%d.pdf' % self.tablecount)
+        self.tablecount += 1
+
+        doc = BaseDocTemplate(fn)
+        doc.addPageTemplates(SimplePage(pageSize=A4))
+        try:
+            w,h=table.wrap(printWidth, printHeight)
+            if w > printWidth:
+                raise LayoutError
+            doc.build([table])
+            return (True, None)
+        except LayoutError:
+            log.warning('table rendering failed for: ', fn)
+
+        log.info('try safe table rendering')
+        doc = BaseDocTemplate(fn)
+        doc.addPageTemplates(SimplePage(pageSize=A3))
+        try:
+            doc.build([table])
+            log.info('safe rendering ok')
+        except LayoutError:
+            log.warning('table rendering failed for: ', fn)
+            return (False, None)
+
+        imgname = fn +'.png'
+        os.system('convert -density 150 %s %s' % (fn, imgname))        
+        img = Image(imgname, width=printWidth*0.95, height=printHeight*0.95)
+
+        return (True, img)
+            
     def writeMath(self, node):
         source = node.caption.strip()
         source = re.compile("\n+").sub("\n", source)

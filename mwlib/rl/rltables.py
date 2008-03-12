@@ -8,6 +8,7 @@ from __future__ import division
 
 import re
 
+from mwlib import log
 from mwlib.advtree import Text, ItemList, Item, Table, Row, Cell
 
 from reportlab.platypus.paragraph import Paragraph
@@ -16,6 +17,7 @@ from customflowables import Figure
 import debughelper
 from pdfstyles import pageWidth, pageHeight, pageMarginHor, table_p_style, table_p_style_small
 
+log = log.Log('rlwriter')
 
 def checkData(data):
     """
@@ -38,17 +40,18 @@ def checkData(data):
     return (gotData, onlyListItems, maxCellContent, maxCols)
 
 
-def splitData(data, maxCellContent):
-    newData = []
-    rowOffset = 0
-    for (rowCount, row) in enumerate(data):
-        for i in range(maxCellContent[rowCount]):
-            newData.append(['']*len(row))
-        for (colNum,cell) in enumerate(row):
-            for (rowNum,item) in enumerate(cell):
-                newData[rowNum+rowOffset][colNum] = [item]
-        rowOffset += maxCellContent[rowCount]
-    return newData            
+# FIXME: DEPRECATED  
+#def splitData(data, maxCellContent):
+#    newData = []
+#    rowOffset = 0
+#    for (rowCount, row) in enumerate(data):
+#        for i in range(maxCellContent[rowCount]):
+#            newData.append(['']*len(row))
+#        for (colNum,cell) in enumerate(row):
+#            for (rowNum,item) in enumerate(cell):
+#                newData[rowNum+rowOffset][colNum] = [item]
+#        rowOffset += maxCellContent[rowCount]
+#    return newData            
 
 
 def checkSpans(data):
@@ -91,33 +94,32 @@ def checkSpans(data):
 def style(styles):
     """
     extract the style info and return a reportlab style list
+    try to guess if a border and/or frame
     """
     borderBoxes = [u'prettytable', u'metadata', u'wikitable', u'infobox', u'toccolours', u'navbox']
     styleList = []
     hasBorder = False
-    hasFrame = False
+    hasGrid = False
     if styles:
-        #print "-"*20
-        #print styles
         if styles.get('border',0) > 0:
-            hasBorder = True
+            hasGrid = True
         if styles.get('background-color',0) >0: #fixme: this is probably not very accurate...
-            hasFrame = True
+            hasBorder = True
         classes = set([ c.strip() for c in styles.get('class','').split()])
         if len(set(borderBoxes).intersection(classes)) > 0:
-            hasBorder = True
+            hasGrid = True
         bs = styles.get('border-spacing',None)
         if bs:
             bs_val = re.match('(?P<bs>\d)',bs)
             if bs_val and int(bs_val.groups('bs')[0]) > 0:
-                hasBorder = True
-
+                hasGrid =True
+                
     styleList.append( ('VALIGN',(0,0),(-1,-1),'TOP') )
-    if hasBorder:
+    if hasGrid:
         styleList.extend([ ('INNERGRID',(0,0),(-1,-1),0.25,colors.black),
                            ('BOX',(0,0),(-1,-1),0.25,colors.black),
                            ])
-    elif hasFrame:
+    elif hasBorder:
         styleList.extend([ ('BOX',(0,0),(-1,-1),0.25,colors.black),
                            ])        
     return styleList
@@ -226,7 +228,7 @@ def getContentType(t):
                     cellNodeTypes.append(item.__class__)            
                 cellTextLen += len(item.getAllDisplayText())
             rowNodeInfo.append( (cellNodeTypes, cellTextLen) )
-        nodeInfo.append(rowNodeInfo)       
+        nodeInfo.append(rowNodeInfo)
     return nodeInfo
 
 def reformatTable(t):
@@ -234,8 +236,8 @@ def reformatTable(t):
     numCols = t.numcols
     numRows = len(t.rows)
 
-    onlyTables = True
-    onlyLists = True    
+    onlyTables = len(t.children) > 0 #if table is empty onlyTables and onlyLists are False
+    onlyLists = len(t.children) > 0
     for row in nodeInfo:
         for cell in row:
             cellNodeTypes, cellTextLen = cell
@@ -245,10 +247,14 @@ def reformatTable(t):
                 onlyLists = False
             
     if onlyTables and numCols > 1:
-        t = reduceCols(t,colnum=1)
+        #t = reduceCols(t,colnum=1)
+        log.info('got table only table - removing container')
+        t = removeContainerTable(t)
     if onlyLists and numCols > 2 :
+        log.info('got list only table - reducing columns to 2')
         t = reduceCols(t, colnum=2)
     if onlyLists:
+        log.info('got list only table - splitting list items')
         t = splitListItems(t)
     return t
 
@@ -295,3 +301,13 @@ def reduceCols(t, colnum=2):
             nt.appendChild(nr)
     return nt
 
+def removeContainerTable(containertable):
+    newtables = []
+    for row in containertable:
+        for cell in row:
+            for item in cell:
+                if item.__class__ == Table:
+                    newtables.append(item)
+                else:
+                    log.info("unmatched node:", c.__class__)
+    return newtables

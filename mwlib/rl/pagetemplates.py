@@ -15,10 +15,18 @@ from reportlab.platypus.frames import Frame
 from reportlab.rl_config import defaultPageSize
 from mwlib.rl.pdfstyles import pageMarginHor, pageMarginVert, headerMarginHor, headerMarginVert, footerMarginHor, footerMarginVert, pageWidth, pageHeight, pagefooter, titlepagefooter, showPageHeader, showPageFooter, showTitlePageFooter , standardFont, footer_style
 
+from reportlab.lib.pagesizes import  A3
+
 def _doNothing(canvas, doc):
     "Dummy callback for onPage"
     pass
 
+class SimplePage(PageTemplate):
+    def __init__(self, pageSize=A3):
+        id = 'simplepage'
+        frames = Frame(0, 0, pageSize[0], pageSize[1])
+        PageTemplate.__init__(self, id=id, frames=frames, pagesize=pageSize)
+        
 class WikiPage(PageTemplate):
 
     def __init__(self,title=None,id=None,onPage=_doNothing, onPageEnd=_doNothing,
