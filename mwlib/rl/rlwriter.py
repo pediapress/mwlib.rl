@@ -124,6 +124,7 @@ class RlWriter(object):
         self.renderer = rendermath.Renderer()
         self.sectionTitle = False
         self.tablecount = 0
+        self.paraIndentLevel = 0
         
     def ignore(self, obj):
         return []
@@ -222,7 +223,7 @@ class RlWriter(object):
         self.outputdir = output
         #debughelper.showParseTree(sys.stdout, bookParseTree)
         buildAdvancedTree(bookParseTree)
-        debughelper.showParseTree(sys.stdout, bookParseTree)
+        #debughelper.showParseTree(sys.stdout, bookParseTree)
         try:
             self.renderBook(book, bookParseTree, output, coverimage=coverimage)
             log.info('###### RENDERING OK')
@@ -630,8 +631,10 @@ class RlWriter(object):
         return self.writeIndented(n)
 
     def writeIndented(self, n):
-        txt = self.renderInline(n)
-        return [Paragraph(''.join(txt), p_indent_style(leftIndent))]
+        self.paraIndentLevel += 1
+        items = self.renderMixed(n, para_style=p_indent_style(leftIndent*self.paraIndentLevel))
+        self.paraIndentLevel -= 1
+        return items
         
     def writeBlockquote(self, n):
         txt = self.writeEmphasized(n)
@@ -892,7 +895,7 @@ class RlWriter(object):
         return self.renderMixed(n, para_style=p_center_style)
 
     def writeDiv(self, n):
-        return self.renderMixed(n, para_style=p_style) 
+        return self.renderMixed(n, para_style=p_indent_style(leftIndent*self.paraIndentLevel)) 
 
     def writeSpan(self, n):
         return self.renderInline(n)
@@ -932,7 +935,7 @@ class RlWriter(object):
         def finishPara(txt):           
             if not txt:
                 return
-            listIndent = max(0,(self.listIndentation))
+            listIndent = max(0,(self.listIndentation + self.paraIndentLevel))
             txt = ''.join(flatten(txt)).strip()
             if not numbered:
                 li = Paragraph(u'<bullet>\u2022</bullet>%s' % txt, li_style(listIndent))
