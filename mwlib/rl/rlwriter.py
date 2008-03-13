@@ -16,6 +16,14 @@ import tempfile
 from xml.sax.saxutils import escape as xmlescape
 from PIL import Image as PilImage
 
+def _check_reportlab():
+    import reportlab
+    try:
+        from reportlab.platypus.doctemplate import NotAtTopPageBreak
+    except ImportError:
+        raise ImportError("you need to have the svn version of reportlab installed")
+_check_reportlab()
+
 #from reportlab.rl_config import defaultPageSize
 from reportlab.platypus.paragraph import Paragraph
 from reportlab.platypus.doctemplate import BaseDocTemplate, NextPageTemplate, NotAtTopPageBreak
