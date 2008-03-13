@@ -15,6 +15,7 @@ import tempfile
 
 from xml.sax.saxutils import escape as xmlescape
 from PIL import Image as PilImage
+from mwlib.utils import all
 
 def _check_reportlab():
     from reportlab.pdfbase.pdfdoc import PDFDictionary
