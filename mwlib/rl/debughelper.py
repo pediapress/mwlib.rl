@@ -5,7 +5,7 @@
 # See README.txt for additional licensing information.
 
 from reportlab.platypus.paragraph import Paragraph
-from reportlab.platypus.flowables import Spacer, HRFlowable, PageBreak, KeepTogether
+from reportlab.platypus.flowables import Spacer, PageBreak, KeepTogether
 from reportlab.platypus.tables import Table
 from customflowables import Figure, FiguresAndParagraphs
 

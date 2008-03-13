@@ -4,17 +4,11 @@
 # Copyright (c) 2007, PediaPress GmbH
 # See README.txt for additional licensing information.
 
-import os
 import string 
 
 from reportlab.platypus.flowables import *
 from reportlab.platypus.paragraph import *
-from reportlab.lib.colors import Color, lightgrey
-from reportlab.lib.units import cm
-from reportlab.lib.styles import ParagraphStyle
-from reportlab.platypus.doctemplate import Indenter as Indenter
-
-from mwlib.rl.pdfstyles import figure_caption_style, li_style
+from reportlab.lib.colors import Color
 
 class Figure(Flowable):
 

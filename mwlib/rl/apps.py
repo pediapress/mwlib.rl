@@ -8,10 +8,6 @@ import os
 import sys
 import optparse
 from ConfigParser import ConfigParser
-import urllib
-import tempfile
-import shutil
-from zipfile import ZipFile
 
 import mwlib.log
 from mwlib.metabook import MetaBook
@@ -58,7 +54,7 @@ def pdfall():
     w = wiki.makewiki(config)
     #db = w['wiki']
     #articles = db.articles()
-    import urllib
+
     r=rlwriter.RlWriter(images=None) # dont use images, would take to long
     errorFile = open('errors.txt','w')
 
@@ -219,7 +215,7 @@ def zip2pdf():
     zipfile = args[0]
     output = args[1]
     
-    from mwlib import wiki, uparser, parser, zipwiki
+    from mwlib import parser, zipwiki
     from mwlib.rl import rlwriter
 
     wikidb = zipwiki.Wiki(zipfile)

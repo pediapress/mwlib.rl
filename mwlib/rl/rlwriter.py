@@ -18,7 +18,7 @@ from PIL import Image as PilImage
 
 #from reportlab.rl_config import defaultPageSize
 from reportlab.platypus.paragraph import Paragraph
-from reportlab.platypus.doctemplate import BaseDocTemplate, SimpleDocTemplate, NextPageTemplate, NotAtTopPageBreak
+from reportlab.platypus.doctemplate import BaseDocTemplate, NextPageTemplate, NotAtTopPageBreak
 from reportlab.platypus.tables import Table
 from reportlab.platypus.flowables import Spacer, HRFlowable, PageBreak, KeepTogether, Image
 from reportlab.platypus.xpreformatted import XPreformatted
@@ -34,7 +34,7 @@ from pdfstyles import h1_style, h2_style, h3_style, h4_style, heading_styles, fi
 from pdfstyles import reference_style, chapter_style, bookTitle_style, bookSubTitle_style
 from pdfstyles import leftIndent, pageMarginHor, pageMarginVert, filterText, standardSansSerif, standardMonoFont
 from pdfstyles import license_title_style, license_heading_style, license_text_style, license_li_style, gfdlfile
-from pdfstyles import printWidth, printHeight, dl_style, SMALLFONTSIZE, BIGFONTSIZE, p_center_style
+from pdfstyles import printWidth, printHeight, SMALLFONTSIZE, BIGFONTSIZE, p_center_style
 #from pdfstyles import pageWidth, pageHeight, bookAuthor_style
 
 import rltables
@@ -996,7 +996,7 @@ class RlWriter(object):
             if cell.__class__ == advtree.Cell:
                 r.append(self.writeCell(cell))
             else:
-                log.warning('table row contains: %s - node skipped' % x.__class__.__name__)
+                log.warning('table row contains non-cell node, skipped:' % cell.__class__.__name__)
         return r
 
 
@@ -1113,11 +1113,11 @@ class RlWriter(object):
         source = re.compile("\n+").sub("\n", source)
         source = source.replace("'","'\\''").encode('utf-8') # escape single quotes 
 
-        #fixme: we should use the texvc that's bundled with the mediawiki installation
-        texvc = os.path.join(os.path.dirname(__file__), '../math/') + 'texvc' 
-        cmd = "%s %s %s '%s' utf-8" % (texvc, self.tmpdir, self.tmpdir, source)
-        f = os.popen(cmd)
-        renderoutput = f.read()
+        cmd = "texvc %s %s '%s' utf-8" % (self.tmpdir, self.tmpdir, source)
+        res= os.popen(cmd)
+        renderoutput = res.read()
+        if not renderoutput.strip():
+            return []
         imgpath = os.path.join(self.tmpdir, renderoutput[1:33] + '.png')
 
         img = PilImage.open(imgpath)

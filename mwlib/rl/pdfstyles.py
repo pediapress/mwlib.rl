@@ -6,10 +6,8 @@
 
 import os
 
-from PIL import Image as PilImage
-
-from reportlab.lib.styles import getSampleStyleSheet, PropertySet
-from reportlab.lib.enums import *
+from reportlab.lib.styles import PropertySet
+from reportlab.lib.enums import TA_LEFT, TA_CENTER, TA_JUSTIFY #TA_RIGHT
 from reportlab.lib.units import cm
 from reportlab.lib.fonts import addMapping
 from reportlab.pdfbase import pdfmetrics
@@ -56,7 +54,7 @@ addMapping('DejaVuSerif', 0, 1, 'DejaVuSerif-Italic')    #italic
 addMapping('DejaVuSerif', 1, 0, 'DejaVuSerif-Bold')    #bold
 addMapping('DejaVuSerif', 1, 1, 'DejaVuSerif-BoldItalic')    #italic and bold
 
-from reportlab.pdfbase.cidfonts import UnicodeCIDFont, findCMapFile
+from reportlab.pdfbase.cidfonts import UnicodeCIDFont
 
 pdfmetrics.registerFont(UnicodeCIDFont('STSong-Light')) #CHS
 #pdfmetrics.registerFont(UnicodeCIDFont('HeiseiMin-W3')) #JPN
@@ -206,6 +204,7 @@ def p_indent_style(indent):
 p_style = BaseStyle(name='p_style',
                     #alignment=TA_JUSTIFY,
                     )          
+
 p_center_style = BaseStyle(name='p_style',
                            alignment=TA_CENTER,
                     )          

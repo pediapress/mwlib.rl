@@ -14,8 +14,8 @@ from mwlib.advtree import Text, ItemList, Item, Table, Row, Cell
 from reportlab.platypus.paragraph import Paragraph
 from reportlab.lib import colors
 from customflowables import Figure
-import debughelper
-from pdfstyles import pageWidth, pageHeight, pageMarginHor, table_p_style, table_p_style_small
+#import debughelper
+from pdfstyles import pageWidth, pageHeight, pageMarginHor, table_p_style_small
 
 log = log.Log('rlwriter')
 
@@ -38,20 +38,7 @@ def checkData(data):
                     onlyListItems = False
         maxCellContent.append(_maxCellContent)
     return (gotData, onlyListItems, maxCellContent, maxCols)
-
-
-# FIXME: DEPRECATED  
-#def splitData(data, maxCellContent):
-#    newData = []
-#    rowOffset = 0
-#    for (rowCount, row) in enumerate(data):
-#        for i in range(maxCellContent[rowCount]):
-#            newData.append(['']*len(row))
-#        for (colNum,cell) in enumerate(row):
-#            for (rowNum,item) in enumerate(cell):
-#                newData[rowNum+rowOffset][colNum] = [item]
-#        rowOffset += maxCellContent[rowCount]
-#    return newData            
+         
 
 
 def checkSpans(data):
@@ -309,5 +296,5 @@ def removeContainerTable(containertable):
                 if item.__class__ == Table:
                     newtables.append(item)
                 else:
-                    log.info("unmatched node:", c.__class__)
+                    log.info("unmatched node:", item.__class__)
     return newtables
