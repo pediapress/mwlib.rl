@@ -1018,7 +1018,7 @@ class RlWriter(object):
             res = self.write(x)
             if isInline(res):
                 txt.extend(res)
-        return buildPara(txt, p_style)              
+        return buildPara(txt, p_center_style)              
 
     
     def writeTable(self, t):
