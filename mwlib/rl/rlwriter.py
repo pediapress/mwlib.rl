@@ -15,6 +15,15 @@ import tempfile
 
 from xml.sax.saxutils import escape as xmlescape
 from PIL import Image as PilImage
+from mwlib.utils import all
+
+def _check_reportlab():
+    from reportlab.pdfbase.pdfdoc import PDFDictionary
+    try:
+        PDFDictionary.__getitem__
+    except AttributeError:
+        raise ImportError("you need to have the svn version of reportlab installed")
+_check_reportlab()
 
 #from reportlab.rl_config import defaultPageSize
 from reportlab.platypus.paragraph import Paragraph

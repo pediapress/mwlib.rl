@@ -8,6 +8,7 @@ from __future__ import division
 
 import re
 
+from mwlib.utils import all
 from mwlib import log
 from mwlib.advtree import Text, ItemList, Item, Table, Row, Cell
 
