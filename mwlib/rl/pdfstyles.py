@@ -71,13 +71,14 @@ BIGFONTSIZE = 12
 
 ########## FONT SWITCHER METHOD -- DONT CHANGE UNLESS YOU KNOW WHAT YOU ARE DOING
 
+                
 def filterText(txt, defaultFont=standardFont):   
     if isinstance(txt,list):
         txt = ''.join(txt)
 
     def addZWSP(txt): #add ZeroWidthSpace -> this allows to split text in case not enough space is present
         return txt.replace("-", u"-\u200B").replace("/",u"/\u200B")
-    #txt = addZWSP(txt)
+    #txt = addZWSP(txt)   
     t = []   
     def getScript(letter):
         o = ord(letter)
@@ -139,7 +140,9 @@ printHeight = pageHeight - 2*pageMarginVert
 
 footerMarginHor = 1.5 * cm
 footerMarginVert= 1.5 * cm
-leftIndent = 25
+leftIndent = 25 # indentation of paragraphs...
+rightIndent = 25 # indentation of paragraphs...
+listIndent = 12 # indentation of lists per level
 
 showPageHeader = True 
 showPageFooter = True
@@ -198,12 +201,18 @@ class BaseHeadingStyle(PropertySet):
 def p_indent_style(indent):
     return BaseStyle(name='p_indent_%d' % indent,
                      #alignment=TA_JUSTIFY,
-                     leftIndent=indent
+                     leftIndent=indent*leftIndent
                      )
 
 p_style = BaseStyle(name='p_style',
                     #alignment=TA_JUSTIFY,
-                    )          
+                    )
+
+p_blockquote_style = BaseStyle(name='p_blockquote_style',
+                               leftIndent = leftIndent,
+                               rightIndent = rightIndent,
+                    )
+
 
 p_center_style = BaseStyle(name='p_style',
                            alignment=TA_CENTER,
@@ -236,8 +245,9 @@ figure_caption_style = BaseStyle(name='figure_caption',
                                  )             
 def li_style(lvl):
     return BaseStyle(name='li_style_%d' % lvl,
-                     leftIndent = leftIndent * lvl,
-                     bulletIndent = leftIndent * max(0, lvl-1),
+                     leftIndent = listIndent * lvl,
+                     bulletIndent = listIndent * max(0, lvl-1),
+                     spaceBefore = 0,
                      #alignment=TA_JUSTIFY,
                      )
 

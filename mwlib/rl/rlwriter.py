@@ -12,6 +12,8 @@ import re
 import urllib
 import traceback
 import tempfile
+import htmlentitydefs
+
 
 from xml.sax.saxutils import escape as xmlescape
 from PIL import Image as PilImage
@@ -41,9 +43,10 @@ from customflowables import Figure, FiguresAndParagraphs
 from pdfstyles import p_style, li_style, p_indent_style, pre_style, pre_style_small, articleTitle_style
 from pdfstyles import h1_style, h2_style, h3_style, h4_style, heading_styles, figure_caption_style, table_p_style, table_style
 from pdfstyles import reference_style, chapter_style, bookTitle_style, bookSubTitle_style
-from pdfstyles import leftIndent, pageMarginHor, pageMarginVert, filterText, standardSansSerif, standardMonoFont
+from pdfstyles import pageMarginHor, pageMarginVert, filterText, standardSansSerif, standardMonoFont
 from pdfstyles import license_title_style, license_heading_style, license_text_style, license_li_style, gfdlfile
 from pdfstyles import printWidth, printHeight, SMALLFONTSIZE, BIGFONTSIZE, p_center_style
+from pdfstyles import p_blockquote_style
 #from pdfstyles import pageWidth, pageHeight, bookAuthor_style
 
 import rltables
@@ -125,6 +128,8 @@ class RlWriter(object):
         self.sectionTitle = False
         self.tablecount = 0
         self.paraIndentLevel = 0
+        self.preMode = False
+
         
     def ignore(self, obj):
         return []
@@ -534,15 +539,18 @@ class RlWriter(object):
         return finalNodes
 
     def writePreFormatted(self, obj): 
+        self.preMode = True
         txt = []
         txt.extend(self.renderInline(obj))
         t = ''.join(txt)
         t = re.sub( "<br */>", "\n", t.strip())
+        self.preMode = False
         if len(t):
             # fixme: if any line is too long, we decrease fontsize to try to fit preformatted text on the page
             # PreformattedBox flowable should do intelligent and visible splitting when necessary
+            # also decrease text size if we are inside a table
             maxCharOnLine = max( [ len(line) for line in t.split("\n")])
-            if maxCharOnLine > 76: #fixme: a more intelligent method should be used to find out if text is to wide for page
+            if maxCharOnLine > 76 or self.nestingLevel > -1:
                 pre = XPreformatted(t, pre_style_small)
             else:
                 pre = XPreformatted(t, pre_style)
@@ -567,12 +575,27 @@ class RlWriter(object):
         else:
             items.extend(buildPara(txt,p_style)) #filter
         return items
+
+
+    def transformEntities(self,s):
+        entities = re.findall('&([a-zA-Z]{1,10});', s)
+        if entities:
+            for e in entities:         
+                codepoint = htmlentitydefs.name2codepoint.get(e, None)
+                if codepoint:
+                    s = s.replace('&'+e+';', unichr(codepoint))
+        return s
         
     def writeText(self,obj):
         txt = obj.caption
+        if not self.preMode:
+            txt = self.transformEntities(txt)
+        txt = xmlescape(txt)
         if self.sectionTitle:
-            return [filterText(xmlescape(txt), defaultFont=standardSansSerif)]
-        return [filterText(xmlescape(txt))]
+            return [filterText(txt, defaultFont=standardSansSerif)]
+        if self.preMode:
+            return [filterText(txt, defaultFont=standardMonoFont)]
+        return [filterText(txt)]
 
     def renderInline(self, node):
         txt = []
@@ -632,13 +655,18 @@ class RlWriter(object):
 
     def writeIndented(self, n):
         self.paraIndentLevel += 1
-        items = self.renderMixed(n, para_style=p_indent_style(leftIndent*self.paraIndentLevel))
+        items = self.renderMixed(n, para_style=p_indent_style(self.paraIndentLevel))
         self.paraIndentLevel -= 1
         return items
         
     def writeBlockquote(self, n):
-        txt = self.writeEmphasized(n)
-        return [Paragraph(''.join(txt), p_indent_style(leftIndent))]
+        #return self.writeIndented(n)
+        self.paraIndentLevel += 1
+        items = self.renderMixed(n, para_style=p_blockquote_style)
+        self.paraIndentLevel -= 1
+        return items
+        
+        
 
     def writeOverline(self, n):
         pass
@@ -667,6 +695,16 @@ class RlWriter(object):
         log.warning('unknown tag node', repr(s))
         return txt
 
+
+    def _quoteURL(self,url, baseUrl=None):
+        safeChars = ':/'
+        if url.startswith('mailto:'):
+            safeChars = ':/@'
+        url = urllib.quote(url.encode('utf-8'),safe=safeChars)
+        if baseUrl:
+            url = u'%s%s' % (baseUrl, url)
+        return url
+
     def writeLink(self,obj):
         href = obj.target
         if not href:
@@ -681,8 +719,8 @@ class RlWriter(object):
             t = ''.join(txt).strip().encode('utf-8')
             t = unicode(urllib.unquote(t), 'utf-8')
             
-        url = u"%s%s" % (self.baseUrl, urllib.quote(href.encode('utf-8')))
-        return ['<link href="%s">%s</link>' % ( url, t)] #filter
+        href = self._quoteURL(href, self.baseUrl)
+        return ['<link href="%s">%s</link>' % ( href, t)]
 
     def writeSpecialLink(self,obj):
         return self.writeLink(obj)
@@ -693,10 +731,15 @@ class RlWriter(object):
             txt.extend(self.renderInline(obj))
         else:
             txt.append(filterText(xmlescape(obj.caption)))
-            
+        href = self._quoteURL(obj.caption)
+        txt = ''.join(txt).strip()
+        if self.nestingLevel > -1 or len(txt) > 70:
+            zws = '<font fontSize="1"> </font>'
+            txt = txt.replace("/",u'/%s' % zws).replace('&amp;', u'&amp;%s' % zws).replace('.','.%s' % zws)
+        txt = '<font fontName="%s">%s</font>' % (standardMonoFont, txt)
         return ['<link href="%(href)s">%(text)s</link>' % {
-            'href':urllib.quote(obj.caption.encode('utf-8'),safe=':/'),
-            'text': ''.join(txt).strip()
+            'href': href, 
+            'text': txt
             }]
     
     def writeNamedURL(self,obj):
@@ -707,8 +750,9 @@ class RlWriter(object):
             name = "[%s]" % self.namedLinkCount
             self.namedLinkCount += 1
             txt.append(name)            
+        href = self._quoteURL(obj.caption)
         return ['<link href="%(href)s">%(text)s</link>' % {
-            'href':urllib.quote(obj.caption.encode('utf-8'),safe=':/'),
+            'href': href,
             'text': ''.join(txt).strip()
             }]
 
@@ -864,7 +908,7 @@ class RlWriter(object):
         return [table]
 
     def writeCode(self, n):
-        return self.writePreFormatted(n)
+        return self.writeTeletyped(n)
 
     def writeTeletyped(self, n):
         return self.renderInlineTag(n, 'font', tag_attrs='fontName=%s' % standardMonoFont)
@@ -895,7 +939,7 @@ class RlWriter(object):
         return self.renderMixed(n, para_style=p_center_style)
 
     def writeDiv(self, n):
-        return self.renderMixed(n, para_style=p_indent_style(leftIndent*self.paraIndentLevel)) 
+        return self.renderMixed(n, para_style=p_indent_style(self.paraIndentLevel)) 
 
     def writeSpan(self, n):
         return self.renderInline(n)
@@ -955,21 +999,24 @@ class RlWriter(object):
             else:
                 finishPara(txt)
                 items.extend(res)
+                txt = []
         finishPara(txt)
         return items
 
     def writeItemList(self, lst, numbered=False, style=li_style):
         self.listIndentation += 1
         items = []
+        items.append(Spacer(0,p_style.spaceBefore))
         numbered = numbered or lst.numbered
         self.listCounterID += 1
-        counterID = self.listCounterID           
+        counterID = self.listCounterID
         for (i,node) in enumerate(lst):
             if isinstance(node,parser.Item): 
                 resetCounter = i==0 # we have to manually reset sequence counters. due to w/h calcs with wrap reportlab gets confused
-                items.extend(self.writeItem(node,numbered=numbered, counterID=counterID, style=style, resetCounter=resetCounter))
+                item = self.writeItem(node,numbered=numbered, counterID=counterID, style=style, resetCounter=resetCounter)
+                items.extend(item)
             else:
-                items.extend(self.write(node))
+                log.warning('got %s node in itemlist - skipped' % node.__class__.__name__)
         self.listIndentation -= 1
         return items
            
@@ -1075,7 +1122,6 @@ class RlWriter(object):
             elements.append(Spacer(0, table_style['spaceAfter']))
 
         self.nestingLevel -= 1
-
         (renderingOk, renderedTable) = self.renderTable(table)
         if not renderingOk:
             return []

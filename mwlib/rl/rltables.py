@@ -112,14 +112,10 @@ def style(styles):
                            ])        
     return styleList
 
-def splitText(data):
+def scaleImages(data):
     for row in data:
         for cell in row:
             for (i,e) in enumerate(cell):
-                if isinstance(e, Paragraph):
-                    # replace slashes and hyphens but dont't touch tags
-                    newText = re.sub("\b(?P<leading>[^-\/<]*?)(?P<sep>[-\/])(?P<rest>[^-\/>]*?)\b","\g<leading> \g<sep> \g<rest>", e.text) 
-                    cell[i] = Paragraph(newText, table_p_style_small) # FIXME: new Paragraph object needed. otherwise para isnt rendered again.
                 if isinstance(e,Figure): # scale image to half size
                     cell[i] = Figure(imgFile = e.imgPath, captionTxt=e.captionTxt, captionStyle=e.cs, imgWidth=e.imgWidth/2.0,imgHeight=e.imgHeight/2.0, margin=e.margin, padding=e.padding,align=e.align)
 
@@ -131,7 +127,7 @@ def getColWidths(data, recursionDepth=0, nestingLevel=0):
     """
 
     if nestingLevel > 0:
-        splitText(data)
+        scaleImages(data)
 
     availWidth = pageWidth - pageMarginHor * 2
     minwidths  = [ 0 for x in range(len(data[0]))]
@@ -161,7 +157,7 @@ def getColWidths(data, recursionDepth=0, nestingLevel=0):
         remainingSpace = availWidth - sum(minwidths)
         if remainingSpace < 0:
             if recursionDepth == 0:
-                splitText(data)
+                scaleImages(data)
                 return getColWidths(data, recursionDepth=1, nestingLevel=nestingLevel)
             else:
                 return None
