@@ -13,6 +13,7 @@ from reportlab.lib.fonts import addMapping
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.lib.colors import black
+from reportlab.lib.pagesizes import A4
 
 #from reportlab.rl_config import defaultPageSize
 
@@ -76,9 +77,6 @@ def filterText(txt, defaultFont=standardFont):
     if isinstance(txt,list):
         txt = ''.join(txt)
 
-    def addZWSP(txt): #add ZeroWidthSpace -> this allows to split text in case not enough space is present
-        return txt.replace("-", u"-\u200B").replace("/",u"/\u200B")
-    #txt = addZWSP(txt)   
     t = []   
     def getScript(letter):
         o = ord(letter)
@@ -122,10 +120,6 @@ def filterText(txt, defaultFont=standardFont):
 ########## / FONT SWITCHER METHOD
 
 ######### PAGE CONFIGURATION
-from reportlab.lib.pagesizes import A4
-
-#pageHeight=defaultPageSize[1]
-#pageWidth=defaultPageSize[0]
 
 pageWidth, pageHeight = A4
 
