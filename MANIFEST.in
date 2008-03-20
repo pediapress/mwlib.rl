@@ -24,7 +24,6 @@ include mwlib/rl/apps.py
 include mwlib/rl/create_collection.py
 include mwlib/rl/customflowables.py
 include mwlib/rl/debughelper.py
-include mwlib/rl/gfdl.txt
 include mwlib/rl/pagetemplates.py
 include mwlib/rl/pdfstyles.py
 include mwlib/rl/rltables.py
