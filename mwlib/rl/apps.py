@@ -73,10 +73,15 @@ OR
         r=rlwriter.RlWriter(images=w['images'] )    
         metabook = MetaBook()
         cp=ConfigParser()
-        cp.read(config)  
+        cp.read(config)
+
+        licensearticle = cp.get('wiki', 'defaultarticlelicense')
+        if licensearticle:
+            license = uparser.parseString(title=licensearticle, wikidb=w['wiki'])
         metabook.source = {
             'name': cp.get('wiki', 'name'),
             'url': cp.get('wiki', 'url'),
+            'defaultarticlelicense': license,
         }    
         coverimage = None
         if not metabookfile:

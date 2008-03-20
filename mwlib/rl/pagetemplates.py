@@ -29,7 +29,7 @@ class SimplePage(PageTemplate):
         
 class WikiPage(PageTemplate):
 
-    def __init__(self,title=None,id=None,onPage=_doNothing, onPageEnd=_doNothing,
+    def __init__(self,title=None, wikititle='undefined', wikiurl='undefined', id=None, onPage=_doNothing, onPageEnd=_doNothing,
                  pagesize=defaultPageSize):
         """
         @type title: unicode
@@ -41,7 +41,9 @@ class WikiPage(PageTemplate):
         PageTemplate.__init__(self,id=id, frames=frames,onPage=onPage,onPageEnd=onPageEnd,pagesize=pagesize)
 
         self.title = title
-
+        self.wikititle = wikititle
+        self.wikiurl = wikiurl
+        
     def beforeDrawPage(self,canvas,doc):
         canvas.setFont(standardFont,10)      
         canvas.saveState()
@@ -55,32 +57,30 @@ class WikiPage(PageTemplate):
         canvas.setFont(standardFont,8)
         canvas.line(footerMarginHor, footerMarginVert, pageWidth - footerMarginHor, footerMarginVert )
         if showPageFooter:
-            canvas.drawCentredString(pageWidth/2.0, footerMarginVert - 0.5*cm, pagefooter)
+            footertext = pagefooter.replace('@WIKITITLE@',self.wikititle).replace('@WIKIURL@',self.wikiurl)
+            canvas.drawCentredString(pageWidth/2.0, footerMarginVert - 0.5*cm, footertext)
         canvas.restoreState()
     
 
 
 class TitlePage(PageTemplate):
 
-    def __init__(self,title=None, subTitle=None, author=None, cover=None, id=None,onPage=_doNothing, onPageEnd=_doNothing,
+    def __init__(self, wikititle='undefined', cover=None, id=None, onPage=_doNothing, onPageEnd=_doNothing,
                  pagesize=defaultPageSize):
 
         id = 'TitlePage'
-        frames = Frame(pageMarginHor,pageMarginVert,pageWidth - 2*pageMarginHor, pageHeight - 2*pageMarginVert)
-        
+        frames = Frame(pageMarginHor,pageMarginVert,pageWidth - 2*pageMarginHor, pageHeight - 2*pageMarginVert)        
         PageTemplate.__init__(self,id=id, frames=frames,onPage=onPage,onPageEnd=onPageEnd,pagesize=pagesize)
-
-        self.title = title
-        self.subTitle = subTitle
-        self.author =author
         self.cover = cover
+        self.wikititle = wikititle
 
     def beforeDrawPage(self,canvas,doc):
         canvas.setFont(standardFont,8)
         canvas.saveState()
         if showTitlePageFooter:
             canvas.line(footerMarginHor, footerMarginVert, pageWidth - footerMarginHor, footerMarginVert )
-            p = Paragraph(titlepagefooter,footer_style)           
+            footertext = titlepagefooter.replace('@WIKITITLE@', self.wikititle)
+            p = Paragraph(footertext,footer_style)           
             w,h = p.wrap(pageWidth - 2*pageMarginHor,pageHeight-pageMarginVert)
             canvas.translate( (pageWidth-w)/2.0, h)
             p.canv = canvas

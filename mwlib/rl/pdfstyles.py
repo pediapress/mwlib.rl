@@ -148,9 +148,9 @@ showPageHeader = True
 showPageFooter = True
 showTitlePageFooter = True
 
-pagefooter = 'All Articles originate from http://wikipedia.org - for usage information see GFDL'
-titlepagefooter = 'wikipedia.org book - Generated using the open source mwlib toolkit - <br/>see http://code.pediapress.com for more information'
-gfdlfile = os.path.join(os.path.dirname(__file__), 'gfdl.txt')
+pagefooter = 'All Articles originate from @WIKITITLE@  (@WIKIURL@)'
+titlepagefooter = '@WIKITITLE@ book - Generated using the open source mwlib toolkit - <br/>see http://code.pediapress.com for more information'
+
 
 ######### /PAGE CONFIGURATION
 

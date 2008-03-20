@@ -44,7 +44,6 @@ from pdfstyles import p_style, li_style, p_indent_style, pre_style, pre_style_sm
 from pdfstyles import h1_style, h2_style, h3_style, h4_style, heading_styles, figure_caption_style, table_p_style, table_style
 from pdfstyles import reference_style, chapter_style, bookTitle_style, bookSubTitle_style
 from pdfstyles import pageMarginHor, pageMarginVert, filterText, standardSansSerif, standardMonoFont
-from pdfstyles import license_title_style, license_heading_style, license_text_style, license_li_style, gfdlfile
 from pdfstyles import printWidth, printHeight, SMALLFONTSIZE, BIGFONTSIZE, p_center_style
 from pdfstyles import p_blockquote_style
 #from pdfstyles import pageWidth, pageHeight, bookAuthor_style
@@ -187,19 +186,13 @@ class RlWriter(object):
             if isinstance(e, Paragraph) and (e.text == '<br />' or e.text == '<br/>'):
                 elements.remove(e)
 
-    def writeGFDL(self,gfdlfile=gfdlfile):
+    def writeLicense(self,licenseArticle):
         elements = []
+        if not licenseArticle:
+            log.warning('Default Article License was empty')
+            return elements
         elements.append(NotAtTopPageBreak())
-        for line in open(gfdlfile).readlines():
-            if line.startswith("="):
-                elements.append( Paragraph(line[2:], license_title_style) )
-            elif re.match('\d\. ', line):
-                elements.append( Paragraph(line, license_heading_style) )
-            elif len(line.strip()):
-                if line.startswith("*"):
-                    elements.append( Paragraph(re.sub('^\* (?P<num>[A-Z]\.) ', '<bullet><b>\g<num></b></bullet>', line), license_li_style) ) # "list items"
-                else:
-                    elements.append( Paragraph(line, license_text_style) )           
+        elements.extend(self.renderMixed(licenseArticle))
         return elements
 
 
@@ -248,6 +241,7 @@ class RlWriter(object):
     def renderBook(self, book, bookParseTree, output, coverimage=None):
         self.book = book
         self.baseUrl = book.source['url']
+        self.wikiTitle = book.source.get('name')
         elements = []
         version = 'mwlib version: %s , rlwriter version: %s' % (rlwriterversion, mwlibversion)
         self.doc = BaseDocTemplate(output, topMargin=pageMarginVert, leftMargin=pageMarginHor, rightMargin=pageMarginHor, bottomMargin=pageMarginVert,title=getattr(book, 'title', None), keywords=version)
@@ -255,7 +249,7 @@ class RlWriter(object):
         self.output = output
         self.tmpdir = tempfile.mkdtemp()
 
-        elements.extend(self.writeTitlePage(coverimage=coverimage))
+        elements.extend(self.writeTitlePage(wikititle=self.wikiTitle, coverimage=coverimage))
         try:
             for e in bookParseTree.children:
                 r = self.write(e)
@@ -263,10 +257,9 @@ class RlWriter(object):
         except:
             traceback.print_exc()
             raise
-        #self.cleanElements(elements)
         elements = self.groupElements(elements)
-        #debughelper.dumpElements(elements)
-        elements.extend(self.writeGFDL())
+        licenseArticle = self.book.source.get('defaultarticlelicense','')
+        elements.extend(self.writeLicense(licenseArticle))
         log.info("start rendering: %r" % output)
         try:
             self.doc.build(elements)
@@ -287,7 +280,7 @@ class RlWriter(object):
                 elements.extend(self.writeArticle(node))
                 try:
                     testdoc = BaseDocTemplate(output, topMargin=pageMarginVert, leftMargin=pageMarginHor, rightMargin=pageMarginHor, bottomMargin=pageMarginVert, title=getattr(book, 'title', None))
-                    testdoc.addPageTemplates(WikiPage(title=node.caption))
+                    testdoc.addPageTemplates(WikiPage(title=node.caption, wikiurl=self.baseUrl, wikititle=self.wikiTitle))
                     testdoc.build(elements)
                     ok_articles.append(node.caption)
                 except Exception, err:
@@ -306,12 +299,13 @@ class RlWriter(object):
         if len(ok_articles) == 0:
             raise ReportlabError('all articles in book can\'t be rendered')
     
-    def writeTitlePage(self, coverimage=None):       
+    def writeTitlePage(self, wikititle=None, coverimage=None):       
         title = getattr(self.book, 'title', None)
         subtitle =  getattr(self.book, 'subtitle', None)
+
         if not title:
             return []
-        self.doc.addPageTemplates(TitlePage(cover=coverimage))
+        self.doc.addPageTemplates(TitlePage(wikititle=wikititle, cover=coverimage))
         elements = [Paragraph(xmlescape(title), bookTitle_style)]
         if subtitle:
             elements.append(Paragraph(xmlescape(subtitle), bookSubTitle_style))
@@ -319,7 +313,7 @@ class RlWriter(object):
             if item['type'] == 'article':
                 firstArticle = item['title']
                 break
-        self.doc.addPageTemplates(WikiPage(firstArticle))
+        self.doc.addPageTemplates(WikiPage(firstArticle,wikiurl=self.baseUrl, wikititle=self.wikiTitle))
         elements.append(NextPageTemplate(firstArticle.encode('utf-8')))
         elements.append(PageBreak())
         return elements
@@ -353,7 +347,7 @@ class RlWriter(object):
         title = xmlescape(article.caption)
         log.info('writing article: %r' % title)
         elements = []
-        pt = WikiPage(title)
+        pt = WikiPage(title, wikiurl=self.baseUrl, wikititle=self.wikiTitle)
         self.doc.addPageTemplates(pt)
         elements.append(NextPageTemplate(title.encode('utf-8'))) # pagetemplate.id cant handle unicode
         elements.append(Paragraph("<b>%s</b>" % filterText(title, defaultFont=standardSansSerif), articleTitle_style))
