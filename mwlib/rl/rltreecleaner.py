@@ -6,7 +6,9 @@
 
 from mwlib import advtree
 from mwlib.advtree import Paragraph
-
+from mwlib.advtree import Text, Cell, Link, Math, URL, BreakingReturn, HorizontalRule, CategoryLink
+from mwlib.advtree import SpecialLink, ImageLink, ReferenceList, Chapter, NamedURL
+               
 def fixLists(node): 
     """
     all ItemList Nodes that are the only children of a paragraph are moved out of the paragraph.
@@ -19,10 +21,29 @@ def fixLists(node):
         fixLists(c)
 
 
+childlessOK = [Text, Cell, Link, Math, URL, BreakingReturn, HorizontalRule, CategoryLink,
+               SpecialLink, ImageLink, ReferenceList, Chapter, NamedURL]
+
+def removeChildlessNodes(node):
+    """
+    remove nodes that have no children except for nodes in childlessOk list
+    """   
+
+    if not node.children and node.__class__ not in childlessOK:
+        removeNode = node
+        while removeNode.parent and not removeNode.siblings:
+            removeNode = removeNode.parent
+        if removeNode.parent:
+            removeNode.parent.removeChild(removeNode)
+
+    for c in node.children[:]:
+        removeChildlessNodes(c)
+        
 def buildAdvancedTree(root):
     advtree.extendClasses(root) 
     advtree.fixTagNodes(root)
     advtree.removeNodes(root)
     advtree.removeNewlines(root)
     advtree.fixStyles(root) 
+    removeChildlessNodes(root)
     fixLists(root)

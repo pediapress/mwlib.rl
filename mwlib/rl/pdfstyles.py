@@ -69,6 +69,9 @@ SMALLFONTSIZE = 8
 BIGFONTSIZE = 12
 ########## / REGISTER FONTS
 
+### TABLE CONFIG
+
+tableOverflowTolerance = 20  # max width overflow for tables    unit: pt 
 
 ########## FONT SWITCHER METHOD -- DONT CHANGE UNLESS YOU KNOW WHAT YOU ARE DOING
 
@@ -207,10 +210,17 @@ p_blockquote_style = BaseStyle(name='p_blockquote_style',
                                rightIndent = rightIndent,
                     )
 
-
 p_center_style = BaseStyle(name='p_style',
                            alignment=TA_CENTER,
-                    )          
+			   )
+
+link_list_style = BaseStyle(name='link_list_style',
+			    leading=13,
+			    leftIndent = 15,
+			    firstLineIndent = -15,
+			    spaceBefore = 6
+			    )
+
 dl_style = BaseStyle(name='dl_style',
                      #alignment=TA_JUSTIFY,
                      spaceBefore = 8,

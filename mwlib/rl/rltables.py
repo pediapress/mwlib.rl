@@ -91,7 +91,8 @@ def style(styles):
     if styles:
         if styles.get('border',0) > 0:
             hasGrid = True
-        if styles.get('background-color',0) >0: #fixme: this is probably not very accurate...
+        bgColor = styles.get('background-color', None)
+        if bgColor and bgColor!= 'transparent':
             hasBorder = True
         classes = set([ c.strip() for c in styles.get('class','').split()])
         if len(set(borderBoxes).intersection(classes)) > 0:

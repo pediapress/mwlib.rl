@@ -13,7 +13,7 @@ from reportlab.lib.units import cm
 from reportlab.platypus.doctemplate import PageTemplate
 from reportlab.platypus.frames import Frame
 from reportlab.rl_config import defaultPageSize
-from mwlib.rl.pdfstyles import pageMarginHor, pageMarginVert, headerMarginHor, headerMarginVert, footerMarginHor, footerMarginVert, pageWidth, pageHeight, pagefooter, titlepagefooter, showPageHeader, showPageFooter, showTitlePageFooter , standardFont, footer_style
+from mwlib.rl.pdfstyles import pageMarginHor, pageMarginVert, headerMarginHor, headerMarginVert, footerMarginHor, footerMarginVert, pageWidth, pageHeight, pagefooter, titlepagefooter, showPageHeader, showPageFooter, showTitlePageFooter , standardFont, footer_style, p_style
 
 from reportlab.lib.pagesizes import  A3
 
@@ -50,7 +50,15 @@ class WikiPage(PageTemplate):
         #header
         canvas.line(headerMarginHor, pageHeight - headerMarginVert, pageWidth - headerMarginHor, pageHeight - headerMarginVert )
         if showPageHeader:
-            canvas.drawString(headerMarginHor, pageHeight - headerMarginVert + 0.1 * cm, self.title)
+            canvas.saveState()
+            canvas.resetTransforms()
+            canvas.translate(headerMarginHor, pageHeight - headerMarginVert - 0.1 * cm)
+            p = Paragraph(self.title, p_style)
+            p.canv = canvas
+            p.wrap(pageWidth - headerMarginHor*2.5, pageHeight) # add an extra 0.5 margin to have enough space for page number
+            p.drawPara()
+            canvas.restoreState()
+            
         canvas.drawRightString(pageWidth - headerMarginHor, pageHeight - headerMarginVert + 0.1 * cm, "%d" % doc.page)
 
         #Footer

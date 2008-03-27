@@ -45,7 +45,7 @@ from pdfstyles import h1_style, h2_style, h3_style, h4_style, heading_styles, fi
 from pdfstyles import reference_style, chapter_style, bookTitle_style, bookSubTitle_style
 from pdfstyles import pageMarginHor, pageMarginVert, filterText, standardSansSerif, standardMonoFont
 from pdfstyles import printWidth, printHeight, SMALLFONTSIZE, BIGFONTSIZE, p_center_style
-from pdfstyles import p_blockquote_style
+from pdfstyles import p_blockquote_style, tableOverflowTolerance, link_list_style
 #from pdfstyles import pageWidth, pageHeight, bookAuthor_style
 
 import rltables
@@ -128,7 +128,7 @@ class RlWriter(object):
         self.tablecount = 0
         self.paraIndentLevel = 0
         self.preMode = False
-
+        self.linkList = []
         
     def ignore(self, obj):
         return []
@@ -219,9 +219,9 @@ class RlWriter(object):
     def writeBook(self, book, bookParseTree, output, removedArticlesFile=None,
                   coverimage=None):
         self.outputdir = output
-        debughelper.showParseTree(sys.stdout, bookParseTree)
-        buildAdvancedTree(bookParseTree)
         #debughelper.showParseTree(sys.stdout, bookParseTree)
+        buildAdvancedTree(bookParseTree)
+        debughelper.showParseTree(sys.stdout, bookParseTree)
         try:
             self.renderBook(book, bookParseTree, output, coverimage=coverimage)
             log.info('###### RENDERING OK')
@@ -254,6 +254,7 @@ class RlWriter(object):
             for e in bookParseTree.children:
                 r = self.write(e)
                 elements.extend(r)
+            #elements.extend(self.renderLinkList()) # write a list of all inner-wiki links
         except:
             traceback.print_exc()
             raise
@@ -602,21 +603,23 @@ class RlWriter(object):
         return txt
 
 
-    def renderMixed(self,node, para_style=p_style):
+    def renderMixed(self,node, para_style=p_style, textPrefix=None):
         txt = []
+        if textPrefix:
+            txt.append(textPrefix)
         items = []
         for c in node:
             res = self.write(c)
             if isInline(res):
                 txt.extend(res)
             else:
-                items.extend(buildPara(txt, para_style)) #filter
+                items.extend(buildPara(txt, para_style)) 
                 items.extend(res)
                 txt = []
         if not len(items):
             return buildPara(txt, para_style)
         else:
-            items.extend(buildPara(txt, para_style)) #filter
+            items.extend(buildPara(txt, para_style)) 
             return items      
    
     def renderChildren(self, n):
@@ -681,7 +684,7 @@ class RlWriter(object):
         return self.renderInlineTag(n, 'font', tag_attrs=' size=%d' % BIGFONTSIZE)
         
     def writeCite(self, n):
-        self.writeDefinitionDescription(n)
+        return self.writeDefinitionDescription(n)
 
     def writeStyle(self, s):
         txt = []
@@ -699,6 +702,19 @@ class RlWriter(object):
             url = u'%s%s' % (baseUrl, url)
         return url
 
+    def renderLinkList(self):
+        elements = []
+
+        elements.append(Paragraph('<b>List of Links</b>', heading_styles[2]))
+        self.linkList = list(set(self.linkList))
+        self.linkList.sort()
+        for text, link in self.linkList:
+            t = '%s' % text
+            l = '<font name=%s size=%dpt>%s</font>' % (standardMonoFont, SMALLFONTSIZE, link.replace('%20','_'))
+            elements.append(Paragraph(u'%s<br/>%s' % (t, l), link_list_style))
+            
+        return elements
+
     def writeLink(self,obj):
         href = obj.target
         if not href:
@@ -714,7 +730,11 @@ class RlWriter(object):
             t = unicode(urllib.unquote(t), 'utf-8')
             
         href = self._quoteURL(href, self.baseUrl)
-        return ['<link href="%s">%s</link>' % ( href, t)]
+        self.linkList.append((t.capitalize(), href))
+        return [u'<link href="%s">%s</link>' % ( href, t)]
+    
+    def writeLangLink(self, node):
+        return self.writeLink(node)
 
     def writeSpecialLink(self,obj):
         return self.writeLink(obj)
@@ -925,7 +945,7 @@ class RlWriter(object):
     
     def writeReferenceList(self, n):
         if self.references:                
-            return self.writeItemList(self.references, numbered=True, style=reference_style)
+            return self.writeItemList(self.references, style="referencelist")
         else:
             return []
 
@@ -962,52 +982,47 @@ class RlWriter(object):
         log.warning("Unhandled TagNode:", t.caption)
         return []
 
-    def writeItem(self, item, numbered=False, counterID=None, style=li_style, resetCounter=False):
-        # FIXME: refactor parameters: style shouldn't be passed, but some styletype-var. numbered Boolean could be merged with that
+    
+    def writeItem(self, item, style='itemize', counterID=None, resetCounter=False):
         txt = []
         items = []
         if resetCounter:
             seqReset = '<seqreset id="liCounter%d" base="0" />' % (counterID)
         else:
             seqReset = ''
-        def finishPara(txt):           
-            if not txt:
-                return
-            listIndent = max(0,(self.listIndentation + self.paraIndentLevel))
-            txt = ''.join(flatten(txt)).strip()
-            if not numbered:
-                li = Paragraph(u'<bullet>\u2022</bullet>%s' % txt, li_style(listIndent))
-            elif style == reference_style:
-                li = Paragraph('<bullet>%s[<seq id="liCounter%d" />]</bullet>%s' % (seqReset,counterID, txt), li_style(listIndent))
-            else:
-                li = Paragraph('<bullet>%s<seq id="liCounter%d" />.</bullet>%s' % (seqReset,counterID, txt), li_style(listIndent))
-            items.append(li)
-            txt = []
-        
-        for x in item:
-            res = self.write(x)
-            if not res:
-                continue
-            if isInline(res):
-                txt.append(res)
-            else:
-                finishPara(txt)
-                items.extend(res)
-                txt = []
-        finishPara(txt)
-        return items
 
-    def writeItemList(self, lst, numbered=False, style=li_style):
+        # we append a &nbsp; after the itemPrefix. this is because reportlab does not render them, if no text follows
+        if style=='itemize':
+            itemPrefix = u'<bullet>\u2022</bullet>&nbsp;' 
+        elif style == 'referencelist':
+            itemPrefix = '<bullet>%s[<seq id="liCounter%d" />]</bullet>&nbsp;' % (seqReset,counterID)
+        elif style== 'enumerate':
+            itemPrefix = '<bullet>%s<seq id="liCounter%d" />.</bullet>&nbsp;' % (seqReset,counterID)
+        else:
+            log.warn('invalid list style:', repr(style))
+            itemPrefix = ''
+
+        listIndent = max(0,(self.listIndentation + self.paraIndentLevel))
+        para_style = li_style(listIndent)
+        items =  self.renderMixed(item, para_style=para_style, textPrefix=itemPrefix)
+        return items
+        
+
+    def writeItemList(self, lst, numbered=False, style='itemize'):
         self.listIndentation += 1
         items = []
         items.append(Spacer(0,p_style.spaceBefore))
-        numbered = numbered or lst.numbered
+        if not style=='referencelist':
+            if numbered or lst.numbered:
+                style="enumerate"
+            else:
+                style="itemize"
         self.listCounterID += 1
         counterID = self.listCounterID
         for (i,node) in enumerate(lst):
             if isinstance(node,parser.Item): 
                 resetCounter = i==0 # we have to manually reset sequence counters. due to w/h calcs with wrap reportlab gets confused
-                item = self.writeItem(node,numbered=numbered, counterID=counterID, style=style, resetCounter=resetCounter)
+                item = self.writeItem(node, style=style, counterID=counterID, resetCounter=resetCounter)
                 items.extend(item)
             else:
                 log.warning('got %s node in itemlist - skipped' % node.__class__.__name__)
@@ -1137,7 +1152,7 @@ class RlWriter(object):
         doc.addPageTemplates(SimplePage(pageSize=A4))
         try:
             w,h=table.wrap(printWidth, printHeight)
-            if w > printWidth:
+            if w > (printWidth + tableOverflowTolerance):
                 raise LayoutError
             doc.build([table])
             return (True, None)
@@ -1187,8 +1202,6 @@ class RlWriter(object):
             'height': h/density,
             'valign': imgAlign, }
     
-
-    writeLangLink = ignore
     writeTimeline = ignore
     writeControl = ignore
 
