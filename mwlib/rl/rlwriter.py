@@ -1141,26 +1141,44 @@ class RlWriter(object):
         doc.addPageTemplates(SimplePage(pageSize=A4))
         try:
             w,h=table.wrap(printWidth, printHeight)
+            log.info("tablesize:(%f, %f) pagesize:(%f, %f) tableOverflowTolerance: %f" %(w, h, printWidth, printHeight, tableOverflowTolerance))
             if w > (printWidth + tableOverflowTolerance):
+                log.warning('table test rendering: too wide - printwidth: %f (tolerance %f) tablewidth: %f' % (printWidth, tableOverflowTolerance, w))
                 raise LayoutError
             doc.build([table])
+            log.info('table test rendering: ok')
             return (True, None)
         except LayoutError:
-            log.warning('table rendering failed for: ', fn)
+            log.warning('table test rendering: reportlab LayoutError')
 
-        log.info('try safe table rendering')
-        doc = BaseDocTemplate(fn)
-        doc.addPageTemplates(SimplePage(pageSize=A3))
-        try:
-            doc.build([table])
-            log.info('safe rendering ok')
-        except LayoutError:
-            log.warning('table rendering failed for: ', fn)
+        log.info('trying safe table rendering')
+                    
+        fail = True
+        pw = printWidth
+        ph = printHeight
+        ar = ph/pw
+        run = 1
+        while fail:
+            pw += 20
+            ph += 20*ar
+            if pw > printWidth * 2:
+                break
+            try:
+                log.info('safe render run:', run)
+                doc = BaseDocTemplate(fn)
+                doc.addPageTemplates(SimplePage(pageSize=(pw,ph)))
+                doc.build([table])
+                fail = False
+            except:
+                log.info('safe rendering fail for width:', pw)
+
+        if fail:
+            log.warning('error rendering table - removing table')
             return (False, None)
 
         imgname = fn +'.png'
         os.system('convert -density 150 %s %s' % (fn, imgname))        
-        img = Image(imgname, width=printWidth*0.95, height=printHeight*0.95)
+        img = Image(imgname, width=printWidth*0.90, height=printHeight*0.90)
 
         return (True, img)
             
@@ -1168,19 +1186,21 @@ class RlWriter(object):
         source = node.caption.strip()
         source = re.compile("\n+").sub("\n", source)
         source = source.replace("'","'\\''").encode('utf-8') # escape single quotes 
-
+        source = ' ' + source + ' '
+        
         cmd = "texvc %s %s '%s' utf-8" % (self.tmpdir, self.tmpdir, source)
         res= os.popen(cmd)
         renderoutput = res.read()
-        if not renderoutput.strip():
+        if not renderoutput.strip() or len(renderoutput) < 32:
+            log.error('math rendering failed with source:', repr(source))
+            log.error('render output:', repr(renderoutput))
             return []
-        imgpath = os.path.join(self.tmpdir, renderoutput[1:33] + '.png')
 
+        imgpath = os.path.join(self.tmpdir, renderoutput[1:33] + '.png')
         img = PilImage.open(imgpath)
         log.info("math png at:", imgpath)
         w,h = img.size
-        #density = 300 # resolution in dpi in which math images are rendered by latex
-        density = 120
+        density = 120 # resolution in dpi in which math images are rendered by latex
         # the vertical image placement is calculated below:
         # the "normal" height of a single-line formula is 32px. UPDATE: is now 17 
         #imgAlign = '%fin' % (- (h - 32) / (2 * density))
