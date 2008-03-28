@@ -254,7 +254,6 @@ class RlWriter(object):
             for e in bookParseTree.children:
                 r = self.write(e)
                 elements.extend(r)
-            #elements.extend(self.renderLinkList()) # write a list of all inner-wiki links
         except:
             traceback.print_exc()
             raise
@@ -702,18 +701,6 @@ class RlWriter(object):
             url = u'%s%s' % (baseUrl, url)
         return url
 
-    def renderLinkList(self):
-        elements = []
-
-        elements.append(Paragraph('<b>List of Links</b>', heading_styles[2]))
-        self.linkList = list(set(self.linkList))
-        self.linkList.sort()
-        for text, link in self.linkList:
-            t = '%s' % text
-            l = '<font name=%s size=%dpt>%s</font>' % (standardMonoFont, SMALLFONTSIZE, link.replace('%20','_'))
-            elements.append(Paragraph(u'%s<br/>%s' % (t, l), link_list_style))
-            
-        return elements
 
     def writeLink(self,obj):
         href = obj.target
@@ -726,11 +713,10 @@ class RlWriter(object):
             t = ''.join(txt).strip()
         else:
             txt = [href]
-            t = ''.join(txt).strip().encode('utf-8')
+            t = filterText(''.join(txt).strip()).encode('utf-8')
             t = unicode(urllib.unquote(t), 'utf-8')
             
         href = self._quoteURL(href, self.baseUrl)
-        self.linkList.append((t.capitalize(), href))
         return [u'<link href="%s">%s</link>' % ( href, t)]
     
     def writeLangLink(self, node):
@@ -765,9 +751,12 @@ class RlWriter(object):
             self.namedLinkCount += 1
             txt.append(name)            
         href = self._quoteURL(obj.caption)
-        return ['<link href="%(href)s">%(text)s</link>' % {
+        txt = ''.join(txt).strip()
+        return ['<link href="%(href)s">%(text)s (<font size=%(fontsize)s name=%(monofont)s>%(href)s</font>)</link>' % {
             'href': href,
-            'text': ''.join(txt).strip()
+            'text': txt,
+            'monofont': standardMonoFont,
+            'fontsize': SMALLFONTSIZE,
             }]
 
     def writeCategoryLink(self,obj): 

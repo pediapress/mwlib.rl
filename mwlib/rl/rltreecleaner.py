@@ -7,7 +7,7 @@
 from mwlib import advtree
 from mwlib.advtree import Paragraph
 from mwlib.advtree import Text, Cell, Link, Math, URL, BreakingReturn, HorizontalRule, CategoryLink
-from mwlib.advtree import SpecialLink, ImageLink, ReferenceList, Chapter, NamedURL
+from mwlib.advtree import SpecialLink, ImageLink, ReferenceList, Chapter, NamedURL, LangLink
                
 def fixLists(node): 
     """
@@ -21,7 +21,7 @@ def fixLists(node):
         fixLists(c)
 
 
-childlessOK = [Text, Cell, Link, Math, URL, BreakingReturn, HorizontalRule, CategoryLink,
+childlessOK = [Text, Cell, Link, Math, URL, BreakingReturn, HorizontalRule, CategoryLink, LangLink,
                SpecialLink, ImageLink, ReferenceList, Chapter, NamedURL]
 
 def removeChildlessNodes(node):
@@ -38,6 +38,27 @@ def removeChildlessNodes(node):
 
     for c in node.children[:]:
         removeChildlessNodes(c)
+
+def removeLangLinks(node):
+    """
+    removes the language links that are listed below an article. language links
+    inside the article should not be touched
+    """
+
+    txt = []
+    langlinkCount = 0
+
+    for c in node.children:
+        if c.__class__ == LangLink:
+            langlinkCount +=1
+        else:
+            txt.append(c.getAllDisplayText())
+    txt = ''.join(txt).strip()
+    if langlinkCount and not txt and node.parent:
+        node.parent.removeChild(node)
+
+    for c in node.children[:]:
+        removeLangLinks(c)
         
 def buildAdvancedTree(root):
     advtree.extendClasses(root) 
@@ -46,4 +67,5 @@ def buildAdvancedTree(root):
     advtree.removeNewlines(root)
     advtree.fixStyles(root) 
     removeChildlessNodes(root)
+    removeLangLinks(root)
     fixLists(root)
