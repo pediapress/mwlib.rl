@@ -12,35 +12,27 @@ from mwlib.utils import all
 from mwlib import log
 from mwlib.advtree import Text, ItemList, Item, Table, Row, Cell
 
-from reportlab.platypus.paragraph import Paragraph
 from reportlab.lib import colors
 from customflowables import Figure
 #import debughelper
-from pdfstyles import pageWidth, pageHeight, pageMarginHor, table_p_style_small
+from pdfstyles import pageWidth, pageHeight, pageMarginHor
 
 log = log.Log('rlwriter')
-
-def checkData(data):
-    """
-    check for cells that contain only list items - this breaks reportlab -> split list items in separate table rows
-    """
-    gotData = False # return [] if table contains no data
-    onlyListItems = True
-    maxCellContent = []
+      
+def getMaxCols(data):
     maxCols = 0
     for row in data:
-        _maxCellContent =0
-        maxCols = max(maxCols,len(row))
+        cols = 0
         for cell in row:
-            _maxCellContent = max(_maxCellContent,len(cell))
-            for item in cell:
-                gotData=True
-                if not isinstance(item,Paragraph) or (isinstance(item,Paragraph) and item.style.name != 'li_style'):
-                    onlyListItems = False
-        maxCellContent.append(_maxCellContent)
-    return (gotData, onlyListItems, maxCellContent, maxCols)
-         
-
+            colspan = cell.get('colspan', 1)
+            try:
+                colspan = int(colspan)
+            except ValueError:
+                colspan = 1
+            cols += colspan
+        maxCols = max(maxCols,cols)
+        
+    return maxCols
 
 def checkSpans(data):
     """
@@ -216,9 +208,9 @@ def getContentType(t):
         nodeInfo.append(rowNodeInfo)
     return nodeInfo
 
-def reformatTable(t):
+def reformatTable(t, maxCols):
     nodeInfo = getContentType(t)
-    numCols = t.numcols
+    numCols = maxCols
     numRows = len(t.rows)
 
     onlyTables = len(t.children) > 0 #if table is empty onlyTables and onlyLists are False

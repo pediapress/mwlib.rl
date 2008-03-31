@@ -1071,7 +1071,8 @@ class RlWriter(object):
         elements = []
         data = []        
 
-        t = rltables.reformatTable(t)
+        maxCols = rltables.getMaxCols(data)
+        t = rltables.reformatTable(t, maxCols)
         # if a table contains only tables it is transformed to a list of the containing tables - that is handled below
         if t.__class__ != advtree.Table and all([c.__class__==advtree.Table for c in t]):
             tables = []
@@ -1088,13 +1089,8 @@ class RlWriter(object):
                 elements.extend(self.writeCaption(r))
 
                 
-        (data, span_styles) = rltables.checkSpans(data)            
-        (gotData, onlyListItems, maxCellContent, maxCols) = rltables.checkData(data)
-        if not gotData:
-            log.info('got empty table')
-            self.nestingLevel -= 1
-            return []
-
+        (data, span_styles) = rltables.checkSpans(data)
+        
         colwidthList = rltables.getColWidths(data, nestingLevel=self.nestingLevel)
         data = rltables.splitCellContent(data)
 
