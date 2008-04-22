@@ -101,7 +101,7 @@ def filterText(txt, defaultFont=standardFont):
             return "HYSMyeongJo-Medium"  #--> Korean    
         return "DejaVuSans"
 
-    lastscript = standardFont  
+    lastscript = defaultFont  
     switchedFont = False
     for l in txt:
         if l in [" ",u"\u200B"]: # dont switch font for spacelike chars 

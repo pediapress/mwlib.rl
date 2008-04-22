@@ -37,23 +37,21 @@ from reportlab.platypus.xpreformatted import XPreformatted
 from reportlab.lib.units import cm, inch
 from reportlab.lib import colors
 from reportlab.platypus.doctemplate import LayoutError
-from reportlab.lib.pagesizes import A4, A3
+from reportlab.lib.pagesizes import A4
 
 from customflowables import Figure, FiguresAndParagraphs
 from pdfstyles import p_style, li_style, p_indent_style, pre_style, pre_style_small, articleTitle_style
 from pdfstyles import h1_style, h2_style, h3_style, h4_style, heading_styles, figure_caption_style, table_p_style, table_style
-from pdfstyles import reference_style, chapter_style, bookTitle_style, bookSubTitle_style
+from pdfstyles import chapter_style, bookTitle_style, bookSubTitle_style
 from pdfstyles import pageMarginHor, pageMarginVert, filterText, standardSansSerif, standardMonoFont
 from pdfstyles import printWidth, printHeight, SMALLFONTSIZE, BIGFONTSIZE, p_center_style
-from pdfstyles import p_blockquote_style, tableOverflowTolerance, link_list_style
+from pdfstyles import p_blockquote_style, tableOverflowTolerance
 #from pdfstyles import pageWidth, pageHeight, bookAuthor_style
 
 import rltables
 from pagetemplates import WikiPage, TitlePage, SimplePage
 
 from mwlib import parser, log
-from mwlib import rendermath
-
 
 log = log.Log('rlwriter')
 
@@ -123,7 +121,6 @@ class RlWriter(object):
         self.tmpImages = set()
         self.namedLinkCount = 1   
         self.nestingLevel = -1       
-        self.renderer = rendermath.Renderer()
         self.sectionTitle = False
         self.tablecount = 0
         self.paraIndentLevel = 0
