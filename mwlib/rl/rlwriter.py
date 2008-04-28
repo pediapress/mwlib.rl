@@ -51,7 +51,7 @@ from pdfstyles import p_blockquote_style, tableOverflowTolerance
 import rltables
 from pagetemplates import WikiPage, TitlePage, SimplePage
 
-from mwlib import parser, log
+from mwlib import parser, log, uparser
 
 log = log.Log('rlwriter')
 
@@ -183,11 +183,8 @@ class RlWriter(object):
             if isinstance(e, Paragraph) and (e.text == '<br />' or e.text == '<br/>'):
                 elements.remove(e)
 
-    def writeLicense(self,licenseArticle):
+    def writeLicense(self, licenseArticle):
         elements = []
-        if not licenseArticle:
-            log.warning('Default Article License was empty')
-            return elements
         elements.append(NotAtTopPageBreak())
         elements.extend(self.renderMixed(licenseArticle))
         return elements
@@ -218,7 +215,7 @@ class RlWriter(object):
         self.outputdir = output
         #debughelper.showParseTree(sys.stdout, bookParseTree)
         buildAdvancedTree(bookParseTree)
-        debughelper.showParseTree(sys.stdout, bookParseTree)
+        #debughelper.showParseTree(sys.stdout, bookParseTree)
         try:
             self.renderBook(book, bookParseTree, output, coverimage=coverimage)
             log.info('###### RENDERING OK')
@@ -255,8 +252,14 @@ class RlWriter(object):
             traceback.print_exc()
             raise
         elements = self.groupElements(elements)
-        licenseArticle = self.book.source.get('defaultarticlelicense','')
-        elements.extend(self.writeLicense(licenseArticle))
+        licenseData = self.book.source.get('defaultarticlelicense', None)
+        if licenseData is not None and licenseData.get('name') is not None:
+            elements.extend(self.writeArticle(uparser.parseString(
+                title=licenseData['name'],
+                raw=licenseData['wikitext'],
+            )))
+        else:
+            log.warn('no license')
         log.info("start rendering: %r" % output)
         try:
             self.doc.build(elements)
@@ -265,7 +268,7 @@ class RlWriter(object):
             log.error('error:\n', err)
             traceback.print_exc()
             raise
-
+    
     def removeBadArticles(self, book, bookParseTree, output, removedArticlesFile):
         from mwlib.parser import Article
         log.warning("unable to render book - removing problematic articles")

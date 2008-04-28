@@ -29,11 +29,9 @@ def buildBook(metabook, wikidb):
 
 
 def pdf():
-    optparser = optparse.OptionParser(usage="""%prog [-c CONFIG] [-d] [-o OUTPUT] [-r REMOVEDARTICLES] ARTICLE
-OR
-%prog [-c CONFIG] [-d] [-o OUTPUT] -m METABOOKFILE
-""")
-    optparser.add_option("-c", "--config", help="config file")
+    optparser = optparse.OptionParser(usage="""%prog [OPTIONS] [ARTICLE ...]""")
+    optparser.add_option("-c", "--config", help="config file (required unless --baseurl is given)")
+    optparser.add_option("-b", "--baseurl", help="base URL for mwapidb backend")
     optparser.add_option("-o", "--output", help="write output to OUTPUT")
     optparser.add_option("-l", "--logfile", help="write logfile")
     optparser.add_option("-m", "--metabookfile", help="json encoded text file with book structure")
@@ -48,6 +46,7 @@ OR
         optparser.error("missing ARTICLE argument")
 
     config = options.config
+    baseurl = options.baseurl
     output = options.output
     metabookfile = options.metabookfile
     removedarticles = options.removedarticles
@@ -56,33 +55,48 @@ OR
     if logfile:
         utils.start_logging(logfile)
         
-    if not config:
+    if not baseurl and not config:
         try:
             config = os.environ['MWPDFCONFIG']
         except KeyError:
-            sys.exit('Please specify config file location with --config or set environment variable MWPDFCONFIG')
+            sys.exit('Neither --conf nor --baseurl specified\nPlease specify config file location with --config, base URL with --baseurl or set environment variable MWPDFCONFIG')
     
     if options.daemonize:
         utils.daemonize()
     
     from mwlib import wiki
     from mwlib.rl import rlwriter
-    w = wiki.makewiki(config)
-
-    r=rlwriter.RlWriter(images=w['images'])    
+    
     metabook = MetaBook()
-    cp=ConfigParser()
-    cp.read(config)
-
-    licensearticle = cp.get('wiki', 'defaultarticlelicense')
-    if licensearticle:
-        license = uparser.parseString(title=licensearticle, wikidb=w['wiki'])
+    
+    if config:
+        w = wiki.makewiki(config)
         
-    metabook.source = {
-        'name': cp.get('wiki', 'name'),
-        'url': cp.get('wiki', 'url'),
-        'defaultarticlelicense': license,
-    }    
+        cp=ConfigParser()
+        cp.read(config)
+        license = {
+            'name': cp.get('wiki', 'defaultarticlelicense')
+        }
+        license['wikitext'] = w['wiki'].getRawArticle(license['name'])
+        metabook.source = {
+            'name': cp.get('wiki', 'name'),
+            'url': cp.get('wiki', 'url'),
+            'defaultarticlelicense': license,
+        }
+    else:
+        w = {
+            'wiki': wiki.wiki_mwapi(baseurl),
+            'images': wiki.image_mwapi(baseurl)
+        }
+        metadata = w['wiki'].getMetaData()
+        metabook.source = {
+            'name': metadata['name'],
+            'url': metadata['url'],
+            'defaultarticlelicense': metadata['license'],
+        }
+    
+    r=rlwriter.RlWriter(images=w['images'])    
+    
     coverimage = None
     if not metabookfile:
         article = unicode(args[0],'utf-8').strip()
@@ -91,10 +105,10 @@ OR
         metabook.addArticles([article])
     else:
         metabook.readJsonFile(metabookfile)
-        if cp.has_section('pdf'):
+        if config and cp.has_section('pdf'):
             coverimage = cp.get('pdf','coverimage',None)
         bookParseTree = buildBook(metabook, w['wiki'])
-
+    
     if not output: #fixme: this only exists for debugging purposes
         output = 'test.pdf'
     if not removedarticles and output: # FIXME
