@@ -253,7 +253,7 @@ class RlWriter(object):
             raise
         elements = self.groupElements(elements)
         licenseData = self.book.source.get('defaultarticlelicense', None)
-        if licenseData is not None and licenseData.get('name') is not None:
+        if licenseData and licenseData.get('name') and licenseData.get('wikitext'):
             elements.extend(self.writeArticle(uparser.parseString(
                 title=licenseData['name'],
                 raw=licenseData['wikitext'],
