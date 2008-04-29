@@ -39,8 +39,8 @@ def pdf():
     optparser.add_option("-r", "--removedarticles", help="list of articles that were removed b/c rendering was impossible")
     optparser.add_option("-d", "--daemonize", action="store_true", dest="daemonize", default=False,
                       help="return immediately and generate PDF in background")
-    parser.add_option("--license", help="Title of article containing full license text")
-    parser.add_option("--template-blacklist", help="Title of article containing blacklisted templates")
+    optparser.add_option("--license", help="Title of article containing full license text")
+    optparser.add_option("--template-blacklist", help="Title of article containing blacklisted templates")
     options, args = optparser.parse_args()
     
     if not args and not (options.metabookfile and options.output):
