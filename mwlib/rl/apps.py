@@ -32,14 +32,15 @@ def pdf():
     optparser = optparse.OptionParser(usage="""%prog [OPTIONS] [ARTICLE ...]""")
     optparser.add_option("-c", "--config", help="config file (required unless --baseurl is given)")
     optparser.add_option("-b", "--baseurl", help="base URL for mwapidb backend")
+    optparser.add_option("-s", "--shared-baseurl", help="base URL for shared images for mwapidb backend")
     optparser.add_option("-o", "--output", help="write output to OUTPUT")
     optparser.add_option("-l", "--logfile", help="write logfile")
     optparser.add_option("-m", "--metabookfile", help="json encoded text file with book structure")
     optparser.add_option("-r", "--removedarticles", help="list of articles that were removed b/c rendering was impossible")
     optparser.add_option("-d", "--daemonize", action="store_true", dest="daemonize", default=False,
                       help="return immediately and generate PDF in background")
-    
-    optparser.add_option("-e", "--errorfile", help="write caught errors to this file") # FIXME: currently ignored, remove this later
+    parser.add_option("--license", help="Title of article containing full license text")
+    parser.add_option("--template-blacklist", help="Title of article containing blacklisted templates")
     options, args = optparser.parse_args()
     
     if not args and not (options.metabookfile and options.output):
@@ -85,8 +86,8 @@ def pdf():
         }
     else:
         w = {
-            'wiki': wiki.wiki_mwapi(baseurl),
-            'images': wiki.image_mwapi(baseurl)
+            'wiki': wiki.wiki_mwapi(baseurl, options.license, options.template_blacklist),
+            'images': wiki.image_mwapi(baseurl, options.shared_baseurl)
         }
         metadata = w['wiki'].getMetaData()
         metabook.source = {
