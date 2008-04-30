@@ -122,7 +122,8 @@ def pdf():
         os.rename(output + '.tmp', output)
     except:
         if options.errorfile:
-            open(options.errorfile, 'wb').write()
+            import traceback
+            traceback.print_exc(file=open(options.errorfile, 'wb'))
         raise
 
 def pdfcollection():
