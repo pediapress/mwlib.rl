@@ -39,86 +39,92 @@ def pdf():
     optparser.add_option("-r", "--removedarticles", help="list of articles that were removed b/c rendering was impossible")
     optparser.add_option("-d", "--daemonize", action="store_true", dest="daemonize", default=False,
                       help="return immediately and generate PDF in background")
+    optparser.add_option("-e", "--errorfile", dest="errorfile", help="write errors to this file")
     optparser.add_option("--license", help="Title of article containing full license text")
     optparser.add_option("--template-blacklist", help="Title of article containing blacklisted templates")
     options, args = optparser.parse_args()
     
-    if not args and not (options.metabookfile and options.output):
-        optparser.error("missing ARTICLE argument")
+    try:
+        if not args and not (options.metabookfile and options.output):
+            optparser.error("missing ARTICLE argument")
 
-    config = options.config
-    baseurl = options.baseurl
-    output = options.output
-    metabookfile = options.metabookfile
-    removedarticles = options.removedarticles
-    logfile = options.logfile
+        config = options.config
+        baseurl = options.baseurl
+        output = options.output
+        metabookfile = options.metabookfile
+        removedarticles = options.removedarticles
+        logfile = options.logfile
 
-    if logfile:
-        utils.start_logging(logfile)
+        if logfile:
+            utils.start_logging(logfile)
         
-    if not baseurl and not config:
-        try:
-            config = os.environ['MWPDFCONFIG']
-        except KeyError:
-            sys.exit('Neither --conf nor --baseurl specified\nPlease specify config file location with --config, base URL with --baseurl or set environment variable MWPDFCONFIG')
+        if not baseurl and not config:
+            try:
+                config = os.environ['MWPDFCONFIG']
+            except KeyError:
+                sys.exit('Neither --conf nor --baseurl specified\nPlease specify config file location with --config, base URL with --baseurl or set environment variable MWPDFCONFIG')
     
-    if options.daemonize:
-        utils.daemonize()
+        if options.daemonize:
+            utils.daemonize()
     
-    from mwlib import wiki
-    from mwlib.rl import rlwriter
+        from mwlib import wiki
+        from mwlib.rl import rlwriter
     
-    metabook = MetaBook()
+        metabook = MetaBook()
     
-    if config:
-        w = wiki.makewiki(config)
+        if config:
+            w = wiki.makewiki(config)
         
-        cp=ConfigParser()
-        cp.read(config)
-        license = {
-            'name': cp.get('wiki', 'defaultarticlelicense')
-        }
-        license['wikitext'] = w['wiki'].getRawArticle(license['name'])
-        metabook.source = {
-            'name': cp.get('wiki', 'name'),
-            'url': cp.get('wiki', 'url'),
-            'defaultarticlelicense': license,
-        }
-    else:
-        w = {
-            'wiki': wiki.wiki_mwapi(baseurl, options.license, options.template_blacklist),
-            'images': wiki.image_mwapi(baseurl, options.shared_baseurl)
-        }
-        metadata = w['wiki'].getMetaData()
-        metabook.source = {
-            'name': metadata['name'],
-            'url': metadata['url'],
-            'defaultarticlelicense': metadata['license'],
-        }
+            cp=ConfigParser()
+            cp.read(config)
+            license = {
+                'name': cp.get('wiki', 'defaultarticlelicense')
+            }
+            license['wikitext'] = w['wiki'].getRawArticle(license['name'])
+            metabook.source = {
+                'name': cp.get('wiki', 'name'),
+                'url': cp.get('wiki', 'url'),
+                'defaultarticlelicense': license,
+            }
+        else:
+            w = {
+                'wiki': wiki.wiki_mwapi(baseurl, options.license, options.template_blacklist),
+                'images': wiki.image_mwapi(baseurl, options.shared_baseurl)
+            }
+            metadata = w['wiki'].getMetaData()
+            metabook.source = {
+                'name': metadata['name'],
+                'url': metadata['url'],
+                'defaultarticlelicense': metadata['license'],
+            }
     
-    r=rlwriter.RlWriter(images=w['images'])    
+        r=rlwriter.RlWriter(images=w['images'])    
     
-    coverimage = None
-    if not metabookfile:
-        article = unicode(args[0],'utf-8').strip()
-        bookParseTree = parser.Book()
-        bookParseTree.children.append(uparser.parseString(title=article, wikidb=w['wiki']))
-        metabook.addArticles([article])
-    else:
-        metabook.readJsonFile(metabookfile)
-        if config and cp.has_section('pdf'):
-            coverimage = cp.get('pdf','coverimage',None)
-        bookParseTree = buildBook(metabook, w['wiki'])
+        coverimage = None
+        if not metabookfile:
+            article = unicode(args[0],'utf-8').strip()
+            bookParseTree = parser.Book()
+            bookParseTree.children.append(uparser.parseString(title=article, wikidb=w['wiki']))
+            metabook.addArticles([article])
+        else:
+            metabook.readJsonFile(metabookfile)
+            if config and cp.has_section('pdf'):
+                coverimage = cp.get('pdf','coverimage',None)
+            bookParseTree = buildBook(metabook, w['wiki'])
     
-    if not output: #fixme: this only exists for debugging purposes
-        output = 'test.pdf'
-    if not removedarticles and output: # FIXME
-        removedarticles = output + ".removed"
+        if not output: #fixme: this only exists for debugging purposes
+            output = 'test.pdf'
+        if not removedarticles and output: # FIXME
+            removedarticles = output + ".removed"
 
-    r.writeBook(metabook, bookParseTree, output=output + '.tmp', removedArticlesFile=removedarticles, coverimage=coverimage)
+        r.writeBook(metabook, bookParseTree, output=output + '.tmp', removedArticlesFile=removedarticles, coverimage=coverimage)
 
-    os.rename(output + '.tmp', output)
-    
+        os.rename(output + '.tmp', output)
+    except:
+        if options.errorfile:
+            open(options.errorfile, 'wb').write()
+        raise
+
 def pdfcollection():
     optparser = optparse.OptionParser(usage="%prog [-c CONFIG] [-d] [-o OUTPUT] COLLECTIONTITLE")
     optparser.add_option("-c", "--config", help="config file")
