@@ -15,16 +15,23 @@ from mwlib import parser, uparser, utils
 
 log = mwlib.log.Log('mw-app-rl')
 
-def buildBook(metabook, wikidb):
+def buildBook(metabook, wikidb, progress=None, progress_range=(10, 70)):
     bookParseTree = parser.Book()
-    for item in metabook.getItems():
+    items = metabook.getItems()
+    if progress is not None and items:
+        p = progress_range[0]
+        inc = (progress_range[1] - p) / len(items)
+    for item in items:
+        progress(p)
         if item['type'] == 'chapter':
             bookParseTree.children.append(parser.Chapter(item['title'].strip()))
         elif item['type'] == 'article':
             a=uparser.parseString(title=item['title'], revision=item.get('revision', None), wikidb=wikidb)
             if item.has_key('displaytitle'):
                 a.caption = item['displaytitle']
-            bookParseTree.children.append(a)                             
+            bookParseTree.children.append(a)
+        p += inc
+    progress(progress_range[1])
     return bookParseTree
 
 
@@ -42,9 +49,19 @@ def pdf():
     optparser.add_option("-e", "--errorfile", dest="errorfile", help="write errors to this file")
     optparser.add_option("--license", help="Title of article containing full license text")
     optparser.add_option("--template-blacklist", help="Title of article containing blacklisted templates")
+    optparser.add_option("-p", "--progress", help="write progress to PROGRESS")
     options, args = optparser.parse_args()
     
+    def progress(p):
+        if options.progress is None:
+            return
+        f = open(options.progress, 'wb')
+        f.write('%d\n' % p)
+        f.close()
+    
     try:
+        progress(0)
+        
         if not args and not (options.metabookfile and options.output):
             optparser.error("missing ARTICLE argument")
 
@@ -54,7 +71,7 @@ def pdf():
         metabookfile = options.metabookfile
         removedarticles = options.removedarticles
         logfile = options.logfile
-
+        
         if logfile:
             utils.start_logging(logfile)
         
@@ -66,7 +83,9 @@ def pdf():
     
         if options.daemonize:
             utils.daemonize()
-    
+        
+        progress(1)
+        
         from mwlib import wiki
         from mwlib.rl import rlwriter
     
@@ -97,9 +116,11 @@ def pdf():
                 'url': metadata['url'],
                 'defaultarticlelicense': metadata['license'],
             }
-    
+        
+        progress(10)
+        
         r=rlwriter.RlWriter(images=w['images'])    
-    
+        
         coverimage = None
         if not metabookfile:
             article = unicode(args[0],'utf-8').strip()
@@ -110,8 +131,8 @@ def pdf():
             metabook.readJsonFile(metabookfile)
             if config and cp.has_section('pdf'):
                 coverimage = cp.get('pdf','coverimage',None)
-            bookParseTree = buildBook(metabook, w['wiki'])
-    
+            bookParseTree = buildBook(metabook, w['wiki'], progress=progress, progress_range=(10, 70))
+        
         if not output: #fixme: this only exists for debugging purposes
             output = 'test.pdf'
         if not removedarticles and output: # FIXME
@@ -120,6 +141,8 @@ def pdf():
         r.writeBook(metabook, bookParseTree, output=output + '.tmp', removedArticlesFile=removedarticles, coverimage=coverimage)
 
         os.rename(output + '.tmp', output)
+
+        progress(100)
     except:
         if options.errorfile:
             import traceback
