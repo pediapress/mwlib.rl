@@ -17,7 +17,7 @@ log = mwlib.log.Log('mw-app-rl')
 
 def buildBook(metabook, wikidb, progress=None, progress_range=(10, 70)):
     bookParseTree = parser.Book()
-    items = metabook.getItems()
+    items = list(metabook.getItems())
     if progress is not None and items:
         p = progress_range[0]
         inc = (progress_range[1] - p) / len(items)
