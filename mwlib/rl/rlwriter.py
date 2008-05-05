@@ -254,6 +254,7 @@ class RlWriter(object):
         elements = self.groupElements(elements)
         licenseData = self.book.source.get('defaultarticlelicense', None)
         if licenseData and licenseData.get('name') and licenseData.get('wikitext'):
+            elements.append(NotAtTopPageBreak())
             elements.extend(self.writeArticle(uparser.parseString(
                 title=licenseData['name'],
                 raw=licenseData['wikitext'],
@@ -326,8 +327,8 @@ class RlWriter(object):
                 hr]
 
     def writeSection(self,obj):
-        level = min(obj.getSectionLevel() + 1,3)
-        #level = min(obj.level-1,3)
+        lvl = getattr(obj, "level", 4)
+        level = min( max(0, lvl), 4)  # headinStyle array has 4 items - therefore limit levels from 0 to 3
         headingStyle = heading_styles[level]
         self.sectionTitle = True
         headingTxt = ''.join(self.write(obj.children[0])).strip()
@@ -348,8 +349,9 @@ class RlWriter(object):
         log.info('writing article: %r' % title)
         elements = []
         pt = WikiPage(title, wikiurl=self.baseUrl, wikititle=self.wikiTitle)
-        self.doc.addPageTemplates(pt)
-        elements.append(NextPageTemplate(title.encode('utf-8'))) # pagetemplate.id cant handle unicode
+        if hasattr(self, 'doc'): # doc is not present if tests are run
+            self.doc.addPageTemplates(pt)
+            elements.append(NextPageTemplate(title.encode('utf-8'))) # pagetemplate.id cant handle unicode
         elements.append(Paragraph("<b>%s</b>" % filterText(title, defaultFont=standardSansSerif), articleTitle_style))
         elements.append(HRFlowable(width='100%', hAlign='LEFT', thickness=1, spaceBefore=0, spaceAfter=10, color=colors.black))
         for e in article:
@@ -416,10 +418,8 @@ class RlWriter(object):
 
         def getMargins(align):
             if align=='right':
-                #return (0.15*cm, 0, 0.35*cm, 0.2*cm)
                 return (0, 0, 0.35*cm, 0.2*cm)
             elif align=='left':
-                #return (0.15*cm, 0.2*cm, 0.35*cm, 0)
                 return (0, 0.2*cm, 0.35*cm, 0)
             return (0.2*cm,0.2*cm,0.2*cm,0.2*cm)
 
@@ -717,7 +717,7 @@ class RlWriter(object):
             t = unicode(urllib.unquote(t), 'utf-8')
             
         href = self._quoteURL(href, self.baseUrl)
-        return [u'<link href="%s">%s</link>' % ( href, t)]
+        return [t]
     
     def writeLangLink(self, node):
         return self.writeLink(node)
@@ -736,28 +736,32 @@ class RlWriter(object):
         if self.nestingLevel > -1 or len(txt) > 70:
             zws = '<font fontSize="1"> </font>'
             txt = txt.replace("/",u'/%s' % zws).replace('&amp;', u'&amp;%s' % zws).replace('.','.%s' % zws)
+        if len(txt) > 60:
+            txt = txt[:60] + '...'
         txt = '<font fontName="%s">%s</font>' % (standardMonoFont, txt)
-        return ['<link href="%(href)s">%(text)s</link>' % {
-            'href': href, 
-            'text': txt
-            }]
+        return [txt]
     
     def writeNamedURL(self,obj):
         txt = []
         if obj.children:
             txt.extend(self.renderInline(obj))
-        else:
-            name = "[%s]" % self.namedLinkCount
-            self.namedLinkCount += 1
-            txt.append(name)            
+
         href = self._quoteURL(obj.caption)
         txt = ''.join(txt).strip()
-        return ['<link href="%(href)s">%(text)s (<font size=%(fontsize)s name=%(monofont)s>%(href)s</font>)</link>' % {
-            'href': href,
-            'text': txt,
-            'monofont': standardMonoFont,
-            'fontsize': SMALLFONTSIZE,
-            }]
+        if len(txt) > 60:
+            txt = txt[:60] + '...'
+        shortHref = href
+        if len(shortHref) > 60:
+            shortHref = shortHref[:60] + '...'
+        namedURL = '%(text)s (<font size=%(fontsize)s name=%(monofont)s>%(shortHref)s</font>)' % {
+                'text': txt,
+                'shortHref': shortHref,
+                'monofont': standardMonoFont,
+                'fontsize': SMALLFONTSIZE,
+                }
+        print "URL:", namedURL
+        return [namedURL]
+        
 
     def writeCategoryLink(self,obj): 
         txt = []
@@ -909,6 +913,9 @@ class RlWriter(object):
             data.append(row)
         table = Table(data)
         return [table]
+
+    def writeSource(self, n):
+        return self.writePreFormatted(n) # FIXME: syntax highlighting would be great at some point...
 
     def writeCode(self, n):
         return self.writeTeletyped(n)
@@ -1070,7 +1077,6 @@ class RlWriter(object):
         self.nestingLevel += 1
         elements = []
         data = []        
-
         maxCols = rltables.getMaxCols(data)
         t = rltables.reformatTable(t, maxCols)
         # if a table contains only tables it is transformed to a list of the containing tables - that is handled below
@@ -1080,8 +1086,8 @@ class RlWriter(object):
             for c in t:
                 tables.extend(self.writeTable(c))
             return tables
-
-
+        
+        
         for r in t.children:
             if r.__class__ == advtree.Row:
                 data.append(self.writeRow(r))
@@ -1090,10 +1096,12 @@ class RlWriter(object):
 
                 
         (data, span_styles) = rltables.checkSpans(data)
+
+        if not data:
+            return []
         
         colwidthList = rltables.getColWidths(data, nestingLevel=self.nestingLevel)
         data = rltables.splitCellContent(data)
-
         table = Table(data, colWidths=colwidthList, splitByRow=1)
 
         styles = rltables.style(serializeStyleInfo(t.vlist))
@@ -1122,7 +1130,7 @@ class RlWriter(object):
         if renderingOk and renderedTable:
             return [renderedTable]
         return elements
-
+    
     def renderTable(self, table):
         """
         method that checks if a table can be rendered by reportlab. this is done, b/c large tables cause problems.
@@ -1202,7 +1210,7 @@ class RlWriter(object):
         #imgAlign = '%fin' % (- (h - 32) / (2 * density))
         imgAlign = '%fin' % (- (h - 15) / (2 * density))
         return ' <img src="%(path)s" width="%(width)fin" height="%(height)fin" valign="%(valign)s" /> ' % {
-            'path': imgpath.encode(sys.getfilesystemencoding()), # FIXME: imgPath needs to be configurable
+            'path': imgpath.encode(sys.getfilesystemencoding()),
             'width': w/density,
             'height': h/density,
             'valign': imgAlign, }

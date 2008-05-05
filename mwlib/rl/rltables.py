@@ -122,6 +122,9 @@ def getColWidths(data, recursionDepth=0, nestingLevel=0):
     if nestingLevel > 0:
         scaleImages(data)
 
+    if not data:
+        return None
+        
     availWidth = pageWidth - pageMarginHor * 2
     minwidths  = [ 0 for x in range(len(data[0]))]
     summedwidths = [ 0 for x in range(len(data[0]))]

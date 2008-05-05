@@ -350,12 +350,19 @@ h4_style =BaseHeadingStyle(name='h4_style',
                            alignment=TA_LEFT,
                            )
 
+h5_style =BaseHeadingStyle(name='h5_style',
+                           fontSize=10,
+                           leading=12,
+                           spaceBefore=12,
+                           alignment=TA_LEFT,
+                           )
+
 hr_style= BaseStyle(name='hr_style',
                          spaceBefore=0,
                          spaceAfter=8,
                          )
 
-heading_styles = [h1_style, h2_style, h3_style, h4_style]
+heading_styles = [h1_style, h2_style, h3_style, h4_style, h5_style]
 
 
 table_style = {'spaceBefore': 0.25*cm,
