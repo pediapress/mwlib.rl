@@ -215,7 +215,7 @@ class RlWriter(object):
         self.outputdir = output
         #debughelper.showParseTree(sys.stdout, bookParseTree)
         buildAdvancedTree(bookParseTree)
-        #debughelper.showParseTree(sys.stdout, bookParseTree)
+        debughelper.showParseTree(sys.stdout, bookParseTree)
         try:
             self.renderBook(book, bookParseTree, output, coverimage=coverimage)
             log.info('###### RENDERING OK')
@@ -291,7 +291,7 @@ class RlWriter(object):
                     bookParseTree.children.remove(node)
                     removed_articles.append(node.caption)
         if not removedArticlesFile:
-            log.warning('removed Articles:' + ' '.join(removed_articles))
+            log.warning('removed Articles:' + repr(' '.join(removed_articles)))
             return
         f = open(removedArticlesFile,"w")
         for a in removed_articles:
@@ -693,7 +693,7 @@ class RlWriter(object):
 
 
     def _quoteURL(self,url, baseUrl=None):
-        safeChars = ':/'
+        safeChars = ':/#'
         if url.startswith('mailto:'):
             safeChars = ':/@'
         url = urllib.quote(url.encode('utf-8'),safe=safeChars)
@@ -701,12 +701,14 @@ class RlWriter(object):
             url = u'%s%s' % (baseUrl, url)
         return url
 
-
     def writeLink(self,obj):
+        """ Link nodes are intra wiki links
+        """
         href = obj.target
         if not href:
             log.warning('no link target specified')
             href = ''
+
         txt = []
         if obj.children:
             txt.extend(self.renderInline(obj))
@@ -715,16 +717,9 @@ class RlWriter(object):
             txt = [href]
             t = filterText(''.join(txt).strip()).encode('utf-8')
             t = unicode(urllib.unquote(t), 'utf-8')
-            
         href = self._quoteURL(href, self.baseUrl)
         return [t]
     
-    def writeLangLink(self, node):
-        return self.writeLink(node)
-
-    def writeSpecialLink(self,obj):
-        return self.writeLink(obj)
-
     def writeURL(self, obj):
         txt = []       
         if obj.children:
@@ -742,24 +737,21 @@ class RlWriter(object):
         return [txt]
     
     def writeNamedURL(self,obj):
-        txt = []
-        if obj.children:
-            txt.extend(self.renderInline(obj))
 
-        href = self._quoteURL(obj.caption)
+        if not obj.children:
+            return self.writeURL(obj)
+
+        txt = self.renderInline(obj)
         txt = ''.join(txt).strip()
-        if len(txt) > 60:
-            txt = txt[:60] + '...'
-        shortHref = href
-        if len(shortHref) > 60:
-            shortHref = shortHref[:60] + '...'
-        namedURL = '%(text)s (<font size=%(fontsize)s name=%(monofont)s>%(shortHref)s</font>)' % {
+        href = self._quoteURL(obj.caption)
+        if len(href) > 60:
+            href = href[:60] + '...'
+        namedURL = '%(text)s (<font size=%(fontsize)s name=%(monofont)s>%(href)s</font>)' % {
                 'text': txt,
-                'shortHref': shortHref,
+                'href': href,
                 'monofont': standardMonoFont,
                 'fontsize': SMALLFONTSIZE,
                 }
-        print "URL:", namedURL
         return [namedURL]
         
 
@@ -778,6 +770,12 @@ class RlWriter(object):
         url = u"%s%s" % (self.baseUrl, urllib.quote(txt.encode('utf-8')))
         return ['<link href="%s">%s</link>' % ( url, ''.join(txt))]
     
+    def writeLangLink(self, node):
+        return self.writeLink(node)
+
+    def writeSpecialLink(self,obj):
+        return self.writeLink(obj)
+
 
     def _cleanImage(self, path):
         """
@@ -939,9 +937,11 @@ class RlWriter(object):
         self.references.append(i)
         return ['<super><font size="10">[%s]</font></super> ' % len(self.references)]
     
-    def writeReferenceList(self, n):
+    def writeReferenceList(self, n=None):
         if self.references:                
-            return self.writeItemList(self.references, style="referencelist")
+            refList = self.writeItemList(self.references, style="referencelist")
+            self.references = []
+            return refList
         else:
             return []
 
@@ -1124,17 +1124,17 @@ class RlWriter(object):
             elements.append(Spacer(0, table_style['spaceAfter']))
 
         self.nestingLevel -= 1
-        (renderingOk, renderedTable) = self.renderTable(table)
+        (renderingOk, renderedTable) = self.renderTable(table, t)
         if not renderingOk:
             return []
         if renderingOk and renderedTable:
-            return [renderedTable]
+            return renderedTable
         return elements
     
-    def renderTable(self, table):
+    def renderTable(self, table, t_node):
         """
         method that checks if a table can be rendered by reportlab. this is done, b/c large tables cause problems.
-        if a large table is detected, it is rendered on a doublesize canvas and - on success - embedded as an
+        if a large table is detected, it is rendered on a larger canvas and - on success - embedded as an
         scaled down image.
         """
 
@@ -1149,6 +1149,9 @@ class RlWriter(object):
             if w > (printWidth + tableOverflowTolerance):
                 log.warning('table test rendering: too wide - printwidth: %f (tolerance %f) tablewidth: %f' % (printWidth, tableOverflowTolerance, w))
                 raise LayoutError
+            if self.nestingLevel > -1 and h > printHeight:
+                log.warning('nested table too high')
+                raise LayoutError                
             doc.build([table])
             log.info('table test rendering: ok')
             return (True, None)
@@ -1156,7 +1159,7 @@ class RlWriter(object):
             log.warning('table test rendering: reportlab LayoutError')
 
         log.info('trying safe table rendering')
-                    
+                   
         fail = True
         pw = printWidth
         ph = printHeight
@@ -1177,14 +1180,29 @@ class RlWriter(object):
                 log.info('safe rendering fail for width:', pw)
 
         if fail:
-            log.warning('error rendering table - removing table')
-            return (False, None)
+            log.warning('error rendering table - outputting plain text')
+            txt = t_node.getAllDisplayText()
+            elements = []
+            elements.extend([Spacer(0, 1*cm), HRFlowable(width="100%", thickness=2), Spacer(0,0.5*cm)])
+            elements.append(Paragraph('<strong>WARNING: Table could not be rendered - ouputting plain text.</strong><br/>Potential causes of the problem are: (a) table contains a cell with content that does not fit on a single page (b) nested tables (c) table is too wide', p_style))
+            elements.append(Spacer(0,0.5*cm))
+            elements.append(Paragraph(txt, p_style))
+            elements.extend([Spacer(0, 0.5*cm), HRFlowable(width="100%", thickness=2), Spacer(0,1*cm)])
+            return (True, [KeepTogether(elements)])
 
         imgname = fn +'.png'
-        os.system('convert -density 150 %s %s' % (fn, imgname))        
-        img = Image(imgname, width=printWidth*0.90, height=printHeight*0.90)
+        os.system('convert  -density 150 %s %s' % (fn, imgname))        
 
-        return (True, img)
+        images = []
+        if os.path.exists(imgname):
+            images = [Image(imgname, width=printWidth*0.90, height=printHeight*0.90)]
+        else: # if the table spans multiple pages, convert generates multiple images
+            import glob
+            imageFns = glob.glob(fn + '-*.png')
+            for imageFn in imageFns:
+                images.append(Image(imageFn, width=printWidth*0.90, height=printHeight*0.90))
+            
+        return (True, images)
             
     def writeMath(self, node):
         source = node.caption.strip()
