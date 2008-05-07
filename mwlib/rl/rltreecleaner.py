@@ -5,7 +5,7 @@
 # See README.txt for additional licensing information.
 
 from mwlib import advtree
-from mwlib.advtree import Paragraph
+from mwlib.advtree import Paragraph, PreFormatted, ItemList, Div
 from mwlib.advtree import Text, Cell, Link, Math, URL, BreakingReturn, HorizontalRule, CategoryLink
 from mwlib.advtree import SpecialLink, ImageLink, ReferenceList, Chapter, NamedURL, LangLink, Table
                
@@ -88,13 +88,32 @@ def removeCriticalTables(node):
     for c in node.children:
         removeCriticalTables(c)
 
+# keys are nodes, that are not allowed to be inside one of the nodes in the value-list
+# ex: we pull image links out of preformatted nodes and delete the preformatted node
+moveNodes = {ImageLink:[PreFormatted],
+             ItemList:[Div]}
 
+def moveBrokenChildren(node):
+
+    if node.__class__ in moveNodes.keys():
+        firstContainer = node.parent
+        container = node.parent
+        while container:
+            if container.__class__ in moveNodes[node.__class__]:
+                if container.parent:
+                    node.moveto(container)
+            container = container.parent
+        
+    for c in node.children:
+        moveBrokenChildren(c)
+        
 def buildAdvancedTree(root):
     advtree.extendClasses(root) 
     advtree.fixTagNodes(root)
     advtree.removeNodes(root)
     advtree.removeNewlines(root)
     advtree.fixStyles(root) 
+    moveBrokenChildren(root)
     removeChildlessNodes(root)
     removeLangLinks(root)
     fixLists(root)
