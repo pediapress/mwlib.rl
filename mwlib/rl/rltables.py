@@ -210,8 +210,10 @@ def getContentType(t):
                 else:
                     cellNodeTypes.append(item.__class__)            
                 cellTextLen += len(item.getAllDisplayText())
-            rowNodeInfo.append( (cellNodeTypes, cellTextLen) )
-        nodeInfo.append(rowNodeInfo)
+            if cell.children:
+                rowNodeInfo.append( (cellNodeTypes, cellTextLen) )
+        if rowNodeInfo:
+            nodeInfo.append(rowNodeInfo)
     return nodeInfo
 
 def reformatTable(t, maxCols):
@@ -221,6 +223,9 @@ def reformatTable(t, maxCols):
 
     onlyTables = len(t.children) > 0 #if table is empty onlyTables and onlyLists are False
     onlyLists = len(t.children) > 0
+    if not nodeInfo:
+        onlyTables = False
+        onlyLists = False
     for row in nodeInfo:
         for cell in row:
             cellNodeTypes, cellTextLen = cell
