@@ -24,7 +24,10 @@ def getMaxCols(data):
     for row in data:
         cols = 0
         for cell in row:
-            colspan = cell.get('colspan', 1)
+            if hasattr(cell, 'vlist'):
+                colspan = cell.vlist.get('colspan', 1)
+            else:
+                colspan = 1                
             try:
                 colspan = int(colspan)
             except ValueError:

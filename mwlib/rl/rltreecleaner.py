@@ -7,7 +7,7 @@
 from mwlib import advtree
 from mwlib.advtree import Paragraph
 from mwlib.advtree import Text, Cell, Link, Math, URL, BreakingReturn, HorizontalRule, CategoryLink
-from mwlib.advtree import SpecialLink, ImageLink, ReferenceList, Chapter, NamedURL, LangLink
+from mwlib.advtree import SpecialLink, ImageLink, ReferenceList, Chapter, NamedURL, LangLink, Table
                
 def fixLists(node): 
     """
@@ -60,6 +60,35 @@ def removeLangLinks(node):
     for c in node.children[:]:
         removeLangLinks(c)
         
+
+def _tableIsCrititcal(table):
+    classAttr = getattr(table, 'vlist', {}).get('class','')
+    if classAttr.find('navbox')>-1:    
+        return True
+
+    return False
+
+def removeCriticalTables(node):
+    """
+    table rendering is limited: a single cell can never be larger than a single page,
+    otherwise rendering fails. in this method problematic tables are removed.
+    the content is preserved if possible and only the outmost 'container' table is removed
+    """
+
+    if node.__class__ == Table and _tableIsCrititcal(node):
+        children = []
+        for row in node.children:
+            for cell in row:
+                for n in cell:
+                    children.append(n)
+        if node.parent:
+            node.parent.replaceChild(node, children)
+        return
+
+    for c in node.children:
+        removeCriticalTables(c)
+
+
 def buildAdvancedTree(root):
     advtree.extendClasses(root) 
     advtree.fixTagNodes(root)
@@ -69,3 +98,4 @@ def buildAdvancedTree(root):
     removeChildlessNodes(root)
     removeLangLinks(root)
     fixLists(root)
+    removeCriticalTables(root)

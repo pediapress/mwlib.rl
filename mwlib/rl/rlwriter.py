@@ -1077,7 +1077,7 @@ class RlWriter(object):
         self.nestingLevel += 1
         elements = []
         data = []        
-        maxCols = rltables.getMaxCols(data)
+        maxCols = rltables.getMaxCols(t)
         t = rltables.reformatTable(t, maxCols)
         # if a table contains only tables it is transformed to a list of the containing tables - that is handled below
         if t.__class__ != advtree.Table and all([c.__class__==advtree.Table for c in t]):
@@ -1188,7 +1188,7 @@ class RlWriter(object):
             elements.append(Spacer(0,0.5*cm))
             elements.append(Paragraph(txt, p_style))
             elements.extend([Spacer(0, 0.5*cm), HRFlowable(width="100%", thickness=2), Spacer(0,1*cm)])
-            return (True, [KeepTogether(elements)])
+            return (True, elements)
 
         imgname = fn +'.png'
         os.system('convert  -density 150 %s %s' % (fn, imgname))        
