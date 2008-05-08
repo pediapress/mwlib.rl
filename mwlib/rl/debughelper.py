@@ -5,7 +5,7 @@
 # See README.txt for additional licensing information.
 
 from reportlab.platypus.paragraph import Paragraph
-from reportlab.platypus.flowables import Spacer, PageBreak, KeepTogether
+from reportlab.platypus.flowables import KeepTogether
 from reportlab.platypus.tables import Table
 from customflowables import Figure, FiguresAndParagraphs
 
@@ -60,6 +60,9 @@ def dumpTableData(tabledata):
     print "=== Table ==="
     for row in tabledata:
         for cell in row:
+            print cell.__class__.__name__
+            if cell.__class__ == dict:
+                cell = cell['content']
             for item in cell:
                 dumpText(item)
                 print "-"*20, "</item>"
