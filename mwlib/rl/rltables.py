@@ -19,9 +19,9 @@ from pdfstyles import pageWidth, pageHeight, pageMarginHor
 
 log = log.Log('rlwriter')
       
-def getMaxCols(data):
+def getMaxCols(tablenode):
     maxCols = 0
-    for row in data:
+    for row in tablenode:
         cols = 0
         for cell in row:
             if hasattr(cell, 'vlist'):
@@ -235,7 +235,6 @@ def reformatTable(t, maxCols):
                 onlyLists = False
             
     if onlyTables and numCols > 1:
-        #t = reduceCols(t,colnum=1)
         log.info('got table only table - removing container')
         t = removeContainerTable(t)
     if onlyLists and numCols > 2 :

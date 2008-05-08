@@ -215,7 +215,7 @@ class RlWriter(object):
         self.outputdir = output
         #debughelper.showParseTree(sys.stdout, bookParseTree)
         buildAdvancedTree(bookParseTree)
-        debughelper.showParseTree(sys.stdout, bookParseTree)
+        #debughelper.showParseTree(sys.stdout, bookParseTree)
         try:
             self.renderBook(book, bookParseTree, output, coverimage=coverimage)
             log.info('###### RENDERING OK')
@@ -251,7 +251,7 @@ class RlWriter(object):
         except:
             traceback.print_exc()
             raise
-        elements = self.groupElements(elements)
+        elements = self.groupElements(elements)    
         licenseData = self.book.source.get('defaultarticlelicense', None)
         if licenseData and licenseData.get('name') and licenseData.get('wikitext'):
             elements.append(NotAtTopPageBreak())
@@ -363,49 +363,41 @@ class RlWriter(object):
         elements = [e for e in elements if not isinstance(e,basestring)]                
         elements = self.floatImages(elements)
         elements = self.tabularizeImages(elements)
+
+        
         return elements
     
     def writeParagraph(self,obj):
-        txt = []
-        elements = []
-        for node in obj:
-            x = self.write(node)
-            if isInline(x):
-                txt.extend(x)
-            else:
-                _txt = ''.join(txt)
-                if len(_txt.strip()) > 0:
-                    elements.append(Paragraph(''.join(txt),p_style)) #filter
-                txt = []
-                elements.extend(x)
+        # FIXME: handle image-only paragraphs in treecleaner
+        return self.renderMixed(obj)
 
-        t = ''.join(txt) # catch image only paragraphs. probably due to faulty/unwanted MW markup        
-        if len(t.strip()):            
-            imgRegex = re.compile('<img src="(?P<src>.*?)" width="(?P<width>.*?)in" height="(?P<height>.*?)in" valign=".*?"/>$')
-            res=imgRegex.match(t)
-            if res:
-                try:                    
-                    src = res.group('src')
-                    log.info('got image only paragraph:', src, 'width', res.group('width'), 'height', res.group('height'))
-                    if self.nestingLevel > -1:
-                        width = float(res.group('width')) * inch
-                        height = float(res.group('height')) * inch
-                    else:
-                        img = PilImage.open(src)
-                        w,h = img.size
-                        ar = w/h
-                        arPage = printWidth/printHeight
-                        if printWidth >= 1/4 *printHeight * ar:
-                            height = min(1/4*printHeight, h * inch/100) # min res is 100dpi
-                        else:
-                            height = min(printWidth / ar, h * inch/100)
-                        width = height * ar
-                    return [Image(src, width=width, height=height, lazy=0)]
-                except:
-                    traceback.print_exc()
-                    pass
-            elements.append(Paragraph(t, p_style)) #filter
-        return elements
+##         t = ''.join(txt) # catch image only paragraphs. probably due to faulty/unwanted MW markup        
+##         if len(t.strip()):            
+##             imgRegex = re.compile('<img src="(?P<src>.*?)" width="(?P<width>.*?)in" height="(?P<height>.*?)in" valign=".*?"/>$')
+##             res=imgRegex.match(t)
+##             if res:
+##                 try:                    
+##                     src = res.group('src')
+##                     log.info('got image only paragraph:', src, 'width', res.group('width'), 'height', res.group('height'))
+##                     if self.nestingLevel > -1:
+##                         width = float(res.group('width')) * inch
+##                         height = float(res.group('height')) * inch
+##                     else:
+##                         img = PilImage.open(src)
+##                         w,h = img.size
+##                         ar = w/h
+##                         arPage = printWidth/printHeight
+##                         if printWidth >= 1/4 *printHeight * ar:
+##                             height = min(1/4*printHeight, h * inch/100) # min res is 100dpi
+##                         else:
+##                             height = min(printWidth / ar, h * inch/100)
+##                         width = height * ar
+##                     return [Image(src, width=width, height=height, lazy=0)]
+##                 except:
+##                     traceback.print_exc()
+##                     pass
+##             elements.append(Paragraph(t, p_style)) #filter
+##         return elements
 
     def floatImages(self, nodes):
         """Floating images are combined with paragraphs.
@@ -456,7 +448,7 @@ class RlWriter(object):
                     else:
                         combinedNodes.append(n)
                 else:
-                    if ((hasattr(n, 'style') and (n.style.name in ['p_style','p_style_indent', 'dl_style', 'li_style', 'h4_style', 'h3_style', 'h2_style'])) or \
+                    if ((hasattr(n, 'style') and (n.style.name in ['p_style','table_p_style', 'p_style_indent', 'dl_style', 'li_style', 'h4_style', 'h3_style', 'h2_style'])) or \
                        (hasattr(n, 'style') and (n.style.name.startswith('p_indent') or n.style.name.startswith('li_style'))  ) ) \
                        and not gotSufficientFloats(figures, floatingNodes): #newpara
                         floatingNodes.append(n)
@@ -863,8 +855,6 @@ class RlWriter(object):
 
         (width, height) = sizeImage( w, h)
         align = obj.align
-        #if not align:
-        #    align = 'right' # FIXME: make this configurable
             
         txt = []
         for node in obj.children:
@@ -873,7 +863,7 @@ class RlWriter(object):
                 txt.extend(res)
             else:
                 log.warning('imageLink contained block element: %s' % type(res))
-        if obj.isInline(): 
+        if obj.isInline() : # or self.nestingLevel > -1: 
             #log.info('got inline image:',  imgPath,"w:",width,"h:",height)
             txt = '<img src="%(src)s" width="%(width)fin" height="%(height)fin" valign="%(align)s"/>' % {
                 'src':unicode(imgPath, 'utf-8'),
@@ -1037,19 +1027,8 @@ class RlWriter(object):
         except ValueError:
             colspan = 1
             
-        txt = []
-        elements = []
-        for node in cell:
-            res = self.write(node)
-            if isInline(res):
-                txt.extend(res)
-            else:
-                elements.extend(buildPara(txt,table_p_style)) #filter
-                txt = []
-                elements.extend(res)
-        if txt:
-            elements.extend(buildPara(txt,table_p_style)) #filter
-
+        elements = self.renderMixed(cell, para_style=table_p_style)
+        
         return {'content':elements,
                 'rowspan':rowspan,
                 'colspan':colspan}
@@ -1079,6 +1058,7 @@ class RlWriter(object):
         data = []        
         maxCols = rltables.getMaxCols(t)
         t = rltables.reformatTable(t, maxCols)
+        maxCols = rltables.getMaxCols(t)
         # if a table contains only tables it is transformed to a list of the containing tables - that is handled below
         if t.__class__ != advtree.Table and all([c.__class__==advtree.Table for c in t]):
             tables = []
@@ -1092,9 +1072,8 @@ class RlWriter(object):
             if r.__class__ == advtree.Row:
                 data.append(self.writeRow(r))
             elif r.__class__ == advtree.Caption:
-                elements.extend(self.writeCaption(r))
+                elements.extend(self.writeCaption(r))                
 
-                
         (data, span_styles) = rltables.checkSpans(data)
 
         if not data:
@@ -1102,6 +1081,7 @@ class RlWriter(object):
         
         colwidthList = rltables.getColWidths(data, nestingLevel=self.nestingLevel)
         data = rltables.splitCellContent(data)
+        
         table = Table(data, colWidths=colwidthList, splitByRow=1)
 
         styles = rltables.style(serializeStyleInfo(t.vlist))

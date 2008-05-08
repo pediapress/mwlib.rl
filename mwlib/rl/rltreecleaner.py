@@ -5,7 +5,7 @@
 # See README.txt for additional licensing information.
 
 from mwlib import advtree
-from mwlib.advtree import Paragraph, PreFormatted, ItemList, Div
+from mwlib.advtree import Paragraph, PreFormatted, ItemList, Div, Reference
 from mwlib.advtree import Text, Cell, Link, Math, URL, BreakingReturn, HorizontalRule, CategoryLink
 from mwlib.advtree import SpecialLink, ImageLink, ReferenceList, Chapter, NamedURL, LangLink, Table
                
@@ -106,6 +106,53 @@ def moveBrokenChildren(node):
         
     for c in node.children:
         moveBrokenChildren(c)
+
+
+def fixTableColspans(node):
+    """colspanning information in table cells is often wrong.    
+    try to correct the obvious mistakes
+    """
+
+    # SINGLE CELL COLSPAN ERRORS FIX
+    # if a row contains a single cell, we limit the colspanning amount
+    # to the maximum table width
+    if node.__class__ == Table:
+        maxwidth = 0
+        for row in node.children:
+            numCells = len(row.children)
+            rowwidth = 0
+            for cell in row.children:
+                if hasattr(cell, 'vlist'):
+                    colspan = cell.vlist.get('colspan', 1)
+                    if numCells > 1:
+                        rowwidth += colspan
+                    else:
+                        rowwidth += 1
+                else:
+                    rowwidth +=1
+            maxwidth = max(maxwidth,  rowwidth)
+        for row in node.children:
+            numCells = len(row.children)
+            if numCells == 1:
+                cell = row.children[0]
+                if hasattr(cell, 'vlist'):
+                    colspan = cell.vlist.get('colspan',None)
+                    if colspan and colspan > maxwidth:
+                        cell.vlist['colspan'] = maxwidth
+    # END SINGLE CELL COLSPAN ERROR FIX
+    for c in node.children:
+        fixTableColspans(c)
+        
+# ex: we delete preformatted nodes which are inside reference nodes, we keep all children off the preformatted node 
+removeNodes = {PreFormatted:Reference}
+def removeBrokenChildren(node):
+
+    if node.__class__ in removeNodes.keys() and node.getParentNodesByClass(removeNodes[node.__class__]):
+        children = node.children
+        node.parent.replaceChild(node, newchildren=children)
+
+    for c in node.children:
+        removeBrokenChildren(c)
         
 def buildAdvancedTree(root):
     advtree.extendClasses(root) 
@@ -118,3 +165,5 @@ def buildAdvancedTree(root):
     removeLangLinks(root)
     fixLists(root)
     removeCriticalTables(root)
+    removeBrokenChildren
+    fixTableColspans(root)
