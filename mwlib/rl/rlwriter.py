@@ -215,7 +215,7 @@ class RlWriter(object):
         self.outputdir = output
         #debughelper.showParseTree(sys.stdout, bookParseTree)
         buildAdvancedTree(bookParseTree)
-        #debughelper.showParseTree(sys.stdout, bookParseTree)
+        debughelper.showParseTree(sys.stdout, bookParseTree)
         try:
             self.renderBook(book, bookParseTree, output, coverimage=coverimage)
             log.info('###### RENDERING OK')
@@ -364,6 +364,9 @@ class RlWriter(object):
         elements = self.floatImages(elements)
         elements = self.tabularizeImages(elements)
 
+        if self.references:
+            elements.append(Paragraph('External URLs', h2_style))
+            elements.extend(self.writeReferenceList())
         
         return elements
     
@@ -713,39 +716,41 @@ class RlWriter(object):
         return [t]
     
     def writeURL(self, obj):
+        if self.nestingLevel > -1:
+            return self.writeNamedURL(obj)
+
         txt = []       
         if obj.children:
             txt.extend(self.renderInline(obj))
         else:
             txt.append(filterText(xmlescape(obj.caption)))
-        href = self._quoteURL(obj.caption)
         txt = ''.join(txt).strip()
-        if self.nestingLevel > -1 or len(txt) > 70:
-            zws = '<font fontSize="1"> </font>'
-            txt = txt.replace("/",u'/%s' % zws).replace('&amp;', u'&amp;%s' % zws).replace('.','.%s' % zws)
-        if len(txt) > 60:
-            txt = txt[:60] + '...'
-        txt = '<font fontName="%s">%s</font>' % (standardMonoFont, txt)
+        zws = '<font fontSize="1"> </font>'
+        txt = txt.replace("/",u'/%s' % zws).replace('&amp;', u'&amp;%s' % zws).replace('.','.%s' % zws)
+
+        #href = self._quoteURL(obj.caption)
+        href = obj.caption 
+        print "URL:", href.encode('utf-8')
+        txt = '<link href=%s><font fontName="%s">%s</font></link>' % (href, standardMonoFont, txt)
+
         return [txt]
     
     def writeNamedURL(self,obj):
 
-        if not obj.children:
-            return self.writeURL(obj)
-
-        txt = self.renderInline(obj)
-        txt = ''.join(txt).strip()
-        href = self._quoteURL(obj.caption)
-        if len(href) > 60:
-            href = href[:60] + '...'
-        namedURL = '%(text)s (<font size=%(fontsize)s name=%(monofont)s>%(href)s</font>)' % {
-                'text': txt,
-                'href': href,
-                'monofont': standardMonoFont,
-                'fontsize': SMALLFONTSIZE,
-                }
-        return [namedURL]
+        href = obj.caption.strip()
+        #href = self._quoteURL(obj.caption)
+        i = parser.Item()
+        i.children = [advtree.URL(href)]
+        self.references.append(i)
         
+        if not obj.children:
+            linktext = '[%s]' % len(self.references)
+        else:
+            linktext = self.renderInline(obj)
+            linktext.append(' <super><font size="10">[%s]</font></super> ' % len(self.references))           
+            linktext = ''.join(linktext).strip()
+        return linktext
+               
 
     def writeCategoryLink(self,obj): 
         txt = []
@@ -921,11 +926,14 @@ class RlWriter(object):
         log.warning('unhandled Index Node - rendering child nodes')
         return self.renderChildren(n) #fixme: handle index nodes properly
 
-    def writeReference(self, n):
+    def writeReference(self, n, isLink=False):
         i = parser.Item()
         i.children = [c for c in n.children]
         self.references.append(i)
-        return ['<super><font size="10">[%s]</font></super> ' % len(self.references)]
+        if isLink:
+            return ['[%s]' % len(self.references)]
+        else:
+            return ['<super><font size="10">[%s]</font></super> ' % len(self.references)]
     
     def writeReferenceList(self, n=None):
         if self.references:                

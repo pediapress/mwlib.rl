@@ -5,7 +5,7 @@
 # See README.txt for additional licensing information.
 
 from mwlib import advtree
-from mwlib.advtree import Paragraph, PreFormatted, ItemList, Div, Reference
+from mwlib.advtree import Paragraph, PreFormatted, ItemList, Div, Reference, Cite, Item
 from mwlib.advtree import Text, Cell, Link, Math, URL, BreakingReturn, HorizontalRule, CategoryLink
 from mwlib.advtree import SpecialLink, ImageLink, ReferenceList, Chapter, NamedURL, LangLink, Table
                
@@ -144,7 +144,7 @@ def fixTableColspans(node):
         fixTableColspans(c)
         
 # ex: we delete preformatted nodes which are inside reference nodes, we keep all children off the preformatted node 
-removeNodes = {PreFormatted:Reference}
+removeNodes = {PreFormatted:Reference, Cite:Item}
 def removeBrokenChildren(node):
 
     if node.__class__ in removeNodes.keys() and node.getParentNodesByClass(removeNodes[node.__class__]):
@@ -165,5 +165,5 @@ def buildAdvancedTree(root):
     removeLangLinks(root)
     fixLists(root)
     removeCriticalTables(root)
-    removeBrokenChildren
+    removeBrokenChildren(root)
     fixTableColspans(root)
