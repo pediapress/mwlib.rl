@@ -24,7 +24,11 @@ def _doNothing(canvas, doc):
 class SimplePage(PageTemplate):
     def __init__(self, pageSize=A3):
         id = 'simplepage'
-        frames = Frame(0, 0, pageSize[0], pageSize[1])
+        #frames = Frame(0, 0, pageSize[0], pageSize[1])
+        pw = pageSize[0]
+        ph = pageSize[1]
+        frames = Frame(pageMarginHor,pageMarginVert, pw - 2*pageMarginHor, ph - 2*pageMarginVert)
+
         PageTemplate.__init__(self, id=id, frames=frames, pagesize=pageSize)
         
 class WikiPage(PageTemplate):

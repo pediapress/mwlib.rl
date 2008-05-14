@@ -252,7 +252,7 @@ class RlWriter(object):
         except:
             traceback.print_exc()
             raise
-        elements = self.groupElements(elements)    
+        elements = self.groupElements(elements)
         licenseData = self.book.source.get('defaultarticlelicense', None)
         if licenseData and licenseData.get('name') and licenseData.get('wikitext'):
             elements.append(NotAtTopPageBreak())
@@ -1130,6 +1130,7 @@ class RlWriter(object):
         scaled down image.
         """
 
+        print "testrendering:", os.path.join(self.tmpdir, 'table%d.pdf' % self.tablecount)
         fn = os.path.join(self.tmpdir, 'table%d.pdf' % self.tablecount)
         self.tablecount += 1
 
@@ -1197,7 +1198,10 @@ class RlWriter(object):
         return (True, images)
             
     def writeMath(self, node):
+        print "*"*10
         source = node.caption.strip()
+        print source
+
         source = re.compile("\n+").sub("\n", source)
         source = source.replace("'","'\\''").encode('utf-8') # escape single quotes 
         source = ' ' + source + ' '
@@ -1211,6 +1215,11 @@ class RlWriter(object):
             return []
 
         imgpath = os.path.join(self.tmpdir, renderoutput[1:33] + '.png')
+        if not os.path.exists(imgpath):
+            log.error('math rendering failed with source:', repr(source))
+            return []
+
+        print source
         img = PilImage.open(imgpath)
         log.info("math png at:", imgpath)
         w,h = img.size

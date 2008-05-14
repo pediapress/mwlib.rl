@@ -226,14 +226,10 @@ dl_style = BaseStyle(name='dl_style',
                      spaceBefore = 8,
                      )
 table_p_style = BaseStyle(name='table_p_style',
-                          #alignment=TA_JUSTIFY,
+			  fontSize = STANDARDFONTSIZE - 2,
+			  leading = 12
                           )    
 
-table_p_style_small = BaseStyle(name='table_p_style_small',
-                                #alignment=TA_JUSTIFY,
-                                fontSize=8,
-                                leading=10,
-                                )
 
 footer_style = BaseStyle(name='footer_style',
                          fontSize=8,
