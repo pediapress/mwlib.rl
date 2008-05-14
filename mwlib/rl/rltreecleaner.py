@@ -153,6 +153,19 @@ def removeBrokenChildren(node):
 
     for c in node.children:
         removeBrokenChildren(c)
+
+
+def removeSingleCellTables(node):
+
+    if node.__class__ == Table:
+        if len(node.children) == 1 and len(node.children[0].children) == 1:
+            if node.parent:
+                cell_content = node.children[0].children[0].children
+                node.parent.replaceChild(node, cell_content)
+            
+    for c in node.children:
+        removeSingleCellTables(c)
+
         
 def buildAdvancedTree(root):
     advtree.extendClasses(root) 
@@ -164,6 +177,7 @@ def buildAdvancedTree(root):
     removeChildlessNodes(root)
     removeLangLinks(root)
     fixLists(root)
+    removeSingleCellTables(root)
     removeCriticalTables(root)
     removeBrokenChildren(root)
     fixTableColspans(root)

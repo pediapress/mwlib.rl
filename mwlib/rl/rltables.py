@@ -237,8 +237,6 @@ def reformatTable(t, maxCols):
     if onlyTables and numCols > 1:
         log.info('got table only table - removing container')
         t = removeContainerTable(t)
-    elif numCols == 1 and numRows == 1:
-        t = removeContainerTable(t)
     if onlyLists and numCols > 2 :
         log.info('got list only table - reducing columns to 2')
         t = reduceCols(t, colnum=2)

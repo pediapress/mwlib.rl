@@ -1184,7 +1184,7 @@ class RlWriter(object):
             return (True, elements)
 
         imgname = fn +'.png'
-        os.system('convert  -density 150 %s %s' % (fn, imgname))        
+        os.system('convert  -density 150 %s %s' % (fn, imgname))
 
         images = []
         if os.path.exists(imgname):
