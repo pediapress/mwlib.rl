@@ -125,6 +125,7 @@ class RlWriter(object):
         self.tablecount = 0
         self.paraIndentLevel = 0
         self.preMode = False
+        self.refmode = False
         self.linkList = []
         
     def ignore(self, obj):
@@ -365,7 +366,7 @@ class RlWriter(object):
         elements = self.tabularizeImages(elements)
 
         if self.references:
-            elements.append(Paragraph('External URLs', h2_style))
+            elements.append(Paragraph('External URLs', h4_style))
             elements.extend(self.writeReferenceList())
         
         return elements
@@ -714,35 +715,36 @@ class RlWriter(object):
             t = unicode(urllib.unquote(t), 'utf-8')
         href = self._quoteURL(href, self.baseUrl)
         return [t]
+
+
+    def renderURL(self, url):
+        zws = '<font fontSize="1"> </font>'
+        url = url.replace("/",u'/%s' % zws).replace('&amp;', u'&amp;%s' % zws).replace('.','.%s' % zws).replace('+', '+%s' % zws)
+        return url
     
     def writeURL(self, obj):
-        if self.nestingLevel > -1:
+        if self.nestingLevel > -1 and not self.refmode:
             return self.writeNamedURL(obj)
-
-        txt = []       
-        if obj.children:
-            txt.extend(self.renderInline(obj))
-        else:
-            txt.append(filterText(xmlescape(obj.caption)))
-        txt = ''.join(txt).strip()
-        zws = '<font fontSize="1"> </font>'
-        txt = txt.replace("/",u'/%s' % zws).replace('&amp;', u'&amp;%s' % zws).replace('.','.%s' % zws)
-
-        #href = self._quoteURL(obj.caption)
-        href = obj.caption 
-        print "URL:", href.encode('utf-8')
-        txt = '<link href=%s><font fontName="%s">%s</font></link>' % (href, standardMonoFont, txt)
-
+        
+        href = obj.caption
+        display_text = self.renderURL(href)       
+        txt = '<link href=%s><font fontName="%s">%s</font></link>' % (href, standardMonoFont, display_text)
         return [txt]
     
     def writeNamedURL(self,obj):
 
         href = obj.caption.strip()
-        #href = self._quoteURL(obj.caption)
-        i = parser.Item()
-        i.children = [advtree.URL(href)]
-        self.references.append(i)
-        
+
+        if not self.refmode:
+            i = parser.Item()
+            i.children = [advtree.URL(href)]
+            self.references.append(i)
+        else: # we are writing a reference section. we therefore directly print URLs
+            txt = self.renderInline(obj)
+            txt.append(' <font size="%d">(%s)</font>' % (SMALLFONTSIZE, self.renderURL(href)))
+            return [''.join(txt)]
+            
+            
         if not obj.children:
             linktext = '[%s]' % len(self.references)
         else:
@@ -937,8 +939,10 @@ class RlWriter(object):
     
     def writeReferenceList(self, n=None):
         if self.references:                
+            self.refmode = True
             refList = self.writeItemList(self.references, style="referencelist")
             self.references = []
+            self.refmode = False
             return refList
         else:
             return []
