@@ -216,7 +216,7 @@ class RlWriter(object):
         self.outputdir = output
         #debughelper.showParseTree(sys.stdout, bookParseTree)
         buildAdvancedTree(bookParseTree)
-        debughelper.showParseTree(sys.stdout, bookParseTree)
+        #debughelper.showParseTree(sys.stdout, bookParseTree)
         try:
             self.renderBook(book, bookParseTree, output, coverimage=coverimage)
             log.info('###### RENDERING OK')
@@ -1198,10 +1198,7 @@ class RlWriter(object):
         return (True, images)
             
     def writeMath(self, node):
-        print "*"*10
         source = node.caption.strip()
-        print source
-
         source = re.compile("\n+").sub("\n", source)
         source = source.replace("'","'\\''").encode('utf-8') # escape single quotes 
         source = ' ' + source + ' '
@@ -1219,7 +1216,6 @@ class RlWriter(object):
             log.error('math rendering failed with source:', repr(source))
             return []
 
-        print source
         img = PilImage.open(imgpath)
         log.info("math png at:", imgpath)
         w,h = img.size
