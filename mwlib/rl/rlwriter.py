@@ -366,7 +366,7 @@ class RlWriter(object):
         elements = self.tabularizeImages(elements)
 
         if self.references:
-            elements.append(Paragraph('External URLs', h4_style))
+            elements.append(Paragraph('<b>External URLs</b>', h3_style))
             elements.extend(self.writeReferenceList())
         
         return elements
@@ -429,9 +429,10 @@ class RlWriter(object):
             hp = 0
             maxImgWidth = 0
             for f in figures:
-                hf += f.imgHeight + f.margin[0] + f.margin[2] + f.padding[0] + f.padding[2] + f.cs.leading
+                # assume 40 chars per line for caption text
+                hf += f.imgHeight + f.margin[0] + f.margin[2] + f.padding[0] + f.padding[2] + f.cs.leading * max(int(len(f.captionTxt) / 40), 1) 
                 #w, _hf = f.wrap(pageWidth, pageHeight) FIXME: this should be more accurate
-                maxImgWidth=max(maxImgWidth, f.imgWidth)
+                maxImgWidth = max(maxImgWidth, f.imgWidth)
             for p in paras:
                 if isinstance(p,Paragraph):
                     w,h = p.wrap(printWidth - maxImgWidth,printHeight)
@@ -1172,8 +1173,7 @@ class RlWriter(object):
             except:
                 log.info('safe rendering fail for width:', pw)
 
-        if fail:
-            log.warning('error rendering table - outputting plain text')
+        def _renderSimpleText():
             txt = t_node.getAllDisplayText()
             elements = []
             elements.extend([Spacer(0, 1*cm), HRFlowable(width="100%", thickness=2), Spacer(0,0.5*cm)])
@@ -1181,10 +1181,21 @@ class RlWriter(object):
             elements.append(Spacer(0,0.5*cm))
             elements.append(Paragraph(txt, p_style))
             elements.extend([Spacer(0, 0.5*cm), HRFlowable(width="100%", thickness=2), Spacer(0,1*cm)])
+            return elements
+
+        if fail:
+            log.warning('error rendering table - outputting plain text')
+            elements = _renderSimpleText()
             return (True, elements)
 
         imgname = fn +'.png'
-        os.system('convert  -density 150 %s %s' % (fn, imgname))
+
+
+        convertFail = os.system('convert  -density 150 %s %s' % (fn, imgname))
+        if convertFail:
+            elements = _renderSimpleText()
+            log.warning('error rendering table - (pdf->png failed) outputting plain text')
+            return (True, elements)
 
         images = []
         if os.path.exists(imgname):
