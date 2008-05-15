@@ -438,11 +438,10 @@ class RlWriter(object):
             for f in figures:
                 # assume 40 chars per line for caption text
                 hf += f.imgHeight + f.margin[0] + f.margin[2] + f.padding[0] + f.padding[2] + f.cs.leading * max(int(len(f.captionTxt) / 40), 1) 
-                #w, _hf = f.wrap(pageWidth, pageHeight) FIXME: this should be more accurate
                 maxImgWidth = max(maxImgWidth, f.imgWidth)
             for p in paras:
                 if isinstance(p,Paragraph):
-                    w,h = p.wrap(printWidth - maxImgWidth,printHeight)
+                    w,h = p.wrap(printWidth - maxImgWidth, printHeight)
                     h += p.style.spaceBefore + p.style.spaceAfter
                     hp += h
             if hp > hf - 10:
@@ -460,11 +459,11 @@ class RlWriter(object):
                     else:
                         combinedNodes.append(n)
                 else:
-                    if ((hasattr(n, 'style') and (n.style.name in ['p_style','table_p_style', 'p_style_indent', 'dl_style', 'li_style', 'h4_style', 'h3_style', 'h2_style'])) or \
+                    if ((hasattr(n, 'style') and (n.style.name in ['p_style','table_p_style', 'p_style_indent', 'dl_style', 'h4_style', 'h3_style', 'h2_style'])) or \
                        (hasattr(n, 'style') and (n.style.name.startswith('p_indent') or n.style.name.startswith('li_style'))  ) ) \
                        and not gotSufficientFloats(figures, floatingNodes): #newpara
                         floatingNodes.append(n)
-                    else:
+                    else:                      
                         if len(floatingNodes) > 0:
                             if hasattr(floatingNodes[-1], 'style') and floatingNodes[-1].style.name in ['h4_style', 'h3_style', 'h2_style']: # prevent floating headings before nonFloatables
                                 noFloatNode = floatingNodes[-1]

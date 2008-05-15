@@ -253,7 +253,10 @@ def splitListItems(t):
         cols = []
         maxItems = 0
         for cell in r:           
-            items = cell.getChildNodesByClass(Item)
+            items = []
+            for c in cell.children:
+                if c.__class__ == ItemList:
+                    items.extend(c.children)                   
             cols.append(items)
             maxItems = max(maxItems,len(items))
         for i in range(maxItems):            
