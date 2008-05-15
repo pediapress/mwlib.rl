@@ -127,6 +127,7 @@ class RlWriter(object):
         self.preMode = False
         self.refmode = False
         self.linkList = []
+        self.disable_group_elements = False
         
     def ignore(self, obj):
         return []
@@ -252,7 +253,9 @@ class RlWriter(object):
         except:
             traceback.print_exc()
             raise
-        elements = self.groupElements(elements)
+
+        if not self.disable_group_elements:
+            elements = self.groupElements(elements)
         licenseData = self.book.source.get('defaultarticlelicense', None)
         if licenseData and licenseData.get('name') and licenseData.get('wikitext'):
             elements.append(NotAtTopPageBreak())
@@ -268,6 +271,10 @@ class RlWriter(object):
             return 0
         except Exception, err:
             log.error('error:\n', err)
+            if len(err.args):
+                exception_txt = err.args[0]
+                if exception_txt.find('Splitting') >-1:
+                    self.disable_group_elements = True
             traceback.print_exc()
             raise
     
@@ -1189,9 +1196,13 @@ class RlWriter(object):
             return (True, elements)
 
         imgname = fn +'.png'
+        resolutions = [300, 200, 100, 50]
+        convertFail = 1
+        # conversion of large tables fails for high resolutions - try converting from high to low resolutions 
+        while convertFail and resolutions:
+            res = resolutions.pop(0)
+            convertFail = os.system('convert  -density %d %s %s' % (res, fn, imgname))
 
-
-        convertFail = os.system('convert  -density 150 %s %s' % (fn, imgname))
         if convertFail:
             elements = _renderSimpleText()
             log.warning('error rendering table - (pdf->png failed) outputting plain text')
