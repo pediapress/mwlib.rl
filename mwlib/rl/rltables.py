@@ -116,13 +116,13 @@ def scaleImages(data):
                     cell[i] = Figure(imgFile = e.imgPath, captionTxt=e.captionTxt, captionStyle=e.cs, imgWidth=e.imgWidth/2.0,imgHeight=e.imgHeight/2.0, margin=e.margin, padding=e.padding,align=e.align)
 
             
-def getColWidths(data, recursionDepth=0, nestingLevel=0):
+def getColWidths(data, recursionDepth=0, nestingLevel=1):
     """
     the widths for the individual columns are calculated. if the horizontal size exceeds the pagewidth
     the fontsize is reduced 
     """
 
-    if nestingLevel > 0:
+    if nestingLevel > 1:
         scaleImages(data)
 
     if not data:
@@ -148,7 +148,7 @@ def getColWidths(data, recursionDepth=0, nestingLevel=0):
                 maxbreaks[j] = max(rows,maxbreaks[j])
             summedwidths[j] = max(cellwidth, summedwidths[j])
 
-    if nestingLevel > 0:
+    if nestingLevel > 1:
         return minwidths
 
     remainingSpace = availWidth - sum(summedwidths)

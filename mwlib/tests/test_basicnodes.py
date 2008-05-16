@@ -26,9 +26,9 @@ def test_url():
     txt = u"some url: http://example.com. now a url with umlauts: http://dasörtliche.de and now a italic url ''http://example.com/öpath''"
     renderMW(txt, 'url')
 
-def test_captions():
-    txt = u"= Caption lvl 1=\n\n== Caption lvl 2 ==\n\n=== Caption lvl 3 ===\n\n==== Caption lvl 4 ====\n\n===== Caption lvl 5=====\n\n====== Caption lvl 6======"
-    htmlcaptions = '\n\n'.join(['<h%(lvl)d>caption h%(lvl)d</h%(lvl)d>' % {'lvl': lvl+1} for lvl in range(5)])
+def test_headingss():
+    txt = '\n\n'.join(['='*lvl + ' Heading lvl %d '% lvl + '='*lvl for lvl in range(1,6)])
+    htmlcaptions = '\n\n'.join(['<h%(lvl)d>Heading h%(lvl)d</h%(lvl)d>' % {'lvl': lvl+1} for lvl in range(5)])
     txt += '\n\n' + htmlcaptions
     renderMW(txt, 'caption')
 
@@ -37,14 +37,14 @@ def test_lists():
     renderMW(txt, 'lists')
 
 def test_table():
-    txt="""{|
+    txt='''{| class="prettytable"
 |-
 | row 1, col 1 || row 1, col 2 || row 1, col 3
 |-
 | row 2, col 1 || row 2, col 2 || row 2, col 3
 |-
 | row 3, col 1 || row 3, col 2 || row 3, col 3
-"""
+'''
     renderMW(txt, 'table')
 
 def test_preformatted():
@@ -69,7 +69,7 @@ def test_styles():
     renderMW(txt, 'basicstyles')
 
 def test_definitionlist():
-    txt = '; definitionlist starts with definition term\n: the definition of the term follows'
+    txt = '; definitionlist starts with definition term\n: the definition of the term follows\n; definitionlist starts with definition term\n: the definition of the term follows'
     renderMW(txt,'definitionlist')
 
              
@@ -77,7 +77,7 @@ def test_evilstyles():
     """MW markup guide says that these styles should be avoided.
     """
     txt = """text that is <big>big</big> and some is <small>small</small>. there is also <s>strike through</s> text
-and <u>underlined text</u> linebreaks can be enforced<br/>here<br/>and here we had one. <nowiki>nowikitag ''allows'' the use of MW-syntax that is not interpreted</nowiki>. we can force <tt> typewriter mode</tt> or <code>code mode</code>"""
+and <u>underlined text</u> linebreaks can be enforced<br/>here<br/>and here we had one. <nowiki>nowikitag ''allows'' the use of [[MW-syntax]] that is not interpreted</nowiki>. we can force <tt> typewriter mode</tt> or <code>code mode</code>"""
 
     renderMW(txt,'evilstyles')
 

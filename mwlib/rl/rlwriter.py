@@ -33,20 +33,19 @@ from reportlab.platypus.doctemplate import BaseDocTemplate, NextPageTemplate, No
 from reportlab.platypus.tables import Table
 from reportlab.platypus.flowables import Spacer, HRFlowable, PageBreak, KeepTogether, Image
 from reportlab.platypus.xpreformatted import XPreformatted
-#from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
-from reportlab.lib.units import cm, inch
+from reportlab.lib.units import cm
 from reportlab.lib import colors
 from reportlab.platypus.doctemplate import LayoutError
 from reportlab.lib.pagesizes import A4
 
 from customflowables import Figure, FiguresAndParagraphs
-from pdfstyles import p_style, li_style, p_indent_style, pre_style, pre_style_small, articleTitle_style
-from pdfstyles import h1_style, h2_style, h3_style, h4_style, heading_styles, figure_caption_style, table_p_style, table_style
-from pdfstyles import chapter_style, bookTitle_style, bookSubTitle_style
+
+from pdfstyles import text_style, heading_style, table_style
+from pdfstyles import bookTitle_style, bookSubTitle_style
+
 from pdfstyles import pageMarginHor, pageMarginVert, filterText, standardSansSerif, standardMonoFont
-from pdfstyles import printWidth, printHeight, SMALLFONTSIZE, BIGFONTSIZE, p_center_style
-from pdfstyles import p_blockquote_style, tableOverflowTolerance
-#from pdfstyles import pageWidth, pageHeight, bookAuthor_style
+from pdfstyles import printWidth, printHeight, SMALLFONTSIZE, BIGFONTSIZE, FONTSIZE
+from pdfstyles import tableOverflowTolerance
 
 import rltables
 from pagetemplates import WikiPage, TitlePage, SimplePage
@@ -76,7 +75,8 @@ def isInline(objs):
             return False
     return True
 
-def buildPara(txtList, style=p_style):
+
+def buildPara(txtList, style=text_style()):
     _txt = ''.join(txtList)
     _txt = _txt.strip()
     if len(_txt) > 0:
@@ -119,8 +119,8 @@ class RlWriter(object):
         self.listCounterID = 1
         self.baseUrl = ''
         self.tmpImages = set()
-        self.namedLinkCount = 1   
-        self.nestingLevel = -1       
+        self.namedLinkCount = 1
+        self.nestingLevel = 0       
         self.sectionTitle = False
         self.tablecount = 0
         self.paraIndentLevel = 0
@@ -142,9 +142,9 @@ class RlWriter(object):
 
         groupedElements = []
         group = []
-        headingStyles = [h1_style, h2_style, h3_style, h4_style, articleTitle_style]
+
         def isHeading(e):
-            return isinstance(e, HRFlowable) or (hasattr(e, 'style') and  e.style in headingStyles)
+            return isinstance(e, HRFlowable) or (hasattr(e, 'style') and  e.style.name.startswith('heading_style') )
         groupHeight = 0
         while elements:
             if not group:
@@ -331,23 +331,20 @@ class RlWriter(object):
         hr = HRFlowable(width="80%", spaceBefore=6, spaceAfter=0, color=colors.black, thickness=0.5)
         return [NotAtTopPageBreak(),
                 hr,
-                Paragraph(xmlescape(chapter.caption), chapter_style),
+                Paragraph(xmlescape(chapter.caption), heading_style('chapter')),
                 hr]
 
     def writeSection(self,obj):
         lvl = getattr(obj, "level", 4)
-        level = min( max(0, lvl), 4)  # headinStyle array has 4 items - therefore limit levels from 0 to 3
-        headingStyle = heading_styles[level]
+        headingStyle = heading_style('section', lvl=lvl+1)
         self.sectionTitle = True
         headingTxt = ''.join(self.write(obj.children[0])).strip()
         self.sectionTitle = False
         elements = [Paragraph('<font name=%s><b>%s</b></font>' % (standardSansSerif,headingTxt), headingStyle)]
         self.level += 1
-        for node in obj.children[1:]:
-            res = self.write(node)
-            if isInline(res): #FIXME: parser bug. we have to catch tagnodes 
-                res = buildPara(res)
-            elements.extend(res)
+
+        elements.extend(self.renderMixed(obj.children[1:]))
+        
         self.level -= 1
         return elements
 
@@ -360,20 +357,18 @@ class RlWriter(object):
         if hasattr(self, 'doc'): # doc is not present if tests are run
             self.doc.addPageTemplates(pt)
             elements.append(NextPageTemplate(title.encode('utf-8'))) # pagetemplate.id cant handle unicode
-        elements.append(Paragraph("<b>%s</b>" % filterText(title, defaultFont=standardSansSerif), articleTitle_style))
+        elements.append(Paragraph("<b>%s</b>" % filterText(title, defaultFont=standardSansSerif), heading_style('article')))
         elements.append(HRFlowable(width='100%', hAlign='LEFT', thickness=1, spaceBefore=0, spaceAfter=10, color=colors.black))
-        for e in article:
-            r = self.write(e)
-            if isInline(r): #FIXME:  parser bug. we have to catch tagnodes 
-                r = buildPara(r)
-            elements.extend(r)
+
+        elements.extend(self.renderMixed(article))
+            
         # check for non-flowables
         elements = [e for e in elements if not isinstance(e,basestring)]                
         elements = self.floatImages(elements)
         elements = self.tabularizeImages(elements)
 
         if self.references:
-            elements.append(Paragraph('<b>External URLs</b>', h3_style))
+            elements.append(Paragraph('<b>External URLs</b>', heading_style('section', lvl=3)))
             elements.extend(self.writeReferenceList())
         
         return elements
@@ -390,7 +385,7 @@ class RlWriter(object):
 ##                 try:                    
 ##                     src = res.group('src')
 ##                     log.info('got image only paragraph:', src, 'width', res.group('width'), 'height', res.group('height'))
-##                     if self.nestingLevel > -1:
+##                     if self.nestingLevel:
 ##                         width = float(res.group('width')) * inch
 ##                         height = float(res.group('height')) * inch
 ##                     else:
@@ -459,13 +454,11 @@ class RlWriter(object):
                     else:
                         combinedNodes.append(n)
                 else:
-                    if ((hasattr(n, 'style') and (n.style.name in ['p_style','table_p_style', 'p_style_indent', 'dl_style', 'h4_style', 'h3_style', 'h2_style'])) or \
-                       (hasattr(n, 'style') and (n.style.name.startswith('p_indent') or n.style.name.startswith('li_style'))  ) ) \
-                       and not gotSufficientFloats(figures, floatingNodes): #newpara
+                    if hasattr(n, 'style') and n.style.flowable == True  and not gotSufficientFloats(figures, floatingNodes): #newpara
                         floatingNodes.append(n)
                     else:                      
                         if len(floatingNodes) > 0:
-                            if hasattr(floatingNodes[-1], 'style') and floatingNodes[-1].style.name in ['h4_style', 'h3_style', 'h2_style']: # prevent floating headings before nonFloatables
+                            if hasattr(floatingNodes[-1], 'style') and floatingNodes[-1].style.name.startswith('heading_style') and floatingNodes[-1].style.flowable==True: # prevent floating headings before nonFloatables
                                 noFloatNode = floatingNodes[-1]
                                 floatingNodes = floatingNodes[:-1]
                             else:
@@ -547,10 +540,10 @@ class RlWriter(object):
             # PreformattedBox flowable should do intelligent and visible splitting when necessary
             # also decrease text size if we are inside a table
             maxCharOnLine = max( [ len(line) for line in t.split("\n")])
-            if maxCharOnLine > 76 or self.nestingLevel > -1:
-                pre = XPreformatted(t, pre_style_small)
+            if maxCharOnLine > 76 or self.nestingLevel:
+                pre = XPreformatted(t, text_style(mode='preformatted', relsize='small', in_table=self.nestingLevel))
             else:
-                pre = XPreformatted(t, pre_style)
+                pre = XPreformatted(t, text_style(mode='preformatted', in_table=self.nestingLevel))
             return [pre]
 
         else:
@@ -564,13 +557,13 @@ class RlWriter(object):
             if isInline(res):
                 txt.extend(res)
             else:
-                items.extend(buildPara(txt, p_style)) #filter
+                items.extend(buildPara(txt, text_style(in_table=self.nestingLevel)))
                 items.extend(res)
                 txt = []
         if not len(items):
             return txt
         else:
-            items.extend(buildPara(txt,p_style)) #filter
+            items.extend(buildPara(txt,text_style(in_table=self.nestingLevel))) #filter
         return items
 
 
@@ -605,7 +598,9 @@ class RlWriter(object):
         return txt
 
 
-    def renderMixed(self,node, para_style=p_style, textPrefix=None):
+    def renderMixed(self, node, para_style=None, textPrefix=None):
+        if not para_style:
+            para_style = text_style(in_table=self.nestingLevel)
         txt = []
         if textPrefix:
             txt.append(textPrefix)
@@ -647,26 +642,23 @@ class RlWriter(object):
 
     def writeDefinitionTerm(self, n):
         txt = self.writeStrong(n)
-        return [Paragraph(''.join(txt), p_style)]
+        return [Paragraph(''.join(txt), text_style(in_table=self.nestingLevel))]
 
     def writeDefinitionDescription(self, n):
         return self.writeIndented(n)
 
     def writeIndented(self, n):
         self.paraIndentLevel += 1
-        items = self.renderMixed(n, para_style=p_indent_style(self.paraIndentLevel))
+        items = self.renderMixed(n, para_style=text_style(indent_lvl=self.paraIndentLevel, in_table=self.nestingLevel))
         self.paraIndentLevel -= 1
         return items
         
     def writeBlockquote(self, n):
-        #return self.writeIndented(n)
         self.paraIndentLevel += 1
-        items = self.renderMixed(n, para_style=p_blockquote_style)
+        items = self.renderMixed(n, text_style(mode='blockquote', in_table=self.nestingLevel))
         self.paraIndentLevel -= 1
-        return items
+        return items     
         
-        
-
     def writeOverline(self, n):
         pass
 
@@ -730,7 +722,7 @@ class RlWriter(object):
         return url
     
     def writeURL(self, obj):
-        if self.nestingLevel > -1 and not self.refmode:
+        if self.nestingLevel and not self.refmode:
             return self.writeNamedURL(obj)
         
         href = obj.caption
@@ -877,7 +869,7 @@ class RlWriter(object):
                 txt.extend(res)
             else:
                 log.warning('imageLink contained block element: %s' % type(res))
-        if obj.isInline() : # or self.nestingLevel > -1: 
+        if obj.isInline() : # or self.nestingLevel: 
             #log.info('got inline image:',  imgPath,"w:",width,"h:",height)
             txt = '<img src="%(src)s" width="%(width)fin" height="%(height)fin" valign="%(align)s"/>' % {
                 'src':unicode(imgPath, 'utf-8'),
@@ -888,7 +880,7 @@ class RlWriter(object):
             return txt
         # FIXME: make margins and padding configurable
         captionTxt = '<i>%s</i>' % ''.join(txt)  #filter
-        return [Figure(imgPath, captionTxt=captionTxt,  captionStyle=figure_caption_style, imgWidth=width, imgHeight=height, margin=(0.2*cm, 0.2*cm, 0.2*cm, 0.2*cm), padding=(0.2*cm, 0.2*cm, 0.2*cm, 0.2*cm), align=align)]
+        return [Figure(imgPath, captionTxt=captionTxt,  captionStyle=text_style('figure', in_table=self.nestingLevel), imgWidth=width, imgHeight=height, margin=(0.2*cm, 0.2*cm, 0.2*cm, 0.2*cm), padding=(0.2*cm, 0.2*cm, 0.2*cm, 0.2*cm), align=align)]
 
 
     def writeGallery(self,obj):
@@ -903,7 +895,7 @@ class RlWriter(object):
                 try:
                     res = buildPara(res)
                 except:
-                    res = Paragraph('',p_style)
+                    res = Paragraph('',text_style(in_table=self.nestingLevel))
             if len(row) == 0:
                 row.append(res)
             else:
@@ -911,7 +903,7 @@ class RlWriter(object):
                 data.append(row)
                 row = []
         if len(row) == 1:
-            row.append(Paragraph('',p_style))
+            row.append(Paragraph('',text_style(in_table=self.nestingLevel)))
             data.append(row)
         table = Table(data)
         return [table]
@@ -955,10 +947,10 @@ class RlWriter(object):
             return []
 
     def writeCenter(self, n):
-        return self.renderMixed(n, para_style=p_center_style)
+        return self.renderMixed(n, text_style(mode='center', in_table=self.nestingLevel))
 
     def writeDiv(self, n):
-        return self.renderMixed(n, para_style=p_indent_style(self.paraIndentLevel)) 
+        return self.renderMixed(n, text_style(indent_lvl=self.paraIndentLevel, in_table=self.nestingLevel)) 
 
     def writeSpan(self, n):
         return self.renderInline(n)
@@ -1008,7 +1000,7 @@ class RlWriter(object):
             itemPrefix = ''
 
         listIndent = max(0,(self.listIndentation + self.paraIndentLevel))
-        para_style = li_style(listIndent)
+        para_style = text_style(mode='list', indent_lvl=listIndent, in_table=self.nestingLevel)
         items =  self.renderMixed(item, para_style=para_style, textPrefix=itemPrefix)
         return items
         
@@ -1016,7 +1008,7 @@ class RlWriter(object):
     def writeItemList(self, lst, numbered=False, style='itemize'):
         self.listIndentation += 1
         items = []
-        items.append(Spacer(0,p_style.spaceBefore))
+        items.append(Spacer(0,text_style(in_table=self.nestingLevel).spaceBefore))
         if not style=='referencelist':
             if numbered or lst.numbered:
                 style="enumerate"
@@ -1046,7 +1038,7 @@ class RlWriter(object):
         except ValueError:
             colspan = 1
             
-        elements = self.renderMixed(cell, para_style=table_p_style)
+        elements = self.renderMixed(cell, text_style(in_table=self.nestingLevel))
         
         return {'content':elements,
                 'rowspan':rowspan,
@@ -1068,7 +1060,7 @@ class RlWriter(object):
             res = self.write(x)
             if isInline(res):
                 txt.extend(res)
-        return buildPara(txt, p_center_style)              
+        return buildPara(txt, text_style(mode='center'))
 
     
     def writeTable(self, t):
@@ -1122,8 +1114,8 @@ class RlWriter(object):
         if table_style.get('spaceAfter', 0) > 0:
             elements.append(Spacer(0, table_style['spaceAfter']))
 
-        self.nestingLevel -= 1
         (renderingOk, renderedTable) = self.renderTable(table, t)
+        self.nestingLevel -= 1
         if not renderingOk:
             return []
         if renderingOk and renderedTable:
@@ -1149,7 +1141,7 @@ class RlWriter(object):
             if w > (printWidth + tableOverflowTolerance):
                 log.warning('table test rendering: too wide - printwidth: %f (tolerance %f) tablewidth: %f' % (printWidth, tableOverflowTolerance, w))
                 raise LayoutError
-            if self.nestingLevel > -1 and h > printHeight:
+            if self.nestingLevel and h > printHeight:
                 log.warning('nested table too high')
                 raise LayoutError                
             doc.build([table])
@@ -1183,9 +1175,9 @@ class RlWriter(object):
             txt = t_node.getAllDisplayText()
             elements = []
             elements.extend([Spacer(0, 1*cm), HRFlowable(width="100%", thickness=2), Spacer(0,0.5*cm)])
-            elements.append(Paragraph('<strong>WARNING: Table could not be rendered - ouputting plain text.</strong><br/>Potential causes of the problem are: (a) table contains a cell with content that does not fit on a single page (b) nested tables (c) table is too wide', p_style))
+            elements.append(Paragraph('<strong>WARNING: Table could not be rendered - ouputting plain text.</strong><br/>Potential causes of the problem are: (a) table contains a cell with content that does not fit on a single page (b) nested tables (c) table is too wide', text_style(in_table=self.nestingLevel)))
             elements.append(Spacer(0,0.5*cm))
-            elements.append(Paragraph(txt, p_style))
+            elements.append(Paragraph(txt, text_style(in_table=self.nestingLevel)))
             elements.extend([Spacer(0, 0.5*cm), HRFlowable(width="100%", thickness=2), Spacer(0,1*cm)])
             return elements
 
@@ -1240,6 +1232,10 @@ class RlWriter(object):
         img = PilImage.open(imgpath)
         log.info("math png at:", imgpath)
         w,h = img.size
+        if self.nestingLevel: # scale down math-formulas in tables
+            w = w * SMALLFONTSIZE/FONTSIZE
+            h = h * SMALLFONTSIZE/FONTSIZE
+            
         density = 120 # resolution in dpi in which math images are rendered by latex
         # the vertical image placement is calculated below:
         # the "normal" height of a single-line formula is 32px. UPDATE: is now 17 

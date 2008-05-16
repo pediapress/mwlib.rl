@@ -13,7 +13,12 @@ from reportlab.lib.units import cm
 from reportlab.platypus.doctemplate import PageTemplate
 from reportlab.platypus.frames import Frame
 from reportlab.rl_config import defaultPageSize
-from mwlib.rl.pdfstyles import pageMarginHor, pageMarginVert, headerMarginHor, headerMarginVert, footerMarginHor, footerMarginVert, pageWidth, pageHeight, pagefooter, titlepagefooter, showPageHeader, showPageFooter, showTitlePageFooter , standardFont, footer_style, p_style
+from mwlib.rl.pdfstyles import pageMarginHor, pageMarginVert, headerMarginHor, headerMarginVert, footerMarginHor, footerMarginVert
+from mwlib.rl.pdfstyles import pageWidth, pageHeight, pagefooter, titlepagefooter, showPageHeader, showPageFooter, showTitlePageFooter , standardFont
+
+#from mwlib.rl.pdfstyles import footer_style, p_style
+from mwlib.rl.pdfstyles import text_style
+
 
 from reportlab.lib.pagesizes import  A3
 
@@ -57,7 +62,7 @@ class WikiPage(PageTemplate):
             canvas.saveState()
             canvas.resetTransforms()
             canvas.translate(headerMarginHor, pageHeight - headerMarginVert - 0.1 * cm)
-            p = Paragraph(self.title, p_style)
+            p = Paragraph(self.title, text_style())
             p.canv = canvas
             p.wrap(pageWidth - headerMarginHor*2.5, pageHeight) # add an extra 0.5 margin to have enough space for page number
             p.drawPara()
@@ -92,7 +97,7 @@ class TitlePage(PageTemplate):
         if showTitlePageFooter:
             canvas.line(footerMarginHor, footerMarginVert, pageWidth - footerMarginHor, footerMarginVert )
             footertext = titlepagefooter.replace('@WIKITITLE@', self.wikititle)
-            p = Paragraph(footertext,footer_style)           
+            p = Paragraph(footertext,text_style(mode='footer'))           
             w,h = p.wrap(pageWidth - 2*pageMarginHor,pageHeight-pageMarginVert)
             canvas.translate( (pageWidth-w)/2.0, h)
             p.canv = canvas

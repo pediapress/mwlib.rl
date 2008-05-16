@@ -64,9 +64,6 @@ pdfmetrics.registerFont(UnicodeCIDFont('HYSMyeongJo-Medium')) #KOR
 standardFont =  "DejaVuSerif"
 standardSansSerif = "DejaVuSans"
 standardMonoFont = "DejaVuSansMono"
-STANDARDFONTSIZE = 10
-SMALLFONTSIZE = 8
-BIGFONTSIZE = 12
 ########## / REGISTER FONTS
 
 ### TABLE CONFIG
@@ -137,9 +134,6 @@ printHeight = pageHeight - 2*pageMarginVert
 
 footerMarginHor = 1.5 * cm
 footerMarginVert= 1.5 * cm
-leftIndent = 25 # indentation of paragraphs...
-rightIndent = 25 # indentation of paragraphs...
-listIndent = 12 # indentation of lists per level
 
 showPageHeader = True 
 showPageFooter = True
@@ -153,12 +147,25 @@ titlepagefooter = '@WIKITITLE@ book - Generated using the open source mwlib tool
 
 
 ######### TEXT CONFIGURATION
+FONTSIZE = 10
+LEADING = 15
+
+SMALLFONTSIZE = 8
+SMALLLEADING = 12
+
+BIGFONTSIZE = 12
+BIGLEADING = 17
+
+LEFTINDENT = 25 # indentation of paragraphs...
+RIGHTINDENT = 25 # indentation of paragraphs...
+LISTINDENT = 12 # indentation of lists per level
+
 
 class BaseStyle(PropertySet):
     defaults = {
         'fontName': standardFont,
-        'fontSize': STANDARDFONTSIZE,
-        'leading': 15,
+        'fontSize': FONTSIZE,
+        'leading': LEADING,
         'autoLeading':'max',
         'leftIndent':0,
         'rightIndent':0,
@@ -167,202 +174,158 @@ class BaseStyle(PropertySet):
         'spaceBefore':3,
         'spaceAfter':0,
         'bulletFontName':standardFont,
-        'bulletFontSize':10,
+        'bulletFontSize':FONTSIZE,
         'bulletIndent':0,
         'textColor': black,
         'backColor':None,
         'wordWrap':None,
         }
-        
+            
+def text_style(mode='p', indent_lvl=0, in_table=0, relsize='normal'):
+    """
+    mode: p (normal paragraph), blockquote, center (centered paragraph), footer, figure (figure caption text),
+          preformatted, list
+    relsize: relative text size: small, normal, big  (currently only used for preformatted nodes
+    indent_lvl: level of indentation in lists or indented paragraphs
+    in_table: 0 - outside table
+              1 or above - inside table (nesting level of table)
+    """
+
+    style = BaseStyle(name='text_style_%s_indent_%d_table_%d_size_%s' % (mode, indent_lvl, in_table, relsize))
+    style.flowable = True # needed for "flowing" paragraphs around figures
+
+    if in_table or mode in ['footer', 'figure'] or (mode=='preformatted' and relsize=='small'):
+	style.fontSize=SMALLFONTSIZE
+	style.bulletFontSize = SMALLFONTSIZE
+	style.leading = SMALLLEADING
+	if relsize == 'small':
+	    style.fontSize -= 1
+	elif relsize == 'big':
+	    style.fontSize += 1
+
+    if mode == 'blockquote':
+	style.rightIndent = RIGHTINDENT
+	indent_lvl += 1
+
+    if mode in ['footer', 'figure', 'center']:
+	style.alignment = TA_CENTER
+
+    if mode == 'preformatted':
+	style.spaceAfter = 3
+	style.fontName = standardMonoFont
+	indent_lvl += 1
+	
+    if mode == 'list':
+	style.spaceBefore = 0
+	style.bulletIndent = LISTINDENT * max(0, indent_lvl-1)
+	style.leftIndent = LISTINDENT * indent_lvl
+    else:
+	style.leftIndent = indent_lvl*LEFTINDENT
+	
+    return style
+
+table_style = {'spaceBefore': 0.25*cm,
+               'spaceAfter': 0.25*cm}
+
+
 class BaseHeadingStyle(PropertySet):
     defaults = {
         'fontName': standardSansSerif,
-        'fontSize': 12,
-        'leading': 15,
+        'fontSize': BIGFONTSIZE,
+        'leading': LEADING,
         'autoLeading':'max',
         'leftIndent':0,
         'rightIndent':0,
         'firstLineIndent':0,
-        'alignment':TA_CENTER,
+        'alignment':TA_LEFT,
         'spaceBefore':12,
         'spaceAfter':6,
         'bulletFontName':standardFont,
-        'bulletFontSize':12,
+        'bulletFontSize':BIGFONTSIZE,
         'bulletIndent':0,
         'textColor': black,
         'backColor':None,
         'wordWrap':None,
         }
+
+def heading_style(mode='chapter', lvl=1):
+
+    style = BaseHeadingStyle(name='heading_style_%s_%d' % (mode, lvl))
+
+    if mode == 'chapter':
+	style.fontSize = 26
+	style.leading = 30
+	style.alignment = TA_CENTER
+    elif mode == 'article':
+	style.fontSize = 22
+	style.leading = 26
+	style.spaceBefore = 20
+	style.spaceAfter = 2
+    elif mode == 'section':
+	lvl = max(min(5,lvl), 1)  
+	style.fontSize = 18 - (lvl - 1) * 2
+	style.leading = style.fontSize + max(2, min(int(style.fontSize / 5), 3)) # magic: increase in leading is between 2 and 3 depending on fontsize...
+	style.spaceBefore = min(style.leading, 20)
+	if lvl > 1: # needed for "flowing" paragraphs around figures
+	    style.flowable = True
+    return style
     
 
-def p_indent_style(indent):
-    return BaseStyle(name='p_indent_%d' % indent,
-                     #alignment=TA_JUSTIFY,
-                     leftIndent=indent*leftIndent
-                     )
+## chapter_style = BaseHeadingStyle(name='chapter_style',
+##                                  fontSize=26,
+##                                  leading=30,
+##                                  )
 
-p_style = BaseStyle(name='p_style',
-                    #alignment=TA_JUSTIFY,
-                    )
+## articleTitle_style = BaseHeadingStyle(name='articleTitle_style',
+##                                       fontSize=22,
+##                                       leading=26,
+##                                       spaceBefore = 20,
+##                                       spaceAfter = 2,
+##                                       alignment=TA_LEFT,
+##                                       )
 
-p_blockquote_style = BaseStyle(name='p_blockquote_style',
-                               leftIndent = leftIndent,
-                               rightIndent = rightIndent,
-                    )
+## h1_style = BaseHeadingStyle(name='h1_style',
+##                             fontSize=18,
+##                             leading=22,
+##                             spaceBefore=20,
+##                             alignment=TA_LEFT,
+##                      )
 
-p_center_style = BaseStyle(name='p_style',
-                           alignment=TA_CENTER,
-			   )
+## h2_style = BaseHeadingStyle(name='h2_style',
+##                             fontSize=16,
+##                             leading=19,
+##                             spaceAfter=0,
+##                             spaceBefore=18,
+##                             alignment=TA_LEFT,
+##                            )
 
-link_list_style = BaseStyle(name='link_list_style',
-			    leading=13,
-			    leftIndent = 15,
-			    firstLineIndent = -15,
-			    spaceBefore = 6
-			    )
+## h3_style = BaseHeadingStyle(name='h3_style',
+##                             fontSize=14,
+##                             leading=16,
+##                             spaceBefore=16,
+##                             alignment=TA_LEFT,
+##                             )
 
-dl_style = BaseStyle(name='dl_style',
-                     #alignment=TA_JUSTIFY,
-                     spaceBefore = 8,
-                     )
-table_p_style = BaseStyle(name='table_p_style',
-			  fontSize = STANDARDFONTSIZE - 2,
-			  leading = 12
-                          )    
+## h4_style =BaseHeadingStyle(name='h4_style',
+##                            fontSize=12,
+##                            leading=14,
+##                            spaceBefore=14,
+##                            alignment=TA_LEFT,
+##                            )
 
+## h5_style =BaseHeadingStyle(name='h5_style',
+##                            fontSize=10,
+##                            leading=12,
+##                            spaceBefore=12,
+##                            alignment=TA_LEFT,
+##                            )
 
-footer_style = BaseStyle(name='footer_style',
-                         fontSize=8,
-                         leading=8,
-                         alignment=TA_CENTER,
-                         )
+## hr_style= BaseStyle(name='hr_style',
+##                          spaceBefore=0,
+##                          spaceAfter=8,
+##                          )
 
-figure_caption_style = BaseStyle(name='figure_caption',
-                                 fontSize=8,
-                                 leading=11,
-                                 spaceBefore = 4,
-                                 alignment = TA_CENTER,
-                                 )             
-def li_style(lvl):
-    return BaseStyle(name='li_style_%d' % lvl,
-                     leftIndent = listIndent * lvl,
-                     bulletIndent = listIndent * max(0, lvl-1),
-                     spaceBefore = 0,
-                     #alignment=TA_JUSTIFY,
-                     )
-
-reference_style = BaseStyle(name='reference_style',
-                            #leftIndent=leftIndent, 
-                            )          
-
-pre_style = BaseStyle(name='pre_style',
-                           fontName=standardMonoFont,
-                           leftIndent=15,
-                           spaceAfter=3,
-                           )
-
-pre_style_small =  BaseStyle(name='pre_style',
-                           fontName=standardMonoFont,
-                           fontSize=8,
-                           leading=11,
-                           leftIndent=15,
-                           spaceAfter=3,
-                           )
-
-license_title_style = BaseStyle(name='license_title_style',
-                                fontName = standardMonoFont,
-                                fontSize = 14,
-                                leading = 16,
-                                spaceAfter = 10,                                
-                                )
-
-license_heading_style = BaseStyle(name='license_heading_style',
-                                  fontName = standardMonoFont,
-                                  fontSize = 12,
-                                  leading = 14,
-                                  spaceAfter = 8,
-                                  spaceBefore = 8,
-                                  )
-
-license_text_style = BaseStyle(name='license_text_style',
-                               fontName = standardMonoFont,
-                               fontSize = 8,
-                               leading = 10,
-                               spaceAfter = 4,
-                               alignment = TA_JUSTIFY,
-                               )
-
-license_li_style = BaseStyle(name='license_text_style',
-                             fontName = standardMonoFont,
-                             fontSize = 8,
-                             leading = 10,
-                             spaceAfter = 4,
-                             leftIndent = 15,
-                             bulletFontName = standardMonoFont,
-                             bulletFontSize = 8,
-                             alignment = TA_JUSTIFY,
-                             )                                
-
-
-chapter_style = BaseHeadingStyle(name='chapter_style',
-                                 fontSize=26,
-                                 leading=30,
-                                 )
-
-articleTitle_style = BaseHeadingStyle(name='articleTitle_style',
-                                      fontSize=22,
-                                      leading=26,
-                                      spaceBefore = 20,
-                                      spaceAfter = 2,
-                                      alignment=TA_LEFT,
-                                      )
-
-h1_style = BaseHeadingStyle(name='h1_style',
-                            fontSize=18,
-                            leading=22,
-                            spaceBefore=20,
-                            alignment=TA_LEFT,
-                     )
-
-h2_style = BaseHeadingStyle(name='h2_style',
-                            fontSize=16,
-                            leading=19,
-                            spaceAfter=0,
-                            spaceBefore=18,
-                            alignment=TA_LEFT,
-                           )
-
-h3_style = BaseHeadingStyle(name='h3_style',
-                            fontSize=14,
-                            leading=16,
-                            spaceBefore=16,
-                            alignment=TA_LEFT,
-                            )
-
-h4_style =BaseHeadingStyle(name='h4_style',
-                           fontSize=12,
-                           leading=14,
-                           spaceBefore=14,
-                           alignment=TA_LEFT,
-                           )
-
-h5_style =BaseHeadingStyle(name='h5_style',
-                           fontSize=10,
-                           leading=12,
-                           spaceBefore=12,
-                           alignment=TA_LEFT,
-                           )
-
-hr_style= BaseStyle(name='hr_style',
-                         spaceBefore=0,
-                         spaceAfter=8,
-                         )
-
-heading_styles = [h1_style, h2_style, h3_style, h4_style, h5_style]
-
-
-table_style = {'spaceBefore': 0.25*cm,
-               'spaceAfter': 0.25*cm}
+## heading_styles = [h1_style, h2_style, h3_style, h4_style, h5_style]
 
 
 bookTitle_style = BaseHeadingStyle(name='bookTitle_style',
@@ -375,12 +338,4 @@ bookSubTitle_style = BaseHeadingStyle(name='bookSubTitle_style',
                                      fontSize=24,
                                      leading=30,
                                      )
-
-bookAuthor_style = BaseHeadingStyle(name='bookAuthor_style',
-                                    fontSize=18,
-                                    leading=22,
-                                    )
-
-
-
 
