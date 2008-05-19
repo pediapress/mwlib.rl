@@ -215,7 +215,7 @@ class RlWriter(object):
     def writeBook(self, book, bookParseTree, output, removedArticlesFile=None,
                   coverimage=None):
         self.outputdir = output
-        #debughelper.showParseTree(sys.stdout, bookParseTree)
+        debughelper.showParseTree(sys.stdout, bookParseTree)
         buildAdvancedTree(bookParseTree)
         #debughelper.showParseTree(sys.stdout, bookParseTree)
         try:
@@ -721,12 +721,13 @@ class RlWriter(object):
         url = url.replace("/",u'/%s' % zws).replace('&amp;', u'&amp;%s' % zws).replace('.','.%s' % zws).replace('+', '+%s' % zws)
         return url
     
-    def writeURL(self, obj):
-        if self.nestingLevel and not self.refmode:
+    def writeURL(self, obj):       
+        href = obj.caption
+        display_text = self.renderURL(href)
+
+        if (self.nestingLevel and len(href) > 30) and not self.refmode:
             return self.writeNamedURL(obj)
         
-        href = obj.caption
-        display_text = self.renderURL(href)       
         txt = '<link href=%s><font fontName="%s">%s</font></link>' % (href, standardMonoFont, display_text)
         return [txt]
     
