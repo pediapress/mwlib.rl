@@ -368,7 +368,7 @@ class RlWriter(object):
         elements = self.tabularizeImages(elements)
 
         if self.references:
-            elements.append(Paragraph('<b>External URLs</b>', heading_style('section', lvl=3)))
+            elements.append(Paragraph('<b>External Links</b>', heading_style('section', lvl=3)))
             elements.extend(self.writeReferenceList())
         
         return elements
@@ -1141,7 +1141,7 @@ class RlWriter(object):
             if w > (printWidth + tableOverflowTolerance):
                 log.warning('table test rendering: too wide - printwidth: %f (tolerance %f) tablewidth: %f' % (printWidth, tableOverflowTolerance, w))
                 raise LayoutError
-            if self.nestingLevel and h > printHeight:
+            if self.nestingLevel > 1 and h > printHeight:
                 log.warning('nested table too high')
                 raise LayoutError                
             doc.build([table])
