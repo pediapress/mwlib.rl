@@ -217,7 +217,7 @@ class RlWriter(object):
         self.outputdir = output
         #debughelper.showParseTree(sys.stdout, bookParseTree)
         buildAdvancedTree(bookParseTree)
-        debughelper.showParseTree(sys.stdout, bookParseTree)
+        #debughelper.showParseTree(sys.stdout, bookParseTree)
         try:
             self.renderBook(book, bookParseTree, output, coverimage=coverimage)
             log.info('###### RENDERING OK')
@@ -454,7 +454,7 @@ class RlWriter(object):
                     else:
                         combinedNodes.append(n)
                 else:
-                    if hasattr(n, 'style') and n.style.flowable == True  and not gotSufficientFloats(figures, floatingNodes): #newpara
+                    if (hasattr(n, 'style') and n.style.flowable == True  and not gotSufficientFloats(figures, floatingNodes)): #newpara
                         floatingNodes.append(n)
                     else:                      
                         if len(floatingNodes) > 0:
@@ -1001,6 +1001,8 @@ class RlWriter(object):
 
         listIndent = max(0,(self.listIndentation + self.paraIndentLevel))
         para_style = text_style(mode='list', indent_lvl=listIndent, in_table=self.nestingLevel)
+        if resetCounter: # first list item gets extra spaceBefore
+            para_style.spaceBefore = text_style().spaceBefore
         items =  self.renderMixed(item, para_style=para_style, textPrefix=itemPrefix)
         return items
         
@@ -1008,7 +1010,6 @@ class RlWriter(object):
     def writeItemList(self, lst, numbered=False, style='itemize'):
         self.listIndentation += 1
         items = []
-        items.append(Spacer(0,text_style(in_table=self.nestingLevel).spaceBefore))
         if not style=='referencelist':
             if numbered or lst.numbered:
                 style="enumerate"

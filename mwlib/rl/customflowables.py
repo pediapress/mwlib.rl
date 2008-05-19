@@ -103,7 +103,7 @@ class FiguresAndParagraphs(Flowable):
                 else:
                     self.horizontalRuleOffsets.append(0)
                 continue
-            fullWidth = availWidth - p.style.leftIndent - p.style.rightIndent 
+            fullWidth = availWidth - p.style.leftIndent - p.style.rightIndent
             floatWidth = fullWidth - maxWf
             nfloatLines = max(0, int((totalHf - (sum(self.paraHeights)))/p.style.leading)) 
             p.width = 0

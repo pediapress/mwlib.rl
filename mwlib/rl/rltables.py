@@ -10,7 +10,7 @@ import re
 
 from mwlib.utils import all
 from mwlib import log
-from mwlib.advtree import Text, ItemList, Item, Table, Row, Cell
+from mwlib.advtree import Text, ItemList, Table, Row, Cell
 
 from reportlab.lib import colors
 from customflowables import Figure
