@@ -99,7 +99,7 @@ class TitlePage(PageTemplate):
             footertext = titlepagefooter.replace('@WIKITITLE@', self.wikititle)
             p = Paragraph(footertext,text_style(mode='footer'))           
             w,h = p.wrap(pageWidth - 2*pageMarginHor,pageHeight-pageMarginVert)
-            canvas.translate( (pageWidth-w)/2.0, h)
+            canvas.translate( (pageWidth-w)/2.0, 0.2*cm)
             p.canv = canvas
             p.draw()
         canvas.restoreState()

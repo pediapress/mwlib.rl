@@ -5,7 +5,7 @@
 # See README.txt for additional licensing information.
 
 from mwlib import advtree
-from mwlib.advtree import Paragraph, PreFormatted, ItemList, Div, Reference, Cite, Item
+from mwlib.advtree import Paragraph, PreFormatted, ItemList, Div, Reference, Cite, Item, Article, Section
 from mwlib.advtree import Text, Cell, Link, Math, URL, BreakingReturn, HorizontalRule, CategoryLink
 from mwlib.advtree import SpecialLink, ImageLink, ReferenceList, Chapter, NamedURL, LangLink, Table
                
@@ -166,6 +166,24 @@ def removeSingleCellTables(node):
     for c in node.children:
         removeSingleCellTables(c)
 
+
+def moveReferenceListSection(node):
+    """
+    the section containing the reference lists inside an article node are moved to the end of the article
+    """
+
+    if node.__class__ == Article:
+        sections = node.getChildNodesByClass(Section)
+        for section in sections:
+            reflists = section.getChildNodesByClass(ReferenceList)
+            if reflists and section.parent:
+                section.parent.removeChild(section)
+                node.appendChild(section)
+        return
+    
+    for c in node.children:
+        moveReferenceListSection(c)
+                
         
 def buildAdvancedTree(root):
     advtree.extendClasses(root) 
@@ -181,3 +199,4 @@ def buildAdvancedTree(root):
     removeCriticalTables(root)
     removeBrokenChildren(root)
     fixTableColspans(root)
+    moveReferenceListSection(root)

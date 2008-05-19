@@ -217,7 +217,7 @@ class RlWriter(object):
         self.outputdir = output
         #debughelper.showParseTree(sys.stdout, bookParseTree)
         buildAdvancedTree(bookParseTree)
-        #debughelper.showParseTree(sys.stdout, bookParseTree)
+        debughelper.showParseTree(sys.stdout, bookParseTree)
         try:
             self.renderBook(book, bookParseTree, output, coverimage=coverimage)
             log.info('###### RENDERING OK')
@@ -368,7 +368,7 @@ class RlWriter(object):
         elements = self.tabularizeImages(elements)
 
         if self.references:
-            elements.append(Paragraph('<b>External Links</b>', heading_style('section', lvl=3)))
+            elements.append(Paragraph('<b>External links</b>', heading_style('section', lvl=3)))
             elements.extend(self.writeReferenceList())
         
         return elements

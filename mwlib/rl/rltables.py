@@ -15,7 +15,8 @@ from mwlib.advtree import Text, ItemList, Item, Table, Row, Cell
 from reportlab.lib import colors
 from customflowables import Figure
 #import debughelper
-from pdfstyles import pageWidth, pageHeight, pageMarginHor
+from pdfstyles import printHeight, printWidth
+
 
 log = log.Log('rlwriter')
       
@@ -128,7 +129,7 @@ def getColWidths(data, recursionDepth=0, nestingLevel=1):
     if not data:
         return None
         
-    availWidth = pageWidth - pageMarginHor * 2
+    availWidth = printWidth - 12 # twice the total cell padding
     minwidths  = [ 0 for x in range(len(data[0]))]
     summedwidths = [ 0 for x in range(len(data[0]))]
     maxbreaks = [ 0 for x in range(len(data[0]))]
@@ -136,9 +137,9 @@ def getColWidths(data, recursionDepth=0, nestingLevel=1):
         for (j,cell) in enumerate(row):
             cellwidth = 0
             for e in cell:
-                minw, minh = e.wrap(0,pageHeight)
-                maxw, maxh = e.wrap(availWidth,pageHeight)
-                minw += 6  # FIXME +6 is the implicit cell padding we are using
+                minw, minh = e.wrap(0,printHeight)
+                maxw, maxh = e.wrap(availWidth, printHeight)
+                minw += 6  # FIXME +6 is the cell padding we are using
                 cellwidth += minw
                 if maxh > 0:
                     rows = minh / maxh - 0.5 # approx. #linebreaks - smooted out - 
