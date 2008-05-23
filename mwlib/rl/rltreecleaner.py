@@ -144,7 +144,7 @@ def fixTableColspans(node):
         fixTableColspans(c)
         
 # ex: we delete preformatted nodes which are inside reference nodes, we keep all children off the preformatted node 
-removeNodes = {PreFormatted:Reference, Cite:Item}
+removeNodes = {PreFormatted:Reference, Cite:Item, Cite:Reference}
 def removeBrokenChildren(node):
 
     if node.__class__ in removeNodes.keys() and node.getParentNodesByClass(removeNodes[node.__class__]):

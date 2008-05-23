@@ -215,7 +215,7 @@ class RlWriter(object):
     def writeBook(self, book, bookParseTree, output, removedArticlesFile=None,
                   coverimage=None):
         self.outputdir = output
-        debughelper.showParseTree(sys.stdout, bookParseTree)
+        #debughelper.showParseTree(sys.stdout, bookParseTree)
         buildAdvancedTree(bookParseTree)
         #debughelper.showParseTree(sys.stdout, bookParseTree)
         try:
