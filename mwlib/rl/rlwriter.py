@@ -224,7 +224,7 @@ class RlWriter(object):
             return 0       
         except:
             try:
-                self.removeBadArticles(book, bookParseTree, output, removedArticlesFile)
+                self.flagFailedArticles(book, bookParseTree, output)
                 self.renderBook(book, bookParseTree, output, coverimage=coverimage)
                 log.info('###### RENDERING OK - REMOVED ARTICLES:')#, repr(open(removedArticlesFile).read()))            
                 return 0
@@ -278,35 +278,22 @@ class RlWriter(object):
             traceback.print_exc()
             raise
     
-    def removeBadArticles(self, book, bookParseTree, output, removedArticlesFile):
-        from mwlib.parser import Article
-        log.warning("unable to render book - removing problematic articles")
-        removed_articles = []
-        ok_articles = []
+
+    def flagFailedArticles(self, book, bookParseTree, output):
         for (i,node) in enumerate(bookParseTree):
-            if isinstance(node, Article):
+            if isinstance(node, advtree.Article):
                 elements = []
                 elements.extend(self.writeArticle(node))
                 try:
                     testdoc = BaseDocTemplate(output, topMargin=pageMarginVert, leftMargin=pageMarginHor, rightMargin=pageMarginHor, bottomMargin=pageMarginVert, title=getattr(book, 'title', None))
                     testdoc.addPageTemplates(WikiPage(title=node.caption, wikiurl=self.baseUrl, wikititle=self.wikiTitle))
                     testdoc.build(elements)
-                    ok_articles.append(node.caption)
                 except Exception, err:
                     log.error('article failed:' , node.caption)
                     tr = traceback.format_exc()
                     log.error(tr)
-                    bookParseTree.children.remove(node)
-                    removed_articles.append(node.caption)
-        if not removedArticlesFile:
-            log.warning('removed Articles:' + repr(' '.join(removed_articles)))
-            return
-        f = open(removedArticlesFile,"w")
-        for a in removed_articles:
-            f.write("%s\n" % a.encode("utf-8"))
-        f.close()
-        if len(ok_articles) == 0:
-            raise ReportlabError('all articles in book can\'t be rendered')
+                    node.renderFailed = True
+
     
     def writeTitlePage(self, wikititle=None, coverimage=None):       
         title = getattr(self.book, 'title', None)
@@ -348,6 +335,17 @@ class RlWriter(object):
         self.level -= 1
         return elements
 
+    def renderFailedNode(self, node, infoText):
+        txt = node.getAllDisplayText()
+        elements = []
+        elements.extend([Spacer(0, 1*cm), HRFlowable(width="100%", thickness=2), Spacer(0,0.5*cm)])
+        elements.append(Paragraph(infoText, text_style(in_table=False)))
+        elements.append(Spacer(0,0.5*cm))
+        elements.append(Paragraph(txt, text_style(in_table=False)))
+        elements.extend([Spacer(0, 0.5*cm), HRFlowable(width="100%", thickness=2), Spacer(0,1*cm)])
+        return elements
+
+
     def writeArticle(self,article):
         self.references = [] 
         title = xmlescape(article.caption)
@@ -360,7 +358,11 @@ class RlWriter(object):
         elements.append(Paragraph("<b>%s</b>" % filterText(title, defaultFont=standardSansSerif), heading_style('article')))
         elements.append(HRFlowable(width='100%', hAlign='LEFT', thickness=1, spaceBefore=0, spaceAfter=10, color=colors.black))
 
-        elements.extend(self.renderMixed(article))
+        if not hasattr(article, 'renderFailed'): # if rendering of the whole book failed, failed articles are flagged
+            elements.extend(self.renderMixed(article))
+        else:
+            articleFailText = '<strong>WARNING: Article could not be rendered - ouputting plain text.</strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer software (b) problematic Mediawiki markup (c) table is too wide'
+            elements.extend(self.renderFailedNode(article, articleFailText))
             
         # check for non-flowables
         elements = [e for e in elements if not isinstance(e,basestring)]                
@@ -1173,19 +1175,11 @@ class RlWriter(object):
             except:
                 log.info('safe rendering fail for width:', pw)
 
-        def _renderSimpleText():
-            txt = t_node.getAllDisplayText()
-            elements = []
-            elements.extend([Spacer(0, 1*cm), HRFlowable(width="100%", thickness=2), Spacer(0,0.5*cm)])
-            elements.append(Paragraph('<strong>WARNING: Table could not be rendered - ouputting plain text.</strong><br/>Potential causes of the problem are: (a) table contains a cell with content that does not fit on a single page (b) nested tables (c) table is too wide', text_style(in_table=self.nestingLevel)))
-            elements.append(Spacer(0,0.5*cm))
-            elements.append(Paragraph(txt, text_style(in_table=self.nestingLevel)))
-            elements.extend([Spacer(0, 0.5*cm), HRFlowable(width="100%", thickness=2), Spacer(0,1*cm)])
-            return elements
+        tableFailText = '<strong>WARNING: Table could not be rendered - ouputting plain text.</strong><br/>Potential causes of the problem are: (a) table contains a cell with content that does not fit on a single page (b) nested tables (c) table is too wide'
 
         if fail:
             log.warning('error rendering table - outputting plain text')
-            elements = _renderSimpleText()
+            elements = self.renderFailedNode(t_node, tableFailText)
             return (True, elements)
 
         imgname = fn +'.png'
@@ -1197,7 +1191,7 @@ class RlWriter(object):
             convertFail = os.system('convert  -density %d %s %s' % (res, fn, imgname))
 
         if convertFail:
-            elements = _renderSimpleText()
+            elements = self.renderFailedNode(t_node, tableFailText)
             log.warning('error rendering table - (pdf->png failed) outputting plain text')
             return (True, elements)
 
