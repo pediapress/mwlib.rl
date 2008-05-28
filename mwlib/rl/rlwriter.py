@@ -180,11 +180,6 @@ class RlWriter(object):
             except:
                 log.warning('could not delete temporary image: %s' % fn)
 
-    def cleanElements(self, elements):
-        for e in elements:
-            if isinstance(e, Paragraph) and (e.text == '<br />' or e.text == '<br/>'):
-                elements.remove(e)
-
     def writeLicense(self, licenseArticle):
         elements = []
         elements.append(NotAtTopPageBreak())
@@ -217,7 +212,7 @@ class RlWriter(object):
         self.outputdir = output
         #debughelper.showParseTree(sys.stdout, bookParseTree)
         buildAdvancedTree(bookParseTree)
-        #debughelper.showParseTree(sys.stdout, bookParseTree)
+        debughelper.showParseTree(sys.stdout, bookParseTree)
         try:
             self.renderBook(book, bookParseTree, output, coverimage=coverimage)
             log.info('###### RENDERING OK')
@@ -337,6 +332,7 @@ class RlWriter(object):
 
     def renderFailedNode(self, node, infoText):
         txt = node.getAllDisplayText()
+        txt = xmlescape(txt)
         elements = []
         elements.extend([Spacer(0, 1*cm), HRFlowable(width="100%", thickness=2), Spacer(0,0.5*cm)])
         elements.append(Paragraph(infoText, text_style(in_table=False)))

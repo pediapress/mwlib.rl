@@ -271,63 +271,6 @@ def heading_style(mode='chapter', lvl=1):
     return style
     
 
-## chapter_style = BaseHeadingStyle(name='chapter_style',
-##                                  fontSize=26,
-##                                  leading=30,
-##                                  )
-
-## articleTitle_style = BaseHeadingStyle(name='articleTitle_style',
-##                                       fontSize=22,
-##                                       leading=26,
-##                                       spaceBefore = 20,
-##                                       spaceAfter = 2,
-##                                       alignment=TA_LEFT,
-##                                       )
-
-## h1_style = BaseHeadingStyle(name='h1_style',
-##                             fontSize=18,
-##                             leading=22,
-##                             spaceBefore=20,
-##                             alignment=TA_LEFT,
-##                      )
-
-## h2_style = BaseHeadingStyle(name='h2_style',
-##                             fontSize=16,
-##                             leading=19,
-##                             spaceAfter=0,
-##                             spaceBefore=18,
-##                             alignment=TA_LEFT,
-##                            )
-
-## h3_style = BaseHeadingStyle(name='h3_style',
-##                             fontSize=14,
-##                             leading=16,
-##                             spaceBefore=16,
-##                             alignment=TA_LEFT,
-##                             )
-
-## h4_style =BaseHeadingStyle(name='h4_style',
-##                            fontSize=12,
-##                            leading=14,
-##                            spaceBefore=14,
-##                            alignment=TA_LEFT,
-##                            )
-
-## h5_style =BaseHeadingStyle(name='h5_style',
-##                            fontSize=10,
-##                            leading=12,
-##                            spaceBefore=12,
-##                            alignment=TA_LEFT,
-##                            )
-
-## hr_style= BaseStyle(name='hr_style',
-##                          spaceBefore=0,
-##                          spaceAfter=8,
-##                          )
-
-## heading_styles = [h1_style, h2_style, h3_style, h4_style, h5_style]
-
-
 bookTitle_style = BaseHeadingStyle(name='bookTitle_style',
                                    fontSize=36,
                                    leading=40,
