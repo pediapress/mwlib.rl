@@ -566,6 +566,8 @@ class RlWriter(object):
 
 
     def transformEntities(self,s):
+        if not s:
+            return None
         entities = re.findall('&([a-zA-Z]{1,10});', s)
         if entities:
             for e in entities:         
@@ -576,6 +578,8 @@ class RlWriter(object):
         
     def writeText(self,obj):
         txt = obj.caption
+        if not txt:
+            return []
         if not self.preMode:
             txt = self.transformEntities(txt)
         txt = xmlescape(txt)
