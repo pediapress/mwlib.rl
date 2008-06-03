@@ -142,21 +142,32 @@ def fixTableColspans(node):
     # END SINGLE CELL COLSPAN ERROR FIX
     for c in node.children:
         fixTableColspans(c)
-        
+
+
+
+def _any(list):
+    for x in list:
+        if x:
+            return True
+    return False
+
 # ex: we delete preformatted nodes which are inside reference nodes, we keep all children off the preformatted node 
-removeNodes = {PreFormatted:Reference, Cite:Item, Cite:Reference}
+removeNodes = {PreFormatted:[Reference], Cite:[Item, Reference]}
 def removeBrokenChildren(node):
-
-    if node.__class__ in removeNodes.keys() and node.getParentNodesByClass(removeNodes[node.__class__]):
-        children = node.children
-        node.parent.replaceChild(node, newchildren=children)
-
+    if node.__class__ in removeNodes.keys():
+        if _any([parent.__class__ in removeNodes[node.__class__] for parent in node.parents]):
+            if node.children:
+                children = node.children
+                node.parent.replaceChild(node, newchildren=children)
+            else:
+                node.remove()
+            return
+        
     for c in node.children:
         removeBrokenChildren(c)
 
 
 def removeSingleCellTables(node):
-
     if node.__class__ == Table:
         if len(node.children) == 1 and len(node.children[0].children) == 1:
             if node.parent:
