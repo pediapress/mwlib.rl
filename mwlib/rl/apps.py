@@ -114,7 +114,6 @@ def pdf():
             metabook.source = {
                 'name': metadata['name'],
                 'url': metadata['url'],
-                #'defaultarticlelicense': metadata['license'],
                 'defaultarticlelicense': metadata.get('license'),
             }
         
