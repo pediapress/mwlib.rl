@@ -6,7 +6,7 @@
 
 import os
 
-from reportlab.lib.styles import PropertySet
+from reportlab.lib.styles import PropertySet, ParagraphStyle
 from reportlab.lib.enums import TA_LEFT, TA_CENTER, TA_JUSTIFY #TA_RIGHT
 from reportlab.lib.units import cm
 from reportlab.lib.fonts import addMapping
@@ -179,6 +179,7 @@ class BaseStyle(PropertySet):
         'textColor': black,
         'backColor':None,
         'wordWrap':None,
+	'textTransform':None,
         }
             
 def text_style(mode='p', indent_lvl=0, in_table=0, relsize='normal'):
@@ -246,6 +247,7 @@ class BaseHeadingStyle(PropertySet):
         'textColor': black,
         'backColor':None,
         'wordWrap':None,
+	'textTransform':None,
         }
 
 def heading_style(mode='chapter', lvl=1):
