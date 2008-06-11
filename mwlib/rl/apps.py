@@ -7,7 +7,7 @@
 import os
 import sys
 import optparse
-from ConfigParser import ConfigParser
+from ConfigParser import ConfigParser, Error as CPError
 
 import mwlib.log
 from mwlib.metabook import MetaBook
@@ -93,18 +93,20 @@ def pdf():
     
         if config:
             w = wiki.makewiki(config)
-        
-            cp=ConfigParser()
-            cp.read(config)
-            license = {
-                'name': cp.get('wiki', 'defaultarticlelicense')
-            }
-            license['wikitext'] = w['wiki'].getRawArticle(license['name'])
-            metabook.source = {
-                'name': cp.get('wiki', 'name'),
-                'url': cp.get('wiki', 'url'),
-                'defaultarticlelicense': license,
-            }
+            cp = w.configparser
+            license = dict(name=None, wikitext=None)
+            try:
+                license['name'] = cp.get('wiki', 'defaultarticlelicense')
+                license['wikitext'] = w['wiki'].getRawArticle(license['name'])
+            except CPError, err:
+                pass
+            metabook.source = dict(name='', url='', defaultarticlelicense=license)
+            try:
+                metabook.source['name'] = cp.get('wiki', 'name')
+                metabook.source['url'] = cp.get('wiki', 'url')
+            except CPError, err:
+                pass
+            
         else:
             w = {
                 'wiki': wiki.wiki_mwapi(baseurl, options.license, options.template_blacklist),
