@@ -6,7 +6,7 @@
 
 import os
 
-from reportlab.lib.styles import PropertySet, ParagraphStyle
+from reportlab.lib.styles import ParagraphStyle
 from reportlab.lib.enums import TA_LEFT, TA_CENTER, TA_JUSTIFY #TA_RIGHT
 from reportlab.lib.units import cm
 from reportlab.lib.fonts import addMapping
@@ -161,26 +161,28 @@ RIGHTINDENT = 25 # indentation of paragraphs...
 LISTINDENT = 12 # indentation of lists per level
 
 
-class BaseStyle(PropertySet):
-    defaults = {
-        'fontName': standardFont,
-        'fontSize': FONTSIZE,
-        'leading': LEADING,
-        'autoLeading':'max',
-        'leftIndent':0,
-        'rightIndent':0,
-        'firstLineIndent':0,
-        'alignment':TA_LEFT,
-        'spaceBefore':3,
-        'spaceAfter':0,
-        'bulletFontName':standardFont,
-        'bulletFontSize':FONTSIZE,
-        'bulletIndent':0,
-        'textColor': black,
-        'backColor':None,
-        'wordWrap':None,
-	'textTransform':None,
-        }
+
+class BaseStyle(ParagraphStyle):
+
+    def __init__(self, name, parent=None, **kw):
+	ParagraphStyle.__init__(self, name=name, parent=parent, **kw)
+	self.fontName = standardFont
+	self.fontSize = FONTSIZE
+	self.leading = LEADING
+	self.autoLeading = 'max'
+	self.leftIndent = 0
+	self.rightIndent = 0
+	self.firstLineIndent = 0
+	self.alignment = TA_LEFT	
+	self.spaceBefore = 3
+	self.spaceAfter = 0
+	self.bulletFontName = standardFont
+	self.bulletFontSize = FONTSIZE
+	self.bulletIndent = 0
+	self.textColor = black
+	self.backcolor = None
+	self.wordWrap = None
+	self.textTransform = None
             
 def text_style(mode='p', indent_lvl=0, in_table=0, relsize='normal'):
     """
@@ -229,27 +231,28 @@ table_style = {'spaceBefore': 0.25*cm,
                'spaceAfter': 0.25*cm}
 
 
-class BaseHeadingStyle(PropertySet):
-    defaults = {
-        'fontName': standardSansSerif,
-        'fontSize': BIGFONTSIZE,
-        'leading': LEADING,
-        'autoLeading':'max',
-        'leftIndent':0,
-        'rightIndent':0,
-        'firstLineIndent':0,
-        'alignment':TA_LEFT,
-        'spaceBefore':12,
-        'spaceAfter':6,
-        'bulletFontName':standardFont,
-        'bulletFontSize':BIGFONTSIZE,
-        'bulletIndent':0,
-        'textColor': black,
-        'backColor':None,
-        'wordWrap':None,
-	'textTransform':None,
-        }
+class BaseHeadingStyle(ParagraphStyle):
 
+    def __init__(self, name, parent=None, **kw):
+	ParagraphStyle.__init__(self, name=name, parent=parent, **kw)
+	self.fontName = standardSansSerif
+	self.fontSize = BIGFONTSIZE
+	self.leading = LEADING
+	self.autoLeading = 'max'
+	self.leftIndent = 0
+	self.rightIndent = 0
+	self.firstLineIndent = 0
+	self.alignment = TA_LEFT	
+	self.spaceBefore = 12
+	self.spaceAfter = 6
+	self.bulletFontName = standardFont
+	self.bulletFontSize = BIGFONTSIZE
+	self.bulletIndent = 0
+	self.textColor = black
+	self.backcolor = None
+	self.wordWrap = None
+	self.textTransform = None
+	
 def heading_style(mode='chapter', lvl=1):
 
     style = BaseHeadingStyle(name='heading_style_%s_%d' % (mode, lvl))
