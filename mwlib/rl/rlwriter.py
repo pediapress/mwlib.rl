@@ -300,10 +300,13 @@ class RlWriter(object):
         elements = [Paragraph(xmlescape(title), bookTitle_style)]
         if subtitle:
             elements.append(Paragraph(xmlescape(subtitle), bookSubTitle_style))
+        firstArticle=None
         for item in self.book.getItems():
             if item['type'] == 'article':
                 firstArticle = item['title']
                 break
+        if not firstArticle:
+            return elements
         self.doc.addPageTemplates(WikiPage(firstArticle,wikiurl=self.baseUrl, wikititle=self.wikiTitle))
         elements.append(NextPageTemplate(firstArticle.encode('utf-8')))
         elements.append(PageBreak())
