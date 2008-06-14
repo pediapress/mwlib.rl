@@ -39,7 +39,7 @@ def pdf():
     optparser = optparse.OptionParser(usage="""%prog [OPTIONS] [ARTICLE ...]""")
     optparser.add_option("-c", "--config", help="config file (required unless --baseurl is given)")
     optparser.add_option("-b", "--baseurl", help="base URL for mwapidb backend")
-    optparser.add_option("-s", "--shared-baseurl", help="base URL for shared images for mwapidb backend")
+    optparser.add_option("-s", "--shared-baseurl", help="DEPRECATED, DO NOT USE!")
     optparser.add_option("-o", "--output", help="write output to OUTPUT")
     optparser.add_option("-l", "--logfile", help="write logfile")
     optparser.add_option("-m", "--metabookfile", help="json encoded text file with book structure")
@@ -110,7 +110,7 @@ def pdf():
         else:
             w = {
                 'wiki': wiki.wiki_mwapi(baseurl, options.license, options.template_blacklist),
-                'images': wiki.image_mwapi(baseurl, options.shared_baseurl)
+                'images': wiki.image_mwapi(baseurl)
             }
             metadata = w['wiki'].getMetaData()
             metabook.source = {
