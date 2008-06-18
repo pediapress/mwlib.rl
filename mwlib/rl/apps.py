@@ -216,3 +216,4 @@ def zip2pdf():
     bookParseTree = buildBook(wikidb)
 
     r.writeBook(wikidb.metabook, bookParseTree, output=output)
+    imagedb.clean()
