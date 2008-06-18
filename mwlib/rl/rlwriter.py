@@ -13,7 +13,7 @@ import urllib
 import traceback
 import tempfile
 import htmlentitydefs
-
+import shutil
 
 from xml.sax.saxutils import escape as xmlescape
 from PIL import Image as PilImage
@@ -43,9 +43,10 @@ from customflowables import Figure, FiguresAndParagraphs
 from pdfstyles import text_style, heading_style, table_style
 from pdfstyles import bookTitle_style, bookSubTitle_style
 
-from pdfstyles import pageMarginHor, pageMarginVert, filterText, standardSansSerif, standardMonoFont
+from pdfstyles import pageMarginHor, pageMarginVert, standardSansSerif, standardMonoFont, standardFont
 from pdfstyles import printWidth, printHeight, SMALLFONTSIZE, BIGFONTSIZE, FONTSIZE
 from pdfstyles import tableOverflowTolerance
+from pdfstyles import max_img_width, max_img_height, min_img_dpi
 
 import rltables
 from pagetemplates import WikiPage, TitlePage, SimplePage
@@ -101,6 +102,54 @@ def serializeStyleInfo(styleHash):
     return res
 
 
+########## FONT SWITCHER METHOD -- DONT CHANGE UNLESS YOU KNOW WHAT YOU ARE DOING
+
+                
+def filterText(txt, defaultFont=standardFont):   
+    if isinstance(txt,list):
+        txt = ''.join(txt)
+
+    t = []   
+    def getScript(letter):
+        o = ord(letter)
+        if o <= 592:  
+            return defaultFont
+        elif (o > 592 and o < 11904):
+            return "DejaVuSans"
+        elif (o >= 11904 and o <= 12255) \
+            or (o >= 12272 and o <= 12287) \
+            or (o >= 12352 and o <= 12591) \
+            or (o >= 12704 and o <= 12735) \
+            or (o >= 13312 and o <= 19903) \
+            or (o >= 19968 and o <= 40895) \
+            or (o >= 65104 and o <= 65135):
+            return "STSong-Light" # --> Chinese Simplified
+        elif (o >= 63744 and o <= 64255) \
+            or (o >= 12592 and o <= 12687) \
+            or (o >= 44032 and o <= 55215):
+            return "HYSMyeongJo-Medium"  #--> Korean    
+        return "DejaVuSans"
+
+    lastscript = defaultFont  
+    switchedFont = False
+    for l in txt:
+        if l in [" ",u"\u200B"]: # dont switch font for spacelike chars 
+            t.append(l)
+            continue
+        _script = getScript(l)
+        if _script != lastscript:
+            if switchedFont:
+                t.append('</font>')
+            else:
+                switchedFont = True
+            t.append('<font name=%s>' % _script)
+            lastscript = _script
+        t.append(l)
+    if switchedFont:
+        t.append('</font>')
+    return ''.join(t)
+
+########## / FONT SWITCHER METHOD
 
 class ReportlabError(Exception):
     def __init__(self, value):
@@ -216,17 +265,20 @@ class RlWriter(object):
         try:
             self.renderBook(book, bookParseTree, output, coverimage=coverimage)
             log.info('###### RENDERING OK')
+            shutil.rmtree(self.tmpdir)
             return 0       
         except:
             try:
                 self.flagFailedArticles(book, bookParseTree, output)
                 self.renderBook(book, bookParseTree, output, coverimage=coverimage)
                 log.info('###### RENDERING OK - REMOVED ARTICLES:')#, repr(open(removedArticlesFile).read()))            
+                shutil.rmtree(self.tmpdir)
                 return 0
             except Exception, err: # cant render book
                 traceback.print_exc()
                 log.error('###### RENDERING FAILED:')
                 log.error(err)
+                shutil.rmtree(self.tmpdir)
                 raise
 
     def renderBook(self, book, bookParseTree, output, coverimage=None):
@@ -375,36 +427,8 @@ class RlWriter(object):
         return elements
     
     def writeParagraph(self,obj):
-        # FIXME: handle image-only paragraphs in treecleaner
         return self.renderMixed(obj)
 
-##         t = ''.join(txt) # catch image only paragraphs. probably due to faulty/unwanted MW markup        
-##         if len(t.strip()):            
-##             imgRegex = re.compile('<img src="(?P<src>.*?)" width="(?P<width>.*?)in" height="(?P<height>.*?)in" valign=".*?"/>$')
-##             res=imgRegex.match(t)
-##             if res:
-##                 try:                    
-##                     src = res.group('src')
-##                     log.info('got image only paragraph:', src, 'width', res.group('width'), 'height', res.group('height'))
-##                     if self.nestingLevel:
-##                         width = float(res.group('width')) * inch
-##                         height = float(res.group('height')) * inch
-##                     else:
-##                         img = PilImage.open(src)
-##                         w,h = img.size
-##                         ar = w/h
-##                         arPage = printWidth/printHeight
-##                         if printWidth >= 1/4 *printHeight * ar:
-##                             height = min(1/4*printHeight, h * inch/100) # min res is 100dpi
-##                         else:
-##                             height = min(printWidth / ar, h * inch/100)
-##                         width = height * ar
-##                     return [Image(src, width=width, height=height, lazy=0)]
-##                 except:
-##                     traceback.print_exc()
-##                     pass
-##             elements.append(Paragraph(t, p_style)) #filter
-##         return elements
 
     def floatImages(self, nodes):
         """Floating images are combined with paragraphs.
@@ -818,9 +842,8 @@ class RlWriter(object):
                 items.extend(self.write(node))
             return items
 
-        targetWidth = 400
         if self.imgDB:
-            imgPath = self.imgDB.getDiskPath(obj.target, size=targetWidth)
+            imgPath = self.imgDB.getDiskPath(obj.target)
             if imgPath:
                 #self._cleanImage(imgPath)
                 imgPath = imgPath.encode('utf-8')
@@ -832,9 +855,7 @@ class RlWriter(object):
             return []
                
         def sizeImage(w,h):
-            max_img_width = 7 # max size in cm FIXME: make this configurable
-            max_img_height = 11 # FIXME: make this configurable
-            scale = 1/30 # 100 dpi = 30 dpcm <-- this is the minimum pic resolution FIXME: make this configurable
+            scale = 1 / (min_img_dpi / 2.54)
             _w = w * scale
             _h = h * scale
             if _w > max_img_width or _h > max_img_height:
