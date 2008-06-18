@@ -317,7 +317,8 @@ class RlWriter(object):
         if not bookParseTree.getChildNodesByClass(parser.Article):
             pt = WikiPage('', wikiurl=self.baseUrl, wikititle=self.wikiTitle)
             self.doc.addPageTemplates(pt)
-            
+            elements.append(Paragraph(' ', text_style()))
+                            
         log.info("start rendering: %r" % output)
         try:
             self.doc.build(elements)
