@@ -262,10 +262,7 @@ class RlWriter(object):
         #debughelper.showParseTree(sys.stdout, bookParseTree)
         buildAdvancedTree(bookParseTree)
         #debughelper.showParseTree(sys.stdout, bookParseTree)
-
-        articles = bookParseTree.getChildNodesByClass(parser.Article)
-        if not articles:
-            return 1
+               
         try:
             self.renderBook(book, bookParseTree, output, coverimage=coverimage)
             log.info('###### RENDERING OK')
@@ -275,7 +272,7 @@ class RlWriter(object):
             try:
                 self.flagFailedArticles(book, bookParseTree, output)
                 self.renderBook(book, bookParseTree, output, coverimage=coverimage)
-                log.info('###### RENDERING OK - REMOVED ARTICLES:')#, repr(open(removedArticlesFile).read()))            
+                log.info('###### RENDERING OK - REMOVED ARTICLES:')
                 shutil.rmtree(self.tmpdir)
                 return 0
             except Exception, err: # cant render book
@@ -316,6 +313,11 @@ class RlWriter(object):
             )))
         else:
             log.warn('no license')
+
+        if not bookParseTree.getChildNodesByClass(parser.Article):
+            pt = WikiPage('', wikiurl=self.baseUrl, wikititle=self.wikiTitle)
+            self.doc.addPageTemplates(pt)
+            
         log.info("start rendering: %r" % output)
         try:
             self.doc.build(elements)
