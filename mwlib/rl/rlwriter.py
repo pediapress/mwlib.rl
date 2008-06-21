@@ -850,7 +850,7 @@ class RlWriter(object):
             return items
 
         if self.imgDB:
-            imgPath = self.imgDB.getDiskPath(obj.target)
+            imgPath = self.imgDB.getDiskPath(obj.target, size=800) # FIXME: size configurable etc.
             if imgPath:
                 #self._cleanImage(imgPath)
                 imgPath = imgPath.encode('utf-8')
