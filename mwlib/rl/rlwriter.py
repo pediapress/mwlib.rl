@@ -1164,7 +1164,7 @@ class RlWriter(object):
         scaled down image.
         """
 
-        print "testrendering:", os.path.join(self.tmpdir, 'table%d.pdf' % self.tablecount)
+        log.info("testrendering:", os.path.join(self.tmpdir, 'table%d.pdf' % self.tablecount))
         fn = os.path.join(self.tmpdir, 'table%d.pdf' % self.tablecount)
         self.tablecount += 1
 
