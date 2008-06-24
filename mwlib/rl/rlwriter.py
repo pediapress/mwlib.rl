@@ -257,6 +257,9 @@ class RlWriter(object):
         if not self.displayNode(obj):
             return []
         m = "write" + obj.__class__.__name__
+        if not hasattr(self, m):
+            log.error('unknown node:', repr(obj.__class__.__name__))
+            return []
         m=getattr(self, m)
         return m(obj)
 
@@ -308,6 +311,7 @@ class RlWriter(object):
 
         if not self.disable_group_elements:
             elements = self.groupElements(elements)
+
         licenseData = self.book.source.get('defaultarticlelicense', None)
         if licenseData and licenseData.get('name') and licenseData.get('wikitext'):
             elements.append(NotAtTopPageBreak())
