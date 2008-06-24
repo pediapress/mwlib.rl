@@ -810,8 +810,7 @@ class RlWriter(object):
         txt = ''.join(txt)
         if txt.find("|") > -1:
             txt = txt[:txt.find("|")] # category links sometimes seem to have more than one element. throw them away except the first one
-        url = u"%s%s" % (self.baseUrl, urllib.quote(txt.encode('utf-8')))
-        return ['<link href="%s">%s</link>' % ( url, ''.join(txt))]
+        return [''.join(txt)]
     
     def writeLangLink(self, node):
         return self.writeLink(node)
