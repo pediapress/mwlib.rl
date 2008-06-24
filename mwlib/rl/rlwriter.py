@@ -164,12 +164,15 @@ class ReportlabError(Exception):
 
 class RlWriter(object):
 
-    def __init__(self, env):
+    def __init__(self, env=None):
         self.env = env
-        self.book = self.env.metabook
+        if self.env is not None:
+            self.book = self.env.metabook
+            self.imgDB = env.images
+        else:
+            self.imgDB = None
         self.level = 0  # level of article sections --> similar to html heading tag levels
         self.references = []
-        self.imgDB = env.images
         self.listIndentation = 0  # nesting level of lists
         self.listCounterID = 1
         self.baseUrl = ''
