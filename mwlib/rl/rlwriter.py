@@ -164,10 +164,12 @@ class ReportlabError(Exception):
 
 class RlWriter(object):
 
-    def __init__(self, images=None):        
+    def __init__(self, env):
+        self.env = env
+        self.book = self.env.metabook
         self.level = 0  # level of article sections --> similar to html heading tag levels
         self.references = []
-        self.imgDB = images
+        self.imgDB = env.images
         self.listIndentation = 0  # nesting level of lists
         self.listCounterID = 1
         self.baseUrl = ''
@@ -263,7 +265,7 @@ class RlWriter(object):
         m=getattr(self, m)
         return m(obj)
 
-    def writeBook(self, book, bookParseTree, output, removedArticlesFile=None,
+    def writeBook(self, bookParseTree, output, removedArticlesFile=None,
                   coverimage=None):
         self.outputdir = output
         #debughelper.showParseTree(sys.stdout, bookParseTree)
@@ -271,14 +273,16 @@ class RlWriter(object):
         #debughelper.showParseTree(sys.stdout, bookParseTree)
                
         try:
-            self.renderBook(book, bookParseTree, output, coverimage=coverimage)
+            self.renderBook(bookParseTree, output, coverimage=coverimage)
             log.info('###### RENDERING OK')
             shutil.rmtree(self.tmpdir)
             return 0
-        except:
+        except Exception, err:
+            traceback.print_exc()
+            log.error('###### renderBookFailed: %s' % err)
             try:
-                self.flagFailedArticles(book, bookParseTree, output)
-                self.renderBook(book, bookParseTree, output, coverimage=coverimage)
+                self.flagFailedArticles(bookParseTree, output)
+                self.renderBook(bookParseTree, output, coverimage=coverimage)
                 log.info('###### RENDERING OK - SOME ARTICLES WRITTEN IN PLAINTEXT')
                 shutil.rmtree(self.tmpdir)
                 return 0
@@ -289,13 +293,13 @@ class RlWriter(object):
                 shutil.rmtree(self.tmpdir)
                 raise
 
-    def renderBook(self, book, bookParseTree, output, coverimage=None):
-        self.book = book
-        self.baseUrl = book.source['url']
-        self.wikiTitle = book.source.get('name')
+    def renderBook(self, bookParseTree, output, coverimage=None):
+        source = self.env.get_source()
+        self.baseUrl = source['url']
+        self.wikiTitle = source['name']
         elements = []
         version = 'mwlib version: %s , rlwriter version: %s' % (rlwriterversion, mwlibversion)
-        self.doc = BaseDocTemplate(output, topMargin=pageMarginVert, leftMargin=pageMarginHor, rightMargin=pageMarginHor, bottomMargin=pageMarginVert,title=getattr(book, 'title', None), keywords=version)
+        self.doc = BaseDocTemplate(output, topMargin=pageMarginVert, leftMargin=pageMarginHor, rightMargin=pageMarginHor, bottomMargin=pageMarginVert,title=getattr(self.book, 'title', None), keywords=version)
 
         self.output = output
         self.tmpdir = tempfile.mkdtemp()
@@ -312,16 +316,14 @@ class RlWriter(object):
         if not self.disable_group_elements:
             elements = self.groupElements(elements)
 
-        licenseData = self.book.source.get('defaultarticlelicense', None)
-        if licenseData and licenseData.get('name') and licenseData.get('wikitext'):
+        for license in self.env.get_licenses():
             elements.append(NotAtTopPageBreak())
             elements.extend(self.writeArticle(uparser.parseString(
-                title=licenseData['name'],
-                raw=licenseData['wikitext'],
+                title=license['title'],
+                raw=license['wikitext'],
+                wikidb=self.env.wiki,
             )))
-        else:
-            log.warn('no license')
-
+        
         if not bookParseTree.getChildNodesByClass(parser.Article):
             pt = WikiPage('', wikiurl=self.baseUrl, wikititle=self.wikiTitle)
             self.doc.addPageTemplates(pt)
@@ -341,13 +343,13 @@ class RlWriter(object):
             raise
     
 
-    def flagFailedArticles(self, book, bookParseTree, output):
+    def flagFailedArticles(self, bookParseTree, output):
         for (i,node) in enumerate(bookParseTree):
             if isinstance(node, advtree.Article):
                 elements = []
                 elements.extend(self.writeArticle(node))
                 try:
-                    testdoc = BaseDocTemplate(output, topMargin=pageMarginVert, leftMargin=pageMarginHor, rightMargin=pageMarginHor, bottomMargin=pageMarginVert, title=getattr(book, 'title', None))
+                    testdoc = BaseDocTemplate(output, topMargin=pageMarginVert, leftMargin=pageMarginHor, rightMargin=pageMarginHor, bottomMargin=pageMarginVert, title=getattr(self.book, 'title', None))
                     testdoc.addPageTemplates(WikiPage(title=node.caption, wikiurl=self.baseUrl, wikititle=self.wikiTitle))
                     testdoc.build(elements)
                 except Exception, err:

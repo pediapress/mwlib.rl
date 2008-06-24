@@ -2,7 +2,7 @@ include .hgignore
 include MANIFEST.in
 include README.html
 include README.txt
-include enwiki-conf.txt
+include conftest.py
 include example-mwlib.config
 include ez_setup.py
 include mwlib/__init__.py
@@ -31,5 +31,6 @@ include mwlib/rl/rltreecleaner.py
 include mwlib/rl/rlwriter.py
 include mwlib/rl/wikipedia_logo.png
 include mwlib/tests/renderhelper.py
+include mwlib/tests/test_advanced.py
 include mwlib/tests/test_basicnodes.py
 include setup.py
