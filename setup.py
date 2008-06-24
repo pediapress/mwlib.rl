@@ -23,7 +23,6 @@ setup(
     name="mwlib.rl",
     version=str(version),
     entry_points = dict(console_scripts=['mw-pdf = mwlib.rl.apps:pdf',
-                                         'mw-pdfcollection = mwlib.rl.apps:pdfcollection',
                                          'mw-zip2pdfrl = mwlib.rl.apps:zip2pdf',
                                          ]),
     install_requires=install_requires,
