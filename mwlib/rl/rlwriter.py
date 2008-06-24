@@ -46,7 +46,7 @@ from pdfstyles import bookTitle_style, bookSubTitle_style
 from pdfstyles import pageMarginHor, pageMarginVert, standardSansSerif, standardMonoFont, standardFont
 from pdfstyles import printWidth, printHeight, SMALLFONTSIZE, BIGFONTSIZE, FONTSIZE
 from pdfstyles import tableOverflowTolerance
-from pdfstyles import max_img_width, max_img_height, min_img_dpi
+from pdfstyles import max_img_width, max_img_height, min_img_dpi, inline_img_dpi
 
 import rltables
 from pagetemplates import WikiPage, TitlePage, SimplePage
@@ -81,7 +81,11 @@ def buildPara(txtList, style=text_style()):
     _txt = ''.join(txtList)
     _txt = _txt.strip()
     if len(_txt) > 0:
-        return [Paragraph(_txt, style)]
+        try:
+            return [Paragraph(_txt, style)]
+        except:
+            log.warning('reportlab paragraph error:', repr(_txt))
+            return []
     else:
         return []
 
@@ -142,7 +146,7 @@ def filterText(txt, defaultFont=standardFont):
                 t.append('</font>')
             else:
                 switchedFont = True
-            t.append('<font name=%s>' % _script)
+            t.append('<font name="%s">' % _script)
             lastscript = _script
         t.append(l)
     if switchedFont:
@@ -267,12 +271,12 @@ class RlWriter(object):
             self.renderBook(book, bookParseTree, output, coverimage=coverimage)
             log.info('###### RENDERING OK')
             shutil.rmtree(self.tmpdir)
-            return 0       
+            return 0
         except:
             try:
                 self.flagFailedArticles(book, bookParseTree, output)
                 self.renderBook(book, bookParseTree, output, coverimage=coverimage)
-                log.info('###### RENDERING OK - REMOVED ARTICLES:')
+                log.info('###### RENDERING OK - SOME ARTICLES WRITTEN IN PLAINTEXT')
                 shutil.rmtree(self.tmpdir)
                 return 0
             except Exception, err: # cant render book
@@ -384,7 +388,7 @@ class RlWriter(object):
         self.sectionTitle = True
         headingTxt = ''.join(self.write(obj.children[0])).strip()
         self.sectionTitle = False
-        elements = [Paragraph('<font name=%s><b>%s</b></font>' % (standardSansSerif,headingTxt), headingStyle)]
+        elements = [Paragraph('<font name="%s"><b>%s</b></font>' % (standardSansSerif, headingTxt), headingStyle)]
         self.level += 1
 
         elements.extend(self.renderMixed(obj.children[1:]))
@@ -627,7 +631,7 @@ class RlWriter(object):
         txt = []
         for child in node.children:
             res = self.write(child)
-            if isInline(res):
+            if isInline(res): 
                 txt.extend(res)
             else:
                 log.warning(node.__class__.__name__, ' contained block element: ', child.__class__.__name__)
@@ -753,6 +757,7 @@ class RlWriter(object):
 
 
     def renderURL(self, url):
+        url = xmlescape(url)        
         zws = '<font fontSize="1"> </font>'
         url = url.replace("/",u'/%s' % zws).replace('&amp;', u'&amp;%s' % zws).replace('.','.%s' % zws).replace('+', '+%s' % zws)
         return url
@@ -760,11 +765,11 @@ class RlWriter(object):
     def writeURL(self, obj):       
         href = obj.caption
         display_text = self.renderURL(href)
-
+        href = xmlescape(href)
         if (self.nestingLevel and len(href) > 30) and not self.refmode:
             return self.writeNamedURL(obj)
         
-        txt = '<link href=%s><font fontName="%s">%s</font></link>' % (href, standardMonoFont, display_text)
+        txt = '<link href="%s"><font fontName="%s">%s</font></link>' % (href, standardMonoFont, display_text)
         return [txt]
     
     def writeNamedURL(self,obj):
@@ -778,8 +783,7 @@ class RlWriter(object):
         else: # we are writing a reference section. we therefore directly print URLs
             txt = self.renderInline(obj)
             txt.append(' <font size="%d">(%s)</font>' % (SMALLFONTSIZE, self.renderURL(href)))
-            return [''.join(txt)]
-            
+            return [''.join(txt)]           
             
         if not obj.children:
             linktext = '[%s]' % len(self.references)
@@ -862,7 +866,10 @@ class RlWriter(object):
             return []
                
         def sizeImage(w,h):
-            scale = 1 / (min_img_dpi / 2.54)
+            if obj.isInline():
+                scale = 1 / (inline_img_dpi / 2.54)
+            else:
+                scale = 1 / (min_img_dpi / 2.54)
             _w = w * scale
             _h = h * scale
             if _w > max_img_width or _h > max_img_height:
@@ -1111,8 +1118,7 @@ class RlWriter(object):
             self.nestingLevel -= 1
             for c in t:
                 tables.extend(self.writeTable(c))
-            return tables
-        
+            return tables        
         
         for r in t.children:
             if r.__class__ == advtree.Row:

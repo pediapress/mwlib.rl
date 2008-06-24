@@ -95,9 +95,10 @@ titlepagefooter = '@WIKITITLE@ book - Generated using the open source mwlib tool
 
 ######### IMAGE CONFIGURATION
 
-max_img_width = 7 # max size in cm 
-max_img_height = 11 
-min_img_dpi = 100 # scaling factor in respect to the thumbnail-size in the wikimarkup which limits image-size
+max_img_width = 9 # max size in cm 
+max_img_height = 12 
+min_img_dpi = 75 # scaling factor in respect to the thumbnail-size in the wikimarkup which limits image-size
+inline_img_dpi = 100 # scaling factor for inline images. 100 dpi should be the ideal size in relation to 10pt text size 
 
 ######### TEXT CONFIGURATION
 FONTSIZE = 10
