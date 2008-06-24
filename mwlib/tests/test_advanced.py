@@ -208,3 +208,8 @@ def test_entity_links():
     txt = '[http://toolserver.org/~magnus/geo/geohack.php?pagename=HMS_Cardiff_(D108)&params=-51.783600_N_-58.467786_E_]'
 
     renderMW(txt, 'links_entities')
+
+def test_category_links():
+    """test for http://code.pediapress.com/wiki/ticket/177"""
+    txt = '[[:Category:foo bar]]'
+    renderMW(txt, 'links_entities')
