@@ -47,7 +47,7 @@ def pdf():
     optparser.add_option("-d", "--daemonize", action="store_true", dest="daemonize", default=False,
                       help="return immediately and generate PDF in background")
     optparser.add_option("-e", "--errorfile", dest="errorfile", help="write errors to this file")
-    optparser.add_option("--license", help="Title of article containing full license text")
+    optparser.add_option("--license", help="DEPRECATED, DO NOT USE!")
     optparser.add_option("--template-blacklist", help="Title of article containing blacklisted templates")
     optparser.add_option("-p", "--progress", help="write progress to PROGRESS")
     options, args = optparser.parse_args()
@@ -94,13 +94,7 @@ def pdf():
         if config:
             w = wiki.makewiki(config)
             cp = w.configparser
-            license = dict(name=None, wikitext=None)
-            try:
-                license['name'] = cp.get('wiki', 'defaultarticlelicense')
-                license['wikitext'] = w['wiki'].getRawArticle(license['name'])
-            except CPError, err:
-                pass
-            metabook.source = dict(name='', url='', defaultarticlelicense=license)
+            metabook.source = dict(name='', url='')
             try:
                 metabook.source['name'] = cp.get('wiki', 'name')
                 metabook.source['url'] = cp.get('wiki', 'url')
@@ -109,14 +103,13 @@ def pdf():
             
         else:
             w = {
-                'wiki': wiki.wiki_mwapi(baseurl, options.license, options.template_blacklist),
+                'wiki': wiki.wiki_mwapi(baseurl, options.template_blacklist),
                 'images': wiki.image_mwapi(baseurl)
             }
             metadata = w['wiki'].getMetaData()
             metabook.source = {
                 'name': metadata['name'],
                 'url': metadata['url'],
-                'defaultarticlelicense': metadata.get('license'),
             }
         
         progress(10)
