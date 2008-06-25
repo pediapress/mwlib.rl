@@ -20,7 +20,7 @@ from PIL import Image as PilImage
 
 from pygments import highlight
 #from pygments.lexers import JavaLexer, XmlLexer, CppLexer, PythonLexer, RubyLexer, TextLexer
-from pygments.lexers import *
+from pygments  import lexers
 from pygments.formatters import ImageFormatter
 
 from mwlib.utils import all
@@ -968,18 +968,17 @@ class RlWriter(object):
 
     def writeSource(self, n):
         mw_lang = n.vlist.get('lang', '').lower()
-        langMap = {'objc':ObjectiveCLexer(),
-                   }
-        try:
-            exec('lexer = %sLexer()' % mw_lang.capitalize())
-        except NameError:
-            lexer = langMap.get(mw_lang)
-            if not lexer:            
-                traceback.print_exc()
-                log.error('unknown source code language: %s' % repr(mw_lang))
-                return []       
+        #langMap = {'objc':ObjectiveCLexer(),
+        #           }
+
+        try:            
+            lexer = lexers.get_lexer_by_name(mw_lang)
+        except :
+            traceback.print_exc()
+            log.error('unknown source code language: %s' % repr(mw_lang))
+            return []       
                 
-        sourceFormatter = ImageFormatter(font_size=FONTSIZE, line_numbers=False)
+        sourceFormatter = ImageFormatter(font_size=FONTSIZE, font_name='DejaVu Sans Mono', line_numbers=False)
         sourceFormatter.encoding = 'utf-8'
 
         source = ''.join(self.renderInline(n))
