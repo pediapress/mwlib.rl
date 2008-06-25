@@ -17,6 +17,12 @@ import shutil
 
 from xml.sax.saxutils import escape as xmlescape
 from PIL import Image as PilImage
+
+from pygments import highlight
+#from pygments.lexers import JavaLexer, XmlLexer, CppLexer, PythonLexer, RubyLexer, TextLexer
+from pygments.lexers import *
+from pygments.formatters import ImageFormatter
+
 from mwlib.utils import all
 
 def _check_reportlab():
@@ -33,7 +39,7 @@ from reportlab.platypus.doctemplate import BaseDocTemplate, NextPageTemplate, No
 from reportlab.platypus.tables import Table
 from reportlab.platypus.flowables import Spacer, HRFlowable, PageBreak, KeepTogether, Image
 from reportlab.platypus.xpreformatted import XPreformatted
-from reportlab.lib.units import cm
+from reportlab.lib.units import cm, inch
 from reportlab.lib import colors
 from reportlab.platypus.doctemplate import LayoutError
 from reportlab.lib.pagesizes import A4
@@ -189,7 +195,9 @@ class RlWriter(object):
         self.refmode = False
         self.linkList = []
         self.disable_group_elements = False
-        
+
+        self.sourceCount = 0
+
     def ignore(self, obj):
         return []
     
@@ -266,7 +274,7 @@ class RlWriter(object):
 
     def writeBook(self, bookParseTree, output, removedArticlesFile=None,
                   coverimage=None):
-        self.outputdir = output
+        
         #debughelper.showParseTree(sys.stdout, bookParseTree)
         buildAdvancedTree(bookParseTree)
         #debughelper.showParseTree(sys.stdout, bookParseTree)
@@ -696,9 +704,9 @@ class RlWriter(object):
         return self.writeIndented(n)
 
     def writeIndented(self, n):
-        self.paraIndentLevel += 1
+        self.paraIndentLevel += n.indentlevel
         items = self.renderMixed(n, para_style=text_style(indent_lvl=self.paraIndentLevel, in_table=self.nestingLevel))
-        self.paraIndentLevel -= 1
+        self.paraIndentLevel -= n.indentlevel
         return items
         
     def writeBlockquote(self, n):
@@ -959,7 +967,46 @@ class RlWriter(object):
         return [table]
 
     def writeSource(self, n):
-        return self.writePreFormatted(n) # FIXME: syntax highlighting would be great at some point...
+        mw_lang = n.vlist.get('lang', '').lower()
+        langMap = {'objc':ObjectiveCLexer(),
+                   }
+        try:
+            exec('lexer = %sLexer()' % mw_lang.capitalize())
+        except NameError:
+            lexer = langMap.get(mw_lang)
+            if not lexer:            
+                traceback.print_exc()
+                log.error('unknown source code language: %s' % repr(mw_lang))
+                return []       
+                
+        sourceFormatter = ImageFormatter(font_size=FONTSIZE, line_numbers=False)
+        sourceFormatter.encoding = 'utf-8'
+
+        source = ''.join(self.renderInline(n))
+        try:
+            img = highlight(source.encode('utf-8'), lexer, sourceFormatter)
+        except:
+            traceback.print_exc()
+            log.error('unsuitable lexer for source code language: %s - Lexer: %s' % (repr(mw_lang), lexer.__class__.__name__))
+            
+        fn = os.path.join(self.tmpdir, 'source%d.png' % self.sourceCount)
+        f = open(fn, 'w')
+        f.write(img)
+        f.close()
+        self.sourceCount += 1
+
+        p = PilImage.open(fn)
+        w, h = p.size
+        pw = w / 1.5 # magic constant that scales the source text to an appropriate size with current font-size
+        ph = h / 1.5 # fixme: clearly this has to be done in a more intelligent manner, and should depend on FONTSIZE
+        scale = min( [printWidth/pw, printHeight/ph])
+        if scale < 1:
+            pw = pw * scale
+            ph = ph * scale
+
+        return [Image(fn, width=pw, height=ph)]
+
+        
 
     def writeCode(self, n):
         return self.writeTeletyped(n)
