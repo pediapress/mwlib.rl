@@ -197,7 +197,7 @@ class RlWriter(object):
         self.disable_group_elements = False
 
         self.sourceCount = 0
-
+        self.sourcemode = False
     def ignore(self, obj):
         return []
     
@@ -634,9 +634,10 @@ class RlWriter(object):
 
         if not txt:
             return []
-        if not self.preMode:
+        if not self.preMode or self.sourcemode:
             txt = self.transformEntities(txt)
-        txt = xmlescape(txt)
+        if not self.sourcemode:
+            txt = xmlescape(txt)
         if self.sectionTitle:
             return [filterText(txt, defaultFont=standardSansSerif, breakLong=True)]
         if self.preMode:
@@ -967,6 +968,7 @@ class RlWriter(object):
         return [table]
 
     def writeSource(self, n):
+        self.sourcemode = True
         mw_lang = n.vlist.get('lang', '').lower()
         #langMap = {'objc':ObjectiveCLexer(),
         #           }
@@ -1003,6 +1005,7 @@ class RlWriter(object):
             pw = pw * scale
             ph = ph * scale
 
+        self.sourcemode = False
         return [Image(fn, width=pw, height=ph)]
 
         
