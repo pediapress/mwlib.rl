@@ -1006,7 +1006,9 @@ class RlWriter(object):
             ph = ph * scale
 
         self.sourcemode = False
-        return [Image(fn, width=pw, height=ph)]
+        image = Image(fn, width=pw, height=ph)
+        image.hAlign = 'LEFT'
+        return [image]
 
         
 
