@@ -59,7 +59,7 @@ from mwlib.rl import debughelper
 from mwlib.rl.rltreecleaner import buildAdvancedTree
 from mwlib.rl import version as rlwriterversion
 from mwlib._version import version as  mwlibversion
-from mwlib import advtree
+from mwlib import advtree, writerbase
 
 def flatten(x):
     result = []
@@ -275,7 +275,7 @@ class RlWriter(object):
             self.renderBook(bookParseTree, output, coverimage=coverimage)
             log.info('###### RENDERING OK')
             shutil.rmtree(self.tmpdir)
-            return 0
+            return
         except Exception, err:
             traceback.print_exc()
             log.error('###### renderBookFailed: %s' % err)
@@ -284,7 +284,7 @@ class RlWriter(object):
                 self.renderBook(bookParseTree, output, coverimage=coverimage)
                 log.info('###### RENDERING OK - SOME ARTICLES WRITTEN IN PLAINTEXT')
                 shutil.rmtree(self.tmpdir)
-                return 0
+                return
             except Exception, err: # cant render book
                 traceback.print_exc()
                 log.error('###### RENDERING FAILED:')
@@ -1293,3 +1293,12 @@ class RlWriter(object):
     writeTimeline = ignore
     writeControl = ignore
 
+
+def writer(env, output, status_callback=None, coverimage=None):
+    r = RlWriter(env)    
+    if coverimage is None and env.configparser.has_section('pdf'):
+        coverimage = env.configparser.get('pdf', 'coverimage', None)
+    book = writerbase.build_book(env, status_callback=status_callback, progress_range=(10, 70))
+    if status_callback is not None:
+        status_callback(status='rendering')
+    r.writeBook(book, output=output, coverimage=coverimage)

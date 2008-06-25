@@ -22,9 +22,9 @@ def read_long_description():
 setup(
     name="mwlib.rl",
     version=str(version),
-    entry_points = dict(console_scripts=['mw-pdf = mwlib.rl.apps:pdf',
-                                         'mw-zip2pdfrl = mwlib.rl.apps:zip2pdf',
-                                         ]),
+    entry_points = {
+        'mwlib.writers': ['rl = mwlib.rl.rlwriter:writer'],
+    },
     install_requires=install_requires,
 
     packages=["mwlib", "mwlib.rl", "mwlib.fonts"],
