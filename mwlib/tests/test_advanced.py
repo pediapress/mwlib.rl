@@ -213,3 +213,8 @@ def test_category_links():
     """test for http://code.pediapress.com/wiki/ticket/177"""
     txt = '[[:Category:foo bar]]'
     renderMW(txt, 'links_entities')
+
+def test_breaking_long_sections():
+    """test for http://code.pediapress.com/wiki/ticket/177"""
+    txt = u'= sect1/Bla/blub/wurst/bier&尚書•梓材&sdg/&bla/bl&b/aslkjfasdfafasFAS/fasdfasf/asdfs&asdf ='
+    renderMW(txt, 'breaking_long_sections')

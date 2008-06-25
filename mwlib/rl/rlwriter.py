@@ -107,9 +107,9 @@ def serializeStyleInfo(styleHash):
 
 
 ########## FONT SWITCHER METHOD -- DONT CHANGE UNLESS YOU KNOW WHAT YOU ARE DOING
-
-                
-def filterText(txt, defaultFont=standardFont):   
+breakChars = ['/', '.', '+', '-']
+zws = '<font fontSize="1"> </font>'
+def filterText(txt, defaultFont=standardFont, breakLong=False):  
     if isinstance(txt,list):
         txt = ''.join(txt)
 
@@ -137,6 +137,9 @@ def filterText(txt, defaultFont=standardFont):
     lastscript = defaultFont  
     switchedFont = False
     for l in txt:
+        if breakLong and l in breakChars:
+            t.append(l+zws)
+            continue
         if l in [" ",u"\u200B"]: # dont switch font for spacelike chars 
             t.append(l)
             continue
@@ -190,6 +193,7 @@ class RlWriter(object):
     def ignore(self, obj):
         return []
     
+
     def groupElements(self, elements):
         """Group reportlab flowables into KeepTogether flowables
         to achieve meaningful pagebreaks
@@ -229,21 +233,13 @@ class RlWriter(object):
         if group:
             groupedElements.append(KeepTogether(group))
         return groupedElements
-    
-
+            
     def cleanUp(self):
         for fn in self.tmpImages:
             try:
                 os.unlink(fn)
             except:
                 log.warning('could not delete temporary image: %s' % fn)
-
-    def writeLicense(self, licenseArticle):
-        elements = []
-        elements.append(NotAtTopPageBreak())
-        elements.extend(self.renderMixed(licenseArticle))
-        return elements
-
 
     def displayNode(self, n):
         """
@@ -419,14 +415,16 @@ class RlWriter(object):
 
     def writeArticle(self,article):
         self.references = [] 
+        
         title = xmlescape(article.caption)
         log.info('writing article: %r' % title)
+        title = filterText(title, defaultFont=standardSansSerif, breakLong=True)
         elements = []
         pt = WikiPage(title, wikiurl=self.baseUrl, wikititle=self.wikiTitle)
         if hasattr(self, 'doc'): # doc is not present if tests are run
             self.doc.addPageTemplates(pt)
             elements.append(NextPageTemplate(title.encode('utf-8'))) # pagetemplate.id cant handle unicode
-        elements.append(Paragraph("<b>%s</b>" % filterText(title, defaultFont=standardSansSerif), heading_style('article')))
+        elements.append(Paragraph("<b>%s</b>" % title, heading_style('article')))
         elements.append(HRFlowable(width='100%', hAlign='LEFT', thickness=1, spaceBefore=0, spaceAfter=10, color=colors.black))
 
         if not hasattr(article, 'renderFailed'): # if rendering of the whole book failed, failed articles are flagged
@@ -625,13 +623,14 @@ class RlWriter(object):
         
     def writeText(self,obj):
         txt = obj.caption
+
         if not txt:
             return []
         if not self.preMode:
             txt = self.transformEntities(txt)
         txt = xmlescape(txt)
         if self.sectionTitle:
-            return [filterText(txt, defaultFont=standardSansSerif)]
+            return [filterText(txt, defaultFont=standardSansSerif, breakLong=True)]
         if self.preMode:
             return [filterText(txt, defaultFont=standardMonoFont)]
         return [filterText(txt)]
@@ -713,6 +712,8 @@ class RlWriter(object):
 
     def writeUnderline(self, n):
         return self.renderInlineTag(n, 'u')
+
+    writeInserted = writeUnderline
 
     def writeSub(self, n):
         return self.renderInlineTag(n, 'sub')
@@ -1007,6 +1008,7 @@ class RlWriter(object):
     def writeStrike(self, n):
         return self.renderInlineTag(n, 'strike')
 
+    writeDeleted = writeStrike
 
     def writeImageMap(self, n):
         return []
