@@ -19,7 +19,6 @@ from xml.sax.saxutils import escape as xmlescape
 from PIL import Image as PilImage
 
 from pygments import highlight
-#from pygments.lexers import JavaLexer, XmlLexer, CppLexer, PythonLexer, RubyLexer, TextLexer
 from pygments  import lexers
 from pygments.formatters import ImageFormatter
 
@@ -974,27 +973,26 @@ class RlWriter(object):
         return [table]
 
     def writeSource(self, n):
+        langMap = {} #custom Mapping between mw-markup source attrs to pygement lexers if get_lexer_by_name fails
+
         self.sourcemode = True
         mw_lang = n.vlist.get('lang', '').lower()
-        #langMap = {'objc':ObjectiveCLexer(),
-        #           }
 
         try:            
             lexer = lexers.get_lexer_by_name(mw_lang)
-        except :
-            traceback.print_exc()
-            log.error('unknown source code language: %s' % repr(mw_lang))
-            return []       
-                
+        except:
+            lexer = langMap.get(mw_lang)
+            if not lexer:
+                traceback.print_exc()
+                log.error('unknown source code language: %s' % repr(mw_lang))
+                self.sourcemode = False
+                return self.writePreFormatted(n)
+
+            
         sourceFormatter = ImageFormatter(font_size=FONTSIZE, font_name='DejaVu Sans Mono', line_numbers=False)
         sourceFormatter.encoding = 'utf-8'
 
         source = ''.join(self.renderInline(n))
-
-        print "*"*20
-        print source
-        
-        
         try:
             img = highlight(source.encode('utf-8'), lexer, sourceFormatter)
         except:
