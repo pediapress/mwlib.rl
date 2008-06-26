@@ -632,12 +632,18 @@ class RlWriter(object):
     def writeText(self,obj):
         txt = obj.caption
 
+        #if hasattr(obj, 'vlist'):
+        #    vlist = obj.vlist
+        #    if vlist.get('dir', None) == 'rtl' or vlist.get('lang', None) in ['he']:                
+        #        txt = txt[::-1]
+
         if not txt:
             return []
-        if not self.preMode or self.sourcemode:
+        if self.sourcemode:
+            return [txt]
+        if not self.preMode:
             txt = self.transformEntities(txt)
-        if not self.sourcemode:
-            txt = xmlescape(txt)
+        txt = xmlescape(txt)
         if self.sectionTitle:
             return [filterText(txt, defaultFont=standardSansSerif, breakLong=True)]
         if self.preMode:
@@ -984,6 +990,11 @@ class RlWriter(object):
         sourceFormatter.encoding = 'utf-8'
 
         source = ''.join(self.renderInline(n))
+
+        print "*"*20
+        print source
+        
+        
         try:
             img = highlight(source.encode('utf-8'), lexer, sourceFormatter)
         except:

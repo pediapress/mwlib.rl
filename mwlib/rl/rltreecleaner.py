@@ -3,6 +3,7 @@
 
 # Copyright (c) 2007, PediaPress GmbH
 # See README.txt for additional licensing information.
+import copy
 
 from mwlib import advtree
 from mwlib.advtree import Paragraph, PreFormatted, ItemList, Div, Reference, Cite, Item, Article, Section
@@ -195,6 +196,48 @@ def moveReferenceListSection(node):
     for c in node.children:
         moveReferenceListSection(c)
                 
+def inheritStyles(node, inheritStyle={}):
+    """
+    style information is handed down to child nodes.
+    """
+    
+    def flattenStyle(styleHash):
+        res =  {}
+        for k,v in styleHash.items():
+            if isinstance(v,dict):
+                for _k,_v in v.items():
+                    if isinstance(_v, basestring):
+                        res[_k.lower()] = _v.lower() 
+                    else:
+                        res[_k.lower()]= _v
+            else:
+                if isinstance(v, basestring):
+                    res[k.lower()] = v.lower() 
+                else:
+                    res[k.lower()] = v
+        return res
+
+    def cleanInheritStyles(styleHash):
+        sh = copy.copy(styleHash)
+        ignoreStyles = ['border', 'border-spacing', 'background-color', 'background', 'class', 'margin', 'padding', 'align', 'colspan', 'rowspan',
+                        'empty-cells', 'rules', 'clear', 'float', 'cellspacing', 'display', 'visibility']
+        for style in ignoreStyles:
+            sh.pop(style, None)
+        return sh
+            
+    style = getattr(node, 'vlist', {})
+    nodeStyle = inheritStyle
+    if style:
+        nodeStyle.update(flattenStyle(style))
+        node.vlist = nodeStyle        
+    elif inheritStyle:
+        node.vlist = nodeStyle
+    else:
+        nodeStyle = {}
+
+    for c in node.children:
+        _is = cleanInheritStyles(nodeStyle)
+        inheritStyles(c, inheritStyle=_is)
         
 def buildAdvancedTree(root):
     advtree.extendClasses(root) 
@@ -211,3 +254,5 @@ def buildAdvancedTree(root):
     removeBrokenChildren(root)
     fixTableColspans(root)
     moveReferenceListSection(root)
+    inheritStyles(root)
+    
