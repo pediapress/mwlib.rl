@@ -22,8 +22,6 @@ from pygments import highlight
 from pygments  import lexers
 from pygments.formatters import ImageFormatter
 
-import pyfribidi
-
 from mwlib.utils import all
 
 def _check_reportlab():
@@ -61,6 +59,13 @@ from pagetemplates import WikiPage, TitlePage, SimplePage
 from mwlib import parser, log, uparser
 
 log = log.Log('rlwriter')
+
+try:
+    import pyfribidi
+    useFriBidi = True
+except ImportError:
+    log.warning('pyfribidi not installed - rigth-to-left text not typeset correctly')
+    useFriBidi = False
 
 from mwlib.rl import debughelper
 from mwlib.rl.rltreecleaner import buildAdvancedTree
@@ -634,12 +639,17 @@ class RlWriter(object):
         return s
 
     def renderText(self, txt):
-        return xmlescape(pyfribidi.log2vis(txt, base_direction=pyfribidi.LTR))
+        if useFriBidi:
+            return xmlescape(pyfribidi.log2vis(txt, base_direction=pyfribidi.LTR))
+        else:
+            return xmlescape(txt)
 
     def writeText(self,obj):
         txt = obj.caption
-        txt = pyfribidi.log2vis(txt, base_direction=pyfribidi.LTR)
 
+        if useFriBidi:
+            txt = pyfribidi.log2vis(txt, base_direction=pyfribidi.LTR)
+            
         if not txt:
             return []
         if self.sourcemode:
