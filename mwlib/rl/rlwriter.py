@@ -64,7 +64,7 @@ try:
     import pyfribidi
     useFriBidi = True
 except ImportError:
-    log.warning('pyfribidi not installed - rigth-to-left text not typeset correctly')
+    #log.warning('pyfribidi not installed - rigth-to-left text not typeset correctly')
     useFriBidi = False
 
 from mwlib.rl import debughelper
