@@ -1376,3 +1376,5 @@ def writer(env, output, status_callback=None, coverimage=None):
     if status_callback is not None:
         status_callback(status='rendering')
     r.writeBook(book, output=output, coverimage=coverimage)
+
+writer.description = 'PDF documents (using ReportLab)'
