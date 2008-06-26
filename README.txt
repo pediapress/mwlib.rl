@@ -41,6 +41,15 @@ You will also need:
 *mwlib*
   mwlib parses mediawiki articles
 
+*pygments*
+  for source code formatting
+  http://pygments.org/ (debian packet:  python-pygments)
+
+*fribidi*
+  packet for handling bidirectional (right-to-left / left-to-right) text. gnu freebidi and the python bindings are needed
+  http://fribidi.freedesktop.org/wiki/  (debian packets: libfribidi0 and libfribidi-dev)
+  http://pyfribidi.sourceforge.net/index.html (debian packet: python-pyfribidi)
+  
 
     
 Contact/Further Information

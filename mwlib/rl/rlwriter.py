@@ -22,6 +22,8 @@ from pygments import highlight
 from pygments  import lexers
 from pygments.formatters import ImageFormatter
 
+import pyfribidi
+
 from mwlib.utils import all
 
 def _check_reportlab():
@@ -139,7 +141,8 @@ def filterText(txt, defaultFont=standardFont, breakLong=False):
             return "HYSMyeongJo-Medium"  #--> Korean    
         return "DejaVuSans"
 
-    lastscript = defaultFont  
+    #lastscript = defaultFont  
+    lastscript = standardFont
     switchedFont = False
     for l in txt:
         if breakLong and l in breakChars:
@@ -201,6 +204,8 @@ class RlWriter(object):
         return []
     
 
+    
+
     def groupElements(self, elements):
         """Group reportlab flowables into KeepTogether flowables
         to achieve meaningful pagebreaks
@@ -254,8 +259,8 @@ class RlWriter(object):
         """
         if not hasattr(n, 'vlist'):
             return True
-        style = n.vlist.get('style',None)
-        if style:
+        style = n.vlist.get('style', None)
+        if style and isinstance(style, dict):
             display = style.get('display', '').lower()
             if display == 'none':
                 return False
@@ -372,9 +377,9 @@ class RlWriter(object):
         if not title:
             return []
         self.doc.addPageTemplates(TitlePage(wikititle=wikititle, cover=coverimage))
-        elements = [Paragraph(xmlescape(title), bookTitle_style)]
+        elements = [Paragraph(self.renderText(title), bookTitle_style)]
         if subtitle:
-            elements.append(Paragraph(xmlescape(subtitle), bookSubTitle_style))
+            elements.append(Paragraph(self.renderText(subtitle), bookSubTitle_style))
         firstArticle=None
         for item in self.book.getItems():
             if item['type'] == 'article':
@@ -391,7 +396,7 @@ class RlWriter(object):
         hr = HRFlowable(width="80%", spaceBefore=6, spaceAfter=0, color=colors.black, thickness=0.5)
         return [NotAtTopPageBreak(),
                 hr,
-                Paragraph(xmlescape(chapter.caption), heading_style('chapter')),
+                Paragraph(self.renderText(chapter.caption), heading_style('chapter')),
                 hr]
 
     def writeSection(self,obj):
@@ -423,7 +428,7 @@ class RlWriter(object):
     def writeArticle(self,article):
         self.references = [] 
         
-        title = xmlescape(article.caption)
+        title = self.renderText(article.caption)
         log.info('writing article: %r' % title)
         title = filterText(title, defaultFont=standardSansSerif, breakLong=True)
         elements = []
@@ -627,14 +632,13 @@ class RlWriter(object):
                 if codepoint:
                     s = s.replace('&'+e+';', unichr(codepoint))
         return s
-        
+
+    def renderText(self, txt):
+        return xmlescape(pyfribidi.log2vis(txt, base_direction=pyfribidi.LTR))
+
     def writeText(self,obj):
         txt = obj.caption
-
-        #if hasattr(obj, 'vlist'):
-        #    vlist = obj.vlist
-        #    if vlist.get('dir', None) == 'rtl' or vlist.get('lang', None) in ['he']:                
-        #        txt = txt[::-1]
+        txt = pyfribidi.log2vis(txt, base_direction=pyfribidi.LTR)
 
         if not txt:
             return []
@@ -710,9 +714,9 @@ class RlWriter(object):
         return self.writeIndented(n)
 
     def writeIndented(self, n):
-        self.paraIndentLevel += n.indentlevel
+        self.paraIndentLevel += getattr(n, 'indentlevel', 1)
         items = self.renderMixed(n, para_style=text_style(indent_lvl=self.paraIndentLevel, in_table=self.nestingLevel))
-        self.paraIndentLevel -= n.indentlevel
+        self.paraIndentLevel -= getattr(n, 'indentlevel', 1)
         return items
         
     def writeBlockquote(self, n):
