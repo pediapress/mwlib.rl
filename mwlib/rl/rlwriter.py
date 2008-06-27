@@ -1378,3 +1378,5 @@ def writer(env, output, status_callback=None, coverimage=None):
     r.writeBook(book, output=output, coverimage=coverimage)
 
 writer.description = 'PDF documents (using ReportLab)'
+writer.content_type = 'application/pdf'
+writer.file_extension = 'pdf'
