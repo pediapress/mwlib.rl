@@ -1380,3 +1380,9 @@ def writer(env, output, status_callback=None, coverimage=None):
 writer.description = 'PDF documents (using ReportLab)'
 writer.content_type = 'application/pdf'
 writer.file_extension = 'pdf'
+writer.options = {
+    'coverimage': {
+        'param': 'FILENAME',
+        'help': 'filename of an image for the cover page',
+    }
+}
