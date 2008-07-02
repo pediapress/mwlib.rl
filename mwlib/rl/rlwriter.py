@@ -56,7 +56,7 @@ from pdfstyles import max_img_width, max_img_height, min_img_dpi, inline_img_dpi
 import rltables
 from pagetemplates import WikiPage, TitlePage, SimplePage
 
-from mwlib import parser, log, uparser
+from mwlib import parser, log, uparser, metabook
 
 log = log.Log('rlwriter')
 
@@ -315,7 +315,14 @@ class RlWriter(object):
         self.wikiTitle = source['name']
         elements = []
         version = 'mwlib version: %s , rlwriter version: %s' % (rlwriterversion, mwlibversion)
-        self.doc = BaseDocTemplate(output, topMargin=pageMarginVert, leftMargin=pageMarginHor, rightMargin=pageMarginHor, bottomMargin=pageMarginVert,title=getattr(self.book, 'title', None), keywords=version)
+        self.doc = BaseDocTemplate(output,
+            topMargin=pageMarginVert,
+            leftMargin=pageMarginHor,
+            rightMargin=pageMarginHor,
+            bottomMargin=pageMarginVert,
+            title=self.book.get('title'),
+            keywords=version,
+        )
 
         self.output = output
         self.tmpdir = tempfile.mkdtemp()
@@ -365,7 +372,13 @@ class RlWriter(object):
                 elements = []
                 elements.extend(self.writeArticle(node))
                 try:
-                    testdoc = BaseDocTemplate(output, topMargin=pageMarginVert, leftMargin=pageMarginHor, rightMargin=pageMarginHor, bottomMargin=pageMarginVert, title=getattr(self.book, 'title', None))
+                    testdoc = BaseDocTemplate(output,
+                        topMargin=pageMarginVert,
+                        leftMargin=pageMarginHor,
+                        rightMargin=pageMarginHor,
+                        bottomMargin=pageMarginVert,
+                        title=self.book.get('title'),
+                    )
                     testdoc.addPageTemplates(WikiPage(title=node.caption, wikiurl=self.baseUrl, wikititle=self.wikiTitle))
                     testdoc.build(elements)
                 except Exception, err:
@@ -376,8 +389,8 @@ class RlWriter(object):
 
     
     def writeTitlePage(self, wikititle=None, coverimage=None):       
-        title = getattr(self.book, 'title', None)
-        subtitle =  getattr(self.book, 'subtitle', None)
+        title = self.book.get('title')
+        subtitle =  self.book.get('subtitle')
 
         if not title:
             return []
@@ -386,7 +399,7 @@ class RlWriter(object):
         if subtitle:
             elements.append(Paragraph(self.renderText(subtitle), bookSubTitle_style))
         firstArticle=None
-        for item in self.book.getItems():
+        for item in metabook.get_item_list(self.book):
             if item['type'] == 'article':
                 firstArticle = item['title']
                 break

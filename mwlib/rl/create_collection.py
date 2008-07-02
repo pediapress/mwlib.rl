@@ -5,6 +5,7 @@
 # See README.txt for additional licensing information.
 
 import optparse
+import simplejson
 import sys
 
 from mwlib import metabook
@@ -27,17 +28,16 @@ def main():
     if options.subtitle:
         subtitle = unicode(options.subtitle, 'utf-8')
         
-    mb = metabook.MetaBook()
-    mb.title = title
-    mb.subtitle = subtitle
-    mb.addArticles([unicode(article, 'utf-8') for article in args])
-
+    mb = metabook.make_metabook(title=title, subtitle=subtitle)
+    for title in args:
+        mb['items'].append(metabook.make_article(title=unicode(title, 'utf-8')))
+    
     if options.output:
         f = open(options.output, 'w') 
     else:
         f = sys.stdout
 
-    f.write(mb.dumpJson())
+    f.write(simplejson.dumps(mb))
     
 if __name__ == '__main__':
     main()
