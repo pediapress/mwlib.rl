@@ -311,8 +311,8 @@ class RlWriter(object):
 
     def renderBook(self, bookParseTree, output, coverimage=None):
         source = self.env.get_source()
-        self.baseUrl = source['url']
-        self.wikiTitle = source['name']
+        self.baseUrl = source.get('url', '')
+        self.wikiTitle = source.get('name', '')
         elements = []
         version = 'mwlib version: %s , rlwriter version: %s' % (rlwriterversion, mwlibversion)
         self.doc = BaseDocTemplate(output,
