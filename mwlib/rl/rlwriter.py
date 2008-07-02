@@ -601,7 +601,7 @@ class RlWriter(object):
             finalNodes.extend(figures)
         return finalNodes
 
-    def writePreFormatted(self, obj): 
+    def writePreFormatted(self, obj):
         self.preMode = True
         txt = []
         txt.extend(self.renderInline(obj))
@@ -659,10 +659,9 @@ class RlWriter(object):
 
     def writeText(self,obj):
         txt = obj.caption
-
         if useFriBidi:
             txt = pyfribidi.log2vis(txt, base_direction=pyfribidi.LTR)
-            
+                
         if not txt:
             return []
         if self.sourcemode:

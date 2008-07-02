@@ -9,6 +9,7 @@ from mwlib import advtree
 from mwlib.advtree import Paragraph, PreFormatted, ItemList, Div, Reference, Cite, Item, Article, Section
 from mwlib.advtree import Text, Cell, Link, Math, URL, BreakingReturn, HorizontalRule, CategoryLink
 from mwlib.advtree import SpecialLink, ImageLink, ReferenceList, Chapter, NamedURL, LangLink, Table
+from mwlib.advtree import Source
                
 def fixLists(node): 
     """
@@ -91,8 +92,7 @@ def removeCriticalTables(node):
 
 # keys are nodes, that are not allowed to be inside one of the nodes in the value-list
 # ex: we pull image links out of preformatted nodes and delete the preformatted node
-moveNodes = {ImageLink:[PreFormatted],
-             ItemList:[Div]}
+moveNodes = {ImageLink:[PreFormatted], ItemList:[Div],  Source:[PreFormatted]}
 
 def moveBrokenChildren(node):
 
