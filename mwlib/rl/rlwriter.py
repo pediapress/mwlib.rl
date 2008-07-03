@@ -805,7 +805,12 @@ class RlWriter(object):
         href = self._quoteURL(href, self.baseUrl)
         return [t]
 
-
+    writeArticleLink = writeLink
+    writeLangLink = writeLink
+    writeNamespaceLink = writeLink
+    writeInterwikiLink = writeLink
+    writeSpecialLink = writeLink
+    
     def renderURL(self, url):
         url = xmlescape(url)        
         zws = '<font fontSize="1"> </font>'
@@ -858,13 +863,6 @@ class RlWriter(object):
             txt = txt[:txt.find("|")] # category links sometimes seem to have more than one element. throw them away except the first one
         return [''.join(txt)]
     
-    def writeLangLink(self, node):
-        return self.writeLink(node)
-
-    def writeSpecialLink(self,obj):
-        return self.writeLink(obj)
-
-
     def _cleanImage(self, path):
         """
         workaround for transparent images in reportlab:
