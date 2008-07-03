@@ -255,8 +255,8 @@ class RlWriter(object):
         for fn in self.tmpImages:
             try:
                 os.unlink(fn)
-            except:
-                log.warning('could not delete temporary image: %s' % fn)
+            except Exception, exc:
+                log.warning('could not delete temporary image %r: %s' % (fn, exc))
 
     def displayNode(self, n):
         """
@@ -291,7 +291,7 @@ class RlWriter(object):
         try:
             self.renderBook(bookParseTree, output, coverimage=coverimage)
             log.info('###### RENDERING OK')
-            shutil.rmtree(self.tmpdir)
+            shutil.rmtree(self.tmpdir, ignore_errors=True)
             return
         except Exception, err:
             traceback.print_exc()
@@ -300,13 +300,13 @@ class RlWriter(object):
                 self.flagFailedArticles(bookParseTree, output)
                 self.renderBook(bookParseTree, output, coverimage=coverimage)
                 log.info('###### RENDERING OK - SOME ARTICLES WRITTEN IN PLAINTEXT')
-                shutil.rmtree(self.tmpdir)
+                shutil.rmtree(self.tmpdir, ignore_errors=True)
                 return
             except Exception, err: # cant render book
                 traceback.print_exc()
                 log.error('###### RENDERING FAILED:')
                 log.error(err)
-                shutil.rmtree(self.tmpdir)
+                shutil.rmtree(self.tmpdir, ignore_errors=True)
                 raise
 
     def renderBook(self, bookParseTree, output, coverimage=None):
