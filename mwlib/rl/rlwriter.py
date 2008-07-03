@@ -999,33 +999,18 @@ class RlWriter(object):
         table = Table(data)
         return [table]
 
-    def writeSource(self, n):
-        langMap = {} #custom Mapping between mw-markup source attrs to pygement lexers if get_lexer_by_name fails
-
+    def _writeSourceInSourceMode(self, n, src_lang, lexer):
         self.sourcemode = True
-        mw_lang = n.vlist.get('lang', '').lower()
-
-        try:            
-            lexer = lexers.get_lexer_by_name(mw_lang)
-        except:
-            lexer = langMap.get(mw_lang)
-            if not lexer:
-                traceback.print_exc()
-                log.error('unknown source code language: %s' % repr(mw_lang))
-                self.sourcemode = False
-                return self.writePreFormatted(n)
-
-            
         sourceFormatter = ImageFormatter(font_size=FONTSIZE, font_name='DejaVu Sans Mono', line_numbers=False)
         sourceFormatter.encoding = 'utf-8'
-
         source = ''.join(self.renderInline(n))
         try:
             img = highlight(source.encode('utf-8'), lexer, sourceFormatter)
         except:
             traceback.print_exc()
-            log.error('unsuitable lexer for source code language: %s - Lexer: %s' % (repr(mw_lang), lexer.__class__.__name__))
-            
+            log.error('unsuitable lexer for source code language: %s - Lexer: %s' % (repr(src_lang), lexer.__class__.__name__))
+            return 
+
         fn = os.path.join(self.tmpdir, 'source%d.png' % self.sourceCount)
         f = open(fn, 'w')
         f.write(img)
@@ -1046,7 +1031,25 @@ class RlWriter(object):
         image.hAlign = 'LEFT'
         return [image]
 
+    def writeSource(self, n):
+        langMap = {} #custom Mapping between mw-markup source attrs to pygement lexers if get_lexer_by_name fails
         
+        def getLexer(name):
+            try: 
+                return lexers.get_lexer_by_name(name)    
+            except lexers.ClassNotFound: 
+                traceback.print_exc()
+                log.error('unknown source code language: %s' % repr(name))
+                
+        src_lang = n.vlist.get('lang', '').lower()
+        lexer = getLexer(src_lang) or getLexer(langMap.get(src_lang,""))
+        if lexer:
+            res = self._writeSourceInSourceMode(n, src_lang, lexer)
+            if res:
+                return res
+        self.sourcemode = False
+        return self.writePreFormatted(n)
+
 
     def writeCode(self, n):
         return self.writeTeletyped(n)
@@ -1098,24 +1101,13 @@ class RlWriter(object):
     writeDeleted = writeStrike
 
     def writeImageMap(self, n):
+        # copy from old writeTagNode
+        #if t.imagemap.imagelink:
+        #        return self.write(t.imagemap.imagelink)
         return []
     
     def writeTagNode(self,t):
-        if t.caption =='rss':
-            items = []
-            for node in t.children:
-                items.extend(self.write(node))
-            return items        
-        elif t.caption in ['h1','h2','h3','h4']:
-            level = int(t.caption[1])
-            t.level = level
-            return self.writeSection(t)
-        elif t.caption == "imagemap":
-            if t.imagemap.imagelink:
-                return self.write(t.imagemap.imagelink)
-
-        log.warning("Unhandled TagNode:", t.caption)
-        return []
+        return self.renderChildren(t) # FIXME
 
     
     def writeItem(self, item, style='itemize', counterID=None, resetCounter=False):

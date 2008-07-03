@@ -5,6 +5,7 @@
 # See README.txt for additional licensing information.
 import copy
 
+from mwlib import xmltreecleaner
 from mwlib import advtree
 from mwlib.advtree import Paragraph, PreFormatted, ItemList, Div, Reference, Cite, Item, Article, Section
 from mwlib.advtree import Text, Cell, Link, Math, URL, BreakingReturn, HorizontalRule, CategoryLink
@@ -245,6 +246,9 @@ def buildAdvancedTree(root):
     advtree.removeNodes(root)
     advtree.removeNewlines(root)
     advtree.fixStyles(root) 
+
+    xmltreecleaner.fixBlockElements(root)
+
     moveBrokenChildren(root)
     removeChildlessNodes(root)
     removeLangLinks(root)
