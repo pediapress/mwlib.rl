@@ -20,7 +20,7 @@ from PIL import Image as PilImage
 
 from pygments import highlight
 from pygments  import lexers
-from pygments.formatters import ImageFormatter
+from rlsourceformatter import ReportlabFormatter
 
 from mwlib.utils import all
 
@@ -51,7 +51,7 @@ from pdfstyles import bookTitle_style, bookSubTitle_style
 from pdfstyles import pageMarginHor, pageMarginVert, standardSansSerif, standardMonoFont, standardFont
 from pdfstyles import printWidth, printHeight, SMALLFONTSIZE, BIGFONTSIZE, FONTSIZE
 from pdfstyles import tableOverflowTolerance
-from pdfstyles import max_img_width, max_img_height, min_img_dpi, inline_img_dpi
+from pdfstyles import max_img_width, max_img_height, min_img_dpi, inline_img_dpi, maxCharsInSourceLine
 
 import rltables
 from pagetemplates import WikiPage, TitlePage, SimplePage
@@ -96,6 +96,7 @@ def buildPara(txtList, style=text_style()):
         try:
             return [Paragraph(_txt, style)]
         except:
+            traceback.print_exc()
             log.warning('reportlab paragraph error:', repr(_txt))
             return []
     else:
@@ -146,8 +147,7 @@ def filterText(txt, defaultFont=standardFont, breakLong=False):
             return "HYSMyeongJo-Medium"  #--> Korean    
         return "DejaVuSans"
 
-    #lastscript = defaultFont  
-    lastscript = standardFont
+    lastscript = defaultFont  
     switchedFont = False
     for l in txt:
         if breakLong and l in breakChars:
@@ -205,6 +205,8 @@ class RlWriter(object):
 
         self.sourceCount = 0
         self.sourcemode = False
+        self.currentColCount = 0
+        
     def ignore(self, obj):
         return []
     
@@ -1003,55 +1005,54 @@ class RlWriter(object):
         table = Table(data)
         return [table]
 
-    def _writeSourceInSourceMode(self, n, src_lang, lexer):
-        self.sourcemode = True
-        sourceFormatter = ImageFormatter(font_size=FONTSIZE, font_name='DejaVu Sans Mono', line_numbers=False)
+    def _writeSourceInSourceMode(self, n, src_lang, lexer):        
+        sourceFormatter = ReportlabFormatter(font_size=FONTSIZE, font_name='DejaVuSansMono', background_color='#eeeeee', line_numbers=False)
         sourceFormatter.encoding = 'utf-8'
         source = ''.join(self.renderInline(n))
+        maxCharOnLine = max( [ len(line) for line in source.split("\n")])
+        char_limit = int(maxCharsInSourceLine / (self.currentColCount or 1))
+        if maxCharOnLine > char_limit:
+           broken_source = []
+           for line in source.split('\n'):
+               if len(line) < char_limit:
+                   broken_source.append(line)
+               else:
+                   while len(line):
+                       broken_source.append(line[:char_limit])
+                       line = line[char_limit:]
+           source = '\n'.join(broken_source)
+
+        txt = ''
         try:
-            img = highlight(source.encode('utf-8'), lexer, sourceFormatter)
+            txt = highlight(source, lexer, sourceFormatter)           
+            return [XPreformatted(txt, text_style(mode='source', in_table=self.nestingLevel))]            
         except:
             traceback.print_exc()
             log.error('unsuitable lexer for source code language: %s - Lexer: %s' % (repr(src_lang), lexer.__class__.__name__))
             return []
 
-        fn = os.path.join(self.tmpdir, 'source%d.png' % self.sourceCount)
-        f = open(fn, 'w')
-        f.write(img)
-        f.close()
-        self.sourceCount += 1
-
-        p = PilImage.open(fn)
-        w, h = p.size
-        pw = w / 1.5 # magic constant that scales the source text to an appropriate size with current font-size
-        ph = h / 1.5 # fixme: clearly this has to be done in a more intelligent manner, and should depend on FONTSIZE
-        scale = min( [printWidth/pw, printHeight/ph])
-        if scale < 1:
-            pw = pw * scale
-            ph = ph * scale
-
-        self.sourcemode = False
-        image = Image(fn, width=pw, height=ph)
-        image.hAlign = 'LEFT'
-        return [image]
-
     def writeSource(self, n):
-        langMap = {} #custom Mapping between mw-markup source attrs to pygement lexers if get_lexer_by_name fails
-        
+        langMap = {'lisp': lexers.CommonLispLexer()} #custom Mapping between mw-markup source attrs to pygement lexers if get_lexer_by_name fails
         def getLexer(name):
             try: 
                 return lexers.get_lexer_by_name(name)    
             except lexers.ClassNotFound: 
-                #traceback.print_exc()
-                log.error('unknown source code language: %s' % repr(name))
+                lexer = langMap.get(name)
+                if lexer:
+                    return lexer
+                else:
+                    traceback.print_exc()
+                    log.error('unknown source code language: %s' % repr(name))
+                    return None
                 
         src_lang = n.vlist.get('lang', '').lower()
-        lexer = getLexer(src_lang) or getLexer(langMap.get(src_lang,""))
+        lexer = getLexer(src_lang)
         if lexer:
+            self.sourcemode = True
             res = self._writeSourceInSourceMode(n, src_lang, lexer)
+            self.sourcemode = False
             if res:
                 return res
-        self.sourcemode = False
         return self.writePreFormatted(n)
 
 
@@ -1205,12 +1206,16 @@ class RlWriter(object):
         maxCols = rltables.getMaxCols(t)
         t = rltables.reformatTable(t, maxCols)
         maxCols = rltables.getMaxCols(t)
+
+        self.currentColCount += maxCols
+        
         # if a table contains only tables it is transformed to a list of the containing tables - that is handled below
         if t.__class__ != advtree.Table and all([c.__class__==advtree.Table for c in t]):
             tables = []
             self.nestingLevel -= 1
             for c in t:
                 tables.extend(self.writeTable(c))
+                self.currentColCount -= maxCols
             return tables        
         
         for r in t.children:
@@ -1220,6 +1225,7 @@ class RlWriter(object):
                 elements.extend(self.writeCaption(r))                
 
         (data, span_styles) = rltables.checkSpans(data)
+        self.currentColCount -= maxCols
 
         if not data:
             return []

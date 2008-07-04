@@ -114,7 +114,7 @@ LEFTINDENT = 25 # indentation of paragraphs...
 RIGHTINDENT = 25 # indentation of paragraphs...
 LISTINDENT = 12 # indentation of lists per level
 
-
+maxCharsInSourceLine = 72 # if printing a source node, the maximum number of chars in one line
 
 class BaseStyle(ParagraphStyle):
 
@@ -171,6 +171,9 @@ def text_style(mode='p', indent_lvl=0, in_table=0, relsize='normal'):
 	style.spaceAfter = 3
 	style.fontName = standardMonoFont
 	indent_lvl += 1
+    if mode == 'source':
+	style.spaceAfter = 3
+	style.fontName = standardMonoFont	
 	
     if mode == 'list':
 	style.spaceBefore = 0
