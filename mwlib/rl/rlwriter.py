@@ -297,9 +297,10 @@ class RlWriter(object):
             traceback.print_exc()
             log.error('###### renderBookFailed: %s' % err)
             try:
-                self.flagFailedArticles(bookParseTree, output)
+                (ok_count, fail_count, fail_articles) = self.flagFailedArticles(bookParseTree, output)
                 self.renderBook(bookParseTree, output, coverimage=coverimage)
                 log.info('###### RENDERING OK - SOME ARTICLES WRITTEN IN PLAINTEXT')
+                log.info('ok count: %d fail count: %d failed articles: %s' % (ok_count, fail_count, ' '.join(fail_articles)))
                 shutil.rmtree(self.tmpdir, ignore_errors=True)
                 return
             except Exception, err: # cant render book
@@ -367,6 +368,9 @@ class RlWriter(object):
     
 
     def flagFailedArticles(self, bookParseTree, output):
+        ok_count = 0
+        fail_count = 0
+        fail_articles = []
         for (i,node) in enumerate(bookParseTree):
             if isinstance(node, advtree.Article):
                 elements = []
@@ -381,12 +385,15 @@ class RlWriter(object):
                     )
                     testdoc.addPageTemplates(WikiPage(title=node.caption, wikiurl=self.baseUrl, wikititle=self.wikiTitle))
                     testdoc.build(elements)
+                    ok_count += 1
                 except Exception, err:
-                    log.error('article failed:' , node.caption)
+                    log.error('article failed:' , repr(node.caption))
                     tr = traceback.format_exc()
                     log.error(tr)
                     node.renderFailed = True
-
+                    fail_count += 1
+                    fail_articles.append(repr(node.caption))
+        return (ok_count, fail_count, fail_articles)
     
     def writeTitlePage(self, wikititle=None, coverimage=None):       
         title = self.book.get('title')
@@ -448,12 +455,12 @@ class RlWriter(object):
         
         title = self.renderText(article.caption)
         log.info('writing article: %r' % title)
-        title = filterText(title, defaultFont=standardSansSerif, breakLong=True)
         elements = []
         pt = WikiPage(title, wikiurl=self.baseUrl, wikititle=self.wikiTitle)
         if hasattr(self, 'doc'): # doc is not present if tests are run
             self.doc.addPageTemplates(pt)
             elements.append(NextPageTemplate(title.encode('utf-8'))) # pagetemplate.id cant handle unicode
+        title = filterText(title, defaultFont=standardSansSerif, breakLong=True)          
         elements.append(Paragraph("<b>%s</b>" % title, heading_style('article')))
         elements.append(HRFlowable(width='100%', hAlign='LEFT', thickness=1, spaceBefore=0, spaceAfter=10, color=colors.black))
 
@@ -1006,7 +1013,7 @@ class RlWriter(object):
         except:
             traceback.print_exc()
             log.error('unsuitable lexer for source code language: %s - Lexer: %s' % (repr(src_lang), lexer.__class__.__name__))
-            return 
+            return []
 
         fn = os.path.join(self.tmpdir, 'source%d.png' % self.sourceCount)
         f = open(fn, 'w')
@@ -1035,7 +1042,7 @@ class RlWriter(object):
             try: 
                 return lexers.get_lexer_by_name(name)    
             except lexers.ClassNotFound: 
-                traceback.print_exc()
+                #traceback.print_exc()
                 log.error('unknown source code language: %s' % repr(name))
                 
         src_lang = n.vlist.get('lang', '').lower()
