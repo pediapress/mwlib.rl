@@ -817,6 +817,7 @@ class RlWriter(object):
     def writeLangLink(self, obj):
         if obj.colon:
             return self.writeLink(obj)
+        return []
 
     writeArticleLink = writeLink
     writeNamespaceLink = writeLink
