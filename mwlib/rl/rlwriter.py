@@ -813,9 +813,12 @@ class RlWriter(object):
             t = unicode(urllib.unquote(t), 'utf-8')
         href = self._quoteURL(href, self.baseUrl)
         return [t]
+    
+    def writeLangLink(self, obj):
+        if obj.colon:
+            return self.writeLink(obj)
 
     writeArticleLink = writeLink
-    writeLangLink = writeLink
     writeNamespaceLink = writeLink
     writeInterwikiLink = writeLink
     writeSpecialLink = writeLink
