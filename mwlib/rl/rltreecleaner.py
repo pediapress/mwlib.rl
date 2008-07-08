@@ -247,7 +247,7 @@ def buildAdvancedTree(root):
     advtree.removeNewlines(root)
     advtree.fixStyles(root) 
 
-    #xmltreecleaner.fixBlockElements(root)
+    xmltreecleaner.fixBlockElements(root)
 
     moveBrokenChildren(root)
     removeChildlessNodes(root)

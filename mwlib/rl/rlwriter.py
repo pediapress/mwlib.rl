@@ -288,7 +288,7 @@ class RlWriter(object):
         
         #debughelper.showParseTree(sys.stdout, bookParseTree)
         buildAdvancedTree(bookParseTree)
-        #debughelper.showParseTree(sys.stdout, bookParseTree)
+        debughelper.showParseTree(sys.stdout, bookParseTree)
                
         try:
             self.renderBook(bookParseTree, output, coverimage=coverimage)
@@ -404,9 +404,9 @@ class RlWriter(object):
         if not title:
             return []
         self.doc.addPageTemplates(TitlePage(wikititle=wikititle, cover=coverimage))
-        elements = [Paragraph(self.renderText(title), bookTitle_style)]
+        elements = [Paragraph(self.renderText(title), text_style(mode='booktitle'))]
         if subtitle:
-            elements.append(Paragraph(self.renderText(subtitle), bookSubTitle_style))
+            elements.append(Paragraph(self.renderText(subtitle), text_style(mode='booksubtitle')))
         firstArticle=None
         for item in metabook.get_item_list(self.book):
             if item['type'] == 'article':

@@ -181,6 +181,17 @@ def text_style(mode='p', indent_lvl=0, in_table=0, relsize='normal'):
 	style.leftIndent = LISTINDENT * indent_lvl
     else:
 	style.leftIndent = indent_lvl*LEFTINDENT
+
+    if mode == 'booktitle':
+	style.fontSize = 36
+	style.leading = 40
+	style.spaceBefore = 16
+	style.fontName= standardSansSerif
+
+    if mode == 'booksubtitle':
+	style.fontSize = 24
+	style.leading = 30
+	style.fontName= standardSansSerif
 	
     return style
 
@@ -230,15 +241,28 @@ def heading_style(mode='chapter', lvl=1):
 	style.spaceBefore = min(style.leading, 20)
 	if lvl > 1: # needed for "flowing" paragraphs around figures
 	    style.flowable = True
+    elif mode == 'booktitle':
+	style.fontSize = 36
+	style.leading = 40
+	style.spaceBefore = 16
+    elif mode == 'booksubtitle':
+	style.fontSize = 24
+	style.leading = 30
+	    
     return style
     
 
-bookTitle_style = BaseHeadingStyle(name='bookTitle_style',
+## bookTitle_style = BaseHeadingStyle(name='bookTitle_style',
+##                                    fontSize=36,
+##                                    leading=40,
+##                                    spaceBefore=16
+##                                    )
+
+bookTitle_style = BaseStyle(name='bookTitle_style',
                                    fontSize=36,
                                    leading=40,
                                    spaceBefore=16
                                    )
-
 bookSubTitle_style = BaseHeadingStyle(name='bookSubTitle_style',
                                      fontSize=24,
                                      leading=30,
