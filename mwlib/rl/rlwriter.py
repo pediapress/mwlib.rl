@@ -180,13 +180,14 @@ class ReportlabError(Exception):
 
 class RlWriter(object):
 
-    def __init__(self, env=None):
+    def __init__(self, env=None, dieOnUnkownNode=True):
         self.env = env
         if self.env is not None:
             self.book = self.env.metabook
             self.imgDB = env.images
         else:
             self.imgDB = None
+        self.dieOnUnkownNode = dieOnUnkownNode
         self.level = 0  # level of article sections --> similar to html heading tag levels
         self.references = []
         self.listIndentation = 0  # nesting level of lists
@@ -279,6 +280,8 @@ class RlWriter(object):
         m = "write" + obj.__class__.__name__
         if not hasattr(self, m):
             log.error('unknown node:', repr(obj.__class__.__name__))
+            if self.dieOnUnkownNode:
+                raise 'Unkown Node: %s ' % obj.__class__.__name__
             return []
         m=getattr(self, m)
         return m(obj)
@@ -798,7 +801,20 @@ class RlWriter(object):
     def writeLink(self,obj):
         """ Link nodes are intra wiki links
         """
-        href = obj.target
+
+        # handle nested links
+        if ( obj.getChildNodesByClass(advtree.Link) or
+             obj.getChildNodesByClass(advtree.ArticleLink) or
+             obj.getChildNodesByClass(advtree.InterwikiLink) or
+             obj.getChildNodesByClass(advtree.CategoryLink) or
+             obj.getChildNodesByClass(advtree.NamespaceLink)):
+            elements = ['[[']
+            elements.extend(self.renderInline(obj))
+            elements.append(']]')
+            return elements
+
+
+        href = getattr(obj, 'full_target', None) or obj.target
         if not href:
             log.warning('no link target specified')
             href = ''

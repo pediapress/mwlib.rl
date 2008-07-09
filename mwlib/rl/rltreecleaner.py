@@ -10,8 +10,9 @@ from mwlib import advtree
 from mwlib.advtree import Paragraph, PreFormatted, ItemList, Div, Reference, Cite, Item, Article, Section
 from mwlib.advtree import Text, Cell, Link, Math, URL, BreakingReturn, HorizontalRule, CategoryLink
 from mwlib.advtree import SpecialLink, ImageLink, ReferenceList, Chapter, NamedURL, LangLink, Table
-from mwlib.advtree import Source
-               
+from mwlib.advtree import Source, Code
+from mwlib.parser import InterwikiLink, ArticleLink, NamespaceLink
+
 def fixLists(node): 
     """
     all ItemList Nodes that are the only children of a paragraph are moved out of the paragraph.
@@ -24,8 +25,8 @@ def fixLists(node):
         fixLists(c)
 
 
-childlessOK = [Text, Cell, Link, Math, URL, BreakingReturn, HorizontalRule, CategoryLink, LangLink,
-               SpecialLink, ImageLink, ReferenceList, Chapter, NamedURL]
+childlessOK = [Text, Cell, Link, Math, URL, BreakingReturn, HorizontalRule, CategoryLink, Code, NamespaceLink, LangLink,
+               SpecialLink, ImageLink, ReferenceList, Chapter, NamedURL, ArticleLink, InterwikiLink]
 
 def removeChildlessNodes(node):
     """
