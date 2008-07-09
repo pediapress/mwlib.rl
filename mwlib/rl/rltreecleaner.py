@@ -10,7 +10,7 @@ from mwlib import advtree
 from mwlib.advtree import Paragraph, PreFormatted, ItemList, Div, Reference, Cite, Item, Article, Section
 from mwlib.advtree import Text, Cell, Link, Math, URL, BreakingReturn, HorizontalRule, CategoryLink
 from mwlib.advtree import SpecialLink, ImageLink, ReferenceList, Chapter, NamedURL, LangLink, Table
-from mwlib.advtree import Source, Code
+from mwlib.advtree import Source, Code, Center
 from mwlib.parser import InterwikiLink, ArticleLink, NamespaceLink
 
 def fixLists(node): 
@@ -155,7 +155,7 @@ def _any(list):
     return False
 
 # ex: we delete preformatted nodes which are inside reference nodes, we keep all children off the preformatted node 
-removeNodes = {PreFormatted:[Reference], Cite:[Item, Reference]}
+removeNodes = {PreFormatted:[Reference], Cite:[Item, Reference], Center:[Section]}
 def removeBrokenChildren(node):
     if node.__class__ in removeNodes.keys():
         if _any([parent.__class__ in removeNodes[node.__class__] for parent in node.parents]):
@@ -168,8 +168,7 @@ def removeBrokenChildren(node):
         
     for c in node.children:
         removeBrokenChildren(c)
-
-
+        
 def removeSingleCellTables(node):
     if node.__class__ == Table:
         if len(node.children) == 1 and len(node.children[0].children) == 1:

@@ -207,6 +207,7 @@ class RlWriter(object):
         self.sourceCount = 0
         self.sourcemode = False
         self.currentColCount = 0
+        self.currentArticle = None
         
     def ignore(self, obj):
         return []
@@ -437,7 +438,7 @@ class RlWriter(object):
         lvl = getattr(obj, "level", 4)
         headingStyle = heading_style('section', lvl=lvl+1)
         self.sectionTitle = True
-        headingTxt = ''.join(self.write(obj.children[0])).strip()
+        headingTxt = ''.join(self.renderInline(obj.children[0])).strip()
         self.sectionTitle = False
         elements = [Paragraph('<font name="%s"><b>%s</b></font>' % (standardSansSerif, headingTxt), headingStyle)]
         self.level += 1
@@ -469,7 +470,8 @@ class RlWriter(object):
         if hasattr(self, 'doc'): # doc is not present if tests are run
             self.doc.addPageTemplates(pt)
             elements.append(NextPageTemplate(title.encode('utf-8'))) # pagetemplate.id cant handle unicode
-        title = filterText(title, defaultFont=standardSansSerif, breakLong=True)          
+        title = filterText(title, defaultFont=standardSansSerif, breakLong=True)
+        self.currentArticle = repr(title)
         elements.append(Paragraph("<b>%s</b>" % title, heading_style('article')))
         elements.append(HRFlowable(width='100%', hAlign='LEFT', thickness=1, spaceBefore=0, spaceAfter=10, color=colors.black))
 
