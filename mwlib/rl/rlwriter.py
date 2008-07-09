@@ -180,14 +180,14 @@ class ReportlabError(Exception):
 
 class RlWriter(object):
 
-    def __init__(self, env=None, dieOnUnkownNode=True):
+    def __init__(self, env=None, dieOnUnknownNode=False):
         self.env = env
         if self.env is not None:
             self.book = self.env.metabook
             self.imgDB = env.images
         else:
             self.imgDB = None
-        self.dieOnUnkownNode = dieOnUnkownNode
+        self.dieOnUnknownNode = dieOnUnknownNode
         self.level = 0  # level of article sections --> similar to html heading tag levels
         self.references = []
         self.listIndentation = 0  # nesting level of lists
@@ -1403,8 +1403,8 @@ class RlWriter(object):
     writeControl = ignore
 
 
-def writer(env, output, status_callback=None, coverimage=None):
-    r = RlWriter(env)    
+def writer(env, output, status_callback=None, coverimage=None, dieOnUnknownNode=False):
+    r = RlWriter(env, dieOnUnknownNode=dieOnUnknownNode)
     if coverimage is None and env.configparser.has_section('pdf'):
         coverimage = env.configparser.get('pdf', 'coverimage', None)
     book = writerbase.build_book(env, status_callback=status_callback, progress_range=(10, 70))
@@ -1418,6 +1418,9 @@ writer.file_extension = 'pdf'
 writer.options = {
     'coverimage': {
         'param': 'FILENAME',
-        'help': 'filename of an image for the cover page',
+        'help': 'filename of an image for the cover page',       
+    },
+    'dieOnUnknownNode': {
+        'help':'raise exception if an unknown node is encountered', 
     }
 }
