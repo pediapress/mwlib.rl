@@ -180,14 +180,14 @@ class ReportlabError(Exception):
 
 class RlWriter(object):
 
-    def __init__(self, env=None, dieOnUnknownNode=False):
+    def __init__(self, env=None, strict=False):
         self.env = env
         if self.env is not None:
             self.book = self.env.metabook
             self.imgDB = env.images
         else:
             self.imgDB = None
-        self.dieOnUnknownNode = dieOnUnknownNode
+        self.strict = strict
         self.level = 0  # level of article sections --> similar to html heading tag levels
         self.references = []
         self.listIndentation = 0  # nesting level of lists
@@ -280,7 +280,7 @@ class RlWriter(object):
         m = "write" + obj.__class__.__name__
         if not hasattr(self, m):
             log.error('unknown node:', repr(obj.__class__.__name__))
-            if self.dieOnUnkownNode:
+            if self.strict:
                 raise 'Unkown Node: %s ' % obj.__class__.__name__
             return []
         m=getattr(self, m)
@@ -300,9 +300,13 @@ class RlWriter(object):
             return
         except Exception, err:
             traceback.print_exc()
-            log.error('###### renderBookFailed: %s' % err)
+            log.error('###### renderBookFailed: %s' % err)               
             try:
                 (ok_count, fail_count, fail_articles) = self.flagFailedArticles(bookParseTree, output)
+
+                if self.strict:
+                    raise 'Error rendering articles: %s' % repr(' | '.join(fail_articles))
+                
                 self.renderBook(bookParseTree, output, coverimage=coverimage)
                 log.info('###### RENDERING OK - SOME ARTICLES WRITTEN IN PLAINTEXT')
                 log.info('ok count: %d fail count: %d failed articles: %s' % (ok_count, fail_count, ' '.join(fail_articles)))
@@ -1403,8 +1407,8 @@ class RlWriter(object):
     writeControl = ignore
 
 
-def writer(env, output, status_callback=None, coverimage=None, dieOnUnknownNode=False):
-    r = RlWriter(env, dieOnUnknownNode=dieOnUnknownNode)
+def writer(env, output, status_callback=None, coverimage=None, strict=False):
+    r = RlWriter(env, strict=strict)
     if coverimage is None and env.configparser.has_section('pdf'):
         coverimage = env.configparser.get('pdf', 'coverimage', None)
     book = writerbase.build_book(env, status_callback=status_callback, progress_range=(10, 70))
@@ -1420,7 +1424,7 @@ writer.options = {
         'param': 'FILENAME',
         'help': 'filename of an image for the cover page',       
     },
-    'dieOnUnknownNode': {
-        'help':'raise exception if an unknown node is encountered', 
+    'strict': {
+        'help':'raise exception if errors occur', 
     }
 }
