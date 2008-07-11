@@ -119,6 +119,7 @@ def fixTableColspans(node):
     # SINGLE CELL COLSPAN ERRORS FIX
     # if a row contains a single cell, we limit the colspanning amount
     # to the maximum table width
+
     if node.__class__ == Table:
         maxwidth = 0
         for row in node.children:

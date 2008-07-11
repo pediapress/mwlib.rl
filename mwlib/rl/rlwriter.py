@@ -372,7 +372,7 @@ class RlWriter(object):
             log.error('error:\n', err)
             if len(err.args):
                 exception_txt = err.args[0]
-                if exception_txt.find('Splitting') >-1:
+                if isinstance(exception_txt, basestring) and exception_txt.find('Splitting') >-1:
                     self.disable_group_elements = True
             traceback.print_exc()
             raise
