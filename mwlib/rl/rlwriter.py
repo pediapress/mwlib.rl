@@ -208,6 +208,7 @@ class RlWriter(object):
         self.sourcemode = False
         self.currentColCount = 0
         self.currentArticle = None
+        self.mathCache = {}
         
     def ignore(self, obj):
         return []
@@ -292,7 +293,7 @@ class RlWriter(object):
         
         #debughelper.showParseTree(sys.stdout, bookParseTree)
         buildAdvancedTree(bookParseTree)
-        debughelper.showParseTree(sys.stdout, bookParseTree)
+        #debughelper.showParseTree(sys.stdout, bookParseTree)
                
         try:
             self.renderBook(bookParseTree, output, coverimage=coverimage)
@@ -1373,23 +1374,32 @@ class RlWriter(object):
         source = re.compile("\n+").sub("\n", source)
         source = source.replace("'","'\\''").encode('utf-8') # escape single quotes 
         source = ' ' + source + ' '
-        
-        cmd = "texvc %s %s '%s' utf-8" % (self.tmpdir, self.tmpdir, source)
-        res= os.popen(cmd)
-        renderoutput = res.read()
-        if not renderoutput.strip() or len(renderoutput) < 32:
-            log.error('math rendering failed with source:', repr(source))
-            log.error('render output:', repr(renderoutput))
-            return []
 
-        imgpath = os.path.join(self.tmpdir, renderoutput[1:33] + '.png')
-        if not os.path.exists(imgpath):
-            log.error('math rendering failed with source:', repr(source))
-            return []
+
+        imgpath = self.mathCache.get(source, None)
+
+        if not imgpath:
+            cmd = "texvc %s %s '%s' utf-8" % (self.tmpdir, self.tmpdir, source)
+            res= os.popen(cmd)
+            renderoutput = res.read()
+            res.close()
+            
+            if not renderoutput.strip() or len(renderoutput) < 32:
+                log.error('math rendering failed with source:', repr(source))
+                log.error('render output:', repr(renderoutput))
+                return []
+
+            imgpath = os.path.join(self.tmpdir, renderoutput[1:33] + '.png')
+            if not os.path.exists(imgpath):
+                log.error('math rendering failed with source:', repr(source))
+                return []
+            self.mathCache[source] = imgpath
 
         img = PilImage.open(imgpath)
         log.info("math png at:", imgpath)
         w,h = img.size
+        del img
+
         if self.nestingLevel: # scale down math-formulas in tables
             w = w * SMALLFONTSIZE/FONTSIZE
             h = h * SMALLFONTSIZE/FONTSIZE
@@ -1399,6 +1409,8 @@ class RlWriter(object):
         # the "normal" height of a single-line formula is 32px. UPDATE: is now 17 
         #imgAlign = '%fin' % (- (h - 32) / (2 * density))
         imgAlign = '%fin' % (- (h - 15) / (2 * density))
+
+
         return ' <img src="%(path)s" width="%(width)fin" height="%(height)fin" valign="%(valign)s" /> ' % {
             'path': imgpath.encode(sys.getfilesystemencoding()),
             'width': w/density,
