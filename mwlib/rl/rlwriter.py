@@ -442,7 +442,8 @@ class RlWriter(object):
         lvl = getattr(obj, "level", 4)
         headingStyle = heading_style('section', lvl=lvl+1)
         self.sectionTitle = True
-        headingTxt = ''.join(self.renderInline(obj.children[0])).strip()
+        headingTxt = self.renderText(''.join(self.renderInline(obj.children[0])).strip())
+        
         self.sectionTitle = False
         elements = [Paragraph('<font name="%s"><b>%s</b></font>' % (standardSansSerif, headingTxt), headingStyle)]
         self.level += 1
