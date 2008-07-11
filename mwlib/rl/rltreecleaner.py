@@ -126,7 +126,11 @@ def fixTableColspans(node):
             rowwidth = 0
             for cell in row.children:
                 if hasattr(cell, 'vlist'):
-                    colspan = cell.vlist.get('colspan', 1)
+                    try:
+                        colspan = int(cell.vlist.get('colspan', 1))
+                    except ValueError:
+                        cell.vlist['colspan'] = 1
+                        colspan = 1
                     if numCells > 1:
                         rowwidth += colspan
                     else:
