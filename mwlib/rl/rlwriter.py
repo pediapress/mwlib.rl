@@ -368,12 +368,15 @@ class RlWriter(object):
         try:
             self.doc.build(elements)
             return 0
-        except Exception, err:
-            log.error('error:\n', err)
+        except LayoutError, err: # do special handling for reportlab splitting errors
+            log.error('layout error:\n', err)
             if len(err.args):
                 exception_txt = err.args[0]
                 if isinstance(exception_txt, basestring) and exception_txt.find('Splitting') >-1:
                     self.disable_group_elements = True
+            raise
+        except Exception, err:
+            log.error('error rendering document:\n', err)
             traceback.print_exc()
             raise
     
