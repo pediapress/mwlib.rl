@@ -1041,7 +1041,7 @@ class RlWriter(object):
         sourceFormatter.encoding = 'utf-8'
         source = ''.join(self.renderInline(n))
         maxCharOnLine = max( [ len(line) for line in source.split("\n")])
-        char_limit = int(maxCharsInSourceLine / (max(1, self.currentColCount)))
+        char_limit = max(1, int(maxCharsInSourceLine / (max(1, self.currentColCount))))
 
         if maxCharOnLine > char_limit:
            broken_source = []
