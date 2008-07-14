@@ -485,7 +485,7 @@ class RlWriter(object):
         else:
             articleFailText = '<strong>WARNING: Article could not be rendered - ouputting plain text.</strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer software (b) problematic Mediawiki markup (c) table is too wide'
             elements.extend(self.renderFailedNode(article, articleFailText))
-            
+
         # check for non-flowables
         elements = [e for e in elements if not isinstance(e,basestring)]                
         elements = self.floatImages(elements)
@@ -1041,7 +1041,8 @@ class RlWriter(object):
         sourceFormatter.encoding = 'utf-8'
         source = ''.join(self.renderInline(n))
         maxCharOnLine = max( [ len(line) for line in source.split("\n")])
-        char_limit = int(maxCharsInSourceLine / (self.currentColCount or 1))
+        char_limit = int(maxCharsInSourceLine / (max(1, self.currentColCount)))
+
         if maxCharOnLine > char_limit:
            broken_source = []
            for line in source.split('\n'):
@@ -1244,9 +1245,9 @@ class RlWriter(object):
         if t.__class__ != advtree.Table and all([c.__class__==advtree.Table for c in t]):
             tables = []
             self.nestingLevel -= 1
+            self.currentColCount -= maxCols
             for c in t:
                 tables.extend(self.writeTable(c))
-                self.currentColCount -= maxCols
             return tables        
         
         for r in t.children:
