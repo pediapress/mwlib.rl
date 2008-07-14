@@ -180,7 +180,7 @@ class ReportlabError(Exception):
 
 class RlWriter(object):
 
-    def __init__(self, env=None, strict=False):
+    def __init__(self, env=None, strict=False, debug=False):
         self.env = env
         if self.env is not None:
             self.book = self.env.metabook
@@ -188,6 +188,7 @@ class RlWriter(object):
         else:
             self.imgDB = None
         self.strict = strict
+        self.debug = debug
         self.level = 0  # level of article sections --> similar to html heading tag levels
         self.references = []
         self.listIndentation = 0  # nesting level of lists
@@ -291,9 +292,11 @@ class RlWriter(object):
     def writeBook(self, bookParseTree, output, removedArticlesFile=None,
                   coverimage=None):
         
-        #debughelper.showParseTree(sys.stdout, bookParseTree)
+        #if self.debug:
+        #    debughelper.showParseTree(sys.stdout, bookParseTree)
         buildAdvancedTree(bookParseTree)
-        #debughelper.showParseTree(sys.stdout, bookParseTree)
+        if self.debug:
+            debughelper.showParseTree(sys.stdout, bookParseTree)
                
         try:
             self.renderBook(bookParseTree, output, coverimage=coverimage)
@@ -442,8 +445,7 @@ class RlWriter(object):
         lvl = getattr(obj, "level", 4)
         headingStyle = heading_style('section', lvl=lvl+1)
         self.sectionTitle = True
-        headingTxt = self.renderText(''.join(self.renderInline(obj.children[0])).strip())
-        
+        headingTxt = ''.join(self.renderInline(obj.children[0])).strip()
         self.sectionTitle = False
         elements = [Paragraph('<font name="%s"><b>%s</b></font>' % (standardSansSerif, headingTxt), headingStyle)]
         self.level += 1
@@ -1426,8 +1428,8 @@ class RlWriter(object):
     writeControl = ignore
 
 
-def writer(env, output, status_callback=None, coverimage=None, strict=False):
-    r = RlWriter(env, strict=strict)
+def writer(env, output, status_callback=None, coverimage=None, strict=False, debug=False):
+    r = RlWriter(env, strict=strict, debug=debug)
     if coverimage is None and env.configparser.has_section('pdf'):
         coverimage = env.configparser.get('pdf', 'coverimage', None)
     book = writerbase.build_book(env, status_callback=status_callback, progress_range=(10, 70))
@@ -1445,5 +1447,8 @@ writer.options = {
     },
     'strict': {
         'help':'raise exception if errors occur', 
+    },
+    'debug': {
+        'debug':'debugging mode is more verbose', 
     }
 }
