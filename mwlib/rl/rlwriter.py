@@ -296,7 +296,7 @@ class RlWriter(object):
         
         #if self.debug:
         #    debughelper.showParseTree(sys.stdout, bookParseTree)
-        buildAdvancedTree(bookParseTree)
+        buildAdvancedTree(bookParseTree)       
         if self.debug:
             debughelper.showParseTree(sys.stdout, bookParseTree)
                
@@ -427,7 +427,7 @@ class RlWriter(object):
         firstArticle=None
         for item in metabook.get_item_list(self.book):
             if item['type'] == 'article':
-                firstArticle = item['title']
+                firstArticle = xmlescape(item['title'])
                 break
         if not firstArticle:
             return elements
