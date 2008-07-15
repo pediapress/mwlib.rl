@@ -171,9 +171,12 @@ def text_style(mode='p', indent_lvl=0, in_table=0, relsize='normal'):
 	style.spaceAfter = 3
 	style.fontName = standardMonoFont
 	indent_lvl += 1
+	style.backColor = '#eeeeee'
+
     if mode == 'source':
 	style.spaceAfter = 3
 	style.fontName = standardMonoFont	
+	style.backColor = '#eeeeee'
 	
     if mode == 'list':
 	style.spaceBefore = 0
