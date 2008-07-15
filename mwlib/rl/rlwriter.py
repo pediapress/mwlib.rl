@@ -631,7 +631,7 @@ class RlWriter(object):
         txt = []
         txt.extend(self.renderInline(obj))
         t = ''.join(txt)
-        t = re.sub( "<br */>", "\n", t.strip())
+        t = re.sub( "<br */>", "\n", t)
         self.preMode = False
         if len(t):
             # fixme: if any line is too long, we decrease fontsize to try to fit preformatted text on the page
