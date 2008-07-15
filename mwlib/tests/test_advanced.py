@@ -218,3 +218,65 @@ def test_breaking_long_sections():
     """test for http://code.pediapress.com/wiki/ticket/177"""
     txt = u'= sect1/Bla/blub/wurst/bier&尚書•梓材&sdg/&bla/bl&b/aslkjfasdfafasFAS/fasdfasf/asdfs&asdf ='
     renderMW(txt, 'breaking_long_sections')
+
+
+def test_preformatted():
+    txt = u"""
+<pre>
+  bla blub
+   blub blub
+    blub blub blub
+</pre>
+"""
+    renderMW(txt, 'preformatted')
+    
+def test_preformatted_breaking():
+
+    txt = u'''
+<pre>
+<?xml version="1.0" standalone="yes" ?>
+<DBMODEL Version="4.0">
+<SETTINGS>
+<GLOBALSETTINGS ModelName="posperDbdRev423" IDModel="0" IDVersion="0" VersionStr="1.0.0.0" Comments="" UseVersionHistroy="1" AutoIncVersion="1" DatabaseType="MySQL" ZoomFac="91.00" XPos="566" YPos="922" DefaultDataType="5" DefaultTablePrefix="0" DefSaveDBConn="" DefSyncDBConn="" DefQueryDBConn="" Printer="" HPageCount="4.0" PageAspectRatio="1.440892512336408" PageOrientation="1" PageFormat="A4 (210x297 mm, 8.26x11.7 inches)" SelectedPages="" UsePositionGrid="0" PositionGridX="20" PositionGridY="20" TableNameInRefs="1" DefaultTableType="0" ActivateRefDefForNewRelations="1" FKPrefix="" FKPostfix="" CreateFKRefDefIndex="1" DBQuoteCharacter="`" CreateSQLforLinkedObjects="0" DefModelFont="nimbus sans l" CanvasWidth="4096" CanvasHeight="2842" />
+
+</pre>'''
+    renderMW(txt, 'preformatted_breaking')
+
+def test_source():
+    txt = '''
+<source lang="python">
+print "hello world"
+for i in range(42):
+    print "go syntax highlighting"
+</source>
+
+<source lang="cpp">
+#include <iostream>
+#include <ostream>
+
+int main() 
+{
+   std::cout << "Hallo Welt!" << std::endl;
+}
+</source>
+
+<source lang="lolCode">
+HAI
+CAN HAS STDIO?
+VISIBLE "HAI WORLD!"
+KTHXBYE
+</source>
+'''
+
+    renderMW(txt, 'source')
+
+def test_source_breaking():
+    txt= u'''
+<source lang="python">
+print "asdkfj asöfkdlj asökdlfj asöklfj asöfja sölfjk aösljkdf aösljkf aöslkjf aöskfj aösjf aöskljf asöljf asöljf aösjf asöljkf aösldjf aösljkdf aösljf aösljdf öasljkf öasljdf öaslkjf aösljkf aösljf aösljf aösljf aösjkdf aöslk jfaösld jfaösljkdf aösljdf aösldjf aösldkjfaösldjfaösldjaösljdfaösldjfsal
+print "this does not make any sense"
+while True:
+    print "assfaö ljkf asödfjk öklqejw tröqwlktj eq.r,tnm.,mnxcyvbxcvb,mnödfgjheritu epoitur eoqtur eökrlt ne,rm tnewötn _$§5 5345 23$! $%$§% 1ö43jh sadflkjahsdf asjdfhasd flkjahs fajsklfhljkh435pietruqüwirqwoeiräqäöi1o4i123i45j1245 oi51 oi1u345 o3i14u 5 "
+</source>
+'''
+    renderMW(txt, 'source_breaking')

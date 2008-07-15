@@ -7,3 +7,7 @@ class _Version(tuple):
 
 version = _Version((0,8,0,'dev'))
 del _Version
+try:
+    import mwlib.ext #try to use bundled version of reportlab
+except ImportError:
+    pass

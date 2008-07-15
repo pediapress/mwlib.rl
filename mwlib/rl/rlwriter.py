@@ -32,6 +32,7 @@ def _check_reportlab():
         raise ImportError("you need to have the svn version of reportlab installed")
 _check_reportlab()
 
+
 #from reportlab.rl_config import defaultPageSize
 from reportlab.platypus.paragraph import Paragraph
 from reportlab.platypus.doctemplate import BaseDocTemplate, NextPageTemplate, NotAtTopPageBreak
@@ -51,7 +52,8 @@ from pdfstyles import bookTitle_style, bookSubTitle_style
 from pdfstyles import pageMarginHor, pageMarginVert, standardSansSerif, standardMonoFont, standardFont
 from pdfstyles import printWidth, printHeight, SMALLFONTSIZE, BIGFONTSIZE, FONTSIZE
 from pdfstyles import tableOverflowTolerance
-from pdfstyles import max_img_width, max_img_height, min_img_dpi, inline_img_dpi, maxCharsInSourceLine
+from pdfstyles import max_img_width, max_img_height, min_img_dpi, inline_img_dpi
+from pdfstyles import maxCharsInSourceLine
 
 import rltables
 from pagetemplates import WikiPage, TitlePage, SimplePage
@@ -633,19 +635,18 @@ class RlWriter(object):
         t = ''.join(txt)
         t = re.sub( "<br */>", "\n", t)
         self.preMode = False
-        if len(t):
-            # fixme: if any line is too long, we decrease fontsize to try to fit preformatted text on the page
-            # PreformattedBox flowable should do intelligent and visible splitting when necessary
-            # also decrease text size if we are inside a table
-            maxCharOnLine = max( [ len(line) for line in t.split("\n")])
-            if maxCharOnLine > 76 or self.nestingLevel:
-                pre = XPreformatted(t, text_style(mode='preformatted', relsize='small', in_table=self.nestingLevel))
-            else:
-                pre = XPreformatted(t, text_style(mode='preformatted', in_table=self.nestingLevel))
-            return [pre]
-
-        else:
+        if not len(t):
             return []
+        
+        maxCharOnLine = max( [ len(line) for line in t.split("\n")])
+        char_limit = max(1, int(maxCharsInSourceLine / (max(1, self.currentColCount))))
+        if maxCharOnLine > char_limit:
+            t = self.breakLongLines(t, char_limit)
+        pre = XPreformatted(t, text_style(mode='preformatted', in_table=self.nestingLevel))
+        # fixme: we could check if the preformatted fits on the page, if we reduce the fontsize
+        #pre = XPreformatted(t, text_style(mode='preformatted', relsize='small', in_table=self.nestingLevel))
+        return [pre]
+
         
     def writeNode(self,obj):
         txt = []
@@ -1038,6 +1039,21 @@ class RlWriter(object):
         table = Table(data)
         return [table]
 
+    def breakLongLines(self, txt, char_limit):
+       broken_source = []
+       for line in txt.split('\n'):
+           if len(line) < char_limit:
+               broken_source.append(line)
+           else:
+               words = line.split()
+               while words:
+                   new_line = [words.pop(0)]                   
+                   while words and (len(' '.join(new_line)) + len(words[0]) + 1) < char_limit:
+                       new_line.append(words.pop(0))
+                   broken_source.append(' '.join(new_line))               
+       return '\n'.join(broken_source)
+        
+
     def _writeSourceInSourceMode(self, n, src_lang, lexer):        
         sourceFormatter = ReportlabFormatter(font_size=FONTSIZE, font_name='DejaVuSansMono', background_color='#eeeeee', line_numbers=False)
         sourceFormatter.encoding = 'utf-8'
@@ -1046,15 +1062,7 @@ class RlWriter(object):
         char_limit = max(1, int(maxCharsInSourceLine / (max(1, self.currentColCount))))
 
         if maxCharOnLine > char_limit:
-           broken_source = []
-           for line in source.split('\n'):
-               if len(line) < char_limit:
-                   broken_source.append(line)
-               else:
-                   while len(line):
-                       broken_source.append(line[:char_limit])
-                       line = line[char_limit:]
-           source = '\n'.join(broken_source)
+            source = self.breakLongLines(source, char_limit)
 
         txt = ''
         try:
