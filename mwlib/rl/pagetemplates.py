@@ -15,12 +15,11 @@ from reportlab.platypus.frames import Frame
 from reportlab.rl_config import defaultPageSize
 from mwlib.rl.pdfstyles import pageMarginHor, pageMarginVert, headerMarginHor, headerMarginVert, footerMarginHor, footerMarginVert
 from mwlib.rl.pdfstyles import pageWidth, pageHeight, pagefooter, titlepagefooter, showPageHeader, showPageFooter, showTitlePageFooter , standardFont
-
-#from mwlib.rl.pdfstyles import footer_style, p_style
-from mwlib.rl.pdfstyles import text_style
-
-
 from reportlab.lib.pagesizes import  A3
+
+from mwlib.rl.pdfstyles import text_style
+from mwlib.rl.rlhelpers import filterText
+
 
 def _doNothing(canvas, doc):
     "Dummy callback for onPage"
@@ -61,8 +60,8 @@ class WikiPage(PageTemplate):
         if showPageHeader:
             canvas.saveState()
             canvas.resetTransforms()
-            canvas.translate(headerMarginHor, pageHeight - headerMarginVert - 0.1 * cm)
-            p = Paragraph(self.title, text_style())
+            canvas.translate(headerMarginHor, pageHeight - headerMarginVert - 0.1*cm)
+            p = Paragraph(filterText(self.title), text_style())
             p.canv = canvas
             p.wrap(pageWidth - headerMarginHor*2.5, pageHeight) # add an extra 0.5 margin to have enough space for page number
             p.drawPara()
@@ -71,11 +70,19 @@ class WikiPage(PageTemplate):
         canvas.drawRightString(pageWidth - headerMarginHor, pageHeight - headerMarginVert + 0.1 * cm, "%d" % doc.page)
 
         #Footer
+        canvas.saveState()
         canvas.setFont(standardFont,8)
         canvas.line(footerMarginHor, footerMarginVert, pageWidth - footerMarginHor, footerMarginVert )
         if showPageFooter:
-            footertext = pagefooter.replace('@WIKITITLE@',self.wikititle).replace('@WIKIURL@',self.wikiurl)
-            canvas.drawCentredString(pageWidth/2.0, footerMarginVert - 0.5*cm, footertext)
+            footertext = filterText(pagefooter.replace('@WIKITITLE@', self.wikititle).replace('@WIKIURL@', self.wikiurl))
+            p = Paragraph(footertext, text_style())
+            p.canv = canvas
+            w,h = p.wrap(pageWidth - footerMarginHor*2.5, pageHeight) 
+            canvas.translate(headerMarginHor, footerMarginVert-h - 0.1*cm)
+            p.drawPara()
+            
+
+            
         canvas.restoreState()
     
 
@@ -97,7 +104,7 @@ class TitlePage(PageTemplate):
         if showTitlePageFooter:
             canvas.line(footerMarginHor, footerMarginVert, pageWidth - footerMarginHor, footerMarginVert )
             footertext = titlepagefooter.replace('@WIKITITLE@', self.wikititle)
-            p = Paragraph(footertext,text_style(mode='footer'))           
+            p = Paragraph(filterText(footertext), text_style(mode='footer'))           
             w,h = p.wrap(pageWidth - 2*pageMarginHor,pageHeight-pageMarginVert)
             canvas.translate( (pageWidth-w)/2.0, 0.2*cm)
             p.canv = canvas
