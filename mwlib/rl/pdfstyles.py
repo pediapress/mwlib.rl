@@ -28,35 +28,34 @@ pdfmetrics.registerFont(TTFont('DejaVuSans-Bold', fontpath('DejaVuSans-Bold.ttf'
 pdfmetrics.registerFont(TTFont('DejaVuSans-Italic', fontpath('DejaVuSans-Oblique.ttf')))
 pdfmetrics.registerFont(TTFont('DejaVuSans-BoldItalic', fontpath('DejaVuSans-BoldOblique.ttf')))
 
-addMapping('DejaVuSans', 0, 0, 'DejaVuSans')    #normal
-addMapping('DejaVuSans', 0, 1, 'DejaVuSans-Italic')    #italic
-addMapping('DejaVuSans', 1, 0, 'DejaVuSans-Bold')    #bold
-addMapping('DejaVuSans', 1, 1, 'DejaVuSans-BoldItalic')    #italic and bold
+addMapping('DejaVuSans', 0, 0, 'DejaVuSans')    
+addMapping('DejaVuSans', 0, 1, 'DejaVuSans-Italic')
+addMapping('DejaVuSans', 1, 0, 'DejaVuSans-Bold')
+addMapping('DejaVuSans', 1, 1, 'DejaVuSans-BoldItalic')
 
 pdfmetrics.registerFont(TTFont('DejaVuSansMono',  fontpath('DejaVuSansMono.ttf')))
 pdfmetrics.registerFont(TTFont('DejaVuSansMono-Bold', fontpath('DejaVuSansMono-Bold.ttf')))
 pdfmetrics.registerFont(TTFont('DejaVuSansMono-Italic', fontpath('DejaVuSansMono-Oblique.ttf')))
 pdfmetrics.registerFont(TTFont('DejaVuSansMono-BoldItalic', fontpath('DejaVuSansMono-BoldOblique.ttf')))
 
-addMapping('DejaVuSansMono', 0, 0, 'DejaVuSansMono')    #normal
-addMapping('DejaVuSansMono', 0, 1, 'DejaVuSansMono-Italic')    #italic
-addMapping('DejaVuSansMono', 1, 0, 'DejaVuSansMono-Bold')    #bold
-addMapping('DejaVuSansMono', 1, 1, 'DejaVuSansMono-BoldItalic')    #italic and bold
+addMapping('DejaVuSansMono', 0, 0, 'DejaVuSansMono')
+addMapping('DejaVuSansMono', 0, 1, 'DejaVuSansMono-Italic')
+addMapping('DejaVuSansMono', 1, 0, 'DejaVuSansMono-Bold')
+addMapping('DejaVuSansMono', 1, 1, 'DejaVuSansMono-BoldItalic')
 
 pdfmetrics.registerFont(TTFont('DejaVuSerif',  fontpath('DejaVuSerif.ttf')))
 pdfmetrics.registerFont(TTFont('DejaVuSerif-Bold', fontpath('DejaVuSerif-Bold.ttf')))
 pdfmetrics.registerFont(TTFont('DejaVuSerif-Italic', fontpath('DejaVuSerif-Italic.ttf')))
 pdfmetrics.registerFont(TTFont('DejaVuSerif-BoldItalic', fontpath('DejaVuSerif-BoldItalic.ttf')))
 
-addMapping('DejaVuSerif', 0, 0, 'DejaVuSerif')    #normal
-addMapping('DejaVuSerif', 0, 1, 'DejaVuSerif-Italic')    #italic
-addMapping('DejaVuSerif', 1, 0, 'DejaVuSerif-Bold')    #bold
-addMapping('DejaVuSerif', 1, 1, 'DejaVuSerif-BoldItalic')    #italic and bold
+addMapping('DejaVuSerif', 0, 0, 'DejaVuSerif')
+addMapping('DejaVuSerif', 0, 1, 'DejaVuSerif-Italic')
+addMapping('DejaVuSerif', 1, 0, 'DejaVuSerif-Bold')
+addMapping('DejaVuSerif', 1, 1, 'DejaVuSerif-BoldItalic')
 
 from reportlab.pdfbase.cidfonts import UnicodeCIDFont
 
 pdfmetrics.registerFont(UnicodeCIDFont('STSong-Light')) #CHS
-#pdfmetrics.registerFont(UnicodeCIDFont('HeiseiMin-W3')) #JPN
 pdfmetrics.registerFont(UnicodeCIDFont('HYSMyeongJo-Medium')) #KOR
 
 standardFont =  "DejaVuSerif"
@@ -244,32 +243,9 @@ def heading_style(mode='chapter', lvl=1):
 	style.spaceBefore = min(style.leading, 20)
 	if lvl > 1: # needed for "flowing" paragraphs around figures
 	    style.flowable = True
-    elif mode == 'booktitle':
-	style.fontSize = 36
-	style.leading = 40
-	style.spaceBefore = 16
-    elif mode == 'booksubtitle':
-	style.fontSize = 24
-	style.leading = 30
 	    
     return style
     
-
-## bookTitle_style = BaseHeadingStyle(name='bookTitle_style',
-##                                    fontSize=36,
-##                                    leading=40,
-##                                    spaceBefore=16
-##                                    )
-
-bookTitle_style = BaseStyle(name='bookTitle_style',
-                                   fontSize=36,
-                                   leading=40,
-                                   spaceBefore=16
-                                   )
-bookSubTitle_style = BaseHeadingStyle(name='bookSubTitle_style',
-                                     fontSize=24,
-                                     leading=30,
-                                     )
 
 # import custom configuration to override configuration values
 # if doing so, you need to be careful not to break things...

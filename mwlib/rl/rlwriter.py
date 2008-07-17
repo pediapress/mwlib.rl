@@ -47,7 +47,6 @@ from reportlab.lib.pagesizes import A4
 from customflowables import Figure, FiguresAndParagraphs
 
 from pdfstyles import text_style, heading_style, table_style
-from pdfstyles import bookTitle_style, bookSubTitle_style
 
 from pdfstyles import pageMarginHor, pageMarginVert, standardSansSerif, standardMonoFont, standardFont
 from pdfstyles import printWidth, printHeight, SMALLFONTSIZE, BIGFONTSIZE, FONTSIZE
