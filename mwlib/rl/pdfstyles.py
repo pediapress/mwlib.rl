@@ -7,7 +7,7 @@
 import os
 
 from reportlab.lib.styles import ParagraphStyle
-from reportlab.lib.enums import TA_LEFT, TA_CENTER, TA_JUSTIFY #TA_RIGHT
+from reportlab.lib.enums import TA_LEFT, TA_CENTER, TA_JUSTIFY #,TA_RIGHT
 from reportlab.lib.units import cm
 from reportlab.lib.fonts import addMapping
 from reportlab.pdfbase import pdfmetrics
@@ -88,6 +88,12 @@ showPageHeader = True
 showPageFooter = True
 showTitlePageFooter = True
 
+
+# NOTE: strings can contain reportlab styling tags.
+# more information is available in the reportlab user documentation (http://www.reportlab.com/docs/userguide.pdf)
+# check the section 6.2 "Paragraph XML Markup Tags"
+# since the documenatition is not guaranteed to be up to date, you might also want to check the docsting of the
+# Paragraph class (reportlab/platypus/paragraph.py --> class Paragraph())
 pagefooter = 'All Articles originate from @WIKITITLE@  (@WIKIURL@)'
 titlepagefooter = '@WIKITITLE@ book - Generated using the open source mwlib toolkit - <br/>see http://code.pediapress.com for more information'
 
