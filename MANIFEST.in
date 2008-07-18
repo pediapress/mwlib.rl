@@ -25,6 +25,7 @@ include mwlib/rl/customflowables.py
 include mwlib/rl/debughelper.py
 include mwlib/rl/pagetemplates.py
 include mwlib/rl/pdfstyles.py
+include mwlib/rl/rlhelpers.py
 include mwlib/rl/rlsourceformatter.py
 include mwlib/rl/rltables.py
 include mwlib/rl/rltreecleaner.py
