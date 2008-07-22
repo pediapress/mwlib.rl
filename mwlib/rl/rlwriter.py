@@ -1221,9 +1221,17 @@ class RlWriter(object):
         
         colwidthList = rltables.getColWidths(data, nestingLevel=self.nestingLevel)
         data = rltables.splitCellContent(data)
+
+        has_data = False
+        for row in data:
+            if row:
+                has_data = True
+                break
+        if not has_data:
+            return []
         
         table = Table(data, colWidths=colwidthList, splitByRow=1)
-
+        
         styles = rltables.style(serializeStyleInfo(t.vlist))
         table.setStyle(styles)
         table.setStyle(span_styles)
