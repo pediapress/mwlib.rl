@@ -250,7 +250,8 @@ class RlWriter(object):
         try:
             self.renderBook(bookParseTree, output, coverimage=coverimage)
             log.info('###### RENDERING OK')
-            shutil.rmtree(self.tmpdir, ignore_errors=True)
+            if hasattr(self, 'tmpdir'):
+                shutil.rmtree(self.tmpdir, ignore_errors=True)
             return
         except Exception, err:
             traceback.print_exc()
@@ -264,13 +265,15 @@ class RlWriter(object):
                 self.renderBook(bookParseTree, output, coverimage=coverimage)
                 log.info('###### RENDERING OK - SOME ARTICLES WRITTEN IN PLAINTEXT')
                 log.info('ok count: %d fail count: %d failed articles: %s' % (ok_count, fail_count, ' '.join(fail_articles)))
-                shutil.rmtree(self.tmpdir, ignore_errors=True)
+                if hasattr(self, 'tmpdir'):
+                    shutil.rmtree(self.tmpdir, ignore_errors=True)
                 return
             except Exception, err: # cant render book
                 traceback.print_exc()
                 log.error('###### RENDERING FAILED:')
                 log.error(err)
-                shutil.rmtree(self.tmpdir, ignore_errors=True)
+                if hasattr(self, 'tmpdir'):
+                    shutil.rmtree(self.tmpdir, ignore_errors=True)
                 raise
 
     def renderBook(self, bookParseTree, output, coverimage=None):
@@ -1221,9 +1224,17 @@ class RlWriter(object):
         
         colwidthList = rltables.getColWidths(data, nestingLevel=self.nestingLevel)
         data = rltables.splitCellContent(data)
+
+        has_data = False
+        for row in data:
+            if row:
+                has_data = True
+                break
+        if not has_data:
+            return []
         
         table = Table(data, colWidths=colwidthList, splitByRow=1)
-
+        
         styles = rltables.style(serializeStyleInfo(t.vlist))
         table.setStyle(styles)
         table.setStyle(span_styles)
