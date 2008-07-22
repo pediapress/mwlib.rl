@@ -250,7 +250,8 @@ class RlWriter(object):
         try:
             self.renderBook(bookParseTree, output, coverimage=coverimage)
             log.info('###### RENDERING OK')
-            shutil.rmtree(self.tmpdir, ignore_errors=True)
+            if hasattr(self, 'tmpdir'):
+                shutil.rmtree(self.tmpdir, ignore_errors=True)
             return
         except Exception, err:
             traceback.print_exc()
@@ -264,13 +265,15 @@ class RlWriter(object):
                 self.renderBook(bookParseTree, output, coverimage=coverimage)
                 log.info('###### RENDERING OK - SOME ARTICLES WRITTEN IN PLAINTEXT')
                 log.info('ok count: %d fail count: %d failed articles: %s' % (ok_count, fail_count, ' '.join(fail_articles)))
-                shutil.rmtree(self.tmpdir, ignore_errors=True)
+                if hasattr(self, 'tmpdir'):
+                    shutil.rmtree(self.tmpdir, ignore_errors=True)
                 return
             except Exception, err: # cant render book
                 traceback.print_exc()
                 log.error('###### RENDERING FAILED:')
                 log.error(err)
-                shutil.rmtree(self.tmpdir, ignore_errors=True)
+                if hasattr(self, 'tmpdir'):
+                    shutil.rmtree(self.tmpdir, ignore_errors=True)
                 raise
 
     def renderBook(self, bookParseTree, output, coverimage=None):
