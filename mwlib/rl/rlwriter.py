@@ -33,6 +33,9 @@ def _check_reportlab():
 _check_reportlab()
 
 
+#import reportlab
+#reportlab.rl_config.platypus_link_underline = 1
+
 #from reportlab.rl_config import defaultPageSize
 from reportlab.platypus.paragraph import Paragraph
 from reportlab.platypus.doctemplate import BaseDocTemplate, NextPageTemplate, NotAtTopPageBreak
@@ -53,6 +56,7 @@ from pdfstyles import printWidth, printHeight, SMALLFONTSIZE, BIGFONTSIZE, FONTS
 from pdfstyles import tableOverflowTolerance
 from pdfstyles import max_img_width, max_img_height, min_img_dpi, inline_img_dpi
 from pdfstyles import maxCharsInSourceLine
+
 
 import rltables
 from pagetemplates import WikiPage, TitlePage, SimplePage
@@ -293,7 +297,7 @@ class RlWriter(object):
 
         self.output = output
         self.tmpdir = tempfile.mkdtemp()
-
+        
         elements.extend(self.writeTitlePage(wikititle=self.wikiTitle, coverimage=coverimage))
         try:
             for e in bookParseTree.children:
@@ -599,22 +603,7 @@ class RlWriter(object):
 
         
     def writeNode(self,obj):
-        txt = []
-        items = []
-        for node in obj:
-            res = self.write(node)
-            if isInline(res):
-                txt.extend(res)
-            else:
-                items.extend(buildPara(txt, text_style(in_table=self.nestingLevel)))
-                items.extend(res)
-                txt = []
-        if not len(items):
-            return txt
-        else:
-            items.extend(buildPara(txt,text_style(in_table=self.nestingLevel))) #filter
-        return items
-
+        return self.renderMixed(obj)
 
     def transformEntities(self,s):
         if not s:
@@ -766,7 +755,7 @@ class RlWriter(object):
         """ Link nodes are intra wiki links
         """
 
-        # handle nested links
+        # handle nested links: FIXME this is only needed b/c the parser does not behave the way we need it
         if ( obj.getChildNodesByClass(advtree.Link) or
              obj.getChildNodesByClass(advtree.ArticleLink) or
              obj.getChildNodesByClass(advtree.InterwikiLink) or
@@ -792,6 +781,8 @@ class RlWriter(object):
             t = filterText(''.join(txt).strip()).encode('utf-8')
             t = unicode(urllib.unquote(t), 'utf-8')
         href = self._quoteURL(href, self.baseUrl)
+
+        #t = '<link href="%s">%s</link>' % ( href, t.strip())
         return [t]
     
     def writeLangLink(self, obj):
@@ -1268,8 +1259,8 @@ class RlWriter(object):
         if a large table is detected, it is rendered on a larger canvas and - on success - embedded as an
         scaled down image.
         """
-
-        log.info("testrendering:", os.path.join(self.tmpdir, 'table%d.pdf' % self.tablecount))
+        if self.debug:
+            log.info("testrendering:", os.path.join(self.tmpdir, 'table%d.pdf' % self.tablecount))
         fn = os.path.join(self.tmpdir, 'table%d.pdf' % self.tablecount)
         self.tablecount += 1
 
@@ -1277,7 +1268,8 @@ class RlWriter(object):
         doc.addPageTemplates(SimplePage(pageSize=A4))
         try:
             w,h=table.wrap(printWidth, printHeight)
-            log.info("tablesize:(%f, %f) pagesize:(%f, %f) tableOverflowTolerance: %f" %(w, h, printWidth, printHeight, tableOverflowTolerance))
+            if self.debug:
+                log.info("tablesize:(%f, %f) pagesize:(%f, %f) tableOverflowTolerance: %f" %(w, h, printWidth, printHeight, tableOverflowTolerance))
             if w > (printWidth + tableOverflowTolerance):
                 log.warning('table test rendering: too wide - printwidth: %f (tolerance %f) tablewidth: %f' % (printWidth, tableOverflowTolerance, w))
                 raise LayoutError
@@ -1285,7 +1277,8 @@ class RlWriter(object):
                 log.warning('nested table too high')
                 raise LayoutError                
             doc.build([table])
-            log.info('table test rendering: ok')
+            if self.debug:
+                log.info('table test rendering: ok')
             return (True, None)
         except LayoutError:
             log.warning('table test rendering: reportlab LayoutError')
@@ -1343,8 +1336,7 @@ class RlWriter(object):
         return (True, images)
             
     def writeMath(self, node):
-        source = node.caption.strip()
-        source = re.compile("\n+").sub("\n", source)
+        source = re.compile("\n+").sub("\n", node.caption.strip()) # remove multiple newlines, as this could break the mathRenderer
         source = source.replace("'","'\\''").encode('utf-8') # escape single quotes 
         source = ' ' + source + ' '
 
@@ -1352,24 +1344,12 @@ class RlWriter(object):
         imgpath = self.mathCache.get(source, None)
 
         if not imgpath:
-            cmd = "texvc %s %s '%s' utf-8" % (self.tmpdir, self.tmpdir, source)
-            res= os.popen(cmd)
-            renderoutput = res.read()
-            res.close()
-            
-            if not renderoutput.strip() or len(renderoutput) < 32:
-                log.error('math rendering failed with source:', repr(source))
-                log.error('render output:', repr(renderoutput))
-                return []
-
-            imgpath = os.path.join(self.tmpdir, renderoutput[1:33] + '.png')
-            if not os.path.exists(imgpath):
-                log.error('math rendering failed with source:', repr(source))
-                return []
+            imgpath = writerbase.renderMath(source, output_path=self.tmpdir, output_mode='png', render_engine='texvc')           
             self.mathCache[source] = imgpath
 
         img = PilImage.open(imgpath)
-        log.info("math png at:", imgpath)
+        if self.debug:
+            log.info("math png at:", imgpath)
         w,h = img.size
         del img
 

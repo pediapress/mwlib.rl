@@ -15,6 +15,7 @@ from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.lib.colors import black
 from reportlab.lib.pagesizes import A4
 
+
 ########## REGISTER FONTS
 
 def fontpath(n):

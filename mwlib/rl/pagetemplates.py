@@ -54,6 +54,7 @@ class WikiPage(PageTemplate):
         
     def beforeDrawPage(self,canvas,doc):
         canvas.setFont(standardFont,10)      
+        canvas.setLineWidth(0)
         canvas.saveState()
         #header
         canvas.line(headerMarginHor, pageHeight - headerMarginVert, pageWidth - headerMarginHor, pageHeight - headerMarginVert )
