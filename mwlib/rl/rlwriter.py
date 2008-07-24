@@ -210,13 +210,6 @@ class RlWriter(object):
             groupedElements.append(KeepTogether(group))
         return groupedElements
             
-    def cleanUp(self):
-        for fn in self.tmpImages:
-            try:
-                os.unlink(fn)
-            except Exception, exc:
-                log.warning('could not delete temporary image %r: %s' % (fn, exc))
-
     def displayNode(self, n):
         """
         check if a node has styling info, that prevents rendering of item
@@ -1363,8 +1356,8 @@ class RlWriter(object):
         #imgAlign = '%fin' % (- (h - 32) / (2 * density))
         imgAlign = '%fin' % (- (h - 15) / (2 * density))
 
-
-        return ' <img src="%(path)s" width="%(width)fin" height="%(height)fin" valign="%(valign)s" /> ' % {
+        #the non-breaking-space is needed to force whitespace after the formula
+        return ' <img src="%(path)s" width="%(width)fin" height="%(height)fin" valign="%(valign)s" />&nbsp; ' % {
             'path': imgpath.encode(sys.getfilesystemencoding()),
             'width': w/density,
             'height': h/density,

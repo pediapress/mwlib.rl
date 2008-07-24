@@ -25,9 +25,15 @@ unpack it and run::
 
 (this will also install setuptools)
 
-You have to make sure that *texvc* is in your system PATH. *texvc* 
-is supplied by the mediawiki installation. It should be located in
-the following directory: mediawiki_install_path/math  .
+*texvc*
+ You have to make sure that *texvc* is in your system PATH. *texvc* 
+ is supplied by the mediawiki installation. It should be located in
+ the following directory: mediawiki_install_path/math
+
+ texvc also requires:
+ * LaTeX
+ * dvipng
+ * AMS* packages for LaTeX (maybe included in LaTex distribution)
 
 You will also need:
 
