@@ -146,7 +146,6 @@ class RlWriter(object):
         self.references = []
         self.listIndentation = 0  # nesting level of lists
         self.listCounterID = 1
-        self.baseUrl = ''
         self.tmpImages = set()
         self.namedLinkCount = 1
         self.nestingLevel = 0       
@@ -261,9 +260,6 @@ class RlWriter(object):
                 raise
 
     def renderBook(self, bookParseTree, output, coverimage=None):
-        source = self.env.get_source()
-        self.baseUrl = source.get('url', '')
-        self.wikiTitle = source.get('name', '')
         elements = []
         version = 'mwlib version: %s , rlwriter version: %s' % (rlwriterversion, mwlibversion)
         self.doc = BaseDocTemplate(output,
@@ -278,7 +274,7 @@ class RlWriter(object):
         self.output = output
         self.tmpdir = tempfile.mkdtemp()
         
-        elements.extend(self.writeTitlePage(wikititle=self.wikiTitle, coverimage=coverimage))
+        elements.extend(self.writeTitlePage(coverimage=coverimage))
         try:
             for e in bookParseTree.children:
                 r = self.write(e)
@@ -299,7 +295,7 @@ class RlWriter(object):
             )))
         
         if not bookParseTree.getChildNodesByClass(parser.Article):
-            pt = WikiPage('', wikiurl=self.baseUrl, wikititle=self.wikiTitle)
+            pt = WikiPage('')
             self.doc.addPageTemplates(pt)
             elements.append(Paragraph(' ', text_style()))
                             
@@ -336,7 +332,7 @@ class RlWriter(object):
                         bottomMargin=pageMarginVert,
                         title=self.book.get('title'),
                     )
-                    testdoc.addPageTemplates(WikiPage(title=node.caption, wikiurl=self.baseUrl, wikititle=self.wikiTitle))
+                    testdoc.addPageTemplates(WikiPage(title=node.caption))
                     testdoc.build(elements)
                     ok_count += 1
                 except Exception, err:
@@ -348,13 +344,13 @@ class RlWriter(object):
                     fail_articles.append(repr(node.caption))
         return (ok_count, fail_count, fail_articles)
     
-    def writeTitlePage(self, wikititle=None, coverimage=None):       
+    def writeTitlePage(self, coverimage=None):       
         title = self.book.get('title')
         subtitle =  self.book.get('subtitle')
 
         if not title:
             return []
-        self.doc.addPageTemplates(TitlePage(wikititle=wikititle, cover=coverimage))
+        self.doc.addPageTemplates(TitlePage(cover=coverimage))
         elements = [Paragraph(self.renderText(title), text_style(mode='booktitle'))]
         if subtitle:
             elements.append(Paragraph(self.renderText(subtitle), text_style(mode='booksubtitle')))
@@ -365,7 +361,7 @@ class RlWriter(object):
                 break
         if not firstArticle:
             return elements
-        self.doc.addPageTemplates(WikiPage(firstArticle,wikiurl=self.baseUrl, wikititle=self.wikiTitle))
+        self.doc.addPageTemplates(WikiPage(firstArticle))
         elements.append(NextPageTemplate(firstArticle.encode('utf-8')))
         elements.append(PageBreak())
         return elements
@@ -409,7 +405,7 @@ class RlWriter(object):
         title = self.renderText(article.caption)
         log.info('writing article: %r' % title)
         elements = []
-        pt = WikiPage(title, wikiurl=self.baseUrl, wikititle=self.wikiTitle)
+        pt = WikiPage(title)
         if hasattr(self, 'doc'): # doc is not present if tests are run
             self.doc.addPageTemplates(pt)
             elements.append(NextPageTemplate(title.encode('utf-8'))) # pagetemplate.id cant handle unicode
@@ -760,7 +756,7 @@ class RlWriter(object):
             txt = [href]
             t = filterText(''.join(txt).strip()).encode('utf-8')
             t = unicode(urllib.unquote(t), 'utf-8')
-        href = self._quoteURL(href, self.baseUrl)
+        href = 'FIXME' # self._quoteURL(href, self.baseUrl)
 
         #t = '<link href="%s">%s</link>' % ( href, t.strip())
         return [t]
@@ -858,6 +854,7 @@ class RlWriter(object):
 
     
     def writeImageLink(self,obj):
+        print 'WRITE IMAGE LINK', repr(obj)
         if obj.colon == True:
             items = []
             for node in obj.children:
