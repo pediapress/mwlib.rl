@@ -126,27 +126,19 @@ def fixTableColspans(node):
             numCells = len(row.children)
             rowwidth = 0
             for cell in row.children:
-                if hasattr(cell, 'vlist'):
-                    try:
-                        colspan = int(cell.vlist.get('colspan', 1))
-                    except ValueError:
-                        cell.vlist['colspan'] = 1
-                        colspan = 1
-                    if numCells > 1:
-                        rowwidth += colspan
-                    else:
-                        rowwidth += 1
+                colspan = cell.attributes.get('colspan', 1)
+                if numCells > 1:
+                    rowwidth += colspan
                 else:
-                    rowwidth +=1
+                    rowwidth += 1
             maxwidth = max(maxwidth,  rowwidth)
         for row in node.children:
             numCells = len(row.children)
             if numCells == 1:
                 cell = row.children[0]
-                if hasattr(cell, 'vlist'):
-                    colspan = cell.vlist.get('colspan',None)
-                    if colspan and colspan > maxwidth:
-                        cell.vlist['colspan'] = maxwidth
+                colspan = cell.attributes.get('colspan', 1)
+                if colspan and colspan > maxwidth:
+                    cell.vlist['colspan'] = maxwidth
     # END SINGLE CELL COLSPAN ERROR FIX
     for c in node.children:
         fixTableColspans(c)
@@ -202,6 +194,7 @@ def moveReferenceListSection(node):
     for c in node.children:
         moveReferenceListSection(c)
                 
+# FIXME: replace this by implementing and using getParentStyleInfo(style='blub') where parent styles are needed
 def inheritStyles(node, inheritStyle={}):
     """
     style information is handed down to child nodes.
@@ -244,6 +237,7 @@ def inheritStyles(node, inheritStyle={}):
     for c in node.children:
         _is = cleanInheritStyles(nodeStyle)
         inheritStyles(c, inheritStyle=_is)
+
         
 def buildAdvancedTree(root):
     advtree.extendClasses(root) 
@@ -263,5 +257,5 @@ def buildAdvancedTree(root):
     removeBrokenChildren(root)
     fixTableColspans(root)
     moveReferenceListSection(root)
-    inheritStyles(root)
+    #inheritStyles(root) FIXME: remove this completly. see comment at function definition
     

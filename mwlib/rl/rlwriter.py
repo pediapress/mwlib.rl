@@ -209,22 +209,9 @@ class RlWriter(object):
         if group:
             groupedElements.append(KeepTogether(group))
         return groupedElements
-            
-    def displayNode(self, n):
-        """
-        check if a node has styling info, that prevents rendering of item
-        """
-        if not hasattr(n, 'vlist'):
-            return True
-        style = n.vlist.get('style', None)
-        if style and isinstance(style, dict):
-            display = style.get('display', '').lower()
-            if display == 'none':
-                return False
-        return True
-                    
+                                
     def write(self, obj, required=None):
-        if not self.displayNode(obj):
+        if not obj.visible:
             return []
         m = "write" + obj.__class__.__name__
         if not hasattr(self, m):
@@ -1140,7 +1127,8 @@ class RlWriter(object):
            
 
     def writeCell(self, cell):          
-        styles = serializeStyleInfo(cell.vlist)
+        #styles = serializeStyleInfo(cell.vlist)
+        styles = cell.style
         try:
             rowspan = int(styles.get('rowspan',1))
         except ValueError:
@@ -1219,7 +1207,8 @@ class RlWriter(object):
         
         table = Table(data, colWidths=colwidthList, splitByRow=1)
         
-        styles = rltables.style(serializeStyleInfo(t.vlist))
+        #styles = rltables.style(serializeStyleInfo(t.vlist))
+        styles = rltables.style(t.attributes)
         table.setStyle(styles)
         table.setStyle(span_styles)
         table.setStyle([('LEFTPADDING', (0,0),(-1,-1), 3),
@@ -1339,7 +1328,9 @@ class RlWriter(object):
         if not imgpath:
             imgpath = writerbase.renderMath(source, output_path=self.tmpdir, output_mode='png', render_engine='texvc')           
             self.mathCache[source] = imgpath
-
+            if not imgpath:
+                return []
+            
         img = PilImage.open(imgpath)
         if self.debug:
             log.info("math png at:", imgpath)

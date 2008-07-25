@@ -25,14 +25,7 @@ def getMaxCols(tablenode):
     for row in tablenode:
         cols = 0
         for cell in row:
-            if hasattr(cell, 'vlist'):
-                colspan = cell.vlist.get('colspan', 1)
-            else:
-                colspan = 1                
-            try:
-                colspan = int(colspan)
-            except ValueError:
-                colspan = 1
+            colspan = cell.attributes.get('colspan', 1)
             cols += colspan
         maxCols = max(maxCols,cols)
         
@@ -75,7 +68,7 @@ def checkSpans(data):
     return (d, styles)
 
 
-def style(styles):
+def style(attributes):
     """
     extract the style info and return a reportlab style list
     try to guess if a border and/or frame
@@ -84,20 +77,21 @@ def style(styles):
     styleList = []
     hasBorder = False
     hasGrid = False
-    if styles:
-        if styles.get('border',0) > 0:
-            hasGrid = True
-        bgColor = styles.get('background-color', None)
-        if bgColor and bgColor!= 'transparent':
-            hasBorder = True
-        classes = set([ c.strip() for c in styles.get('class','').split()])
-        if len(set(borderBoxes).intersection(classes)) > 0:
-            hasGrid = True
-        bs = styles.get('border-spacing',None)
-        if bs:
-            bs_val = re.match('(?P<bs>\d)',bs)
-            if bs_val and int(bs_val.groups('bs')[0]) > 0:
-                hasGrid =True
+    style = attributes.get('style', {})
+
+    if attributes.get('border', 0) > 0 or style.get('border', 0) > 0:
+        hasGrid = True
+    bgColor = attributes.get('background-color') or style.get('background-color')
+    if bgColor and bgColor!= 'transparent':
+        hasBorder = True
+    classes = set([ c.strip() for c in attributes.get('class','').split()])
+    if set(borderBoxes).intersection(classes):
+        hasGrid = True
+    bs = attributes.get('border-spacing',None)
+    if bs:
+        bs_val = re.match('(?P<bs>\d)',bs)
+        if bs_val and int(bs_val.groups('bs')[0]) > 0:
+            hasGrid =True
                 
     styleList.append( ('VALIGN',(0,0),(-1,-1),'TOP') )
     if hasGrid:
@@ -184,7 +178,7 @@ def splitCellContent(data):
         for cell in row:
             maxCellItems = max(maxCellItems,len(cell))
         if maxCellItems > splitCellCount:
-            for splitRun in range(math.ceil(maxCellItems / splitCellCount)):
+            for splitRun in range(int(math.ceil(maxCellItems / splitCellCount))):
                 n_row = []
                 for cell in row:
                     if len(cell) > splitRun*splitCellCount:
