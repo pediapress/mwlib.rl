@@ -1316,8 +1316,8 @@ class RlWriter(object):
             
     def writeMath(self, node):
         source = re.compile("\n+").sub("\n", node.caption.strip()) # remove multiple newlines, as this could break the mathRenderer
-        source = source.replace("'","'\\''") # escape single quotes 
-        source = ' ' + source + ' '
+        source = source.replace("'", "'\\''") # escape single quotes 
+        source = u' ' + source + u' '
 
 
         imgpath = self.mathCache.get(source, None)
