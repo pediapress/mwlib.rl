@@ -160,7 +160,7 @@ def removeBrokenChildren(node):
                 children = node.children
                 node.parent.replaceChild(node, newchildren=children)
             else:
-                node.remove()
+                node.parent.removeChild(node)
             return
         
     for c in node.children:
