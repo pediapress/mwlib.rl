@@ -146,7 +146,6 @@ class RlWriter(object):
         self.references = []
         self.listIndentation = 0  # nesting level of lists
         self.listCounterID = 1
-        self.baseUrl = ''
         self.tmpImages = set()
         self.namedLinkCount = 1
         self.nestingLevel = 0       
@@ -209,22 +208,9 @@ class RlWriter(object):
         if group:
             groupedElements.append(KeepTogether(group))
         return groupedElements
-            
-    def displayNode(self, n):
-        """
-        check if a node has styling info, that prevents rendering of item
-        """
-        if not hasattr(n, 'vlist'):
-            return True
-        style = n.vlist.get('style', None)
-        if style and isinstance(style, dict):
-            display = style.get('display', '').lower()
-            if display == 'none':
-                return False
-        return True
-                    
+                                
     def write(self, obj, required=None):
-        if not self.displayNode(obj):
+        if not obj.visible:
             return []
         m = "write" + obj.__class__.__name__
         if not hasattr(self, m):
@@ -274,9 +260,6 @@ class RlWriter(object):
                 raise
 
     def renderBook(self, bookParseTree, output, coverimage=None):
-        source = self.env.get_source()
-        self.baseUrl = source.get('url', '')
-        self.wikiTitle = source.get('name', '')
         elements = []
         version = 'mwlib version: %s , rlwriter version: %s' % (rlwriterversion, mwlibversion)
         self.doc = BaseDocTemplate(output,
@@ -291,7 +274,7 @@ class RlWriter(object):
         self.output = output
         self.tmpdir = tempfile.mkdtemp()
         
-        elements.extend(self.writeTitlePage(wikititle=self.wikiTitle, coverimage=coverimage))
+        elements.extend(self.writeTitlePage(coverimage=coverimage))
         try:
             for e in bookParseTree.children:
                 r = self.write(e)
@@ -312,7 +295,7 @@ class RlWriter(object):
             )))
         
         if not bookParseTree.getChildNodesByClass(parser.Article):
-            pt = WikiPage('', wikiurl=self.baseUrl, wikititle=self.wikiTitle)
+            pt = WikiPage('')
             self.doc.addPageTemplates(pt)
             elements.append(Paragraph(' ', text_style()))
                             
@@ -349,7 +332,7 @@ class RlWriter(object):
                         bottomMargin=pageMarginVert,
                         title=self.book.get('title'),
                     )
-                    testdoc.addPageTemplates(WikiPage(title=node.caption, wikiurl=self.baseUrl, wikititle=self.wikiTitle))
+                    testdoc.addPageTemplates(WikiPage(title=node.caption))
                     testdoc.build(elements)
                     ok_count += 1
                 except Exception, err:
@@ -361,13 +344,13 @@ class RlWriter(object):
                     fail_articles.append(repr(node.caption))
         return (ok_count, fail_count, fail_articles)
     
-    def writeTitlePage(self, wikititle=None, coverimage=None):       
+    def writeTitlePage(self, coverimage=None):       
         title = self.book.get('title')
         subtitle =  self.book.get('subtitle')
 
         if not title:
             return []
-        self.doc.addPageTemplates(TitlePage(wikititle=wikititle, cover=coverimage))
+        self.doc.addPageTemplates(TitlePage(cover=coverimage))
         elements = [Paragraph(self.renderText(title), text_style(mode='booktitle'))]
         if subtitle:
             elements.append(Paragraph(self.renderText(subtitle), text_style(mode='booksubtitle')))
@@ -378,7 +361,7 @@ class RlWriter(object):
                 break
         if not firstArticle:
             return elements
-        self.doc.addPageTemplates(WikiPage(firstArticle,wikiurl=self.baseUrl, wikititle=self.wikiTitle))
+        self.doc.addPageTemplates(WikiPage(firstArticle))
         elements.append(NextPageTemplate(firstArticle.encode('utf-8')))
         elements.append(PageBreak())
         return elements
@@ -422,7 +405,7 @@ class RlWriter(object):
         title = self.renderText(article.caption)
         log.info('writing article: %r' % title)
         elements = []
-        pt = WikiPage(title, wikiurl=self.baseUrl, wikititle=self.wikiTitle)
+        pt = WikiPage(title)
         if hasattr(self, 'doc'): # doc is not present if tests are run
             self.doc.addPageTemplates(pt)
             elements.append(NextPageTemplate(title.encode('utf-8'))) # pagetemplate.id cant handle unicode
@@ -773,7 +756,7 @@ class RlWriter(object):
             txt = [href]
             t = filterText(''.join(txt).strip()).encode('utf-8')
             t = unicode(urllib.unquote(t), 'utf-8')
-        href = self._quoteURL(href, self.baseUrl)
+        href = 'FIXME' # self._quoteURL(href, self.baseUrl)
 
         #t = '<link href="%s">%s</link>' % ( href, t.strip())
         return [t]
@@ -871,6 +854,7 @@ class RlWriter(object):
 
     
     def writeImageLink(self,obj):
+        print 'WRITE IMAGE LINK', repr(obj)
         if obj.colon == True:
             items = []
             for node in obj.children:
@@ -1140,7 +1124,8 @@ class RlWriter(object):
            
 
     def writeCell(self, cell):          
-        styles = serializeStyleInfo(cell.vlist)
+        #styles = serializeStyleInfo(cell.vlist)
+        styles = cell.style
         try:
             rowspan = int(styles.get('rowspan',1))
         except ValueError:
@@ -1219,7 +1204,8 @@ class RlWriter(object):
         
         table = Table(data, colWidths=colwidthList, splitByRow=1)
         
-        styles = rltables.style(serializeStyleInfo(t.vlist))
+        #styles = rltables.style(serializeStyleInfo(t.vlist))
+        styles = rltables.style(t.attributes)
         table.setStyle(styles)
         table.setStyle(span_styles)
         table.setStyle([('LEFTPADDING', (0,0),(-1,-1), 3),
@@ -1330,8 +1316,8 @@ class RlWriter(object):
             
     def writeMath(self, node):
         source = re.compile("\n+").sub("\n", node.caption.strip()) # remove multiple newlines, as this could break the mathRenderer
-        source = source.replace("'","'\\''").encode('utf-8') # escape single quotes 
-        source = ' ' + source + ' '
+        source = source.replace("'", "'\\''") # escape single quotes 
+        source = u' ' + source + u' '
 
 
         imgpath = self.mathCache.get(source, None)
@@ -1339,7 +1325,9 @@ class RlWriter(object):
         if not imgpath:
             imgpath = writerbase.renderMath(source, output_path=self.tmpdir, output_mode='png', render_engine='texvc')           
             self.mathCache[source] = imgpath
-
+            if not imgpath:
+                return []
+            
         img = PilImage.open(imgpath)
         if self.debug:
             log.info("math png at:", imgpath)
