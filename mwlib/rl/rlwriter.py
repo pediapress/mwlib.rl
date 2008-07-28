@@ -987,7 +987,6 @@ class RlWriter(object):
             txt = highlight(source, lexer, sourceFormatter)           
             return [XPreformatted(txt, text_style(mode='source', in_table=self.nestingLevel))]            
         except:
-            traceback.print_exc()
             log.error('unsuitable lexer for source code language: %s - Lexer: %s' % (repr(src_lang), lexer.__class__.__name__))
             return []
 
