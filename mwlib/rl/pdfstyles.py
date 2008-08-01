@@ -87,6 +87,8 @@ footerMarginVert= 1.5 * cm
 showPageHeader = True 
 showPageFooter = True
 showTitlePageFooter = True
+pageBreakAfterArticle = False
+
 
 
 # NOTE: strings can contain reportlab styling tags the text needs to be xml excaped.
@@ -125,24 +127,24 @@ maxCharsInSourceLine = 72 # if printing a source node, the maximum number of cha
 class BaseStyle(ParagraphStyle):
 
     def __init__(self, name, parent=None, **kw):
-	ParagraphStyle.__init__(self, name=name, parent=parent, **kw)
-	self.fontName = standardFont
-	self.fontSize = FONTSIZE
-	self.leading = LEADING
-	self.autoLeading = 'max'
-	self.leftIndent = 0
-	self.rightIndent = 0
-	self.firstLineIndent = 0
-	self.alignment = TA_LEFT	
-	self.spaceBefore = 3
-	self.spaceAfter = 0
-	self.bulletFontName = standardFont
-	self.bulletFontSize = FONTSIZE
-	self.bulletIndent = 0
-	self.textColor = black
-	self.backcolor = None
-	self.wordWrap = None
-	self.textTransform = None
+        ParagraphStyle.__init__(self, name=name, parent=parent, **kw)
+        self.fontName = standardFont
+        self.fontSize = FONTSIZE
+        self.leading = LEADING
+        self.autoLeading = 'max'
+        self.leftIndent = 0
+        self.rightIndent = 0
+        self.firstLineIndent = 0
+        self.alignment = TA_LEFT        
+        self.spaceBefore = 3
+        self.spaceAfter = 0
+        self.bulletFontName = standardFont
+        self.bulletFontSize = FONTSIZE
+        self.bulletIndent = 0
+        self.textColor = black
+        self.backcolor = None
+        self.wordWrap = None
+        self.textTransform = None
             
 def text_style(mode='p', indent_lvl=0, in_table=0, relsize='normal'):
     """
@@ -158,50 +160,50 @@ def text_style(mode='p', indent_lvl=0, in_table=0, relsize='normal'):
     style.flowable = True # needed for "flowing" paragraphs around figures
 
     if in_table or mode in ['footer', 'figure'] or (mode=='preformatted' and relsize=='small'):
-	style.fontSize=SMALLFONTSIZE
-	style.bulletFontSize = SMALLFONTSIZE
-	style.leading = SMALLLEADING
-	if relsize == 'small':
-	    style.fontSize -= 1
-	elif relsize == 'big':
-	    style.fontSize += 1
+        style.fontSize=SMALLFONTSIZE
+        style.bulletFontSize = SMALLFONTSIZE
+        style.leading = SMALLLEADING
+        if relsize == 'small':
+            style.fontSize -= 1
+        elif relsize == 'big':
+            style.fontSize += 1
 
     if mode == 'blockquote':
-	style.rightIndent = RIGHTINDENT
-	indent_lvl += 1
+        style.rightIndent = RIGHTINDENT
+        indent_lvl += 1
 
     if mode in ['footer', 'figure', 'center']:
-	style.alignment = TA_CENTER
+        style.alignment = TA_CENTER
 
     if mode == 'preformatted':
-	style.spaceAfter = 3
-	style.fontName = standardMonoFont
-	indent_lvl += 1
-	style.backColor = '#eeeeee'
+        style.spaceAfter = 3
+        style.fontName = standardMonoFont
+        indent_lvl += 1
+        style.backColor = '#eeeeee'
 
     if mode == 'source':
-	style.spaceAfter = 3
-	style.fontName = standardMonoFont	
-	style.backColor = '#eeeeee'
-	
+        style.spaceAfter = 3
+        style.fontName = standardMonoFont       
+        style.backColor = '#eeeeee'
+        
     if mode == 'list':
-	style.spaceBefore = 0
-	style.bulletIndent = LISTINDENT * max(0, indent_lvl-1)
-	style.leftIndent = LISTINDENT * indent_lvl
+        style.spaceBefore = 0
+        style.bulletIndent = LISTINDENT * max(0, indent_lvl-1)
+        style.leftIndent = LISTINDENT * indent_lvl
     else:
-	style.leftIndent = indent_lvl*LEFTINDENT
+        style.leftIndent = indent_lvl*LEFTINDENT
 
     if mode == 'booktitle':
-	style.fontSize = 36
-	style.leading = 40
-	style.spaceBefore = 16
-	style.fontName= standardSansSerif
+        style.fontSize = 36
+        style.leading = 40
+        style.spaceBefore = 16
+        style.fontName= standardSansSerif
 
     if mode == 'booksubtitle':
-	style.fontSize = 24
-	style.leading = 30
-	style.fontName= standardSansSerif
-	
+        style.fontSize = 24
+        style.leading = 30
+        style.fontName= standardSansSerif
+        
     return style
 
 table_style = {'spaceBefore': 0.25*cm,
@@ -211,46 +213,46 @@ table_style = {'spaceBefore': 0.25*cm,
 class BaseHeadingStyle(ParagraphStyle):
 
     def __init__(self, name, parent=None, **kw):
-	ParagraphStyle.__init__(self, name=name, parent=parent, **kw)
-	self.fontName = standardSansSerif
-	self.fontSize = BIGFONTSIZE
-	self.leading = LEADING
-	self.autoLeading = 'max'
-	self.leftIndent = 0
-	self.rightIndent = 0
-	self.firstLineIndent = 0
-	self.alignment = TA_LEFT	
-	self.spaceBefore = 12
-	self.spaceAfter = 6
-	self.bulletFontName = standardFont
-	self.bulletFontSize = BIGFONTSIZE
-	self.bulletIndent = 0
-	self.textColor = black
-	self.backcolor = None
-	self.wordWrap = None
-	self.textTransform = None
-	
+        ParagraphStyle.__init__(self, name=name, parent=parent, **kw)
+        self.fontName = standardSansSerif
+        self.fontSize = BIGFONTSIZE
+        self.leading = LEADING
+        self.autoLeading = 'max'
+        self.leftIndent = 0
+        self.rightIndent = 0
+        self.firstLineIndent = 0
+        self.alignment = TA_LEFT        
+        self.spaceBefore = 12
+        self.spaceAfter = 6
+        self.bulletFontName = standardFont
+        self.bulletFontSize = BIGFONTSIZE
+        self.bulletIndent = 0
+        self.textColor = black
+        self.backcolor = None
+        self.wordWrap = None
+        self.textTransform = None
+        
 def heading_style(mode='chapter', lvl=1):
 
     style = BaseHeadingStyle(name='heading_style_%s_%d' % (mode, lvl))
 
     if mode == 'chapter':
-	style.fontSize = 26
-	style.leading = 30
-	style.alignment = TA_CENTER
+        style.fontSize = 26
+        style.leading = 30
+        style.alignment = TA_CENTER
     elif mode == 'article':
-	style.fontSize = 22
-	style.leading = 26
-	style.spaceBefore = 20
-	style.spaceAfter = 2
+        style.fontSize = 22
+        style.leading = 26
+        style.spaceBefore = 20
+        style.spaceAfter = 2
     elif mode == 'section':
-	lvl = max(min(5,lvl), 1)  
-	style.fontSize = 18 - (lvl - 1) * 2
-	style.leading = style.fontSize + max(2, min(int(style.fontSize / 5), 3)) # magic: increase in leading is between 2 and 3 depending on fontsize...
-	style.spaceBefore = min(style.leading, 20)
-	if lvl > 1: # needed for "flowing" paragraphs around figures
-	    style.flowable = True
-	    
+        lvl = max(min(5,lvl), 1)  
+        style.fontSize = 18 - (lvl - 1) * 2
+        style.leading = style.fontSize + max(2, min(int(style.fontSize / 5), 3)) # magic: increase in leading is between 2 and 3 depending on fontsize...
+        style.spaceBefore = min(style.leading, 20)
+        if lvl > 1: # needed for "flowing" paragraphs around figures
+            style.flowable = True
+            
     return style
     
 

@@ -38,7 +38,7 @@ _check_reportlab()
 
 #from reportlab.rl_config import defaultPageSize
 from reportlab.platypus.paragraph import Paragraph
-from reportlab.platypus.doctemplate import BaseDocTemplate, NextPageTemplate, NotAtTopPageBreak
+from reportlab.platypus.doctemplate import BaseDocTemplate, NextPageTemplate, NotAtTopPageBreak, PageTemplate
 from reportlab.platypus.tables import Table
 from reportlab.platypus.flowables import Spacer, HRFlowable, PageBreak, KeepTogether, Image
 from reportlab.platypus.xpreformatted import XPreformatted
@@ -56,6 +56,7 @@ from pdfstyles import printWidth, printHeight, SMALLFONTSIZE, BIGFONTSIZE, FONTS
 from pdfstyles import tableOverflowTolerance
 from pdfstyles import max_img_width, max_img_height, min_img_dpi, inline_img_dpi
 from pdfstyles import maxCharsInSourceLine
+import pdfstyles 
 
 
 import rltables
@@ -409,6 +410,9 @@ class RlWriter(object):
         if hasattr(self, 'doc'): # doc is not present if tests are run
             self.doc.addPageTemplates(pt)
             elements.append(NextPageTemplate(title.encode('utf-8'))) # pagetemplate.id cant handle unicode
+            if pdfstyles.pageBreakAfterArticle and isinstance(article.getPrevious(), advtree.Article): # if configured and preceded by an article
+                elements.append(PageBreak())
+
         title = filterText(title, defaultFont=standardSansSerif, breakLong=True)
         self.currentArticle = repr(title)
         elements.append(Paragraph("<b>%s</b>" % title, heading_style('article')))
@@ -428,7 +432,6 @@ class RlWriter(object):
         if self.references:
             elements.append(Paragraph('<b>External links</b>', heading_style('section', lvl=3)))
             elements.extend(self.writeReferenceList())
-        
         return elements
     
     def writeParagraph(self,obj):
