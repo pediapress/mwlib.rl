@@ -37,13 +37,6 @@ unpack it and run::
 
 You will also need:
 
-*reportlab*
-  the svn version is needed currently
-
-  svn co http://www.reportlab.co.uk/svn/public/reportlab/trunk
-  python setup.py install
-
-
 *mwlib*
   mwlib parses mediawiki articles
 
