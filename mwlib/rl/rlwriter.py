@@ -871,9 +871,11 @@ class RlWriter(object):
         else:
             imgPath = ''
         if not imgPath:
-            log.warning('invalid image url')
+            if obj.target == None:
+                obj.target = ''
+            log.warning('invalid image url (obj.target: %r)' % obj.target)            
             return []
-               
+        print "writing image", imgPath
         def sizeImage(w,h):
             if obj.isInline():
                 scale = 1 / (inline_img_dpi / 2.54)
@@ -897,6 +899,12 @@ class RlWriter(object):
         except IOError:
             log.warning('img can not be opened by PIL')
             return []
+        try:
+            d = img.load()
+        except:
+            log.warning('img data can not be loaded - img corrupt: %r' % obj.target)
+            return []
+        
         (_w,_h) = img.size
         if _h == 0 or _w == 0:
             return []
