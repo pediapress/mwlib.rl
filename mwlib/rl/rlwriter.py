@@ -163,12 +163,12 @@ class RlWriter(object):
         self.currentColCount = 0
         self.currentArticle = None
         self.mathCache = {}
+        self.tmpdir = tempfile.mkdtemp()
+
         
     def ignore(self, obj):
         return []
-    
-
-    
+        
 
     def groupElements(self, elements):
         """Group reportlab flowables into KeepTogether flowables
@@ -273,7 +273,6 @@ class RlWriter(object):
         )
 
         self.output = output
-        self.tmpdir = tempfile.mkdtemp()
         
         elements.extend(self.writeTitlePage(coverimage=coverimage))
         try:
@@ -857,7 +856,6 @@ class RlWriter(object):
 
     
     def writeImageLink(self,obj):
-        print 'WRITE IMAGE LINK', repr(obj)
         if obj.colon == True:
             items = []
             for node in obj.children:
@@ -1318,14 +1316,10 @@ class RlWriter(object):
             
     def writeMath(self, node):
         source = re.compile("\n+").sub("\n", node.caption.strip()) # remove multiple newlines, as this could break the mathRenderer
-        source = source.replace("'", "'\\''") # escape single quotes 
-        source = u' ' + source + u' '
-
 
         imgpath = self.mathCache.get(source, None)
-
         if not imgpath:
-            imgpath = writerbase.renderMath(source, output_path=self.tmpdir, output_mode='png', render_engine='texvc')           
+            imgpath = writerbase.renderMath(source, output_path=self.tmpdir, output_mode='png', render_engine='texvc')
             self.mathCache[source] = imgpath
             if not imgpath:
                 return []
