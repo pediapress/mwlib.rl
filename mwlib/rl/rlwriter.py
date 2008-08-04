@@ -198,7 +198,7 @@ class RlWriter(object):
                     except:
                         h = 0
                     groupHeight += h
-                    if groupHeight > printHeight / 10: # 10 % of pageHeight               
+                    if groupHeight > printHeight / 10 or isinstance(elements[0], NotAtTopPageBreak): # 10 % of pageHeight               
                         groupedElements.append(KeepTogether(group))
                         group = []
                         groupHeight = 0
@@ -208,6 +208,7 @@ class RlWriter(object):
                     group.append(elements.pop(0))
         if group:
             groupedElements.append(KeepTogether(group))
+
         return groupedElements
                                 
     def write(self, obj, required=None):
@@ -410,7 +411,7 @@ class RlWriter(object):
             self.doc.addPageTemplates(pt)
             elements.append(NextPageTemplate(title.encode('utf-8'))) # pagetemplate.id cant handle unicode
             if pdfstyles.pageBreakAfterArticle and isinstance(article.getPrevious(), advtree.Article): # if configured and preceded by an article
-                elements.append(PageBreak())
+                elements.append(NotAtTopPageBreak())
 
         title = filterText(title, defaultFont=standardSansSerif, breakLong=True)
         self.currentArticle = repr(title)
