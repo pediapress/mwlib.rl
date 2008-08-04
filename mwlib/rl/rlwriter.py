@@ -565,7 +565,7 @@ class RlWriter(object):
         txt = []
         txt.extend(self.renderInline(obj))
         t = ''.join(txt)
-        t = re.sub( "<br */>", "\n", t)
+        t = re.sub( u'<br */>', u'\n', t)
         self.preMode = False
         if not len(t):
             return []
@@ -1315,8 +1315,7 @@ class RlWriter(object):
         return (True, images)
             
     def writeMath(self, node):
-        source = re.compile("\n+").sub("\n", node.caption.strip()) # remove multiple newlines, as this could break the mathRenderer
-
+        source = re.compile(u'\n+').sub(u'\n', node.caption.strip()) # remove multiple newlines, as this could break the mathRenderer
         imgpath = self.mathCache.get(source, None)
         if not imgpath:
             imgpath = writerbase.renderMath(source, output_path=self.tmpdir, output_mode='png', render_engine='texvc')
