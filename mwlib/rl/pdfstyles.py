@@ -107,8 +107,8 @@ pageBreakAfterArticle = False
 # since the documenatition is not guaranteed to be up to date, you might also want to check the docsting of the
 # Paragraph class (reportlab/platypus/paragraph.py --> class Paragraph())
 # e.g. the use of inline images is not included in the official documenation of reportlab
-pagefooter = u'All Articles originate from @WIKITITLE@  (@WIKIURL@)'
-titlepagefooter = u'@WIKITITLE@ book - Generated using the open source mwlib toolkit - <br/>see http://code.pediapress.com for more information'
+pagefooter = u'Article originates from @WIKITITLE@  (@WIKIURL@)'
+titlepagefooter = u'PDF generated using the open source mwlib toolkit<br/>see http://code.pediapress.com/ for more information'
 
 
 ######### IMAGE CONFIGURATION

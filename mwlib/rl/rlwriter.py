@@ -351,18 +351,26 @@ class RlWriter(object):
 
         if not title:
             return []
-        self.doc.addPageTemplates(TitlePage(cover=coverimage))
-        elements = [Paragraph(self.renderText(title), text_style(mode='booktitle'))]
-        if subtitle:
-            elements.append(Paragraph(self.renderText(subtitle), text_style(mode='booksubtitle')))
         firstArticle=None
         for item in metabook.get_item_list(self.book):
             if item['type'] == 'article':
                 firstArticle = xmlescape(item['title'])
                 break
+        kwargs = {}
+        if firstArticle:
+            src = self.env.wiki.getSource(firstArticle)
+            if src:
+                if src.get('name'):
+                    kwargs['wikititle'] = src['name']
+                if src.get('url'):
+                    kwargs['wikiurl'] = src['url']
+        self.doc.addPageTemplates(TitlePage(cover=coverimage, **kwargs))
+        elements = [Paragraph(self.renderText(title), text_style(mode='booktitle'))]
+        if subtitle:
+            elements.append(Paragraph(self.renderText(subtitle), text_style(mode='booksubtitle')))
         if not firstArticle:
             return elements
-        self.doc.addPageTemplates(WikiPage(firstArticle))
+        self.doc.addPageTemplates(WikiPage(firstArticle, **kwargs))
         elements.append(NextPageTemplate(firstArticle.encode('utf-8')))
         elements.append(PageBreak())
         return elements
@@ -406,7 +414,14 @@ class RlWriter(object):
         title = self.renderText(article.caption)
         log.info('writing article: %r' % title)
         elements = []
-        pt = WikiPage(title)
+        src = self.env.wiki.getSource(title)
+        kwargs = {}
+        if src:
+            if src.get('name'):
+                kwargs['wikititle'] = src['name']
+            if src.get('url'):
+                kwargs['wikiurl'] = src['url']
+        pt = WikiPage(title, **kwargs)
         if hasattr(self, 'doc'): # doc is not present if tests are run
             self.doc.addPageTemplates(pt)
             elements.append(NextPageTemplate(title.encode('utf-8'))) # pagetemplate.id cant handle unicode
