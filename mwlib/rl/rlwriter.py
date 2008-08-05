@@ -357,7 +357,7 @@ class RlWriter(object):
                 firstArticle = xmlescape(item['title'])
                 break
         kwargs = {}
-        if firstArticle:
+        if firstArticle and self.env is not None:
             src = self.env.wiki.getSource(firstArticle)
             if src:
                 if src.get('name'):
@@ -414,13 +414,14 @@ class RlWriter(object):
         title = self.renderText(article.caption)
         log.info('writing article: %r' % title)
         elements = []
-        src = self.env.wiki.getSource(title)
         kwargs = {}
-        if src:
-            if src.get('name'):
-                kwargs['wikititle'] = src['name']
-            if src.get('url'):
-                kwargs['wikiurl'] = src['url']
+        if self.env is not None:
+            src = self.env.wiki.getSource(title)
+            if src:
+                if src.get('name'):
+                    kwargs['wikititle'] = src['name']
+                if src.get('url'):
+                    kwargs['wikiurl'] = src['url']
         pt = WikiPage(title, **kwargs)
         if hasattr(self, 'doc'): # doc is not present if tests are run
             self.doc.addPageTemplates(pt)
