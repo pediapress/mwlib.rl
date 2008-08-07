@@ -758,9 +758,6 @@ class RlWriter(object):
         if obj.children:
             txt = self.renderInline(obj)
             t = ''.join(txt).strip()
-            print "*"*40
-            print "children", t
-            print "href", href
             if not href:
                 return [t]
         else:
