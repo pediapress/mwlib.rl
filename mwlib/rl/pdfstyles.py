@@ -118,14 +118,10 @@ max_img_height = 12
 min_img_dpi = 75 # scaling factor in respect to the thumbnail-size in the wikimarkup which limits image-size
 inline_img_dpi = 100 # scaling factor for inline images. 100 dpi should be the ideal size in relation to 10pt text size 
 
-img_margins_float_left = (0, 0.2*cm, 0.35*cm, 0)
-img_margins_float_left = (0, 0.4*cm, 0.7*cm, 0)
-
-img_margins_float_right = (0, 0, 0.35*cm, 0.2*cm)
-img_margins_float_right = (0, 0, 0.7*cm, 0.4*cm)
-
-
-img_margins_float = (0.2*cm,0.2*cm,0.2*cm,0.2*cm)
+# margins for floated images - margins like in html/css: (top, right, bottom, left)
+img_margins_float_left = (0, 0.4*cm, 0.7*cm, 0) # img that is left aligned
+img_margins_float_right = (0, 0, 0.7*cm, 0.4*cm) # ...
+img_margins_float = (0.2*cm,0.2*cm,0.2*cm,0.2*cm) # any other alignment
 
 ######### TEXT CONFIGURATION
 FONTSIZE = 10

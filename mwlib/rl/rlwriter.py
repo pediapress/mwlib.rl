@@ -294,6 +294,8 @@ class RlWriter(object):
                 raw=license['wikitext'],
                 wikidb=self.env.wiki,
             )))
+
+        #debughelper.dumpElements(elements)
         
         if not bookParseTree.getChildNodesByClass(parser.Article):
             pt = WikiPage('')
@@ -494,7 +496,12 @@ class RlWriter(object):
         
         for n in nodes: # FIXME: somebody should clean up this mess
             if isinstance(lastNode, Figure) and isinstance(n, Figure):
-                figures.append(n)
+                if n.align != 'center':
+                    figures.append(n)
+                else:
+                    combinedNodes.extend(figures)
+                    combinedNodes.extend([Spacer(0, 0.5*cm), n])
+                    figures = []
             else :
                 if not figures:
                     if isinstance(n, Figure) and n.align!='center' : # fixme: only float images that are not centered
@@ -909,7 +916,8 @@ class RlWriter(object):
                 }
             return txt
         # FIXME: make margins and padding configurable
-        captionTxt = ''.join(txt) # was italic'<i>%s</i>' % ''.join(txt)  
+        captionTxt = ''.join(txt) # was italic'<i>%s</i>' % ''.join(txt)
+        
         return [Figure(imgPath, captionTxt=captionTxt,  captionStyle=text_style('figure', in_table=self.nestingLevel), imgWidth=width, imgHeight=height, margin=(0.2*cm, 0.2*cm, 0.2*cm, 0.2*cm), padding=(0.2*cm, 0.2*cm, 0.2*cm, 0.2*cm), align=align)]
 
 
