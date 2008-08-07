@@ -8,7 +8,7 @@
 from pdfstyles import standardFont
 
 
-breakChars = ['/', '.', '+', '-']
+breakChars = ['/', '.', '+', '-', '_', '?']
 zws = '<font fontSize="1"> </font>'
 def filterText(txt, defaultFont=standardFont, breakLong=False):  
     if isinstance(txt,list):

@@ -37,7 +37,7 @@ class SimplePage(PageTemplate):
         
 class WikiPage(PageTemplate):
 
-    def __init__(self,title=None, wikititle=u'undefined', wikiurl=u'undefined', id=None, onPage=_doNothing, onPageEnd=_doNothing,
+    def __init__(self,title=None, id=None, onPage=_doNothing, onPageEnd=_doNothing,
                  pagesize=defaultPageSize):
         """
         @type title: unicode
@@ -49,8 +49,6 @@ class WikiPage(PageTemplate):
         PageTemplate.__init__(self,id=id, frames=frames,onPage=onPage,onPageEnd=onPageEnd,pagesize=pagesize)
 
         self.title = title
-        self.wikititle = wikititle
-        self.wikiurl = wikiurl
     
     def beforeDrawPage(self,canvas,doc):
         canvas.setFont(standardFont,10)      
@@ -74,15 +72,6 @@ class WikiPage(PageTemplate):
         canvas.saveState()
         canvas.setFont(standardFont,8)
         canvas.line(footerMarginHor, footerMarginVert, pageWidth - footerMarginHor, footerMarginVert )
-        if showPageFooter:
-            footertext = filterText(pagefooter.replace('@WIKITITLE@', self.wikititle).replace('@WIKIURL@', self.wikiurl))
-            p = Paragraph(footertext, text_style())
-            p.canv = canvas
-            w,h = p.wrap(pageWidth - footerMarginHor*2.5, pageHeight) 
-            canvas.translate(headerMarginHor, footerMarginVert-h - 0.1*cm)
-            p.drawPara()
-            
-
             
         canvas.restoreState()
     

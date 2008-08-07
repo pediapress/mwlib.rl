@@ -408,21 +408,13 @@ class RlWriter(object):
         return elements
 
 
-    def writeArticle(self,article):
+    def writeArticle(self, article):
         self.references = [] 
         
         title = self.renderText(article.caption)
         log.info('writing article: %r' % title)
         elements = []
-        kwargs = {}
-        if self.env is not None:
-            src = self.env.wiki.getSource(title)
-            if src:
-                if src.get('name'):
-                    kwargs['wikititle'] = src['name']
-                if src.get('url'):
-                    kwargs['wikiurl'] = src['url']
-        pt = WikiPage(title, **kwargs)
+        pt = WikiPage(title)
         if hasattr(self, 'doc'): # doc is not present if tests are run
             self.doc.addPageTemplates(pt)
             elements.append(NextPageTemplate(title.encode('utf-8'))) # pagetemplate.id cant handle unicode
@@ -448,6 +440,13 @@ class RlWriter(object):
         if self.references:
             elements.append(Paragraph('<b>External links</b>', heading_style('section', lvl=3)))
             elements.extend(self.writeReferenceList())
+
+        if article.url:
+            elements.extend([Spacer(0, 0.5*cm),
+                            Paragraph('Source: %s' % filterText(article.url, breakLong=True), text_style())])
+        if article.authors:
+            elements.append(Paragraph('Principle Authors: %s' % filterText(', '.join(article.authors)), text_style()))
+            
         return elements
     
     def writeParagraph(self,obj):
@@ -687,6 +686,7 @@ class RlWriter(object):
 
     def writeDefinitionList(self, n):
         return self.renderChildren(n)
+        
 
     def writeDefinitionTerm(self, n):
         txt = self.writeStrong(n)
@@ -1068,8 +1068,10 @@ class RlWriter(object):
             itemPrefix = u'<bullet>\u2022</bullet>&nbsp;' 
         elif style == 'referencelist':
             itemPrefix = '<bullet>%s[<seq id="liCounter%d" />]</bullet>&nbsp;' % (seqReset,counterID)
-        elif style== 'enumerate' or 'enumerateAlpha':
+        elif style== 'enumerate':
             itemPrefix = '<bullet>%s<seq id="liCounter%d" />.</bullet>&nbsp;' % (seqReset,counterID)
+        elif style.startswith('enumerateLetter'):
+            itemPrefix = '<bullet>%s<seqformat id="liCounter%d" value="%s"/><seq id="liCounter%d" />.</bullet>&nbsp;' % (seqReset,counterID, style[-1], counterID)
         else:
             log.warn('invalid list style:', repr(style))
             itemPrefix = ''
@@ -1088,7 +1090,7 @@ class RlWriter(object):
         if not style=='referencelist':
             if numbered or lst.numbered:
                 if lst.numbered in ['a', 'A']:
-                    style = "enumerateAlpha"
+                    style = "enumerateLetter%s" % lst.numbered
                 else:
                     style = "enumerate"
             else:
