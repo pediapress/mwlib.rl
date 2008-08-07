@@ -33,8 +33,8 @@ def _check_reportlab():
 _check_reportlab()
 
 
-#import reportlab
-#reportlab.rl_config.platypus_link_underline = 1
+import reportlab
+reportlab.rl_config.platypus_link_underline = 1
 
 #from reportlab.rl_config import defaultPageSize
 from reportlab.platypus.paragraph import Paragraph
@@ -465,10 +465,10 @@ class RlWriter(object):
 
         def getMargins(align):
             if align=='right':
-                return (0, 0, 0.35*cm, 0.2*cm)
+                return pdfstyles.img_margins_float_right
             elif align=='left':
-                return (0, 0.2*cm, 0.35*cm, 0)
-            return (0.2*cm,0.2*cm,0.2*cm,0.2*cm)
+                return pdfstyles.img_margins_float_left
+            return pdfstyles.img_margins_float
 
         combinedNodes = []
         floatingNodes = []
@@ -749,37 +749,28 @@ class RlWriter(object):
     def writeLink(self,obj):
         """ Link nodes are intra wiki links
         """
-
-        # handle nested links: FIXME this is only needed b/c the parser does not behave the way we need it
-        if ( obj.getChildNodesByClass(advtree.Link) or
-             obj.getChildNodesByClass(advtree.ArticleLink) or
-             obj.getChildNodesByClass(advtree.InterwikiLink) or
-             obj.getChildNodesByClass(advtree.CategoryLink) or
-             obj.getChildNodesByClass(advtree.NamespaceLink)):
-            elements = ['[[']
-            elements.extend(self.renderInline(obj))
-            elements.append(']]')
-            return elements
-
-
-        href = getattr(obj, 'full_target', None) or obj.target
+        href = obj.url # obj.url is a utf-8 string
+        
         if not href:
             log.warning('no link target specified')
-            href = ''
-
-        txt = []
+            if not obj.children:
+                return []         
         if obj.children:
-            txt.extend(self.renderInline(obj))
+            txt = self.renderInline(obj)
             t = ''.join(txt).strip()
+            print "*"*40
+            print "children", t
+            print "href", href
+            if not href:
+                return [t]
         else:
             txt = [href]
+            txt = [getattr(obj, 'full_target', None) or obj.target]
             t = filterText(''.join(txt).strip()).encode('utf-8')
             t = unicode(urllib.unquote(t), 'utf-8')
-        href = 'FIXME' # self._quoteURL(href, self.baseUrl)
-
-        #t = '<link href="%s">%s</link>' % ( href, t.strip())
+        t = '<link href="%s">%s</link>' % ( href, t.strip())
         return [t]
-    
+
     def writeLangLink(self, obj):
         if obj.colon:
             return self.writeLink(obj)
@@ -807,9 +798,7 @@ class RlWriter(object):
         return [txt]
     
     def writeNamedURL(self,obj):
-
         href = obj.caption.strip()
-
         if not self.refmode:
             i = parser.Item()
             i.children = [advtree.URL(href)]
@@ -840,37 +829,8 @@ class RlWriter(object):
         txt = ''.join(txt)
         if txt.find("|") > -1:
             txt = txt[:txt.find("|")] # category links sometimes seem to have more than one element. throw them away except the first one
-        return [''.join(txt)]
+        return [''.join(txt)] #FIXME use writelink to generate clickable-link
     
-    def _cleanImage(self, path):
-        """
-        workaround for transparent images in reportlab:
-        fully transparent pixels are explicitly set to white
-        """
-        try:
-            img = PilImage.open(path)
-        except IOError:
-            return
-        if img.mode in ['RGB', 'P', 'I']:
-            return
-        data = list(img.getdata())
-        if not isinstance(data[0], tuple) or ( not len(data[0]) in [2,4]): # no alpha channel present
-            return 
-        try:
-            if len(data[0]) == 4: # RGBA
-                for i in range(len(data)):
-                    if data[i][3] == 0: # alpha channel
-                        data[i] = (255,255,255,255)
-            elif len(data[0]) == 2: # LA
-                for i in range(len(data)):
-                    if data[i][1] == 0:
-                        data[i] = (255,255)
-        except:
-            return        
-        img.putdata(data)
-        img.save(path)
-        log.info('corrected image alpha channel')
-
     
     def writeImageLink(self,obj):
         if obj.colon == True:
@@ -882,7 +842,6 @@ class RlWriter(object):
         if self.imgDB:
             imgPath = self.imgDB.getDiskPath(obj.target, size=800) # FIXME: size configurable etc.
             if imgPath:
-                #self._cleanImage(imgPath)
                 imgPath = imgPath.encode('utf-8')
                 self.tmpImages.add(imgPath)
         else:
@@ -892,7 +851,6 @@ class RlWriter(object):
                 obj.target = ''
             log.warning('invalid image url (obj.target: %r)' % obj.target)            
             return []
-        print "writing image", imgPath
         def sizeImage(w,h):
             if obj.isInline():
                 scale = 1 / (inline_img_dpi / 2.54)
@@ -954,7 +912,7 @@ class RlWriter(object):
                 }
             return txt
         # FIXME: make margins and padding configurable
-        captionTxt = '<i>%s</i>' % ''.join(txt)  #filter
+        captionTxt = ''.join(txt) # was italic'<i>%s</i>' % ''.join(txt)  
         return [Figure(imgPath, captionTxt=captionTxt,  captionStyle=text_style('figure', in_table=self.nestingLevel), imgWidth=width, imgHeight=height, margin=(0.2*cm, 0.2*cm, 0.2*cm, 0.2*cm), padding=(0.2*cm, 0.2*cm, 0.2*cm, 0.2*cm), align=align)]
 
 
@@ -1113,7 +1071,7 @@ class RlWriter(object):
             itemPrefix = u'<bullet>\u2022</bullet>&nbsp;' 
         elif style == 'referencelist':
             itemPrefix = '<bullet>%s[<seq id="liCounter%d" />]</bullet>&nbsp;' % (seqReset,counterID)
-        elif style== 'enumerate':
+        elif style== 'enumerate' or 'enumerateAlpha':
             itemPrefix = '<bullet>%s<seq id="liCounter%d" />.</bullet>&nbsp;' % (seqReset,counterID)
         else:
             log.warn('invalid list style:', repr(style))
@@ -1132,7 +1090,10 @@ class RlWriter(object):
         items = []
         if not style=='referencelist':
             if numbered or lst.numbered:
-                style="enumerate"
+                if lst.numbered in ['a', 'A']:
+                    style = "enumerateAlpha"
+                else:
+                    style = "enumerate"
             else:
                 style="itemize"
         self.listCounterID += 1
