@@ -152,7 +152,7 @@ def _any(list):
     return False
 
 # ex: we delete preformatted nodes which are inside reference nodes, we keep all children off the preformatted node 
-removeNodes = {PreFormatted:[Reference], Cite:[Item, Reference], Center:[Section]}
+removeNodes = {PreFormatted:[Reference], Cite:[Item, Reference]}
 def removeBrokenChildren(node):
     if node.__class__ in removeNodes.keys():
         if _any([parent.__class__ in removeNodes[node.__class__] for parent in node.parents]):
@@ -257,5 +257,6 @@ def buildAdvancedTree(root):
     removeBrokenChildren(root)
     fixTableColspans(root)
     moveReferenceListSection(root)
+
     #inheritStyles(root) FIXME: remove this completly. see comment at function definition
     

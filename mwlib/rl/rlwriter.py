@@ -400,7 +400,7 @@ class RlWriter(object):
         headingTxt = ''.join(self.renderInline(obj.children[0])).strip()
 
         self.sectionTitle = False
-        if lvl == 2:
+        if lvl <= 2:
             anchor = '<a name="%d"/>' % len(self.bookmarks)
             self.bookmarks.append((obj.children[0].getAllDisplayText(), 'heading'))
         else:
@@ -916,6 +916,8 @@ class RlWriter(object):
 
         (width, height) = sizeImage( w, h)
         align = obj.align
+        if advtree.Center  in [ p.__class__ for p in obj.getParents()]:
+            align = 'center'
             
         txt = []
         for node in obj.children:
@@ -924,8 +926,11 @@ class RlWriter(object):
                 txt.extend(res)
             else:
                 log.warning('imageLink contained block element: %s' % type(res))
-        if obj.isInline() : # or self.nestingLevel: 
-            #log.info('got inline image:',  imgPath,"w:",width,"h:",height)
+
+        is_inline = obj.isInline()
+        #from mwlib import imgutils #fixme: check if we need "improved" inline detection of images
+        #is_inline = imgutils.isInline(obj)           
+        if  is_inline: 
             txt = '<img src="%(src)s" width="%(width)fin" height="%(height)fin" valign="%(align)s"/>' % {
                 'src':unicode(imgPath, 'utf-8'),
                 'width':width/100,
@@ -933,9 +938,7 @@ class RlWriter(object):
                 'align':'bottom',
                 }
             return txt
-        # FIXME: make margins and padding configurable
-        captionTxt = ''.join(txt) # was italic'<i>%s</i>' % ''.join(txt)
-        
+        captionTxt = ''.join(txt)         
         return [Figure(imgPath, captionTxt=captionTxt,  captionStyle=text_style('figure', in_table=self.nestingLevel), imgWidth=width, imgHeight=height, margin=(0.2*cm, 0.2*cm, 0.2*cm, 0.2*cm), padding=(0.2*cm, 0.2*cm, 0.2*cm, 0.2*cm), align=align)]
 
 
