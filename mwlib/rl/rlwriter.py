@@ -301,6 +301,7 @@ class RlWriter(object):
             )))
 
         self.doc.bookmarks = self.bookmarks
+        #debughelper.dumpElements(elements)
 
         if not bookParseTree.getChildNodesByClass(parser.Article):
             pt = WikiPage('')
@@ -461,10 +462,10 @@ class RlWriter(object):
             elements.append(Paragraph('<b>External links</b>', heading_style('section', lvl=3)))
             elements.extend(self.writeReferenceList())
 
-        if article.url:
+        if getattr(article,'url', None):
             elements.extend([Spacer(0, 0.5*cm),
                             Paragraph('Source: %s' % filterText(article.url, breakLong=True), text_style())])
-        if article.authors:
+        if getattr(article, 'authors', None):
             elements.append(Paragraph('Principle Authors: %s' % filterText(', '.join(article.authors)), text_style()))
             
         return elements
