@@ -109,3 +109,33 @@ class TitlePage(PageTemplate):
             x = (pageWidth - width) / 2.0
             y = (pageHeight - height) / 2.0
             canvas.drawImage(self.cover, x, y, width , height)
+
+from reportlab.platypus.doctemplate import BaseDocTemplate
+from reportlab.pdfgen import canvas
+
+class PPDocTemplate(BaseDocTemplate):
+
+    def __init__(self, output, **kwargs):
+        self.bookmarks = []
+        BaseDocTemplate.__init__(self, output, **kwargs)
+
+        
+        
+    def _startBuild(self, filename=None, canvasmaker=canvas.Canvas):
+        BaseDocTemplate._startBuild(self, filename=filename, canvasmaker=canvasmaker)
+
+        type2lvl = {'chapter': 0,
+                    'article': 1,
+                    'heading': 2}
+        got_chapter = False
+        for (bm_id, (bm_title, bm_type)) in enumerate(self.bookmarks):            
+            lvl = type2lvl[bm_type]
+            if bm_type== 'chapter':
+                got_chapter = True
+            elif not got_chapter: # outline-lvls can't start above zero
+                lvl -= 1
+            #self.canv.addOutlineEntry(bm_title, str(bm_id), lvl, 0)
+            self.canv.addOutlineEntry(bm_title, str(bm_id), lvl, bm_type == 'article')
+
+        
+        

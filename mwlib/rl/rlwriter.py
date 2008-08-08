@@ -38,7 +38,12 @@ reportlab.rl_config.platypus_link_underline = 1
 
 #from reportlab.rl_config import defaultPageSize
 from reportlab.platypus.paragraph import Paragraph
-from reportlab.platypus.doctemplate import BaseDocTemplate, NextPageTemplate, NotAtTopPageBreak, PageTemplate
+
+from reportlab.platypus.doctemplate import BaseDocTemplate
+
+from pagetemplates import PPDocTemplate
+
+from reportlab.platypus.doctemplate import NextPageTemplate, NotAtTopPageBreak, PageTemplate
 from reportlab.platypus.tables import Table
 from reportlab.platypus.flowables import Spacer, HRFlowable, PageBreak, KeepTogether, Image
 from reportlab.platypus.xpreformatted import XPreformatted
@@ -164,7 +169,7 @@ class RlWriter(object):
         self.currentArticle = None
         self.mathCache = {}
         self.tmpdir = tempfile.mkdtemp()
-
+        self.bookmarks = []
         
     def ignore(self, obj):
         return []
@@ -264,13 +269,13 @@ class RlWriter(object):
     def renderBook(self, bookParseTree, output, coverimage=None):
         elements = []
         version = 'mwlib version: %s , rlwriter version: %s' % (rlwriterversion, mwlibversion)
-        self.doc = BaseDocTemplate(output,
-            topMargin=pageMarginVert,
-            leftMargin=pageMarginHor,
-            rightMargin=pageMarginHor,
-            bottomMargin=pageMarginVert,
-            title=self.book.get('title'),
-            keywords=version,
+        self.doc = PPDocTemplate(output,
+                                 topMargin=pageMarginVert,
+                                 leftMargin=pageMarginHor,
+                                 rightMargin=pageMarginHor,
+                                 bottomMargin=pageMarginVert,
+                                 title=self.book.get('title'),
+                                 keywords=version
         )
 
         self.output = output
@@ -295,13 +300,13 @@ class RlWriter(object):
                 wikidb=self.env.wiki,
             )))
 
-        #debughelper.dumpElements(elements)
-        
+        self.doc.bookmarks = self.bookmarks
+
         if not bookParseTree.getChildNodesByClass(parser.Article):
             pt = WikiPage('')
             self.doc.addPageTemplates(pt)
             elements.append(Paragraph(' ', text_style()))
-                            
+
         log.info("start rendering: %r" % output)
         try:
             self.doc.build(elements)
@@ -379,22 +384,31 @@ class RlWriter(object):
 
     def writeChapter(self, chapter):
         hr = HRFlowable(width="80%", spaceBefore=6, spaceAfter=0, color=colors.black, thickness=0.5)
+
+        title = self.renderText(chapter.caption)
+        chapter_para = Paragraph('%s<a name="%s"/>' % (title, len(self.bookmarks)), heading_style('chapter'))
+        self.bookmarks.append((title, 'chapter'))
         return [NotAtTopPageBreak(),
                 hr,
-                Paragraph(self.renderText(chapter.caption), heading_style('chapter')),
+                chapter_para,
                 hr]
 
-    def writeSection(self,obj):
+    def writeSection(self, obj):
         lvl = getattr(obj, "level", 4)
         headingStyle = heading_style('section', lvl=lvl+1)
         self.sectionTitle = True
         headingTxt = ''.join(self.renderInline(obj.children[0])).strip()
-        self.sectionTitle = False
-        elements = [Paragraph('<font name="%s"><b>%s</b></font>' % (standardSansSerif, headingTxt), headingStyle)]
-        self.level += 1
 
-        elements.extend(self.renderMixed(obj.children[1:]))
+        self.sectionTitle = False
+        if lvl == 2:
+            anchor = '<a name="%d"/>' % len(self.bookmarks)
+            self.bookmarks.append((obj.children[0].getAllDisplayText(), 'heading'))
+        else:
+            anchor = ''
+        elements = [Paragraph('<font name="%s"><b>%s</b></font>%s' % (standardSansSerif, headingTxt, anchor), headingStyle)]
         
+        self.level += 1
+        elements.extend(self.renderMixed(obj.children[1:]))
         self.level -= 1
         return elements
 
@@ -425,7 +439,11 @@ class RlWriter(object):
 
         title = filterText(title, defaultFont=standardSansSerif, breakLong=True)
         self.currentArticle = repr(title)
-        elements.append(Paragraph("<b>%s</b>" % title, heading_style('article')))
+
+        heading_para = Paragraph('<b>%s</b><a name="%d"/>' % (title, len(self.bookmarks)), heading_style('article'))        
+        elements.append(heading_para)
+        self.bookmarks.append((article.caption, 'article'))
+
         elements.append(HRFlowable(width='100%', hAlign='LEFT', thickness=1, spaceBefore=0, spaceAfter=10, color=colors.black))
 
         if not hasattr(article, 'renderFailed'): # if rendering of the whole book failed, failed articles are flagged
