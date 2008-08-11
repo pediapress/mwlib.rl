@@ -372,7 +372,7 @@ class RlWriter(object):
                 if src.get('name'):
                     kwargs['wikititle'] = src['name']
                 if src.get('url'):
-                    kwargs['wikiurl'] = src['url']
+                    kwargs['wikiurl'] = src['url']                    
         self.doc.addPageTemplates(TitlePage(cover=coverimage, **kwargs))
         elements = [Paragraph(self.renderText(title), text_style(mode='booktitle'))]
         if subtitle:
@@ -465,7 +465,7 @@ class RlWriter(object):
 
         if getattr(article,'url', None):
             elements.extend([Spacer(0, 0.5*cm),
-                            Paragraph('Source: %s' % filterText(article.url, breakLong=True), text_style())])
+                            Paragraph('Source: %s' % filterText(xmlescape(article.url), breakLong=True), text_style())])
         if getattr(article, 'authors', None):
             elements.append(Paragraph('Principle Authors: %s' % filterText(', '.join(article.authors)), text_style()))
             
@@ -473,7 +473,6 @@ class RlWriter(object):
     
     def writeParagraph(self,obj):
         return self.renderMixed(obj)
-
 
     def floatImages(self, nodes):
         """Floating images are combined with paragraphs.
@@ -763,16 +762,6 @@ class RlWriter(object):
         log.warning('unknown tag node', repr(s))
         return txt
 
-
-    def _quoteURL(self,url, baseUrl=None):
-        safeChars = ':/#'
-        if url.startswith('mailto:'):
-            safeChars = ':/@'
-        url = urllib.quote(url.encode('utf-8'),safe=safeChars)
-        if baseUrl:
-            url = u'%s%s' % (baseUrl, url)
-        return url
-
     def writeLink(self,obj):
         """ Link nodes are intra wiki links
         """
@@ -792,7 +781,7 @@ class RlWriter(object):
             txt = [getattr(obj, 'full_target', None) or obj.target]
             t = filterText(''.join(txt).strip()).encode('utf-8')
             t = unicode(urllib.unquote(t), 'utf-8')
-        t = '<link href="%s">%s</link>' % ( href, t.strip())
+        t = '<link href="%s">%s</link>' % ( xmlescape(href), t.strip())
         return [t]
 
     def writeLangLink(self, obj):
@@ -1340,6 +1329,7 @@ class RlWriter(object):
     def writeMath(self, node):
         source = re.compile(u'\n+').sub(u'\n', node.caption.strip()) # remove multiple newlines, as this could break the mathRenderer
         imgpath = self.mathCache.get(source, None)
+
         if not imgpath:
             imgpath = writerbase.renderMath(source, output_path=self.tmpdir, output_mode='png', render_engine='texvc')
             self.mathCache[source] = imgpath
@@ -1361,7 +1351,6 @@ class RlWriter(object):
         # the "normal" height of a single-line formula is 32px. UPDATE: is now 17 
         #imgAlign = '%fin' % (- (h - 32) / (2 * density))
         imgAlign = '%fin' % (- (h - 15) / (2 * density))
-
         #the non-breaking-space is needed to force whitespace after the formula
         return ' <img src="%(path)s" width="%(width)fin" height="%(height)fin" valign="%(valign)s" />&nbsp; ' % {
             'path': imgpath.encode(sys.getfilesystemencoding()),
