@@ -170,6 +170,7 @@ class RlWriter(object):
         self.mathCache = {}
         self.tmpdir = tempfile.mkdtemp()
         self.bookmarks = []
+        self.colwidth = 0
         
     def ignore(self, obj):
         return []
@@ -916,6 +917,11 @@ class RlWriter(object):
             w, h = _w, _h
 
         (width, height) = sizeImage( w, h)
+        if self.colwidth:
+            if width > self.colwidth:
+                height = height * self.colwidth/width
+                width = self.colwidth
+
         align = obj.align
         if advtree.Center  in [ p.__class__ for p in obj.getParents()]:
             align = 'center'
@@ -946,6 +952,8 @@ class RlWriter(object):
     def writeGallery(self,obj):
         data = []
         row = []
+        if obj.children:
+            self.colwidth = (printWidth - 20)/2 #20pt margin
         for node in obj.children:
             if isinstance(node,parser.ImageLink):
                 node.align='center' # this is a hack. otherwise writeImage thinks this is an inline image
