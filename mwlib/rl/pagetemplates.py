@@ -37,7 +37,7 @@ class SimplePage(PageTemplate):
         
 class WikiPage(PageTemplate):
 
-    def __init__(self,title=None, id=None, onPage=_doNothing, onPageEnd=_doNothing,
+    def __init__(self,title=None, id=None, wikititle=u'undefined', wikiurl=u'undefined', onPage=_doNothing, onPageEnd=_doNothing,
                  pagesize=defaultPageSize):
         """
         @type title: unicode
