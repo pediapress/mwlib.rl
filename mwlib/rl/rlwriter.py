@@ -894,6 +894,7 @@ class RlWriter(object):
             return []
         
         (_w,_h) = img.size
+        del img
         if _h == 0 or _w == 0:
             return []
         aspectRatio = _w/_h                           
@@ -935,8 +936,16 @@ class RlWriter(object):
                 }
             return txt
         captionTxt = ''.join(txt)         
-        return [Figure(imgPath, captionTxt=captionTxt,  captionStyle=text_style('figure', in_table=self.nestingLevel), imgWidth=width, imgHeight=height, margin=(0.2*cm, 0.2*cm, 0.2*cm, 0.2*cm), padding=(0.2*cm, 0.2*cm, 0.2*cm, 0.2*cm), align=align)]
-
+        figure = Figure(imgPath,
+                        captionTxt=captionTxt,
+                        captionStyle=text_style('figure', in_table=self.nestingLevel),
+                        imgWidth=width,
+                        imgHeight=height,
+                        margin=(0.2*cm, 0.2*cm, 0.2*cm, 0.2*cm),
+                        padding=(0.2*cm, 0.2*cm, 0.2*cm, 0.2*cm),
+                        align=align)
+        return [figure]
+        
 
     def writeGallery(self,obj):
         data = []
@@ -1268,6 +1277,7 @@ class RlWriter(object):
                 log.warning('nested table too high')
                 raise LayoutError                
             doc.build([table])
+            del doc
             if self.debug:
                 log.info('table test rendering: ok')
             return (True, None)
@@ -1292,6 +1302,7 @@ class RlWriter(object):
                 doc.addPageTemplates(SimplePage(pageSize=(pw,ph)))
                 doc.build([table])
                 fail = False
+                del doc
             except:
                 log.info('safe rendering fail for width:', pw)
 
