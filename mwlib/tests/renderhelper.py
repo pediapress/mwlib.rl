@@ -12,7 +12,8 @@ from mwlib.rl.pagetemplates import WikiPage
 
 from mwlib import uparser
 from mwlib.rl.rlwriter import RlWriter
-from mwlib.rl.rltreecleaner import buildAdvancedTree
+from mwlib.treecleaner import TreeCleaner
+from mwlib import advtree
 
 def renderElements(elements, filesuffix=None):
     """ takes a list of reportlab flowables and renders them to a test.pdf file"""
@@ -29,7 +30,11 @@ def renderElements(elements, filesuffix=None):
 
 def renderMW(txt, filesuffix=None):
     parseTree = uparser.parseString(title='Test', raw=txt)
-    buildAdvancedTree(parseTree)
+
+    advtree.buildAdvancedTree(parseTree)
+    tc = TreeCleaner(parseTree)
+    tc.cleanAll()
+    
     rw = RlWriter()
     rw.wikiTitle = 'testwiki'
     rw.tmpdir = tempfile.mkdtemp()
