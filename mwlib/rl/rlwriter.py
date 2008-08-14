@@ -80,10 +80,11 @@ except ImportError:
     useFriBidi = False
 
 from mwlib.rl import debughelper
-from mwlib.rl.rltreecleaner import buildAdvancedTree
+#from mwlib.rl.rltreecleaner import buildAdvancedTree
 from mwlib.rl import version as rlwriterversion
 from mwlib._version import version as  mwlibversion
 from mwlib import advtree, writerbase
+from mwlib.treecleaner import TreeCleaner
 
 def flatten(x):
     result = []
@@ -234,7 +235,11 @@ class RlWriter(object):
         
         #if self.debug:
         #    debughelper.showParseTree(sys.stdout, bookParseTree)
-        buildAdvancedTree(bookParseTree)       
+
+        advtree.buildAdvancedTree(bookParseTree)
+        tc = TreeCleaner(bookParseTree)
+        tc.cleanAll()
+        
         if self.debug:
             debughelper.showParseTree(sys.stdout, bookParseTree)
                
