@@ -14,6 +14,7 @@ import traceback
 import tempfile
 import htmlentitydefs
 import shutil
+import inspect
 
 from xml.sax.saxutils import escape as xmlescape
 from PIL import Image as PilImage
@@ -80,7 +81,6 @@ except ImportError:
     useFriBidi = False
 
 from mwlib.rl import debughelper
-#from mwlib.rl.rltreecleaner import buildAdvancedTree
 from mwlib.rl import version as rlwriterversion
 from mwlib._version import version as  mwlibversion
 from mwlib import advtree, writerbase
@@ -233,15 +233,15 @@ class RlWriter(object):
     def writeBook(self, bookParseTree, output, removedArticlesFile=None,
                   coverimage=None):
         
-        #if self.debug:
-        #    debughelper.showParseTree(sys.stdout, bookParseTree)
+        if self.debug:
+            debughelper.showParseTree(sys.stdout, bookParseTree)
 
         advtree.buildAdvancedTree(bookParseTree)
         tc = TreeCleaner(bookParseTree)
         tc.cleanAll()
         
-        if self.debug:
-            debughelper.showParseTree(sys.stdout, bookParseTree)
+        #if self.debug:
+        #    debughelper.showParseTree(sys.stdout, bookParseTree)
                
         try:
             self.renderBook(bookParseTree, output, coverimage=coverimage)
@@ -405,7 +405,6 @@ class RlWriter(object):
         headingStyle = heading_style('section', lvl=lvl+1)
         self.sectionTitle = True
         headingTxt = ''.join(self.renderInline(obj.children[0])).strip()
-
         self.sectionTitle = False
         if lvl <= 2:
             anchor = '<a name="%d"/>' % len(self.bookmarks)
@@ -1376,6 +1375,8 @@ class RlWriter(object):
     
     writeTimeline = ignore
     writeControl = ignore
+
+    writeVar = writeEmphasized
 
 
 def writer(env, output, status_callback=None, coverimage=None, strict=False, debug=False):
