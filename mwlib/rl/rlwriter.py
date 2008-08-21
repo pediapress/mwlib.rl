@@ -360,15 +360,18 @@ class RlWriter(object):
         return (ok_count, fail_count, fail_articles)
     
     def writeTitlePage(self, coverimage=None):       
+        # FIXME: clean this up. there seems to be quite a bit of deprecated here
         title = self.book.get('title')
         subtitle =  self.book.get('subtitle')
 
         if not title:
             return []
         firstArticle=None
+        firstArticleTitle = None
         for item in metabook.get_item_list(self.book):
             if item['type'] == 'article':
                 firstArticle = xmlescape(item['title'])
+                firstArticleTitle = xmlescape(item['displaytitle'])
                 break
         kwargs = {}
         if firstArticle and self.env is not None:
@@ -384,8 +387,8 @@ class RlWriter(object):
             elements.append(Paragraph(self.renderText(subtitle), text_style(mode='booksubtitle')))
         if not firstArticle:
             return elements
-        self.doc.addPageTemplates(WikiPage(firstArticle, **kwargs))
-        elements.append(NextPageTemplate(firstArticle.encode('utf-8')))
+        self.doc.addPageTemplates(WikiPage(firstArticleTitle, **kwargs))
+        elements.append(NextPageTemplate(firstArticleTitle.encode('utf-8')))
         elements.append(PageBreak())
         return elements
 
