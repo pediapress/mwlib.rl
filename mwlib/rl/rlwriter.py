@@ -34,8 +34,8 @@ def _check_reportlab():
 _check_reportlab()
 
 
-import reportlab
-reportlab.rl_config.platypus_link_underline = 1
+#import reportlab
+#reportlab.rl_config.platypus_link_underline = 1
 
 #from reportlab.rl_config import defaultPageSize
 from reportlab.platypus.paragraph import Paragraph
