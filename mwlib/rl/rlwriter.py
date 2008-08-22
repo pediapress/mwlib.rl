@@ -371,7 +371,7 @@ class RlWriter(object):
         for item in metabook.get_item_list(self.book):
             if item['type'] == 'article':
                 firstArticle = xmlescape(item['title'])
-                firstArticleTitle = xmlescape(item['displaytitle'])
+                firstArticleTitle = xmlescape(item.get('displaytitle', item['title']))
                 break
         kwargs = {}
         if firstArticle and self.env is not None:
