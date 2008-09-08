@@ -233,15 +233,15 @@ class RlWriter(object):
     def writeBook(self, bookParseTree, output, removedArticlesFile=None,
                   coverimage=None):
         
-        if self.debug:
-            debughelper.showParseTree(sys.stdout, bookParseTree)
+        #if self.debug:
+        #    debughelper.showParseTree(sys.stdout, bookParseTree)
 
         advtree.buildAdvancedTree(bookParseTree)
         tc = TreeCleaner(bookParseTree)
         tc.cleanAll()
         
-        #if self.debug:
-        #    debughelper.showParseTree(sys.stdout, bookParseTree)
+        if self.debug:
+            debughelper.showParseTree(sys.stdout, bookParseTree)
                
         try:
             self.renderBook(bookParseTree, output, coverimage=coverimage)
@@ -1089,10 +1089,9 @@ class RlWriter(object):
     writeDeleted = writeStrike
 
     def writeImageMap(self, n):
-        # copy from old writeTagNode
-        #if t.imagemap.imagelink:
-        #        return self.write(t.imagemap.imagelink)
-        return []
+        if n.imagemap.imagelink:
+            return self.write(n.imagemap.imagelink)
+
     
     def writeTagNode(self,t):
         return self.renderChildren(t) # FIXME
