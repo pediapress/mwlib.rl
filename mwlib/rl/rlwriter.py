@@ -1091,7 +1091,8 @@ class RlWriter(object):
     def writeImageMap(self, n):
         if n.imagemap.imagelink:
             return self.write(n.imagemap.imagelink)
-
+        else:
+            return []
     
     def writeTagNode(self,t):
         return self.renderChildren(t) # FIXME
