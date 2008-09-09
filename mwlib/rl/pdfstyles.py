@@ -191,16 +191,15 @@ def text_style(mode='p', indent_lvl=0, in_table=0, relsize='normal'):
     if mode in ['footer', 'figure', 'center']:
         style.alignment = TA_CENTER
 
-    if mode == 'preformatted':
-        style.spaceAfter = 3
-        style.fontName = standardMonoFont
-        indent_lvl += 1
-        style.backColor = '#eeeeee'
-
-    if mode == 'source':
-        style.spaceAfter = 3
+    if mode == 'source' or mode == 'preformatted':
         style.fontName = standardMonoFont       
         style.backColor = '#eeeeee'
+	style.borderPadding = 6 # borderPadding is not calculated onto the box dimensions.
+	style.spaceBefore = 9 # therefore spaceBefore = 3 + borderPadding
+	style.spaceAfter = 12 # add an extra 3 to spaceAfter, b/c spacing seems to small otherwise
+
+    if mode == 'preformatted':
+        indent_lvl += 1
         
     if mode == 'list':
         style.spaceBefore = 0
