@@ -14,6 +14,7 @@ import traceback
 import tempfile
 import htmlentitydefs
 import shutil
+import hashlib
 import inspect
 
 from xml.sax.saxutils import escape as xmlescape
@@ -140,7 +141,7 @@ class ReportlabError(Exception):
 
 class RlWriter(object):
 
-    def __init__(self, env=None, strict=False, debug=False):
+    def __init__(self, env=None, strict=False, debug=False, cache=None):
         self.env = env
         if self.env is not None:
             self.book = self.env.metabook
@@ -168,7 +169,7 @@ class RlWriter(object):
         self.sourcemode = False
         self.currentColCount = 0
         self.currentArticle = None
-        self.mathCache = {}
+        self.math_cache_dir = cache
         self.tmpdir = tempfile.mkdtemp()
         self.bookmarks = []
         self.colwidth = 0
@@ -1346,14 +1347,26 @@ class RlWriter(object):
             
     def writeMath(self, node):
         source = re.compile(u'\n+').sub(u'\n', node.caption.strip()) # remove multiple newlines, as this could break the mathRenderer
-        imgpath = self.mathCache.get(source, None)
+        if not len(source):
+            return []
+        imgpath = None
+        if self.math_cache_dir:            
+            md5 = hashlib.md5()
+            md5.update(source)                
+            math_id = md5.hexdigest()
+            imgpath = os.path.join(self.math_cache_dir, '%s.png' % math_id)
+            if not os.path.exists(imgpath):
+                imgpath = None
 
         if not imgpath:
             imgpath = writerbase.renderMath(source, output_path=self.tmpdir, output_mode='png', render_engine='texvc')
-            self.mathCache[source] = imgpath
             if not imgpath:
                 return []
-            
+            if self.math_cache_dir:
+                new_path = os.path.join(self.math_cache_dir, '%s.png' % math_id)
+                shutil.move(imgpath, new_path)
+                imgpath = new_path
+                
         img = PilImage.open(imgpath)
         if self.debug:
             log.info("math png at:", imgpath)
@@ -1382,8 +1395,8 @@ class RlWriter(object):
     writeVar = writeEmphasized
 
 
-def writer(env, output, status_callback=None, coverimage=None, strict=False, debug=False):
-    r = RlWriter(env, strict=strict, debug=debug)
+def writer(env, output, status_callback=None, coverimage=None, strict=False, debug=False, cache=None):
+    r = RlWriter(env, strict=strict, debug=debug, cache=cache)
     if coverimage is None and env.configparser.has_section('pdf'):
         coverimage = env.configparser.get('pdf', 'coverimage', None)
     book = writerbase.build_book(env, status_callback=status_callback, progress_range=(10, 70))
@@ -1403,6 +1416,10 @@ writer.options = {
         'help':'raise exception if errors occur', 
     },
     'debug': {
-        'debug':'debugging mode is more verbose', 
+        'help':'debugging mode is more verbose',
+    },
+    'cache': {
+        'param': 'DIRNAME',
+        'help': 'directory of cached math images',
     }
 }
