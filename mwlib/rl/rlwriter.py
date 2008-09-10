@@ -84,6 +84,11 @@ except ImportError:
 from mwlib.rl import debughelper
 from mwlib.rl import version as rlwriterversion
 from mwlib._version import version as  mwlibversion
+try:
+    from mwlib import _extversion
+except ImportError:
+    pass
+
 from mwlib import advtree, writerbase
 from mwlib.treecleaner import TreeCleaner
 
@@ -234,15 +239,15 @@ class RlWriter(object):
     def writeBook(self, bookParseTree, output, removedArticlesFile=None,
                   coverimage=None):
         
-        #if self.debug:
-        #    debughelper.showParseTree(sys.stdout, bookParseTree)
+        if self.debug:
+            debughelper.showParseTree(sys.stdout, bookParseTree)
 
         advtree.buildAdvancedTree(bookParseTree)
         tc = TreeCleaner(bookParseTree)
         tc.cleanAll()
         
-        if self.debug:
-            debughelper.showParseTree(sys.stdout, bookParseTree)
+        #if self.debug:
+        #    debughelper.showParseTree(sys.stdout, bookParseTree)
                
         try:
             self.renderBook(bookParseTree, output, coverimage=coverimage)
@@ -275,7 +280,12 @@ class RlWriter(object):
 
     def renderBook(self, bookParseTree, output, coverimage=None):
         elements = []
-        version = 'mwlib version: %s , rlwriter version: %s' % (rlwriterversion, mwlibversion)
+        try:
+            extversion = 'mwlib.ext version: %s' % str(_extversion.version)
+        except NameError:
+            extversion = 'mwlib.ext not used'
+            
+        version = 'mwlib version: %s , rlwriter version: %s, %s' % (rlwriterversion, mwlibversion, extversion)
         self.doc = PPDocTemplate(output,
                                  topMargin=pageMarginVert,
                                  leftMargin=pageMarginHor,
