@@ -17,7 +17,7 @@
 import os
 
 from reportlab.lib.styles import ParagraphStyle
-from reportlab.lib.enums import TA_LEFT, TA_CENTER, TA_JUSTIFY #,TA_RIGHT
+from reportlab.lib.enums import TA_LEFT, TA_CENTER, TA_JUSTIFY,TA_RIGHT
 from reportlab.lib.units import cm
 from reportlab.lib.fonts import addMapping
 from reportlab.pdfbase import pdfmetrics
@@ -162,7 +162,7 @@ class BaseStyle(ParagraphStyle):
         self.textTransform = None
 	
 	
-def text_style(mode='p', indent_lvl=0, in_table=0, relsize='normal'):
+def text_style(mode='p', indent_lvl=0, in_table=0, relsize='normal', text_align='left'):
     """
     mode: p (normal paragraph), blockquote, center (centered paragraph), footer, figure (figure caption text),
           preformatted, list
@@ -174,6 +174,11 @@ def text_style(mode='p', indent_lvl=0, in_table=0, relsize='normal'):
 
     style = BaseStyle(name='text_style_%s_indent_%d_table_%d_size_%s' % (mode, indent_lvl, in_table, relsize))
     style.flowable = True # needed for "flowing" paragraphs around figures
+
+    if text_align == 'right':
+	style.alignment = TA_RIGHT
+    elif text_align == 'center':
+	style.alignment = TA_CENTER
 
     if in_table or mode in ['footer', 'figure'] or (mode=='preformatted' and relsize=='small'):
         style.fontSize=SMALLFONTSIZE

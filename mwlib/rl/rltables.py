@@ -11,6 +11,7 @@ import re
 from mwlib.utils import all
 from mwlib import log
 from mwlib.advtree import Text, ItemList, Table, Row, Cell
+from mwlib import styleutils
 
 from reportlab.lib import colors
 from customflowables import Figure
@@ -19,17 +20,7 @@ from pdfstyles import printHeight, printWidth
 
 
 log = log.Log('rlwriter')
-      
-def getMaxCols(tablenode):
-    maxCols = 0
-    for row in tablenode:
-        cols = 0
-        for cell in row:
-            colspan = cell.attributes.get('colspan', 1)
-            cols += colspan
-        maxCols = max(maxCols,cols)
-        
-    return maxCols
+
 
 def checkSpans(data):
     """
@@ -296,3 +287,17 @@ def removeContainerTable(containertable):
                 else:
                     log.info("unmatched node:", item.__class__)
     return newtables
+
+
+def tableBgStyle(table):
+    bg_style = []    
+    for (i, row) in enumerate(table.children):
+        rgb = styleutils.rgbBgColorFromNode(row)
+        if rgb:
+            bg_style.append(('BACKGROUND', (0,i), (-1,i), colors.Color(rgb[0], rgb[1], rgb[2])))
+        for (j, cell) in enumerate(row.children):
+            rgb = styleutils.rgbBgColorFromNode(cell)
+            if rgb:
+                bg_style.append(('BACKGROUND', (j,i), (j,i), colors.Color(rgb[0], rgb[1], rgb[2])))
+    
+    return bg_style

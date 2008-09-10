@@ -1163,18 +1163,12 @@ class RlWriter(object):
            
 
     def writeCell(self, cell):          
-        #styles = serializeStyleInfo(cell.vlist)
-        styles = cell.style
-        try:
-            rowspan = int(styles.get('rowspan',1))
-        except ValueError:
-            rowspan = 1
-        try:
-            colspan = int(styles.get('colspan',1))
-        except ValueError:
-            colspan = 1
-            
-        elements = self.renderMixed(cell, text_style(in_table=self.nestingLevel))
+        #colspan = cell.colspan
+        #rowspan = cell.rowspan
+        colspan = cell.attributes.get('colspan', 1)
+        rowspan = cell.attributes.get('rowspan', 1)
+        
+        elements = self.renderMixed(cell, text_style(in_table=self.nestingLevel, text_align=cell.attributes.get('align')))
         
         return {'content':elements,
                 'rowspan':rowspan,
@@ -1203,9 +1197,9 @@ class RlWriter(object):
         self.nestingLevel += 1
         elements = []
         data = []        
-        maxCols = rltables.getMaxCols(t)
+        maxCols = t.numcols
         t = rltables.reformatTable(t, maxCols)
-        maxCols = rltables.getMaxCols(t)
+        maxCols = t.numcols
 
         self.currentColCount += maxCols
         
@@ -1243,14 +1237,15 @@ class RlWriter(object):
         
         table = Table(data, colWidths=colwidthList, splitByRow=1)
         
-        #styles = rltables.style(serializeStyleInfo(t.vlist))
         styles = rltables.style(t.attributes)
         table.setStyle(styles)
         table.setStyle(span_styles)
+    
         table.setStyle([('LEFTPADDING', (0,0),(-1,-1), 3),
                         ('RIGHTPADDING', (0,0),(-1,-1), 3),
                         ])
-
+        table.setStyle(rltables.tableBgStyle(t))
+                       
         w,h = table.wrap(printWidth, printHeight)
         if maxCols == 1 and h > printHeight: # big tables with only 1 col are removed - the content is kept
             flatData = [cell for cell in flatten(data) if not isinstance(cell, str)]            
