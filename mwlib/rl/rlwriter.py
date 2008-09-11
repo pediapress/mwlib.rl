@@ -1217,7 +1217,8 @@ class RlWriter(object):
                 data.append(self.writeRow(r))
             elif r.__class__ == advtree.Caption:
                 elements.extend(self.writeCaption(r))                
-
+                t.removeChild(r) # this is slight a hack. we do this in order not to simplify cell-coloring code
+                
         (data, span_styles) = rltables.checkSpans(data)
         self.currentColCount -= maxCols
 
