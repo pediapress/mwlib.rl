@@ -40,7 +40,6 @@ _check_reportlab()
 
 #from reportlab.rl_config import defaultPageSize
 from reportlab.platypus.paragraph import Paragraph
-
 from reportlab.platypus.doctemplate import BaseDocTemplate
 
 from pagetemplates import PPDocTemplate
@@ -53,6 +52,7 @@ from reportlab.lib.units import cm, inch
 from reportlab.lib import colors
 from reportlab.platypus.doctemplate import LayoutError
 from reportlab.lib.pagesizes import A4
+from reportlab.lib.enums import TA_LEFT, TA_CENTER, TA_JUSTIFY, TA_RIGHT
 
 from customflowables import Figure, FiguresAndParagraphs
 
@@ -698,13 +698,19 @@ class RlWriter(object):
             txt.append(textPrefix)
         items = []
        
-        if isinstance(node, advtree.Node): # set text and background colors
+        if isinstance(node, advtree.Node): # set node styles like text/bg colors, alignment
             text_color = styleutils.rgbColorFromNode(node)
             background_color = styleutils.rgbBgColorFromNode(node)           
             if text_color:
                 para_style.textColor = text_color
             if background_color:
                 para_style.backColor = background_color
+            align = styleutils.alignmentFromNode(node)
+            if align in ['right', 'center', 'justify']:
+                align_map = {'right': TA_RIGHT,
+                             'center': TA_CENTER,
+                             'justify': TA_JUSTIFY,}
+                para_style.alignment = align_map[align]
             
         for c in node:
             res = self.write(c)
