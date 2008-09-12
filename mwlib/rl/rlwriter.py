@@ -64,6 +64,7 @@ from pdfstyles import tableOverflowTolerance
 from pdfstyles import max_img_width, max_img_height, min_img_dpi, inline_img_dpi
 from pdfstyles import maxCharsInSourceLine
 import pdfstyles 
+from mwlib import styleutils
 
 
 import rltables
@@ -239,15 +240,15 @@ class RlWriter(object):
     def writeBook(self, bookParseTree, output, removedArticlesFile=None,
                   coverimage=None):
         
-        if self.debug:
-            debughelper.showParseTree(sys.stdout, bookParseTree)
+        #if self.debug:
+        #    debughelper.showParseTree(sys.stdout, bookParseTree)
 
         advtree.buildAdvancedTree(bookParseTree)
         tc = TreeCleaner(bookParseTree)
         tc.cleanAll()
         
-        #if self.debug:
-        #    debughelper.showParseTree(sys.stdout, bookParseTree)
+        if self.debug:
+            debughelper.showParseTree(sys.stdout, bookParseTree)
                
         try:
             self.renderBook(bookParseTree, output, coverimage=coverimage)
@@ -696,6 +697,15 @@ class RlWriter(object):
         if textPrefix:
             txt.append(textPrefix)
         items = []
+       
+        if isinstance(node, advtree.Node): # set text and background colors
+            text_color = styleutils.rgbColorFromNode(node)
+            background_color = styleutils.rgbBgColorFromNode(node)           
+            if text_color:
+                para_style.textColor = text_color
+            if background_color:
+                para_style.backColor = background_color
+            
         for c in node:
             res = self.write(c)
             if isInline(res):

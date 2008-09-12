@@ -22,7 +22,7 @@ from reportlab.lib.units import cm
 from reportlab.lib.fonts import addMapping
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
-from reportlab.lib.colors import black
+from reportlab.lib import colors
 from reportlab.lib.pagesizes import A4
 
 
@@ -156,8 +156,8 @@ class BaseStyle(ParagraphStyle):
         self.bulletFontName = standardFont
         self.bulletFontSize = FONTSIZE
         self.bulletIndent = 0
-        self.textColor = black
-        self.backcolor = None
+        self.textColor = colors.black
+        self.backColor = None
         self.wordWrap = None
         self.textTransform = None
 	
@@ -247,7 +247,7 @@ class BaseHeadingStyle(ParagraphStyle):
         self.bulletFontName = standardFont
         self.bulletFontSize = BIGFONTSIZE
         self.bulletIndent = 0
-        self.textColor = black
+        self.textColor = colors.black
         self.backcolor = None
         self.wordWrap = None
         self.textTransform = None
