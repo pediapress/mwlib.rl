@@ -14,9 +14,12 @@ import traceback
 import tempfile
 import htmlentitydefs
 import shutil
-import hashlib
 import inspect
-
+try:
+    from hashlib import md5
+except ImportError:
+    from md5 import md5
+    
 from xml.sax.saxutils import escape as xmlescape
 from PIL import Image as PilImage
 
@@ -1373,9 +1376,9 @@ class RlWriter(object):
             return []
         imgpath = None
         if self.math_cache_dir:            
-            md5 = hashlib.md5()
-            md5.update(source)                
-            math_id = md5.hexdigest()
+            _md5 = md5()
+            _md5.update(source)                
+            math_id = _md5.hexdigest()
             imgpath = os.path.join(self.math_cache_dir, '%s.png' % math_id)
             if not os.path.exists(imgpath):
                 imgpath = None

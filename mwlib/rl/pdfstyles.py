@@ -17,7 +17,7 @@
 import os
 
 from reportlab.lib.styles import ParagraphStyle
-from reportlab.lib.enums import TA_LEFT, TA_CENTER, TA_JUSTIFY,TA_RIGHT
+from reportlab.lib.enums import TA_LEFT, TA_CENTER, TA_JUSTIFY, TA_RIGHT
 from reportlab.lib.units import cm
 from reportlab.lib.fonts import addMapping
 from reportlab.pdfbase import pdfmetrics
