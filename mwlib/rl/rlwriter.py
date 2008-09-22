@@ -803,7 +803,8 @@ class RlWriter(object):
         """ Link nodes are intra wiki links
         """
         href = obj.url # obj.url is a utf-8 string
-        
+        href = href[:href.find('"')] 
+
         if not href:
             log.warning('no link target specified')
             if not obj.children:
@@ -839,6 +840,7 @@ class RlWriter(object):
     
     def writeURL(self, obj):       
         href = obj.caption
+        href = href[:href.find('"')]
         display_text = self.renderURL(href)
         href = xmlescape(href)
         if (self.nestingLevel and len(href) > 30) and not self.refmode:
@@ -1218,7 +1220,8 @@ class RlWriter(object):
         data = []        
         maxCols = t.numcols
         t = rltables.reformatTable(t, maxCols)
-        maxCols = t.numcols
+        if t.__class__ == advtree.Table:
+            maxCols = t.numcols
 
         self.currentColCount += maxCols
         
