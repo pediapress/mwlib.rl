@@ -803,13 +803,13 @@ class RlWriter(object):
         """ Link nodes are intra wiki links
         """
         href = obj.url # obj.url is a utf-8 string
-
+        
         if not href:
             log.warning('no link target specified')
             if not obj.children:
                 return []         
-
-        href = href[:href.find('"')] 
+        else:
+            href = href[:href.find('"')] 
         
         if obj.children:
             txt = self.renderInline(obj)
