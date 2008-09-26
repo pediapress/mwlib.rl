@@ -812,8 +812,9 @@ class RlWriter(object):
             if not obj.children:
                 return []         
         else:
-            href = href[:href.find('"')] 
-        
+            quote_idx = href.find('"')
+            if quote_idx > -1:
+                href = href[:quote_idx]        
         if obj.children:
             txt = self.renderInline(obj)
             t = ''.join(txt).strip()
@@ -846,7 +847,9 @@ class RlWriter(object):
     def writeURL(self, obj):       
         href = obj.caption
         if href is not None:
-            href = href[:href.find('"')]
+            quote_idx = href.find('"')
+            if quote_idx > -1:
+                href = href[:quote_idx]
         display_text = self.renderURL(href)
         href = xmlescape(href)
         if (self.nestingLevel and len(href) > 30) and not self.refmode:
