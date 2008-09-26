@@ -150,7 +150,7 @@ class ReportlabError(Exception):
 
 class RlWriter(object):
 
-    def __init__(self, env=None, strict=False, debug=False, cache=None):
+    def __init__(self, env=None, strict=False, debug=False, mathcache=None):
         self.env = env
         if self.env is not None:
             self.book = self.env.metabook
@@ -178,7 +178,7 @@ class RlWriter(object):
         self.sourcemode = False
         self.currentColCount = 0
         self.currentArticle = None
-        self.math_cache_dir = cache
+        self.math_cache_dir = mathcache or os.environ.get('MWLIBRL_MATHCACHE')
         self.tmpdir = tempfile.mkdtemp()
         self.bookmarks = []
         self.colwidth = 0
@@ -1426,8 +1426,8 @@ class RlWriter(object):
     writeVar = writeEmphasized
 
 
-def writer(env, output, status_callback=None, coverimage=None, strict=False, debug=False, cache=None):
-    r = RlWriter(env, strict=strict, debug=debug, cache=cache)
+def writer(env, output, status_callback=None, coverimage=None, strict=False, debug=False, mathcache=None):
+    r = RlWriter(env, strict=strict, debug=debug, mathcache=mathcache)
     if coverimage is None and env.configparser.has_section('pdf'):
         coverimage = env.configparser.get('pdf', 'coverimage', None)
     book = writerbase.build_book(env, status_callback=status_callback, progress_range=(10, 70))
@@ -1449,7 +1449,7 @@ writer.options = {
     'debug': {
         'help':'debugging mode is more verbose',
     },
-    'cache': {
+    'mathcache': {
         'param': 'DIRNAME',
         'help': 'directory of cached math images',
     }
