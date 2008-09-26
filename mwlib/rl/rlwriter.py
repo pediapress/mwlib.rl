@@ -247,12 +247,15 @@ class RlWriter(object):
         #    debughelper.showParseTree(sys.stdout, bookParseTree)
 
         advtree.buildAdvancedTree(bookParseTree)
-        tc = TreeCleaner(bookParseTree)
+        tc = TreeCleaner(bookParseTree, save_reports=self.debug)
         tc.cleanAll()
         
         if self.debug:
             debughelper.showParseTree(sys.stdout, bookParseTree)
-               
+            print "*"*30
+            print "TREECLEANER REPORTS:"
+            print "\n".join([repr(r) for r in tc.getReports()])
+            
         try:
             self.renderBook(bookParseTree, output, coverimage=coverimage)
             log.info('###### RENDERING OK')
