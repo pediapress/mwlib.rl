@@ -5,7 +5,7 @@ class _Version(tuple):
     def __str__(self):
         return '.'.join([str(x) for x in self])
 
-version = _Version((0,8,2,'dev'))
+version = _Version((0,8,3,'dev'))
 del _Version
 try:
     import mwlib.ext #try to use bundled version of reportlab

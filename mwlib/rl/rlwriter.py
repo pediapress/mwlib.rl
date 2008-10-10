@@ -495,7 +495,7 @@ class RlWriter(object):
                             Paragraph('Source: %s' % filterText(xmlescape(article.url), breakLong=True), text_style())])
         if getattr(article, 'authors', None):
             elements.append(Paragraph('Principle Authors: %s' % filterText(xmlescape(', '.join(article.authors))), text_style()))
-            
+           
         return elements
     
     def writeParagraph(self,obj):
