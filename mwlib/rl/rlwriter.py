@@ -299,7 +299,7 @@ class RlWriter(object):
                                  rightMargin=pageMarginHor,
                                  bottomMargin=pageMarginVert,
                                  title=self.book.get('title'),
-                                 keywords=version
+                                 keywords=version,
         )
 
         self.output = output
@@ -467,9 +467,11 @@ class RlWriter(object):
         title = filterText(title, defaultFont=standardSansSerif, breakLong=True)
         self.currentArticle = repr(title)
 
-        heading_para = Paragraph('<b>%s</b><a name="%d"/>' % (title, len(self.bookmarks)), heading_style('article'))        
-        elements.append(heading_para)
+
+        heading_anchor = '<a name="%d"/>' % len(self.bookmarks)
         self.bookmarks.append((article.caption, 'article'))
+        heading_para = Paragraph('<b>%s</b>%s' % (title, heading_anchor), heading_style('article'))
+        elements.append(heading_para)
 
         elements.append(HRFlowable(width='100%', hAlign='LEFT', thickness=1, spaceBefore=0, spaceAfter=10, color=colors.black))
 
@@ -492,7 +494,7 @@ class RlWriter(object):
             elements.extend([Spacer(0, 0.5*cm),
                             Paragraph('Source: %s' % filterText(xmlescape(article.url), breakLong=True), text_style())])
         if getattr(article, 'authors', None):
-            elements.append(Paragraph('Principle Authors: %s' % filterText(', '.join(article.authors)), text_style()))
+            elements.append(Paragraph('Principle Authors: %s' % filterText(xmlescape(', '.join(article.authors))), text_style()))
             
         return elements
     
@@ -641,6 +643,7 @@ class RlWriter(object):
         char_limit = max(1, int(maxCharsInSourceLine / (max(1, self.currentColCount))))
         if maxCharOnLine > char_limit:
             t = self.breakLongLines(t, char_limit)
+            
         pre = XPreformatted(t, text_style(mode='preformatted', in_table=self.nestingLevel))
         # fixme: we could check if the preformatted fits on the page, if we reduce the fontsize
         #pre = XPreformatted(t, text_style(mode='preformatted', relsize='small', in_table=self.nestingLevel))
@@ -805,8 +808,8 @@ class RlWriter(object):
     def writeLink(self,obj):
         """ Link nodes are intra wiki links
         """
-        href = obj.url # obj.url is a utf-8 string
         
+        href = obj.url # obj.url is a utf-8 string
         if not href:
             log.warning('no link target specified')
             if not obj.children:
@@ -1084,7 +1087,7 @@ class RlWriter(object):
         return self.writeTeletyped(n)
 
     def writeTeletyped(self, n):
-        return self.renderInlineTag(n, 'font', tag_attrs='fontName=%s' % standardMonoFont)
+        return self.renderInlineTag(n, 'font', tag_attrs='fontName="%s"' % standardMonoFont)
         
     def writeBreakingReturn(self, n):
         return ['<br />']
@@ -1335,14 +1338,12 @@ class RlWriter(object):
         pw = printWidth
         ph = printHeight
         ar = ph/pw
-        run = 1
         while fail:
             pw += 20
             ph += 20*ar
             if pw > printWidth * 2:
                 break
             try:
-                log.info('safe render run:', run)
                 doc = BaseDocTemplate(fn)
                 doc.addPageTemplates(SimplePage(pageSize=(pw,ph)))
                 doc.build([table])
@@ -1350,6 +1351,7 @@ class RlWriter(object):
                 del doc
             except:
                 log.info('safe rendering fail for width:', pw)
+                break
 
         tableFailText = '<strong>WARNING: Table could not be rendered - ouputting plain text.</strong><br/>Potential causes of the problem are: (a) table contains a cell with content that does not fit on a single page (b) nested tables (c) table is too wide'
 

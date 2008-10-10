@@ -134,7 +134,6 @@ class PPDocTemplate(BaseDocTemplate):
                 got_chapter = True
             elif not got_chapter: # outline-lvls can't start above zero
                 lvl -= 1
-            #self.canv.addOutlineEntry(bm_title, str(bm_id), lvl, 0)
             self.canv.addOutlineEntry(bm_title, str(bm_id), lvl, bm_type == 'article')
 
         
