@@ -317,12 +317,11 @@ class RlWriter(object):
             elements = self.groupElements(elements)
 
         for license in self.env.get_licenses():
-            elements.append(NotAtTopPageBreak())
             elements.extend(self.writeArticle(uparser.parseString(
                 title=license['title'],
                 raw=license['wikitext'],
                 wikidb=self.env.wiki,
-            )))
+            ), isLicense=True))
 
         self.doc.bookmarks = self.bookmarks
         #debughelper.dumpElements(elements)
@@ -451,7 +450,7 @@ class RlWriter(object):
         return elements
 
 
-    def writeArticle(self, article):
+    def writeArticle(self, article, isLicense=False):
         self.references = [] 
         
         title = self.renderText(article.caption)
@@ -461,7 +460,7 @@ class RlWriter(object):
         if hasattr(self, 'doc'): # doc is not present if tests are run
             self.doc.addPageTemplates(pt)
             elements.append(NextPageTemplate(title.encode('utf-8'))) # pagetemplate.id cant handle unicode
-            if pdfstyles.pageBreakAfterArticle and isinstance(article.getPrevious(), advtree.Article): # if configured and preceded by an article
+            if pdfstyles.pageBreakAfterArticle and isinstance(article.getPrevious(), advtree.Article) or isLicense: # if configured and preceded by an article
                 elements.append(NotAtTopPageBreak())
 
         title = filterText(title, defaultFont=standardSansSerif, breakLong=True)
