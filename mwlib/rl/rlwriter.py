@@ -165,7 +165,7 @@ class RlWriter(object):
         self.listCounterID = 1
         self.tmpImages = set()
         self.namedLinkCount = 1
-        self.nestingLevel = 0       
+        self.tableNestingLevel = 0       
         self.sectionTitle = False
         self.tablecount = 0
         self.paraIndentLevel = 0
@@ -413,8 +413,12 @@ class RlWriter(object):
         hr = HRFlowable(width="80%", spaceBefore=6, spaceAfter=0, color=colors.black, thickness=0.5)
 
         title = self.renderText(chapter.caption)
-        chapter_para = Paragraph('%s<a name="%s"/>' % (title, len(self.bookmarks)), heading_style('chapter'))
-        self.bookmarks.append((title, 'chapter'))
+        if self.tableNestingLevel == 0:
+            chapter_anchor = '<a name="%s" />' % len(self.bookmarks)
+            self.bookmarks.append((title, 'chapter'))
+        else:
+            chapter_anchor = ''
+        chapter_para = Paragraph('%s%s' % (title, chapter_anchor), heading_style('chapter'))
         return [NotAtTopPageBreak(),
                 hr,
                 chapter_para,
@@ -426,7 +430,7 @@ class RlWriter(object):
         self.sectionTitle = True
         headingTxt = ''.join(self.renderInline(obj.children[0])).strip()
         self.sectionTitle = False
-        if lvl <= 2:
+        if lvl <= 2 and self.tableNestingLevel == 0:
             anchor = '<a name="%d"/>' % len(self.bookmarks)
             self.bookmarks.append((obj.children[0].getAllDisplayText(), 'heading'))
         else:
@@ -466,9 +470,11 @@ class RlWriter(object):
         title = filterText(title, defaultFont=standardSansSerif, breakLong=True)
         self.currentArticle = repr(title)
 
-
-        heading_anchor = '<a name="%d"/>' % len(self.bookmarks)
-        self.bookmarks.append((article.caption, 'article'))
+        if self.tableNestingLevel == 0:
+            heading_anchor = '<a name="%d"/>' % len(self.bookmarks)
+            self.bookmarks.append((article.caption, 'article'))
+        else:
+            heading_anchor = ''
         heading_para = Paragraph('<b>%s</b>%s' % (title, heading_anchor), heading_style('article'))
         elements.append(heading_para)
 
@@ -643,9 +649,9 @@ class RlWriter(object):
         if maxCharOnLine > char_limit:
             t = self.breakLongLines(t, char_limit)
             
-        pre = XPreformatted(t, text_style(mode='preformatted', in_table=self.nestingLevel))
+        pre = XPreformatted(t, text_style(mode='preformatted', in_table=self.tableNestingLevel))
         # fixme: we could check if the preformatted fits on the page, if we reduce the fontsize
-        #pre = XPreformatted(t, text_style(mode='preformatted', relsize='small', in_table=self.nestingLevel))
+        #pre = XPreformatted(t, text_style(mode='preformatted', relsize='small', in_table=self.tableNestingLevel))
         return [pre]
 
         
@@ -700,7 +706,7 @@ class RlWriter(object):
 
     def renderMixed(self, node, para_style=None, textPrefix=None):
         if not para_style:
-            para_style = text_style(in_table=self.nestingLevel)
+            para_style = text_style(in_table=self.tableNestingLevel)
         txt = []
         if textPrefix:
             txt.append(textPrefix)
@@ -758,20 +764,20 @@ class RlWriter(object):
 
     def writeDefinitionTerm(self, n):
         txt = self.writeStrong(n)
-        return [Paragraph(''.join(txt), text_style(in_table=self.nestingLevel))]
+        return [Paragraph(''.join(txt), text_style(in_table=self.tableNestingLevel))]
 
     def writeDefinitionDescription(self, n):
         return self.writeIndented(n)
 
     def writeIndented(self, n):
         self.paraIndentLevel += getattr(n, 'indentlevel', 1)
-        items = self.renderMixed(n, para_style=text_style(indent_lvl=self.paraIndentLevel, in_table=self.nestingLevel))
+        items = self.renderMixed(n, para_style=text_style(indent_lvl=self.paraIndentLevel, in_table=self.tableNestingLevel))
         self.paraIndentLevel -= getattr(n, 'indentlevel', 1)
         return items
         
     def writeBlockquote(self, n):
         self.paraIndentLevel += 1
-        items = self.renderMixed(n, text_style(mode='blockquote', in_table=self.nestingLevel))
+        items = self.renderMixed(n, text_style(mode='blockquote', in_table=self.tableNestingLevel))
         self.paraIndentLevel -= 1
         return items     
         
@@ -854,7 +860,7 @@ class RlWriter(object):
                 href = href[:quote_idx]
         display_text = self.renderURL(href)
         href = xmlescape(href)
-        if (self.nestingLevel and len(href) > 30) and not self.refmode:
+        if (self.tableNestingLevel and len(href) > 30) and not self.refmode:
             return self.writeNamedURL(obj)
         
         txt = '<link href="%s"><font fontName="%s">%s</font></link>' % (href, standardMonoFont, display_text)
@@ -988,7 +994,7 @@ class RlWriter(object):
         captionTxt = ''.join(txt)         
         figure = Figure(imgPath,
                         captionTxt=captionTxt,
-                        captionStyle=text_style('figure', in_table=self.nestingLevel),
+                        captionStyle=text_style('figure', in_table=self.tableNestingLevel),
                         imgWidth=width,
                         imgHeight=height,
                         margin=(0.2*cm, 0.2*cm, 0.2*cm, 0.2*cm),
@@ -1011,7 +1017,7 @@ class RlWriter(object):
                 try:
                     res = buildPara(res)
                 except:
-                    res = Paragraph('',text_style(in_table=self.nestingLevel))
+                    res = Paragraph('',text_style(in_table=self.tableNestingLevel))
             if len(row) == 0:
                 row.append(res)
             else:
@@ -1019,7 +1025,7 @@ class RlWriter(object):
                 data.append(row)
                 row = []
         if len(row) == 1:
-            row.append(Paragraph('',text_style(in_table=self.nestingLevel)))
+            row.append(Paragraph('',text_style(in_table=self.tableNestingLevel)))
             data.append(row)
         table = Table(data)
         return [table]
@@ -1052,7 +1058,7 @@ class RlWriter(object):
         txt = ''
         try:
             txt = highlight(source, lexer, sourceFormatter)           
-            return [XPreformatted(txt, text_style(mode='source', in_table=self.nestingLevel))]            
+            return [XPreformatted(txt, text_style(mode='source', in_table=self.tableNestingLevel))]            
         except:
             log.error('unsuitable lexer for source code language: %s - Lexer: %s' % (repr(src_lang), lexer.__class__.__name__))
             return []
@@ -1118,10 +1124,10 @@ class RlWriter(object):
             return []
 
     def writeCenter(self, n):
-        return self.renderMixed(n, text_style(mode='center', in_table=self.nestingLevel))
+        return self.renderMixed(n, text_style(mode='center', in_table=self.tableNestingLevel))
 
     def writeDiv(self, n):
-        return self.renderMixed(n, text_style(indent_lvl=self.paraIndentLevel, in_table=self.nestingLevel)) 
+        return self.renderMixed(n, text_style(indent_lvl=self.paraIndentLevel, in_table=self.tableNestingLevel)) 
 
     def writeSpan(self, n):
         return self.renderInline(n)
@@ -1163,7 +1169,7 @@ class RlWriter(object):
             itemPrefix = ''
 
         listIndent = max(0,(self.listIndentation + self.paraIndentLevel))
-        para_style = text_style(mode='list', indent_lvl=listIndent, in_table=self.nestingLevel)
+        para_style = text_style(mode='list', indent_lvl=listIndent, in_table=self.tableNestingLevel)
         if resetCounter: # first list item gets extra spaceBefore
             para_style.spaceBefore = text_style().spaceBefore
         items =  self.renderMixed(item, para_style=para_style, textPrefix=itemPrefix)
@@ -1200,7 +1206,7 @@ class RlWriter(object):
         colspan = cell.attributes.get('colspan', 1)
         rowspan = cell.attributes.get('rowspan', 1)
         
-        elements = self.renderMixed(cell, text_style(in_table=self.nestingLevel, text_align=cell.attributes.get('align')))
+        elements = self.renderMixed(cell, text_style(in_table=self.tableNestingLevel, text_align=cell.attributes.get('align')))
         
         return {'content':elements,
                 'rowspan':rowspan,
@@ -1226,7 +1232,7 @@ class RlWriter(object):
 
     
     def writeTable(self, t):
-        self.nestingLevel += 1
+        self.tableNestingLevel += 1
         elements = []
         data = []        
         maxCols = t.numcols
@@ -1239,7 +1245,7 @@ class RlWriter(object):
         # if a table contains only tables it is transformed to a list of the containing tables - that is handled below
         if t.__class__ != advtree.Table and all([c.__class__==advtree.Table for c in t]):
             tables = []
-            self.nestingLevel -= 1
+            self.tableNestingLevel -= 1
             self.currentColCount -= maxCols
             for c in t:
                 tables.extend(self.writeTable(c))
@@ -1258,7 +1264,7 @@ class RlWriter(object):
         if not data:
             return []
         
-        colwidthList = rltables.getColWidths(data, nestingLevel=self.nestingLevel)
+        colwidthList = rltables.getColWidths(data, nestingLevel=self.tableNestingLevel)
         data = rltables.splitCellContent(data)
 
         has_data = False
@@ -1283,7 +1289,7 @@ class RlWriter(object):
         w,h = table.wrap(printWidth, printHeight)
         if maxCols == 1 and h > printHeight: # big tables with only 1 col are removed - the content is kept
             flatData = [cell for cell in flatten(data) if not isinstance(cell, str)]            
-            self.nestingLevel -= 1
+            self.tableNestingLevel -= 1
             return flatData 
        
         if table_style.get('spaceBefore', 0) > 0:
@@ -1293,7 +1299,7 @@ class RlWriter(object):
             elements.append(Spacer(0, table_style['spaceAfter']))
 
         (renderingOk, renderedTable) = self.renderTable(table, t)
-        self.nestingLevel -= 1
+        self.tableNestingLevel -= 1
         if not renderingOk:
             return []
         if renderingOk and renderedTable:
@@ -1320,7 +1326,7 @@ class RlWriter(object):
             if w > (printWidth + tableOverflowTolerance):
                 log.warning('table test rendering: too wide - printwidth: %f (tolerance %f) tablewidth: %f' % (printWidth, tableOverflowTolerance, w))
                 raise LayoutError
-            if self.nestingLevel > 1 and h > printHeight:
+            if self.tableNestingLevel > 1 and h > printHeight:
                 log.warning('nested table too high')
                 raise LayoutError                
             doc.build([table])
@@ -1411,7 +1417,7 @@ class RlWriter(object):
         w,h = img.size
         del img
 
-        if self.nestingLevel: # scale down math-formulas in tables
+        if self.tableNestingLevel: # scale down math-formulas in tables
             w = w * SMALLFONTSIZE/FONTSIZE
             h = h * SMALLFONTSIZE/FONTSIZE
             
