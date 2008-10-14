@@ -12,7 +12,6 @@ from reportlab.platypus.paragraph import Paragraph
 from reportlab.lib.units import cm
 from reportlab.platypus.doctemplate import PageTemplate
 from reportlab.platypus.frames import Frame
-from reportlab.rl_config import defaultPageSize
 from mwlib.rl.pdfstyles import pageMarginHor, pageMarginVert, headerMarginHor, headerMarginVert, footerMarginHor, footerMarginVert
 from mwlib.rl.pdfstyles import pageWidth, pageHeight, pagefooter, titlepagefooter, showPageHeader, showPageFooter, showTitlePageFooter , standardFont
 from reportlab.lib.pagesizes import  A3
@@ -37,8 +36,7 @@ class SimplePage(PageTemplate):
         
 class WikiPage(PageTemplate):
 
-    def __init__(self,title=None, id=None, wikititle=u'undefined', wikiurl=u'undefined', onPage=_doNothing, onPageEnd=_doNothing,
-                 pagesize=defaultPageSize):
+    def __init__(self,title=None, id=None, wikititle=u'undefined', wikiurl=u'undefined', onPage=_doNothing, onPageEnd=_doNothing, pagesize=(pageWidth, pageHeight)):
         """
         @type title: unicode
         """
@@ -84,7 +82,7 @@ class WikiPage(PageTemplate):
 class TitlePage(PageTemplate):
 
     def __init__(self, wikititle=u'undefined', wikiurl=u'undefined', cover=None, id=None,
-        onPage=_doNothing, onPageEnd=_doNothing, pagesize=defaultPageSize):
+        onPage=_doNothing, onPageEnd=_doNothing, pagesize=(pageHeight, pageWidth)):
 
         id = 'TitlePage'
         frames = Frame(pageMarginHor,pageMarginVert,pageWidth - 2*pageMarginHor, pageHeight - 2*pageMarginVert)        
