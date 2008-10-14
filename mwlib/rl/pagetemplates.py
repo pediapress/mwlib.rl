@@ -72,7 +72,11 @@ class WikiPage(PageTemplate):
         canvas.saveState()
         canvas.setFont(standardFont,8)
         canvas.line(footerMarginHor, footerMarginVert, pageWidth - footerMarginHor, footerMarginVert )
-            
+        if showPageFooter:
+            p = Paragraph(filterText(pagefooter), text_style())
+            p.canv = canvas
+            w,h = p.wrap(pageWidth - headerMarginHor*2.5, pageHeight)
+            p.drawOn(canvas, footerMarginHor, footerMarginVert - 10 - h)
         canvas.restoreState()
     
 

@@ -107,7 +107,7 @@ pageBreakAfterArticle = False
 # since the documenatition is not guaranteed to be up to date, you might also want to check the docsting of the
 # Paragraph class (reportlab/platypus/paragraph.py --> class Paragraph())
 # e.g. the use of inline images is not included in the official documenation of reportlab
-pagefooter = u'Article originates from @WIKITITLE@  (@WIKIURL@)'
+pagefooter = u''
 titlepagefooter = u'PDF generated using the open source mwlib toolkit<br/>see http://code.pediapress.com/ for more information'
 
 
@@ -160,8 +160,8 @@ class BaseStyle(ParagraphStyle):
         self.backColor = None
         self.wordWrap = None
         self.textTransform = None
-	
-	
+        
+        
 def text_style(mode='p', indent_lvl=0, in_table=0, relsize='normal', text_align='left'):
     """
     mode: p (normal paragraph), blockquote, center (centered paragraph), footer, figure (figure caption text),
@@ -176,9 +176,9 @@ def text_style(mode='p', indent_lvl=0, in_table=0, relsize='normal', text_align=
     style.flowable = True # needed for "flowing" paragraphs around figures
 
     if text_align == 'right':
-	style.alignment = TA_RIGHT
+        style.alignment = TA_RIGHT
     elif text_align == 'center':
-	style.alignment = TA_CENTER
+        style.alignment = TA_CENTER
 
     if in_table or mode in ['footer', 'figure'] or (mode=='preformatted' and relsize=='small'):
         style.fontSize=SMALLFONTSIZE
@@ -199,9 +199,9 @@ def text_style(mode='p', indent_lvl=0, in_table=0, relsize='normal', text_align=
     if mode == 'source' or mode == 'preformatted':
         style.fontName = standardMonoFont       
         style.backColor = '#eeeeee'
-	style.borderPadding = 6 # borderPadding is not calculated onto the box dimensions.
-	style.spaceBefore = 9 # therefore spaceBefore = 3 + borderPadding
-	style.spaceAfter = 12 # add an extra 3 to spaceAfter, b/c spacing seems to small otherwise
+        style.borderPadding = 6 # borderPadding is not calculated onto the box dimensions.
+        style.spaceBefore = 9 # therefore spaceBefore = 3 + borderPadding
+        style.spaceAfter = 12 # add an extra 3 to spaceAfter, b/c spacing seems to small otherwise
 
     if mode == 'preformatted':
         indent_lvl += 1
@@ -251,8 +251,8 @@ class BaseHeadingStyle(ParagraphStyle):
         self.backcolor = None
         self.wordWrap = None
         self.textTransform = None
-	#self.allowWidows = 0
-	#self.allowOrphans = 0
+        #self.allowWidows = 0
+        #self.allowOrphans = 0
         
 def heading_style(mode='chapter', lvl=1):
 
