@@ -125,22 +125,6 @@ def buildPara(txtList, style=text_style()):
     else:
         return []
 
-def serializeStyleInfo(styleHash):
-    res =  {}
-    for k,v in styleHash.items():
-        if isinstance(v,dict):
-            for _k,_v in v.items():
-                if isinstance(_v, basestring):
-                    res[_k.lower()] = _v.lower() 
-                else:
-                    res[_k.lower()]= _v
-        else:
-            if isinstance(v, basestring):
-                res[k.lower()] = v.lower() 
-            else:
-                res[k.lower()] = v
-    return res
-
 class ReportlabError(Exception):
     def __init__(self, value):
         self.value = value
@@ -1264,7 +1248,7 @@ class RlWriter(object):
         if not data:
             return []
         
-        colwidthList = rltables.getColWidths(data, nestingLevel=self.tableNestingLevel)
+        colwidthList = rltables.getColWidths(data, t, nestingLevel=self.tableNestingLevel)
         data = rltables.splitCellContent(data)
 
         has_data = False

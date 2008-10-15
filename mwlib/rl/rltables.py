@@ -102,7 +102,7 @@ def scaleImages(data):
                     cell[i] = Figure(imgFile = e.imgPath, captionTxt=e.captionTxt, captionStyle=e.cs, imgWidth=e.imgWidth/2.0,imgHeight=e.imgHeight/2.0, margin=e.margin, padding=e.padding,align=e.align)
 
             
-def getColWidths(data, recursionDepth=0, nestingLevel=1):
+def getColWidths(data, table=None, recursionDepth=0, nestingLevel=1):
     """
     the widths for the individual columns are calculated. if the horizontal size exceeds the pagewidth
     the fontsize is reduced 
@@ -113,14 +113,19 @@ def getColWidths(data, recursionDepth=0, nestingLevel=1):
 
     if not data:
         return None
-        
+       
     availWidth = printWidth - 12 # twice the total cell padding
     minwidths  = [ 0 for x in range(len(data[0]))]
     summedwidths = [ 0 for x in range(len(data[0]))]
     maxbreaks = [ 0 for x in range(len(data[0]))]
-    for row in data:        
+    for (i, row) in enumerate(data):        
         for (j,cell) in enumerate(row):
             cellwidth = 0
+            try:
+                if getattr(table.children[i].children[j], 'colspan', 1) > 1:
+                    continue # colspanned cells are not used for cell-width calculation.
+            except IndexError: # caused by empty row b/c of rowspanning
+                pass
             for e in cell:
                 minw, minh = e.wrap(0,printHeight)
                 maxw, maxh = e.wrap(availWidth, printHeight)
@@ -143,7 +148,7 @@ def getColWidths(data, recursionDepth=0, nestingLevel=1):
         if remainingSpace < 0:
             if recursionDepth == 0:
                 scaleImages(data)
-                return getColWidths(data, recursionDepth=1, nestingLevel=nestingLevel)
+                return getColWidths(data, table=table, recursionDepth=1, nestingLevel=nestingLevel)
             else:
                 return None
         else:
