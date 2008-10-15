@@ -499,7 +499,7 @@ class RlWriter(object):
             elements.extend([Spacer(0, 0.5*cm),
                             Paragraph('Source: %s' % filterText(xmlescape(article.url), breakLong=True), text_style())])
         if getattr(article, 'authors', None):
-            elements.append(Paragraph('Principle Authors: %s' % filterText(xmlescape(', '.join(article.authors))), text_style()))
+            elements.append(Paragraph('Principal Authors: %s' % filterText(xmlescape(', '.join(article.authors))), text_style()))
            
         return elements
     
