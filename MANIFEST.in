@@ -26,6 +26,7 @@ include mwlib/rl/_version.py
 include mwlib/rl/create_collection.py
 include mwlib/rl/customflowables.py
 include mwlib/rl/debughelper.py
+include mwlib/rl/locale/de/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/de/LC_MESSAGES/mwlib.rl.po
 include mwlib/rl/pagetemplates.py
 include mwlib/rl/pdfstyles.py
