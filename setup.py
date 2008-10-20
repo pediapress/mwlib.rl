@@ -26,7 +26,7 @@ setup(
         'mwlib.writers': ['rl = mwlib.rl.rlwriter:writer'],
     },
     install_requires=install_requires,
-    packages=["mwlib", "mwlib.rl", "mwlib.rl.locale", "mwlib.fonts"],
+    packages=["mwlib", "mwlib.rl", "mwlib.fonts"],
     namespace_packages=['mwlib'],
     zip_safe=False,
     include_package_data=True,
