@@ -11,3 +11,6 @@ try:
     import mwlib.ext #try to use bundled version of reportlab
 except ImportError:
     pass
+
+import gettext
+gettext.install('mwlib.rl', 'locale', unicode=True)

@@ -272,11 +272,17 @@ class RlWriter(object):
     def renderBook(self, bookParseTree, output, coverimage=None):
         elements = []
         try:
-            extversion = 'mwlib.ext version: %s' % str(_extversion.version)
+            extversion = _('mwlib.ext version: %(version)s') % {
+                'version': str(_extversion.version),
+            }
         except NameError:
             extversion = 'mwlib.ext not used'
             
-        version = 'mwlib version: %s , rlwriter version: %s, %s' % (rlwriterversion, mwlibversion, extversion)
+        version = _('mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %(mwlibextversion)s') % {
+            'mwlibrlversion': rlwriterversion,
+            'mwlibversion': mwlibversion,
+            'mwlibextversion': extversion,
+        }
         self.doc = PPDocTemplate(output,
                                  topMargin=pageMarginVert,
                                  leftMargin=pageMarginHor,
@@ -467,7 +473,7 @@ class RlWriter(object):
         if not hasattr(article, 'renderFailed'): # if rendering of the whole book failed, failed articles are flagged
             elements.extend(self.renderMixed(article))
         else:
-            articleFailText = '<strong>WARNING: Article could not be rendered - ouputting plain text.</strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer software (b) problematic Mediawiki markup (c) table is too wide'
+            articleFailText = _('<strong>WARNING: Article could not be rendered - ouputting plain text.</strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer software (b) problematic Mediawiki markup (c) table is too wide')
             elements.extend(self.renderFailedNode(article, articleFailText))
 
         # check for non-flowables
@@ -476,14 +482,18 @@ class RlWriter(object):
         elements = self.tabularizeImages(elements)
 
         if self.references:
-            elements.append(Paragraph('<b>External links</b>', heading_style('section', lvl=3)))
+            elements.append(Paragraph(_('<b>External links</b>'), heading_style('section', lvl=3)))
             elements.extend(self.writeReferenceList())
 
         if getattr(article,'url', None):
             elements.extend([Spacer(0, 0.5*cm),
-                            Paragraph('Source: %s' % filterText(xmlescape(article.url), breakLong=True), text_style())])
+                            Paragraph(_('Source: %(source)s') % {
+                                'source': filterText(xmlescape(article.url), breakLong=True),
+                            }, text_style())])
         if getattr(article, 'authors', None):
-            elements.append(Paragraph('Principal Authors: %s' % filterText(xmlescape(', '.join(article.authors))), text_style()))
+            elements.append(Paragraph(_('Principal Authors: %(authors)s') % {
+                'authors': filterText(xmlescape(', '.join(article.authors)))
+            }, text_style()))
            
         return elements
     
