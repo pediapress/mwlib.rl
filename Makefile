@@ -1,4 +1,7 @@
-all:: README.html MANIFEST.in
+all:: messages README.html MANIFEST.in
+
+messages::
+	./compile_messages.py
 
 MANIFEST.in::
 	./make_manifest.py
