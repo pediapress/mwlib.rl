@@ -3,13 +3,14 @@
 import sys
 
 from mwlib.l10n import make_messages
-from mwlib.rl import version
+from mwlib.rl._wversion import version
 
 def main(argv):
     if len(argv) != 2:
         sys.exit('Usage: %s LOCALE' % (argv[0],))
     make_messages(
         locale=argv[1],
+        localedir='mwlib.rl.locale',
         domain='mwlib.rl',
         version=str(version),
         inputdir='mwlib/rl',

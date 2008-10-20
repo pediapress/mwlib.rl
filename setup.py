@@ -10,7 +10,7 @@ from setuptools import setup
 import distutils.util
 
 version=None
-execfile(distutils.util.convert_path('mwlib/rl/__init__.py')) 
+execfile(distutils.util.convert_path('mwlib/rl/_version.py')) 
 # adds 'version' to local namespace
 
 install_requires=["mwlib>=0.8.3.dev, <0.9.0", "pygments>=0.10", "mwlib.ext>=0.8.2"]
@@ -26,11 +26,10 @@ setup(
         'mwlib.writers': ['rl = mwlib.rl.rlwriter:writer'],
     },
     install_requires=install_requires,
-
-    packages=["mwlib", "mwlib.rl", "mwlib.fonts"],
+    packages=["mwlib", "mwlib.rl", "mwlib.rl.locale", "mwlib.fonts"],
     namespace_packages=['mwlib'],
-    zip_safe = False,
-    include_package_data = True,
+    zip_safe=False,
+    include_package_data=True,
     url = "http://code.pediapress.com/",
     description="generate pdfs from mediawiki markup",
     long_description = read_long_description(),

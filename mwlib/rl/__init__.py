@@ -1,16 +1,10 @@
-class _Version(tuple):
-    """internal version object, subclass of C{tuple},
-    but implements a fancier __str__ representation
-    """
-    def __str__(self):
-        return '.'.join([str(x) for x in self])
-
-version = _Version((0,8,3,'dev'))
-del _Version
 try:
     import mwlib.ext #try to use bundled version of reportlab
 except ImportError:
     pass
 
 import gettext
-gettext.install('mwlib.rl', 'locale', unicode=True)
+import os
+
+localedir = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'locale')
+gettext.install('mwlib.rl', localedir, unicode=True)

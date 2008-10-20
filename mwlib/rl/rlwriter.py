@@ -86,7 +86,7 @@ except ImportError:
     useFriBidi = False
 
 from mwlib.rl import debughelper
-from mwlib.rl import version as rlwriterversion
+from mwlib.rl._version import version as rlwriterversion
 from mwlib._version import version as  mwlibversion
 try:
     from mwlib import _extversion
