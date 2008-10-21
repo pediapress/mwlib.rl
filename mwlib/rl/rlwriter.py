@@ -1184,6 +1184,11 @@ class RlWriter(object):
         para_style = text_style(mode='list', indent_lvl=listIndent, in_table=self.tableNestingLevel)
         if resetCounter: # first list item gets extra spaceBefore
             para_style.spaceBefore = text_style().spaceBefore
+
+        leaf = item.getFirstLeaf() # strip leading spaces from list items
+        if leaf and hasattr(leaf, 'caption'):
+            leaf.caption = leaf.caption.lstrip()
+        
         items =  self.renderMixed(item, para_style=para_style, textPrefix=itemPrefix)
         return items
         
