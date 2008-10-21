@@ -949,6 +949,12 @@ class RlWriter(object):
 
         try:
             img = PilImage.open(imgPath)
+            # workaround for http://code.pediapress.com/wiki/ticket/324
+            # see http://two.pairlist.net/pipermail/reportlab-users/2008-October/007526.html
+            if img.mode == 'P':
+                no_mask = True
+            else:
+                no_mask = False
             if img.info.get('interlace',0) == 1:
                 log.warning("got interlaced PNG which can't be handeled by PIL")
                 return []
@@ -1011,7 +1017,8 @@ class RlWriter(object):
                         imgHeight=height,
                         margin=(0.2*cm, 0.2*cm, 0.2*cm, 0.2*cm),
                         padding=(0.2*cm, 0.2*cm, 0.2*cm, 0.2*cm),
-                        align=align)
+                        align=align,
+                        no_mask=no_mask)
         return [figure]
         
 
