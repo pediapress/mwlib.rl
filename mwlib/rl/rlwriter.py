@@ -15,6 +15,8 @@ import tempfile
 import htmlentitydefs
 import shutil
 import inspect
+import subprocess
+
 try:
     from hashlib import md5
 except ImportError:
@@ -894,8 +896,22 @@ class RlWriter(object):
             txt = txt[:txt.find("|")] # category links sometimes seem to have more than one element. throw them away except the first one
         return [''.join(txt)] #FIXME use writelink to generate clickable-link
     
+
+    def svg2png(self, img_path ):
+        cmd = 'convert %s -flatten -coalesce -strip  %s.png' % (img_path, img_path)
+        try:
+            p = subprocess.Popen(cmd, shell=True)
+            pid, status = os.waitpid(p.pid, 0)
+            if status != 0 :
+                log.warning('img could not be converted. convert exited with non-zero return code:', repr(cmd))
+                return ''
+            else:
+                return '%s.png' % img_path
+        except OSError:
+            log.warning('img could not be converted. cmd failed:', repr(cmd))
+            return ''
     
-    def writeImageLink(self,obj):
+    def writeImageLink(self, obj):
         if obj.colon == True:
             items = []
             for node in obj.children:
@@ -904,6 +920,8 @@ class RlWriter(object):
 
         if self.imgDB:
             imgPath = self.imgDB.getDiskPath(obj.target, size=800) # FIXME: width should be obsolete now
+            if imgPath and imgPath.lower().endswith('svg'):
+                imgPath = self.svg2png(imgPath)
             if imgPath:
                 imgPath = imgPath.encode('utf-8')
                 self.tmpImages.add(imgPath)
