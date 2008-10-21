@@ -903,7 +903,7 @@ class RlWriter(object):
             return items
 
         if self.imgDB:
-            imgPath = self.imgDB.getDiskPath(obj.target, size=800) # FIXME: size configurable etc.
+            imgPath = self.imgDB.getDiskPath(obj.target, size=800) # FIXME: width should be obsolete now
             if imgPath:
                 imgPath = imgPath.encode('utf-8')
                 self.tmpImages.add(imgPath)
