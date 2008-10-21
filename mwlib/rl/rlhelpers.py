@@ -21,9 +21,7 @@ def filterText(txt, defaultFont=standardFont, breakLong=False):
             return defaultFont
         elif (o > 592 and o < 11904):
             return "DejaVuSans"
-        elif (o >= 11904 and o <= 12255) \
-            or (o >= 12272 and o <= 12287) \
-            or (o >= 12352 and o <= 12591) \
+        elif (o >= 11904 and o <= 12591) \
             or (o >= 12704 and o <= 12735) \
             or (o >= 13312 and o <= 19903) \
             or (o >= 19968 and o <= 40895) \
