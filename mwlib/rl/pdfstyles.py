@@ -99,7 +99,8 @@ showPageFooter = True
 showTitlePageFooter = True
 pageBreakAfterArticle = False
 
-
+showArticleSource = True 	# Set to False in customConfig.py to exclude article source URL from the output.
+showArticleAuthors = True	# Set to False in customConfig.py to exclude principal author information from the output.
 
 # NOTE: strings can contain reportlab styling tags the text needs to be xml excaped.
 # more information is available in the reportlab user documentation (http://www.reportlab.com/docs/userguide.pdf)

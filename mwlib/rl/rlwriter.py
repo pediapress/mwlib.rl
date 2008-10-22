@@ -487,12 +487,12 @@ class RlWriter(object):
             elements.append(Paragraph(_('<b>External links</b>'), heading_style('section', lvl=3)))
             elements.extend(self.writeReferenceList())
 
-        if getattr(article,'url', None):
+        if pdfstyles.showArticleSource and getattr(article,'url', None):
             elements.extend([Spacer(0, 0.5*cm),
                             Paragraph(_('Source: %(source)s') % {
                                 'source': filterText(xmlescape(article.url), breakLong=True),
                             }, text_style())])
-        if getattr(article, 'authors', None):
+        if pdfstyles.showArticleAuthors and getattr(article, 'authors', None):
             elements.append(Paragraph(_('Principal Authors: %(authors)s') % {
                 'authors': filterText(xmlescape(', '.join(article.authors)))
             }, text_style()))
