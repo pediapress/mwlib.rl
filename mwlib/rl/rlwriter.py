@@ -6,6 +6,7 @@
 
 from __future__ import division
 
+import gettext
 import sys
 import os
 import re
@@ -136,7 +137,16 @@ class ReportlabError(Exception):
 
 class RlWriter(object):
 
-    def __init__(self, env=None, strict=False, debug=False, mathcache=None):
+    def __init__(self, env=None, strict=False, debug=False, mathcache=None, lang=None):
+        localedir = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'locale')
+        translation = gettext.NullTranslations()
+        if lang:
+            try:
+                translation = gettext.translation('mwlib.rl', localedir, [lang])
+            except IOError, exc:
+                log.warn(str(exc))
+        translation.install(unicode=True)
+        
         self.env = env
         if self.env is not None:
             self.book = self.env.metabook
@@ -1465,8 +1475,15 @@ class RlWriter(object):
     writeVar = writeEmphasized
 
 
-def writer(env, output, status_callback=None, coverimage=None, strict=False, debug=False, mathcache=None):
-    r = RlWriter(env, strict=strict, debug=debug, mathcache=mathcache)
+def writer(env, output,
+    status_callback=None,
+    coverimage=None,
+    strict=False,
+    debug=False,
+    mathcache=None,
+    lang=None,
+):
+    r = RlWriter(env, strict=strict, debug=debug, mathcache=mathcache, lang=lang)
     if coverimage is None and env.configparser.has_section('pdf'):
         coverimage = env.configparser.get('pdf', 'coverimage', None)
     book = writerbase.build_book(env, status_callback=status_callback, progress_range=(10, 70))
@@ -1491,5 +1508,9 @@ writer.options = {
     'mathcache': {
         'param': 'DIRNAME',
         'help': 'directory of cached math images',
-    }
+    },
+    'lang': {
+        'param': 'LANGUAGE',
+        'help': 'use translated strings in given language (defaults to "en" for English)',
+    },
 }
