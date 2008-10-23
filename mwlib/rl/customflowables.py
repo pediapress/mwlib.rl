@@ -12,10 +12,15 @@ from reportlab.lib.colors import Color
 
 class Figure(Flowable):
 
-    def __init__(self,imgFile, captionTxt, captionStyle, imgWidth=None, imgHeight=None, margin=(0,0,0,0), padding=(0,0,0,0), align=None, borderColor=(0.75,0.75,0.75)):
+    def __init__(self,imgFile, captionTxt, captionStyle, imgWidth=None, imgHeight=None, margin=(0,0,0,0), padding=(0,0,0,0), align=None, borderColor=(0.75,0.75,0.75), no_mask=False):
         imgFile = imgFile 
         self.imgPath = imgFile
-        self.i = Image(imgFile, width=imgWidth, height=imgHeight)
+        # workaround for http://code.pediapress.com/wiki/ticket/324
+        # see http://two.pairlist.net/pipermail/reportlab-users/2008-October/007526.html
+        if no_mask:
+            self.i = Image(imgFile, width=imgWidth, height=imgHeight, mask=None)
+        else:
+            self.i = Image(imgFile, width=imgWidth, height=imgHeight)
         self.imgWidth = imgWidth
         self.imgHeight = imgHeight
         self.c = Paragraph(captionTxt, style=captionStyle)

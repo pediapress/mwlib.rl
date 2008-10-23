@@ -15,6 +15,8 @@ import tempfile
 import htmlentitydefs
 import shutil
 import inspect
+import subprocess
+
 try:
     from hashlib import md5
 except ImportError:
@@ -155,6 +157,7 @@ class RlWriter(object):
         self.paraIndentLevel = 0
         self.preMode = False
         self.refmode = False
+        self.inlineMode = 0
         self.linkList = []
         self.disable_group_elements = False
 
@@ -403,7 +406,7 @@ class RlWriter(object):
         hr = HRFlowable(width="80%", spaceBefore=6, spaceAfter=0, color=colors.black, thickness=0.5)
 
         title = self.renderText(chapter.caption)
-        if self.tableNestingLevel == 0:
+        if self.inlineMode == 0:
             chapter_anchor = '<a name="%s" />' % len(self.bookmarks)
             self.bookmarks.append((title, 'chapter'))
         else:
@@ -420,7 +423,7 @@ class RlWriter(object):
         self.sectionTitle = True
         headingTxt = ''.join(self.renderInline(obj.children[0])).strip()
         self.sectionTitle = False
-        if lvl <= 2 and self.tableNestingLevel == 0:
+        if lvl <= 2 and self.inlineMode == 0:
             anchor = '<a name="%d"/>' % len(self.bookmarks)
             self.bookmarks.append((obj.children[0].getAllDisplayText(), 'heading'))
         else:
@@ -446,7 +449,6 @@ class RlWriter(object):
 
     def writeArticle(self, article, isLicense=False):
         self.references = [] 
-        
         title = self.renderText(article.caption)
         log.info('writing article: %r' % title)
         elements = []
@@ -460,7 +462,7 @@ class RlWriter(object):
         title = filterText(title, defaultFont=standardSansSerif, breakLong=True)
         self.currentArticle = repr(title)
 
-        if self.tableNestingLevel == 0:
+        if self.inlineMode == 0:
             heading_anchor = '<a name="%d"/>' % len(self.bookmarks)
             self.bookmarks.append((article.caption, 'article'))
         else:
@@ -485,12 +487,12 @@ class RlWriter(object):
             elements.append(Paragraph(_('<b>External links</b>'), heading_style('section', lvl=3)))
             elements.extend(self.writeReferenceList())
 
-        if getattr(article,'url', None):
+        if pdfstyles.showArticleSource and getattr(article,'url', None):
             elements.extend([Spacer(0, 0.5*cm),
                             Paragraph(_('Source: %(source)s') % {
                                 'source': filterText(xmlescape(article.url), breakLong=True),
                             }, text_style())])
-        if getattr(article, 'authors', None):
+        if pdfstyles.showArticleAuthors and getattr(article, 'authors', None):
             elements.append(Paragraph(_('Principal Authors: %(authors)s') % {
                 'authors': filterText(xmlescape(', '.join(article.authors)))
             }, text_style()))
@@ -642,7 +644,7 @@ class RlWriter(object):
         char_limit = max(1, int(maxCharsInSourceLine / (max(1, self.currentColCount))))
         if maxCharOnLine > char_limit:
             t = self.breakLongLines(t, char_limit)
-            
+
         pre = XPreformatted(t, text_style(mode='preformatted', in_table=self.tableNestingLevel))
         # fixme: we could check if the preformatted fits on the page, if we reduce the fontsize
         #pre = XPreformatted(t, text_style(mode='preformatted', relsize='small', in_table=self.tableNestingLevel))
@@ -689,12 +691,14 @@ class RlWriter(object):
 
     def renderInline(self, node):
         txt = []
+        self.inlineMode += 1
         for child in node.children:
             res = self.write(child)
             if isInline(res): 
                 txt.extend(res)
             else:
                 log.warning(node.__class__.__name__, ' contained block element: ', child.__class__.__name__)
+        self.inlineMode -= 1
         return txt
 
 
@@ -894,8 +898,22 @@ class RlWriter(object):
             txt = txt[:txt.find("|")] # category links sometimes seem to have more than one element. throw them away except the first one
         return [''.join(txt)] #FIXME use writelink to generate clickable-link
     
+
+    def svg2png(self, img_path ):
+        cmd = 'convert %s -flatten -coalesce -strip  %s.png' % (img_path, img_path)
+        try:
+            p = subprocess.Popen(cmd, shell=True)
+            pid, status = os.waitpid(p.pid, 0)
+            if status != 0 :
+                log.warning('img could not be converted. convert exited with non-zero return code:', repr(cmd))
+                return ''
+            else:
+                return '%s.png' % img_path
+        except OSError:
+            log.warning('img could not be converted. cmd failed:', repr(cmd))
+            return ''
     
-    def writeImageLink(self,obj):
+    def writeImageLink(self, obj):
         if obj.colon == True:
             items = []
             for node in obj.children:
@@ -903,7 +921,9 @@ class RlWriter(object):
             return items
 
         if self.imgDB:
-            imgPath = self.imgDB.getDiskPath(obj.target, size=800) # FIXME: size configurable etc.
+            imgPath = self.imgDB.getDiskPath(obj.target, size=800) # FIXME: width should be obsolete now
+            if imgPath and imgPath.lower().endswith('svg'):
+                imgPath = self.svg2png(imgPath)
             if imgPath:
                 imgPath = imgPath.encode('utf-8')
                 self.tmpImages.add(imgPath)
@@ -931,6 +951,12 @@ class RlWriter(object):
 
         try:
             img = PilImage.open(imgPath)
+            # workaround for http://code.pediapress.com/wiki/ticket/324
+            # see http://two.pairlist.net/pipermail/reportlab-users/2008-October/007526.html
+            if img.mode == 'P':
+                no_mask = True
+            else:
+                no_mask = False
             if img.info.get('interlace',0) == 1:
                 log.warning("got interlaced PNG which can't be handeled by PIL")
                 return []
@@ -993,7 +1019,8 @@ class RlWriter(object):
                         imgHeight=height,
                         margin=(0.2*cm, 0.2*cm, 0.2*cm, 0.2*cm),
                         padding=(0.2*cm, 0.2*cm, 0.2*cm, 0.2*cm),
-                        align=align)
+                        align=align,
+                        no_mask=no_mask)
         return [figure]
         
 
@@ -1166,6 +1193,11 @@ class RlWriter(object):
         para_style = text_style(mode='list', indent_lvl=listIndent, in_table=self.tableNestingLevel)
         if resetCounter: # first list item gets extra spaceBefore
             para_style.spaceBefore = text_style().spaceBefore
+
+        leaf = item.getFirstLeaf() # strip leading spaces from list items
+        if leaf and hasattr(leaf, 'caption'):
+            leaf.caption = leaf.caption.lstrip()
+        
         items =  self.renderMixed(item, para_style=para_style, textPrefix=itemPrefix)
         return items
         
