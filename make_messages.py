@@ -10,7 +10,7 @@ def main(argv):
         sys.exit('Usage: %s LOCALE' % (argv[0],))
     make_messages(
         locale=argv[1],
-        localedir='mwlib.rl.locale',
+        localedir='mwlib/rl/locale',
         domain='mwlib.rl',
         version=str(version),
         inputdir='mwlib/rl',
