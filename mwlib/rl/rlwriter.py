@@ -157,6 +157,7 @@ class RlWriter(object):
         self.paraIndentLevel = 0
         self.preMode = False
         self.refmode = False
+        self.inlineMode = 0
         self.linkList = []
         self.disable_group_elements = False
 
@@ -405,7 +406,7 @@ class RlWriter(object):
         hr = HRFlowable(width="80%", spaceBefore=6, spaceAfter=0, color=colors.black, thickness=0.5)
 
         title = self.renderText(chapter.caption)
-        if self.tableNestingLevel == 0:
+        if self.inlineMode == 0:
             chapter_anchor = '<a name="%s" />' % len(self.bookmarks)
             self.bookmarks.append((title, 'chapter'))
         else:
@@ -422,7 +423,7 @@ class RlWriter(object):
         self.sectionTitle = True
         headingTxt = ''.join(self.renderInline(obj.children[0])).strip()
         self.sectionTitle = False
-        if lvl <= 2 and self.tableNestingLevel == 0:
+        if lvl <= 2 and self.inlineMode == 0:
             anchor = '<a name="%d"/>' % len(self.bookmarks)
             self.bookmarks.append((obj.children[0].getAllDisplayText(), 'heading'))
         else:
@@ -448,7 +449,6 @@ class RlWriter(object):
 
     def writeArticle(self, article, isLicense=False):
         self.references = [] 
-        
         title = self.renderText(article.caption)
         log.info('writing article: %r' % title)
         elements = []
@@ -462,7 +462,7 @@ class RlWriter(object):
         title = filterText(title, defaultFont=standardSansSerif, breakLong=True)
         self.currentArticle = repr(title)
 
-        if self.tableNestingLevel == 0:
+        if self.inlineMode == 0:
             heading_anchor = '<a name="%d"/>' % len(self.bookmarks)
             self.bookmarks.append((article.caption, 'article'))
         else:
@@ -644,7 +644,7 @@ class RlWriter(object):
         char_limit = max(1, int(maxCharsInSourceLine / (max(1, self.currentColCount))))
         if maxCharOnLine > char_limit:
             t = self.breakLongLines(t, char_limit)
-            
+
         pre = XPreformatted(t, text_style(mode='preformatted', in_table=self.tableNestingLevel))
         # fixme: we could check if the preformatted fits on the page, if we reduce the fontsize
         #pre = XPreformatted(t, text_style(mode='preformatted', relsize='small', in_table=self.tableNestingLevel))
@@ -691,12 +691,14 @@ class RlWriter(object):
 
     def renderInline(self, node):
         txt = []
+        self.inlineMode += 1
         for child in node.children:
             res = self.write(child)
             if isInline(res): 
                 txt.extend(res)
             else:
                 log.warning(node.__class__.__name__, ' contained block element: ', child.__class__.__name__)
+        self.inlineMode -= 1
         return txt
 
 
