@@ -3,7 +3,7 @@
 import sys
 
 from mwlib.l10n import make_messages
-from mwlib.rl._wversion import version
+from mwlib.rl._version import version
 
 def main(argv):
     if len(argv) != 2:
