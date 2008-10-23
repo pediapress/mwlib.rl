@@ -912,6 +912,18 @@ class RlWriter(object):
         except OSError:
             log.warning('img could not be converted. cmd failed:', repr(cmd))
             return ''
+
+    def getImgPath(self, target):
+        if self.imgDB:
+            imgPath = self.imgDB.getDiskPath(target, size=800) # FIXME: width should be obsolete now
+            if imgPath and imgPath.lower().endswith('svg'):
+                imgPath = self.svg2png(imgPath)
+            if imgPath:
+                imgPath = imgPath.encode('utf-8')
+                self.tmpImages.add(imgPath)
+        else:
+            imgPath = ''
+        return imgPath
     
     def writeImageLink(self, obj):
         if obj.colon == True:
@@ -920,20 +932,14 @@ class RlWriter(object):
                 items.extend(self.write(node))
             return items
 
-        if self.imgDB:
-            imgPath = self.imgDB.getDiskPath(obj.target, size=800) # FIXME: width should be obsolete now
-            if imgPath and imgPath.lower().endswith('svg'):
-                imgPath = self.svg2png(imgPath)
-            if imgPath:
-                imgPath = imgPath.encode('utf-8')
-                self.tmpImages.add(imgPath)
-        else:
-            imgPath = ''
+        imgPath = self.getImgPath(obj.target)
+        
         if not imgPath:
             if obj.target == None:
                 obj.target = ''
             log.warning('invalid image url (obj.target: %r)' % obj.target)            
             return []
+        
         def sizeImage(w,h):
             if obj.isInline():
                 scale = 1 / (inline_img_dpi / 2.54)
@@ -1261,7 +1267,8 @@ class RlWriter(object):
         self.tableNestingLevel += 1
         elements = []
         data = []        
-        maxCols = t.numcols
+
+        maxCols = getattr(t, 'numcols', 0)
         t = rltables.reformatTable(t, maxCols)
         if t.__class__ == advtree.Table:
             maxCols = t.numcols

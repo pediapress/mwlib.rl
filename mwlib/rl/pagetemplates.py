@@ -82,7 +82,7 @@ class WikiPage(PageTemplate):
 class TitlePage(PageTemplate):
 
     def __init__(self, wikititle=u'undefined', wikiurl=u'undefined', cover=None, id=None,
-        onPage=_doNothing, onPageEnd=_doNothing, pagesize=(pageHeight, pageWidth)):
+        onPage=_doNothing, onPageEnd=_doNothing, pagesize=(pageWidth, pageHeight)):
 
         id = 'TitlePage'
         frames = Frame(pageMarginHor,pageMarginVert,pageWidth - 2*pageMarginHor, pageHeight - 2*pageMarginVert)        
