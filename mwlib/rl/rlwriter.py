@@ -939,7 +939,8 @@ class RlWriter(object):
                 obj.target = ''
             log.warning('invalid image url (obj.target: %r)' % obj.target)            
             return []
-        
+
+        # FIXME: refactor writeImageLink and move the image sizing code out of the way
         def sizeImage(w,h):
             if obj.isInline():
                 scale = 1 / (inline_img_dpi / 2.54)
@@ -954,7 +955,7 @@ class RlWriter(object):
                 return (_w*cm, _h*cm)
 
         (w,h) = (obj.width or 0, obj.height or 0)
-
+        h = 0 # dirty workaround for http://code.pediapress.com/wiki/ticket/332
         try:
             img = PilImage.open(imgPath)
             # workaround for http://code.pediapress.com/wiki/ticket/324
