@@ -170,6 +170,7 @@ class RlWriter(object):
         self.inlineMode = 0
         self.linkList = []
         self.disable_group_elements = False
+        self.failSaveRendering = False
 
         self.sourceCount = 0
         self.sourcemode = False
@@ -263,6 +264,7 @@ class RlWriter(object):
             traceback.print_exc()
             log.error('###### renderBookFailed: %s' % err)               
             try:
+                self.failSaveRendering = True
                 (ok_count, fail_count, fail_articles) = self.flagFailedArticles(bookParseTree, output)
 
                 if self.strict:
@@ -326,7 +328,8 @@ class RlWriter(object):
                 wikidb=self.env.wiki,
             ), isLicense=True))
 
-        self.doc.bookmarks = self.bookmarks
+        if not self.failSaveRendering:
+            self.doc.bookmarks = self.bookmarks
         #debughelper.dumpElements(elements)
 
         if not bookParseTree.getChildNodesByClass(parser.Article):
@@ -416,7 +419,7 @@ class RlWriter(object):
         hr = HRFlowable(width="80%", spaceBefore=6, spaceAfter=0, color=colors.black, thickness=0.5)
 
         title = self.renderText(chapter.caption)
-        if self.inlineMode == 0:
+        if self.inlineMode == 0 and self.tableNestingLevel==0:
             chapter_anchor = '<a name="%s" />' % len(self.bookmarks)
             self.bookmarks.append((title, 'chapter'))
         else:
@@ -433,7 +436,7 @@ class RlWriter(object):
         self.sectionTitle = True
         headingTxt = ''.join(self.renderInline(obj.children[0])).strip()
         self.sectionTitle = False
-        if lvl <= 2 and self.inlineMode == 0:
+        if lvl <= 4 and self.inlineMode == 0 and self.tableNestingLevel==0:
             anchor = '<a name="%d"/>' % len(self.bookmarks)
             self.bookmarks.append((obj.children[0].getAllDisplayText(), 'heading'))
         else:
@@ -472,7 +475,7 @@ class RlWriter(object):
         title = filterText(title, defaultFont=standardSansSerif, breakLong=True)
         self.currentArticle = repr(title)
 
-        if self.inlineMode == 0:
+        if self.inlineMode == 0 and self.tableNestingLevel==0:
             heading_anchor = '<a name="%d"/>' % len(self.bookmarks)
             self.bookmarks.append((article.caption, 'article'))
         else:
@@ -949,7 +952,8 @@ class RlWriter(object):
                 obj.target = ''
             log.warning('invalid image url (obj.target: %r)' % obj.target)            
             return []
-        
+
+        # FIXME: refactor writeImageLink and move the image sizing code out of the way
         def sizeImage(w,h):
             if obj.isInline():
                 scale = 1 / (inline_img_dpi / 2.54)
@@ -964,7 +968,7 @@ class RlWriter(object):
                 return (_w*cm, _h*cm)
 
         (w,h) = (obj.width or 0, obj.height or 0)
-
+        h = 0 # dirty workaround for http://code.pediapress.com/wiki/ticket/332
         try:
             img = PilImage.open(imgPath)
             # workaround for http://code.pediapress.com/wiki/ticket/324
