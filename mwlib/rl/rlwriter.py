@@ -844,7 +844,10 @@ class RlWriter(object):
             txt = [getattr(obj, 'full_target', None) or obj.target]
             t = filterText(''.join(txt).strip()).encode('utf-8')
             t = unicode(urllib.unquote(t), 'utf-8')
-        t = '<link href="%s">%s</link>' % ( xmlescape(href), t.strip())
+        if obj.target.startswith('#'): # intrapage links are filtered
+            t = '%s' % t.strip()
+        else:
+            t = '<link href="%s">%s</link>' % ( xmlescape(href), t.strip())
         return [t]
 
     def writeLangLink(self, obj):
