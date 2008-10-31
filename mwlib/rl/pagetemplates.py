@@ -132,7 +132,7 @@ class PPDocTemplate(BaseDocTemplate):
         if typ == 'PROGRESS':
             self.progress = 100 * int(value) / self.estimatedDuration
         if typ == 'PAGE':
-            self.status_callback(progress=self.progress, status='rendering', page=value)
+            self.status_callback(progress=self.progress, page=value)
         
     def _startBuild(self, filename=None, canvasmaker=canvas.Canvas):
         BaseDocTemplate._startBuild(self, filename=filename, canvasmaker=canvasmaker)

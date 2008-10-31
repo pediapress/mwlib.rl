@@ -240,7 +240,9 @@ class RlWriter(object):
 
     def writeBook(self, bookParseTree, output, removedArticlesFile=None,
                   coverimage=None, status_callback=None):
-
+        
+        if status_callback:
+            status_callback(status=_('layouting'), progress=0)
         #if self.debug:
         #    debughelper.showParseTree(sys.stdout, bookParseTree)
 
@@ -349,6 +351,8 @@ class RlWriter(object):
             elements.append(Paragraph(' ', text_style()))
 
         log.info("start rendering: %r" % output)
+        if render_status:
+            render_status(status=_('rendering'), article='', progress=0)
         try:
             self.doc.build(elements)
             return 0
@@ -475,7 +479,7 @@ class RlWriter(object):
         self.references = [] 
         title = self.renderText(article.caption)
         if self.layout_status:
-            self.layout_status(status='layouting', article=title)
+            self.layout_status(article=title)
             self.articlecount += 1
             
         elements = []
@@ -1523,8 +1527,6 @@ def writer(env, output,
     else:
         buildbook_status = writer_status = None
     book = writerbase.build_book(env, status_callback=buildbook_status)
-    if status_callback is not None:
-        status_callback(status='rendering')
     r.writeBook(book, output=output, coverimage=coverimage, status_callback=writer_status)
 
 writer.description = 'PDF documents (using ReportLab)'
