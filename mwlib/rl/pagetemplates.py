@@ -117,11 +117,22 @@ from reportlab.pdfgen import canvas
 
 class PPDocTemplate(BaseDocTemplate):
 
-    def __init__(self, output, **kwargs):
+    def __init__(self, output, status_callback=None, **kwargs):
         self.bookmarks = []
         BaseDocTemplate.__init__(self, output, **kwargs)
-
+        if status_callback:
+            self.estimatedDuration = 0
+            self.progress = 0
+            self.setProgressCallBack(self.progressCB)
+            self.status_callback = status_callback
         
+    def progressCB(self, typ, value):
+        if typ == 'SIZE_EST':
+            self.estimatedDuration = int(value)
+        if typ == 'PROGRESS':
+            self.progress = 100 * int(value) / self.estimatedDuration
+        if typ == 'PAGE':
+            self.status_callback(progress=self.progress, status='rendering', page=value)
         
     def _startBuild(self, filename=None, canvasmaker=canvas.Canvas):
         BaseDocTemplate._startBuild(self, filename=filename, canvasmaker=canvasmaker)

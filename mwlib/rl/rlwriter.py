@@ -239,14 +239,17 @@ class RlWriter(object):
         return m(obj)
 
     def writeBook(self, bookParseTree, output, removedArticlesFile=None,
-                  coverimage=None):
-        
+                  coverimage=None, status_callback=None):
+
         #if self.debug:
         #    debughelper.showParseTree(sys.stdout, bookParseTree)
 
         advtree.buildAdvancedTree(bookParseTree)
         tc = TreeCleaner(bookParseTree, save_reports=self.debug)
         tc.cleanAll()
+
+        self.numarticles = len(bookParseTree.getChildNodesByClass(advtree.Article))
+        self.articlecount = 0
         
         if self.debug:
             debughelper.showParseTree(sys.stdout, bookParseTree)
@@ -255,7 +258,7 @@ class RlWriter(object):
             print "\n".join([repr(r) for r in tc.getReports()])
             
         try:
-            self.renderBook(bookParseTree, output, coverimage=coverimage)
+            self.renderBook(bookParseTree, output, coverimage=coverimage, status_callback=status_callback)
             log.info('###### RENDERING OK')
             if hasattr(self, 'tmpdir'):
                 shutil.rmtree(self.tmpdir, ignore_errors=True)
@@ -284,7 +287,7 @@ class RlWriter(object):
                     shutil.rmtree(self.tmpdir, ignore_errors=True)
                 raise
 
-    def renderBook(self, bookParseTree, output, coverimage=None):
+    def renderBook(self, bookParseTree, output, coverimage=None, status_callback=None):
         elements = []
         try:
             extversion = _('mwlib.ext version: %(version)s') % {
@@ -298,6 +301,13 @@ class RlWriter(object):
             'mwlibversion': mwlibversion,
             'mwlibextversion': extversion,
         }
+
+        if status_callback:
+            self.layout_status = status_callback.getSubRange(0, 50)
+            render_status = status_callback.getSubRange(51, 100)
+        else:
+            self.layout_status = None
+            render_status = None
         self.doc = PPDocTemplate(output,
                                  topMargin=pageMarginVert,
                                  leftMargin=pageMarginHor,
@@ -305,6 +315,7 @@ class RlWriter(object):
                                  bottomMargin=pageMarginVert,
                                  title=self.book.get('title'),
                                  keywords=version,
+                                 status_callback=render_status
         )
 
         self.output = output
@@ -463,7 +474,10 @@ class RlWriter(object):
     def writeArticle(self, article, isLicense=False):
         self.references = [] 
         title = self.renderText(article.caption)
-        log.info('writing article: %r' % title)
+        if self.layout_status:
+            self.layout_status(status='layouting', article=title)
+            self.articlecount += 1
+            
         elements = []
         pt = WikiPage(title)
         if hasattr(self, 'doc'): # doc is not present if tests are run
@@ -509,6 +523,9 @@ class RlWriter(object):
             elements.append(Paragraph(_('Principal Authors: %(authors)s') % {
                 'authors': filterText(xmlescape(', '.join(article.authors)))
             }, text_style()))
+
+        if self.layout_status:
+            self.layout_status(progress=100*self.articlecount/self.numarticles)
            
         return elements
     
@@ -845,7 +862,7 @@ class RlWriter(object):
             t = filterText(''.join(txt).strip()).encode('utf-8')
             t = unicode(urllib.unquote(t), 'utf-8')
         if obj.target.startswith('#'): # intrapage links are filtered
-            t = '%s' % t.strip()
+            t = t.strip()
         else:
             t = '<link href="%s">%s</link>' % ( xmlescape(href), t.strip())
         return [t]
@@ -1500,10 +1517,15 @@ def writer(env, output,
     r = RlWriter(env, strict=strict, debug=debug, mathcache=mathcache, lang=lang)
     if coverimage is None and env.configparser.has_section('pdf'):
         coverimage = env.configparser.get('pdf', 'coverimage', None)
-    book = writerbase.build_book(env, status_callback=status_callback, progress_range=(10, 70))
+    if status_callback:
+        buildbook_status = status_callback.getSubRange(0,20)
+        writer_status = status_callback.getSubRange(21, 100)
+    else:
+        buildbook_status = writer_status = None
+    book = writerbase.build_book(env, status_callback=buildbook_status)
     if status_callback is not None:
         status_callback(status='rendering')
-    r.writeBook(book, output=output, coverimage=coverimage)
+    r.writeBook(book, output=output, coverimage=coverimage, status_callback=writer_status)
 
 writer.description = 'PDF documents (using ReportLab)'
 writer.content_type = 'application/pdf'
