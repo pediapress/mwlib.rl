@@ -180,6 +180,7 @@ class RlWriter(object):
         self.tmpdir = tempfile.mkdtemp()
         self.bookmarks = []
         self.colwidth = 0
+        self.layout_status = None
         
     def ignore(self, obj):
         return []
