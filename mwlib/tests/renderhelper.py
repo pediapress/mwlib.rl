@@ -4,6 +4,7 @@
 # Copyright (c) 2007-2008 PediaPress GmbH
 # See README.txt for additional licensing information.
 
+import os
 import tempfile
 
 from reportlab.lib.units import cm
@@ -15,13 +16,14 @@ from mwlib.rl.rlwriter import RlWriter
 from mwlib.treecleaner import TreeCleaner
 from mwlib import advtree
 
-def renderElements(elements, filesuffix=None):
+def renderElements(elements, filesuffix=None, tmpdir=None):
     """ takes a list of reportlab flowables and renders them to a test.pdf file"""
     margin = 2 * cm
     if filesuffix:
         fn = 'test_' + filesuffix + '.pdf'
     else:
-        fn = 'test.pdf'       
+        fn = 'test.pdf'
+    fn = os.path.join(tmpdir, fn)
     doc = BaseDocTemplate(fn, topMargin=margin, leftMargin=margin, rightMargin=margin, bottomMargin=margin)
     pt = WikiPage('Title', wikiurl='http://test.com', wikititle='Title')
     doc.addPageTemplates(pt)
@@ -37,7 +39,8 @@ def renderMW(txt, filesuffix=None):
     
     rw = RlWriter()
     rw.wikiTitle = 'testwiki'
-    rw.tmpdir = tempfile.mkdtemp()
+    tmpdir = tempfile.mkdtemp()
+    rw.tmpdir = tmpdir
     elements = rw.write(parseTree)
-    renderElements(elements, filesuffix)
+    renderElements(elements, filesuffix, tmpdir)
 
