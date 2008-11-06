@@ -93,7 +93,7 @@ def test_gallery():
     txt = []
     for perrow in range(2,6):
         for imgcount in range(4, 10):
-            images = '\n'.join(['Bild %d' %i for i in range(imgcount)])
+            images = '\n'.join(['Bild:dummy_img%d.jpg' %i for i in range(imgcount)])
             t="""
 <gallery perrow=%(perrow)d>
 %(images)s

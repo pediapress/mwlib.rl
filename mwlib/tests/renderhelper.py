@@ -6,6 +6,9 @@
 
 import os
 import tempfile
+import re
+
+from PIL import Image, ImageDraw
 
 from reportlab.lib.units import cm
 from reportlab.platypus.doctemplate import BaseDocTemplate, NextPageTemplate
@@ -36,11 +39,39 @@ def renderMW(txt, filesuffix=None):
     advtree.buildAdvancedTree(parseTree)
     tc = TreeCleaner(parseTree)
     tc.cleanAll()
-    
+
+    tmpdir = tempfile.mkdtemp()    
     rw = RlWriter()
     rw.wikiTitle = 'testwiki'
-    tmpdir = tempfile.mkdtemp()
     rw.tmpdir = tmpdir
+    rw.imgDB = dummyImageDB(basedir=tmpdir)
     elements = rw.write(parseTree)
     renderElements(elements, filesuffix, tmpdir)
 
+class dummyImageDB(object):
+    def __init__(self, basedir=None):
+        self.basedir = basedir
+        self.imgnum = 1
+
+    def _generateImg(self, name='', num=0, size=200):
+        img = Image.new('RGB', (size, size))
+        d = ImageDraw.Draw(img)
+        d.rectangle( [(0,0), img.size] , outline=(255,0,0), fill=(255,0,0))
+        
+        if num > 0:
+            w = img.size[0]/(num*2.0)
+            h = img.size[1]
+            for i in range(num):
+                d.rectangle( [(w*2*i,0), (w*(2*i+1), h)], fill=(0,255,0))
+        img.save(name)
+    
+    def getDiskPath(self, name, size=None):
+        res = re.findall('(\d+)', name)
+        if res:
+            num = int(res[0])
+        else:
+            num = 0
+        name = os.path.join(self.basedir, name)
+        self._generateImg(name=name, num=num, size=size)
+        self.imgnum+=1
+        return name
