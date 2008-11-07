@@ -11,6 +11,7 @@ import sys
 import os
 import re
 import urllib
+import urlparse
 import traceback
 import tempfile
 import htmlentitydefs
@@ -962,6 +963,7 @@ class RlWriter(object):
         else:
             imgPath = ''
         return imgPath
+
     
     def writeImageLink(self, obj):
         if obj.colon == True:
@@ -1047,13 +1049,23 @@ class RlWriter(object):
 
         is_inline = obj.isInline()
         #from mwlib import imgutils #fixme: check if we need "improved" inline detection of images
-        #is_inline = imgutils.isInline(obj)           
+        #is_inline = imgutils.isInline(obj)
+
+        url = self.imgDB.getDescriptionURL(obj.target) or self.imgDB.getURL(obj.target)
+        if url:
+            linkstart = '<link href="%s"> ' % xmlescape(url) # spaces are needed, otherwise link is not present. probably b/c of a inline image bug of reportlab
+            linkend = ' </link>'
+        else:
+            linkstart = ''
+            linkend = ''
         if  is_inline: 
-            txt = '<img src="%(src)s" width="%(width)fin" height="%(height)fin" valign="%(align)s"/>' % {
-                'src':unicode(imgPath, 'utf-8'),
-                'width':width/100,
-                'height':height/100,
-                'align':'bottom',
+            txt = '%(linkstart)s<img src="%(src)s" width="%(width)fin" height="%(height)fin" valign="%(align)s"/>%(linkend)s' % {
+                'src': unicode(imgPath, 'utf-8'),
+                'width': width/100,
+                'height': height/100,
+                'align': 'bottom',
+                'linkstart': linkstart,
+                'linkend': linkend,
                 }
             return txt
         captionTxt = ''.join(txt)         
@@ -1065,7 +1077,8 @@ class RlWriter(object):
                         margin=(0.2*cm, 0.2*cm, 0.2*cm, 0.2*cm),
                         padding=(0.2*cm, 0.2*cm, 0.2*cm, 0.2*cm),
                         align=align,
-                        no_mask=no_mask)
+                        no_mask=no_mask,
+                        url=url)
         return [figure]
         
 

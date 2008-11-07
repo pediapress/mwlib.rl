@@ -12,7 +12,7 @@ from reportlab.lib.colors import Color
 
 class Figure(Flowable):
 
-    def __init__(self,imgFile, captionTxt, captionStyle, imgWidth=None, imgHeight=None, margin=(0,0,0,0), padding=(0,0,0,0), align=None, borderColor=(0.75,0.75,0.75), no_mask=False):
+    def __init__(self,imgFile, captionTxt, captionStyle, imgWidth=None, imgHeight=None, margin=(0,0,0,0), padding=(0,0,0,0), align=None, borderColor=(0.75,0.75,0.75), no_mask=False, url=None):
         imgFile = imgFile 
         self.imgPath = imgFile
         # workaround for http://code.pediapress.com/wiki/ticket/324
@@ -32,21 +32,24 @@ class Figure(Flowable):
         self.captionTxt = captionTxt
         self.availWidth = None
         self.availHeight = None
-        
+        self.url = url
+
     def draw(self):
         canv = self.canv
         if self.align == "center":
             canv.translate((self.availWidth-self.width)/2,0)
         canv.saveState()
         canv.setStrokeColor(Color(self.borderColor[0],self.borderColor[1], self.borderColor[2]))
-        canv.rect(self.margin[3], self.margin[2], self.boxWidth, self.boxHeight)
+        canv.rect(self.margin[3], self.margin[2], self.boxWidth, self.boxHeight)        
         canv.restoreState()
         canv.translate(self.margin[3] + self.padding[3], self.margin[2] + self.padding[2] - 2)
         self.c.canv = canv
         self.c.draw()
         canv.translate( (self.boxWidth - self.padding[1] - self.padding[3] - self.i.drawWidth)/2, self.captionHeight +2)
         self.i.canv = canv
-        self.i.draw()       
+        self.i.draw()
+        if self.url:
+            canv.linkURL(self.url, (0,0, self.imgWidth, self.imgHeight), relative=1, thickness=0)
         
     def wrap(self, availWidth, availHeight):
         self.availWidth = availWidth
