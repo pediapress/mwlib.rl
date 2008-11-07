@@ -75,3 +75,9 @@ class dummyImageDB(object):
         self._generateImg(name=name, num=num, size=size)
         self.imgnum+=1
         return name
+
+    def getDescriptionURL(self, name):
+        return None
+
+    def getURL(self, name):
+        return None
