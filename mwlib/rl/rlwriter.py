@@ -422,9 +422,9 @@ class RlWriter(object):
                 if src.get('url'):
                     kwargs['wikiurl'] = src['url']                    
         self.doc.addPageTemplates(TitlePage(cover=coverimage, **kwargs))
-        elements = [Paragraph(self.renderText(title), text_style(mode='booktitle'))]
+        elements = [Paragraph(filterText(title), text_style(mode='booktitle'))]
         if subtitle:
-            elements.append(Paragraph(self.renderText(subtitle), text_style(mode='booksubtitle')))
+            elements.append(Paragraph(filterText(subtitle), text_style(mode='booksubtitle')))
         if not firstArticle:
             return elements
         self.doc.addPageTemplates(WikiPage(firstArticleTitle, **kwargs))
