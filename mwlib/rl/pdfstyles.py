@@ -26,6 +26,11 @@ from reportlab.lib import colors
 from reportlab.lib.pagesizes import A4
 
 
+# used to mark translateable strings:
+if '_' not in globals():
+    _ = lambda x: x
+
+
 ########## REGISTER FONTS
 
 def fontpath(n):

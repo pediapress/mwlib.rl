@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mwlib.rl 0.8.3.dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-17 11:36+0100\n"
+"POT-Creation-Date: 2008-11-17 11:49+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,13 +16,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: mwlib/rl/pdfstyles.py:112
+#: mwlib/rl/pdfstyles.py:117
 msgid ""
 "PDF generated using the open source mwlib toolkit<br/>see http://code."
 "pediapress.com/ for more information"
 msgstr ""
-"Das PDF wurde generiert mit dem Open Source-Tookit mwlib<br/>"
-"Siehe http://code.pediapress.com/ für weitere Informationen"
+"Das PDF wurde generiert mit dem Open Source-Tookit mwlib<br/>Siehe http://"
+"code.pediapress.com/ für weitere Informationen"
 
 #: mwlib/rl/rlwriter.py:247
 msgid "layouting"

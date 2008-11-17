@@ -96,7 +96,7 @@ class TitlePage(PageTemplate):
         canvas.saveState()
         if showTitlePageFooter:
             canvas.line(footerMarginHor, footerMarginVert, pageWidth - footerMarginHor, footerMarginVert )
-            footertext = titlepagefooter.replace('@WIKITITLE@', self.wikititle).replace('@WIKIURL@', self.wikiurl)
+            footertext = _(titlepagefooter).replace('@WIKITITLE@', self.wikititle).replace('@WIKIURL@', self.wikiurl)
             p = Paragraph(filterText(footertext), text_style(mode='footer'))           
             w,h = p.wrap(pageWidth - 2*pageMarginHor,pageHeight-pageMarginVert)
             canvas.translate( (pageWidth-w)/2.0, 0.2*cm)
