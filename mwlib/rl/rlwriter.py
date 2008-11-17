@@ -166,21 +166,26 @@ class RlWriter(object):
         self.sectionTitle = False
         self.tablecount = 0
         self.paraIndentLevel = 0
-        self.preMode = False
-        self.refmode = False
-        self.inlineMode = 0
+
+        self.pre_mode = False
+        self.ref_mode = False
+        self.license_mode = False
+        self.source_mode = False
+        self.inline_mode = 0
+
         self.linkList = []
         self.disable_group_elements = False
         self.failSaveRendering = False
 
-        self.sourceCount = 0
-        self.sourcemode = False
+        self.sourceCount = 0        
         self.currentColCount = 0
         self.currentArticle = None
         self.math_cache_dir = mathcache or os.environ.get('MWLIBRL_MATHCACHE')
         self.tmpdir = tempfile.mkdtemp()
         self.bookmarks = []
         self.colwidth = 0
+
+        self.articleids = []        
         self.layout_status = None
         
     def ignore(self, obj):
@@ -228,7 +233,7 @@ class RlWriter(object):
 
         return groupedElements
                                 
-    def write(self, obj, required=None):
+    def write(self, obj):
         if not obj.visible:
             return []
         m = "write" + obj.__class__.__name__
@@ -251,6 +256,8 @@ class RlWriter(object):
         advtree.buildAdvancedTree(bookParseTree)
         tc = TreeCleaner(bookParseTree, save_reports=self.debug)
         tc.cleanAll()
+
+        self.getArticleIDs(bookParseTree)
 
         self.numarticles = len(bookParseTree.getChildNodesByClass(advtree.Article))
         self.articlecount = 0
@@ -290,6 +297,11 @@ class RlWriter(object):
                 if hasattr(self, 'tmpdir'):
                     shutil.rmtree(self.tmpdir, ignore_errors=True)
                 raise
+
+    def getArticleIDs(self, parseTree):
+        for article in parseTree.getChildNodesByClass(advtree.Article):
+            article_id = self.idFromURL(article.url)
+            self.articleids.append(article_id)
 
     def renderBook(self, bookParseTree, output, coverimage=None, status_callback=None):
         elements = []
@@ -335,16 +347,21 @@ class RlWriter(object):
 
         if not self.disable_group_elements:
             elements = self.groupElements(elements)
-
+            
+        self.license_mode = True
         for license in self.env.get_licenses():
             elements.extend(self.writeArticle(uparser.parseString(
-                title=license['title'],
+                title=license['title'],                
                 raw=license['wikitext'],
                 wikidb=self.env.wiki,
-            ), isLicense=True))
+            )))
+        self.license_mode = False
+        
+        self.doc.bookmarks = self.bookmarks
 
         if not self.failSaveRendering:
             self.doc.bookmarks = self.bookmarks
+
         #debughelper.dumpElements(elements)
 
         if not bookParseTree.getChildNodesByClass(parser.Article):
@@ -436,7 +453,7 @@ class RlWriter(object):
         hr = HRFlowable(width="80%", spaceBefore=6, spaceAfter=0, color=colors.black, thickness=0.5)
 
         title = self.renderText(chapter.caption)
-        if self.inlineMode == 0 and self.tableNestingLevel==0:
+        if self.inline_mode == 0 and self.tableNestingLevel==0:
             chapter_anchor = '<a name="%s" />' % len(self.bookmarks)
             self.bookmarks.append((title, 'chapter'))
         else:
@@ -449,11 +466,14 @@ class RlWriter(object):
 
     def writeSection(self, obj):
         lvl = getattr(obj, "level", 4)
-        headingStyle = heading_style('section', lvl=lvl+1)
+        if self.license_mode:
+            headingStyle = heading_style("license")
+        else:
+            headingStyle = heading_style('section', lvl=lvl+1)
         self.sectionTitle = True
         headingTxt = ''.join(self.renderInline(obj.children[0])).strip()
         self.sectionTitle = False
-        if lvl <= 4 and self.inlineMode == 0 and self.tableNestingLevel==0:
+        if lvl <= 4 and self.inline_mode == 0 and self.tableNestingLevel==0:
             anchor = '<a name="%d"/>' % len(self.bookmarks)
             self.bookmarks.append((obj.children[0].getAllDisplayText(), 'heading'))
         else:
@@ -476,8 +496,21 @@ class RlWriter(object):
         elements.extend([Spacer(0, 0.5*cm), HRFlowable(width="100%", thickness=2), Spacer(0,1*cm)])
         return elements
 
+    def idFromURL(self, url):
+        if not url:
+            return ''
+        url = self.normaliseURLs(url)
+        m = md5(url)
+        return m.hexdigest()
 
-    def writeArticle(self, article, isLicense=False):
+    def normaliseURLs(self, url):
+        url = url.encode('utf-8')
+        #first letter of the title has to be large
+        source = re.search(r"(.*?title=)", url).groups()[0]
+        title = re.search(r".*title=(.*)", url).groups()[0]
+        return "%s%s%s" % (source, title[:1].upper(), title[1:])
+    
+    def writeArticle(self, article):
         self.references = [] 
         title = self.renderText(article.caption)
         if self.layout_status:
@@ -489,22 +522,33 @@ class RlWriter(object):
         if hasattr(self, 'doc'): # doc is not present if tests are run
             self.doc.addPageTemplates(pt)
             elements.append(NextPageTemplate(title.encode('utf-8'))) # pagetemplate.id cant handle unicode
-            if pdfstyles.pageBreakAfterArticle and isinstance(article.getPrevious(), advtree.Article) or isLicense: # if configured and preceded by an article
+            if pdfstyles.pageBreakAfterArticle and isinstance(article.getPrevious(), advtree.Article) or self.license_mode: # if configured and preceded by an article
                 elements.append(NotAtTopPageBreak())
 
         title = filterText(title, defaultFont=standardSansSerif, breakLong=True)
         self.currentArticle = repr(title)
 
-        if self.inlineMode == 0 and self.tableNestingLevel==0:
+        if self.inline_mode == 0 and self.tableNestingLevel==0:
             heading_anchor = '<a name="%d"/>' % len(self.bookmarks)
             self.bookmarks.append((article.caption, 'article'))
         else:
             heading_anchor = ''
-        heading_para = Paragraph('<b>%s</b>%s' % (title, heading_anchor), heading_style('article'))
+
+        #add anchor for internal links
+        url = getattr(article, 'url', None)
+        if url:
+            article_id = self.idFromURL(url)
+            heading_anchor = "%s%s" % (heading_anchor, '<a name="%s" />' % article_id)
+
+        if self.license_mode:            
+            heading_para = Paragraph('<b>%s</b>%s' % (title, heading_anchor), heading_style("licensearticle"))
+        else:
+            heading_para = Paragraph('<b>%s</b>%s' % (title, heading_anchor), heading_style("article"))
+            
         elements.append(heading_para)
 
         elements.append(HRFlowable(width='100%', hAlign='LEFT', thickness=1, spaceBefore=0, spaceAfter=10, color=colors.black))
-
+        
         if not hasattr(article, 'renderFailed'): # if rendering of the whole book failed, failed articles are flagged
             elements.extend(self.renderMixed(article))
         else:
@@ -513,7 +557,7 @@ class RlWriter(object):
 
         # check for non-flowables
         elements = [e for e in elements if not isinstance(e,basestring)]                
-        elements = self.floatImages(elements)
+        elements = self.floatImages(elements) 
         elements = self.tabularizeImages(elements)
 
         if self.references:
@@ -534,7 +578,7 @@ class RlWriter(object):
             self.layout_status(progress=100*self.articlecount/self.numarticles)
            
         return elements
-    
+
     def writeParagraph(self,obj):
         return self.renderMixed(obj)
 
@@ -667,12 +711,12 @@ class RlWriter(object):
         return finalNodes
 
     def writePreFormatted(self, obj):
-        self.preMode = True
+        self.pre_mode = True
         txt = []
         txt.extend(self.renderInline(obj))
         t = ''.join(txt)
         t = re.sub( u'<br */>', u'\n', t)
-        self.preMode = False
+        self.pre_mode = False
         if not len(t):
             return []
         
@@ -714,39 +758,42 @@ class RlWriter(object):
                 
         if not txt:
             return []
-        if self.sourcemode:
+        if self.source_mode:
             return [txt]
-        if not self.preMode:
+        if not self.pre_mode:
             txt = self.transformEntities(txt)
         txt = xmlescape(txt)
         if self.sectionTitle:
             return [filterText(txt, defaultFont=standardSansSerif, breakLong=True)]
-        if self.preMode:
+        if self.pre_mode:
             return [filterText(txt, defaultFont=standardMonoFont)]
         return [filterText(txt)]
 
     def renderInline(self, node):
         txt = []
-        self.inlineMode += 1
+        self.inline_mode += 1
         for child in node.children:
             res = self.write(child)
             if isInline(res): 
                 txt.extend(res)
             else:
                 log.warning(node.__class__.__name__, ' contained block element: ', child.__class__.__name__)
-        self.inlineMode -= 1
+        self.inline_mode -= 1
         return txt
 
 
-    def renderMixed(self, node, para_style=None, textPrefix=None):
+    def renderMixed(self, node, para_style=None, textPrefix=None):        
         if not para_style:
-            para_style = text_style(in_table=self.tableNestingLevel)
+            if self.license_mode:
+                para_style = text_style("license")
+            else:
+                para_style = text_style(in_table=self.tableNestingLevel)
         txt = []
         if textPrefix:
             txt.append(textPrefix)
         items = []
-       
-        if isinstance(node, advtree.Node): # set node styles like text/bg colors, alignment
+        
+        if isinstance(node, advtree.Node): #set node styles like text/bg colors, alignment
             text_color = styleutils.rgbColorFromNode(node)
             background_color = styleutils.rgbBgColorFromNode(node)           
             if text_color:
@@ -759,11 +806,11 @@ class RlWriter(object):
                              'center': TA_CENTER,
                              'justify': TA_JUSTIFY,}
                 para_style.alignment = align_map[align]
-            
-        for c in node:
+ 
+        for c in node:             
             res = self.write(c)
             if isInline(res):
-                txt.extend(res)
+                txt.extend(res)                
             else:
                 items.extend(buildPara(txt, para_style)) 
                 items.extend(res)
@@ -847,8 +894,16 @@ class RlWriter(object):
     def writeLink(self,obj):
         """ Link nodes are intra wiki links
         """
-        
+
         href = obj.url # obj.url is a utf-8 string
+
+        #looking for internal links
+        internallink = False
+        if isinstance(obj, advtree.ArticleLink):
+            article_id = self.idFromURL(obj.url)
+            if article_id in self.articleids:
+                internallink = True
+        
         if not href:
             log.warning('no link target specified')
             if not obj.children:
@@ -867,10 +922,15 @@ class RlWriter(object):
             txt = [getattr(obj, 'full_target', None) or obj.target]
             t = filterText(''.join(txt).strip()).encode('utf-8')
             t = unicode(urllib.unquote(t), 'utf-8')
-        if obj.target.startswith('#'): # intrapage links are filtered
-            t = t.strip()
+
+        if not internallink:
+            if obj.target.startswith('#'): # intrapage links are filtered
+                t = t.strip()
+            else:
+                t = '<link href="%s">%s</link>' % (xmlescape(href), t.strip())
         else:
-            t = '<link href="%s">%s</link>' % ( xmlescape(href), t.strip())
+            t = u'<link href="#%s">%s\u2193</link>' % (article_id, t.strip())
+
         return [t]
 
     def writeLangLink(self, obj):
@@ -897,7 +957,7 @@ class RlWriter(object):
                 href = href[:quote_idx]
         display_text = self.renderURL(href)
         href = xmlescape(href)
-        if (self.tableNestingLevel and len(href) > 30) and not self.refmode:
+        if (self.tableNestingLevel and len(href) > 30) and not self.ref_mode:
             return self.writeNamedURL(obj)
         
         txt = '<link href="%s"><font fontName="%s">%s</font></link>' % (href, standardMonoFont, display_text)
@@ -905,7 +965,7 @@ class RlWriter(object):
     
     def writeNamedURL(self,obj):
         href = obj.caption.strip()
-        if not self.refmode:
+        if not self.ref_mode:
             i = parser.Item()
             i.children = [advtree.URL(href)]
             self.references.append(i)
@@ -1159,9 +1219,9 @@ class RlWriter(object):
         src_lang = n.vlist.get('lang', '').lower()
         lexer = getLexer(src_lang)
         if lexer:
-            self.sourcemode = True
+            self.source_mode = True
             res = self._writeSourceInSourceMode(n, src_lang, lexer)
-            self.sourcemode = False
+            self.source_mode = False
             if res:
                 return res
         return self.writePreFormatted(n)
@@ -1194,10 +1254,10 @@ class RlWriter(object):
     
     def writeReferenceList(self, n=None):
         if self.references:                
-            self.refmode = True
+            self.ref_mode = True
             refList = self.writeItemList(self.references, style="referencelist")
             self.references = []
-            self.refmode = False
+            self.ref_mode = False
             return refList
         else:
             return []
@@ -1248,7 +1308,10 @@ class RlWriter(object):
             itemPrefix = ''
 
         listIndent = max(0,(self.listIndentation + self.paraIndentLevel))
-        para_style = text_style(mode='list', indent_lvl=listIndent, in_table=self.tableNestingLevel)
+        if self.license_mode:
+            para_style = text_style(mode="licenselist",indent_lvl=listIndent)
+        else:
+            para_style = text_style(mode='list', indent_lvl=listIndent, in_table=self.tableNestingLevel)
         if resetCounter: # first list item gets extra spaceBefore
             para_style.spaceBefore = text_style().spaceBefore
 
@@ -1413,8 +1476,10 @@ class RlWriter(object):
                 raise LayoutError
             if self.tableNestingLevel > 1 and h > printHeight:
                 log.warning('nested table too high')
-                raise LayoutError                
+                raise LayoutError
+            self.addAnchors(table)
             doc.build([table])
+            self.delAnchors(table)
             del doc
             if self.debug:
                 log.info('table test rendering: ok')
@@ -1473,7 +1538,18 @@ class RlWriter(object):
                 images.append(Image(imageFn, width=printWidth*0.90, height=printHeight*0.90))
             
         return (True, images)
-            
+
+    def addAnchors(self, table):
+        anchors = ""
+        for article_id in self.articleids:
+            newAnchor = '<a name="%s" />' % article_id
+            anchors = "%s%s" % (anchors, newAnchor)
+        p = Paragraph(anchors, text_style())
+        table._cellvalues[0][0].append(p)
+
+    def delAnchors(self, table):
+        table._cellvalues[0][0].pop()
+    
     def writeMath(self, node):
         source = re.compile(u'\n+').sub(u'\n', node.caption.strip()) # remove multiple newlines, as this could break the mathRenderer
         if not len(source):

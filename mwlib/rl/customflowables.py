@@ -6,8 +6,9 @@
 
 import string 
 
-from reportlab.platypus.flowables import *
-from reportlab.platypus.paragraph import *
+from reportlab.platypus.flowables import Flowable, Image, HRFlowable, Preformatted, PageBreak
+from reportlab.platypus.paragraph import Paragraph, deepcopy
+
 from reportlab.lib.colors import Color
 
 class Figure(Flowable):

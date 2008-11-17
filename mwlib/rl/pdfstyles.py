@@ -166,7 +166,7 @@ class BaseStyle(ParagraphStyle):
 def text_style(mode='p', indent_lvl=0, in_table=0, relsize='normal', text_align='left'):
     """
     mode: p (normal paragraph), blockquote, center (centered paragraph), footer, figure (figure caption text),
-          preformatted, list
+          preformatted, list, license, licenselist
     relsize: relative text size: small, normal, big  (currently only used for preformatted nodes
     indent_lvl: level of indentation in lists or indented paragraphs
     in_table: 0 - outside table
@@ -224,6 +224,19 @@ def text_style(mode='p', indent_lvl=0, in_table=0, relsize='normal', text_align=
         style.fontSize = 24
         style.leading = 30
         style.fontName= standardSansSerif
+
+    if mode == 'license':
+        style.fontSize = 6
+        style.leading = 1
+        style.spaceBefore = 0
+
+    if mode == 'licenselist':
+        style.fontSize = 6
+        style.leading = 1
+        style.spaceBefore = 0
+        style.bulletIndent = LISTINDENT * max(0, indent_lvl-1)
+        style.leftIndent = LISTINDENT * indent_lvl
+        style.bulletFontSize = 6
         
     return style
 
@@ -275,6 +288,17 @@ def heading_style(mode='chapter', lvl=1):
         style.spaceBefore = min(style.leading, 20)
         if lvl > 1: # needed for "flowing" paragraphs around figures
             style.flowable = True
+    elif mode == "license":
+        style.fontSize = 8
+        style.leading = 5
+        style.spaceAfter = 0
+        style.spaceBefore = 5
+
+    elif mode == "licensearticle":
+        style.fontSize = 10
+        style.leading = 5
+        style.spaceAfter = 0
+        style.spaceBefore = 5
             
     return style
     
