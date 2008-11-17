@@ -109,7 +109,7 @@ showArticleAuthors = True	# Set to False in customConfig.py to exclude principal
 # Paragraph class (reportlab/platypus/paragraph.py --> class Paragraph())
 # e.g. the use of inline images is not included in the official documenation of reportlab
 pagefooter = u''
-titlepagefooter = u'PDF generated using the open source mwlib toolkit<br/>see http://code.pediapress.com/ for more information'
+titlepagefooter = _(u'PDF generated using the open source mwlib toolkit<br/>see http://code.pediapress.com/ for more information')
 
 
 ######### IMAGE CONFIGURATION
