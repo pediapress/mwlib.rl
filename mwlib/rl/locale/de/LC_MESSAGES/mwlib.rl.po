@@ -21,6 +21,8 @@ msgid ""
 "PDF generated using the open source mwlib toolkit<br/>see http://code."
 "pediapress.com/ for more information"
 msgstr ""
+"Das PDF wurde generiert mit dem Open Source-Tookit mwlib<br/>"
+"Siehe http://code.pediapress.com/ für weitere Informationen"
 
 #: mwlib/rl/rlwriter.py:247
 msgid "layouting"
