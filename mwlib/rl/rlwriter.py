@@ -250,8 +250,8 @@ class RlWriter(object):
         
         if status_callback:
             status_callback(status=_('layouting'), progress=0)
-        #if self.debug:
-        #    debughelper.showParseTree(sys.stdout, bookParseTree)
+        if self.debug:
+            debughelper.showParseTree(sys.stdout, bookParseTree)
 
         advtree.buildAdvancedTree(bookParseTree)
         tc = TreeCleaner(bookParseTree, save_reports=self.debug)
@@ -263,7 +263,7 @@ class RlWriter(object):
         self.articlecount = 0
         
         if self.debug:
-            debughelper.showParseTree(sys.stdout, bookParseTree)
+            #debughelper.showParseTree(sys.stdout, bookParseTree)
             print "*"*30
             print "TREECLEANER REPORTS:"
             print "\n".join([repr(r) for r in tc.getReports()])
@@ -1075,7 +1075,7 @@ class RlWriter(object):
         except:
             log.warning('img data can not be loaded - img corrupt: %r' % obj.target)
             return []
-        
+
         (_w,_h) = img.size
         del img
         if _h == 0 or _w == 0:
@@ -1088,7 +1088,7 @@ class RlWriter(object):
             w = aspectRatio / h
         elif w==0 and h==0:
             w, h = _w, _h
-
+                
         (width, height) = sizeImage( w, h)
         if self.colwidth:
             if width > self.colwidth:
@@ -1118,7 +1118,7 @@ class RlWriter(object):
         else:
             linkstart = ''
             linkend = ''
-        if  is_inline: 
+        if  is_inline:
             txt = '%(linkstart)s<img src="%(src)s" width="%(width)fin" height="%(height)fin" valign="%(align)s"/>%(linkend)s' % {
                 'src': unicode(imgPath, 'utf-8'),
                 'width': width/100,
