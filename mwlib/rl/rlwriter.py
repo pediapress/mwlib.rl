@@ -263,8 +263,8 @@ class RlWriter(object):
         self.articlecount = 0
         
         if self.debug:
-            #debughelper.showParseTree(sys.stdout, bookParseTree)
             print "*"*30
+            debughelper.showParseTree(sys.stdout, bookParseTree)
             print "TREECLEANER REPORTS:"
             print "\n".join([repr(r) for r in tc.getReports()])
             
@@ -459,10 +459,16 @@ class RlWriter(object):
         else:
             chapter_anchor = ''
         chapter_para = Paragraph('%s%s' % (title, chapter_anchor), heading_style('chapter'))
-        return [NotAtTopPageBreak(),
-                hr,
-                chapter_para,
-                hr]
+        elements = []
+
+        if chapter.getChildNodesByClass(advtree.Article):
+            next_article_title = self.renderText(chapter.getChildNodesByClass(advtree.Article)[0].caption)
+            pt = WikiPage(next_article_title)
+            self.doc.addPageTemplates(pt)
+            elements.append(NextPageTemplate(next_article_title.encode('utf-8')))
+        elements.extend([NotAtTopPageBreak(), hr, chapter_para, hr])
+        elements.extend(self.renderChildren(chapter))       
+        return elements
 
     def writeSection(self, obj):
         lvl = getattr(obj, "level", 4)
