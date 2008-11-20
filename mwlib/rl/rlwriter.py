@@ -950,7 +950,7 @@ class RlWriter(object):
     writeSpecialLink = writeLink
     
     def renderURL(self, url):
-        url = xmlescape(url)        
+        url = xmlescape(url)
         zws = '<font fontSize="1"> </font>'
         url = url.replace("/",u'/%s' % zws).replace('&amp;', u'&amp;%s' % zws).replace('.','.%s' % zws).replace('+', '+%s' % zws)
         return url
@@ -966,7 +966,7 @@ class RlWriter(object):
         if (self.tableNestingLevel and len(href) > 30) and not self.ref_mode:
             return self.writeNamedURL(obj)
         
-        txt = '<link href="%s"><font fontName="%s">%s</font></link>' % (href, standardMonoFont, display_text)
+        txt = '<link href="%s">%s</link>' % (href, display_text)
         return [txt]
     
     def writeNamedURL(self,obj):
@@ -977,7 +977,7 @@ class RlWriter(object):
             self.references.append(i)
         else: # we are writing a reference section. we therefore directly print URLs
             txt = self.renderInline(obj)
-            txt.append(' <font size="%d">(%s)</font>' % (SMALLFONTSIZE, self.renderURL(href)))
+            txt.append(' <link href="%s">(%s)</link>' % (xmlescape(href), self.renderURL(urllib.unquote(href))))
             return [''.join(txt)]           
             
         if not obj.children:
