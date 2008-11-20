@@ -722,6 +722,7 @@ class RlWriter(object):
         txt.extend(self.renderInline(obj))
         t = ''.join(txt)
         t = re.sub( u'<br */>', u'\n', t)
+        t = t.replace('\t', ' '*pdfstyles.tabsize)
         self.pre_mode = False
         if not len(t):
             return []
@@ -981,10 +982,10 @@ class RlWriter(object):
             return [''.join(txt)]           
             
         if not obj.children:
-            linktext = '[%s]' % len(self.references)
+            linktext = '<link href="%s">[%s]</link>' % (xmlescape(href), len(self.references))
         else:
             linktext = self.renderInline(obj)
-            linktext.append(' <super><font size="10">[%s]</font></super> ' % len(self.references))           
+            linktext.append(' <super><link href="%s"><font size="10">[%s]</font></link></super> ' % (xmlescape(href), len(self.references)))
             linktext = ''.join(linktext).strip()
         return linktext
                
@@ -1194,6 +1195,7 @@ class RlWriter(object):
         sourceFormatter = ReportlabFormatter(font_size=FONTSIZE, font_name='DejaVuSansMono', background_color='#eeeeee', line_numbers=False)
         sourceFormatter.encoding = 'utf-8'
         source = ''.join(self.renderInline(n))
+        source = source.replace('\t', ' '*pdfstyles.tabsize)
         maxCharOnLine = max( [ len(line) for line in source.split("\n")])
         char_limit = max(1, int(maxCharsInSourceLine / (max(1, self.currentColCount))))
 

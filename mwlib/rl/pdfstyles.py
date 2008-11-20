@@ -104,8 +104,8 @@ showPageFooter = True
 showTitlePageFooter = True
 pageBreakAfterArticle = False
 
-showArticleSource = True 	# Set to False in customConfig.py to exclude article source URL from the output.
-showArticleAuthors = True	# Set to False in customConfig.py to exclude principal author information from the output.
+showArticleSource = True        # Set to False in customConfig.py to exclude article source URL from the output.
+showArticleAuthors = True       # Set to False in customConfig.py to exclude principal author information from the output.
 
 # NOTE: strings can contain reportlab styling tags the text needs to be xml excaped.
 # more information is available in the reportlab user documentation (http://www.reportlab.com/docs/userguide.pdf)
@@ -142,6 +142,8 @@ BIGLEADING = 17
 LEFTINDENT = 25 # indentation of paragraphs...
 RIGHTINDENT = 25 # indentation of paragraphs...
 LISTINDENT = 12 # indentation of lists per level
+
+tabsize = 6
 
 maxCharsInSourceLine = 72 # if printing a source node, the maximum number of chars in one line
 
