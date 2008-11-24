@@ -250,8 +250,8 @@ class RlWriter(object):
         
         if status_callback:
             status_callback(status=_('layouting'), progress=0)
-        if self.debug:
-            debughelper.showParseTree(sys.stdout, bookParseTree)
+        #if self.debug:
+        #    debughelper.showParseTree(sys.stdout, bookParseTree)
 
         advtree.buildAdvancedTree(bookParseTree)
         tc = TreeCleaner(bookParseTree, save_reports=self.debug)
@@ -263,7 +263,6 @@ class RlWriter(object):
         self.articlecount = 0
         
         if self.debug:
-            print "*"*30
             debughelper.showParseTree(sys.stdout, bookParseTree)
             print "TREECLEANER REPORTS:"
             print "\n".join([repr(r) for r in tc.getReports()])
@@ -356,8 +355,6 @@ class RlWriter(object):
                 wikidb=self.env.wiki,
             )))
         self.license_mode = False
-        
-        self.doc.bookmarks = self.bookmarks
 
         if not self.failSaveRendering:
             self.doc.bookmarks = self.bookmarks
@@ -476,7 +473,7 @@ class RlWriter(object):
             headingStyle = heading_style("license")
         else:
             headingStyle = heading_style('section', lvl=lvl+1)
-        self.sectionTitle = True
+        self.sectionTitle = True       
         headingTxt = ''.join(self.renderInline(obj.children[0])).strip()
         self.sectionTitle = False
         if lvl <= 4 and self.inline_mode == 0 and self.tableNestingLevel==0:
