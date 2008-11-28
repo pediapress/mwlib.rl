@@ -255,7 +255,7 @@ class RlWriter(object):
 
         advtree.buildAdvancedTree(bookParseTree)
         tc = TreeCleaner(bookParseTree, save_reports=self.debug)
-        tc.cleanAll()
+        tc.cleanAll(skipMethods='fixPreFormatted') # FIXME: check if the fixPreFormatted method makes sense for mwlib.rl
 
         self.getArticleIDs(bookParseTree)
 
