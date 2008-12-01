@@ -136,6 +136,7 @@ class ReportlabError(Exception):
         return repr(self.value)
     
 
+
 class RlWriter(object):
 
     def __init__(self, env=None, strict=False, debug=False, mathcache=None, lang=None):
@@ -240,7 +241,7 @@ class RlWriter(object):
         if not hasattr(self, m):
             log.error('unknown node:', repr(obj.__class__.__name__))
             if self.strict:
-                raise 'Unkown Node: %s ' % obj.__class__.__name__
+                raise writerbase.WriterError('Unkown Node: %s ' % obj.__class__.__name__)
             return []
         m=getattr(self, m)
         return m(obj)
@@ -281,7 +282,7 @@ class RlWriter(object):
                 (ok_count, fail_count, fail_articles) = self.flagFailedArticles(bookParseTree, output)
 
                 if self.strict:
-                    raise 'Error rendering articles: %s' % repr(' | '.join(fail_articles))
+                    raise writerbase.WriterError('Error rendering articles: %s' % repr(' | '.join(fail_articles)))
                 
                 self.renderBook(bookParseTree, output, coverimage=coverimage)
                 log.info('###### RENDERING OK - SOME ARTICLES WRITTEN IN PLAINTEXT')
@@ -295,7 +296,7 @@ class RlWriter(object):
                 log.error(err)
                 if hasattr(self, 'tmpdir'):
                     shutil.rmtree(self.tmpdir, ignore_errors=True)
-                raise
+                raise writerbase.WriterError('Collection/article could not be rendered')
 
     def getArticleIDs(self, parseTree):
         for article in parseTree.getChildNodesByClass(advtree.Article):
