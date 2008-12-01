@@ -1,0 +1,67 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-11-28 14:40+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: mwlib/rl/pdfstyles.py:117
+msgid ""
+"PDF generated using the open source mwlib toolkit<br/>see http://code."
+"pediapress.com/ for more information"
+msgstr ""
+"PDF generato usando il toolkit open-source mwlib<br/>ulteriori informazioni su http://code.pediapress.com"
+
+#: mwlib/rl/rlwriter.py:252
+msgid "layouting"
+msgstr ""
+
+#: mwlib/rl/rlwriter.py:308
+#, python-format
+msgid "mwlib.ext version: %(version)s"
+msgstr "versione mwlib.ext: %(version)s"
+
+#: mwlib/rl/rlwriter.py:314
+#, python-format
+msgid ""
+"mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
+"(mwlibextversion)s"
+msgstr ""
+"versione mwlib: %(mwlibversion)s, versione mwlib.rl: %(mwlibrlversion)s, %(mwlibextversion)s"
+
+#: mwlib/rl/rlwriter.py:371
+msgid "rendering"
+msgstr ""
+
+#: mwlib/rl/rlwriter.py:558
+msgid ""
+"<strong>WARNING: Article could not be rendered - ouputting plain text.</"
+"strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
+"software (b) problematic Mediawiki markup (c) table is too wide"
+msgstr ""
+"<strong>ATTENZIONE: il ''rendering'' dell'articolo non può essere effettuato - è mostrato come testo semplice.</strong><br/>Le possibili cause del problema sono (a) un bug nel software che crea il file PDF (b) un errore nel markup MediaWiki (c) una tabella troppo grande"
+
+#: mwlib/rl/rlwriter.py:567
+msgid "<b>External links</b>"
+msgstr "<b>Collegamenti esterni</b>"
+
+#: mwlib/rl/rlwriter.py:572
+#, python-format
+msgid "Source: %(source)s"
+msgstr "Origine: %(source)s"
+
+#: mwlib/rl/rlwriter.py:576
+#, python-format
+msgid "Principal Authors: %(authors)s"
+msgstr "Autori princiapli: %(authors)s"
