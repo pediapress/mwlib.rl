@@ -579,7 +579,10 @@ class RlWriter(object):
             }, text_style()))
 
         if self.layout_status:
-            self.layout_status(progress=100*self.articlecount/self.numarticles)
+            if not self.numarticles:
+                self.layout_status(progress=100)
+            else:
+                self.layout_status(progress=100*self.articlecount/self.numarticles)
            
         return elements
 
@@ -1272,7 +1275,10 @@ class RlWriter(object):
         return self.renderMixed(n, text_style(mode='center', in_table=self.tableNestingLevel))
 
     def writeDiv(self, n):
-        return self.renderMixed(n, text_style(indent_lvl=self.paraIndentLevel, in_table=self.tableNestingLevel)) 
+        if getattr(n, 'border', False) and not n.getParentNodesByClass(Table) and not n.getChildNodesByClass(advtree.PreFormatted):
+            return self.renderMixed(n, text_style(mode='box', indent_lvl=self.paraIndentLevel, in_table=self.tableNestingLevel)) 
+        else:
+            return self.renderMixed(n, text_style(indent_lvl=self.paraIndentLevel, in_table=self.tableNestingLevel)) 
 
     def writeSpan(self, n):
         return self.renderInline(n)

@@ -173,7 +173,7 @@ class BaseStyle(ParagraphStyle):
 def text_style(mode='p', indent_lvl=0, in_table=0, relsize='normal', text_align='left'):
     """
     mode: p (normal paragraph), blockquote, center (centered paragraph), footer, figure (figure caption text),
-          preformatted, list, license, licenselist
+          preformatted, list, license, licenselist, box
     relsize: relative text size: small, normal, big  (currently only used for preformatted nodes
     indent_lvl: level of indentation in lists or indented paragraphs
     in_table: 0 - outside table
@@ -204,6 +204,9 @@ def text_style(mode='p', indent_lvl=0, in_table=0, relsize='normal', text_align=
     if mode in ['footer', 'figure', 'center']:
         style.alignment = TA_CENTER
 
+    if mode == 'box':
+        style.backColor = '#eeeeee'
+    
     if mode == 'source' or mode == 'preformatted':
         style.fontName = standardMonoFont       
         style.backColor = '#eeeeee'
