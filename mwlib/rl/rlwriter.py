@@ -251,8 +251,8 @@ class RlWriter(object):
         
         if status_callback:
             status_callback(status=_('layouting'), progress=0)
-        #if self.debug:
-        #    debughelper.showParseTree(sys.stdout, bookParseTree)
+        if self.debug:
+            debughelper.showParseTree(sys.stdout, bookParseTree)
 
         advtree.buildAdvancedTree(bookParseTree)
         tc = TreeCleaner(bookParseTree, save_reports=self.debug)
@@ -264,7 +264,7 @@ class RlWriter(object):
         self.articlecount = 0
         
         if self.debug:
-            debughelper.showParseTree(sys.stdout, bookParseTree)
+            #debughelper.showParseTree(sys.stdout, bookParseTree)
             print "TREECLEANER REPORTS:"
             print "\n".join([repr(r) for r in tc.getReports()])
             
@@ -474,6 +474,8 @@ class RlWriter(object):
             headingStyle = heading_style("license")
         else:
             headingStyle = heading_style('section', lvl=lvl+1)
+        if not obj.children:
+            return ''
         self.sectionTitle = True       
         headingTxt = ''.join(self.renderInline(obj.children[0])).strip()
         self.sectionTitle = False
@@ -828,7 +830,7 @@ class RlWriter(object):
         else:
             items.extend(buildPara(txt, para_style)) 
             return items      
-   
+
     def renderChildren(self, n):
         items = []
         for c in n:
@@ -871,7 +873,8 @@ class RlWriter(object):
         return items     
         
     def writeOverline(self, n):
-        pass
+        # FIXME: there is no way to do overline in reportlab paragraphs. 
+        return self.renderInline(n)
 
     def writeUnderline(self, n):
         return self.renderInlineTag(n, 'u')
