@@ -65,8 +65,8 @@ from customflowables import Figure, FiguresAndParagraphs
 
 from pdfstyles import text_style, heading_style, table_style
 
-from pdfstyles import pageMarginHor, pageMarginVert, standardSansSerif, standardMonoFont, standardFont
-from pdfstyles import printWidth, printHeight, SMALLFONTSIZE, BIGFONTSIZE, FONTSIZE
+from pdfstyles import pageMarginHor, pageMarginVert, serif_font, mono_font
+from pdfstyles import printWidth, printHeight, smallfontsize, bigfontsize, fontsize
 from pdfstyles import tableOverflowTolerance
 from pdfstyles import max_img_width, max_img_height, min_img_dpi, inline_img_dpi
 from pdfstyles import maxCharsInSourceLine
@@ -79,7 +79,8 @@ from pagetemplates import WikiPage, TitlePage, SimplePage
 
 from mwlib import parser, log, uparser, metabook
 
-from mwlib.rl.rlhelpers import filterText
+from mwlib.rl.rlhelpers import RLFontSwitcher
+
 log = log.Log('rlwriter')
 
 try:
@@ -155,6 +156,13 @@ class RlWriter(object):
             self.imgDB = env.images
         else:
             self.imgDB = None
+
+        self.font_switcher = RLFontSwitcher()
+        self.font_switcher.default_fontpath = pdfstyles.default_fontpath
+        self.font_switcher.registerDefaultFont(pdfstyles.default_font)        
+        self.font_switcher.registerFontDefinitionList(pdfstyles.fonts)
+        self.font_switcher.registerReportlabFonts(pdfstyles.fonts)
+        
         self.strict = strict
         self.debug = debug
         self.level = 0  # level of article sections --> similar to html heading tag levels
@@ -437,9 +445,9 @@ class RlWriter(object):
                 if src.get('url'):
                     kwargs['wikiurl'] = src['url']                    
         self.doc.addPageTemplates(TitlePage(cover=coverimage, **kwargs))
-        elements = [Paragraph(filterText(title), text_style(mode='booktitle'))]
+        elements = [Paragraph(self.font_switcher.fontifyText(title), text_style(mode='booktitle'))]
         if subtitle:
-            elements.append(Paragraph(filterText(subtitle), text_style(mode='booksubtitle')))
+            elements.append(Paragraph(self.font_switcher.fontifyText(subtitle), text_style(mode='booksubtitle')))
         if not firstArticle:
             return elements
         self.doc.addPageTemplates(WikiPage(firstArticleTitle, **kwargs))
@@ -484,7 +492,7 @@ class RlWriter(object):
             self.bookmarks.append((obj.children[0].getAllDisplayText(), 'heading'))
         else:
             anchor = ''
-        elements = [Paragraph('<font name="%s"><b>%s</b></font>%s' % (standardSansSerif, headingTxt, anchor), headingStyle)]
+        elements = [Paragraph('<font name="%s"><b>%s</b></font>%s' % (serif_font, headingTxt, anchor), headingStyle)]
         
         self.level += 1
         elements.extend(self.renderMixed(obj.children[1:]))
@@ -531,7 +539,7 @@ class RlWriter(object):
             if pdfstyles.pageBreakAfterArticle and isinstance(article.getPrevious(), advtree.Article) or self.license_mode: # if configured and preceded by an article
                 elements.append(NotAtTopPageBreak())
 
-        title = filterText(title, defaultFont=standardSansSerif, breakLong=True)
+        title = self.font_switcher.fontifyText(title, defaultFont=serif_font, breakLong=True)
         self.currentArticle = repr(title)
 
         if self.inline_mode == 0 and self.tableNestingLevel==0:
@@ -573,11 +581,11 @@ class RlWriter(object):
         if pdfstyles.showArticleSource and getattr(article,'url', None):
             elements.extend([Spacer(0, 0.5*cm),
                             Paragraph(_('Source: %(source)s') % {
-                                'source': filterText(xmlescape(article.url), breakLong=True),
+                                'source': self.font_switcher.fontifyText(xmlescape(article.url), breakLong=True),
                             }, text_style())])
         if pdfstyles.showArticleAuthors and getattr(article, 'authors', None):
             elements.append(Paragraph(_('Principal Authors: %(authors)s') % {
-                'authors': filterText(xmlescape(', '.join(article.authors)))
+                'authors': self.font_switcher.fontifyText(xmlescape(', '.join(article.authors)))
             }, text_style()))
 
         if self.layout_status:
@@ -774,10 +782,10 @@ class RlWriter(object):
             txt = self.transformEntities(txt)
         txt = xmlescape(txt)
         if self.sectionTitle:
-            return [filterText(txt, defaultFont=standardSansSerif, breakLong=True)]
+            return [self.font_switcher.fontifyText(txt, defaultFont=serif_font, breakLong=True)]
         if self.pre_mode:
-            return [filterText(txt, defaultFont=standardMonoFont)]
-        return [filterText(txt)]
+            return [self.font_switcher.fontifyText(txt, defaultFont=mono_font)]
+        return [self.font_switcher.fontifyText(txt)]
 
     def renderInline(self, node):
         txt = []
@@ -888,10 +896,10 @@ class RlWriter(object):
         return self.renderInlineTag(n, 'super')
         
     def writeSmall(self, n):
-        return self.renderInlineTag(n, 'font', tag_attrs=' size=%d' % SMALLFONTSIZE)
+        return self.renderInlineTag(n, 'font', tag_attrs=' size=%d' % smallfontsize)
 
     def writeBig(self, n):
-        return self.renderInlineTag(n, 'font', tag_attrs=' size=%d' % BIGFONTSIZE)
+        return self.renderInlineTag(n, 'font', tag_attrs=' size=%d' % bigfontsize)
         
     def writeCite(self, n):
         return self.writeDefinitionDescription(n)
@@ -931,7 +939,7 @@ class RlWriter(object):
         else:
             txt = [href]
             txt = [getattr(obj, 'full_target', None) or obj.target]
-            t = filterText(''.join(txt).strip()).encode('utf-8')
+            t = self.font_switcher.fontifyText(''.join(txt).strip()).encode('utf-8')
             t = unicode(urllib.unquote(t), 'utf-8')
 
         if not internallink:
@@ -1196,7 +1204,7 @@ class RlWriter(object):
         
 
     def _writeSourceInSourceMode(self, n, src_lang, lexer):        
-        sourceFormatter = ReportlabFormatter(font_size=FONTSIZE, font_name='DejaVuSansMono', background_color='#eeeeee', line_numbers=False)
+        sourceFormatter = ReportlabFormatter(font_size=fontsize, font_name='DejaVuSansMono', background_color='#eeeeee', line_numbers=False)
         sourceFormatter.encoding = 'utf-8'
         source = ''.join(self.renderInline(n))
         source = source.replace('\t', ' '*pdfstyles.tabsize)
@@ -1243,7 +1251,7 @@ class RlWriter(object):
         return self.writeTeletyped(n)
 
     def writeTeletyped(self, n):
-        return self.renderInlineTag(n, 'font', tag_attrs='fontName="%s"' % standardMonoFont)
+        return self.renderInlineTag(n, 'font', tag_attrs='fontName="%s"' % mono_font)
         
     def writeBreakingReturn(self, n):
         return ['<br />']
@@ -1594,8 +1602,8 @@ class RlWriter(object):
         del img
 
         if self.tableNestingLevel: # scale down math-formulas in tables
-            w = w * SMALLFONTSIZE/FONTSIZE
-            h = h * SMALLFONTSIZE/FONTSIZE
+            w = w * smallfontsize/fontsize
+            h = h * smallfontsize/fontsize
             
         density = 120 # resolution in dpi in which math images are rendered by latex
         # the vertical image placement is calculated below:

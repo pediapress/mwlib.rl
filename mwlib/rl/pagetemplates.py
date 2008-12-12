@@ -13,13 +13,18 @@ from reportlab.lib.units import cm
 from reportlab.platypus.doctemplate import PageTemplate
 from reportlab.platypus.frames import Frame
 from mwlib.rl.pdfstyles import pageMarginHor, pageMarginVert, headerMarginHor, headerMarginVert, footerMarginHor, footerMarginVert
-from mwlib.rl.pdfstyles import pageWidth, pageHeight, pagefooter, titlepagefooter, showPageHeader, showPageFooter, showTitlePageFooter , standardFont
+from mwlib.rl.pdfstyles import pageWidth, pageHeight, pagefooter, titlepagefooter, showPageHeader, showPageFooter, showTitlePageFooter , serif_font
+from mwlib.rl import pdfstyles
+
 from reportlab.lib.pagesizes import  A3
 
 from mwlib.rl.pdfstyles import text_style
-from mwlib.rl.rlhelpers import filterText
+from mwlib.rl.rlhelpers import RLFontSwitcher 
 
-
+font_switcher = RLFontSwitcher()
+font_switcher.registerDefaultFont(pdfstyles.default_font)        
+font_switcher.registerFontDefinitionList(pdfstyles.fonts)
+        
 def _doNothing(canvas, doc):
     "Dummy callback for onPage"
     pass
@@ -49,7 +54,7 @@ class WikiPage(PageTemplate):
         self.title = title
     
     def beforeDrawPage(self,canvas,doc):
-        canvas.setFont(standardFont,10)      
+        canvas.setFont(serif_font,10)      
         canvas.setLineWidth(0)
         canvas.saveState()
         #header
@@ -58,7 +63,7 @@ class WikiPage(PageTemplate):
             canvas.saveState()
             canvas.resetTransforms()
             canvas.translate(headerMarginHor, pageHeight - headerMarginVert - 0.1*cm)
-            p = Paragraph(filterText(self.title), text_style())
+            p = Paragraph(font_switcher.fontifyText(self.title), text_style())
             p.canv = canvas
             p.wrap(pageWidth - headerMarginHor*2.5, pageHeight) # add an extra 0.5 margin to have enough space for page number
             p.drawPara()
@@ -68,10 +73,10 @@ class WikiPage(PageTemplate):
 
         #Footer
         canvas.saveState()
-        canvas.setFont(standardFont,8)
+        canvas.setFont(serif_font,8)
         canvas.line(footerMarginHor, footerMarginVert, pageWidth - footerMarginHor, footerMarginVert )
         if showPageFooter:
-            p = Paragraph(filterText(pagefooter), text_style())
+            p = Paragraph(font_switcher.fontifyText(pagefooter), text_style())
             p.canv = canvas
             w,h = p.wrap(pageWidth - headerMarginHor*2.5, pageHeight)
             p.drawOn(canvas, footerMarginHor, footerMarginVert - 10 - h)
@@ -92,12 +97,12 @@ class TitlePage(PageTemplate):
         self.cover = cover
     
     def beforeDrawPage(self,canvas,doc):
-        canvas.setFont(standardFont,8)
+        canvas.setFont(serif_font,8)
         canvas.saveState()
         if showTitlePageFooter:
             canvas.line(footerMarginHor, footerMarginVert, pageWidth - footerMarginHor, footerMarginVert )
             footertext = _(titlepagefooter).replace('@WIKITITLE@', self.wikititle).replace('@WIKIURL@', self.wikiurl)
-            p = Paragraph(filterText(footertext), text_style(mode='footer'))           
+            p = Paragraph(font_switcher.fontifyText(footertext), text_style(mode='footer'))           
             w,h = p.wrap(pageWidth - 2*pageMarginHor,pageHeight-pageMarginVert)
             canvas.translate( (pageWidth-w)/2.0, 0.2*cm)
             p.canv = canvas
