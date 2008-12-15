@@ -50,7 +50,7 @@ fonts = [
      'file_names': ['DejaVuSans.ttf', 'DejaVuSans-Bold.ttf', 'DejaVuSans-Oblique.ttf', 'DejaVuSans-BoldOblique.ttf'],
      'type': 'ttf',
      },
-    {'name': 'DejaVuMono',
+    {'name': 'DejaVuSansMono',
      'code_points': [] , # not used for particular scripts/code-point-blocks. only used when explicitly requested (code/source/etc.)
      'file_names': ['DejaVuSansMono.ttf', 'DejaVuSansMono-Bold.ttf', 'DejaVuSansMono-Oblique.ttf', 'DejaVuSansMono-BoldOblique.ttf'],
      'type': 'ttf',
