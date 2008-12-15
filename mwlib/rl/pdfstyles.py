@@ -299,7 +299,7 @@ def text_style(mode='p', indent_lvl=0, in_table=0, relsize='normal', text_align=
         style.backColor = '#eeeeee'
     
     if mode == 'source' or mode == 'preformatted':
-        style.fontName = standardMonoFont       
+        style.fontName = mono_font
         style.backColor = '#eeeeee'
         style.borderPadding = 6 # borderPadding is not calculated onto the box dimensions.
         style.spaceBefore = 9 # therefore spaceBefore = 3 + borderPadding
