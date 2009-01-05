@@ -167,6 +167,7 @@ class RlWriter(object):
         self.debug = debug
         self.level = 0  # level of article sections --> similar to html heading tag levels
         self.references = []
+        self.ref_name_map = {}
         self.listIndentation = 0  # nesting level of lists
         self.listCounterID = 1
         self.tmpImages = set()
@@ -260,7 +261,8 @@ class RlWriter(object):
         if status_callback:
             status_callback(status=_('layouting'), progress=0)
         if self.debug:
-            debughelper.showParseTree(sys.stdout, bookParseTree)
+            #debughelper.showParseTree(sys.stdout, bookParseTree)
+            pass
 
         advtree.buildAdvancedTree(bookParseTree)
         tc = TreeCleaner(bookParseTree, save_reports=self.debug)
@@ -272,7 +274,7 @@ class RlWriter(object):
         self.articlecount = 0
         
         if self.debug:
-            #debughelper.showParseTree(sys.stdout, bookParseTree)
+            debughelper.showParseTree(sys.stdout, bookParseTree)
             print "TREECLEANER REPORTS:"
             print "\n".join([repr(r) for r in tc.getReports()])
             
@@ -1264,13 +1266,20 @@ class RlWriter(object):
         return self.renderChildren(n) #fixme: handle index nodes properly
 
     def writeReference(self, n, isLink=False):
-        i = parser.Item()
-        i.children = [c for c in n.children]
-        self.references.append(i)
+        ref_name = n.attributes.get('name')
+        if ref_name and not n.children:
+            ref_num = self.ref_name_map.get(ref_name, '')
+        else:
+            i = parser.Item()
+            i.children = [c for c in n.children]
+            self.references.append(i)
+            ref_num = len(self.references)
+            self.ref_name_map[ref_name] = ref_num
+            
         if isLink:
             return ['[%s]' % len(self.references)]
         else:
-            return ['<super><font size="10">[%s]</font></super> ' % len(self.references)]
+            return ['<super><font size="10">[%s]</font></super> ' % ref_num]
     
     def writeReferenceList(self, n=None):
         if self.references:                
