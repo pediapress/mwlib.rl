@@ -12,7 +12,6 @@ import mwlib.ext
 from reportlab.platypus.paragraph import Paragraph
 from reportlab.platypus.doctemplate import SimpleDocTemplate
 from reportlab.lib.styles import ParagraphStyle
-from pyPdf import PdfFileWriter, PdfFileReader
 
 class TocRenderer(object):
 
