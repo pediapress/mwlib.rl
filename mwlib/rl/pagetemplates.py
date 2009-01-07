@@ -122,7 +122,7 @@ from reportlab.pdfgen import canvas
 
 class PPDocTemplate(BaseDocTemplate):
 
-    def __init__(self, output, status_callback=None, **kwargs):
+    def __init__(self, output, status_callback=None, tocCallback=None, **kwargs):
         self.bookmarks = []
         BaseDocTemplate.__init__(self, output, **kwargs)
         if status_callback:
@@ -130,6 +130,7 @@ class PPDocTemplate(BaseDocTemplate):
             self.progress = 0
             self.setProgressCallBack(self.progressCB)
             self.status_callback = status_callback
+        self.tocCallback=tocCallback
         
     def progressCB(self, typ, value):
         if typ == 'SIZE_EST':
@@ -154,5 +155,18 @@ class PPDocTemplate(BaseDocTemplate):
                 lvl -= 1
             self.canv.addOutlineEntry(bm_title, str(bm_id), lvl, bm_type == 'article')
 
-        
+    def afterFlowable(self, flowable):
+        """Our rule for the table of contents is simply to take
+        the text of H1, H2 and H3 elements. We broadcast a
+        notification to the DocTemplate, which should inform
+        the TOC and let it pull them out."""
+        if not self.tocCallback:
+            return
+        if hasattr(flowable, 'style'):
+            n = flowable.style.name
+
+            if n == 'heading_style_chapter_1':
+                self.tocCallback((0, flowable.getPlainText(), self.page))
+            elif n == 'heading_style_article_1':
+                self.tocCallback((1, flowable.getPlainText(), self.page))
         

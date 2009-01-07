@@ -91,6 +91,7 @@ except ImportError:
     useFriBidi = False
 
 from mwlib.rl import debughelper
+from mwlib.rl.toc import TocRenderer
 from mwlib.rl._version import version as rlwriterversion
 from mwlib._version import version as  mwlibversion
 try:
@@ -140,7 +141,7 @@ class ReportlabError(Exception):
 
 class RlWriter(object):
 
-    def __init__(self, env=None, strict=False, debug=False, mathcache=None, lang=None):
+    def __init__(self, env=None, strict=False, debug=False, mathcache=None, lang=None, enable_toc=False):
         localedir = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'locale')
         translation = gettext.NullTranslations()
         if lang:
@@ -197,6 +198,9 @@ class RlWriter(object):
 
         self.articleids = []        
         self.layout_status = None
+        self.enable_toc = enable_toc
+        self.toc_entries = []
+        self.toc_renderer = TocRenderer()
         
     def ignore(self, obj):
         return []
@@ -313,6 +317,9 @@ class RlWriter(object):
             article_id = self.idFromURL(article.url)
             self.articleids.append(article_id)
 
+    def tocCallback(self, info):
+        self.toc_entries.append(info)
+        
     def renderBook(self, bookParseTree, output, coverimage=None, status_callback=None):
         elements = []
         try:
@@ -334,6 +341,10 @@ class RlWriter(object):
         else:
             self.layout_status = None
             render_status = None
+        if self.enable_toc:
+            tocCallback = self.tocCallback
+        else:
+            tocCallback = None
         self.doc = PPDocTemplate(output,
                                  topMargin=pageMarginVert,
                                  leftMargin=pageMarginHor,
@@ -341,11 +352,11 @@ class RlWriter(object):
                                  bottomMargin=pageMarginVert,
                                  title=self.book.get('title'),
                                  keywords=version,
-                                 status_callback=render_status
+                                 status_callback=render_status,
+                                 tocCallback=tocCallback,
         )
 
         self.output = output
-        
         elements.extend(self.writeTitlePage(coverimage=coverimage))
         try:
             for e in bookParseTree.children:
@@ -382,6 +393,8 @@ class RlWriter(object):
             render_status(status=_('rendering'), article='', progress=0)
         try:
             self.doc.build(elements)
+            if self.enable_toc:
+                self.toc_renderer.build(output, self.toc_entries) # uncomment this to enable experimental TOC rendering
             return 0
         except LayoutError, err: # do special handling for reportlab splitting errors
             log.error('layout error:\n', err)
@@ -1639,8 +1652,9 @@ def writer(env, output,
     debug=False,
     mathcache=None,
     lang=None,
+    enable_toc=False,       
 ):
-    r = RlWriter(env, strict=strict, debug=debug, mathcache=mathcache, lang=lang)
+    r = RlWriter(env, strict=strict, debug=debug, mathcache=mathcache, lang=lang, enable_toc=enable_toc)
     if coverimage is None and env.configparser.has_section('pdf'):
         coverimage = env.configparser.get('pdf', 'coverimage', None)
     if status_callback:
@@ -1673,4 +1687,8 @@ writer.options = {
         'param': 'LANGUAGE',
         'help': 'use translated strings in given language (defaults to "en" for English)',
     },
+    'enable_toc': {
+        'help':'render Table of Contents - this is still highly EXPERIMENTAL',
+    },
+    
 }
