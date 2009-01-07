@@ -23,7 +23,7 @@ class TocRenderer(object):
         tocpath = os.path.join(outpath, 'toc.pdf')
         finalpath = os.path.join(outpath, 'final.pdf')
         self.renderToc(tocpath, toc_entries)
-        self.cominePdfs(pdfpath, tocpath, finalpath)
+        self.combinePdfs(pdfpath, tocpath, finalpath)
         
     def renderToc(self, tocpath, toc_entries):
         doc = SimpleDocTemplate(tocpath)
@@ -33,7 +33,7 @@ class TocRenderer(object):
             elements.append(p)
         doc.build(elements)
 
-    def cominePdfs(self, pdfpath, tocpath, finalpath):
+    def combinePdfs(self, pdfpath, tocpath, finalpath):
 
         cmd =  ['pdftk',
                 'A=%s' % pdfpath,
