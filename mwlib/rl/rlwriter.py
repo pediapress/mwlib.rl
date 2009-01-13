@@ -1602,7 +1602,7 @@ class RlWriter(object):
         imgpath = None
         if self.math_cache_dir:            
             _md5 = md5()
-            _md5.update(source)                
+            _md5.update(source.encode('utf-8'))
             math_id = _md5.hexdigest()
             imgpath = os.path.join(self.math_cache_dir, '%s.png' % math_id)
             if not os.path.exists(imgpath):
