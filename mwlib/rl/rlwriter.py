@@ -61,7 +61,7 @@ from reportlab.platypus.doctemplate import LayoutError
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.enums import TA_LEFT, TA_CENTER, TA_JUSTIFY, TA_RIGHT
 
-from customflowables import Figure, FiguresAndParagraphs
+from mwlib.rl.customflowables import Figure, FiguresAndParagraphs, SmartKeepTogether
 
 from pdfstyles import text_style, heading_style, table_style
 
@@ -206,6 +206,7 @@ class RlWriter(object):
         return []
         
 
+
     def groupElements(self, elements):
         """Group reportlab flowables into KeepTogether flowables
         to achieve meaningful pagebreaks
@@ -213,10 +214,8 @@ class RlWriter(object):
         @type elements: [reportlab.platypus.flowable.Flowable]
         @rtype: [reportlab.platypus.flowable.Flowable]
         """
-
         groupedElements = []
         group = []
-
         def isHeading(e):
             return isinstance(e, HRFlowable) or (hasattr(e, 'style') and  e.style.name.startswith('heading_style') )
         groupHeight = 0
@@ -235,7 +234,7 @@ class RlWriter(object):
                         h = 0
                     groupHeight += h
                     if groupHeight > printHeight / 10 or isinstance(elements[0], NotAtTopPageBreak): # 10 % of pageHeight               
-                        groupedElements.append(KeepTogether(group))
+                        groupedElements.append(SmartKeepTogether(group))
                         group = []
                         groupHeight = 0
                     else:
@@ -243,9 +242,10 @@ class RlWriter(object):
                 else:
                     group.append(elements.pop(0))
         if group:
-            groupedElements.append(KeepTogether(group))
+            groupedElements.append(SmartKeepTogether(group))
 
-        return groupedElements
+        return groupedElements           
+
                                 
     def write(self, obj):
         if not obj.visible:

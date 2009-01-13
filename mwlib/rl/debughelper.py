@@ -17,7 +17,7 @@ def showParseTree(out, node, indent=0):
 
 def dumpText(obj):
     if isinstance(obj ,Paragraph):
-        print "P:  --", obj.__class__.__name__, obj.text, obj.style.name
+        print "P:  --", obj.__class__.__name__, obj.text, obj.style.name, 'KEEP:', getattr(obj, 'keepWithNext', False)
     elif isinstance(obj,Figure):
         print "F:  --", obj.__class__.__name__, obj.c.text
     elif isinstance(obj, basestring):

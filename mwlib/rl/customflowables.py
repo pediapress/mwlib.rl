@@ -6,10 +6,11 @@
 
 import string 
 
-from reportlab.platypus.flowables import Flowable, Image, HRFlowable, Preformatted, PageBreak
+from reportlab.platypus.flowables import Flowable, Image, HRFlowable, Preformatted, PageBreak, _listWrapOn, _ContainerSpace, _flowableSublist
 from reportlab.platypus.paragraph import Paragraph, deepcopy
 
 from reportlab.lib.colors import Color
+from mwlib.rl.pdfstyles import pageHeight
 
 class Figure(Flowable):
 
@@ -100,7 +101,6 @@ class FiguresAndParagraphs(Flowable):
             maxWf = max(maxWf, wf)
             self.wfs.append(wf) 
             self.hfs.append(hf) 
-            
         self.paraHeights = []
         self._offsets = []
         for p in self.ps:
@@ -116,6 +116,8 @@ class FiguresAndParagraphs(Flowable):
             floatWidth = fullWidth - maxWf
             nfloatLines = max(0, int((totalHf - (sum(self.paraHeights)))/p.style.leading)) 
             p.width = 0
+            if hasattr(p, 'blPara'):
+                del p.blPara
             p.blPara = p.breakLines(nfloatLines*[floatWidth] + [fullWidth])
             if self.figAlign=='left':
                 self._offsets.append([maxWf]*(nfloatLines) + [0])
@@ -176,20 +178,19 @@ class FiguresAndParagraphs(Flowable):
         canv.restoreState()
 
     def split(self, availWidth, availheight):
-        if not hasattr(self,'hfs') or len(self.hfs)==0:
+        if not hasattr(self,'hfs') or len(self.hfs)==0 or hasattr(self, 'keep_together_split'):
             self.wrap(availWidth, availheight)
         height = self._getVOffset()
         if self.hfs[0] + height > availheight:
             return [PageBreak()] + [FiguresAndParagraphs(self.fs, self.ps, figure_margin=self.figure_margin )]
         fittingFigures = []
         nextFigures = []
-        for (i, f) in enumerate(self.fs):
+        for (i, f) in enumerate(self.fs):           
             if (height + self.hfs[i]) < availheight:
                 fittingFigures.append(f)
             else:
                 nextFigures.append(f)
             height += self.hfs[i]
-
         fittingParas = []
         nextParas = []
         height = 0
@@ -263,3 +264,36 @@ class PreformattedBox(Preformatted):
             style.firstLineIndent = 0
         return [PreformattedBox(text1, style, margin=self.margin, padding=self.padding, borderwidth=self.borderwidth), 
                 PreformattedBox(text2, style, margin=self.margin, padding=self.padding, borderwidth=self.borderwidth)]  
+
+
+class SmartKeepTogether(_ContainerSpace, Flowable):
+
+    def __init__(self,flowables,maxHeight=None):
+        self._content = _flowableSublist(flowables)
+        self._maxHeight = maxHeight
+
+    def wrap(self, aW, aH):
+        dims = []
+        W,H = _listWrapOn(self._content, aW, self.canv, dims=dims)
+        self.height = H
+        self.content_dims = dims        
+        return W, 0xffffff  # force a split
+
+    def split(self, aW, aH):
+        if not hasattr(self, 'height'):
+            self.wrap(aW, aH)
+        remaining_space = aH - sum([h for w,h in self.content_dims[:-1]])
+        if remaining_space < 0.1*pageHeight:
+            self._content.insert(0, PageBreak())
+            return self._content
+        if self.height < aH:
+            return self._content
+
+        last = self._content[-1]
+        last.keep_together_split = True
+        split_last = last.split(aW, remaining_space)
+
+        # if not split_last: last item could not be split and is too big for remaining page
+        if not split_last or (split_last and split_last[0].__class__ == PageBreak):
+            self._content.insert(0, PageBreak())
+        return self._content
