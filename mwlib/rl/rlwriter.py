@@ -1590,10 +1590,17 @@ class RlWriter(object):
             newAnchor = '<a name="%s" />' % article_id
             anchors = "%s%s" % (anchors, newAnchor)
         p = Paragraph(anchors, text_style())
-        table._cellvalues[0][0].append(p)
+
+        c = table._cellvalues[0][0]
+        if not c:
+            c = [p]
+        else:
+            c.append(p)
 
     def delAnchors(self, table):
-        table._cellvalues[0][0].pop()
+        c = table._cellvalues[0][0]
+        if c:
+            c.pop()
     
     def writeMath(self, node):
         source = re.compile(u'\n+').sub(u'\n', node.caption.strip()) # remove multiple newlines, as this could break the mathRenderer
