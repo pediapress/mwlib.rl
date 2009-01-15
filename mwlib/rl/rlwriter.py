@@ -357,7 +357,8 @@ class RlWriter(object):
         )
 
         self.output = output
-        elements.extend(self.writeTitlePage(coverimage=coverimage))
+        if pdfstyles.showTitlePage:
+            elements.extend(self.writeTitlePage(coverimage=coverimage))
         try:
             for e in bookParseTree.children:
                 r = self.write(e)

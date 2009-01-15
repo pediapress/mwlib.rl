@@ -190,6 +190,7 @@ printHeight = pageHeight - 2*pageMarginVert
 footerMarginHor = 1.5 * cm
 footerMarginVert= 1.5 * cm
 
+showTitlePage = False
 showPageHeader = True 
 showPageFooter = True
 showTitlePageFooter = True
