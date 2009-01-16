@@ -26,17 +26,20 @@ class RLFontSwitcher(FontSwitcher):
                 continue
             self.registerFont(font['name'], code_points=font.get('code_points'))
                      
-    def fakeHyphenate(self, fontList):
+    def fakeHyphenate(self, font_list):
         breakChars = ['/', '.', '+', '-', '_', '?']
         zws = '<font fontSize="1"> </font>'        
-        for txt, font in fontList:
+        res = []
+        for txt, font in font_list:
             for breakChar in breakChars:
                 txt = txt.replace(breakChar, breakChar + zws)
-            
+            res.append((txt, font))
+        return res
+    
     def fontifyText(self, txt, defaultFont='', breakLong=False):
         font_list = self.getFontList(txt)
         if breakLong:
-            self.fakeHyphenate(font_list)
+            font_list = self.fakeHyphenate(font_list)
         txt =  ''.join(['<font name="%s">%s</font>' % (font, txt) for txt, font in font_list])
         return txt
         

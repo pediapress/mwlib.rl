@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-28 14:38+0100\n"
+"POT-Creation-Date: 2009-01-16 12:40+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,52 +16,60 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: mwlib/rl/pdfstyles.py:117
+#: mwlib/rl/pdfstyles.py:209
 msgid ""
 "PDF generated using the open source mwlib toolkit<br/>see http://code."
 "pediapress.com/ for more information"
 msgstr ""
-"A PDF-et a nyíltforráskódú mwlib eszközcsomag generálta,<br/>további információkért lásd a http://code.pediapress.com/ honlapot!"
+"A PDF-et a nyíltforráskódú mwlib eszközcsomag generálta,<br/>további "
+"információkért lásd a http://code.pediapress.com/ honlapot!"
 
-#: mwlib/rl/rlwriter.py:252
+#: mwlib/rl/pdfstyles.py:409
+msgid "Contributors:"
+msgstr ""
+
+#: mwlib/rl/rlwriter.py:266
 msgid "layouting"
 msgstr ""
 
-#: mwlib/rl/rlwriter.py:308
+#: mwlib/rl/rlwriter.py:326
 #, python-format
 msgid "mwlib.ext version: %(version)s"
 msgstr "mwlib.ext verziója: %(version)s"
 
-#: mwlib/rl/rlwriter.py:314
+#: mwlib/rl/rlwriter.py:332
 #, python-format
 msgid ""
 "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
 "(mwlibextversion)s"
 msgstr ""
-"mwlib verziója: %(mwlibversion)s, mwlib.rl verziója: %(mwlibrlversion)s, %(mwlibextversion)s"
+"mwlib verziója: %(mwlibversion)s, mwlib.rl verziója: %(mwlibrlversion)s, %"
+"(mwlibextversion)s"
 
-#: mwlib/rl/rlwriter.py:371
+#: mwlib/rl/rlwriter.py:394
 msgid "rendering"
 msgstr ""
 
-#: mwlib/rl/rlwriter.py:558
+#: mwlib/rl/rlwriter.py:585
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
 "software (b) problematic Mediawiki markup (c) table is too wide"
 msgstr ""
-"<strong>FIGYELEM: A cikket nem lehetett renderelni  – egyszerű szöveg változat készült.</strong><br/>A hiba lehetséges oka: (a) hiba a pdf-writer szoftverben (b) problematikus MediaWiki kód (c) a táblázat túl széles"
+"<strong>FIGYELEM: A cikket nem lehetett renderelni  – egyszerű szöveg "
+"változat készült.</strong><br/>A hiba lehetséges oka: (a) hiba a pdf-writer "
+"szoftverben (b) problematikus MediaWiki kód (c) a táblázat túl széles"
 
-#: mwlib/rl/rlwriter.py:567
+#: mwlib/rl/rlwriter.py:594
 msgid "<b>External links</b>"
 msgstr "<b>Külső hivatkozások</b>"
 
-#: mwlib/rl/rlwriter.py:572
+#: mwlib/rl/rlwriter.py:599
 #, python-format
 msgid "Source: %(source)s"
 msgstr "Forrás: %(source)s"
 
-#: mwlib/rl/rlwriter.py:576
+#: mwlib/rl/rlwriter.py:603
 #, python-format
 msgid "Principal Authors: %(authors)s"
 msgstr "Fő szerzők: %(authors)s"
