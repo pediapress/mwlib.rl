@@ -8,13 +8,92 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-16 12:40+0100\n"
+"POT-Creation-Date: 2009-01-16 17:07+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: mwlib/rl/pdfmessages.py:12
+msgid "Article Licenses"
+msgstr ""
+
+#: mwlib/rl/pdfmessages.py:14
+msgid "Title"
+msgstr ""
+
+#: mwlib/rl/pdfmessages.py:16
+msgid "Subtitle:"
+msgstr ""
+
+#: mwlib/rl/pdfmessages.py:18
+msgid "Editor:"
+msgstr ""
+
+#: mwlib/rl/pdfmessages.py:20
+msgid "Created on:"
+msgstr ""
+
+#: mwlib/rl/pdfmessages.py:22
+msgid "Contents"
+msgstr ""
+
+#: mwlib/rl/pdfmessages.py:24
+msgid "Articles"
+msgstr ""
+
+#: mwlib/rl/pdfmessages.py:26
+msgid "Produced by:"
+msgstr ""
+
+#: mwlib/rl/pdfmessages.py:28
+msgid "pdf writer version:"
+msgstr ""
+
+#: mwlib/rl/pdfmessages.py:30
+#, fuzzy
+msgid "mwlib version:"
+msgstr "mwlib.ext-Version: %(version)s"
+
+#: mwlib/rl/pdfmessages.py:32
+msgid "Table of Contents"
+msgstr ""
+
+#: mwlib/rl/pdfmessages.py:34
+msgid "Skipping Articles!"
+msgstr ""
+
+#: mwlib/rl/pdfmessages.py:36
+msgid ""
+"Please note:  This is only a preview intended to give an idea how the book "
+"is typeset."
+msgstr ""
+
+#: mwlib/rl/pdfmessages.py:38
+msgid "References"
+msgstr ""
+
+#: mwlib/rl/pdfmessages.py:40
+msgid ""
+"The following sections list the sources for all articles and images used in "
+"this book. Those sources provide more detailed licensing information "
+"including the copyright status, the copyright owner, and the license "
+"conditions."
+msgstr ""
+
+#: mwlib/rl/pdfmessages.py:42
+msgid "Article Sources, Licenses and Contributors"
+msgstr ""
+
+#: mwlib/rl/pdfmessages.py:44
+msgid "Image Sources, Licenses and Contributors"
+msgstr ""
+
+#: mwlib/rl/pdfmessages.py:46
+msgid "Image"
+msgstr ""
 
 #: mwlib/rl/pdfstyles.py:209
 msgid ""
@@ -23,10 +102,6 @@ msgid ""
 msgstr ""
 "PDF gerado usando o ''toolkit'' de código aberto mwlib <br/>ver http://code."
 "pediapress.com/ para mais informação"
-
-#: mwlib/rl/pdfstyles.py:409
-msgid "Contributors:"
-msgstr ""
 
 #: mwlib/rl/rlwriter.py:266
 msgid "layouting"
