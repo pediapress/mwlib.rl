@@ -1210,26 +1210,25 @@ class RlWriter(object):
            if len(line) < char_limit:
                broken_source.append(line)
            else:
-               words = line.split()
+               words = re.findall('([ \t]+|[^ \t]+)', line)
                while words:
-                   new_line = [words.pop(0)]                   
-                   while words and (len(' '.join(new_line)) + len(words[0]) + 1) < char_limit:
+                   new_line = [words.pop(0)]
+                   while words and (len(''.join(new_line)) + len(words[0])) < char_limit:
                        new_line.append(words.pop(0))
-                   broken_source.append(' '.join(new_line))               
+                   broken_source.append(''.join(new_line))
        return '\n'.join(broken_source)
         
 
     def _writeSourceInSourceMode(self, n, src_lang, lexer):        
         sourceFormatter = ReportlabFormatter(font_size=fontsize, font_name='DejaVuSansMono', background_color='#eeeeee', line_numbers=False)
         sourceFormatter.encoding = 'utf-8'
-        source = ''.join(self.renderInline(n))
+        source = ''.join(self.renderInline(n))        
         source = source.replace('\t', ' '*pdfstyles.tabsize)
         maxCharOnLine = max( [ len(line) for line in source.split("\n")])
         char_limit = max(1, int(maxCharsInSourceLine / (max(1, self.currentColCount))))
 
         if maxCharOnLine > char_limit:
             source = self.breakLongLines(source, char_limit)
-
         txt = ''
         try:
             txt = highlight(source, lexer, sourceFormatter)           
