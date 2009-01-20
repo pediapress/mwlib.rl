@@ -206,7 +206,7 @@ class FiguresAndParagraphs(Flowable):
                 if splittedParagraph:
                     nextParas.append(p)
                     continue
-                paraFrags = p.split(availWidth, availheight - height - p.style.spaceBefore - p.style.spaceAfter - p.style.leading) # one line-height "safety margin"
+                paraFrags = p.split(availWidth, availheight - height - p.style.spaceBefore - p.style.spaceAfter - 2*p.style.leading) # one line-height "safety margin"
                 splittedParagraph=True
                 if len(paraFrags) == 2:
                     fittingParas.append(paraFrags[0])

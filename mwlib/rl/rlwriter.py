@@ -265,7 +265,7 @@ class RlWriter(object):
         if status_callback:
             status_callback(status=_('layouting'), progress=0)
         if self.debug:
-            #debughelper.showParseTree(sys.stdout, bookParseTree)
+            debughelper.showParseTree(sys.stdout, bookParseTree)
             pass
 
         advtree.buildAdvancedTree(bookParseTree)
@@ -278,7 +278,7 @@ class RlWriter(object):
         self.articlecount = 0
         
         if self.debug:
-            debughelper.showParseTree(sys.stdout, bookParseTree)
+            #debughelper.showParseTree(sys.stdout, bookParseTree)
             print "TREECLEANER REPORTS:"
             print "\n".join([repr(r) for r in tc.getReports()])
             
