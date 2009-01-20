@@ -1,3 +1,7 @@
+# Translation of Mwlib.rl to German
+#
+# Author@Betawiki: Umherirrender
+# --
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
@@ -6,15 +10,18 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: mwlib.rl 0.8.3.dev\n"
+"Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-16 17:07+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
+"POT-Creation-Date: 2009-01-17 10:27+0000\n"
+"PO-Revision-Date: 2009-01-17 10:27:00+0000\n"
+"Language-Team: German\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: MediaWiki 1.15alpha (r45803); Translate extension (9 (2009-01-"
+"11))\n"
+"X-Translation-Project: Betawiki at http://translatewiki.net\n"
+"X-Language-Code: de\n"
+"X-Message-Group: out-mwlibrl\n"
 
 #: mwlib/rl/pdfmessages.py:12
 msgid "Article Licenses"
@@ -101,12 +108,12 @@ msgid ""
 "PDF generated using the open source mwlib toolkit<br/>see http://code."
 "pediapress.com/ for more information"
 msgstr ""
-"Das PDF wurde generiert mit dem Open Source-Tookit mwlib<br/>Siehe http://"
-"code.pediapress.com/ für weitere Informationen"
+"Dieses PDF wurde mit dem Open-Source-Toolkit „mwlib“ erstellt.<br />Siehe "
+"http://code.pediapress.com/ für weitere Informationen."
 
 #: mwlib/rl/rlwriter.py:266
 msgid "layouting"
-msgstr ""
+msgstr "Layout wird erstellt"
 
 #: mwlib/rl/rlwriter.py:326
 #, python-format
@@ -124,7 +131,7 @@ msgstr ""
 
 #: mwlib/rl/rlwriter.py:394
 msgid "rendering"
-msgstr ""
+msgstr "Rendern"
 
 #: mwlib/rl/rlwriter.py:585
 msgid ""
@@ -132,10 +139,10 @@ msgid ""
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
 "software (b) problematic Mediawiki markup (c) table is too wide"
 msgstr ""
-"<strong>WARNUNG: Artikel konnte nicht gerendert werden – gebe nur Text aus.</"
-"strong><br/>Mögliche Ursachen des Problems sind: (a) Ein Bug in derPDF-"
-"Writer-Software (b) problematisches MediaWiki-Markup (c) eine zu "
-"breiteTabelle"
+"<strong>WARNUNG: Artikel konnte nicht gerendert werden – es wird nur Text "
+"ausgegeben.</strong><br />Mögliche Ursachen des Problems sind: (a) Ein Bug "
+"in der PDF-Writer-Software (b) problematisches MediaWiki-Markup (c) eine zu "
+"breite Tabelle"
 
 #: mwlib/rl/rlwriter.py:594
 msgid "<b>External links</b>"

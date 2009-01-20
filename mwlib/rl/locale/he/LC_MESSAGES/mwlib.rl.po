@@ -1,26 +1,21 @@
-# Translation of Mwlib.rl to French
+# Translation of Mwlib.rl to Hebrew
 #
-# Author@Betawiki: IAlex
+# Author@Betawiki: Rotemliss
+# Author@Betawiki: YaronSh
 # --
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-01-17 10:27+0000\n"
 "PO-Revision-Date: 2009-01-17 10:27:00+0000\n"
-"Language-Team: French\n"
+"Language-Team: Hebrew\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: MediaWiki 1.15alpha (r45803); Translate extension (9 (2009-01-"
 "11))\n"
 "X-Translation-Project: Betawiki at http://translatewiki.net\n"
-"X-Language-Code: fr\n"
+"X-Language-Code: he\n"
 "X-Message-Group: out-mwlibrl\n"
 
 #: mwlib/rl/pdfmessages.py:12
@@ -56,14 +51,13 @@ msgid "Produced by:"
 msgstr ""
 
 #: mwlib/rl/pdfmessages.py:28
-#, fuzzy
 msgid "pdf writer version:"
-msgstr "mwlib.ext-version: %(version)s"
+msgstr ""
 
 #: mwlib/rl/pdfmessages.py:30
 #, fuzzy
 msgid "mwlib version:"
-msgstr "mwlib.ext-version: %(version)s"
+msgstr "גרסת mwlib.ext: %(version)s"
 
 #: mwlib/rl/pdfmessages.py:32
 msgid "Table of Contents"
@@ -108,17 +102,17 @@ msgid ""
 "PDF generated using the open source mwlib toolkit<br/>see http://code."
 "pediapress.com/ for more information"
 msgstr ""
-"Ce fichier PDF a été généré à l'aide du toolkit Open Source mwlib.<br/>Pour "
-"plus d'informations consulter http://code.pediapress.com."
+"מסמך ה־PDF נוצר באמצעות ערכת הכלים mwlib המופצת בקוד פתוח<br />בקרו באתר "
+"http://code.pediapress.com/ למידע נוסף"
 
 #: mwlib/rl/rlwriter.py:266
 msgid "layouting"
-msgstr "Mise en page"
+msgstr "פריסה"
 
 #: mwlib/rl/rlwriter.py:326
 #, python-format
 msgid "mwlib.ext version: %(version)s"
-msgstr "mwlib.ext-version: %(version)s"
+msgstr "גרסת mwlib.ext: %(version)s"
 
 #: mwlib/rl/rlwriter.py:332
 #, python-format
@@ -126,12 +120,12 @@ msgid ""
 "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
 "(mwlibextversion)s"
 msgstr ""
-"mwlib-version: %(mwlibversion)s, mwlib.rl-Version: %(mwlibrlversion)s, %"
+"גרסת mwlib: %(mwlibversion)s, גרסת mwlib.rl: %(mwlibrlversion)s, %"
 "(mwlibextversion)s"
 
 #: mwlib/rl/rlwriter.py:394
 msgid "rendering"
-msgstr "rendu"
+msgstr "עיבוד"
 
 #: mwlib/rl/rlwriter.py:585
 msgid ""
@@ -139,21 +133,20 @@ msgid ""
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
 "software (b) problematic Mediawiki markup (c) table is too wide"
 msgstr ""
-"<strong>AVERTISSEMENT: L'article ne peut être reproduit dans son intégralité "
-"- édition en texte simple.</strong><br/>Le problème est éventuellement causé "
-"par (a) un bogue dans le logiciel du PDF (b) une erreur dans le markup du "
-"MediaWiki (c) un tableau trop large."
+"<strong>אזהרה: לא ניתן לעבד את הערך - יתבצע ייצוא כטקסט רגיל.</strong><br/"
+">הגורמים האפשריים לתקלה הינם: (א) תקלה בתוכנת ה־pdf-writer (ב) תחביר ויקי "
+"בעייתי (ג) טבלה רחבה מדי"
 
 #: mwlib/rl/rlwriter.py:594
 msgid "<b>External links</b>"
-msgstr "<b>Liens externes</b>"
+msgstr "<b>קישורים חיצוניים</b>"
 
 #: mwlib/rl/rlwriter.py:599
 #, python-format
 msgid "Source: %(source)s"
-msgstr "Source: %(source)s"
+msgstr "מקור: %(source)s"
 
 #: mwlib/rl/rlwriter.py:603
 #, python-format
 msgid "Principal Authors: %(authors)s"
-msgstr "Principaux auteurs: %(authors)s"
+msgstr "עורכים ראשיים: %(authors)s"
