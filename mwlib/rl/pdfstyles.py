@@ -224,6 +224,8 @@ img_margins_float = (0.2*cm,0.2*cm,0.2*cm,0.2*cm) # any other alignment
 ######### TEXT CONFIGURATION
 fontsize = 10
 leading = 15
+text_align = TA_LEFT # default alignment of text outside of tables TA_LEFT, TA_JUSTIFY, TA_RIGHT, TA_CENTER are valid
+table_text_align = TA_LEFT # ... inside of tables
 
 smallfontsize = 8
 smallleading = 12
@@ -250,7 +252,7 @@ class BaseStyle(ParagraphStyle):
         self.leftIndent = 0
         self.rightIndent = 0
         self.firstLineIndent = 0
-        self.alignment = TA_LEFT        
+        self.alignment = text_align
         self.spaceBefore = 3
         self.spaceAfter = 0
         self.bulletFontName = sans_font
@@ -275,6 +277,8 @@ def text_style(mode='p', indent_lvl=0, in_table=0, relsize='normal', text_align=
     style = BaseStyle(name='text_style_%s_indent_%d_table_%d_size_%s' % (mode, indent_lvl, in_table, relsize))
     style.flowable = True # needed for "flowing" paragraphs around figures
 
+    if in_table > 0:
+        style.alignment = table_text_align
     if text_align == 'right':
         style.alignment = TA_RIGHT
     elif text_align == 'center':

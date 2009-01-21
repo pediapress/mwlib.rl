@@ -1455,6 +1455,7 @@ class RlWriter(object):
         self.currentColCount -= maxCols
 
         if not data:
+            self.tableNestingLevel -= 1
             return []
         
         colwidthList = rltables.getColWidths(data, t, nestingLevel=self.tableNestingLevel)
@@ -1466,8 +1467,9 @@ class RlWriter(object):
                 has_data = True
                 break
         if not has_data:
+            self.tableNestingLevel -= 1
             return []
-        
+
         table = Table(data, colWidths=colwidthList, splitByRow=1)
         
         styles = rltables.style(t.attributes)
