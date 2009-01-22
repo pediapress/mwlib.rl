@@ -393,6 +393,12 @@ def heading_style(mode='chapter', lvl=1):
         style.spaceBefore = min(style.leading, 20)
         if lvl > 1: # needed for "flowing" paragraphs around figures
             style.flowable = True
+    elif mode == 'tablecaption':
+        style.fontsize = 12
+        style.leading = 16
+        style.alignment = TA_CENTER
+        style.flowable = False
+        style.spaceAfter = 0
     elif mode == "license":
         style.fontSize = 8
         style.leading = 5

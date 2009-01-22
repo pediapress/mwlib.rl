@@ -1420,7 +1420,9 @@ class RlWriter(object):
             res = self.write(x)
             if isInline(res):
                 txt.extend(res)
-        return buildPara(txt, text_style(mode='center'))
+        txt.insert(0, '<b>')
+        txt.append('</b>')
+        return buildPara(txt, heading_style(mode='tablecaption'))
 
     
     def writeTable(self, t):

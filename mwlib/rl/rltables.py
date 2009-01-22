@@ -139,7 +139,12 @@ def getColWidths(data, table=None, recursionDepth=0, nestingLevel=1):
                 maxbreaks[j] = max(rows,maxbreaks[j])
             summedwidths[j] = max(cellwidth, summedwidths[j])
 
-    if nestingLevel > 1:
+    parent_cells = table.getParentNodesByClass(Cell)
+    parent_tables = table.getParentNodesByClass(Table)
+    # nested tables in colspanned cell are expanded to full page width
+    if nestingLevel == 2 and parent_cells and parent_tables and parent_cells[0].colspan == parent_tables[0].numcols:
+        availWidth -= 8
+    elif nestingLevel > 1:
         return minwidths
 
     remainingSpace = availWidth - sum(summedwidths)
