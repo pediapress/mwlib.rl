@@ -935,7 +935,8 @@ class RlWriter(object):
         #looking for internal links
         internallink = False
         if isinstance(obj, advtree.ArticleLink):
-            article_id = self.idFromURL(obj.url)
+            url = unicode(urllib.unquote(obj.url.encode('utf-8')), 'utf-8')
+            article_id = self.idFromURL(url)
             if article_id in self.articleids:
                 internallink = True
         
@@ -1363,7 +1364,7 @@ class RlWriter(object):
         leaf = item.getFirstLeaf() # strip leading spaces from list items
         if leaf and hasattr(leaf, 'caption'):
             leaf.caption = leaf.caption.lstrip()
-        
+            
         items =  self.renderMixed(item, para_style=para_style, textPrefix=itemPrefix)
         return items
         
