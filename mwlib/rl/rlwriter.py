@@ -930,11 +930,11 @@ class RlWriter(object):
         """ Link nodes are intra wiki links
         """
 
-        href = obj.url # obj.url is a utf-8 string
+        href = obj.url 
 
         #looking for internal links
         internallink = False
-        if isinstance(obj, advtree.ArticleLink):
+        if isinstance(obj, advtree.ArticleLink) and obj.url:            
             url = unicode(urllib.unquote(obj.url.encode('utf-8')), 'utf-8')
             article_id = self.idFromURL(url)
             if article_id in self.articleids:
