@@ -150,4 +150,4 @@ msgstr "Pinagmulan: %(source)s"
 #: mwlib/rl/rlwriter.py:603
 #, python-format
 msgid "Principal Authors: %(authors)s"
-msgstr "Pangunahing mga May-akda: %(may-akda)s"
+msgstr "Pangunahing mga May-akda: %(authors)s"
