@@ -112,7 +112,7 @@ msgstr "inaayos ang anyo ng paglalatag"
 #: mwlib/rl/rlwriter.py:326
 #, python-format
 msgid "mwlib.ext version: %(version)s"
-msgstr "bersyong mwlib.ext: %(bersyon)s"
+msgstr "bersyong mwlib.ext: %(version)s"
 
 #: mwlib/rl/rlwriter.py:332
 #, python-format
@@ -120,8 +120,8 @@ msgid ""
 "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
 "(mwlibextversion)s"
 msgstr ""
-"bersyong mwlib: %(bersyongmwlib)s, bersyong mwlib.rl: %(bersyongmwlibrl)s, %"
-"(bersyongmwlibext)s"
+"bersyong mwlib: %(mwlibversion)s, bersyong mwlib.rl: %(mwlibrlversion)s, %"
+"(mwlibextversion)s"
 
 #: mwlib/rl/rlwriter.py:394
 msgid "rendering"
