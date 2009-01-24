@@ -7,12 +7,12 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-17 10:27+0000\n"
-"PO-Revision-Date: 2009-01-17 10:27:00+0000\n"
+"POT-Creation-Date: 2009-01-24 18:25+0000\n"
+"PO-Revision-Date: 2009-01-24 18:25:15+0000\n"
 "Language-Team: Hebrew\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.15alpha (r45803); Translate extension (9 (2009-01-"
+"X-Generator: MediaWiki 1.15alpha (r46144); Translate extension (9 (2009-01-"
 "11))\n"
 "X-Translation-Project: Betawiki at http://translatewiki.net\n"
 "X-Language-Code: he\n"
@@ -51,13 +51,13 @@ msgid "Produced by:"
 msgstr ""
 
 #: mwlib/rl/pdfmessages.py:28
+#, fuzzy
 msgid "pdf writer version:"
-msgstr ""
+msgstr "גרסת mwlib:"
 
 #: mwlib/rl/pdfmessages.py:30
-#, fuzzy
 msgid "mwlib version:"
-msgstr "גרסת mwlib.ext: %(version)s"
+msgstr "גרסת mwlib:"
 
 #: mwlib/rl/pdfmessages.py:32
 msgid "Table of Contents"

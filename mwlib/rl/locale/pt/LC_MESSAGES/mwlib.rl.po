@@ -1,5 +1,7 @@
 # Translation of Mwlib.rl to Portuguese
 #
+# Author@Betawiki: Malafaya
+# Author@Betawiki: Waldir
 # --
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
@@ -11,12 +13,12 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-17 10:27+0000\n"
-"PO-Revision-Date: 2009-01-17 10:27:00+0000\n"
+"POT-Creation-Date: 2009-01-24 18:25+0000\n"
+"PO-Revision-Date: 2009-01-24 18:25:15+0000\n"
 "Language-Team: Portuguese\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.15alpha (r45803); Translate extension (9 (2009-01-"
+"X-Generator: MediaWiki 1.15alpha (r46144); Translate extension (9 (2009-01-"
 "11))\n"
 "X-Translation-Project: Betawiki at http://translatewiki.net\n"
 "X-Language-Code: pt\n"
@@ -24,63 +26,63 @@ msgstr ""
 
 #: mwlib/rl/pdfmessages.py:12
 msgid "Article Licenses"
-msgstr ""
+msgstr "Licenças de artigos"
 
 #: mwlib/rl/pdfmessages.py:14
 msgid "Title"
-msgstr ""
+msgstr "Título"
 
 #: mwlib/rl/pdfmessages.py:16
 msgid "Subtitle:"
-msgstr ""
+msgstr "Subtítulo:"
 
 #: mwlib/rl/pdfmessages.py:18
 msgid "Editor:"
-msgstr ""
+msgstr "Editor:"
 
 #: mwlib/rl/pdfmessages.py:20
 msgid "Created on:"
-msgstr ""
+msgstr "Criado em:"
 
 #: mwlib/rl/pdfmessages.py:22
 msgid "Contents"
-msgstr ""
+msgstr "Conteúdo"
 
 #: mwlib/rl/pdfmessages.py:24
 msgid "Articles"
-msgstr ""
+msgstr "Artigos"
 
 #: mwlib/rl/pdfmessages.py:26
 msgid "Produced by:"
-msgstr ""
+msgstr "Produzido por:"
 
 #: mwlib/rl/pdfmessages.py:28
-#, fuzzy
 msgid "pdf writer version:"
-msgstr "mwlib.ext-Version: %(version)s"
+msgstr "Versão do gerador de pdf:"
 
 #: mwlib/rl/pdfmessages.py:30
-#, fuzzy
 msgid "mwlib version:"
-msgstr "mwlib.ext-Version: %(version)s"
+msgstr "versão do mwlib:"
 
 #: mwlib/rl/pdfmessages.py:32
 msgid "Table of Contents"
-msgstr ""
+msgstr "Índice"
 
 #: mwlib/rl/pdfmessages.py:34
 msgid "Skipping Articles!"
-msgstr ""
+msgstr "Contornando Artigos!"
 
 #: mwlib/rl/pdfmessages.py:36
 msgid ""
 "Please note:  This is only a preview intended to give an idea how the book "
 "is typeset."
 msgstr ""
+"Nota: Esta é apenas uma previsão destinada a dar uma ideia do aspeto final "
+"do livro."
 
 #: mwlib/rl/pdfmessages.py:38
 msgid "References"
-msgstr ""
+msgstr "Referências"
 
 #: mwlib/rl/pdfmessages.py:40
 msgid ""
@@ -89,18 +91,22 @@ msgid ""
 "including the copyright status, the copyright owner, and the license "
 "conditions."
 msgstr ""
+"As seguintes secções listam as fontes de todos os artigos e imagens usados "
+"neste livro. Estas fontes fornecem informação mais detalhada sobre a "
+"licença, incluindo o estado dos direitos de autor, o detentor dos mesmos, e "
+"as condições da licença."
 
 #: mwlib/rl/pdfmessages.py:42
 msgid "Article Sources, Licenses and Contributors"
-msgstr ""
+msgstr "Fontes, Licenças e Editores do Artigo"
 
 #: mwlib/rl/pdfmessages.py:44
 msgid "Image Sources, Licenses and Contributors"
-msgstr ""
+msgstr "Fontes, Licenças e Editores da Imagem"
 
 #: mwlib/rl/pdfmessages.py:46
 msgid "Image"
-msgstr ""
+msgstr "Imagem"
 
 #: mwlib/rl/pdfstyles.py:209
 msgid ""
@@ -112,7 +118,7 @@ msgstr ""
 
 #: mwlib/rl/rlwriter.py:266
 msgid "layouting"
-msgstr ""
+msgstr "distribuindo"
 
 #: mwlib/rl/rlwriter.py:326
 #, python-format
@@ -130,7 +136,7 @@ msgstr ""
 
 #: mwlib/rl/rlwriter.py:394
 msgid "rendering"
-msgstr ""
+msgstr "criando"
 
 #: mwlib/rl/rlwriter.py:585
 msgid ""
