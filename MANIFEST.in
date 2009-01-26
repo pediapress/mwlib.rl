@@ -26,6 +26,7 @@ include mwlib/rl/_version.py
 include mwlib/rl/create_collection.py
 include mwlib/rl/customflowables.py
 include mwlib/rl/debughelper.py
+include mwlib/rl/locale/ar/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/ar/LC_MESSAGES/mwlib.rl.po
 include mwlib/rl/locale/bg/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/bg/LC_MESSAGES/mwlib.rl.po
@@ -45,9 +46,11 @@ include mwlib/rl/locale/es/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/es/LC_MESSAGES/mwlib.rl.po
 include mwlib/rl/locale/eu/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/eu/LC_MESSAGES/mwlib.rl.po
+include mwlib/rl/locale/fi/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/fi/LC_MESSAGES/mwlib.rl.po
 include mwlib/rl/locale/fr/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/fr/LC_MESSAGES/mwlib.rl.po
+include mwlib/rl/locale/gl/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/gl/LC_MESSAGES/mwlib.rl.po
 include mwlib/rl/locale/he/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/he/LC_MESSAGES/mwlib.rl.po
@@ -61,13 +64,17 @@ include mwlib/rl/locale/ja/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/ja/LC_MESSAGES/mwlib.rl.po
 include mwlib/rl/locale/km/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/km/LC_MESSAGES/mwlib.rl.po
+include mwlib/rl/locale/ko/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/ko/LC_MESSAGES/mwlib.rl.po
 include mwlib/rl/locale/ksh/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/ksh/LC_MESSAGES/mwlib.rl.po
+include mwlib/rl/locale/lb/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/lb/LC_MESSAGES/mwlib.rl.po
+include mwlib/rl/locale/nl/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/nl/LC_MESSAGES/mwlib.rl.po
 include mwlib/rl/locale/nn/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/nn/LC_MESSAGES/mwlib.rl.po
+include mwlib/rl/locale/oc/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/oc/LC_MESSAGES/mwlib.rl.po
 include mwlib/rl/locale/pl/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/pl/LC_MESSAGES/mwlib.rl.po
