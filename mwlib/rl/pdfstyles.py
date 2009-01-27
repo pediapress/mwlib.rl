@@ -302,15 +302,12 @@ def text_style(mode='p', indent_lvl=0, in_table=0, relsize='normal', text_align=
 
     if mode == 'box' or mode == 'source' or mode == 'preformatted':
         style.backColor = '#eeeeee'
-        style.borderPadding = 6 # borderPadding is not calculated onto the box dimensions.
-        style.spaceBefore = 9 # therefore spaceBefore = 3 + borderPadding
-        style.spaceAfter = 12 # add an extra 3 to spaceAfter, b/c spacing seems to small otherwise
+        style.borderPadding = 3 # borderPadding is not calculated onto the box dimensions.
+        style.spaceBefore = 6 # therefore spaceBefore = 3 + borderPadding
+        style.spaceAfter = 9 # add an extra 3 to spaceAfter, b/c spacing seems to small otherwise
     
     if mode == 'source' or mode == 'preformatted':
-        style.fontName = mono_font
-
-    if mode == 'preformatted':
-        indent_lvl += 1
+        style.fontName = mono_font   
         
     if mode == 'list':
         style.spaceBefore = 0

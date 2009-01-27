@@ -239,11 +239,11 @@ def reformatTable(t, maxCols):
     if onlyLists:
         log.info('got list only table - splitting list items')
         t = splitListItems(t)
+        pass
     return t
 
 def splitListItems(t):
     nt = t.copy()
-    nt.children = []
     for r in t.children:
         nr = Row()
         cols = []
@@ -264,7 +264,7 @@ def splitListItems(t):
                     nc = Cell()                    
                     nc.appendChild(il)
                     nr.appendChild(nc)
-                except:                    
+                except IndexError:                    
                     nr.appendChild(Cell())
             nt.appendChild(nr)
             nr = Row()        

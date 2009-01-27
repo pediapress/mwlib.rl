@@ -745,8 +745,7 @@ class RlWriter(object):
 
     def writePreFormatted(self, obj):
         self.pre_mode = True
-        txt = []
-        txt.extend(self.renderInline(obj))
+        txt = self.renderInline(obj)
         t = ''.join(txt)
         t = re.sub( u'<br */>', u'\n', t)
         t = t.replace('\t', ' '*pdfstyles.tabsize)
@@ -755,10 +754,9 @@ class RlWriter(object):
             return []
         
         maxCharOnLine = max( [ len(line) for line in t.split("\n")])
-        char_limit = max(1, int(maxCharsInSourceLine / (max(1, self.currentColCount))))
+        char_limit = max(1, int(maxCharsInSourceLine / (max(1, 0.75*self.currentColCount))))
         if maxCharOnLine > char_limit:
             t = self.breakLongLines(t, char_limit)
-
         pre = XPreformatted(t, text_style(mode='preformatted', in_table=self.tableNestingLevel))
         # fixme: we could check if the preformatted fits on the page, if we reduce the fontsize
         #pre = XPreformatted(t, text_style(mode='preformatted', relsize='small', in_table=self.tableNestingLevel))
@@ -800,7 +798,7 @@ class RlWriter(object):
         if self.sectionTitle:
             return [self.font_switcher.fontifyText(txt, defaultFont=serif_font, breakLong=True)]
         if self.pre_mode:
-            return [self.font_switcher.fontifyText(txt, defaultFont=mono_font)]
+            return [txt]
         return [self.font_switcher.fontifyText(txt)]
 
     def renderInline(self, node):
@@ -1205,6 +1203,19 @@ class RlWriter(object):
         table = Table(data)
         return [table]
 
+
+    def _len(self, txt):
+        in_tag = False
+        length = 0
+        for c in txt:
+            if c == '<':
+                in_tag = True
+            elif c == '>':
+                in_tag = False
+            elif not in_tag:
+                length += 1
+        return length
+    
     def breakLongLines(self, txt, char_limit):
        broken_source = []
        for line in txt.split('\n'):
@@ -1214,7 +1225,7 @@ class RlWriter(object):
                words = re.findall('([ \t]+|[^ \t]+)', line)
                while words:
                    new_line = [words.pop(0)]
-                   while words and (len(''.join(new_line)) + len(words[0])) < char_limit:
+                   while words and (self._len(''.join(new_line)) + self._len(words[0])) < char_limit:
                        new_line.append(words.pop(0))
                    broken_source.append(''.join(new_line))
        return '\n'.join(broken_source)
@@ -1267,8 +1278,11 @@ class RlWriter(object):
         return self.writeTeletyped(n)
 
     def writeTeletyped(self, n):
-        return self.renderInlineTag(n, 'font', tag_attrs='fontName="%s"' % mono_font)
-        
+        self.font_switcher.force_font = 'DejaVuSansMono'
+        txt = self.renderInlineTag(n, 'font', tag_attrs='fontName="%s"' % mono_font)
+        self.font_switcher.force_font = None
+        return txt
+    
     def writeBreakingReturn(self, n):
         return ['<br />']
 

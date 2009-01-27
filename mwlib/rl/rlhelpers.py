@@ -19,6 +19,7 @@ class RLFontSwitcher(FontSwitcher):
         FontSwitcher.__init__(self)
         self.font_path = None
         self.default_fontpath = None
+        self.force_font = None
         
     def registerFontDefinitionList(self, font_list):
         for font in font_list:
@@ -37,11 +38,20 @@ class RLFontSwitcher(FontSwitcher):
         return res
     
     def fontifyText(self, txt, defaultFont='', breakLong=False):
+        if self.force_font:
+            return '<font name="%s">%s</font>' % (self.force_font, txt)
         font_list = self.getFontList(txt)
         if breakLong:
             font_list = self.fakeHyphenate(font_list)
-        txt =  ''.join(['<font name="%s">%s</font>' % (font, txt) for txt, font in font_list])
-        return txt
+
+        res = []
+        for txt, font in font_list:
+            if font != self.default_font:
+                res.append('<font name="%s">%s</font>' % (font, txt))
+            else:
+                res.append(txt)
+
+        return ''.join(res)
         
 
     def registerReportlabFonts(self, font_list):
