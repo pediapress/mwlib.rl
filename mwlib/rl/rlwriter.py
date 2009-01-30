@@ -1096,6 +1096,18 @@ class RlWriter(object):
             # see http://two.pairlist.net/pipermail/reportlab-users/2008-October/007526.html
             if img.mode == 'P':
                 no_mask = True
+            elif img.mode == 'LA': # hack for http://code.pediapress.com/wiki/ticket/429
+                cleaned = PilImage.new('LA', img.size)
+                new_data = []
+                for pixel in img.getdata():
+                    if pixel[1] == 0:
+                        new_data.append((255,0))
+                    else:
+                        new_data.append(pixel)                        
+                cleaned.putdata(new_data)
+                cleaned.save(imgPath)
+                img = PilImage.open(imgPath)
+                no_mask = False
             else:
                 no_mask = False
             if img.info.get('interlace',0) == 1:
@@ -1147,7 +1159,7 @@ class RlWriter(object):
 
         url = self.imgDB.getDescriptionURL(obj.target) or self.imgDB.getURL(obj.target)
         if url:
-            linkstart = '<link href="%s"> ' % xmlescape(url) # spaces are needed, otherwise link is not present. probably b/c of a inline image bug of reportlab
+            linkstart = '<link href="%s"> ' % (xmlescape(url)) # spaces are needed, otherwise link is not present. probably b/c of a inline image bug of reportlab
             linkend = ' </link>'
         else:
             linkstart = ''
