@@ -22,7 +22,7 @@ from pdfstyles import printHeight, printWidth
 log = log.Log('rlwriter')
 
 
-def checkSpans(data):
+def checkSpans(data, t):
     """
     use colspan and rowspan attributes to build rectangular table data array
     """
@@ -46,7 +46,7 @@ def checkSpans(data):
                 for row_offset in range(rowspan-1):
                     for c in range(colspan):
                         data[i+row_offset+1].insert(j,{'content':'', 'inserted':'rowspan'})
-
+                        t.children[i+row_offset+1].children.insert(j, Cell())
         maxCols = max(maxCols, len(data[i]))
 
     d = []
@@ -55,7 +55,6 @@ def checkSpans(data):
         while len(newRow) < maxCols: # make sure table is rectangular
             newRow.append('')
         d.append(newRow)
-
     return (d, styles)
 
 
@@ -305,8 +304,14 @@ def tableBgStyle(table):
         rgb = styleutils.rgbBgColorFromNode(row)
         if rgb:
             bg_style.append(('BACKGROUND', (0,i), (-1,i), colors.Color(rgb[0], rgb[1], rgb[2])))
+        colspan_sum = 0
         for (j, cell) in enumerate(row.children):
             rgb = styleutils.rgbBgColorFromNode(cell)
+            colspan = cell.colspan
+            start_col = colspan_sum
+            end_col = colspan_sum + colspan -1
+            colspan_sum += colspan
+            rowspan = cell.rowspan
             if rgb:
-                bg_style.append(('BACKGROUND', (j,i), (j,i), colors.Color(rgb[0], rgb[1], rgb[2])))
+                bg_style.append(('BACKGROUND', (start_col,i), (end_col,i+rowspan-1), colors.Color(rgb[0], rgb[1], rgb[2])))
     return bg_style

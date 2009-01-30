@@ -1464,8 +1464,8 @@ class RlWriter(object):
             elif r.__class__ == advtree.Caption:
                 elements.extend(self.writeCaption(r))                
                 t.removeChild(r) # this is slight a hack. we do this in order not to simplify cell-coloring code
-                
-        (data, span_styles) = rltables.checkSpans(data)
+        
+        (data, span_styles) = rltables.checkSpans(data, t)
         self.currentColCount -= maxCols
 
         if not data:
@@ -1483,9 +1483,7 @@ class RlWriter(object):
         if not has_data:
             self.tableNestingLevel -= 1
             return []
-
-        table = Table(data, colWidths=colwidthList, splitByRow=1)
-        
+        table = Table(data, colWidths=colwidthList, splitByRow=1)        
         styles = rltables.style(t.attributes)
         table.setStyle(styles)
         table.setStyle(span_styles)
