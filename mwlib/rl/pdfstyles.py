@@ -224,7 +224,7 @@ img_margins_float = (0.2*cm,0.2*cm,0.2*cm,0.2*cm) # any other alignment
 ######### TEXT CONFIGURATION
 fontsize = 10
 leading = 15
-text_align = TA_LEFT # default alignment of text outside of tables TA_LEFT, TA_JUSTIFY, TA_RIGHT, TA_CENTER are valid
+text_align = TA_JUSTIFY # default alignment of text outside of tables TA_LEFT, TA_JUSTIFY, TA_RIGHT, TA_CENTER are valid
 table_text_align = TA_LEFT # ... inside of tables
 
 smallfontsize = 8
