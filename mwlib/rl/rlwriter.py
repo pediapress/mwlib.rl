@@ -1666,7 +1666,7 @@ class RlWriter(object):
         #imgAlign = '%fin' % (- (h - 32) / (2 * density))
         imgAlign = '%fin' % (- (h - 15) / (2 * density))
         #the non-breaking-space is needed to force whitespace after the formula
-        return ' <img src="%(path)s" width="%(width)fin" height="%(height)fin" valign="%(valign)s" />&nbsp; ' % {
+        return '<img src="%(path)s" width="%(width)fin" height="%(height)fin" valign="%(valign)s" />' % {
             'path': imgpath.encode(sys.getfilesystemencoding()),
             'width': w/density,
             'height': h/density,
