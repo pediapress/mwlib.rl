@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-01-24 18:25+0000\n"
-"PO-Revision-Date: 2009-01-24 18:25:15+0000\n"
+"PO-Revision-Date: 2009-01-29 18:18+0100\n"
 "Language-Team: German\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -94,11 +94,11 @@ msgstr ""
 
 #: mwlib/rl/pdfmessages.py:42
 msgid "Article Sources, Licenses and Contributors"
-msgstr "Artikel Quellen, Lizenzen und Beitragende"
+msgstr "Artikelquellen, Lizenzen und Beitragende"
 
 #: mwlib/rl/pdfmessages.py:44
 msgid "Image Sources, Licenses and Contributors"
-msgstr "Bild Quellen, Lizenzen und Beitragende"
+msgstr "Bildquellen, Lizenzen und Beitragende"
 
 #: mwlib/rl/pdfmessages.py:46
 msgid "Image"
