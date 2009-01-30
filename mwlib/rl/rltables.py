@@ -309,5 +309,4 @@ def tableBgStyle(table):
             rgb = styleutils.rgbBgColorFromNode(cell)
             if rgb:
                 bg_style.append(('BACKGROUND', (j,i), (j,i), colors.Color(rgb[0], rgb[1], rgb[2])))
-    
     return bg_style

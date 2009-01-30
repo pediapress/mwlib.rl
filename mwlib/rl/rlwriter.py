@@ -265,7 +265,7 @@ class RlWriter(object):
         if status_callback:
             status_callback(status=_('layouting'), progress=0)
         if self.debug:
-            parser.show(sys.stdout, bookParseTree, verbose=True)
+            #parser.show(sys.stdout, bookParseTree, verbose=True)
             pass
 
         advtree.buildAdvancedTree(bookParseTree)
@@ -278,7 +278,7 @@ class RlWriter(object):
         self.articlecount = 0
         
         if self.debug:
-            #parser.show(sys.stdout, bookParseTree, verbose=True)
+            parser.show(sys.stdout, bookParseTree, verbose=True)
             print "TREECLEANER REPORTS:"
             print "\n".join([repr(r) for r in tc.getReports()])
             
@@ -1407,14 +1407,11 @@ class RlWriter(object):
         return items
            
 
-    def writeCell(self, cell):          
-        #colspan = cell.colspan
-        #rowspan = cell.rowspan
+    def writeCell(self, cell, row):
         colspan = cell.attributes.get('colspan', 1)
         rowspan = cell.attributes.get('rowspan', 1)
-        
-        elements = self.renderMixed(cell, text_style(in_table=self.tableNestingLevel, text_align=cell.attributes.get('align')))
-        
+        align = cell.attributes.get('align') or row.attributes.get('align')
+        elements = self.renderMixed(cell, text_style(in_table=self.tableNestingLevel, text_align=align))
         return {'content':elements,
                 'rowspan':rowspan,
                 'colspan':colspan}
@@ -1423,7 +1420,7 @@ class RlWriter(object):
         r = []
         for cell in row:
             if cell.__class__ == advtree.Cell:
-                r.append(self.writeCell(cell))
+                r.append(self.writeCell(cell, row))
             else:
                 log.warning('table row contains non-cell node, skipped:' % cell.__class__.__name__)
         return r
@@ -1516,6 +1513,7 @@ class RlWriter(object):
             return []
         if renderingOk and renderedTable:
             return renderedTable
+        #debughelper.dumpTable(table)
         return elements
     
     def renderTable(self, table, t_node):
@@ -1600,7 +1598,6 @@ class RlWriter(object):
             imageFns = glob.glob(fn + '-*.png')
             for imageFn in imageFns:
                 images.append(Image(imageFn, width=printWidth*0.90, height=printHeight*0.90))
-            
         return (True, images)
 
     def addAnchors(self, table):
