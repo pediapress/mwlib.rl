@@ -1422,7 +1422,7 @@ class RlWriter(object):
             if cell.__class__ == advtree.Cell:
                 r.append(self.writeCell(cell, row))
             else:
-                log.warning('table row contains non-cell node, skipped:' % cell.__class__.__name__)
+                log.warning('table row contains non-cell node, skipped: %r' % cell.__class__.__name__)
         return r
 
 
