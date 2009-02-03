@@ -67,6 +67,15 @@ For further information please visit our trac instance running at
 http://code.pediapress.com
 The current development version can also be found there.
 
+ChangeLog
+======================================================================
+
+2009-02-03 release 0.9.3
+------------------------
+
+* use correct alignment and background color for table cells
+* text alignment is now justified by default
+* workaround for greyscale images with alphachannel (#429)
 
 License
 ======================================================================
