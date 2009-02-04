@@ -308,6 +308,7 @@ def text_style(mode='p', indent_lvl=0, in_table=0, relsize='normal', text_align=
     
     if mode == 'source' or mode == 'preformatted':
         style.fontName = mono_font   
+        style.alignment = TA_LEFT
         
     if mode == 'list':
         style.spaceBefore = 0

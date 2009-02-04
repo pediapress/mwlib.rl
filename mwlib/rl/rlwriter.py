@@ -758,9 +758,8 @@ class RlWriter(object):
         char_limit = max(1, int(maxCharsInSourceLine / (max(1, 0.75*self.currentColCount))))
         if maxCharOnLine > char_limit:
             t = self.breakLongLines(t, char_limit)
+        print '\n'.join(t.split('\n'))
         pre = XPreformatted(t, text_style(mode='preformatted', in_table=self.tableNestingLevel))
-        # fixme: we could check if the preformatted fits on the page, if we reduce the fontsize
-        #pre = XPreformatted(t, text_style(mode='preformatted', relsize='small', in_table=self.tableNestingLevel))
         return [pre]
 
         
