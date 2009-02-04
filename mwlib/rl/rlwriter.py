@@ -178,6 +178,7 @@ class RlWriter(object):
         self.tablecount = 0
         self.paraIndentLevel = 0
 
+        self.gallery_mode = False
         self.pre_mode = False
         self.ref_mode = False
         self.license_mode = False
@@ -799,6 +800,8 @@ class RlWriter(object):
             return [self.font_switcher.fontifyText(txt, defaultFont=serif_font, breakLong=True)]
         if self.pre_mode:
             return [txt]
+        if self.gallery_mode:
+            return [self.font_switcher.fontifyText(txt, breakLong=True)]
         return [self.font_switcher.fontifyText(txt)]
 
     def renderInline(self, node):
@@ -1089,6 +1092,8 @@ class RlWriter(object):
                 return (_w*cm, _h*cm)
 
         (w,h) = (obj.width or 0, obj.height or 0)
+        #if w > 0 and h > 0: # fixme: this is a hack to respect max image sizes of both dims are given
+        #    w = h = min(w, h)
         h = 0 # dirty workaround for http://code.pediapress.com/wiki/ticket/332
         try:
             img = PilImage.open(imgPath)
@@ -1164,6 +1169,7 @@ class RlWriter(object):
         else:
             linkstart = ''
             linkend = ''
+
         if  is_inline:
             txt = '%(linkstart)s<img src="%(src)s" width="%(width)fin" height="%(height)fin" valign="%(align)s"/>%(linkend)s' % {
                 'src': unicode(imgPath, 'utf-8'),
@@ -1189,12 +1195,21 @@ class RlWriter(object):
         
 
     def writeGallery(self,obj):
+        self.gallery_mode = True
+        perrow = obj.attributes.get('perrow', None)
+        num_images = len(obj.getChildNodesByClass(advtree.ImageLink))
+        if not perrow:            
+            perrow = min(4, num_images) # 4 is the default for the number of images per gallery row
+        else:
+            perrow = min(6, int(perrow), num_images)
         data = []
         row = []
         if obj.children:
-            self.colwidth = (printWidth - 20)/2 #20pt margin
+            self.colwidth = printWidth/perrow - 12
+        colwidths = [self.colwidth+12]*perrow
+
         for node in obj.children:
-            if isinstance(node,parser.ImageLink):
+            if isinstance(node, advtree.ImageLink):
                 node.align='center' # this is a hack. otherwise writeImage thinks this is an inline image
                 res = self.write(node)
             else:
@@ -1203,17 +1218,28 @@ class RlWriter(object):
                     res = buildPara(res)
                 except:
                     res = Paragraph('',text_style(in_table=self.tableNestingLevel))
-            if len(row) == 0:
+            if len(row) < perrow:
                 row.append(res)
             else:
-                row.append(res)
                 data.append(row)
                 row = []
-        if len(row) == 1:
-            row.append(Paragraph('',text_style(in_table=self.tableNestingLevel)))
+                row.append(res)                
+        if len(row):
+            while len(row) < perrow:
+                row.append('')
             data.append(row)
-        table = Table(data)
-        return [table]
+        table = Table(data, colWidths=colwidths)
+        table.setStyle([('VALIGN',(0,0),(-1,-1),'TOP')])
+        self.gallery_mode = False
+        caption = obj.attributes.get('caption', None)
+        self.colwidth = None
+        if caption:
+            txt = self.font_switcher.fontifyText(caption)
+            elements = buildPara(txt, heading_style(mode='tablecaption'))
+            elements.append(table)
+            return elements
+        else:
+            return [table]
 
 
     def _len(self, txt):
