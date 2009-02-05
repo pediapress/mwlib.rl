@@ -408,7 +408,8 @@ def heading_style(mode='chapter', lvl=1):
         style.leading = 5
         style.spaceAfter = 0
         style.spaceBefore = 5
-            
+
+    style.prevent_post_pagebreak = True
     return style
     
 

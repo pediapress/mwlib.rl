@@ -195,8 +195,13 @@ class FiguresAndParagraphs(Flowable):
         nextParas = []
         height = 0
         splittedParagraph=False
+        force_split = False
         for (i,p) in enumerate(self.ps):
-            if (height + self.paraHeights[i]) < availheight:
+            # prevent splitting right after headings
+            if hasattr(self.ps[i], 'style') and getattr(self.ps[i].style, 'prevent_post_pagebreak', False):
+                if len(self.ps) > i+1 and (height + self.paraHeights[i] + self.paraHeights[i+1]) > availheight:
+                    force_split= True                
+            if (height + self.paraHeights[i]) < availheight and not force_split:
                 fittingParas.append(p)
             else:
                 # inter-paragraph splitting can be avoided by uncommenting the following
