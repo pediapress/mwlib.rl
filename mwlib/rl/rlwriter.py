@@ -601,8 +601,11 @@ class RlWriter(object):
                                 'source': self.font_switcher.fontifyText(xmlescape(article.url), breakLong=True),
                             }, text_style())])
         if pdfstyles.showArticleAuthors and getattr(article, 'authors', None):
+            author_txt = ', '.join(article.authors)
+            author_txt = author_txt.replace('ANONIPEDITS:0', '')
+            author_txt = re.sub('ANONIPEDITS:(?P<num>\d+)', _('\g<num> anonymous edits'), author_txt)
             elements.append(Paragraph(_('Principal Authors: %(authors)s') % {
-                'authors': self.font_switcher.fontifyText(xmlescape(', '.join(article.authors)))
+                'authors': self.font_switcher.fontifyText(xmlescape(author_txt))
             }, text_style()))
 
         if self.layout_status:
@@ -1059,8 +1062,121 @@ class RlWriter(object):
             imgPath = ''
         return imgPath
 
-    
+
+    def _fixBrokenImages(self, img_node, img_path):
+        img = PilImage.open(img_path)
+        # workaround for http://code.pediapress.com/wiki/ticket/324
+        # see http://two.pairlist.net/pipermail/reportlab-users/2008-October/007526.html
+        if img.mode == 'P':
+            no_mask = True
+        elif img.mode == 'LA': # hack for http://code.pediapress.com/wiki/ticket/429
+            cleaned = PilImage.new('LA', img.size)
+            new_data = []
+            for pixel in img.getdata():
+                if pixel[1] == 0:
+                    new_data.append((255,0))
+                else:
+                    new_data.append(pixel)                        
+            cleaned.putdata(new_data)
+            cleaned.save(img_path)
+            img = PilImage.open(img_path)
+            no_mask = False
+        else:
+            no_mask = False
+        if img.info.get('interlace',0) == 1:
+            log.warning("got interlaced PNG which can't be handeled by PIL")
+            raise # FIXME raise proper exception
+        try:
+            d = img.load()
+        except:
+            log.warning('img data can not be loaded - img corrupt: %r' % img_node.target)
+            raise # FIXME raise proper exception
+        return no_mask
+        
+    def writeNewImageLink(self, img_node):
+        if img_node.colon == True:
+            items = []
+            for node in img_node.children:
+                items.extend(self.write(node))
+            return items
+
+        img_path = self.getImgPath(img_node.target)
+        
+        if not img_path:
+            if img_node.target == None:
+                img_node.target = ''
+            log.warning('invalid image url (obj.target: %r)' % img_node.target)
+            return []
+
+        try:
+            no_mask = self._fixBrokenImages(img_node, img_path)
+        except: # IOError: FIXME raise proper exceptioin
+            log.warning('img can not be opened by PIL')
+            return []
+
+        from mwlib.writer.utils import getImageSize
+
+        max_width = self.colwidth
+        if self.tableNestingLevel > 0 and not max_width:
+            cell = img_node.getParentNodesByClass(advtree.Cell)
+            if cell:
+                max_width = printWidth / len(cell[0].getAllSiblings()) - 10
+        max_height = None
+        if self.tableNestingLevel > 0:
+            max_height = printHeight/4 # fixme this needs to be read from config
+        w, h = getImageSize(img_node, img_path, max_print_width=max_width, max_print_height=max_height)
+
+        align = img_node.align
+        if advtree.Center  in [ p.__class__ for p in img_node.getParents()]:
+            align = 'center'
+            
+        txt = []
+        for node in img_node.children:            
+            res = self.write(node)
+            if isInline(res):
+                txt.extend(res)
+            else:
+                log.warning('imageLink contained block element: %s' % type(res))
+
+        is_inline = img_node.isInline()
+        #from mwlib import imgutils #fixme: check if we need "improved" inline detection of images
+        #is_inline = imgutils.isInline(obj)
+
+        url = self.imgDB.getDescriptionURL(img_node.target) or self.imgDB.getURL(img_node.target)
+        if url:
+            linkstart = '<link href="%s"> ' % (xmlescape(url)) # spaces are needed, otherwise link is not present. probably b/c of a inline image bug of reportlab
+            linkend = ' </link>'
+        else:
+            linkstart = ''
+            linkend = ''
+
+        if is_inline:
+            txt = '%(linkstart)s<img src="%(src)s" width="%(width)fpt" height="%(height)fpt" valign="%(align)s"/>%(linkend)s' % {
+                'src': unicode(img_path, 'utf-8'),
+                'width': w,
+                'height': h,
+                'align': 'bottom',
+                'linkstart': linkstart,
+                'linkend': linkend,
+                }
+            return txt
+        captionTxt = ''.join(txt)
+        figure = Figure(img_path,
+                        captionTxt=captionTxt,
+                        captionStyle=text_style('figure', in_table=self.tableNestingLevel),
+                        imgWidth=w,
+                        imgHeight=h,
+                        margin=(0.2*cm, 0.2*cm, 0.2*cm, 0.2*cm),
+                        padding=(0.2*cm, 0.2*cm, 0.2*cm, 0.2*cm),
+                        align=align,
+                        no_mask=no_mask,
+                        url=url)
+        return [figure]
+        
     def writeImageLink(self, obj):
+        if True:
+            return self.writeNewImageLink(obj)
+       
         if obj.colon == True:
             items = []
             for node in obj.children:

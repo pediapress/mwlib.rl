@@ -10,7 +10,7 @@ from reportlab.platypus.flowables import Flowable, Image, HRFlowable, Preformatt
 from reportlab.platypus.paragraph import Paragraph, deepcopy
 
 from reportlab.lib.colors import Color
-from mwlib.rl.pdfstyles import pageHeight
+from mwlib.rl import pdfstyles
 
 class Figure(Flowable):
 
@@ -76,10 +76,13 @@ class FiguresAndParagraphs(Flowable):
     def __init__(self, figures, paragraphs, figure_margin=(0,0,0,0)):
         self.fs = figures
         self.figure_margin = figure_margin
-        for f in self.fs:
-            f.margin = figure_margin
         self.ps = paragraphs
         self.figAlign = figures[0].align # fixme: all figures will be aligned like the first figure
+        for f in self.fs:
+            if self.figAlign == 'left':
+                f.margin = pdfstyles.img_margins_float_left
+            else: # default figure alignment is right
+                f.margin = pdfstyles.img_margins_float_right
         self.wfs = [] #width of figures
         self.hfs = [] # height of figures
 
@@ -204,10 +207,6 @@ class FiguresAndParagraphs(Flowable):
             if (height + self.paraHeights[i]) < availheight and not force_split:
                 fittingParas.append(p)
             else:
-                # inter-paragraph splitting can be avoided by uncommenting the following
-                #nextParas.append(p)
-                #height += self.paraHeights[i]
-                #continue
                 if splittedParagraph:
                     nextParas.append(p)
                     continue
@@ -288,7 +287,7 @@ class SmartKeepTogether(_ContainerSpace, Flowable):
         if not hasattr(self, 'height'):
             self.wrap(aW, aH)
         remaining_space = aH - sum([h for w,h in self.content_dims[:-1]])
-        if remaining_space < 0.1*pageHeight:
+        if remaining_space < 0.1*pdfstyles.pageHeight:
             self._content.insert(0, PageBreak())
             return self._content
         if self.height < aH:

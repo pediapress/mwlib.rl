@@ -7,7 +7,7 @@
 from reportlab.platypus.paragraph import Paragraph
 from reportlab.platypus.flowables import KeepTogether
 from reportlab.platypus.tables import Table
-from customflowables import Figure, FiguresAndParagraphs
+from customflowables import Figure, FiguresAndParagraphs, SmartKeepTogether
 
 
 def showParseTree(out, node, indent=0):
@@ -44,6 +44,16 @@ def dumpKeepTogether(kt):
         else:
             dumpText(f)
     print "===/KEEP"
+
+def dumpSmartKeepTogether(kt):
+    print "=== SmartKeepTogether ==="
+    for f in kt._content:
+        if isinstance(f,FiguresAndParagraphs):
+            dumpFiguresAndParagraphs(f)
+        else:
+            dumpText(f)
+    print "===/SmartKeep"
+
         
 def dumpTable(table):
     print "=== Table ==="
@@ -77,6 +87,8 @@ def dumpElements(elements):
             dumpFiguresAndParagraphs(e)
         elif isinstance(e,KeepTogether):
             dumpKeepTogether(e)
+        elif isinstance(e,SmartKeepTogether):
+            dumpSmartKeepTogether(e)
         elif isinstance(e,Table):
             dumpTable(e)
         else:
