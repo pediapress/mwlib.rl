@@ -63,7 +63,7 @@ def style(attributes):
     extract the style info and return a reportlab style list
     try to guess if a border and/or frame
     """
-    borderBoxes = [u'prettytable', u'metadata', u'wikitable', u'infobox', u'toccolours', u'navbox']
+    borderBoxes = [u'prettytable', u'metadata', u'wikitable', u'infobox', u'toccolours', u'navbox', u'float-right']
     styleList = []
     hasBorder = False
     hasGrid = False
@@ -121,10 +121,9 @@ def getColWidths(data, table=None, recursionDepth=0, nestingLevel=1):
         for (j,cell) in enumerate(row):
             cellwidth = 0
             try:
-                if getattr(table.children[i].children[j], 'colspan', 1) > 1:
-                    continue # colspanned cells are not used for cell-width calculation.
+                colspan = getattr(table.children[i].children[j], 'colspan', 1)
             except IndexError: # caused by empty row b/c of rowspanning
-                pass
+                colspan = 1
             for e in cell:
                 minw, minh = e.wrap(0,printHeight)
                 maxw, maxh = e.wrap(availWidth, printHeight)
@@ -134,8 +133,13 @@ def getColWidths(data, table=None, recursionDepth=0, nestingLevel=1):
                     rows = minh / maxh - 0.5 # approx. #linebreaks - smooted out - 
                 else:
                     rows = 0
-                minwidths[j] = max(minw, minwidths[j])
-                maxbreaks[j] = max(rows,maxbreaks[j])
+                if colspan > 1:                    
+                    for offset in range(colspan):
+                        minwidths[j+offset] = max(minw/colspan, minwidths[j+offset])
+                        maxbreaks[j+offset] = max(rows/colspan, maxbreaks[j+offset])
+                else:
+                    minwidths[j] = max(minw, minwidths[j])
+                    maxbreaks[j] = max(rows,maxbreaks[j])
             summedwidths[j] = max(cellwidth, summedwidths[j])
 
     parent_cells = table.getParentNodesByClass(Cell)

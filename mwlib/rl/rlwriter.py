@@ -51,11 +51,11 @@ from reportlab.platypus.doctemplate import BaseDocTemplate
 
 from pagetemplates import PPDocTemplate
 
-from reportlab.platypus.doctemplate import NextPageTemplate, NotAtTopPageBreak, PageTemplate
+from reportlab.platypus.doctemplate import NextPageTemplate, NotAtTopPageBreak
 from reportlab.platypus.tables import Table
 from reportlab.platypus.flowables import Spacer, HRFlowable, PageBreak, KeepTogether, Image
 from reportlab.platypus.xpreformatted import XPreformatted
-from reportlab.lib.units import cm, inch
+from reportlab.lib.units import cm
 from reportlab.lib import colors
 from reportlab.platypus.doctemplate import LayoutError
 from reportlab.lib.pagesizes import A4
@@ -72,7 +72,7 @@ from pdfstyles import max_img_width, max_img_height, min_img_dpi, inline_img_dpi
 from pdfstyles import maxCharsInSourceLine
 import pdfstyles 
 from mwlib import styleutils
-
+from mwlib.writer.imageutils import ImageUtils
 
 import rltables
 from pagetemplates import WikiPage, TitlePage, SimplePage
@@ -163,6 +163,16 @@ class RlWriter(object):
         self.font_switcher.registerDefaultFont(pdfstyles.default_font)        
         self.font_switcher.registerFontDefinitionList(pdfstyles.fonts)
         self.font_switcher.registerReportlabFonts(pdfstyles.fonts)
+
+        self.image_utils = ImageUtils(pdfstyles.printWidth,
+                                      pdfstyles.printHeight,
+                                      pdfstyles.img_default_thumb_width,
+                                      pdfstyles.img_min_res,
+                                      pdfstyles.img_max_thumb_width,
+                                      pdfstyles.img_max_thumb_height,
+                                      pdfstyles.img_inline_scale_factor,
+                                      pdfstyles.print_width_px,
+                                      )
         
         self.strict = strict
         self.debug = debug
@@ -206,8 +216,6 @@ class RlWriter(object):
     def ignore(self, obj):
         return []
         
-
-
     def groupElements(self, elements):
         """Group reportlab flowables into KeepTogether flowables
         to achieve meaningful pagebreaks
@@ -266,7 +274,7 @@ class RlWriter(object):
         if status_callback:
             status_callback(status=_('layouting'), progress=0)
         if self.debug:
-            #parser.show(sys.stdout, bookParseTree, verbose=True)
+            parser.show(sys.stdout, bookParseTree, verbose=True)
             pass
 
         advtree.buildAdvancedTree(bookParseTree)
@@ -279,7 +287,7 @@ class RlWriter(object):
         self.articlecount = 0
         
         if self.debug:
-            parser.show(sys.stdout, bookParseTree, verbose=True)
+            #parser.show(sys.stdout, bookParseTree, verbose=True)
             print "TREECLEANER REPORTS:"
             print "\n".join([repr(r) for r in tc.getReports()])
             
@@ -1093,7 +1101,7 @@ class RlWriter(object):
             raise # FIXME raise proper exception
         return no_mask
         
-    def writeNewImageLink(self, img_node):
+    def writeImageLink(self, img_node):
         if img_node.colon == True:
             items = []
             for node in img_node.children:
@@ -1114,8 +1122,6 @@ class RlWriter(object):
             log.warning('img can not be opened by PIL')
             return []
 
-        from mwlib.writer.utils import getImageSize
-
         max_width = self.colwidth
         if self.tableNestingLevel > 0 and not max_width:
             cell = img_node.getParentNodesByClass(advtree.Cell)
@@ -1124,7 +1130,7 @@ class RlWriter(object):
         max_height = None
         if self.tableNestingLevel > 0:
             max_height = printHeight/4 # fixme this needs to be read from config
-        w, h = getImageSize(img_node, img_path, max_print_width=max_width, max_print_height=max_height)
+        w, h = self.image_utils.getImageSize(img_node, img_path, max_print_width=max_width, max_print_height=max_height)
 
         align = img_node.align
         if advtree.Center  in [ p.__class__ for p in img_node.getParents()]:
@@ -1172,141 +1178,7 @@ class RlWriter(object):
                         no_mask=no_mask,
                         url=url)
         return [figure]
-        
-    def writeImageLink(self, obj):
-        if True:
-            return self.writeNewImageLink(obj)
        
-        if obj.colon == True:
-            items = []
-            for node in obj.children:
-                items.extend(self.write(node))
-            return items
-
-        imgPath = self.getImgPath(obj.target)
-        
-        if not imgPath:
-            if obj.target == None:
-                obj.target = ''
-            log.warning('invalid image url (obj.target: %r)' % obj.target)            
-            return []
-
-        # FIXME: refactor writeImageLink and move the image sizing code out of the way
-        def sizeImage(w,h):
-            if obj.isInline():
-                scale = 1 / (inline_img_dpi / 2.54)
-            else:
-                scale = 1 / (min_img_dpi / 2.54)
-            _w = w * scale
-            _h = h * scale
-            if _w > max_img_width or _h > max_img_height:
-                scale = min( max_img_width/w, max_img_height/h)
-                return (w*scale*cm, h*scale*cm)
-            else:
-                return (_w*cm, _h*cm)
-
-        (w,h) = (obj.width or 0, obj.height or 0)
-        #if w > 0 and h > 0: # fixme: this is a hack to respect max image sizes of both dims are given
-        #    w = h = min(w, h)
-        h = 0 # dirty workaround for http://code.pediapress.com/wiki/ticket/332
-        try:
-            img = PilImage.open(imgPath)
-            # workaround for http://code.pediapress.com/wiki/ticket/324
-            # see http://two.pairlist.net/pipermail/reportlab-users/2008-October/007526.html
-            if img.mode == 'P':
-                no_mask = True
-            elif img.mode == 'LA': # hack for http://code.pediapress.com/wiki/ticket/429
-                cleaned = PilImage.new('LA', img.size)
-                new_data = []
-                for pixel in img.getdata():
-                    if pixel[1] == 0:
-                        new_data.append((255,0))
-                    else:
-                        new_data.append(pixel)                        
-                cleaned.putdata(new_data)
-                cleaned.save(imgPath)
-                img = PilImage.open(imgPath)
-                no_mask = False
-            else:
-                no_mask = False
-            if img.info.get('interlace',0) == 1:
-                log.warning("got interlaced PNG which can't be handeled by PIL")
-                return []
-        except IOError:
-            log.warning('img can not be opened by PIL')
-            return []
-        try:
-            d = img.load()
-        except:
-            log.warning('img data can not be loaded - img corrupt: %r' % obj.target)
-            return []
-
-        (_w,_h) = img.size
-        del img
-        if _h == 0 or _w == 0:
-            return []
-        aspectRatio = _w/_h                           
-           
-        if w>0 and not h>0:
-            h = w / aspectRatio
-        elif h>0 and not w>0:
-            w = aspectRatio / h
-        elif w==0 and h==0:
-            w, h = _w, _h
-                
-        (width, height) = sizeImage( w, h)
-        if self.colwidth:
-            if width > self.colwidth:
-                height = height * self.colwidth/width
-                width = self.colwidth
-
-        align = obj.align
-        if advtree.Center  in [ p.__class__ for p in obj.getParents()]:
-            align = 'center'
-            
-        txt = []
-        for node in obj.children:
-            res = self.write(node)
-            if isInline(res):
-                txt.extend(res)
-            else:
-                log.warning('imageLink contained block element: %s' % type(res))
-
-        is_inline = obj.isInline()
-        #from mwlib import imgutils #fixme: check if we need "improved" inline detection of images
-        #is_inline = imgutils.isInline(obj)
-
-        url = self.imgDB.getDescriptionURL(obj.target) or self.imgDB.getURL(obj.target)
-        if url:
-            linkstart = '<link href="%s"> ' % (xmlescape(url)) # spaces are needed, otherwise link is not present. probably b/c of a inline image bug of reportlab
-            linkend = ' </link>'
-        else:
-            linkstart = ''
-            linkend = ''
-
-        if  is_inline:
-            txt = '%(linkstart)s<img src="%(src)s" width="%(width)fin" height="%(height)fin" valign="%(align)s"/>%(linkend)s' % {
-                'src': unicode(imgPath, 'utf-8'),
-                'width': width/100,
-                'height': height/100,
-                'align': 'bottom',
-                'linkstart': linkstart,
-                'linkend': linkend,
-                }
-            return txt
-        captionTxt = ''.join(txt)         
-        figure = Figure(imgPath,
-                        captionTxt=captionTxt,
-                        captionStyle=text_style('figure', in_table=self.tableNestingLevel),
-                        imgWidth=width,
-                        imgHeight=height,
-                        margin=(0.2*cm, 0.2*cm, 0.2*cm, 0.2*cm),
-                        padding=(0.2*cm, 0.2*cm, 0.2*cm, 0.2*cm),
-                        align=align,
-                        no_mask=no_mask,
-                        url=url)
-        return [figure]
-        
 
     def writeGallery(self,obj):
         self.gallery_mode = True
@@ -1623,7 +1495,6 @@ class RlWriter(object):
         if not data:
             self.tableNestingLevel -= 1
             return []
-        
         colwidthList = rltables.getColWidths(data, t, nestingLevel=self.tableNestingLevel)
         data = rltables.splitCellContent(data)
 
