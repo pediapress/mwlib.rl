@@ -221,6 +221,14 @@ img_margins_float_left = (0, 0.4*cm, 0.7*cm, 0) # img that is left aligned
 img_margins_float_right = (0, 0, 0.7*cm, 0.4*cm) # ...
 img_margins_float = (0.2*cm,0.2*cm,0.2*cm,0.2*cm) # any other alignment
 
+
+### new imageutils options, the above are probably obsolete
+img_default_thumb_width = 180
+img_max_thumb_width = 0.6 # fraction of print width for floated images
+img_max_thumb_height = 0.45
+img_min_res = 75
+img_inline_scale_factor = 0.7 # factor by which inline images are scaled.
+print_width_px = 540 # 540px are assumed to be the equivalent for a full print width
 ######### TEXT CONFIGURATION
 fontsize = 10
 leading = 15
