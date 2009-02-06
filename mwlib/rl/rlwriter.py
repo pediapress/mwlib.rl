@@ -1145,8 +1145,6 @@ class RlWriter(object):
                 log.warning('imageLink contained block element: %s' % type(res))
 
         is_inline = img_node.isInline()
-        #from mwlib import imgutils #fixme: check if we need "improved" inline detection of images
-        #is_inline = imgutils.isInline(obj)
 
         url = self.imgDB.getDescriptionURL(img_node.target) or self.imgDB.getURL(img_node.target)
         if url:
