@@ -1130,6 +1130,8 @@ class RlWriter(object):
         max_height = None
         if self.tableNestingLevel > 0:
             max_height = printHeight/4 # fixme this needs to be read from config
+        if self.gallery_mode:
+            max_height = printHeight/3 # same as above
         w, h = self.image_utils.getImageSize(img_node, img_path, max_print_width=max_width, max_print_height=max_height)
 
         align = img_node.align
