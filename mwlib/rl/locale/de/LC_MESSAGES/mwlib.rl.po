@@ -157,4 +157,4 @@ msgstr "Quelle: %(source)s"
 #: mwlib/rl/rlwriter.py:603
 #, python-format
 msgid "Principal Authors: %(authors)s"
-msgstr "Hauptautoren: %(authors)s"
+msgstr "Bearbeiter: %(authors)s"
