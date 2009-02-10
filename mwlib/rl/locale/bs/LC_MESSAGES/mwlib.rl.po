@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-24 18:25+0000\n"
+"POT-Creation-Date: 2009-02-10 10:46+0100\n"
 "PO-Revision-Date: 2009-01-24 18:25:14+0000\n"
 "Language-Team: Bosnian\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -104,16 +104,16 @@ msgstr ""
 "PDF napravljen uz pomoć mwlib alata otvorenog koda<br/>pogledajte http://"
 "code.pediapress.com/ za više informacija"
 
-#: mwlib/rl/rlwriter.py:266
+#: mwlib/rl/rlwriter.py:275
 msgid "layouting"
 msgstr "pravljenje pregleda"
 
-#: mwlib/rl/rlwriter.py:326
+#: mwlib/rl/rlwriter.py:335
 #, python-format
 msgid "mwlib.ext version: %(version)s"
 msgstr "mwlib.ext verzija: %(verzija)"
 
-#: mwlib/rl/rlwriter.py:332
+#: mwlib/rl/rlwriter.py:341
 #, python-format
 msgid ""
 "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
@@ -122,11 +122,11 @@ msgstr ""
 "mwlib verzija: %(mwlibversion)s, mwlib.rl verzija: %(mwlibrlversion)s, %"
 "(mwlibextversion)s"
 
-#: mwlib/rl/rlwriter.py:394
+#: mwlib/rl/rlwriter.py:403
 msgid "rendering"
 msgstr "iscrtava se"
 
-#: mwlib/rl/rlwriter.py:585
+#: mwlib/rl/rlwriter.py:594
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
@@ -136,16 +136,20 @@ msgstr ""
 "tekst.</strong><br/>Mogući uzorci ovog problema su: (a) greška u softveru "
 "pdf-pisača (b) problematični Mediawiki opisi (c) tabela je preširoka"
 
-#: mwlib/rl/rlwriter.py:594
+#: mwlib/rl/rlwriter.py:603
 msgid "<b>External links</b>"
 msgstr "<b>Vanjski linkovi</b>"
 
-#: mwlib/rl/rlwriter.py:599
+#: mwlib/rl/rlwriter.py:608
 #, python-format
 msgid "Source: %(source)s"
 msgstr "Izvor: %(izvora)"
 
-#: mwlib/rl/rlwriter.py:603
-#, python-format
-msgid "Principal Authors: %(authors)s"
+#: mwlib/rl/rlwriter.py:614
+msgid "\\g<num> anonymous edits"
+msgstr ""
+
+#: mwlib/rl/rlwriter.py:615
+#, fuzzy, python-format
+msgid "Contributors: %(authors)s"
 msgstr "Glavni autori: %(autora)"

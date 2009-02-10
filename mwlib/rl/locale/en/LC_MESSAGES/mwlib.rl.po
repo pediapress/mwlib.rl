@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-24 18:25+0000\n"
+"POT-Creation-Date: 2009-02-10 10:46+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -100,43 +100,47 @@ msgid ""
 "pediapress.com/ for more information"
 msgstr ""
 
-#: mwlib/rl/rlwriter.py:266
+#: mwlib/rl/rlwriter.py:275
 msgid "layouting"
 msgstr ""
 
-#: mwlib/rl/rlwriter.py:326
+#: mwlib/rl/rlwriter.py:335
 #, python-format
 msgid "mwlib.ext version: %(version)s"
 msgstr ""
 
-#: mwlib/rl/rlwriter.py:332
+#: mwlib/rl/rlwriter.py:341
 #, python-format
 msgid ""
 "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
 "(mwlibextversion)s"
 msgstr ""
 
-#: mwlib/rl/rlwriter.py:394
+#: mwlib/rl/rlwriter.py:403
 msgid "rendering"
 msgstr ""
 
-#: mwlib/rl/rlwriter.py:585
+#: mwlib/rl/rlwriter.py:594
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
 "software (b) problematic Mediawiki markup (c) table is too wide"
 msgstr ""
 
-#: mwlib/rl/rlwriter.py:594
+#: mwlib/rl/rlwriter.py:603
 msgid "<b>External links</b>"
 msgstr ""
 
-#: mwlib/rl/rlwriter.py:599
+#: mwlib/rl/rlwriter.py:608
 #, python-format
 msgid "Source: %(source)s"
 msgstr ""
 
-#: mwlib/rl/rlwriter.py:603
+#: mwlib/rl/rlwriter.py:614
+msgid "\\g<num> anonymous edits"
+msgstr ""
+
+#: mwlib/rl/rlwriter.py:615
 #, python-format
-msgid "Principal Authors: %(authors)s"
+msgid "Contributors: %(authors)s"
 msgstr ""

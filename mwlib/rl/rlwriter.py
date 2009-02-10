@@ -612,7 +612,7 @@ class RlWriter(object):
             author_txt = ', '.join(article.authors)
             author_txt = author_txt.replace('ANONIPEDITS:0', '')
             author_txt = re.sub('ANONIPEDITS:(?P<num>\d+)', _('\g<num> anonymous edits'), author_txt)
-            elements.append(Paragraph(_('Principal Authors: %(authors)s') % {
+            elements.append(Paragraph(_('Contributors: %(authors)s') % {
                 'authors': self.font_switcher.fontifyText(xmlescape(author_txt))
             }, text_style()))
 
