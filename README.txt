@@ -70,6 +70,14 @@ The current development version can also be found there.
 ChangeLog
 ======================================================================
 
+2009-02-03 release 0.9.4
+------------------------
+
+* improve rendering of galleries
+* improve page breaks
+* use new image scaling method from mwlib
+
+
 2009-02-03 release 0.9.3
 ------------------------
 
