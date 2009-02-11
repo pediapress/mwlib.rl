@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-10 10:46+0100\n"
+"POT-Creation-Date: 2009-02-11 16:22+0100\n"
 "PO-Revision-Date: 2009-01-24 18:25:15+0000\n"
 "Language-Team: Upper Sorbian\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,54 +18,67 @@ msgstr ""
 "X-Message-Group: out-mwlibrl\n"
 
 #: mwlib/rl/pdfmessages.py:12
+msgid "Source:"
+msgstr ""
+
+#: mwlib/rl/pdfmessages.py:14
+msgid "License:"
+msgstr ""
+
+#: mwlib/rl/pdfmessages.py:16
+#, fuzzy
+msgid "Contributors:"
+msgstr "Hłowni awtorojo: %(authors)s"
+
+#: mwlib/rl/pdfmessages.py:18
 msgid "Article Licenses"
 msgstr "Nastawkowe licency"
 
-#: mwlib/rl/pdfmessages.py:14
+#: mwlib/rl/pdfmessages.py:20
 msgid "Title"
 msgstr "Titul"
 
-#: mwlib/rl/pdfmessages.py:16
+#: mwlib/rl/pdfmessages.py:22
 msgid "Subtitle:"
 msgstr "Podtitul:"
 
-#: mwlib/rl/pdfmessages.py:18
+#: mwlib/rl/pdfmessages.py:24
 msgid "Editor:"
 msgstr "Wobdźěłar:"
 
-#: mwlib/rl/pdfmessages.py:20
+#: mwlib/rl/pdfmessages.py:26
 msgid "Created on:"
 msgstr "Wutworjeny:"
 
-#: mwlib/rl/pdfmessages.py:22
+#: mwlib/rl/pdfmessages.py:28
 msgid "Contents"
 msgstr "Wobsah"
 
-#: mwlib/rl/pdfmessages.py:24
+#: mwlib/rl/pdfmessages.py:30
 msgid "Articles"
 msgstr "Nastawki"
 
-#: mwlib/rl/pdfmessages.py:26
+#: mwlib/rl/pdfmessages.py:32
 msgid "Produced by:"
 msgstr "Produkowany wot:"
 
-#: mwlib/rl/pdfmessages.py:28
+#: mwlib/rl/pdfmessages.py:34
 msgid "pdf writer version:"
 msgstr "wersija programa pdf writer:"
 
-#: mwlib/rl/pdfmessages.py:30
+#: mwlib/rl/pdfmessages.py:36
 msgid "mwlib version:"
 msgstr "Wersija mwlib:"
 
-#: mwlib/rl/pdfmessages.py:32
+#: mwlib/rl/pdfmessages.py:38
 msgid "Table of Contents"
 msgstr "Zapis wobsaha"
 
-#: mwlib/rl/pdfmessages.py:34
+#: mwlib/rl/pdfmessages.py:40
 msgid "Skipping Articles!"
 msgstr "Nastawki so přeskakuja!"
 
-#: mwlib/rl/pdfmessages.py:36
+#: mwlib/rl/pdfmessages.py:42
 msgid ""
 "Please note:  This is only a preview intended to give an idea how the book "
 "is typeset."
@@ -73,11 +86,11 @@ msgstr ""
 "Kedźbu: To je jenož přehlad, zo by zaćišć dał, kak tuta kniha budźe so "
 "stajeć."
 
-#: mwlib/rl/pdfmessages.py:38
+#: mwlib/rl/pdfmessages.py:44
 msgid "References"
 msgstr "Referency"
 
-#: mwlib/rl/pdfmessages.py:40
+#: mwlib/rl/pdfmessages.py:46
 msgid ""
 "The following sections list the sources for all articles and images used in "
 "this book. Those sources provide more detailed licensing information "
@@ -89,17 +102,25 @@ msgstr ""
 "inkluziwnje statusa awtorskeho prawa, mějićela awtorskeho prawa a licencnych "
 "wuměnjenjow."
 
-#: mwlib/rl/pdfmessages.py:42
+#: mwlib/rl/pdfmessages.py:48
 msgid "Article Sources, Licenses and Contributors"
 msgstr "Žórła nastawkow, licency a přinošowacy"
 
-#: mwlib/rl/pdfmessages.py:44
+#: mwlib/rl/pdfmessages.py:50
 msgid "Image Sources, Licenses and Contributors"
 msgstr "Žórła wobrazow, licency a přinošowacy"
 
-#: mwlib/rl/pdfmessages.py:46
+#: mwlib/rl/pdfmessages.py:52
 msgid "Image"
 msgstr "Wobraz"
+
+#: mwlib/rl/pdfmessages.py:54
+msgid "anonymous edits"
+msgstr ""
+
+#: mwlib/rl/pdfmessages.py:56
+msgid "Figure"
+msgstr ""
 
 #: mwlib/rl/pdfstyles.py:209
 msgid ""

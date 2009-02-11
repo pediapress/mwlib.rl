@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-10 10:46+0100\n"
+"POT-Creation-Date: 2009-02-11 16:22+0100\n"
 "PO-Revision-Date: 2009-01-24 18:25:15+0000\n"
 "Language-Team: Polish\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -26,54 +26,67 @@ msgstr ""
 "X-Message-Group: out-mwlibrl\n"
 
 #: mwlib/rl/pdfmessages.py:12
+msgid "Source:"
+msgstr ""
+
+#: mwlib/rl/pdfmessages.py:14
+msgid "License:"
+msgstr ""
+
+#: mwlib/rl/pdfmessages.py:16
+#, fuzzy
+msgid "Contributors:"
+msgstr "Główni autorzy: %(authors)s"
+
+#: mwlib/rl/pdfmessages.py:18
 msgid "Article Licenses"
 msgstr "Licencje artykułu"
 
-#: mwlib/rl/pdfmessages.py:14
+#: mwlib/rl/pdfmessages.py:20
 msgid "Title"
 msgstr "Tytuł"
 
-#: mwlib/rl/pdfmessages.py:16
+#: mwlib/rl/pdfmessages.py:22
 msgid "Subtitle:"
 msgstr "Podtytuł:"
 
-#: mwlib/rl/pdfmessages.py:18
+#: mwlib/rl/pdfmessages.py:24
 msgid "Editor:"
 msgstr "Autor:"
 
-#: mwlib/rl/pdfmessages.py:20
+#: mwlib/rl/pdfmessages.py:26
 msgid "Created on:"
 msgstr "Utworzone:"
 
-#: mwlib/rl/pdfmessages.py:22
+#: mwlib/rl/pdfmessages.py:28
 msgid "Contents"
 msgstr "Treść"
 
-#: mwlib/rl/pdfmessages.py:24
+#: mwlib/rl/pdfmessages.py:30
 msgid "Articles"
 msgstr "Artykuły"
 
-#: mwlib/rl/pdfmessages.py:26
+#: mwlib/rl/pdfmessages.py:32
 msgid "Produced by:"
 msgstr "Zrobione przez:"
 
-#: mwlib/rl/pdfmessages.py:28
+#: mwlib/rl/pdfmessages.py:34
 msgid "pdf writer version:"
 msgstr "wersja eksportera pdf:"
 
-#: mwlib/rl/pdfmessages.py:30
+#: mwlib/rl/pdfmessages.py:36
 msgid "mwlib version:"
 msgstr "wersja mwlib:"
 
-#: mwlib/rl/pdfmessages.py:32
+#: mwlib/rl/pdfmessages.py:38
 msgid "Table of Contents"
 msgstr "Spis treści"
 
-#: mwlib/rl/pdfmessages.py:34
+#: mwlib/rl/pdfmessages.py:40
 msgid "Skipping Articles!"
 msgstr "Pominięto artykuły!"
 
-#: mwlib/rl/pdfmessages.py:36
+#: mwlib/rl/pdfmessages.py:42
 msgid ""
 "Please note:  This is only a preview intended to give an idea how the book "
 "is typeset."
@@ -81,11 +94,11 @@ msgstr ""
 "Uwaga. To jest wyłącznie podgląd pozwalający wyrobić sobie opinię jak "
 "wygląda książka."
 
-#: mwlib/rl/pdfmessages.py:38
+#: mwlib/rl/pdfmessages.py:44
 msgid "References"
 msgstr "Przypisy"
 
-#: mwlib/rl/pdfmessages.py:40
+#: mwlib/rl/pdfmessages.py:46
 msgid ""
 "The following sections list the sources for all articles and images used in "
 "this book. Those sources provide more detailed licensing information "
@@ -97,17 +110,25 @@ msgstr ""
 "licencjonowaniu zawierającej informację o prawach autorskich, właścicielu "
 "praw autorskich i warunkach licencji."
 
-#: mwlib/rl/pdfmessages.py:42
+#: mwlib/rl/pdfmessages.py:48
 msgid "Article Sources, Licenses and Contributors"
 msgstr "Źródła, licencje i autorzy artykułu"
 
-#: mwlib/rl/pdfmessages.py:44
+#: mwlib/rl/pdfmessages.py:50
 msgid "Image Sources, Licenses and Contributors"
 msgstr "Źródła, licencje i autorzy grafiki"
 
-#: mwlib/rl/pdfmessages.py:46
+#: mwlib/rl/pdfmessages.py:52
 msgid "Image"
 msgstr "Grafika"
+
+#: mwlib/rl/pdfmessages.py:54
+msgid "anonymous edits"
+msgstr ""
+
+#: mwlib/rl/pdfmessages.py:56
+msgid "Figure"
+msgstr ""
 
 #: mwlib/rl/pdfstyles.py:209
 msgid ""

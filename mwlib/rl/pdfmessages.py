@@ -9,6 +9,12 @@
 # Currently they are only used in the printed version.
 
 
+_('Source:')
+
+_('License:')
+
+_('Contributors:')
+
 _('Article Licenses')
 
 _('Title')
@@ -44,3 +50,7 @@ _('Article Sources, Licenses and Contributors')
 _('Image Sources, Licenses and Contributors')
 
 _('Image')
+
+_('anonymous edits')
+
+_('Figure')
