@@ -318,12 +318,15 @@ def text_style(mode='p', indent_lvl=0, in_table=0, relsize='normal', text_align=
         style.fontName = mono_font   
         style.alignment = TA_LEFT
         
-    if mode == 'list':
+    if mode == 'list' or mode == 'references':
         style.spaceBefore = 0
         style.bulletIndent = LISTINDENT * max(0, indent_lvl-1)
         style.leftIndent = LISTINDENT * indent_lvl
     else:
         style.leftIndent = indent_lvl*LEFTINDENT
+
+    if mode == 'references':
+        style.alignment = TA_LEFT
 
     if mode == 'booktitle':
         style.fontSize = 36

@@ -1394,6 +1394,8 @@ class RlWriter(object):
         listIndent = max(0,(self.listIndentation + self.paraIndentLevel))
         if self.license_mode:
             para_style = text_style(mode="licenselist",indent_lvl=listIndent)
+        elif self.ref_mode:
+            para_style = text_style(mode="references",indent_lvl=listIndent)
         else:
             para_style = text_style(mode='list', indent_lvl=listIndent, in_table=self.tableNestingLevel)
         if resetCounter: # first list item gets extra spaceBefore
