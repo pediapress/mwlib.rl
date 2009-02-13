@@ -234,6 +234,7 @@ fontsize = 10
 leading = 15
 text_align = TA_JUSTIFY # default alignment of text outside of tables TA_LEFT, TA_JUSTIFY, TA_RIGHT, TA_CENTER are valid
 table_text_align = TA_LEFT # ... inside of tables
+min_lines_after_heading = 5
 
 smallfontsize = 8
 smallleading = 12

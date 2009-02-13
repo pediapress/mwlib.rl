@@ -200,10 +200,14 @@ class FiguresAndParagraphs(Flowable):
         splittedParagraph=False
         force_split = False
         for (i,p) in enumerate(self.ps):
-            # prevent splitting right after headings
+            # force pagebreak if less than pdfstyles.min_lines_after_heading*line_height available height
             if hasattr(self.ps[i], 'style') and getattr(self.ps[i].style, 'prevent_post_pagebreak', False):
-                if len(self.ps) > i+1 and (height + self.paraHeights[i] + self.paraHeights[i+1]) > availheight:
-                    force_split= True                
+                if len(self.ps) > i+1 and hasattr(self.ps, 'style'):
+                    line_height = self.ps[i+1].style.leading
+                else:
+                    line_height = pdfstyles.leading
+                if len(self.ps) > i+1 and (height + self.paraHeights[i] + pdfstyles.min_lines_after_heading*line_height) > availheight:
+                    force_split = True                
             if (height + self.paraHeights[i]) < availheight and not force_split:
                 fittingParas.append(p)
             else:
@@ -231,7 +235,6 @@ class FiguresAndParagraphs(Flowable):
                 nextElements = nextParas
             else:
                 nextElements = []        
-
         return [FiguresAndParagraphs(fittingFigures, fittingParas, figure_margin=self.figure_margin)] + nextElements
                 
 class PreformattedBox(Preformatted):
