@@ -1139,12 +1139,13 @@ class RlWriter(object):
             align = 'center'
             
         txt = []
-        for node in img_node.children:            
-            res = self.write(node)
-            if isInline(res):
-                txt.extend(res)
-            else:
-                log.warning('imageLink contained block element: %s' % type(res))
+        if getattr(img_node, 'frame', '') != 'frameless':
+            for node in img_node.children:            
+                res = self.write(node)
+                if isInline(res):
+                    txt.extend(res)
+                else:
+                    log.warning('imageLink contained block element: %s' % type(res))
 
         is_inline = img_node.isInline()
 

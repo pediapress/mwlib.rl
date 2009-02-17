@@ -63,7 +63,7 @@ def style(attributes):
     extract the style info and return a reportlab style list
     try to guess if a border and/or frame
     """
-    borderBoxes = [u'prettytable', u'metadata', u'wikitable', u'infobox', u'toccolours', u'navbox', u'float-right']
+    borderBoxes = [u'prettytable', u'metadata', u'wikitable', u'infobox', u'toccolours', u'navbox', u'float-right', 'taxobox']
     styleList = []
     hasBorder = False
     hasGrid = False
