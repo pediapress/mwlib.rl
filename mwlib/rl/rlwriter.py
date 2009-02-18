@@ -274,7 +274,7 @@ class RlWriter(object):
         if status_callback:
             status_callback(status=_('layouting'), progress=0)
         if self.debug:
-            parser.show(sys.stdout, bookParseTree, verbose=True)
+            #parser.show(sys.stdout, bookParseTree, verbose=True)
             pass
 
         advtree.buildAdvancedTree(bookParseTree)
@@ -287,7 +287,7 @@ class RlWriter(object):
         self.articlecount = 0
         
         if self.debug:
-            #parser.show(sys.stdout, bookParseTree, verbose=True)
+            parser.show(sys.stdout, bookParseTree, verbose=True)
             print "TREECLEANER REPORTS:"
             print "\n".join([repr(r) for r in tc.getReports()])
             
@@ -510,6 +510,7 @@ class RlWriter(object):
         if not obj.children:
             return ''
         self.sectionTitle = True       
+
         headingTxt = ''.join(self.renderInline(obj.children[0])).strip()
         self.sectionTitle = False
         if lvl <= 4 and self.inline_mode == 0 and self.tableNestingLevel==0:
