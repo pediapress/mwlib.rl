@@ -323,7 +323,7 @@ class RlWriter(object):
 
     def getArticleIDs(self, parseTree):
         for article in parseTree.getChildNodesByClass(advtree.Article):
-            article_id = self.idFromURL(article.url)
+            article_id = self.buildArticleID(article.wikiurl, article.caption)
             self.articleids.append(article_id)
 
     def tocCallback(self, info):
@@ -535,19 +535,14 @@ class RlWriter(object):
         elements.extend([Spacer(0, 0.5*cm), HRFlowable(width="100%", thickness=2), Spacer(0,1*cm)])
         return elements
 
-    def idFromURL(self, url):
-        if not url:
-            return ''
-        url = self.normaliseURLs(url)
-        m = md5(url)
+    def buildArticleID(self, wikiurl, article_name):
+        tmplink = advtree.Link()
+        tmplink.target = article_name
+        tmplink.capitalizeTarget = True # this is a hack, this info should pulled out of the environment if available
+        tmplink._normalizeTarget()
+        idstr = '%s%s' % (wikiurl, tmplink.target)
+        m = md5(idstr.encode('utf-8'))
         return m.hexdigest()
-
-    def normaliseURLs(self, url):
-        url = url.encode('utf-8')
-        #first letter of the title has to be large
-        source = re.search(r"(.*?title=)", url).groups()[0]
-        title = re.search(r".*title=(.*)", url).groups()[0]
-        return "%s%s%s" % (source, title[:1].upper(), title[1:])
     
     def writeArticle(self, article):
         self.references = [] 
@@ -576,7 +571,7 @@ class RlWriter(object):
         #add anchor for internal links
         url = getattr(article, 'url', None)
         if url:
-            article_id = self.idFromURL(url)
+            article_id = self.buildArticleID(article.wikiurl, article.caption)
             heading_anchor = "%s%s" % (heading_anchor, '<a name="%s" />' % article_id)
 
         if self.license_mode:            
@@ -947,8 +942,11 @@ class RlWriter(object):
         #looking for internal links
         internallink = False
         if isinstance(obj, advtree.ArticleLink) and obj.url:            
-            url = unicode(urllib.unquote(obj.url.encode('utf-8')), 'utf-8')
-            article_id = self.idFromURL(url)
+            a = obj.getParentNodesByClass(advtree.Article)
+            wikiurl = ''
+            if a:
+                wikiurl = getattr(a[0], 'wikiurl', '')
+            article_id = self.buildArticleID(wikiurl, obj.target)
             if article_id in self.articleids:
                 internallink = True
         
