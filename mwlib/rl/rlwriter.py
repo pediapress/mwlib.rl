@@ -607,7 +607,7 @@ class RlWriter(object):
             elements.extend([Spacer(0, 0.5*cm),
                             Paragraph(_('Source: %(source)s') % {
                                 'source': self.font_switcher.fontifyText(xmlescape(article.url), breakLong=True),
-                            }, text_style())])
+                            }, text_style(mode='articlefoot'))])
         if pdfstyles.showArticleAuthors and getattr(article, 'authors', None):
             author_txt = ', '.join(article.authors)
             author_txt = author_txt.replace('ANONIPEDITS:0', '')
@@ -616,7 +616,7 @@ class RlWriter(object):
             author_txt = re.sub('ANONIPEDITS:(?P<num>\d+)', _('\g<num> anonymous edits'), author_txt)
             elements.append(Paragraph(_('Contributors: %(authors)s') % {
                 'authors': self.font_switcher.fontifyText(xmlescape(author_txt))
-            }, text_style()))
+            }, text_style(mode='articlefoot')))
 
         if self.layout_status:
             if not self.numarticles:

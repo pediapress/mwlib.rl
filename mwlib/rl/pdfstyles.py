@@ -276,7 +276,7 @@ class BaseStyle(ParagraphStyle):
 def text_style(mode='p', indent_lvl=0, in_table=0, relsize='normal', text_align='left'):
     """
     mode: p (normal paragraph), blockquote, center (centered paragraph), footer, figure (figure caption text),
-          preformatted, list, license, licenselist, box
+          preformatted, list, license, licenselist, box, references, articlefoot
     relsize: relative text size: small, normal, big  (currently only used for preformatted nodes
     indent_lvl: level of indentation in lists or indented paragraphs
     in_table: 0 - outside table
@@ -309,6 +309,13 @@ def text_style(mode='p', indent_lvl=0, in_table=0, relsize='normal', text_align=
     if mode in ['footer', 'figure', 'center']:
         style.alignment = TA_CENTER
 
+    if mode in ['references', 'articlefoot', 'source', 'preformatted']:
+        style.alignment = TA_LEFT
+
+    if mode == 'articlefoot':
+        style.fontSize=smallfontsize
+        style.leading=smallleading
+
     if mode == 'box' or mode == 'source' or mode == 'preformatted':
         style.backColor = '#eeeeee'
         style.borderPadding = 3 # borderPadding is not calculated onto the box dimensions.
@@ -317,7 +324,6 @@ def text_style(mode='p', indent_lvl=0, in_table=0, relsize='normal', text_align=
     
     if mode == 'source' or mode == 'preformatted':
         style.fontName = mono_font   
-        style.alignment = TA_LEFT
         
     if mode == 'list' or mode == 'references':
         style.spaceBefore = 0
@@ -326,8 +332,6 @@ def text_style(mode='p', indent_lvl=0, in_table=0, relsize='normal', text_align=
     else:
         style.leftIndent = indent_lvl*LEFTINDENT
 
-    if mode == 'references':
-        style.alignment = TA_LEFT
 
     if mode == 'booktitle':
         style.fontSize = 36
