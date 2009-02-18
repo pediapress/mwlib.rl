@@ -70,7 +70,7 @@ The current development version can also be found there.
 ChangeLog
 ======================================================================
 
-2009-02-18 release 0.9.5
+2009-02-18 release 0.9.7
 ------------------------
 
 * add translations
