@@ -611,6 +611,8 @@ class RlWriter(object):
         if pdfstyles.showArticleAuthors and getattr(article, 'authors', None):
             author_txt = ', '.join(article.authors)
             author_txt = author_txt.replace('ANONIPEDITS:0', '')
+            if author_txt.endswith(', '):
+                author_txt=author_txt[:-2]
             author_txt = re.sub('ANONIPEDITS:(?P<num>\d+)', _('\g<num> anonymous edits'), author_txt)
             elements.append(Paragraph(_('Contributors: %(authors)s') % {
                 'authors': self.font_switcher.fontifyText(xmlescape(author_txt))
@@ -1135,7 +1137,7 @@ class RlWriter(object):
         w, h = self.image_utils.getImageSize(img_node, img_path, max_print_width=max_width, max_print_height=max_height)
 
         align = img_node.align
-        if advtree.Center  in [ p.__class__ for p in img_node.getParents()]:
+        if advtree.Center in [ p.__class__ for p in img_node.getParents()]:
             align = 'center'
             
         txt = []
