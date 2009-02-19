@@ -70,6 +70,11 @@ The current development version can also be found there.
 ChangeLog
 ======================================================================
 
+2009-02-19 release 0.9.8
+------------------------
+
+* xmlescape title and subtitle
+
 2009-02-18 release 0.9.7
 ------------------------
 
