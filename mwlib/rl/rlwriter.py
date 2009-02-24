@@ -287,7 +287,7 @@ class RlWriter(object):
         self.articlecount = 0
         
         if self.debug:
-            parser.show(sys.stdout, bookParseTree, verbose=True)
+            #parser.show(sys.stdout, bookParseTree, verbose=True)
             print "TREECLEANER REPORTS:"
             print "\n".join([repr(r) for r in tc.getReports()])
             
@@ -1325,7 +1325,8 @@ class RlWriter(object):
             ref_num = self.ref_name_map.get(ref_name, '')
         else:
             i = parser.Item()
-            i.children = [c for c in n.children]
+            for c in n.children:
+                i.appendChild(c)            
             self.references.append(i)
             ref_num = len(self.references)
             self.ref_name_map[ref_name] = ref_num
