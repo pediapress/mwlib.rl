@@ -287,7 +287,7 @@ class RlWriter(object):
         self.articlecount = 0
         
         if self.debug:
-            #parser.show(sys.stdout, bookParseTree, verbose=True)
+            parser.show(sys.stdout, bookParseTree, verbose=True)
             print "TREECLEANER REPORTS:"
             print "\n".join([repr(r) for r in tc.getReports()])
             
@@ -829,7 +829,7 @@ class RlWriter(object):
             if self.license_mode:
                 para_style = text_style("license")
             else:
-                para_style = text_style(in_table=self.tableNestingLevel)
+                para_style = text_style(indent_lvl=self.paraIndentLevel,in_table=self.tableNestingLevel)
         txt = []
         if textPrefix:
             txt.append(textPrefix)
