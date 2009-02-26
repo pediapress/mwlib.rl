@@ -102,7 +102,7 @@ msgid ""
 "this book. Those sources provide more detailed licensing information "
 "including the copyright status, the copyright owner, and the license "
 "conditions."
-msgstr ""
+msgstr "In den folgenden Sektionen werden Quellen zu allen in diesem Buch auftretenden Artikeln und Bildern aufgelistet. Die Quellen enthalten detaillierte Informationen über die Urheber, sowie weiterführende Lizenzinformationen."
 
 #: mwlib/rl/pdfmessages.py:48
 msgid "Article Sources, Licenses and Contributors"

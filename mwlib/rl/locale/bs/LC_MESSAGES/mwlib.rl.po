@@ -132,7 +132,7 @@ msgstr "pravljenje pregleda"
 #: mwlib/rl/rlwriter.py:335
 #, python-format
 msgid "mwlib.ext version: %(version)s"
-msgstr "mwlib.ext verzija: %(verzija)"
+msgstr "mwlib.ext verzija: %(version)s"
 
 #: mwlib/rl/rlwriter.py:341
 #, python-format
@@ -164,7 +164,7 @@ msgstr "<b>Vanjski linkovi</b>"
 #: mwlib/rl/rlwriter.py:608
 #, python-format
 msgid "Source: %(source)s"
-msgstr "Izvor: %(izvora)"
+msgstr "Izvor: %(source)s"
 
 #: mwlib/rl/rlwriter.py:614
 msgid "\\g<num> anonymous edits"
