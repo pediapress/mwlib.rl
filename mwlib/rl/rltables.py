@@ -247,6 +247,7 @@ def reformatTable(t, maxCols):
 
 def splitListItems(t):
     nt = t.copy()
+    nt.children = []
     for r in t.children:
         nr = Row()
         cols = []
