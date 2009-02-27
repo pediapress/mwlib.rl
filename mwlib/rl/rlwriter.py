@@ -601,8 +601,9 @@ class RlWriter(object):
 
         if pdfstyles.showArticleSource and getattr(article,'url', None):
             elements.extend([Spacer(0, 0.5*cm),
-                            Paragraph(_('Source: %(source)s') % {
+                            Paragraph(_('Source: <link href="%(url)s">%(source)s</link>') % {
                                 'source': self.font_switcher.fontifyText(xmlescape(article.url), breakLong=True),
+                                'url': xmlescape(article.url),
                             }, text_style(mode='articlefoot'))])
         if pdfstyles.showArticleAuthors and getattr(article, 'authors', None):
             author_txt = ', '.join(article.authors)
