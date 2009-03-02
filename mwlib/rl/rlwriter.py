@@ -1094,7 +1094,7 @@ class RlWriter(object):
         else:
             no_mask = False
         if img.info.get('interlace',0) == 1:
-            log.warning("got interlaced PNG which can't be handeled by PIL")
+            log.warning("got interlaced PNG which can't be handeled by PIL: %r" % img_path)
             raise # FIXME raise proper exception
         try:
             d = img.load()
