@@ -1141,7 +1141,8 @@ class RlWriter(object):
             align = 'center'
             
         txt = []
-        if getattr(img_node, 'frame', '') != 'frameless':
+        print vars(img_node)
+        if getattr(img_node, 'frame', '') != 'frameless' and not getattr(img_node, 'align', '') == 'none':
             for node in img_node.children:            
                 res = self.write(node)
                 if isInline(res):
