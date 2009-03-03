@@ -309,7 +309,7 @@ def text_style(mode='p', indent_lvl=0, in_table=0, relsize='normal', text_align=
     if mode in ['footer', 'figure', 'center']:
         style.alignment = TA_CENTER
 
-    if mode in ['references', 'articlefoot', 'source', 'preformatted']:
+    if mode in ['references', 'articlefoot', 'source', 'preformatted', 'list']:
         style.alignment = TA_LEFT
 
     if mode == 'articlefoot':

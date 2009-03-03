@@ -212,6 +212,7 @@ class RlWriter(object):
         self.enable_toc = enable_toc
         self.toc_entries = []
         self.toc_renderer = TocRenderer()
+        self.reference_list_rendered = False
         
     def ignore(self, obj):
         return []
@@ -596,7 +597,7 @@ class RlWriter(object):
         elements = self.tabularizeImages(elements)
 
         if self.references:
-            elements.append(Paragraph(_('<b>External links</b>'), heading_style('section', lvl=3)))
+            elements.append(Paragraph(_('<b>References</b>'), heading_style('section', lvl=3)))
             elements.extend(self.writeReferenceList())
 
         if pdfstyles.showArticleSource and getattr(article,'url', None):
@@ -1013,7 +1014,7 @@ class RlWriter(object):
     
     def writeNamedURL(self,obj):
         href = obj.caption.strip()
-        if not self.ref_mode:
+        if not self.ref_mode and not self.reference_list_rendered:
             i = parser.Item()
             i.children = [advtree.URL(href)]
             self.references.append(i)
@@ -1141,7 +1142,6 @@ class RlWriter(object):
             align = 'center'
             
         txt = []
-        print vars(img_node)
         if getattr(img_node, 'frame', '') != 'frameless' and not getattr(img_node, 'align', '') == 'none':
             for node in img_node.children:            
                 res = self.write(node)
@@ -1344,6 +1344,7 @@ class RlWriter(object):
             refList = self.writeItemList(self.references, style="referencelist")
             self.references = []
             self.ref_mode = False
+            self.reference_list_rendered = True
             return refList
         else:
             return []
