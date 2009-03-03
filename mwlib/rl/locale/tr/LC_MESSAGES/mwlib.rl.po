@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-11 16:22+0100\n"
+"POT-Creation-Date: 2009-03-03 11:48+0100\n"
 "PO-Revision-Date: 2009-01-24 18:25:15+0000\n"
 "Language-Team: Turkish\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -85,7 +85,7 @@ msgid ""
 "is typeset."
 msgstr ""
 
-#: mwlib/rl/pdfmessages.py:44
+#: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:600
 msgid "References"
 msgstr ""
 
@@ -125,16 +125,16 @@ msgstr ""
 "PDF, açık kaynak mwlib toolkit kullanılarak oluşturuldu<br/>daha fazla bilgi "
 "için http://code.pediapress.com/"
 
-#: mwlib/rl/rlwriter.py:275
+#: mwlib/rl/rlwriter.py:276
 msgid "layouting"
 msgstr "yerleştiriliyor"
 
-#: mwlib/rl/rlwriter.py:335
+#: mwlib/rl/rlwriter.py:336
 #, python-format
 msgid "mwlib.ext version: %(version)s"
 msgstr "mwlib.ext versiyonu: %(version)s"
 
-#: mwlib/rl/rlwriter.py:341
+#: mwlib/rl/rlwriter.py:342
 #, python-format
 msgid ""
 "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
@@ -143,11 +143,11 @@ msgstr ""
 "mwlib versiyonu: %(mwlibversion)s, mwlib.rl versiyonu: %(mwlibrlversion)s, %"
 "(mwlibextversion)s"
 
-#: mwlib/rl/rlwriter.py:403
+#: mwlib/rl/rlwriter.py:404
 msgid "rendering"
 msgstr "işleniyor"
 
-#: mwlib/rl/rlwriter.py:594
+#: mwlib/rl/rlwriter.py:591
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
@@ -157,14 +157,10 @@ msgstr ""
 "problemin muhtemel sebepleri: (a) pdf-yazıcı yazılımında bir hata (b) "
 "problemli Medyaviki biçimlendirmesi (c) tablo çok geniş"
 
-#: mwlib/rl/rlwriter.py:603
-msgid "<b>External links</b>"
-msgstr "<b>Dış bağlantılar</b>"
-
-#: mwlib/rl/rlwriter.py:608
+#: mwlib/rl/rlwriter.py:605
 #, python-format
-msgid "Source: %(source)s"
-msgstr "Kaynak: %(source)s"
+msgid "Source: <link href=\"%(url)s\">%(source)s</link>"
+msgstr ""
 
 #: mwlib/rl/rlwriter.py:614
 msgid "\\g<num> anonymous edits"
@@ -174,3 +170,9 @@ msgstr ""
 #, fuzzy, python-format
 msgid "Contributors: %(authors)s"
 msgstr "Başlıca Yazarlar: %(authors)s"
+
+#~ msgid "<b>External links</b>"
+#~ msgstr "<b>Dış bağlantılar</b>"
+
+#~ msgid "Source: %(source)s"
+#~ msgstr "Kaynak: %(source)s"

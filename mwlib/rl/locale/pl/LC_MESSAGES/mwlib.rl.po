@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-11 16:22+0100\n"
+"POT-Creation-Date: 2009-03-03 11:48+0100\n"
 "PO-Revision-Date: 2009-01-24 18:25:15+0000\n"
 "Language-Team: Polish\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -94,7 +94,7 @@ msgstr ""
 "Uwaga. To jest wyłącznie podgląd pozwalający wyrobić sobie opinię jak "
 "wygląda książka."
 
-#: mwlib/rl/pdfmessages.py:44
+#: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:600
 msgid "References"
 msgstr "Przypisy"
 
@@ -138,16 +138,16 @@ msgstr ""
 "PDF wygenerowany przez bibliotekę open source mwlib<br/>więcej informacji na "
 "http://code.pediapress.com/"
 
-#: mwlib/rl/rlwriter.py:275
+#: mwlib/rl/rlwriter.py:276
 msgid "layouting"
 msgstr "tworzenie układu"
 
-#: mwlib/rl/rlwriter.py:335
+#: mwlib/rl/rlwriter.py:336
 #, python-format
 msgid "mwlib.ext version: %(version)s"
 msgstr "wersja mwlib.ext: %(version)s"
 
-#: mwlib/rl/rlwriter.py:341
+#: mwlib/rl/rlwriter.py:342
 #, python-format
 msgid ""
 "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
@@ -156,11 +156,11 @@ msgstr ""
 "wersja mwlib: %(mwlibversion)s, wersja mwlib.rl: %(mwlibrlversion)s, %"
 "(mwlibextversion)s"
 
-#: mwlib/rl/rlwriter.py:403
+#: mwlib/rl/rlwriter.py:404
 msgid "rendering"
 msgstr "renderowanie"
 
-#: mwlib/rl/rlwriter.py:594
+#: mwlib/rl/rlwriter.py:591
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
@@ -170,14 +170,10 @@ msgstr ""
 "czysty tekst.</strong><br/>Potencjalne przyczyny problemów: (a) błąd w "
 "programie pdf-writer (b) problematyczny kod MediaWiki (c) zbyt szeroka tabela"
 
-#: mwlib/rl/rlwriter.py:603
-msgid "<b>External links</b>"
-msgstr "<b>Linki zewnętrzne</b>"
-
-#: mwlib/rl/rlwriter.py:608
+#: mwlib/rl/rlwriter.py:605
 #, python-format
-msgid "Source: %(source)s"
-msgstr "Źródło: %(source)s"
+msgid "Source: <link href=\"%(url)s\">%(source)s</link>"
+msgstr ""
 
 #: mwlib/rl/rlwriter.py:614
 msgid "\\g<num> anonymous edits"
@@ -187,3 +183,13 @@ msgstr ""
 #, fuzzy, python-format
 msgid "Contributors: %(authors)s"
 msgstr "Główni autorzy: %(authors)s"
+
+#, fuzzy
+#~ msgid "<b>References</b>"
+#~ msgstr "Przypisy"
+
+#~ msgid "<b>External links</b>"
+#~ msgstr "<b>Linki zewnętrzne</b>"
+
+#~ msgid "Source: %(source)s"
+#~ msgstr "Źródło: %(source)s"

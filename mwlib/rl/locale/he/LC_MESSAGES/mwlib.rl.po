@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-11 16:22+0100\n"
+"POT-Creation-Date: 2009-03-03 11:48+0100\n"
 "PO-Revision-Date: 2009-01-24 18:25:15+0000\n"
 "Language-Team: Hebrew\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -86,7 +86,7 @@ msgid ""
 "is typeset."
 msgstr ""
 
-#: mwlib/rl/pdfmessages.py:44
+#: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:600
 msgid "References"
 msgstr ""
 
@@ -126,16 +126,16 @@ msgstr ""
 "מסמך ה־PDF נוצר באמצעות ערכת הכלים mwlib המופצת בקוד פתוח<br />בקרו באתר "
 "http://code.pediapress.com/ למידע נוסף"
 
-#: mwlib/rl/rlwriter.py:275
+#: mwlib/rl/rlwriter.py:276
 msgid "layouting"
 msgstr "פריסה"
 
-#: mwlib/rl/rlwriter.py:335
+#: mwlib/rl/rlwriter.py:336
 #, python-format
 msgid "mwlib.ext version: %(version)s"
 msgstr "גרסת mwlib.ext: %(version)s"
 
-#: mwlib/rl/rlwriter.py:341
+#: mwlib/rl/rlwriter.py:342
 #, python-format
 msgid ""
 "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
@@ -144,11 +144,11 @@ msgstr ""
 "גרסת mwlib: %(mwlibversion)s, גרסת mwlib.rl: %(mwlibrlversion)s, %"
 "(mwlibextversion)s"
 
-#: mwlib/rl/rlwriter.py:403
+#: mwlib/rl/rlwriter.py:404
 msgid "rendering"
 msgstr "עיבוד"
 
-#: mwlib/rl/rlwriter.py:594
+#: mwlib/rl/rlwriter.py:591
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
@@ -158,14 +158,10 @@ msgstr ""
 ">הגורמים האפשריים לתקלה הינם: (א) תקלה בתוכנת ה־pdf-writer (ב) תחביר ויקי "
 "בעייתי (ג) טבלה רחבה מדי"
 
-#: mwlib/rl/rlwriter.py:603
-msgid "<b>External links</b>"
-msgstr "<b>קישורים חיצוניים</b>"
-
-#: mwlib/rl/rlwriter.py:608
+#: mwlib/rl/rlwriter.py:605
 #, python-format
-msgid "Source: %(source)s"
-msgstr "מקור: %(source)s"
+msgid "Source: <link href=\"%(url)s\">%(source)s</link>"
+msgstr ""
 
 #: mwlib/rl/rlwriter.py:614
 msgid "\\g<num> anonymous edits"
@@ -175,3 +171,9 @@ msgstr ""
 #, fuzzy, python-format
 msgid "Contributors: %(authors)s"
 msgstr "עורכים ראשיים: %(authors)s"
+
+#~ msgid "<b>External links</b>"
+#~ msgstr "<b>קישורים חיצוניים</b>"
+
+#~ msgid "Source: %(source)s"
+#~ msgstr "מקור: %(source)s"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-11 16:22+0100\n"
+"POT-Creation-Date: 2009-03-03 11:48+0100\n"
 "PO-Revision-Date: 2009-01-24 18:25:15+0000\n"
 "Language-Team: Simplified Chinese\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -85,7 +85,7 @@ msgid ""
 "is typeset."
 msgstr ""
 
-#: mwlib/rl/pdfmessages.py:44
+#: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:600
 msgid "References"
 msgstr ""
 
@@ -125,16 +125,16 @@ msgstr ""
 "PDF文件均是使用开源软件mwlib工具生成<br/>请参见 http://code.pediapress.com/ "
 "以获得更多信息"
 
-#: mwlib/rl/rlwriter.py:275
+#: mwlib/rl/rlwriter.py:276
 msgid "layouting"
 msgstr "页面设置"
 
-#: mwlib/rl/rlwriter.py:335
+#: mwlib/rl/rlwriter.py:336
 #, python-format
 msgid "mwlib.ext version: %(version)s"
 msgstr "mwlib.ext 版本： %(version)s"
 
-#: mwlib/rl/rlwriter.py:341
+#: mwlib/rl/rlwriter.py:342
 #, python-format
 msgid ""
 "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
@@ -143,11 +143,11 @@ msgstr ""
 "mwlib版本：%(mwlibversion)s、mwlib.rl 版本：%(mwlibrlversion)s、%"
 "(mwlibextversion)s"
 
-#: mwlib/rl/rlwriter.py:403
+#: mwlib/rl/rlwriter.py:404
 msgid "rendering"
 msgstr "处理"
 
-#: mwlib/rl/rlwriter.py:594
+#: mwlib/rl/rlwriter.py:591
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
@@ -156,14 +156,10 @@ msgstr ""
 "<strong>警告：文章无法被处理 —— 输出为纯文本。</strong><br/>可能的原因：(a) "
 "pdf生成软件存在问题 (b) Mediawiki的标记存在问题 (c) 表格过宽"
 
-#: mwlib/rl/rlwriter.py:603
-msgid "<b>External links</b>"
-msgstr "<b>外部链接</b>"
-
-#: mwlib/rl/rlwriter.py:608
+#: mwlib/rl/rlwriter.py:605
 #, python-format
-msgid "Source: %(source)s"
-msgstr "源文件： %(source)s"
+msgid "Source: <link href=\"%(url)s\">%(source)s</link>"
+msgstr ""
 
 #: mwlib/rl/rlwriter.py:614
 msgid "\\g<num> anonymous edits"
@@ -173,3 +169,9 @@ msgstr ""
 #, fuzzy, python-format
 msgid "Contributors: %(authors)s"
 msgstr "主要作者： %(authors)s"
+
+#~ msgid "<b>External links</b>"
+#~ msgstr "<b>外部链接</b>"
+
+#~ msgid "Source: %(source)s"
+#~ msgstr "源文件： %(source)s"

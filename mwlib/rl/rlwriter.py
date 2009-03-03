@@ -597,7 +597,7 @@ class RlWriter(object):
         elements = self.tabularizeImages(elements)
 
         if self.references:
-            elements.append(Paragraph(_('<b>References</b>'), heading_style('section', lvl=3)))
+            elements.append(Paragraph('<b>' + _('References') + '</b>', heading_style('section', lvl=3)))
             elements.extend(self.writeReferenceList())
 
         if pdfstyles.showArticleSource and getattr(article,'url', None):

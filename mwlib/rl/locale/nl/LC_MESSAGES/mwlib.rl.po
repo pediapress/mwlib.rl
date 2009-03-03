@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-11 16:22+0100\n"
+"POT-Creation-Date: 2009-03-03 11:48+0100\n"
 "PO-Revision-Date: 2009-01-24 18:25:15+0000\n"
 "Language-Team: Dutch\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -87,7 +87,7 @@ msgstr ""
 "Let op: dit is enkel een voorvertoning die ervoor dient om een idee te geven "
 "over hoe het boek eruit komt te zien."
 
-#: mwlib/rl/pdfmessages.py:44
+#: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:600
 msgid "References"
 msgstr "Referenties"
 
@@ -131,16 +131,16 @@ msgstr ""
 "De PDF is gemaakt met de open broncode toolkit mwlib<br />Zie http://code."
 "pediapress.com/ voor meer informatie"
 
-#: mwlib/rl/rlwriter.py:275
+#: mwlib/rl/rlwriter.py:276
 msgid "layouting"
 msgstr "vormgeving"
 
-#: mwlib/rl/rlwriter.py:335
+#: mwlib/rl/rlwriter.py:336
 #, python-format
 msgid "mwlib.ext version: %(version)s"
 msgstr "mwlib.ext-versie: %(version)s"
 
-#: mwlib/rl/rlwriter.py:341
+#: mwlib/rl/rlwriter.py:342
 #, python-format
 msgid ""
 "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
@@ -149,11 +149,11 @@ msgstr ""
 "mwlib-versie: %(mwlibversion)s, mwlib.rl-versie: %(mwlibrlversion)s, %"
 "(mwlibextversion)s"
 
-#: mwlib/rl/rlwriter.py:403
+#: mwlib/rl/rlwriter.py:404
 msgid "rendering"
 msgstr "bezig met verwerken"
 
-#: mwlib/rl/rlwriter.py:594
+#: mwlib/rl/rlwriter.py:591
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
@@ -164,14 +164,10 @@ msgstr ""
 "fout in de software om de PDF te maken (b) niet te verwerken wikicode (c) te "
 "brede tabellen"
 
-#: mwlib/rl/rlwriter.py:603
-msgid "<b>External links</b>"
-msgstr "<b>Externe verwijzingen</b>"
-
-#: mwlib/rl/rlwriter.py:608
+#: mwlib/rl/rlwriter.py:605
 #, python-format
-msgid "Source: %(source)s"
-msgstr "Bron: %(source)s"
+msgid "Source: <link href=\"%(url)s\">%(source)s</link>"
+msgstr ""
 
 #: mwlib/rl/rlwriter.py:614
 msgid "\\g<num> anonymous edits"
@@ -181,3 +177,13 @@ msgstr ""
 #, fuzzy, python-format
 msgid "Contributors: %(authors)s"
 msgstr "Belangrijkste auteurs: %(author)s"
+
+#, fuzzy
+#~ msgid "<b>References</b>"
+#~ msgstr "Referenties"
+
+#~ msgid "<b>External links</b>"
+#~ msgstr "<b>Externe verwijzingen</b>"
+
+#~ msgid "Source: %(source)s"
+#~ msgstr "Bron: %(source)s"
