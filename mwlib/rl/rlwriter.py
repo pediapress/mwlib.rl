@@ -280,7 +280,9 @@ class RlWriter(object):
 
         advtree.buildAdvancedTree(bookParseTree)
         tc = TreeCleaner(bookParseTree, save_reports=self.debug)
-        tc.cleanAll(skipMethods='fixPreFormatted') # FIXME: check if the fixPreFormatted method makes sense for mwlib.rl
+        tc.cleanAll(skipMethods=['fixPreFormatted',
+                                 'removeEmptyReferenceLists',
+                                 ]) # FIXME: check if the fixPreFormatted method makes sense for mwlib.rl
 
         self.getArticleIDs(bookParseTree)
 
@@ -1142,7 +1144,10 @@ class RlWriter(object):
             align = 'center'
             
         txt = []
+        #print "*"*20
+        #print vars(img_node)
         if getattr(img_node, 'frame', '') != 'frameless' and not getattr(img_node, 'align', '') == 'none':
+        #if (getattr(img_node, 'thumb') or getattr(img_node, 'frame', '') == 'frame') and not getattr(img_node, 'align', '') == 'none':
             for node in img_node.children:            
                 res = self.write(node)
                 if isInline(res):
