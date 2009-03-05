@@ -1144,10 +1144,8 @@ class RlWriter(object):
             align = 'center'
             
         txt = []
-        #print "*"*20
-        #print vars(img_node)
-        if getattr(img_node, 'frame', '') != 'frameless' and not getattr(img_node, 'align', '') == 'none':
-        #if (getattr(img_node, 'thumb') or getattr(img_node, 'frame', '') == 'frame') and not getattr(img_node, 'align', '') == 'none':
+        #if getattr(img_node, 'frame', '') != 'frameless' and not getattr(img_node, 'align', '') == 'none':
+        if (getattr(img_node, 'thumb') or getattr(img_node, 'frame', '') == 'frame') and not getattr(img_node, 'align', '') == 'none':
             for node in img_node.children:            
                 res = self.write(node)
                 if isInline(res):
@@ -1448,7 +1446,10 @@ class RlWriter(object):
         colspan = cell.attributes.get('colspan', 1)
         rowspan = cell.attributes.get('rowspan', 1)
         align = cell.attributes.get('align') or row.attributes.get('align')
-        elements = self.renderMixed(cell, text_style(in_table=self.tableNestingLevel, text_align=align))
+        elements = []
+        if cell.getChildNodesByClass(advtree.NamedURL) or cell.getChildNodesByClass(advtree.Reference) or cell.getChildNodesByClass(advtree.Sup):
+            elements.append(Spacer(0, 1))            
+        elements.extend(self.renderMixed(cell, text_style(in_table=self.tableNestingLevel, text_align=align)))
         return {'content':elements,
                 'rowspan':rowspan,
                 'colspan':colspan}
