@@ -70,6 +70,13 @@ The current development version can also be found there.
 ChangeLog
 ======================================================================
 
+2009-03-05 release 0.9.10
+------------------------
+
+* insert conditional pagebreaks before articles
+* minor fixes
+
+
 2009-03-02 release 0.9.9
 ------------------------
 
