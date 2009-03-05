@@ -199,6 +199,9 @@ pageBreakAfterArticle = False
 showArticleSource = True        # Set to False in customConfig.py to exclude article source URL from the output.
 showArticleAuthors = True       # Set to False in customConfig.py to exclude principal author information from the output.
 
+article_start_min_space = 0.5*printHeight # if less space is available on the current page a page break is inserted
+article_start_min_space_infobox = 0.9*printHeight # as above. but if the article starts with an infobox the required space should be higher
+
 # NOTE: strings can contain reportlab styling tags the text needs to be xml excaped.
 # more information is available in the reportlab user documentation (http://www.reportlab.com/docs/userguide.pdf)
 # check the section 6.2 "Paragraph XML Markup Tags"

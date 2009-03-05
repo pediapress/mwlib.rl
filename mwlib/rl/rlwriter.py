@@ -53,7 +53,7 @@ from pagetemplates import PPDocTemplate
 
 from reportlab.platypus.doctemplate import NextPageTemplate, NotAtTopPageBreak
 from reportlab.platypus.tables import Table
-from reportlab.platypus.flowables import Spacer, HRFlowable, PageBreak, KeepTogether, Image
+from reportlab.platypus.flowables import Spacer, HRFlowable, PageBreak, KeepTogether, Image, CondPageBreak
 from reportlab.platypus.xpreformatted import XPreformatted
 from reportlab.lib.units import cm
 from reportlab.lib import colors
@@ -73,6 +73,7 @@ from pdfstyles import maxCharsInSourceLine
 import pdfstyles 
 from mwlib import styleutils
 from mwlib.writer.imageutils import ImageUtils
+from mwlib.writer import miscutils
 
 import rltables
 from pagetemplates import WikiPage, TitlePage, SimplePage
@@ -554,14 +555,19 @@ class RlWriter(object):
         if self.layout_status:
             self.layout_status(article=title)
             self.articlecount += 1
-            
         elements = []
         pt = WikiPage(title)
         if hasattr(self, 'doc'): # doc is not present if tests are run
             self.doc.addPageTemplates(pt)
             elements.append(NextPageTemplate(title.encode('utf-8'))) # pagetemplate.id cant handle unicode
-            if pdfstyles.pageBreakAfterArticle and isinstance(article.getPrevious(), advtree.Article) or self.license_mode: # if configured and preceded by an article
-                elements.append(NotAtTopPageBreak())
+            if isinstance(article.getPrevious(), advtree.Article) or self.license_mode:
+                if pdfstyles.pageBreakAfterArticle: # if configured and preceded by an article
+                    elements.append(NotAtTopPageBreak())
+                elif miscutils.articleStartsWithInfobox(article, max_text_until_infobox=100):
+                    print "got article starting with infobox:", article.caption
+                    elements.append(CondPageBreak(pdfstyles.article_start_min_space_infobox))
+                else:
+                    elements.append(CondPageBreak(pdfstyles.article_start_min_space))
 
         title = self.font_switcher.fontifyText(title, defaultFont=serif_font, breakLong=True)
         self.currentArticle = repr(title)
