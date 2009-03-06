@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-03 11:48+0100\n"
-"PO-Revision-Date: 2009-01-24 18:25:15+0000\n"
+"POT-Creation-Date: 2009-03-06 14:28+0100\n"
+"PO-Revision-Date: 2009-03-06 14:46+0100\n"
 "Language-Team: Spanish\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,53 +19,51 @@ msgstr ""
 
 #: mwlib/rl/pdfmessages.py:12
 msgid "Source:"
-msgstr ""
+msgstr "Fuente:"
 
 #: mwlib/rl/pdfmessages.py:14
 msgid "License:"
-msgstr ""
+msgstr "Licencia:"
 
 #: mwlib/rl/pdfmessages.py:16
-#, fuzzy
 msgid "Contributors:"
-msgstr "Autores principales: %(authors)s"
+msgstr "Coagentes:"
 
 #: mwlib/rl/pdfmessages.py:18
 msgid "Article Licenses"
-msgstr ""
+msgstr "Licencias de artículos"
 
 #: mwlib/rl/pdfmessages.py:20
 msgid "Title"
-msgstr ""
+msgstr "Título"
 
 #: mwlib/rl/pdfmessages.py:22
 msgid "Subtitle:"
-msgstr ""
+msgstr "Subtítulo:"
 
 #: mwlib/rl/pdfmessages.py:24
 msgid "Editor:"
-msgstr ""
+msgstr "Editor:"
 
 #: mwlib/rl/pdfmessages.py:26
 msgid "Created on:"
-msgstr ""
+msgstr "Creado en:"
 
 #: mwlib/rl/pdfmessages.py:28
 msgid "Contents"
-msgstr ""
+msgstr "Contenidos"
 
 #: mwlib/rl/pdfmessages.py:30
 msgid "Articles"
-msgstr ""
+msgstr "Artículos"
 
 #: mwlib/rl/pdfmessages.py:32
 msgid "Produced by:"
-msgstr ""
+msgstr "Producido por:"
 
 #: mwlib/rl/pdfmessages.py:34
-#, fuzzy
 msgid "pdf writer version:"
-msgstr "mwlib version:"
+msgstr "editor pdf version:"
 
 #: mwlib/rl/pdfmessages.py:36
 msgid "mwlib version:"
@@ -73,11 +71,11 @@ msgstr "mwlib version:"
 
 #: mwlib/rl/pdfmessages.py:38
 msgid "Table of Contents"
-msgstr ""
+msgstr "Tabla de contenidos"
 
 #: mwlib/rl/pdfmessages.py:40
 msgid "Skipping Articles!"
-msgstr ""
+msgstr "Saltando artículos!"
 
 #: mwlib/rl/pdfmessages.py:42
 msgid ""
@@ -85,9 +83,9 @@ msgid ""
 "is typeset."
 msgstr ""
 
-#: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:600
+#: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:602
 msgid "References"
-msgstr ""
+msgstr "Referencias"
 
 #: mwlib/rl/pdfmessages.py:46
 msgid ""
@@ -99,23 +97,23 @@ msgstr ""
 
 #: mwlib/rl/pdfmessages.py:48
 msgid "Article Sources, Licenses and Contributors"
-msgstr ""
+msgstr "Fuentes de artículo, licencias y contribuyentes"
 
 #: mwlib/rl/pdfmessages.py:50
 msgid "Image Sources, Licenses and Contributors"
-msgstr ""
+msgstr "Fuentes de imagen, Licencias y contribuyentes"
 
 #: mwlib/rl/pdfmessages.py:52
 msgid "Image"
-msgstr ""
+msgstr "Imagen"
 
 #: mwlib/rl/pdfmessages.py:54
 msgid "anonymous edits"
-msgstr ""
+msgstr "ediciones anónimas"
 
 #: mwlib/rl/pdfmessages.py:56
 msgid "Figure"
-msgstr ""
+msgstr "Figura"
 
 #: mwlib/rl/pdfstyles.py:209
 msgid ""
@@ -129,12 +127,12 @@ msgstr ""
 msgid "layouting"
 msgstr "Trazando"
 
-#: mwlib/rl/rlwriter.py:336
+#: mwlib/rl/rlwriter.py:338
 #, python-format
 msgid "mwlib.ext version: %(version)s"
 msgstr "mwlib.ext version: %(version)s"
 
-#: mwlib/rl/rlwriter.py:342
+#: mwlib/rl/rlwriter.py:344
 #, python-format
 msgid ""
 "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
@@ -143,11 +141,11 @@ msgstr ""
 "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
 "(mwlibextversion)s"
 
-#: mwlib/rl/rlwriter.py:404
+#: mwlib/rl/rlwriter.py:406
 msgid "rendering"
 msgstr "representando"
 
-#: mwlib/rl/rlwriter.py:591
+#: mwlib/rl/rlwriter.py:593
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
@@ -158,22 +156,16 @@ msgstr ""
 "el software pdf-writer (b) margen problemático Mediawiki (c) la tabla es muy "
 "ancha"
 
-#: mwlib/rl/rlwriter.py:605
+#: mwlib/rl/rlwriter.py:607
 #, python-format
 msgid "Source: <link href=\"%(url)s\">%(source)s</link>"
-msgstr ""
+msgstr "Fuente: <link href=\"%(url)s\">%(source)s</link>"
 
-#: mwlib/rl/rlwriter.py:614
+#: mwlib/rl/rlwriter.py:616
 msgid "\\g<num> anonymous edits"
-msgstr ""
+msgstr "\\g<num> ediciones anónimas"
 
-#: mwlib/rl/rlwriter.py:615
-#, fuzzy, python-format
+#: mwlib/rl/rlwriter.py:617
+#, python-format
 msgid "Contributors: %(authors)s"
-msgstr "Autores principales: %(authors)s"
-
-#~ msgid "<b>External links</b>"
-#~ msgstr "<b>Enlaces externos</b>"
-
-#~ msgid "Source: %(source)s"
-#~ msgstr "Fuente: %(source)s"
+msgstr "Coagentes: %(authors)s"
