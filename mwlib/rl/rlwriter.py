@@ -564,7 +564,6 @@ class RlWriter(object):
                 if pdfstyles.pageBreakAfterArticle: # if configured and preceded by an article
                     elements.append(NotAtTopPageBreak())
                 elif miscutils.articleStartsWithInfobox(article, max_text_until_infobox=100):
-                    print "got article starting with infobox:", article.caption
                     elements.append(CondPageBreak(pdfstyles.article_start_min_space_infobox))
                 else:
                     elements.append(CondPageBreak(pdfstyles.article_start_min_space))
