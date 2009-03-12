@@ -1392,15 +1392,14 @@ class RlWriter(object):
         else:
             seqReset = ''
 
-        # we append a &nbsp; after the itemPrefix. this is because reportlab does not render them, if no text follows
         if style=='itemize':
-            itemPrefix = u'<bullet>\u2022</bullet>&nbsp;' 
+            itemPrefix = u'<bullet>\u2022</bullet>' 
         elif style == 'referencelist':
-            itemPrefix = '<bullet>%s[<seq id="liCounter%d" />]</bullet>&nbsp;' % (seqReset,counterID)
+            itemPrefix = '<bullet>%s[<seq id="liCounter%d" />]</bullet>' % (seqReset,counterID)
         elif style== 'enumerate':
-            itemPrefix = '<bullet>%s<seq id="liCounter%d" />.</bullet>&nbsp;' % (seqReset,counterID)
+            itemPrefix = '<bullet>%s<seq id="liCounter%d" />.</bullet>' % (seqReset,counterID)
         elif style.startswith('enumerateLetter'):
-            itemPrefix = '<bullet>%s<seqformat id="liCounter%d" value="%s"/><seq id="liCounter%d" />.</bullet>&nbsp;' % (seqReset,counterID, style[-1], counterID)
+            itemPrefix = '<bullet>%s<seqformat id="liCounter%d" value="%s"/><seq id="liCounter%d" />.</bullet>' % (seqReset,counterID, style[-1], counterID)
         else:
             log.warn('invalid list style:', repr(style))
             itemPrefix = ''
