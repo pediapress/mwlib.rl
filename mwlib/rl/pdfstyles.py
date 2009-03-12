@@ -196,8 +196,7 @@ showPageFooter = True
 showTitlePageFooter = True
 pageBreakAfterArticle = False
 
-showArticleSource = True        # Set to False in customConfig.py to exclude article source URL from the output.
-showArticleAuthors = True       # Set to False in customConfig.py to exclude principal author information from the output.
+showArticleAttribution = True   # Show/Hide article source and contributors
 
 article_start_min_space = 0.5*printHeight # if less space is available on the current page a page break is inserted
 article_start_min_space_infobox = 0.9*printHeight # as above. but if the article starts with an infobox the required space should be higher
@@ -312,12 +311,18 @@ def text_style(mode='p', indent_lvl=0, in_table=0, relsize='normal', text_align=
     if mode in ['footer', 'figure', 'center']:
         style.alignment = TA_CENTER
 
-    if mode in ['references', 'articlefoot', 'source', 'preformatted', 'list']:
+    if mode in ['references', 'articlefoot', 'source', 'preformatted', 'list', 'attribution']:
         style.alignment = TA_LEFT
 
-    if mode == 'articlefoot':
+    if mode == 'attribution':
+        style.fontSize = 6
+        style.leading = 8
+        style.spaceBefore = 6
+        
+    if mode in ['articlefoot', 'references']:
         style.fontSize=smallfontsize
         style.leading=smallleading
+        style.bulletFontSize = smallfontsize
 
     if mode == 'box' or mode == 'source' or mode == 'preformatted':
         style.backColor = '#eeeeee'
@@ -334,7 +339,6 @@ def text_style(mode='p', indent_lvl=0, in_table=0, relsize='normal', text_align=
         style.leftIndent = LISTINDENT * indent_lvl
     else:
         style.leftIndent = indent_lvl*LEFTINDENT
-
 
     if mode == 'booktitle':
         style.fontSize = 36

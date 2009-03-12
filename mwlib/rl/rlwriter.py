@@ -214,6 +214,7 @@ class RlWriter(object):
         self.toc_entries = []
         self.toc_renderer = TocRenderer()
         self.reference_list_rendered = False
+        self.article_meta_info = []
         
     def ignore(self, obj):
         return []
@@ -382,6 +383,10 @@ class RlWriter(object):
 
         if not self.disable_group_elements:
             elements = self.groupElements(elements)
+
+        if pdfstyles.showArticleAttribution:
+            elements.append(NotAtTopPageBreak())
+            elements.extend(self.writeArticleMetainfo())
             
         self.license_mode = True
         for license in self.env.get_licenses():
@@ -548,6 +553,26 @@ class RlWriter(object):
         idstr = '%s%s' % (wikiurl, tmplink.target)
         m = md5(idstr.encode('utf-8'))
         return m.hexdigest()
+
+    def writeArticleMetainfo(self):
+        elements = []
+        elements.append(Paragraph('Article Sources and Contributors', heading_style(mode='article')))
+        for title, _id, url, authors in self.article_meta_info:
+            if authors:
+                authors_text = ', '.join([a for a in authors if a != 'ANONIPEDITS:0'])
+                authors_text = re.sub(u'ANONIPEDITS:(?P<num>\d+)', u'\g<num> %s' % _(u'anonymous edits'), authors_text) 
+                authors_text = self.font_switcher.fontifyText(xmlescape(authors_text))
+            else:
+                authors_text = '-'
+            txt = '<b>%(title)s</b> <i>%(source_label)s</i>: %(source)s <i>%(contribs_label)s</i>: %(contribs)s ' % {
+                'title': title,
+                'source_label': _('Source'),
+                'source': self.font_switcher.fontifyText(xmlescape(url)),
+                'contribs_label': _('Contributors'),
+                'contribs': authors_text,
+                }
+            elements.append(Paragraph(txt, text_style('attribution')))
+        return elements
     
     def writeArticle(self, article):
         self.references = [] 
@@ -606,22 +631,10 @@ class RlWriter(object):
         if self.references:
             elements.append(Paragraph('<b>' + _('References') + '</b>', heading_style('section', lvl=3)))
             elements.extend(self.writeReferenceList())
-
-        if pdfstyles.showArticleSource and getattr(article,'url', None):
-            elements.extend([Spacer(0, 0.5*cm),
-                            Paragraph(_('Source: <link href="%(url)s">%(source)s</link>') % {
-                                'source': self.font_switcher.fontifyText(xmlescape(article.url), breakLong=True),
-                                'url': xmlescape(article.url),
-                            }, text_style(mode='articlefoot'))])
-        if pdfstyles.showArticleAuthors and getattr(article, 'authors', None):
-            author_txt = ', '.join(article.authors)
-            author_txt = author_txt.replace('ANONIPEDITS:0', '')
-            if author_txt.endswith(', '):
-                author_txt=author_txt[:-2]
-            author_txt = re.sub('ANONIPEDITS:(?P<num>\d+)', _('\g<num> anonymous edits'), author_txt)
-            elements.append(Paragraph(_('Contributors: %(authors)s') % {
-                'authors': self.font_switcher.fontifyText(xmlescape(author_txt))
-            }, text_style(mode='articlefoot')))
+            
+        #if not article.getParentNodesByClass(advtree.License):
+        if not self.license_mode:
+            self.article_meta_info.append((title, article_id, url, getattr(article, 'authors', '')))
 
         if self.layout_status:
             if not self.numarticles:
