@@ -387,14 +387,16 @@ class RlWriter(object):
         if pdfstyles.showArticleAttribution:
             elements.append(NotAtTopPageBreak())
             elements.extend(self.writeArticleMetainfo())
-            
+                   
         self.license_mode = True
         for license in self.env.get_licenses():
-            elements.extend(self.writeArticle(uparser.parseString(
-                title=license['title'],                
-                raw=license['wikitext'],
-                wikidb=self.env.wiki,
-            )))
+            license_node = uparser.parseString(title=license['title'], raw=license['wikitext'], wikidb=self.env.wiki)
+            advtree.buildAdvancedTree(license_node)
+            tc = TreeCleaner(license_node, save_reports=self.debug)
+            tc.cleanAll(skipMethods=['fixPreFormatted',
+                                     'removeEmptyReferenceLists',
+                                     ])
+            elements.extend(self.writeArticle(license_node))
         self.license_mode = False
 
         if not self.failSaveRendering:
@@ -557,7 +559,7 @@ class RlWriter(object):
     def writeArticleMetainfo(self):
         elements = []
         elements.append(Paragraph('Article Sources and Contributors', heading_style(mode='article')))
-        for title, _id, url, authors in self.article_meta_info:
+        for title, url, authors in self.article_meta_info:
             if authors:
                 authors_text = ', '.join([a for a in authors if a != 'ANONIPEDITS:0'])
                 authors_text = re.sub(u'ANONIPEDITS:(?P<num>\d+)', u'\g<num> %s' % _(u'anonymous edits'), authors_text) 
@@ -607,8 +609,11 @@ class RlWriter(object):
         if url:
             article_id = self.buildArticleID(article.wikiurl, article.caption)
             heading_anchor = "%s%s" % (heading_anchor, '<a name="%s" />' % article_id)
-
+        else:
+            article_id = None
+            
         if self.license_mode:            
+            elements.append(NotAtTopPageBreak())
             heading_para = Paragraph('<b>%s</b>%s' % (title, heading_anchor), heading_style("licensearticle"))
         else:
             heading_para = Paragraph('<b>%s</b>%s' % (title, heading_anchor), heading_style("article"))
@@ -634,7 +639,7 @@ class RlWriter(object):
             
         #if not article.getParentNodesByClass(advtree.License):
         if not self.license_mode:
-            self.article_meta_info.append((title, article_id, url, getattr(article, 'authors', '')))
+            self.article_meta_info.append((title, url, getattr(article, 'authors', '')))
 
         if self.layout_status:
             if not self.numarticles:
@@ -852,6 +857,9 @@ class RlWriter(object):
                 para_style = text_style("license")
             else:
                 para_style = text_style(indent_lvl=self.paraIndentLevel,in_table=self.tableNestingLevel)
+        elif self.license_mode:
+            para_style.fontSize = max(text_style('license').fontSize, para_style.fontSize - 4)
+            para_style.leading = 1
         txt = []
         if textPrefix:
             txt.append(textPrefix)
@@ -904,8 +912,7 @@ class RlWriter(object):
         return self.renderInlineTag(n, 'b')
 
     def writeDefinitionList(self, n):
-        return self.renderChildren(n)
-        
+        return self.renderChildren(n)        
 
     def writeDefinitionTerm(self, n):
         txt = self.writeStrong(n)
@@ -1093,14 +1100,21 @@ class RlWriter(object):
             imgPath = ''
         return imgPath
 
-
     def _fixBrokenImages(self, img_node, img_path):
         img = PilImage.open(img_path)
-        # workaround for http://code.pediapress.com/wiki/ticket/324
-        # see http://two.pairlist.net/pipermail/reportlab-users/2008-October/007526.html
-        if img.mode == 'P':
-            no_mask = True
-        elif img.mode == 'LA': # hack for http://code.pediapress.com/wiki/ticket/429
+        cmds = []
+        base_cmd = [
+            'convert',
+            '-limit',' memory', '32mb',
+            '-limit',' map', '64mb',
+            '-limit', 'disk', '64mb',
+            '-limit', 'area', '64mb',
+            ]
+        if img.info.get('interlace', 0) == 1:
+            cmds.append(base_cmd + [img_path, '-interlace', 'none', img_path])
+        if img.mode == 'P': # ticket 324
+            cmds.append(base_cmd + [img_path, img_path]) # we esentially do nothing...but this seems to fix the problems           
+        if img.mode == 'LA': # ticket 429
             cleaned = PilImage.new('LA', img.size)
             new_data = []
             for pixel in img.getdata():
@@ -1110,19 +1124,24 @@ class RlWriter(object):
                     new_data.append(pixel)                        
             cleaned.putdata(new_data)
             cleaned.save(img_path)
-            img = PilImage.open(img_path)
-            no_mask = False
-        else:
-            no_mask = False
-        if img.info.get('interlace',0) == 1:
-            log.warning("got interlaced PNG which can't be handeled by PIL: %r" % img_path)
-            raise # FIXME raise proper exception
+            img = PilImage.open(img_path)    
+
+        for cmd in cmds:
+            try:
+                ret = subprocess.call(cmd)
+                if ret != 0:
+                    log.warning("converting broken image failed (return code: %d): %r" % (ret, img_path))
+                    raise
+            except OSError:
+                log.warning("converting broken image failed (OSError): %r" % img_path)
+                raise 
         try:
+            del img
+            img = PilImage.open(img_path)
             d = img.load()
         except:
-            log.warning('img data can not be loaded - img corrupt: %r' % img_node.target)
-            raise # FIXME raise proper exception
-        return no_mask
+            log.warning('image can not be opened by PIL: %r' % img_path)
+            raise
         
     def writeImageLink(self, img_node):
         if img_node.colon == True:
@@ -1140,9 +1159,11 @@ class RlWriter(object):
             return []
 
         try:
-            no_mask = self._fixBrokenImages(img_node, img_path)
-        except: # IOError: FIXME raise proper exceptioin
-            log.warning('img can not be opened by PIL')
+            self._fixBrokenImages(img_node, img_path)
+        except: 
+            import traceback
+            traceback.print_exc()
+            log.warning('image skipped')
             return []
 
         max_width = self.colwidth
@@ -1200,7 +1221,6 @@ class RlWriter(object):
                         margin=(0.2*cm, 0.2*cm, 0.2*cm, 0.2*cm),
                         padding=(0.2*cm, 0.2*cm, 0.2*cm, 0.2*cm),
                         align=align,
-                        no_mask=no_mask,
                         url=url)
         return [figure]
        
