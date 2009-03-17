@@ -886,7 +886,7 @@ class RlWriter(object):
                 para_style.alignment = align_map[align]
 
         txt_style = None
-        if node.__class__ == advtree.Cell and getattr(node, 'is_header'):
+        if node.__class__ == advtree.Cell and getattr(node, 'is_header', False):
             txt_style = { # check nesting: start: <a>,<b> --> end: </b></a>
                 'start': ['<b>'],
                 'end': ['</b>'],
