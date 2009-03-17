@@ -283,7 +283,7 @@ class RlWriter(object):
         if status_callback:
             status_callback(status=_('layouting'), progress=0)
         if self.debug:
-            parser.show(sys.stdout, bookParseTree, verbose=True)
+            #parser.show(sys.stdout, bookParseTree, verbose=True)
             pass
 
         advtree.buildAdvancedTree(bookParseTree)
@@ -298,7 +298,7 @@ class RlWriter(object):
         self.articlecount = 0
         
         if self.debug:
-            #parser.show(sys.stdout, bookParseTree, verbose=True)
+            parser.show(sys.stdout, bookParseTree, verbose=True)
             print "TREECLEANER REPORTS:"
             print "\n".join([repr(r) for r in tc.getReports()])
             
@@ -1009,7 +1009,7 @@ class RlWriter(object):
         else:
             txt = [href]
             txt = [getattr(obj, 'full_target', None) or obj.target]
-            t = self.font_switcher.fontifyText(''.join(txt).strip()).encode('utf-8')
+            t = self.font_switcher.fontifyText(xmlescape(''.join(txt).strip()).encode('utf-8'))
             t = unicode(urllib.unquote(t), 'utf-8')
 
         if not internallink:
@@ -1156,7 +1156,7 @@ class RlWriter(object):
             log.warning('image can not be opened by PIL: %r' % img_path)
             raise
         
-    def writeImageLink(self, img_node):
+    def writeImageLink(self, img_node):        
         if img_node.colon == True:
             items = []
             for node in img_node.children:
@@ -1508,6 +1508,7 @@ class RlWriter(object):
 
     def writeRow(self,row):
         r = []
+        
         for cell in row:
             if cell.__class__ == advtree.Cell:
                 r.append(self.writeCell(cell, row))
@@ -1548,13 +1549,13 @@ class RlWriter(object):
                 tables.extend(self.writeTable(c))
             return tables        
         
-        for r in t.children:
+        for r in t.children[:]:
             if r.__class__ == advtree.Row:
                 data.append(self.writeRow(r))
             elif r.__class__ == advtree.Caption:
                 elements.extend(self.writeCaption(r))                
                 t.removeChild(r) # this is slight a hack. we do this in order not to simplify cell-coloring code
-        
+
         (data, span_styles) = rltables.checkSpans(data, t)
         self.currentColCount -= maxCols
 
