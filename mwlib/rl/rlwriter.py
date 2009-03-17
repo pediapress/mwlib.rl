@@ -119,9 +119,15 @@ def isInline(objs):
     return True
 
 
-def buildPara(txtList, style=text_style()):
+def buildPara(txtList, style=text_style(), txt_style=None):
     _txt = ''.join(txtList)
     _txt = _txt.strip()
+    if txt_style:
+        _txt = '%(start)s%(txt)s%(end)s' % {
+            'start': ''.join(txt_style['start']),
+            'end': ''.join(txt_style['end']),
+            'txt': _txt,
+            }
     if len(_txt) > 0:
         try:
             return [Paragraph(_txt, style)]
@@ -277,7 +283,7 @@ class RlWriter(object):
         if status_callback:
             status_callback(status=_('layouting'), progress=0)
         if self.debug:
-            #parser.show(sys.stdout, bookParseTree, verbose=True)
+            parser.show(sys.stdout, bookParseTree, verbose=True)
             pass
 
         advtree.buildAdvancedTree(bookParseTree)
@@ -292,7 +298,7 @@ class RlWriter(object):
         self.articlecount = 0
         
         if self.debug:
-            parser.show(sys.stdout, bookParseTree, verbose=True)
+            #parser.show(sys.stdout, bookParseTree, verbose=True)
             print "TREECLEANER REPORTS:"
             print "\n".join([repr(r) for r in tc.getReports()])
             
@@ -878,19 +884,26 @@ class RlWriter(object):
                              'center': TA_CENTER,
                              'justify': TA_JUSTIFY,}
                 para_style.alignment = align_map[align]
+
+        txt_style = None
+        if node.__class__ == advtree.Cell and getattr(node, 'is_header'):
+            txt_style = { # check nesting: start: <a>,<b> --> end: </b></a>
+                'start': ['<b>'],
+                'end': ['</b>'],
+                }
  
         for c in node:             
             res = self.write(c)
             if isInline(res):
                 txt.extend(res)                
             else:
-                items.extend(buildPara(txt, para_style)) 
+                items.extend(buildPara(txt, para_style, txt_style=txt_style)) 
                 items.extend(res)
                 txt = []
         if not len(items):
-            return buildPara(txt, para_style)
+            return buildPara(txt, para_style, txt_style=txt_style)
         else:
-            items.extend(buildPara(txt, para_style)) 
+            items.extend(buildPara(txt, para_style, txt_style=txt_style)) 
             return items      
 
     def renderChildren(self, n):
@@ -1483,6 +1496,8 @@ class RlWriter(object):
         colspan = cell.attributes.get('colspan', 1)
         rowspan = cell.attributes.get('rowspan', 1)
         align = cell.attributes.get('align') or row.attributes.get('align')
+        if not align and getattr(cell, 'is_header', False):
+            align = 'center'
         elements = []
         if cell.getChildNodesByClass(advtree.NamedURL) or cell.getChildNodesByClass(advtree.Reference) or cell.getChildNodesByClass(advtree.Sup):
             elements.append(Spacer(0, 1))            
