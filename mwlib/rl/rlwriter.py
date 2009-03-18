@@ -760,11 +760,26 @@ class RlWriter(object):
         """
         finalNodes = []
         figures = []
+
+        def scaleImages(images):
+            scaled_images = []
+            for img in images:
+                ar = img.imgWidth/img.imgHeight
+                w = printWidth / 2 - (img.margin[1] + img.margin[3] + img.padding[1] + img.padding[3])
+                h = w/ar
+                if w > img.imgWidth:
+                    scaled = img
+                else:
+                    scaled = Figure(img.imgPath, img.captionTxt, img.cs, imgWidth=w, imgHeight=h, margin=img.margin, padding=img.padding, borderColor=img.borderColor, url=img.url)
+                scaled_images.append(scaled)
+            return scaled_images
+        
         for n in nodes:
             if isinstance(n,Figure):
                 figures.append(n)
             else:
                 if len(figures)>1:
+                    figures = scaleImages(figures)
                     data = [  [figures[i],figures[i+1]]  for i in range(int(len(figures)/2))]
                     if len(figures) % 2 != 0:
                         data.append( [figures[-1],''] )                   
@@ -777,6 +792,7 @@ class RlWriter(object):
                         figures = []
                     finalNodes.append(n)
         if len(figures)>1:
+            figures = scaleImages(figures)
             data = [  [figures[i],figures[i+1]]  for i in range(int(len(figures)/2))]
             if len(figures) % 2 != 0:
                 data.append( [figures[-1],''] )                   
