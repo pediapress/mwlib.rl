@@ -395,7 +395,7 @@ class RlWriter(object):
             elements.extend(self.writeArticleMetainfo())
                    
         self.license_mode = True
-        for license in self.env.get_licenses():
+        for license in self.env.wiki.getLicenses():
             license_node = uparser.parseString(title=license['title'], raw=license['wikitext'], wikidb=self.env.wiki)
             advtree.buildAdvancedTree(license_node)
             tc = TreeCleaner(license_node, save_reports=self.debug)
