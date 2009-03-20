@@ -71,9 +71,9 @@ from pdfstyles import tableOverflowTolerance
 from pdfstyles import max_img_width, max_img_height, min_img_dpi, inline_img_dpi
 from pdfstyles import maxCharsInSourceLine
 import pdfstyles 
-from mwlib import styleutils
+
 from mwlib.writer.imageutils import ImageUtils
-from mwlib.writer import miscutils
+from mwlib.writer import miscutils, styleutils
 
 import rltables
 from pagetemplates import WikiPage, TitlePage, SimplePage
@@ -283,7 +283,7 @@ class RlWriter(object):
         if status_callback:
             status_callback(status=_('layouting'), progress=0)
         if self.debug:
-            parser.show(sys.stdout, bookParseTree, verbose=True)
+            #parser.show(sys.stdout, bookParseTree, verbose=True)
             pass
 
         advtree.buildAdvancedTree(bookParseTree)
@@ -298,7 +298,7 @@ class RlWriter(object):
         self.articlecount = 0
         
         if self.debug:
-            #parser.show(sys.stdout, bookParseTree, verbose=True)
+            parser.show(sys.stdout, bookParseTree, verbose=True)
             print "TREECLEANER REPORTS:"
             print "\n".join([repr(r) for r in tc.getReports()])
             
@@ -894,7 +894,7 @@ class RlWriter(object):
                 para_style.textColor = text_color
             if background_color:
                 para_style.backColor = background_color
-            align = styleutils.alignmentFromNode(node)
+            align = styleutils.getTextAlign(node)
             if align in ['right', 'center', 'justify']:
                 align_map = {'right': TA_RIGHT,
                              'center': TA_CENTER,

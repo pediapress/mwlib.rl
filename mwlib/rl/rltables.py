@@ -11,7 +11,7 @@ import re
 from mwlib.utils import all
 from mwlib import log
 from mwlib.advtree import Text, ItemList, Table, Row, Cell
-from mwlib import styleutils
+from mwlib.writer import styleutils
 
 from reportlab.lib import colors
 from customflowables import Figure
