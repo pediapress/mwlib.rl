@@ -1432,6 +1432,9 @@ class RlWriter(object):
     def writeSpan(self, n):
         return self.renderInline(n)
 
+    def writeFont(self, n): # FIXME we should evaluate the info in the fonttag
+        return self.renderInline(n)
+
     def writeStrike(self, n):
         return self.renderInlineTag(n, 'strike')
 
