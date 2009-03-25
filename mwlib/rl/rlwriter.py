@@ -1160,7 +1160,7 @@ class RlWriter(object):
                 ret = subprocess.call(cmd)
                 if ret != 0:
                     log.warning("converting broken image failed (return code: %d): %r" % (ret, img_path))
-                    raise
+                    return ret
             except OSError:
                 log.warning("converting broken image failed (OSError): %r" % img_path)
                 raise 
@@ -1171,6 +1171,7 @@ class RlWriter(object):
         except:
             log.warning('image can not be opened by PIL: %r' % img_path)
             raise
+        return 0
         
     def writeImageLink(self, img_node):        
         if img_node.colon == True:
@@ -1188,7 +1189,9 @@ class RlWriter(object):
             return []
 
         try:
-            self._fixBrokenImages(img_node, img_path)
+            ret = self._fixBrokenImages(img_node, img_path)
+            if ret != 0:
+                return []
         except: 
             import traceback
             traceback.print_exc()
