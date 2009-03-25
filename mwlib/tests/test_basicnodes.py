@@ -86,7 +86,7 @@ def test_references():
     renderMW(txt, 'references')
 
 def test_math():
-    txt = 'some inline math formulas <math>\\frac{x+y}{xy}</math> and some more <math>x^{a+b}</math>\n\nindented formula:\n:<math>x=f(y^2+2).</math>'
+    txt = u'some inline math formulas <math>\\frac{x+y}{xy}</math> and some more <math>x^{a+b}</math>\n\nindented formula:\n:<math>x=f(y^2+2).</math>'
     renderMW(txt, 'math')
 
 def test_gallery():
