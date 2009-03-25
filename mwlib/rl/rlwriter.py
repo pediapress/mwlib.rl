@@ -984,7 +984,7 @@ class RlWriter(object):
         return self.renderInlineTag(n, 'font', tag_attrs=' size=%d' % bigfontsize)
         
     def writeCite(self, n):
-        return self.writeDefinitionDescription(n)
+        return self.writeEmphasized(n)
 
     def writeStyle(self, s):
         txt = []
