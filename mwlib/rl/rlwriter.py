@@ -1203,13 +1203,13 @@ class RlWriter(object):
             cell = img_node.getParentNodesByClass(advtree.Cell)
             if cell:
                 max_width = printWidth / len(cell[0].getAllSiblings()) - 10
-        max_height = None
+        max_height = max_img_height * cm
         if self.tableNestingLevel > 0:
             max_height = printHeight/4 # fixme this needs to be read from config
         if self.gallery_mode:
             max_height = printHeight/3 # same as above
         w, h = self.image_utils.getImageSize(img_node, img_path, max_print_width=max_width, max_print_height=max_height)
-
+        
         align = img_node.align
         if advtree.Center in [ p.__class__ for p in img_node.getParents()]:
             align = 'center'
