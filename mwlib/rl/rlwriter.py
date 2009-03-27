@@ -557,7 +557,7 @@ class RlWriter(object):
         tmplink = advtree.Link()
         tmplink.target = article_name
         tmplink.capitalizeTarget = True # this is a hack, this info should pulled out of the environment if available
-        tmplink._normalizeTarget()
+        #tmplink._normalizeTarget() # FIXME: this is currently removed from mwlib. we need to check URL handling in mwlib
         idstr = '%s%s' % (wikiurl, tmplink.target)
         m = md5(idstr.encode('utf-8'))
         return m.hexdigest()
