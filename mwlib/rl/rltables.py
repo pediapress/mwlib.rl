@@ -58,39 +58,18 @@ def checkSpans(data, t):
     return (d, styles)
 
 
-def style(attributes):
+def style(table):
     """
     extract the style info and return a reportlab style list
     try to guess if a border and/or frame
     """
-    borderBoxes = [u'prettytable', u'metadata', u'wikitable', u'infobox', u'toccolours', u'navbox', u'float-right', 'taxobox']
+    
     styleList = []
-    hasBorder = False
-    hasGrid = False
-    style = attributes.get('style', {})
-
-    if attributes.get('border', 0) > 0 or style.get('border', 0) > 0:
-        hasGrid = True
-    bgColor = attributes.get('background-color') or style.get('background-color')
-    if bgColor and bgColor!= 'transparent':
-        hasBorder = True
-    classes = set([ c.strip() for c in attributes.get('class','').split()])
-    if set(borderBoxes).intersection(classes):
-        hasGrid = True
-    bs = attributes.get('border-spacing',None)
-    if bs:
-        bs_val = re.match('(?P<bs>\d)',bs)
-        if bs_val and int(bs_val.groups('bs')[0]) > 0:
-            hasGrid =True
-                
     styleList.append( ('VALIGN',(0,0),(-1,-1),'TOP') )
-    if hasGrid:
-        styleList.extend([ ('INNERGRID',(0,0),(-1,-1),0.25,colors.black),
-                           ('BOX',(0,0),(-1,-1),0.25,colors.black),
-                           ])
-    elif hasBorder:
-        styleList.extend([ ('BOX',(0,0),(-1,-1),0.25,colors.black),
-                           ])        
+    if styleutils.tableBorder(table):
+        styleList.extend([('INNERGRID',(0,0),(-1,-1),0.25,colors.black),
+                          ('BOX',(0,0),(-1,-1),0.25,colors.black),
+                          ])
     return styleList
 
 def scaleImages(data):
