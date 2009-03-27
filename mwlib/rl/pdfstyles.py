@@ -252,6 +252,8 @@ tabsize = 6
 
 maxCharsInSourceLine = 72 # if printing a source node, the maximum number of chars in one line
 
+no_float_math_len = 15
+
 class BaseStyle(ParagraphStyle):
 
     def __init__(self, name, parent=None, **kw):

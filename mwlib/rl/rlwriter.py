@@ -283,7 +283,7 @@ class RlWriter(object):
         if status_callback:
             status_callback(status=_('layouting'), progress=0)
         if self.debug:
-            parser.show(sys.stdout, bookParseTree, verbose=True)
+            #parser.show(sys.stdout, bookParseTree, verbose=True)
             pass
 
         advtree.buildAdvancedTree(bookParseTree)
@@ -298,7 +298,7 @@ class RlWriter(object):
         self.articlecount = 0
         
         if self.debug:
-            #parser.show(sys.stdout, bookParseTree, verbose=True)
+            parser.show(sys.stdout, bookParseTree, verbose=True)
             print "TREECLEANER REPORTS:"
             print "\n".join([repr(r) for r in tc.getReports()])
             
@@ -538,7 +538,8 @@ class RlWriter(object):
         elements = [Paragraph('<font name="%s"><b>%s</b></font>%s' % (serif_font, headingTxt, anchor), headingStyle)]
         
         self.level += 1
-        elements.extend(self.renderMixed(obj.children[1:]))
+        obj.removeChild(obj.children[0])
+        elements.extend(self.renderMixed(obj))
         self.level -= 1
         return elements
 
@@ -655,7 +656,7 @@ class RlWriter(object):
            
         return elements
 
-    def writeParagraph(self,obj):
+    def writeParagraph(self,obj):        
         return self.renderMixed(obj)
 
     def floatImages(self, nodes):
@@ -882,6 +883,13 @@ class RlWriter(object):
         elif self.license_mode:
             para_style.fontSize = max(text_style('license').fontSize, para_style.fontSize - 4)
             para_style.leading = 1
+
+        math_nodes = node.getChildNodesByClass(advtree.Math)
+        if math_nodes:
+            max_source_len = max([len(math.caption) for math in math_nodes])
+            if max_source_len > pdfstyles.no_float_math_len:
+                para_style.flowable = False
+
         txt = []
         if textPrefix:
             txt.append(textPrefix)
@@ -907,6 +915,7 @@ class RlWriter(object):
                 'start': ['<b>'],
                 'end': ['</b>'],
                 }
+
  
         for c in node:             
             res = self.write(c)
