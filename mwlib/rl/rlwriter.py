@@ -283,7 +283,7 @@ class RlWriter(object):
         if status_callback:
             status_callback(status=_('layouting'), progress=0)
         if self.debug:
-            #parser.show(sys.stdout, bookParseTree, verbose=True)
+            parser.show(sys.stdout, bookParseTree, verbose=True)
             pass
 
         advtree.buildAdvancedTree(bookParseTree)
@@ -298,7 +298,7 @@ class RlWriter(object):
         self.articlecount = 0
         
         if self.debug:
-            parser.show(sys.stdout, bookParseTree, verbose=True)
+            #parser.show(sys.stdout, bookParseTree, verbose=True)
             print "TREECLEANER REPORTS:"
             print "\n".join([repr(r) for r in tc.getReports()])
             
@@ -1261,10 +1261,13 @@ class RlWriter(object):
         self.gallery_mode = True
         perrow = obj.attributes.get('perrow', None)
         num_images = len(obj.getChildNodesByClass(advtree.ImageLink))
+        if num_images == 0:
+            return []
         if not perrow:            
             perrow = min(4, num_images) # 4 is the default for the number of images per gallery row
         else:
             perrow = min(6, int(perrow), num_images)
+        perrow = max(1, perrow)
         data = []
         row = []
         if obj.children:
@@ -1597,7 +1600,7 @@ class RlWriter(object):
             self.tableNestingLevel -= 1
             return []
         table = Table(data, colWidths=colwidthList, splitByRow=1)        
-        styles = rltables.style(t.attributes)
+        styles = rltables.style(t)
         table.setStyle(styles)
         table.setStyle(span_styles)
     
