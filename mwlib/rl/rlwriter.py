@@ -80,7 +80,7 @@ from pagetemplates import WikiPage, TitlePage, SimplePage
 
 from mwlib import parser, log, uparser, metabook
 
-from mwlib.rl.rlhelpers import RLFontSwitcher
+from mwlib.rl import fontconfig
 
 log = log.Log('rlwriter')
 
@@ -165,11 +165,12 @@ class RlWriter(object):
         else:
             self.imgDB = None
 
-        self.font_switcher = RLFontSwitcher()
-        self.font_switcher.default_fontpath = pdfstyles.default_fontpath
+        self.font_switcher = fontconfig.RLFontSwitcher()
+        self.font_switcher.font_paths = fontconfig.font_paths
         self.font_switcher.registerDefaultFont(pdfstyles.default_font)        
-        self.font_switcher.registerFontDefinitionList(pdfstyles.fonts)
-        self.font_switcher.registerReportlabFonts(pdfstyles.fonts)
+        self.font_switcher.registerFontDefinitionList(fontconfig.fonts)
+        self.font_switcher.registerReportlabFonts(fontconfig.fonts)
+
 
         self.image_utils = ImageUtils(pdfstyles.printWidth,
                                       pdfstyles.printHeight,
@@ -298,7 +299,7 @@ class RlWriter(object):
         self.articlecount = 0
         
         if self.debug:
-            parser.show(sys.stdout, bookParseTree, verbose=True)
+            #parser.show(sys.stdout, bookParseTree, verbose=True)
             print "TREECLEANER REPORTS:"
             print "\n".join([repr(r) for r in tc.getReports()])
             
