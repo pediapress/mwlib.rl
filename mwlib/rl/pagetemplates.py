@@ -19,11 +19,14 @@ from mwlib.rl import pdfstyles
 from reportlab.lib.pagesizes import  A3
 
 from mwlib.rl.pdfstyles import text_style
-from mwlib.rl.rlhelpers import RLFontSwitcher 
 
-font_switcher = RLFontSwitcher()
+from mwlib.rl import fontconfig
+font_switcher = fontconfig.RLFontSwitcher()
+font_switcher.font_paths = fontconfig.font_paths
 font_switcher.registerDefaultFont(pdfstyles.default_font)        
-font_switcher.registerFontDefinitionList(pdfstyles.fonts)
+font_switcher.registerFontDefinitionList(fontconfig.fonts)
+
+
         
 def _doNothing(canvas, doc):
     "Dummy callback for onPage"
