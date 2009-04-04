@@ -1,19 +1,19 @@
 # Translation of Mwlib.rl to Bulgarian
 #
-# Author@Betawiki: DCLXVI
+# Author@translatewiki.net: DCLXVI
 # --
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-03 11:48+0100\n"
-"PO-Revision-Date: 2009-01-24 18:25:14+0000\n"
+"POT-Creation-Date: 2009-04-04 14:13+0000\n"
+"PO-Revision-Date: 2009-04-04 14:11:43+0000\n"
 "Language-Team: Bulgarian\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.15alpha (r46144); Translate extension (9 (2009-01-"
-"11))\n"
-"X-Translation-Project: Betawiki at http://translatewiki.net\n"
+"X-Generator: MediaWiki 1.15alpha (r49162); Translate extension (11:2009-03-"
+"27)\n"
+"X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: bg\n"
 "X-Message-Group: out-mwlibrl\n"
 
@@ -36,11 +36,11 @@ msgstr ""
 
 #: mwlib/rl/pdfmessages.py:20
 msgid "Title"
-msgstr ""
+msgstr "Заглавие"
 
 #: mwlib/rl/pdfmessages.py:22
 msgid "Subtitle:"
-msgstr ""
+msgstr "Подзаглавие:"
 
 #: mwlib/rl/pdfmessages.py:24
 msgid "Editor:"
@@ -51,8 +51,9 @@ msgid "Created on:"
 msgstr ""
 
 #: mwlib/rl/pdfmessages.py:28
+#, fuzzy
 msgid "Contents"
-msgstr ""
+msgstr "Съдържание"
 
 #: mwlib/rl/pdfmessages.py:30
 msgid "Articles"
@@ -63,16 +64,17 @@ msgid "Produced by:"
 msgstr ""
 
 #: mwlib/rl/pdfmessages.py:34
+#, fuzzy
 msgid "pdf writer version:"
-msgstr ""
+msgstr "mwlib версия:"
 
 #: mwlib/rl/pdfmessages.py:36
 msgid "mwlib version:"
-msgstr ""
+msgstr "mwlib версия:"
 
 #: mwlib/rl/pdfmessages.py:38
 msgid "Table of Contents"
-msgstr ""
+msgstr "Съдържание"
 
 #: mwlib/rl/pdfmessages.py:40
 msgid "Skipping Articles!"
@@ -84,7 +86,7 @@ msgid ""
 "is typeset."
 msgstr ""
 
-#: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:600
+#: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:645
 msgid "References"
 msgstr ""
 
@@ -108,7 +110,7 @@ msgstr ""
 msgid "Image"
 msgstr ""
 
-#: mwlib/rl/pdfmessages.py:54
+#: mwlib/rl/pdfmessages.py:54 mwlib/rl/rlwriter.py:573
 msgid "anonymous edits"
 msgstr ""
 
@@ -116,55 +118,50 @@ msgstr ""
 msgid "Figure"
 msgstr ""
 
-#: mwlib/rl/pdfstyles.py:209
+#: mwlib/rl/pdfstyles.py:77
 msgid ""
 "PDF generated using the open source mwlib toolkit<br/>see http://code."
 "pediapress.com/ for more information"
 msgstr ""
 
-#: mwlib/rl/rlwriter.py:276
+#: mwlib/rl/rlwriter.py:285
 msgid "layouting"
 msgstr ""
 
-#: mwlib/rl/rlwriter.py:336
+#: mwlib/rl/rlwriter.py:347
 #, python-format
 msgid "mwlib.ext version: %(version)s"
-msgstr ""
+msgstr "mwlib.ext версия: %(version)s"
 
-#: mwlib/rl/rlwriter.py:342
+#: mwlib/rl/rlwriter.py:353
 #, python-format
 msgid ""
 "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
 "(mwlibextversion)s"
 msgstr ""
+"mwlib версия: %(mwlibversion)s, mwlib.rl версия: %(mwlibrlversion)s, %"
+"(mwlibextversion)s"
 
-#: mwlib/rl/rlwriter.py:404
+#: mwlib/rl/rlwriter.py:421
 msgid "rendering"
 msgstr ""
 
-#: mwlib/rl/rlwriter.py:591
+#: mwlib/rl/rlwriter.py:579
+msgid "Source"
+msgstr ""
+
+#: mwlib/rl/rlwriter.py:581
+#, fuzzy
+msgid "Contributors"
+msgstr "Основни автори: %(authors)s"
+
+#: mwlib/rl/rlwriter.py:636
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
 "software (b) problematic Mediawiki markup (c) table is too wide"
 msgstr ""
 
-#: mwlib/rl/rlwriter.py:605
-#, python-format
-msgid "Source: <link href=\"%(url)s\">%(source)s</link>"
-msgstr ""
-
-#: mwlib/rl/rlwriter.py:614
-msgid "\\g<num> anonymous edits"
-msgstr ""
-
-#: mwlib/rl/rlwriter.py:615
-#, fuzzy, python-format
-msgid "Contributors: %(authors)s"
-msgstr "Основни автори: %(authors)s"
-
-#~ msgid "<b>External links</b>"
-#~ msgstr "<b>Външни препратки</b>"
-
-#~ msgid "Source: %(source)s"
-#~ msgstr "Източник: %(source)s"
+#, fuzzy
+#~ msgid "Contributors: %(authors)s"
+#~ msgstr "Основни автори: %(authors)s"

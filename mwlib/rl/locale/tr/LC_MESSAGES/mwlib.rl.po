@@ -1,19 +1,20 @@
 # Translation of Mwlib.rl to Turkish
 #
-# Author@Betawiki: Joseph
+# Author@translatewiki.net: Joseph
+# Author@translatewiki.net: Karduelis
 # --
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-03 11:48+0100\n"
-"PO-Revision-Date: 2009-01-24 18:25:15+0000\n"
+"POT-Creation-Date: 2009-04-04 14:13+0000\n"
+"PO-Revision-Date: 2009-04-04 14:11:44+0000\n"
 "Language-Team: Turkish\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.15alpha (r46144); Translate extension (9 (2009-01-"
-"11))\n"
-"X-Translation-Project: Betawiki at http://translatewiki.net\n"
+"X-Generator: MediaWiki 1.15alpha (r49162); Translate extension (11:2009-03-"
+"27)\n"
+"X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: tr\n"
 "X-Message-Group: out-mwlibrl\n"
 
@@ -63,9 +64,8 @@ msgid "Produced by:"
 msgstr ""
 
 #: mwlib/rl/pdfmessages.py:34
-#, fuzzy
 msgid "pdf writer version:"
-msgstr "mwlib.ext versiyonu:"
+msgstr "pdf yazıcı sürümü:"
 
 #: mwlib/rl/pdfmessages.py:36
 msgid "mwlib version:"
@@ -85,9 +85,9 @@ msgid ""
 "is typeset."
 msgstr ""
 
-#: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:600
+#: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:645
 msgid "References"
-msgstr ""
+msgstr "Kaynaklar"
 
 #: mwlib/rl/pdfmessages.py:46
 msgid ""
@@ -109,7 +109,7 @@ msgstr ""
 msgid "Image"
 msgstr ""
 
-#: mwlib/rl/pdfmessages.py:54
+#: mwlib/rl/pdfmessages.py:54 mwlib/rl/rlwriter.py:573
 msgid "anonymous edits"
 msgstr ""
 
@@ -117,7 +117,7 @@ msgstr ""
 msgid "Figure"
 msgstr ""
 
-#: mwlib/rl/pdfstyles.py:209
+#: mwlib/rl/pdfstyles.py:77
 msgid ""
 "PDF generated using the open source mwlib toolkit<br/>see http://code."
 "pediapress.com/ for more information"
@@ -125,16 +125,16 @@ msgstr ""
 "PDF, açık kaynak mwlib toolkit kullanılarak oluşturuldu<br/>daha fazla bilgi "
 "için http://code.pediapress.com/"
 
-#: mwlib/rl/rlwriter.py:276
+#: mwlib/rl/rlwriter.py:285
 msgid "layouting"
 msgstr "yerleştiriliyor"
 
-#: mwlib/rl/rlwriter.py:336
+#: mwlib/rl/rlwriter.py:347
 #, python-format
 msgid "mwlib.ext version: %(version)s"
 msgstr "mwlib.ext versiyonu: %(version)s"
 
-#: mwlib/rl/rlwriter.py:342
+#: mwlib/rl/rlwriter.py:353
 #, python-format
 msgid ""
 "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
@@ -143,11 +143,20 @@ msgstr ""
 "mwlib versiyonu: %(mwlibversion)s, mwlib.rl versiyonu: %(mwlibrlversion)s, %"
 "(mwlibextversion)s"
 
-#: mwlib/rl/rlwriter.py:404
+#: mwlib/rl/rlwriter.py:421
 msgid "rendering"
 msgstr "işleniyor"
 
-#: mwlib/rl/rlwriter.py:591
+#: mwlib/rl/rlwriter.py:579
+msgid "Source"
+msgstr ""
+
+#: mwlib/rl/rlwriter.py:581
+#, fuzzy
+msgid "Contributors"
+msgstr "Başlıca Yazarlar: %(authors)s"
+
+#: mwlib/rl/rlwriter.py:636
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
@@ -157,22 +166,6 @@ msgstr ""
 "problemin muhtemel sebepleri: (a) pdf-yazıcı yazılımında bir hata (b) "
 "problemli Medyaviki biçimlendirmesi (c) tablo çok geniş"
 
-#: mwlib/rl/rlwriter.py:605
-#, python-format
-msgid "Source: <link href=\"%(url)s\">%(source)s</link>"
-msgstr ""
-
-#: mwlib/rl/rlwriter.py:614
-msgid "\\g<num> anonymous edits"
-msgstr ""
-
-#: mwlib/rl/rlwriter.py:615
-#, fuzzy, python-format
-msgid "Contributors: %(authors)s"
-msgstr "Başlıca Yazarlar: %(authors)s"
-
-#~ msgid "<b>External links</b>"
-#~ msgstr "<b>Dış bağlantılar</b>"
-
-#~ msgid "Source: %(source)s"
-#~ msgstr "Kaynak: %(source)s"
+#, fuzzy
+#~ msgid "Contributors: %(authors)s"
+#~ msgstr "Başlıca Yazarlar: %(authors)s"

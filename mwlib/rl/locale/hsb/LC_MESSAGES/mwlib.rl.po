@@ -1,19 +1,19 @@
 # Translation of Mwlib.rl to Upper Sorbian
 #
-# Author@Betawiki: Michawiki
+# Author@translatewiki.net: Michawiki
 # --
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-03 11:48+0100\n"
-"PO-Revision-Date: 2009-01-24 18:25:15+0000\n"
+"POT-Creation-Date: 2009-04-04 14:13+0000\n"
+"PO-Revision-Date: 2009-04-04 14:11:44+0000\n"
 "Language-Team: Upper Sorbian\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.15alpha (r46144); Translate extension (9 (2009-01-"
-"11))\n"
-"X-Translation-Project: Betawiki at http://translatewiki.net\n"
+"X-Generator: MediaWiki 1.15alpha (r49162); Translate extension (11:2009-03-"
+"27)\n"
+"X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: hsb\n"
 "X-Message-Group: out-mwlibrl\n"
 
@@ -86,7 +86,7 @@ msgstr ""
 "Kedźbu: To je jenož přehlad, zo by zaćišć dał, kak tuta kniha budźe so "
 "stajeć."
 
-#: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:600
+#: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:645
 msgid "References"
 msgstr "Referency"
 
@@ -114,7 +114,7 @@ msgstr "Žórła wobrazow, licency a přinošowacy"
 msgid "Image"
 msgstr "Wobraz"
 
-#: mwlib/rl/pdfmessages.py:54
+#: mwlib/rl/pdfmessages.py:54 mwlib/rl/rlwriter.py:573
 msgid "anonymous edits"
 msgstr ""
 
@@ -122,7 +122,7 @@ msgstr ""
 msgid "Figure"
 msgstr ""
 
-#: mwlib/rl/pdfstyles.py:209
+#: mwlib/rl/pdfstyles.py:77
 msgid ""
 "PDF generated using the open source mwlib toolkit<br/>see http://code."
 "pediapress.com/ for more information"
@@ -130,16 +130,16 @@ msgstr ""
 "PDF bu z pomocu  toolkit zjawneho žórła wutworjeny<br/>hlej http://code."
 "pediapress.com/ za dalše informacije"
 
-#: mwlib/rl/rlwriter.py:276
+#: mwlib/rl/rlwriter.py:285
 msgid "layouting"
 msgstr "wuhotowanje"
 
-#: mwlib/rl/rlwriter.py:336
+#: mwlib/rl/rlwriter.py:347
 #, python-format
 msgid "mwlib.ext version: %(version)s"
 msgstr "Wersija mwlib.ext: %(version)s"
 
-#: mwlib/rl/rlwriter.py:342
+#: mwlib/rl/rlwriter.py:353
 #, python-format
 msgid ""
 "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
@@ -148,11 +148,20 @@ msgstr ""
 "Wersija mwlib: %(mwlibversion)s, wersija mwlib.rl: %(mwlibrlversion)s, %"
 "(mwlibextversion)s"
 
-#: mwlib/rl/rlwriter.py:404
+#: mwlib/rl/rlwriter.py:421
 msgid "rendering"
 msgstr "přenjesenje"
 
-#: mwlib/rl/rlwriter.py:591
+#: mwlib/rl/rlwriter.py:579
+msgid "Source"
+msgstr ""
+
+#: mwlib/rl/rlwriter.py:581
+#, fuzzy
+msgid "Contributors"
+msgstr "Hłowni awtorojo: %(authors)s"
+
+#: mwlib/rl/rlwriter.py:636
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
@@ -163,26 +172,6 @@ msgstr ""
 "pdf-writer (b) problematiski woznamjenski tekst MediaWiki (c) tabela je "
 "přešěroka"
 
-#: mwlib/rl/rlwriter.py:605
-#, python-format
-msgid "Source: <link href=\"%(url)s\">%(source)s</link>"
-msgstr ""
-
-#: mwlib/rl/rlwriter.py:614
-msgid "\\g<num> anonymous edits"
-msgstr ""
-
-#: mwlib/rl/rlwriter.py:615
-#, fuzzy, python-format
-msgid "Contributors: %(authors)s"
-msgstr "Hłowni awtorojo: %(authors)s"
-
 #, fuzzy
-#~ msgid "<b>References</b>"
-#~ msgstr "Referency"
-
-#~ msgid "<b>External links</b>"
-#~ msgstr "<b>Eksterne wotkazy</b>"
-
-#~ msgid "Source: %(source)s"
-#~ msgstr "Žórło: %(source)s"
+#~ msgid "Contributors: %(authors)s"
+#~ msgstr "Hłowni awtorojo: %(authors)s"

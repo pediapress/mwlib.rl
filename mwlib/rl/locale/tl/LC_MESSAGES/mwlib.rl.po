@@ -1,19 +1,19 @@
 # Translation of Mwlib.rl to Tagalog
 #
-# Author@Betawiki: AnakngAraw
+# Author@translatewiki.net: AnakngAraw
 # --
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-03 11:48+0100\n"
-"PO-Revision-Date: 2009-01-24 18:25:15+0000\n"
+"POT-Creation-Date: 2009-04-04 14:13+0000\n"
+"PO-Revision-Date: 2009-04-04 14:11:44+0000\n"
 "Language-Team: Tagalog\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.15alpha (r46144); Translate extension (9 (2009-01-"
-"11))\n"
-"X-Translation-Project: Betawiki at http://translatewiki.net\n"
+"X-Generator: MediaWiki 1.15alpha (r49162); Translate extension (11:2009-03-"
+"27)\n"
+"X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: tl\n"
 "X-Message-Group: out-mwlibrl\n"
 
@@ -86,7 +86,7 @@ msgstr ""
 "Pakiunawa po: Isa lamang itong paunang-tanaw na nilalayong magbigay ng isang "
 "ideya kung paano inihanda ang pagkakalimbag (''typeset'') ng aklat."
 
-#: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:600
+#: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:645
 msgid "References"
 msgstr "Mga sanggunian"
 
@@ -116,7 +116,7 @@ msgstr "Mga Pinagmulan, Mga Lisensiya, at Mga Tagapag-ambag ng Larawan"
 msgid "Image"
 msgstr "Larawan"
 
-#: mwlib/rl/pdfmessages.py:54
+#: mwlib/rl/pdfmessages.py:54 mwlib/rl/rlwriter.py:573
 msgid "anonymous edits"
 msgstr ""
 
@@ -124,7 +124,7 @@ msgstr ""
 msgid "Figure"
 msgstr ""
 
-#: mwlib/rl/pdfstyles.py:209
+#: mwlib/rl/pdfstyles.py:77
 msgid ""
 "PDF generated using the open source mwlib toolkit<br/>see http://code."
 "pediapress.com/ for more information"
@@ -133,16 +133,16 @@ msgstr ""
 "pinagmulan <br/>tingnan ang http://code.pediapress.com/ para sa mas marami "
 "pang kabatiran"
 
-#: mwlib/rl/rlwriter.py:276
+#: mwlib/rl/rlwriter.py:285
 msgid "layouting"
 msgstr "inaayos ang anyo ng paglalatag"
 
-#: mwlib/rl/rlwriter.py:336
+#: mwlib/rl/rlwriter.py:347
 #, python-format
 msgid "mwlib.ext version: %(version)s"
 msgstr "bersyong mwlib.ext: %(version)s"
 
-#: mwlib/rl/rlwriter.py:342
+#: mwlib/rl/rlwriter.py:353
 #, python-format
 msgid ""
 "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
@@ -151,11 +151,20 @@ msgstr ""
 "bersyong mwlib: %(mwlibversion)s, bersyong mwlib.rl: %(mwlibrlversion)s, %"
 "(mwlibextversion)s"
 
-#: mwlib/rl/rlwriter.py:404
+#: mwlib/rl/rlwriter.py:421
 msgid "rendering"
 msgstr "naghahain"
 
-#: mwlib/rl/rlwriter.py:591
+#: mwlib/rl/rlwriter.py:579
+msgid "Source"
+msgstr ""
+
+#: mwlib/rl/rlwriter.py:581
+#, fuzzy
+msgid "Contributors"
+msgstr "Pangunahing mga May-akda: %(may-akda)s"
+
+#: mwlib/rl/rlwriter.py:636
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
@@ -166,26 +175,6 @@ msgstr ""
 "panulat ng pdf (b) may suliraning pangpaglalarawan at pagpapaliwanag ng "
 "kayarian (''markup'') (c) napakaluwang ng tabla"
 
-#: mwlib/rl/rlwriter.py:605
-#, python-format
-msgid "Source: <link href=\"%(url)s\">%(source)s</link>"
-msgstr ""
-
-#: mwlib/rl/rlwriter.py:614
-msgid "\\g<num> anonymous edits"
-msgstr ""
-
-#: mwlib/rl/rlwriter.py:615
-#, fuzzy, python-format
-msgid "Contributors: %(authors)s"
-msgstr "Pangunahing mga May-akda: %(may-akda)s"
-
 #, fuzzy
-#~ msgid "<b>References</b>"
-#~ msgstr "Mga sanggunian"
-
-#~ msgid "<b>External links</b>"
-#~ msgstr "<b>Panlabas na mga kawing</b>"
-
-#~ msgid "Source: %(source)s"
-#~ msgstr "Pinagmulan: %(source)s"
+#~ msgid "Contributors: %(authors)s"
+#~ msgstr "Pangunahing mga May-akda: %(may-akda)s"

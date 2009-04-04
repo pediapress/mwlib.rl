@@ -1,8 +1,8 @@
 # Translation of Mwlib.rl to Polish
 #
-# Author@Betawiki: Derbeth
-# Author@Betawiki: Matma Rex
-# Author@Betawiki: Sp5uhe
+# Author@translatewiki.net: Derbeth
+# Author@translatewiki.net: Matma Rex
+# Author@translatewiki.net: Sp5uhe
 # --
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
@@ -14,14 +14,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-03 11:48+0100\n"
-"PO-Revision-Date: 2009-01-24 18:25:15+0000\n"
+"POT-Creation-Date: 2009-04-04 14:13+0000\n"
+"PO-Revision-Date: 2009-04-04 14:11:44+0000\n"
 "Language-Team: Polish\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.15alpha (r46144); Translate extension (9 (2009-01-"
-"11))\n"
-"X-Translation-Project: Betawiki at http://translatewiki.net\n"
+"X-Generator: MediaWiki 1.15alpha (r49162); Translate extension (11:2009-03-"
+"27)\n"
+"X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: pl\n"
 "X-Message-Group: out-mwlibrl\n"
 
@@ -94,7 +94,7 @@ msgstr ""
 "Uwaga. To jest wyłącznie podgląd pozwalający wyrobić sobie opinię jak "
 "wygląda książka."
 
-#: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:600
+#: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:645
 msgid "References"
 msgstr "Przypisy"
 
@@ -122,7 +122,7 @@ msgstr "Źródła, licencje i autorzy grafiki"
 msgid "Image"
 msgstr "Grafika"
 
-#: mwlib/rl/pdfmessages.py:54
+#: mwlib/rl/pdfmessages.py:54 mwlib/rl/rlwriter.py:573
 msgid "anonymous edits"
 msgstr ""
 
@@ -130,7 +130,7 @@ msgstr ""
 msgid "Figure"
 msgstr ""
 
-#: mwlib/rl/pdfstyles.py:209
+#: mwlib/rl/pdfstyles.py:77
 msgid ""
 "PDF generated using the open source mwlib toolkit<br/>see http://code."
 "pediapress.com/ for more information"
@@ -138,16 +138,16 @@ msgstr ""
 "PDF wygenerowany przez bibliotekę open source mwlib<br/>więcej informacji na "
 "http://code.pediapress.com/"
 
-#: mwlib/rl/rlwriter.py:276
+#: mwlib/rl/rlwriter.py:285
 msgid "layouting"
 msgstr "tworzenie układu"
 
-#: mwlib/rl/rlwriter.py:336
+#: mwlib/rl/rlwriter.py:347
 #, python-format
 msgid "mwlib.ext version: %(version)s"
 msgstr "wersja mwlib.ext: %(version)s"
 
-#: mwlib/rl/rlwriter.py:342
+#: mwlib/rl/rlwriter.py:353
 #, python-format
 msgid ""
 "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
@@ -156,11 +156,20 @@ msgstr ""
 "wersja mwlib: %(mwlibversion)s, wersja mwlib.rl: %(mwlibrlversion)s, %"
 "(mwlibextversion)s"
 
-#: mwlib/rl/rlwriter.py:404
+#: mwlib/rl/rlwriter.py:421
 msgid "rendering"
 msgstr "renderowanie"
 
-#: mwlib/rl/rlwriter.py:591
+#: mwlib/rl/rlwriter.py:579
+msgid "Source"
+msgstr ""
+
+#: mwlib/rl/rlwriter.py:581
+#, fuzzy
+msgid "Contributors"
+msgstr "Główni autorzy: %(authors)s"
+
+#: mwlib/rl/rlwriter.py:636
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
@@ -170,26 +179,6 @@ msgstr ""
 "czysty tekst.</strong><br/>Potencjalne przyczyny problemów: (a) błąd w "
 "programie pdf-writer (b) problematyczny kod MediaWiki (c) zbyt szeroka tabela"
 
-#: mwlib/rl/rlwriter.py:605
-#, python-format
-msgid "Source: <link href=\"%(url)s\">%(source)s</link>"
-msgstr ""
-
-#: mwlib/rl/rlwriter.py:614
-msgid "\\g<num> anonymous edits"
-msgstr ""
-
-#: mwlib/rl/rlwriter.py:615
-#, fuzzy, python-format
-msgid "Contributors: %(authors)s"
-msgstr "Główni autorzy: %(authors)s"
-
 #, fuzzy
-#~ msgid "<b>References</b>"
-#~ msgstr "Przypisy"
-
-#~ msgid "<b>External links</b>"
-#~ msgstr "<b>Linki zewnętrzne</b>"
-
-#~ msgid "Source: %(source)s"
-#~ msgstr "Źródło: %(source)s"
+#~ msgid "Contributors: %(authors)s"
+#~ msgstr "Główni autorzy: %(authors)s"

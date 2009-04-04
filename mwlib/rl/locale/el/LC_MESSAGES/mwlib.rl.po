@@ -1,0 +1,171 @@
+# Translation of Mwlib.rl to Greek
+#
+# Author@translatewiki.net: Geraki
+# --
+msgid ""
+msgstr ""
+"Project-Id-Version: Mwlib.rl\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-04-04 14:13+0000\n"
+"PO-Revision-Date: 2009-04-04 14:11:43+0000\n"
+"Language-Team: Greek\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: MediaWiki 1.15alpha (r49162); Translate extension (11:2009-03-"
+"27)\n"
+"X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
+"X-Language-Code: el\n"
+"X-Message-Group: out-mwlibrl\n"
+
+#: mwlib/rl/pdfmessages.py:12
+msgid "Source:"
+msgstr ""
+
+#: mwlib/rl/pdfmessages.py:14
+msgid "License:"
+msgstr ""
+
+#: mwlib/rl/pdfmessages.py:16
+msgid "Contributors:"
+msgstr ""
+
+#: mwlib/rl/pdfmessages.py:18
+msgid "Article Licenses"
+msgstr "Άδειες Άρθρου"
+
+#: mwlib/rl/pdfmessages.py:20
+msgid "Title"
+msgstr "Τίτλος"
+
+#: mwlib/rl/pdfmessages.py:22
+msgid "Subtitle:"
+msgstr "Υπότιτλος:"
+
+#: mwlib/rl/pdfmessages.py:24
+msgid "Editor:"
+msgstr "Συντάκτης:"
+
+#: mwlib/rl/pdfmessages.py:26
+msgid "Created on:"
+msgstr "Δημιουργήθηκε στις:"
+
+#: mwlib/rl/pdfmessages.py:28
+msgid "Contents"
+msgstr "Περιεχόμενα"
+
+#: mwlib/rl/pdfmessages.py:30
+msgid "Articles"
+msgstr "Άρθρα"
+
+#: mwlib/rl/pdfmessages.py:32
+msgid "Produced by:"
+msgstr "Παρήχθη από:"
+
+#: mwlib/rl/pdfmessages.py:34
+msgid "pdf writer version:"
+msgstr "έκδοση pdf writer:"
+
+#: mwlib/rl/pdfmessages.py:36
+msgid "mwlib version:"
+msgstr "έκδοση mwlib:"
+
+#: mwlib/rl/pdfmessages.py:38
+msgid "Table of Contents"
+msgstr "Πίνακας Περιεχομένων"
+
+#: mwlib/rl/pdfmessages.py:40
+msgid "Skipping Articles!"
+msgstr "Πήδημα Άρθρων!"
+
+#: mwlib/rl/pdfmessages.py:42
+msgid ""
+"Please note:  This is only a preview intended to give an idea how the book "
+"is typeset."
+msgstr ""
+"Παρακαλούμε έχετε υπόψη: Αυτή είναι μόνο μια προεπισκόπηση με σκοπό να "
+"πάρετε μια ιδέα για το πως θα στοιχειοθετηθεί το βιβλίο."
+
+#: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:645
+msgid "References"
+msgstr "Παραπομπές"
+
+#: mwlib/rl/pdfmessages.py:46
+msgid ""
+"The following sections list the sources for all articles and images used in "
+"this book. Those sources provide more detailed licensing information "
+"including the copyright status, the copyright owner, and the license "
+"conditions."
+msgstr ""
+"Οι ακόλουθες ενότητες έχουν κατάλογο των πηγών για όλα τα άρθρα και τις "
+"εικόνες που χρησιμοποιούνται σε αυτό το βιβλίο. Αυτές οι πηγές περιέχουν "
+"περισσότερο λεπτομερείς πληροφορίες σχετικά με το καθεστώς πνευματικής "
+"ιδιοκτησίας, τον κάτοχο των πνευματικών δικαιωμάτων, και όρους άδειας χρήσης."
+
+#: mwlib/rl/pdfmessages.py:48
+msgid "Article Sources, Licenses and Contributors"
+msgstr "Πηγές Άρθρων, Άδειες και Συνεισφέροντες"
+
+#: mwlib/rl/pdfmessages.py:50
+msgid "Image Sources, Licenses and Contributors"
+msgstr "Πηγές Εικόνων, Άδειες και Συνεισφέροντες"
+
+#: mwlib/rl/pdfmessages.py:52
+msgid "Image"
+msgstr "Εικόνα"
+
+#: mwlib/rl/pdfmessages.py:54 mwlib/rl/rlwriter.py:573
+msgid "anonymous edits"
+msgstr ""
+
+#: mwlib/rl/pdfmessages.py:56
+msgid "Figure"
+msgstr ""
+
+#: mwlib/rl/pdfstyles.py:77
+msgid ""
+"PDF generated using the open source mwlib toolkit<br/>see http://code."
+"pediapress.com/ for more information"
+msgstr ""
+"Το PDF δημιουργήθηκε χρησιμοποιώντας το ανοικτού κώδικα mwlib toolkit<br/"
+">δείτε http://code.pediapress.com/ για περισσότερες πληροφορίες"
+
+#: mwlib/rl/rlwriter.py:285
+msgid "layouting"
+msgstr "διάταξη"
+
+#: mwlib/rl/rlwriter.py:347
+#, python-format
+msgid "mwlib.ext version: %(version)s"
+msgstr "έκδοση mwlib.ext: %(version)s"
+
+#: mwlib/rl/rlwriter.py:353
+#, python-format
+msgid ""
+"mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
+"(mwlibextversion)s"
+msgstr ""
+"έκδοση mwlib: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
+"(mwlibextversion)s"
+
+#: mwlib/rl/rlwriter.py:421
+msgid "rendering"
+msgstr "μορφοποίηση"
+
+#: mwlib/rl/rlwriter.py:579
+msgid "Source"
+msgstr ""
+
+#: mwlib/rl/rlwriter.py:581
+#, fuzzy
+msgid "Contributors"
+msgstr "Περιεχόμενα"
+
+#: mwlib/rl/rlwriter.py:636
+msgid ""
+"<strong>WARNING: Article could not be rendered - ouputting plain text.</"
+"strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
+"software (b) problematic Mediawiki markup (c) table is too wide"
+msgstr ""
+"<strong>ΠΡΟΕΙΔΟΠΟΙΗΣΗ: Το άρθρο δεν μπόρεσε να μορφοποιηθεί - εξάγεται απλό "
+"κείμενο.</strong><br/>Πιθανές αιτίες του προβλήματος είναι: (α) σφάλμα στο "
+"λογισμικό εγγραφής pdf (β) προβληματικός κώδικας wiki (γ) πίνακας πολύ ευρύς"

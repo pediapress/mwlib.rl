@@ -1,0 +1,170 @@
+# Translation of Mwlib.rl to Swedish
+#
+# Author@translatewiki.net: Hannibal
+# --
+msgid ""
+msgstr ""
+"Project-Id-Version: Mwlib.rl\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-04-04 14:13+0000\n"
+"PO-Revision-Date: 2009-04-04 14:11:44+0000\n"
+"Language-Team: Swedish\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: MediaWiki 1.15alpha (r49162); Translate extension (11:2009-03-"
+"27)\n"
+"X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
+"X-Language-Code: sv\n"
+"X-Message-Group: out-mwlibrl\n"
+
+#: mwlib/rl/pdfmessages.py:12
+msgid "Source:"
+msgstr ""
+
+#: mwlib/rl/pdfmessages.py:14
+msgid "License:"
+msgstr ""
+
+#: mwlib/rl/pdfmessages.py:16
+msgid "Contributors:"
+msgstr ""
+
+#: mwlib/rl/pdfmessages.py:18
+msgid "Article Licenses"
+msgstr "Artikellicenser"
+
+#: mwlib/rl/pdfmessages.py:20
+msgid "Title"
+msgstr "Titel"
+
+#: mwlib/rl/pdfmessages.py:22
+msgid "Subtitle:"
+msgstr "Undertitel:"
+
+#: mwlib/rl/pdfmessages.py:24
+msgid "Editor:"
+msgstr "Redaktör:"
+
+#: mwlib/rl/pdfmessages.py:26
+msgid "Created on:"
+msgstr "Skapad den:"
+
+#: mwlib/rl/pdfmessages.py:28
+msgid "Contents"
+msgstr "Innehåll"
+
+#: mwlib/rl/pdfmessages.py:30
+msgid "Articles"
+msgstr "Artiklar"
+
+#: mwlib/rl/pdfmessages.py:32
+msgid "Produced by:"
+msgstr "Skapad av:"
+
+#: mwlib/rl/pdfmessages.py:34
+msgid "pdf writer version:"
+msgstr "version av PDF-skapare:"
+
+#: mwlib/rl/pdfmessages.py:36
+msgid "mwlib version:"
+msgstr "mwlib-version:"
+
+#: mwlib/rl/pdfmessages.py:38
+msgid "Table of Contents"
+msgstr "Innehållsförteckning"
+
+#: mwlib/rl/pdfmessages.py:40
+msgid "Skipping Articles!"
+msgstr "Hoppar över artiklar!"
+
+#: mwlib/rl/pdfmessages.py:42
+msgid ""
+"Please note:  This is only a preview intended to give an idea how the book "
+"is typeset."
+msgstr ""
+"Observera: Detta är enbart en förhandsvisning för att ge en bild av hur "
+"boken är utformad."
+
+#: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:645
+msgid "References"
+msgstr "Referenser"
+
+#: mwlib/rl/pdfmessages.py:46
+msgid ""
+"The following sections list the sources for all articles and images used in "
+"this book. Those sources provide more detailed licensing information "
+"including the copyright status, the copyright owner, and the license "
+"conditions."
+msgstr ""
+"De följande styckena listar källorna för alla artiklar och bilder i den här "
+"boken. De källorna ger ytterligare licensinformation, såsom "
+"upphovsrättsstatus, upphovsrättsinnehavare, och licensens villkor."
+
+#: mwlib/rl/pdfmessages.py:48
+msgid "Article Sources, Licenses and Contributors"
+msgstr "Artikelkällor, -licenser och -författare"
+
+#: mwlib/rl/pdfmessages.py:50
+msgid "Image Sources, Licenses and Contributors"
+msgstr "Bildkällor, -licenser och -bidragsgivare"
+
+#: mwlib/rl/pdfmessages.py:52
+msgid "Image"
+msgstr "Bild"
+
+#: mwlib/rl/pdfmessages.py:54 mwlib/rl/rlwriter.py:573
+msgid "anonymous edits"
+msgstr ""
+
+#: mwlib/rl/pdfmessages.py:56
+msgid "Figure"
+msgstr ""
+
+#: mwlib/rl/pdfstyles.py:77
+msgid ""
+"PDF generated using the open source mwlib toolkit<br/>see http://code."
+"pediapress.com/ for more information"
+msgstr ""
+"PDF är skapad med öppen källkod-verktyget mwlib <br/>se http://code."
+"pediapress.com/ för mer information"
+
+#: mwlib/rl/rlwriter.py:285
+msgid "layouting"
+msgstr "utformar"
+
+#: mwlib/rl/rlwriter.py:347
+#, python-format
+msgid "mwlib.ext version: %(version)s"
+msgstr "mwlib.ext-version: %(version)s"
+
+#: mwlib/rl/rlwriter.py:353
+#, python-format
+msgid ""
+"mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
+"(mwlibextversion)s"
+msgstr ""
+"mwlib-version: %(mwlibversion)s, mwlib.rl-version: %(mwlibrlversion)s, %"
+"(mwlibextversion)s"
+
+#: mwlib/rl/rlwriter.py:421
+msgid "rendering"
+msgstr "renderar"
+
+#: mwlib/rl/rlwriter.py:579
+msgid "Source"
+msgstr ""
+
+#: mwlib/rl/rlwriter.py:581
+#, fuzzy
+msgid "Contributors"
+msgstr "Innehåll"
+
+#: mwlib/rl/rlwriter.py:636
+msgid ""
+"<strong>WARNING: Article could not be rendered - ouputting plain text.</"
+"strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
+"software (b) problematic Mediawiki markup (c) table is too wide"
+msgstr ""
+"<strong>VARNING: Artikeln kunde inte renderas - istället visas ren text.</"
+"strong><br/>Tänkbara orsaker kan vara: (a) en bug i programvaran som skapar "
+"PDF:n (b) problematisk Mediawiki-märktext (c) för bred(a) tabell(er)"
