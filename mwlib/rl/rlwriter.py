@@ -78,7 +78,7 @@ from mwlib.writer import miscutils, styleutils
 import rltables
 from pagetemplates import WikiPage, TitlePage, SimplePage
 
-from mwlib import parser, log, uparser, metabook
+from mwlib import parser, log, uparser, metabook, timeline
 
 from mwlib.rl import fontconfig
 
@@ -284,7 +284,7 @@ class RlWriter(object):
         if status_callback:
             status_callback(status=_('layouting'), progress=0)
         if self.debug:
-            #parser.show(sys.stdout, bookParseTree, verbose=True)
+            parser.show(sys.stdout, bookParseTree, verbose=True)
             pass
 
         advtree.buildAdvancedTree(bookParseTree)
@@ -1785,10 +1785,21 @@ class RlWriter(object):
             'width': w/density,
             'height': h/density,
             'valign': imgAlign, }
-    
-    writeTimeline = ignore
-    writeControl = ignore
 
+    
+    def writeTimeline(self, node):
+        res = timeline.drawTimeline(node.timeline, self.tmpdir)
+        if res:
+            # width and height should be parsed by the....parser and not guessed by the writer
+            node.width = 180
+            node.thumb = True
+            node.isInline = lambda : False
+            w, h = self.image_utils.getImageSize(node, res)
+            return [Figure(res, '', text_style(), imgWidth=w, imgHeight=h)]
+        return []
+
+
+    writeControl = ignore
     writeVar = writeEmphasized
 
 
