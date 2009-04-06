@@ -1035,7 +1035,7 @@ class RlWriter(object):
         else:
             txt = [href]
             txt = [getattr(obj, 'full_target', None) or obj.target]
-            t = self.font_switcher.fontifyText(xmlescape(''.join(txt).strip()).encode('utf-8'))
+            t = self.font_switcher.fontifyText(xmlescape(''.join(txt).strip())).encode('utf-8')
             t = unicode(urllib.unquote(t), 'utf-8')
 
         if not internallink:
