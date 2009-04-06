@@ -49,7 +49,9 @@ You will also need:
   http://fribidi.freedesktop.org/wiki/  (debian packages: libfribidi0 and libfribidi-dev)
   http://pyfribidi.sourceforge.net/index.html (debian packages: python-pyfribidi)
   
-
+*ploticus*
+  package which is used to render timelines 
+  http://ploticus.sourceforge.net/doc/welcome.html (debian package: ploticus)
 
 PDF Customization
 ======================================================================

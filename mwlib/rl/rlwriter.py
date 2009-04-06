@@ -1788,14 +1788,14 @@ class RlWriter(object):
 
     
     def writeTimeline(self, node):
-        res = timeline.drawTimeline(node.timeline, self.tmpdir)
-        if res:
+        img_path = timeline.drawTimeline(node.timeline, self.tmpdir)
+        if img_path:
             # width and height should be parsed by the....parser and not guessed by the writer
             node.width = 180
             node.thumb = True
             node.isInline = lambda : False
-            w, h = self.image_utils.getImageSize(node, res)
-            return [Figure(res, '', text_style(), imgWidth=w, imgHeight=h)]
+            w, h = self.image_utils.getImageSize(node, img_path)
+            return [Figure(img_path, '', text_style(), imgWidth=w, imgHeight=h)]        
         return []
 
 
