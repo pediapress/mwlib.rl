@@ -71,9 +71,16 @@ The current development version can also be found there.
 
 ChangeLog
 ======================================================================
+2009-04-09 release 0.10.1
+-------------------------
+* move contributors and article source to the end of the pdf
+* basic support for timelines
+* use mwlib > 0.10
+* other fixes
+
 
 2009-03-05 release 0.9.10
-------------------------
+-------------------------
 
 * insert conditional pagebreaks before articles
 * minor fixes
