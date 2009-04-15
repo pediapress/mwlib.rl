@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-04 14:13+0000\n"
-"PO-Revision-Date: 2009-04-04 14:11:43+0000\n"
+"POT-Creation-Date: 2009-04-15 16:21+0200\n"
+"PO-Revision-Date: 2009-04-15 16:30+0200\n"
 "Language-Team: Spanish\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -102,8 +102,8 @@ msgstr ""
 "del derecho de autor, y las condiciones de la licencia."
 
 #: mwlib/rl/pdfmessages.py:48
-msgid "Article Sources, Licenses and Contributors"
-msgstr "Fuentes de artículo, licencias y contribuyentes"
+msgid "Article Sources and Contributors"
+msgstr "Fuentes de artículo y contribuyentes"
 
 #: mwlib/rl/pdfmessages.py:50
 msgid "Image Sources, Licenses and Contributors"
@@ -123,10 +123,10 @@ msgstr "Figura"
 
 #: mwlib/rl/pdfstyles.py:77
 msgid ""
-"PDF generated using the open source mwlib toolkit<br/>see http://code."
-"pediapress.com/ for more information"
+"PDF generated using the open source mwlib toolkit. See http://code."
+"pediapress.com/ for more information."
 msgstr ""
-"PDF generado usando la fuente abierta mwlib toolkit<br/>ver http://code."
+"PDF generado usando la fuente abierta mwlib toolkit. vver http://code."
 "pediapress.com/ para mayor información"
 
 #: mwlib/rl/rlwriter.py:285

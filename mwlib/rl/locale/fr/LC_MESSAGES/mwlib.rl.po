@@ -7,13 +7,12 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-04 14:13+0000\n"
-"PO-Revision-Date: 2009-04-04 14:11:43+0000\n"
+"POT-Creation-Date: 2009-04-15 16:21+0200\n"
+"PO-Revision-Date: 2009-04-15 16:30+0200\n"
 "Language-Team: French\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -109,8 +108,8 @@ msgstr ""
 "d'auteurs et les conditions de la licence."
 
 #: mwlib/rl/pdfmessages.py:48
-msgid "Article Sources, Licenses and Contributors"
-msgstr "Sources des articles, licences et contributeurs"
+msgid "Article Sources and Contributors"
+msgstr "Sources des articles et contributeurs"
 
 #: mwlib/rl/pdfmessages.py:50
 msgid "Image Sources, Licenses and Contributors"
@@ -130,10 +129,10 @@ msgstr ""
 
 #: mwlib/rl/pdfstyles.py:77
 msgid ""
-"PDF generated using the open source mwlib toolkit<br/>see http://code."
-"pediapress.com/ for more information"
+"PDF generated using the open source mwlib toolkit. See http://code."
+"pediapress.com/ for more information."
 msgstr ""
-"Ce fichier PDF a été généré à l'aide du toolkit Open Source mwlib.<br/>Pour "
+"Ce fichier PDF a été généré à l'aide du toolkit Open Source mwlib. Pour "
 "plus d'informations consulter http://code.pediapress.com."
 
 #: mwlib/rl/rlwriter.py:285
@@ -177,7 +176,3 @@ msgstr ""
 "- édition en texte simple.</strong><br/>Le problème est éventuellement causé "
 "par (a) un bogue dans le logiciel du PDF (b) une erreur dans le markup du "
 "MediaWiki (c) un tableau trop large."
-
-#, fuzzy
-#~ msgid "Contributors: %(authors)s"
-#~ msgstr "Principaux auteurs: %(authors)s"

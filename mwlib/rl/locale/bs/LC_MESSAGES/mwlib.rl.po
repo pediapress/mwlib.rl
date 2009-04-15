@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-04 14:13+0000\n"
-"PO-Revision-Date: 2009-04-04 14:11:43+0000\n"
+"POT-Creation-Date: 2009-04-15 16:21+0200\n"
+"PO-Revision-Date: 2009-04-15 16:27+0200\n"
 "Language-Team: Bosnian\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -26,9 +26,8 @@ msgid "License:"
 msgstr ""
 
 #: mwlib/rl/pdfmessages.py:16
-#, fuzzy
 msgid "Contributors:"
-msgstr "Glavni autori: %(autora)"
+msgstr "Glavni autori:"
 
 #: mwlib/rl/pdfmessages.py:18
 msgid "Article Licenses"
@@ -103,8 +102,8 @@ msgstr ""
 "licence."
 
 #: mwlib/rl/pdfmessages.py:48
-msgid "Article Sources, Licenses and Contributors"
-msgstr "Izvori, licence i urednici članka"
+msgid "Article Sources and Contributors"
+msgstr "Izvori i urednici članka"
 
 #: mwlib/rl/pdfmessages.py:50
 msgid "Image Sources, Licenses and Contributors"
@@ -124,11 +123,11 @@ msgstr ""
 
 #: mwlib/rl/pdfstyles.py:77
 msgid ""
-"PDF generated using the open source mwlib toolkit<br/>see http://code."
-"pediapress.com/ for more information"
+"PDF generated using the open source mwlib toolkit. See http://code."
+"pediapress.com/ for more information."
 msgstr ""
-"PDF napravljen uz pomoć mwlib alata otvorenog koda<br/>pogledajte http://"
-"code.pediapress.com/ za više informacija"
+"PDF napravljen uz pomoć mwlib alata otvorenog koda. pogledajte http://"
+"code.pediapress.com/ za više informacija."
 
 #: mwlib/rl/rlwriter.py:285
 msgid "layouting"
@@ -157,9 +156,8 @@ msgid "Source"
 msgstr ""
 
 #: mwlib/rl/rlwriter.py:581
-#, fuzzy
 msgid "Contributors"
-msgstr "Glavni autori: %(autora)"
+msgstr "Glavni autori:"
 
 #: mwlib/rl/rlwriter.py:636
 msgid ""
@@ -170,7 +168,3 @@ msgstr ""
 "<strong>UPOZORENJE: Članak nije mogao biti iscrtan - ispisat će se obični "
 "tekst.</strong><br/>Mogući uzorci ovog problema su: (a) greška u softveru "
 "pdf-pisača (b) problematični Mediawiki opisi (c) tabela je preširoka"
-
-#, fuzzy
-#~ msgid "Contributors: %(authors)s"
-#~ msgstr "Glavni autori: %(autora)"

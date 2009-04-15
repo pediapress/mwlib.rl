@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-04 14:13+0000\n"
+"POT-Creation-Date: 2009-04-15 16:21+0200\n"
 "PO-Revision-Date: 2009-04-04 14:11:44+0000\n"
 "Language-Team: Slovenian\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -105,7 +105,7 @@ msgstr ""
 
 #: mwlib/rl/pdfmessages.py:48
 #, fuzzy
-msgid "Article Sources, Licenses and Contributors"
+msgid "Article Sources and Contributors"
 msgstr "Viri članka, licence in sodelavci"
 
 #: mwlib/rl/pdfmessages.py:50
@@ -126,9 +126,10 @@ msgid "Figure"
 msgstr ""
 
 #: mwlib/rl/pdfstyles.py:77
+#, fuzzy
 msgid ""
-"PDF generated using the open source mwlib toolkit<br/>see http://code."
-"pediapress.com/ for more information"
+"PDF generated using the open source mwlib toolkit. See http://code."
+"pediapress.com/ for more information."
 msgstr ""
 "Datoteke PDF so ustvarjene avtomatično z uporabo odprtokodnega orodja mwlib "
 "<br/> za več informacij glej http://code.pediapress.com/"

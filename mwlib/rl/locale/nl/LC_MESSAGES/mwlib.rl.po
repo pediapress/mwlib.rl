@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-04 14:13+0000\n"
-"PO-Revision-Date: 2009-04-04 14:11:44+0000\n"
+"POT-Creation-Date: 2009-04-15 16:21+0200\n"
+"PO-Revision-Date: 2009-04-15 16:31+0200\n"
 "Language-Team: Dutch\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -104,8 +104,8 @@ msgstr ""
 "auteursrechtenstatus, de rechthebbende en de licentievoorwaarden."
 
 #: mwlib/rl/pdfmessages.py:48
-msgid "Article Sources, Licenses and Contributors"
-msgstr "Artikelbronnen, licenties en bijdragers"
+msgid "Article Sources and Contributors"
+msgstr "Artikelbronnen en bijdragers"
 
 #: mwlib/rl/pdfmessages.py:50
 msgid "Image Sources, Licenses and Contributors"
@@ -125,11 +125,11 @@ msgstr ""
 
 #: mwlib/rl/pdfstyles.py:77
 msgid ""
-"PDF generated using the open source mwlib toolkit<br/>see http://code."
-"pediapress.com/ for more information"
+"PDF generated using the open source mwlib toolkit. See http://code."
+"pediapress.com/ for more information."
 msgstr ""
-"De PDF is gemaakt met de open broncode toolkit mwlib<br />Zie http://code."
-"pediapress.com/ voor meer informatie"
+"De PDF is gemaakt met de open broncode toolkit mwlib. Zie http://code."
+"pediapress.com/ voor meer informatie."
 
 #: mwlib/rl/rlwriter.py:285
 msgid "layouting"
@@ -172,7 +172,3 @@ msgstr ""
 "platte tekst.</strong>Mogelijke oorzaken voor het probleem zijn: (a) een "
 "fout in de software om de PDF te maken (b) niet te verwerken wikicode (c) te "
 "brede tabellen"
-
-#, fuzzy
-#~ msgid "Contributors: %(authors)s"
-#~ msgstr "Belangrijkste auteurs: %(author)s"

@@ -9,13 +9,12 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-04 14:13+0000\n"
-"PO-Revision-Date: 2009-04-04 14:11:44+0000\n"
+"POT-Creation-Date: 2009-04-15 16:21+0200\n"
+"PO-Revision-Date: 2009-04-15 16:32+0200\n"
 "Language-Team: Polish\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -111,8 +110,8 @@ msgstr ""
 "praw autorskich i warunkach licencji."
 
 #: mwlib/rl/pdfmessages.py:48
-msgid "Article Sources, Licenses and Contributors"
-msgstr "Źródła, licencje i autorzy artykułu"
+msgid "Article Sources and Contributors"
+msgstr "Źródła i autorzy artykułu"
 
 #: mwlib/rl/pdfmessages.py:50
 msgid "Image Sources, Licenses and Contributors"
@@ -132,11 +131,11 @@ msgstr ""
 
 #: mwlib/rl/pdfstyles.py:77
 msgid ""
-"PDF generated using the open source mwlib toolkit<br/>see http://code."
-"pediapress.com/ for more information"
+"PDF generated using the open source mwlib toolkit. See http://code."
+"pediapress.com/ for more information."
 msgstr ""
-"PDF wygenerowany przez bibliotekę open source mwlib<br/>więcej informacji na "
-"http://code.pediapress.com/"
+"PDF wygenerowany przez bibliotekę open source mwlib. Więcej informacji na "
+"http://code.pediapress.com/."
 
 #: mwlib/rl/rlwriter.py:285
 msgid "layouting"
@@ -178,7 +177,3 @@ msgstr ""
 "<strong>UWAGA: Nie udało się wyrenderować artykułu - zostanie wyprodukowany "
 "czysty tekst.</strong><br/>Potencjalne przyczyny problemów: (a) błąd w "
 "programie pdf-writer (b) problematyczny kod MediaWiki (c) zbyt szeroka tabela"
-
-#, fuzzy
-#~ msgid "Contributors: %(authors)s"
-#~ msgstr "Główni autorzy: %(authors)s"

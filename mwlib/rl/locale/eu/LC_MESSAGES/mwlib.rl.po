@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-04 14:13+0000\n"
+"POT-Creation-Date: 2009-04-15 16:21+0200\n"
 "PO-Revision-Date: 2009-04-04 14:11:43+0000\n"
 "Language-Team: Basque\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -97,7 +97,8 @@ msgid ""
 msgstr ""
 
 #: mwlib/rl/pdfmessages.py:48
-msgid "Article Sources, Licenses and Contributors"
+#, fuzzy
+msgid "Article Sources and Contributors"
 msgstr "Artikulu Iturriak, Lizentziak eta Lagundu dutenak:"
 
 #: mwlib/rl/pdfmessages.py:50
@@ -117,9 +118,10 @@ msgid "Figure"
 msgstr ""
 
 #: mwlib/rl/pdfstyles.py:77
+#, fuzzy
 msgid ""
-"PDF generated using the open source mwlib toolkit<br/>see http://code."
-"pediapress.com/ for more information"
+"PDF generated using the open source mwlib toolkit. See http://code."
+"pediapress.com/ for more information."
 msgstr ""
 "PDF hau iturri irekiko mwlib tresnekin sortu da<br/>ikusi http://code."
 "pediapress.com/ informazio gehiagorako"
