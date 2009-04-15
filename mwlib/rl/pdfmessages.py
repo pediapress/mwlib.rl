@@ -45,7 +45,7 @@ _('References')
 
 _('The following sections list the sources for all articles and images used in this book. Those sources provide more detailed licensing information including the copyright status, the copyright owner, and the license conditions.')
 
-_('Article Sources, Licenses and Contributors')
+_('Article Sources and Contributors')
 
 _('Image Sources, Licenses and Contributors')
 
