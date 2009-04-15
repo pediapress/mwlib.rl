@@ -74,8 +74,8 @@ article_start_min_space_infobox = 0.9*printHeight # as above. but if the article
 # Paragraph class (reportlab/platypus/paragraph.py --> class Paragraph())
 # e.g. the use of inline images is not included in the official documenation of reportlab
 pagefooter = u''
-titlepagefooter = _(u'PDF generated using the open source mwlib toolkit<br/>see http://code.pediapress.com/ for more information')
-
+titlepagefooter = _(u'PDF generated using the open source mwlib toolkit. See http://code.pediapress.com/ for more information.')
+show_creation_date = True
 
 ######### IMAGE CONFIGURATION
 

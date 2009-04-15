@@ -7,6 +7,7 @@
 from __future__ import division
 
 from PIL import Image
+from time import gmtime, strftime
 
 from reportlab.platypus.paragraph import Paragraph
 from reportlab.lib.units import cm
@@ -104,7 +105,9 @@ class TitlePage(PageTemplate):
         canvas.saveState()
         if showTitlePageFooter:
             canvas.line(footerMarginHor, footerMarginVert, pageWidth - footerMarginHor, footerMarginVert )
-            footertext = _(titlepagefooter).replace('@WIKITITLE@', self.wikititle).replace('@WIKIURL@', self.wikiurl)
+            footertext = _(titlepagefooter).replace('@WIKITITLE@', self.wikititle).replace('@WIKIURL@', self.wikiurl)            
+            if pdfstyles.show_creation_date:
+                footertext += ' PDF&nbsp;generated&nbsp;at:&nbsp;%s' % strftime("%a, %d %b %Y %H:%M:%S %Z", gmtime())
             p = Paragraph(font_switcher.fontifyText(footertext), text_style(mode='footer'))           
             w,h = p.wrap(pageWidth - 2*pageMarginHor,pageHeight-pageMarginVert)
             canvas.translate( (pageWidth-w)/2.0, 0.2*cm)
