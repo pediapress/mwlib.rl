@@ -6,13 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-<<<<<<< local
-"POT-Creation-Date: 2009-04-15 16:19+0200\n"
-"PO-Revision-Date: 2009-04-04 14:11:43+0000\n"
-=======
 "POT-Creation-Date: 2009-04-15 16:21+0200\n"
 "PO-Revision-Date: 2009-04-15 16:25+0200\n"
->>>>>>> other
 "Language-Team: Arabic\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
