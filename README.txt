@@ -71,6 +71,12 @@ The current development version can also be found there.
 
 ChangeLog
 ======================================================================
+
+2009-04-17 release 0.10.2
+-------------------------
+* show pdf creation date on title page
+* fixes
+
 2009-04-09 release 0.10.1
 -------------------------
 * move contributors and article source to the end of the pdf
