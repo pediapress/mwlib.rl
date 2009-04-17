@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-15 16:21+0200\n"
+"POT-Creation-Date: 2009-04-17 12:39+0200\n"
 "PO-Revision-Date: 2009-04-15 16:27+0200\n"
 "Language-Team: Bosnian\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -101,7 +101,7 @@ msgstr ""
 "licencama uključujući status autorskih prava, njihovih vlasnika i stanja "
 "licence."
 
-#: mwlib/rl/pdfmessages.py:48
+#: mwlib/rl/pdfmessages.py:48 mwlib/rl/rlwriter.py:569
 msgid "Article Sources and Contributors"
 msgstr "Izvori i urednici članka"
 
@@ -126,8 +126,8 @@ msgid ""
 "PDF generated using the open source mwlib toolkit. See http://code."
 "pediapress.com/ for more information."
 msgstr ""
-"PDF napravljen uz pomoć mwlib alata otvorenog koda. pogledajte http://"
-"code.pediapress.com/ za više informacija."
+"PDF napravljen uz pomoć mwlib alata otvorenog koda. pogledajte http://code."
+"pediapress.com/ za više informacija."
 
 #: mwlib/rl/rlwriter.py:285
 msgid "layouting"

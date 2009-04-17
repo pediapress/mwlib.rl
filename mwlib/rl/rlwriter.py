@@ -566,7 +566,7 @@ class RlWriter(object):
 
     def writeArticleMetainfo(self):
         elements = []
-        elements.append(Paragraph('Article Sources and Contributors', heading_style(mode='article')))
+        elements.append(Paragraph(_('Article Sources and Contributors'), heading_style(mode='article')))
         for title, url, authors in self.article_meta_info:
             if authors:
                 authors_text = ', '.join([a for a in authors if a != 'ANONIPEDITS:0'])
@@ -574,7 +574,7 @@ class RlWriter(object):
                 authors_text = self.font_switcher.fontifyText(xmlescape(authors_text))
             else:
                 authors_text = '-'
-            txt = '<b>%(title)s</b> <i>%(source_label)s</i>: %(source)s <i>%(contribs_label)s</i>: %(contribs)s ' % {
+            txt = '<b>%(title)s</b> &nbsp;<i>%(source_label)s</i>: %(source)s &nbsp;<i>%(contribs_label)s</i>: %(contribs)s ' % {
                 'title': title,
                 'source_label': _('Source'),
                 'source': self.font_switcher.fontifyText(xmlescape(url)),

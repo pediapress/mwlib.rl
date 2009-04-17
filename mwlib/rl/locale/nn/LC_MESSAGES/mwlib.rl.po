@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-15 16:21+0200\n"
+"POT-Creation-Date: 2009-04-17 12:39+0200\n"
 "PO-Revision-Date: 2009-04-04 14:11:44+0000\n"
 "Language-Team: Norwegian Nynorsk\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -101,7 +101,7 @@ msgstr ""
 "i denne boka. Kjeldene gjev meir detaljert lisensinformasjon, slik som "
 "opphavsrettsstoda, eigaren av opphavsretten og lisenshøve."
 
-#: mwlib/rl/pdfmessages.py:48
+#: mwlib/rl/pdfmessages.py:48 mwlib/rl/rlwriter.py:569
 #, fuzzy
 msgid "Article Sources and Contributors"
 msgstr "Artikkelkjelder, -lisensar, og -bidragsytarar"

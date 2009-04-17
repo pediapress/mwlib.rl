@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-15 16:21+0200\n"
+"POT-Creation-Date: 2009-04-17 12:39+0200\n"
 "PO-Revision-Date: 2009-04-15 16:24+0200\n"
 "Language-Team: Afrikaans\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -99,7 +99,7 @@ msgstr ""
 "inligting met onder andere die outeursreg, die reghebbende en die "
 "lisensievoorwaardes."
 
-#: mwlib/rl/pdfmessages.py:48
+#: mwlib/rl/pdfmessages.py:48 mwlib/rl/rlwriter.py:569
 msgid "Article Sources and Contributors"
 msgstr "Artikelbronne en bydraers"
 
@@ -124,8 +124,8 @@ msgid ""
 "PDF generated using the open source mwlib toolkit. See http://code."
 "pediapress.com/ for more information."
 msgstr ""
-"Die PDF is geskep met die oopbron program mwlib. Sien http://code."
-"pediapress.com/ vir meer inligting."
+"Die PDF is geskep met die oopbron program mwlib. Sien http://code.pediapress."
+"com/ vir meer inligting."
 
 #: mwlib/rl/rlwriter.py:285
 msgid "layouting"
