@@ -655,6 +655,7 @@ class RlWriter(object):
             else:
                 self.layout_status(progress=100*self.articlecount/self.numarticles)
            
+        self.reference_list_rendered = False
         return elements
 
     def writeParagraph(self,obj):        
