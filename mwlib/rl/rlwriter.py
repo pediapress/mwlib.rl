@@ -1115,9 +1115,9 @@ class RlWriter(object):
     
 
     def svg2png(self, img_path ):
-        cmd = 'convert %s -flatten -coalesce -strip  %s.png' % (img_path, img_path)
+        cmd = ["convert", img_path, "-flatten", "-coalesce",  "-strip", img_path+".png"]
         try:
-            p = subprocess.Popen(cmd, shell=True)
+            p = subprocess.Popen(cmd, shell=False)
             pid, status = os.waitpid(p.pid, 0)
             if status != 0 :
                 log.warning('img could not be converted. convert exited with non-zero return code:', repr(cmd))
