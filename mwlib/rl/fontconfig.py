@@ -150,7 +150,7 @@ class RLFontSwitcher(FontSwitcher):
             return True
         for file_name in font_def.get('file_names'):
             if not self.getAbsFontPath(file_name):
-                print "font not found:", file_name
+                # print "font not found:", file_name
                 return False
         return True
         
