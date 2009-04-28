@@ -1227,8 +1227,7 @@ class RlWriter(object):
             align = 'center'
             
         txt = []
-        #if getattr(img_node, 'frame', '') != 'frameless' and not getattr(img_node, 'align', '') == 'none':
-        if (getattr(img_node, 'thumb') or getattr(img_node, 'frame', '') == 'frame') and not getattr(img_node, 'align', '') == 'none' or self.gallery_mode:
+        if (getattr(img_node, 'thumb') or getattr(img_node, 'frame', '') == 'frame') or self.gallery_mode:
             txt = self.renderInline(img_node)
 
         is_inline = img_node.isInline()
