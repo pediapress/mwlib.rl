@@ -284,7 +284,7 @@ class RlWriter(object):
         if status_callback:
             status_callback(status=_('layouting'), progress=0)
         if self.debug:
-            parser.show(sys.stdout, bookParseTree, verbose=True)
+            #parser.show(sys.stdout, bookParseTree, verbose=True)
             pass
 
         advtree.buildAdvancedTree(bookParseTree)
@@ -299,7 +299,7 @@ class RlWriter(object):
         self.articlecount = 0
         
         if self.debug:
-            #parser.show(sys.stdout, bookParseTree, verbose=True)
+            parser.show(sys.stdout, bookParseTree, verbose=True)
             print "TREECLEANER REPORTS:"
             print "\n".join([repr(r) for r in tc.getReports()])
             
@@ -872,6 +872,7 @@ class RlWriter(object):
                 txt.extend(res)
             else:
                 log.warning(node.__class__.__name__, ' contained block element: ', child.__class__.__name__)
+                txt.append(self.font_switcher.fontifyText(child.getAllDisplayText()))
         self.inline_mode -= 1
         return txt
 
@@ -1226,14 +1227,8 @@ class RlWriter(object):
             align = 'center'
             
         txt = []
-        #if getattr(img_node, 'frame', '') != 'frameless' and not getattr(img_node, 'align', '') == 'none':
-        if (getattr(img_node, 'thumb') or getattr(img_node, 'frame', '') == 'frame') and not getattr(img_node, 'align', '') == 'none' or self.gallery_mode:
-            for node in img_node.children:            
-                res = self.write(node)
-                if isInline(res):
-                    txt.extend(res)
-                else:
-                    log.warning('imageLink contained block element: %s' % type(res))
+        if (getattr(img_node, 'thumb') or getattr(img_node, 'frame', '') == 'frame') or self.gallery_mode:
+            txt = self.renderInline(img_node)
 
         is_inline = img_node.isInline()
 
@@ -1255,7 +1250,7 @@ class RlWriter(object):
                 'linkend': linkend,
                 }
             return txt
-        captionTxt = ''.join(txt)
+        captionTxt = ''.join(txt)        
         figure = Figure(img_path,
                         captionTxt=captionTxt,
                         captionStyle=text_style('figure', in_table=self.tableNestingLevel),
