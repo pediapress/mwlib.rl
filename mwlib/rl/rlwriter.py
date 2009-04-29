@@ -79,7 +79,7 @@ import rltables
 from pagetemplates import WikiPage, TitlePage, SimplePage
 
 from mwlib import parser, log, uparser, metabook, timeline
-
+from mwlib.writer.licensechecker import LicenseChecker
 from mwlib.rl import fontconfig
 
 log = log.Log('rlwriter')
@@ -164,6 +164,12 @@ class RlWriter(object):
             self.imgDB = env.images
         else:
             self.imgDB = None
+
+        self.license_checker = LicenseChecker(image_db=self.imgDB, filter_type='blacklist')
+        self.license_checker.readLicensesCSV()
+
+        self.img_meta_info = {}
+        self.img_count = 0
 
         self.font_switcher = fontconfig.RLFontSwitcher()
         self.font_switcher.font_paths = fontconfig.font_paths
@@ -394,6 +400,10 @@ class RlWriter(object):
         if pdfstyles.showArticleAttribution:
             elements.append(NotAtTopPageBreak())
             elements.extend(self.writeArticleMetainfo())
+
+            elements.append(NotAtTopPageBreak())
+            elements.extend(self.writeImageMetainfo())
+
                    
         self.license_mode = True
         for license in self.env.wiki.getLicenses():
@@ -583,6 +593,35 @@ class RlWriter(object):
                 }
             elements.append(Paragraph(txt, text_style('attribution')))
         return elements
+
+    def writeImageMetainfo(self):
+        elements = []
+        elements.append(Paragraph(_('Image Sources and Contributors'), heading_style(mode='article')))
+        for _id, title, url, license, authors in sorted(self.img_meta_info.values()):
+            if authors:
+                authors_text = ', '.join([a for a in authors if a != 'ANONIPEDITS:0'])
+                authors_text = re.sub(u'ANONIPEDITS:(?P<num>\d+)', u'\g<num> %s' % _(u'anonymous edits'), authors_text) 
+                authors_text = self.font_switcher.fontifyText(xmlescape(authors_text))
+            else:
+                authors_text = '-'
+            if license:
+                license_txt = '<i>%(license_label)s</i>: %(license)s &nbsp;' % {'license_label': _('License'),
+                                                                                'license': self.font_switcher.fontifyText(license),
+                                                                                }
+            else:
+                license_txt = _('unknown')
+            txt = '<b>%(title)s</b> &nbsp;<i>%(source_label)s</i>: %(source)s &nbsp;%(license_txt)s<i>%(contribs_label)s</i>: %(contribs)s ' % {
+                'title': title,
+                'source_label': _('Source'),
+                'source': self.font_switcher.fontifyText(xmlescape(url)),
+                'license_txt': license_txt,
+                'contribs_label': _('Contributors'),
+                'contribs': authors_text,
+                }
+            elements.append(Paragraph(txt, text_style('img_attribution')))
+        return elements
+
+
     
     def writeArticle(self, article):
         self.references = [] 
@@ -1239,6 +1278,17 @@ class RlWriter(object):
         else:
             linkstart = ''
             linkend = ''
+            
+        img_name = img_node.target
+        if not self.img_meta_info.get(img_name):
+            self.img_count += 1
+            url = self.imgDB.getDescriptionURL(img_name) or self.imgDB.getURL(img_name)
+            if url:
+                url = unicode(urllib.unquote(url.encode('utf-8')), 'utf-8')
+            else:
+                url = ''
+            license_name = self.license_checker.getLicenseDisplayName(img_name)
+            self.img_meta_info[img_name] = (self.img_count, img_name, url, license_name, self.imgDB.getContributors(img_node.target))
 
         if is_inline:
             txt = '%(linkstart)s<img src="%(src)s" width="%(width)fpt" height="%(height)fpt" valign="%(align)s"/>%(linkend)s' % {

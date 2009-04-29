@@ -179,13 +179,16 @@ def text_style(mode='p', indent_lvl=0, in_table=0, relsize='normal', text_align=
     if mode in ['footer', 'figure', 'center']:
         style.alignment = TA_CENTER
 
-    if mode in ['references', 'articlefoot', 'source', 'preformatted', 'list', 'attribution']:
+    if mode in ['references', 'articlefoot', 'source', 'preformatted', 'list', 'attribution', 'img_attribution']:
         style.alignment = TA_LEFT
 
-    if mode == 'attribution':
+    if mode in ['attribution', 'img_attribution']:
         style.fontSize = 6
         style.leading = 8
         style.spaceBefore = 6
+
+    if mode == 'img_attribution':
+        style.spaceBefore = 2
         
     if mode in ['articlefoot', 'references']:
         style.fontSize=smallfontsize
