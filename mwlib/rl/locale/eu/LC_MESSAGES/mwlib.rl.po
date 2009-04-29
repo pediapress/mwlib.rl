@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-17 12:39+0200\n"
+"POT-Creation-Date: 2009-04-29 11:42+0200\n"
 "PO-Revision-Date: 2009-04-04 14:11:43+0000\n"
 "Language-Team: Basque\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -84,7 +84,7 @@ msgid ""
 "is typeset."
 msgstr "Kontuan izan: Hau liburuaren aurreikuspen bat besterik ez da."
 
-#: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:645
+#: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:684
 msgid "References"
 msgstr "Erreferentziak"
 
@@ -96,12 +96,12 @@ msgid ""
 "conditions."
 msgstr ""
 
-#: mwlib/rl/pdfmessages.py:48 mwlib/rl/rlwriter.py:569
+#: mwlib/rl/pdfmessages.py:48 mwlib/rl/rlwriter.py:579
 #, fuzzy
 msgid "Article Sources and Contributors"
 msgstr "Artikulu Iturriak, Lizentziak eta Lagundu dutenak:"
 
-#: mwlib/rl/pdfmessages.py:50
+#: mwlib/rl/pdfmessages.py:50 mwlib/rl/rlwriter.py:599
 msgid "Image Sources, Licenses and Contributors"
 msgstr "Irudi Iturriak, Lizentziak eta Lagundu dutenak"
 
@@ -109,7 +109,8 @@ msgstr "Irudi Iturriak, Lizentziak eta Lagundu dutenak"
 msgid "Image"
 msgstr "Irudia"
 
-#: mwlib/rl/pdfmessages.py:54 mwlib/rl/rlwriter.py:573
+#: mwlib/rl/pdfmessages.py:54 mwlib/rl/rlwriter.py:583
+#: mwlib/rl/rlwriter.py:603
 msgid "anonymous edits"
 msgstr ""
 
@@ -126,16 +127,16 @@ msgstr ""
 "PDF hau iturri irekiko mwlib tresnekin sortu da<br/>ikusi http://code."
 "pediapress.com/ informazio gehiagorako"
 
-#: mwlib/rl/rlwriter.py:285
+#: mwlib/rl/rlwriter.py:291
 msgid "layouting"
 msgstr "disenatzen"
 
-#: mwlib/rl/rlwriter.py:347
+#: mwlib/rl/rlwriter.py:353
 #, python-format
 msgid "mwlib.ext version: %(version)s"
 msgstr "mwlib.ext bertsioa: %(version)s"
 
-#: mwlib/rl/rlwriter.py:353
+#: mwlib/rl/rlwriter.py:359
 #, python-format
 msgid ""
 "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
@@ -144,25 +145,38 @@ msgstr ""
 "mwlib bertsioa: %(mwlibversion)s, mwlib.rl bertsioa: %(mwlibrlversion)s, %"
 "(mwlibextversion)s"
 
-#: mwlib/rl/rlwriter.py:421
+#: mwlib/rl/rlwriter.py:431
 msgid "rendering"
 msgstr "bihurtzen"
 
-#: mwlib/rl/rlwriter.py:579
+#: mwlib/rl/rlwriter.py:589 mwlib/rl/rlwriter.py:615
 msgid "Source"
 msgstr ""
 
-#: mwlib/rl/rlwriter.py:581
+#: mwlib/rl/rlwriter.py:591 mwlib/rl/rlwriter.py:618
 #, fuzzy
 msgid "Contributors"
 msgstr "Egile nagusiak: %(authors)s"
 
-#: mwlib/rl/rlwriter.py:636
+#: mwlib/rl/rlwriter.py:608
+#, fuzzy
+msgid "License"
+msgstr "Artiikulu Lizentziak"
+
+#: mwlib/rl/rlwriter.py:612
+msgid "unknown"
+msgstr ""
+
+#: mwlib/rl/rlwriter.py:675
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
 "software (b) problematic Mediawiki markup (c) table is too wide"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Image Sources and Contributors"
+#~ msgstr "Irudi Iturriak, Lizentziak eta Lagundu dutenak"
 
 #, fuzzy
 #~ msgid "Contributors: %(authors)s"

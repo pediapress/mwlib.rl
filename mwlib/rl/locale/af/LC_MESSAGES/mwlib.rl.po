@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-17 12:39+0200\n"
+"POT-Creation-Date: 2009-04-29 11:42+0200\n"
 "PO-Revision-Date: 2009-04-15 16:24+0200\n"
 "Language-Team: Afrikaans\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -83,7 +83,7 @@ msgid ""
 "is typeset."
 msgstr "Let op: die is slegs 'n voorskou om te wys hoe die boek sal lyk."
 
-#: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:645
+#: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:684
 msgid "References"
 msgstr "Verwysings"
 
@@ -99,11 +99,11 @@ msgstr ""
 "inligting met onder andere die outeursreg, die reghebbende en die "
 "lisensievoorwaardes."
 
-#: mwlib/rl/pdfmessages.py:48 mwlib/rl/rlwriter.py:569
+#: mwlib/rl/pdfmessages.py:48 mwlib/rl/rlwriter.py:579
 msgid "Article Sources and Contributors"
 msgstr "Artikelbronne en bydraers"
 
-#: mwlib/rl/pdfmessages.py:50
+#: mwlib/rl/pdfmessages.py:50 mwlib/rl/rlwriter.py:599
 msgid "Image Sources, Licenses and Contributors"
 msgstr "Beeldbronne, lisensies en bydraers"
 
@@ -111,7 +111,8 @@ msgstr "Beeldbronne, lisensies en bydraers"
 msgid "Image"
 msgstr "Beeld"
 
-#: mwlib/rl/pdfmessages.py:54 mwlib/rl/rlwriter.py:573
+#: mwlib/rl/pdfmessages.py:54 mwlib/rl/rlwriter.py:583
+#: mwlib/rl/rlwriter.py:603
 msgid "anonymous edits"
 msgstr ""
 
@@ -127,16 +128,16 @@ msgstr ""
 "Die PDF is geskep met die oopbron program mwlib. Sien http://code.pediapress."
 "com/ vir meer inligting."
 
-#: mwlib/rl/rlwriter.py:285
+#: mwlib/rl/rlwriter.py:291
 msgid "layouting"
 msgstr "verwerk uitleg"
 
-#: mwlib/rl/rlwriter.py:347
+#: mwlib/rl/rlwriter.py:353
 #, python-format
 msgid "mwlib.ext version: %(version)s"
 msgstr "mwlib.ext-weergawe: %(version)s"
 
-#: mwlib/rl/rlwriter.py:353
+#: mwlib/rl/rlwriter.py:359
 #, python-format
 msgid ""
 "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
@@ -145,20 +146,29 @@ msgstr ""
 "mwlib-weergawe: %(mwlibversion)s, mwlib.rl-weergawe: %(mwlibrlversion)s, %"
 "(mwlibextversion)s"
 
-#: mwlib/rl/rlwriter.py:421
+#: mwlib/rl/rlwriter.py:431
 msgid "rendering"
 msgstr "besig met verwerking"
 
-#: mwlib/rl/rlwriter.py:579
+#: mwlib/rl/rlwriter.py:589 mwlib/rl/rlwriter.py:615
 msgid "Source"
 msgstr ""
 
-#: mwlib/rl/rlwriter.py:581
+#: mwlib/rl/rlwriter.py:591 mwlib/rl/rlwriter.py:618
 #, fuzzy
 msgid "Contributors"
 msgstr "Inhoud"
 
-#: mwlib/rl/rlwriter.py:636
+#: mwlib/rl/rlwriter.py:608
+#, fuzzy
+msgid "License"
+msgstr "Bladsylisensies"
+
+#: mwlib/rl/rlwriter.py:612
+msgid "unknown"
+msgstr ""
+
+#: mwlib/rl/rlwriter.py:675
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
@@ -167,3 +177,7 @@ msgstr ""
 "<strong>Die bladsy kon nie verwerk word nie. Die afvoer is suiwer teks.</"
 "strong>Moontlike oorsake vir die probleem is: (a) 'n fout in die sagteware "
 "wat die PDF skep (b) problematiese wikikode (c) te breë tabelle"
+
+#, fuzzy
+#~ msgid "Image Sources and Contributors"
+#~ msgstr "Beeldbronne, lisensies en bydraers"

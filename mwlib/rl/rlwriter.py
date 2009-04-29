@@ -596,7 +596,7 @@ class RlWriter(object):
 
     def writeImageMetainfo(self):
         elements = []
-        elements.append(Paragraph(_('Image Sources and Contributors'), heading_style(mode='article')))
+        elements.append(Paragraph(_('Image Sources, Licenses and Contributors'), heading_style(mode='article')))
         for _id, title, url, license, authors in sorted(self.img_meta_info.values()):
             if authors:
                 authors_text = ', '.join([a for a in authors if a != 'ANONIPEDITS:0'])
