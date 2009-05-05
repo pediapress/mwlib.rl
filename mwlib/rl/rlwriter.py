@@ -574,18 +574,22 @@ class RlWriter(object):
         m = md5(idstr.encode('utf-8'))
         return m.hexdigest()
 
+    def _filterAnonIpEdits(self, authors):
+        if authors:
+            authors_text = ', '.join([a for a in authors if a != 'ANONIPEDITS:0'])
+            authors_text = re.sub(u'ANONIPEDITS:(?P<num>\d+)', u'\g<num> %s' % _(u'anonymous edits'), authors_text) 
+            authors_text = self.font_switcher.fontifyText(xmlescape(authors_text))
+        else:
+            authors_text = '-'
+        return authors_text
+
     def writeArticleMetainfo(self):
         elements = []
         elements.append(Paragraph(_('Article Sources and Contributors'), heading_style(mode='article')))
         for title, url, authors in self.article_meta_info:
-            if authors:
-                authors_text = ', '.join([a for a in authors if a != 'ANONIPEDITS:0'])
-                authors_text = re.sub(u'ANONIPEDITS:(?P<num>\d+)', u'\g<num> %s' % _(u'anonymous edits'), authors_text) 
-                authors_text = self.font_switcher.fontifyText(xmlescape(authors_text))
-            else:
-                authors_text = '-'
+            authors_text = self._filterAnonIpEdits(authors)
             txt = '<b>%(title)s</b> &nbsp;<i>%(source_label)s</i>: %(source)s &nbsp;<i>%(contribs_label)s</i>: %(contribs)s ' % {
-                'title': title,
+                'title': self.font_switcher.fontifyText(xmlescape(title)),
                 'source_label': _('Source'),
                 'source': self.font_switcher.fontifyText(xmlescape(url)),
                 'contribs_label': _('Contributors'),
@@ -600,12 +604,7 @@ class RlWriter(object):
         elements = []
         elements.append(Paragraph(_('Image Sources, Licenses and Contributors'), heading_style(mode='article')))
         for _id, title, url, license, authors in sorted(self.img_meta_info.values()):
-            if authors:
-                authors_text = ', '.join([a for a in authors if a != 'ANONIPEDITS:0'])
-                authors_text = re.sub(u'ANONIPEDITS:(?P<num>\d+)', u'\g<num> %s' % _(u'anonymous edits'), authors_text) 
-                authors_text = self.font_switcher.fontifyText(xmlescape(authors_text))
-            else:
-                authors_text = '-'
+            authors_text = self._filterAnonIpEdits(authors)
             if license:
                 license_txt = '<i>%(license_label)s</i>: %(license)s &nbsp;' % {'license_label': _('License'),
                                                                                 'license': self.font_switcher.fontifyText(license),
@@ -613,7 +612,7 @@ class RlWriter(object):
             else:
                 license_txt = _('unknown')
             txt = '<b>%(title)s</b> &nbsp;<i>%(source_label)s</i>: %(source)s &nbsp;%(license_txt)s<i>%(contribs_label)s</i>: %(contribs)s ' % {
-                'title': title,
+                'title': self.font_switcher.fontifyText(xmlescape(title)),
                 'source_label': _('Source'),
                 'source': self.font_switcher.fontifyText(xmlescape(url)),
                 'license_txt': license_txt,
@@ -628,6 +627,7 @@ class RlWriter(object):
     def writeArticle(self, article):
         self.references = [] 
         title = self.renderText(article.caption)
+        log.info('rendering: %r' % title)        
         if self.layout_status:
             self.layout_status(article=title)
             self.articlecount += 1
