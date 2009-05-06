@@ -71,6 +71,11 @@ The current development version can also be found there.
 
 ChangeLog
 ======================================================================
+
+2009-05-06 release 0.11.3
+-------------------------
+* fix
+
 2009-05-06 release 0.11.2
 -------------------------
 * fixes
