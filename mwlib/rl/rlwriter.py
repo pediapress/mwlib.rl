@@ -1058,7 +1058,7 @@ class RlWriter(object):
             wikiurl = ''
             if a:
                 wikiurl = getattr(a[0], 'wikiurl', '')
-            article_id = self.buildArticleID(wikiurl, obj.target)
+            article_id = self.buildArticleID(wikiurl, obj.full_target)
             if article_id in self.articleids:
                 internallink = True
         
