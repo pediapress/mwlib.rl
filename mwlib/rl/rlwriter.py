@@ -589,7 +589,7 @@ class RlWriter(object):
         for title, url, authors in self.article_meta_info:
             authors_text = self._filterAnonIpEdits(authors)
             txt = '<b>%(title)s</b> &nbsp;<i>%(source_label)s</i>: %(source)s &nbsp;<i>%(contribs_label)s</i>: %(contribs)s ' % {
-                'title': self.font_switcher.fontifyText(xmlescape(title)),
+                'title': title,
                 'source_label': _('Source'),
                 'source': self.font_switcher.fontifyText(xmlescape(url)),
                 'contribs_label': _('Contributors'),
@@ -1271,7 +1271,7 @@ class RlWriter(object):
         if (getattr(img_node, 'thumb') or getattr(img_node, 'frame', '') == 'frame') or self.gallery_mode:
             txt = self.renderInline(img_node)
 
-        is_inline = img_node.isInline()
+        is_inline = img_node.isInline()        
 
         url = self.imgDB.getDescriptionURL(img_node.target) or self.imgDB.getURL(img_node.target)
         if url:
