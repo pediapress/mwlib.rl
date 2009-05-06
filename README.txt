@@ -71,6 +71,10 @@ The current development version can also be found there.
 
 ChangeLog
 ======================================================================
+2009-05-06 release 0.11.2
+-------------------------
+* fixes
+
 2009-05-05 release 0.11.1
 -------------------------
 * add image license and contributors section to the end of the PDF
