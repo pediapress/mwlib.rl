@@ -605,12 +605,11 @@ class RlWriter(object):
         elements.append(Paragraph(_('Image Sources, Licenses and Contributors'), heading_style(mode='article')))
         for _id, title, url, license, authors in sorted(self.img_meta_info.values()):
             authors_text = self._filterAnonIpEdits(authors)
-            if license:
-                license_txt = '<i>%(license_label)s</i>: %(license)s &nbsp;' % {'license_label': _('License'),
-                                                                                'license': self.font_switcher.fontifyText(license),
-                                                                                }
-            else:
-                license_txt = _('unknown')
+            if not license:
+                license = _('unknown')
+            license_txt = '<i>%(license_label)s</i>: %(license)s &nbsp;' % {'license_label': _('License'),
+                                                                            'license': self.font_switcher.fontifyText(license),
+                                                                            }
             txt = '<b>%(title)s</b> &nbsp;<i>%(source_label)s</i>: %(source)s &nbsp;%(license_txt)s<i>%(contribs_label)s</i>: %(contribs)s ' % {
                 'title': self.font_switcher.fontifyText(xmlescape(title)),
                 'source_label': _('Source'),
