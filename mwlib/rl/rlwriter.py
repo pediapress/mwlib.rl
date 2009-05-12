@@ -912,7 +912,7 @@ class RlWriter(object):
                 txt.extend(res)
             else:
                 log.warning(node.__class__.__name__, ' contained block element: ', child.__class__.__name__)
-                txt.append(self.font_switcher.fontifyText(child.getAllDisplayText()))
+                txt.append(self.font_switcher.fontifyText(xmlescape(child.getAllDisplayText())))
         self.inline_mode -= 1
         return txt
 
