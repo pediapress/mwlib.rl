@@ -685,7 +685,6 @@ class RlWriter(object):
             elements.append(Paragraph('<b>' + _('References') + '</b>', heading_style('section', lvl=3)))
             elements.extend(self.writeReferenceList())
             
-        #if not article.getParentNodesByClass(advtree.License):
         if not self.license_mode:
             self.article_meta_info.append((title, url, getattr(article, 'authors', '')))
 
@@ -699,6 +698,9 @@ class RlWriter(object):
         return elements
 
     def writeParagraph(self,obj):        
+        first_leaf = obj.getFirstLeaf()
+        if hasattr(first_leaf, 'caption'):
+            first_leaf.caption = first_leaf.caption.lstrip()
         return self.renderMixed(obj)
 
     def floatImages(self, nodes):
