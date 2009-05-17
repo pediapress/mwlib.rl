@@ -6,11 +6,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
-"PO-Revision-Date: 2009-05-17 16:32:58+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-05-17 16:47+0000\n"
+"PO-Revision-Date: 2009-05-17 16:43:20+0000\n"
 "Language-Team: Vietnamese\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.16alpha(r50698); Translate extension (11:2009-05-09)\n"
+"X-Generator: MediaWiki 1.16alpha(r50698); Translate extension (11:2009-05-"
+"09)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: vi\n"
 "X-Message-Group: out-mwlibrl\n"
@@ -35,6 +38,10 @@ msgstr "Giấy phép Bài viết"
 msgid "Title"
 msgstr "Tiêu đề"
 
+#: mwlib/rl/pdfmessages.py:22
+msgid "Subtitle:"
+msgstr ""
+
 #: mwlib/rl/pdfmessages.py:24
 msgid "Editor:"
 msgstr "Người sửa đổi:"
@@ -51,6 +58,15 @@ msgstr "Nội dung"
 msgid "Articles"
 msgstr "Bài"
 
+#: mwlib/rl/pdfmessages.py:32
+msgid "Produced by:"
+msgstr ""
+
+#: mwlib/rl/pdfmessages.py:34
+#, fuzzy
+msgid "pdf writer version:"
+msgstr "Phiên bản mwlib:"
+
 #: mwlib/rl/pdfmessages.py:36
 msgid "mwlib version:"
 msgstr "Phiên bản mwlib:"
@@ -59,15 +75,35 @@ msgstr "Phiên bản mwlib:"
 msgid "Table of Contents"
 msgstr "Mục lục"
 
-#: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:600
+#: mwlib/rl/pdfmessages.py:40
+#, fuzzy
+msgid "Skipping Articles!"
+msgstr "Bài"
+
+#: mwlib/rl/pdfmessages.py:42
+msgid ""
+"Please note:  This is only a preview intended to give an idea how the book "
+"is typeset."
+msgstr ""
+
+#: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:685
 msgid "References"
 msgstr "Chú thích"
 
-#: mwlib/rl/pdfmessages.py:48
-msgid "Article Sources, Licenses and Contributors"
-msgstr "Nguồn, giấy phép, và người đóng góp vào bài"
+#: mwlib/rl/pdfmessages.py:46
+msgid ""
+"The following sections list the sources for all articles and images used in "
+"this book. Those sources provide more detailed licensing information "
+"including the copyright status, the copyright owner, and the license "
+"conditions."
+msgstr ""
 
-#: mwlib/rl/pdfmessages.py:50
+#: mwlib/rl/pdfmessages.py:48 mwlib/rl/rlwriter.py:588
+#, fuzzy
+msgid "Article Sources and Contributors"
+msgstr "Nguồn, giấy phép, và người đóng góp vào hình"
+
+#: mwlib/rl/pdfmessages.py:50 mwlib/rl/rlwriter.py:605
 msgid "Image Sources, Licenses and Contributors"
 msgstr "Nguồn, giấy phép, và người đóng góp vào hình"
 
@@ -75,35 +111,64 @@ msgstr "Nguồn, giấy phép, và người đóng góp vào hình"
 msgid "Image"
 msgstr "Hình"
 
-#: mwlib/rl/pdfmessages.py:54
+#: mwlib/rl/pdfmessages.py:54 mwlib/rl/rlwriter.py:580
 msgid "anonymous edits"
 msgstr "sửa đổi vô danh"
 
-#: mwlib/rl/rlwriter.py:336
+#: mwlib/rl/pdfmessages.py:56
+msgid "Figure"
+msgstr ""
+
+#: mwlib/rl/pdfstyles.py:77
+msgid ""
+"PDF generated using the open source mwlib toolkit. See http://code."
+"pediapress.com/ for more information."
+msgstr ""
+
+#: mwlib/rl/rlwriter.py:291
+msgid "layouting"
+msgstr ""
+
+#: mwlib/rl/rlwriter.py:353
 #, python-format
 msgid "mwlib.ext version: %(version)s"
 msgstr "Phiên bản mwlib.ext: %(version)s"
 
-#: mwlib/rl/rlwriter.py:342
+#: mwlib/rl/rlwriter.py:359
 #, python-format
-msgid "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %(mwlibextversion)s"
-msgstr "Phiên bản mwlib: %(mwlibversion)s, phiên bản mwlib.rl: %(mwlibrlversion)s, %(mwlibextversion)s"
+msgid ""
+"mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
+"(mwlibextversion)s"
+msgstr ""
+"Phiên bản mwlib: %(mwlibversion)s, phiên bản mwlib.rl: %(mwlibrlversion)s, %"
+"(mwlibextversion)s"
 
-#: mwlib/rl/rlwriter.py:404
+#: mwlib/rl/rlwriter.py:431
 msgid "rendering"
 msgstr "đang kết xuất"
 
-#: mwlib/rl/rlwriter.py:605
-#, python-format
-msgid "Source: <link href=\"%(url)s\">%(source)s</link>"
-msgstr "Nguồn: <link href=\"%(url)s\">%(source)s</link>"
+#: mwlib/rl/rlwriter.py:593 mwlib/rl/rlwriter.py:615
+#, fuzzy
+msgid "Source"
+msgstr "Nguồn:"
 
-#: mwlib/rl/rlwriter.py:614
-msgid "\\g<num> anonymous edits"
-msgstr "\\g<num> sửa đổi vô danh"
+#: mwlib/rl/rlwriter.py:595 mwlib/rl/rlwriter.py:618
+#, fuzzy
+msgid "Contributors"
+msgstr "Người đóng góp:"
 
-#: mwlib/rl/rlwriter.py:615
-#, python-format
-msgid "Contributors: %(authors)s"
-msgstr "Người đóng góp: %(authors)s"
+#: mwlib/rl/rlwriter.py:609
+msgid "unknown"
+msgstr ""
 
+#: mwlib/rl/rlwriter.py:610
+#, fuzzy
+msgid "License"
+msgstr "Giấy phép:"
+
+#: mwlib/rl/rlwriter.py:676
+msgid ""
+"<strong>WARNING: Article could not be rendered - ouputting plain text.</"
+"strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
+"software (b) problematic Mediawiki markup (c) table is too wide"
+msgstr ""

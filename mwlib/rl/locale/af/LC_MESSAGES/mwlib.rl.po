@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-29 11:42+0200\n"
+"POT-Creation-Date: 2009-05-17 16:47+0000\n"
 "PO-Revision-Date: 2009-04-15 16:24+0200\n"
 "Language-Team: Afrikaans\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -83,7 +83,7 @@ msgid ""
 "is typeset."
 msgstr "Let op: die is slegs 'n voorskou om te wys hoe die boek sal lyk."
 
-#: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:684
+#: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:685
 msgid "References"
 msgstr "Verwysings"
 
@@ -99,11 +99,11 @@ msgstr ""
 "inligting met onder andere die outeursreg, die reghebbende en die "
 "lisensievoorwaardes."
 
-#: mwlib/rl/pdfmessages.py:48 mwlib/rl/rlwriter.py:579
+#: mwlib/rl/pdfmessages.py:48 mwlib/rl/rlwriter.py:588
 msgid "Article Sources and Contributors"
 msgstr "Artikelbronne en bydraers"
 
-#: mwlib/rl/pdfmessages.py:50 mwlib/rl/rlwriter.py:599
+#: mwlib/rl/pdfmessages.py:50 mwlib/rl/rlwriter.py:605
 msgid "Image Sources, Licenses and Contributors"
 msgstr "Beeldbronne, lisensies en bydraers"
 
@@ -111,8 +111,7 @@ msgstr "Beeldbronne, lisensies en bydraers"
 msgid "Image"
 msgstr "Beeld"
 
-#: mwlib/rl/pdfmessages.py:54 mwlib/rl/rlwriter.py:583
-#: mwlib/rl/rlwriter.py:603
+#: mwlib/rl/pdfmessages.py:54 mwlib/rl/rlwriter.py:580
 msgid "anonymous edits"
 msgstr ""
 
@@ -150,25 +149,25 @@ msgstr ""
 msgid "rendering"
 msgstr "besig met verwerking"
 
-#: mwlib/rl/rlwriter.py:589 mwlib/rl/rlwriter.py:615
+#: mwlib/rl/rlwriter.py:593 mwlib/rl/rlwriter.py:615
 msgid "Source"
 msgstr ""
 
-#: mwlib/rl/rlwriter.py:591 mwlib/rl/rlwriter.py:618
+#: mwlib/rl/rlwriter.py:595 mwlib/rl/rlwriter.py:618
 #, fuzzy
 msgid "Contributors"
 msgstr "Inhoud"
 
-#: mwlib/rl/rlwriter.py:608
+#: mwlib/rl/rlwriter.py:609
+msgid "unknown"
+msgstr ""
+
+#: mwlib/rl/rlwriter.py:610
 #, fuzzy
 msgid "License"
 msgstr "Bladsylisensies"
 
-#: mwlib/rl/rlwriter.py:612
-msgid "unknown"
-msgstr ""
-
-#: mwlib/rl/rlwriter.py:675
+#: mwlib/rl/rlwriter.py:676
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "

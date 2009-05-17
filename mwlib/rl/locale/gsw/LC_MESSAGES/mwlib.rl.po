@@ -5,11 +5,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
-"PO-Revision-Date: 2009-05-17 16:32:57+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-05-17 16:47+0000\n"
+"PO-Revision-Date: 2009-05-17 16:43:19+0000\n"
 "Language-Team: Swiss German\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.16alpha(r50698); Translate extension (11:2009-05-09)\n"
+"X-Generator: MediaWiki 1.16alpha(r50698); Translate extension (11:2009-05-"
+"09)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: gsw\n"
 "X-Message-Group: out-mwlibrl\n"
@@ -75,22 +78,34 @@ msgid "Skipping Articles!"
 msgstr "Artikel ibergumpe!"
 
 #: mwlib/rl/pdfmessages.py:42
-msgid "Please note:  This is only a preview intended to give an idea how the book is typeset."
-msgstr "Bitte gib Achtig: Des isch nume ne Vorschau, wu ne Yyblick soll gee iber s Uussäh vum Buech."
+msgid ""
+"Please note:  This is only a preview intended to give an idea how the book "
+"is typeset."
+msgstr ""
+"Bitte gib Achtig: Des isch nume ne Vorschau, wu ne Yyblick soll gee iber s "
+"Uussäh vum Buech."
 
-#: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:600
+#: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:685
 msgid "References"
 msgstr "Quälle"
 
 #: mwlib/rl/pdfmessages.py:46
-msgid "The following sections list the sources for all articles and images used in this book. Those sources provide more detailed licensing information including the copyright status, the copyright owner, and the license conditions."
-msgstr "Dää Abschnitt lischtet d Quälle fir alli Artikel un Bild uf, wu in däm Buech bruucht wäre. Die Quälle gän uusfierligeri Informatione iber d Lizänz, dr Urheberrächtsstatus, dr Inhaber vum Urheberrächt und Lizenzbedingige."
+msgid ""
+"The following sections list the sources for all articles and images used in "
+"this book. Those sources provide more detailed licensing information "
+"including the copyright status, the copyright owner, and the license "
+"conditions."
+msgstr ""
+"Dää Abschnitt lischtet d Quälle fir alli Artikel un Bild uf, wu in däm Buech "
+"bruucht wäre. Die Quälle gän uusfierligeri Informatione iber d Lizänz, dr "
+"Urheberrächtsstatus, dr Inhaber vum Urheberrächt und Lizenzbedingige."
 
-#: mwlib/rl/pdfmessages.py:48
-msgid "Article Sources, Licenses and Contributors"
-msgstr "Artikelquälle, Lizänzen un Autore"
+#: mwlib/rl/pdfmessages.py:48 mwlib/rl/rlwriter.py:588
+#, fuzzy
+msgid "Article Sources and Contributors"
+msgstr "Bildquälle, Lizänze un Autore"
 
-#: mwlib/rl/pdfmessages.py:50
+#: mwlib/rl/pdfmessages.py:50 mwlib/rl/rlwriter.py:605
 msgid "Image Sources, Licenses and Contributors"
 msgstr "Bildquälle, Lizänze un Autore"
 
@@ -98,7 +113,7 @@ msgstr "Bildquälle, Lizänze un Autore"
 msgid "Image"
 msgstr "Bild"
 
-#: mwlib/rl/pdfmessages.py:54
+#: mwlib/rl/pdfmessages.py:54 mwlib/rl/rlwriter.py:580
 msgid "anonymous edits"
 msgstr "anonymi Bearbeiter"
 
@@ -106,43 +121,59 @@ msgstr "anonymi Bearbeiter"
 msgid "Figure"
 msgstr "Abbildig"
 
-#: mwlib/rl/pdfstyles.py:209
-msgid "PDF generated using the open source mwlib toolkit<br/>see http://code.pediapress.com/ for more information"
-msgstr "Des PDF isch mid em Open-Source-Toolkit „mwlib“ aagleit wore.<br />Lueg http://code.pediapress.com/ fir meh Informatione."
+#: mwlib/rl/pdfstyles.py:77
+msgid ""
+"PDF generated using the open source mwlib toolkit. See http://code."
+"pediapress.com/ for more information."
+msgstr ""
 
-#: mwlib/rl/rlwriter.py:276
+#: mwlib/rl/rlwriter.py:291
 msgid "layouting"
 msgstr "am Aalege vum Layout"
 
-#: mwlib/rl/rlwriter.py:336
+#: mwlib/rl/rlwriter.py:353
 #, python-format
 msgid "mwlib.ext version: %(version)s"
 msgstr "mwlib.ext-Version: %(version)s"
 
-#: mwlib/rl/rlwriter.py:342
+#: mwlib/rl/rlwriter.py:359
 #, python-format
-msgid "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %(mwlibextversion)s"
-msgstr "mwlib-Version: %(mwlibversion)s, mwlib.rl-Version: %(mwlibrlversion)s, %(mwlibextversion)s"
+msgid ""
+"mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
+"(mwlibextversion)s"
+msgstr ""
+"mwlib-Version: %(mwlibversion)s, mwlib.rl-Version: %(mwlibrlversion)s, %"
+"(mwlibextversion)s"
 
-#: mwlib/rl/rlwriter.py:404
+#: mwlib/rl/rlwriter.py:431
 msgid "rendering"
 msgstr "am Rendere"
 
-#: mwlib/rl/rlwriter.py:591
-msgid "<strong>WARNING: Article could not be rendered - ouputting plain text.</strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer software (b) problematic Mediawiki markup (c) table is too wide"
-msgstr "<strong>WARNIG: Artikel chenne nit grenderet wäre – s wird nume Täkscht uusgeen.</strong><br />Megligi Ursache vum Probläm sin: (a) E Bug in dr PDF-Writer-Software (b) problematisch MediaWiki-Markup (c) e z breiti Tabälle"
+#: mwlib/rl/rlwriter.py:593 mwlib/rl/rlwriter.py:615
+#, fuzzy
+msgid "Source"
+msgstr "Quälle:"
 
-#: mwlib/rl/rlwriter.py:605
-#, python-format
-msgid "Source: <link href=\"%(url)s\">%(source)s</link>"
-msgstr "Quälle: <link href=\"%(url)s\">%(source)s</link>"
+#: mwlib/rl/rlwriter.py:595 mwlib/rl/rlwriter.py:618
+#, fuzzy
+msgid "Contributors"
+msgstr "Bearbeiter:"
 
-#: mwlib/rl/rlwriter.py:614
-msgid "\\g<num> anonymous edits"
-msgstr "\\g<num> anonymi Bearbeiter"
+#: mwlib/rl/rlwriter.py:609
+msgid "unknown"
+msgstr ""
 
-#: mwlib/rl/rlwriter.py:615
-#, python-format
-msgid "Contributors: %(authors)s"
-msgstr "Bearbeiter: %(authors)s"
+#: mwlib/rl/rlwriter.py:610
+#, fuzzy
+msgid "License"
+msgstr "Lizänz:"
 
+#: mwlib/rl/rlwriter.py:676
+msgid ""
+"<strong>WARNING: Article could not be rendered - ouputting plain text.</"
+"strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
+"software (b) problematic Mediawiki markup (c) table is too wide"
+msgstr ""
+"<strong>WARNIG: Artikel chenne nit grenderet wäre – s wird nume Täkscht "
+"uusgeen.</strong><br />Megligi Ursache vum Probläm sin: (a) E Bug in dr PDF-"
+"Writer-Software (b) problematisch MediaWiki-Markup (c) e z breiti Tabälle"

@@ -6,11 +6,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
-"PO-Revision-Date: 2009-05-17 16:32:58+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-05-17 16:47+0000\n"
+"PO-Revision-Date: 2009-05-17 16:43:20+0000\n"
 "Language-Team: Turkish\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.16alpha(r50698); Translate extension (11:2009-05-09)\n"
+"X-Generator: MediaWiki 1.16alpha(r50698); Translate extension (11:2009-05-"
+"09)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: tr\n"
 "X-Message-Group: out-mwlibrl\n"
@@ -27,6 +30,11 @@ msgstr "Lisans:"
 msgid "Contributors:"
 msgstr "Katkıda bulunanlar:"
 
+#: mwlib/rl/pdfmessages.py:18
+#, fuzzy
+msgid "Article Licenses"
+msgstr "Maddeler"
+
 #: mwlib/rl/pdfmessages.py:20
 msgid "Title"
 msgstr "Başlık"
@@ -39,6 +47,10 @@ msgstr "Alt başlık:"
 msgid "Editor:"
 msgstr "Editör:"
 
+#: mwlib/rl/pdfmessages.py:26
+msgid "Created on:"
+msgstr ""
+
 #: mwlib/rl/pdfmessages.py:28
 msgid "Contents"
 msgstr "İçindekiler"
@@ -46,6 +58,10 @@ msgstr "İçindekiler"
 #: mwlib/rl/pdfmessages.py:30
 msgid "Articles"
 msgstr "Maddeler"
+
+#: mwlib/rl/pdfmessages.py:32
+msgid "Produced by:"
+msgstr ""
 
 #: mwlib/rl/pdfmessages.py:34
 msgid "pdf writer version:"
@@ -55,42 +71,107 @@ msgstr "pdf yazıcı sürümü:"
 msgid "mwlib version:"
 msgstr "mwlib.ext versiyonu:"
 
-#: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:600
+#: mwlib/rl/pdfmessages.py:38
+#, fuzzy
+msgid "Table of Contents"
+msgstr "İçindekiler"
+
+#: mwlib/rl/pdfmessages.py:40
+#, fuzzy
+msgid "Skipping Articles!"
+msgstr "Maddeler"
+
+#: mwlib/rl/pdfmessages.py:42
+msgid ""
+"Please note:  This is only a preview intended to give an idea how the book "
+"is typeset."
+msgstr ""
+
+#: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:685
 msgid "References"
 msgstr "Kaynaklar"
+
+#: mwlib/rl/pdfmessages.py:46
+msgid ""
+"The following sections list the sources for all articles and images used in "
+"this book. Those sources provide more detailed licensing information "
+"including the copyright status, the copyright owner, and the license "
+"conditions."
+msgstr ""
+
+#: mwlib/rl/pdfmessages.py:48 mwlib/rl/rlwriter.py:588
+msgid "Article Sources and Contributors"
+msgstr ""
+
+#: mwlib/rl/pdfmessages.py:50 mwlib/rl/rlwriter.py:605
+msgid "Image Sources, Licenses and Contributors"
+msgstr ""
 
 #: mwlib/rl/pdfmessages.py:52
 msgid "Image"
 msgstr "Resim"
 
-#: mwlib/rl/pdfstyles.py:209
-msgid "PDF generated using the open source mwlib toolkit<br/>see http://code.pediapress.com/ for more information"
-msgstr "PDF, açık kaynak mwlib toolkit kullanılarak oluşturuldu<br/>daha fazla bilgi için http://code.pediapress.com/"
+#: mwlib/rl/pdfmessages.py:54 mwlib/rl/rlwriter.py:580
+msgid "anonymous edits"
+msgstr ""
 
-#: mwlib/rl/rlwriter.py:276
+#: mwlib/rl/pdfmessages.py:56
+msgid "Figure"
+msgstr ""
+
+#: mwlib/rl/pdfstyles.py:77
+msgid ""
+"PDF generated using the open source mwlib toolkit. See http://code."
+"pediapress.com/ for more information."
+msgstr ""
+
+#: mwlib/rl/rlwriter.py:291
 msgid "layouting"
 msgstr "yerleştiriliyor"
 
-#: mwlib/rl/rlwriter.py:336
+#: mwlib/rl/rlwriter.py:353
 #, python-format
 msgid "mwlib.ext version: %(version)s"
 msgstr "mwlib.ext versiyonu: %(version)s"
 
-#: mwlib/rl/rlwriter.py:342
+#: mwlib/rl/rlwriter.py:359
 #, python-format
-msgid "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %(mwlibextversion)s"
-msgstr "mwlib versiyonu: %(mwlibversion)s, mwlib.rl versiyonu: %(mwlibrlversion)s, %(mwlibextversion)s"
+msgid ""
+"mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
+"(mwlibextversion)s"
+msgstr ""
+"mwlib versiyonu: %(mwlibversion)s, mwlib.rl versiyonu: %(mwlibrlversion)s, %"
+"(mwlibextversion)s"
 
-#: mwlib/rl/rlwriter.py:404
+#: mwlib/rl/rlwriter.py:431
 msgid "rendering"
 msgstr "işleniyor"
 
-#: mwlib/rl/rlwriter.py:591
-msgid "<strong>WARNING: Article could not be rendered - ouputting plain text.</strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer software (b) problematic Mediawiki markup (c) table is too wide"
-msgstr "<strong>Uyarı: Madde işlenemiyor - düz metin çıktılanıyor.</strong><br/>Bu problemin muhtemel sebepleri: (a) pdf-yazıcı yazılımında bir hata (b) problemli Medyaviki biçimlendirmesi (c) tablo çok geniş"
+#: mwlib/rl/rlwriter.py:593 mwlib/rl/rlwriter.py:615
+#, fuzzy
+msgid "Source"
+msgstr "Kaynak:"
 
-#: mwlib/rl/rlwriter.py:615
-#, python-format
-msgid "Contributors: %(authors)s"
-msgstr "Katkıda bulunanlar: %(authors)s"
+#: mwlib/rl/rlwriter.py:595 mwlib/rl/rlwriter.py:618
+#, fuzzy
+msgid "Contributors"
+msgstr "Katkıda bulunanlar:"
 
+#: mwlib/rl/rlwriter.py:609
+msgid "unknown"
+msgstr ""
+
+#: mwlib/rl/rlwriter.py:610
+#, fuzzy
+msgid "License"
+msgstr "Lisans:"
+
+#: mwlib/rl/rlwriter.py:676
+msgid ""
+"<strong>WARNING: Article could not be rendered - ouputting plain text.</"
+"strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
+"software (b) problematic Mediawiki markup (c) table is too wide"
+msgstr ""
+"<strong>Uyarı: Madde işlenemiyor - düz metin çıktılanıyor.</strong><br/>Bu "
+"problemin muhtemel sebepleri: (a) pdf-yazıcı yazılımında bir hata (b) "
+"problemli Medyaviki biçimlendirmesi (c) tablo çok geniş"

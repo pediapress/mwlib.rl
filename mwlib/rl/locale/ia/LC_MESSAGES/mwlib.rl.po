@@ -5,11 +5,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
-"PO-Revision-Date: 2009-05-17 16:32:57+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-05-17 16:47+0000\n"
+"PO-Revision-Date: 2009-05-17 16:43:19+0000\n"
 "Language-Team: Interlingua\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.16alpha(r50698); Translate extension (11:2009-05-09)\n"
+"X-Generator: MediaWiki 1.16alpha(r50698); Translate extension (11:2009-05-"
+"09)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: ia\n"
 "X-Message-Group: out-mwlibrl\n"
@@ -75,22 +78,35 @@ msgid "Skipping Articles!"
 msgstr "Alcun articulos es omittite!"
 
 #: mwlib/rl/pdfmessages.py:42
-msgid "Please note:  This is only a preview intended to give an idea how the book is typeset."
-msgstr "Nota ben: isto es solmente un previsualisation destinate a dar un idea del composition typographic del libro."
+msgid ""
+"Please note:  This is only a preview intended to give an idea how the book "
+"is typeset."
+msgstr ""
+"Nota ben: isto es solmente un previsualisation destinate a dar un idea del "
+"composition typographic del libro."
 
-#: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:600
+#: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:685
 msgid "References"
 msgstr "Referentias"
 
 #: mwlib/rl/pdfmessages.py:46
-msgid "The following sections list the sources for all articles and images used in this book. Those sources provide more detailed licensing information including the copyright status, the copyright owner, and the license conditions."
-msgstr "Le sequente sectiones lista le origines de tote le articulos e imagines usate in iste libro. Iste origines forni informationes plus detaliate super le licentia, como le stato del derectos de autor (copyright), le detentor de illos, e le conditiones del licentia."
+msgid ""
+"The following sections list the sources for all articles and images used in "
+"this book. Those sources provide more detailed licensing information "
+"including the copyright status, the copyright owner, and the license "
+"conditions."
+msgstr ""
+"Le sequente sectiones lista le origines de tote le articulos e imagines "
+"usate in iste libro. Iste origines forni informationes plus detaliate super "
+"le licentia, como le stato del derectos de autor (copyright), le detentor de "
+"illos, e le conditiones del licentia."
 
-#: mwlib/rl/pdfmessages.py:48
-msgid "Article Sources, Licenses and Contributors"
-msgstr "Origines, licentias e contributores del articulo"
+#: mwlib/rl/pdfmessages.py:48 mwlib/rl/rlwriter.py:588
+#, fuzzy
+msgid "Article Sources and Contributors"
+msgstr "Origines, licentias e contributores del imagine"
 
-#: mwlib/rl/pdfmessages.py:50
+#: mwlib/rl/pdfmessages.py:50 mwlib/rl/rlwriter.py:605
 msgid "Image Sources, Licenses and Contributors"
 msgstr "Origines, licentias e contributores del imagine"
 
@@ -98,7 +114,7 @@ msgstr "Origines, licentias e contributores del imagine"
 msgid "Image"
 msgstr "Imagine"
 
-#: mwlib/rl/pdfmessages.py:54
+#: mwlib/rl/pdfmessages.py:54 mwlib/rl/rlwriter.py:580
 msgid "anonymous edits"
 msgstr "modificationes anonyme"
 
@@ -106,43 +122,60 @@ msgstr "modificationes anonyme"
 msgid "Figure"
 msgstr "Figura"
 
-#: mwlib/rl/pdfstyles.py:209
-msgid "PDF generated using the open source mwlib toolkit<br/>see http://code.pediapress.com/ for more information"
-msgstr "PDF generate con le instrumentario Open Source \"mwlib\"<br/>vide http://code.pediapress.com/ pro plus informationes"
+#: mwlib/rl/pdfstyles.py:77
+msgid ""
+"PDF generated using the open source mwlib toolkit. See http://code."
+"pediapress.com/ for more information."
+msgstr ""
 
-#: mwlib/rl/rlwriter.py:276
+#: mwlib/rl/rlwriter.py:291
 msgid "layouting"
 msgstr "disposition typographic"
 
-#: mwlib/rl/rlwriter.py:336
+#: mwlib/rl/rlwriter.py:353
 #, python-format
 msgid "mwlib.ext version: %(version)s"
 msgstr "version de mwlib.ext: %(version)s"
 
-#: mwlib/rl/rlwriter.py:342
+#: mwlib/rl/rlwriter.py:359
 #, python-format
-msgid "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %(mwlibextversion)s"
-msgstr "version de mwlib: %(mwlibversion)s, version de mwlib.rl: %(mwlibrlversion)s, %(mwlibextversion)s"
+msgid ""
+"mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
+"(mwlibextversion)s"
+msgstr ""
+"version de mwlib: %(mwlibversion)s, version de mwlib.rl: %(mwlibrlversion)s, "
+"%(mwlibextversion)s"
 
-#: mwlib/rl/rlwriter.py:404
+#: mwlib/rl/rlwriter.py:431
 msgid "rendering"
 msgstr "rendition"
 
-#: mwlib/rl/rlwriter.py:591
-msgid "<strong>WARNING: Article could not be rendered - ouputting plain text.</strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer software (b) problematic Mediawiki markup (c) table is too wide"
-msgstr "<strong>ATTENTION: Le rendition graphic del articulo ha fallite; solmente texto simple es producite.</strong><br/>Le causas potential de iste problema es: (a) un defecto in le software pdf-writer (b) notation MediaWiki problematic (c) un tabella troppo large"
+#: mwlib/rl/rlwriter.py:593 mwlib/rl/rlwriter.py:615
+#, fuzzy
+msgid "Source"
+msgstr "Origine:"
 
-#: mwlib/rl/rlwriter.py:605
-#, python-format
-msgid "Source: <link href=\"%(url)s\">%(source)s</link>"
-msgstr "Origine: <link href=\"%(url)s\">%(source)s</link>"
+#: mwlib/rl/rlwriter.py:595 mwlib/rl/rlwriter.py:618
+#, fuzzy
+msgid "Contributors"
+msgstr "Contributores:"
 
-#: mwlib/rl/rlwriter.py:614
-msgid "\\g<num> anonymous edits"
-msgstr "\\g<num> modificationes anonyme"
+#: mwlib/rl/rlwriter.py:609
+msgid "unknown"
+msgstr ""
 
-#: mwlib/rl/rlwriter.py:615
-#, python-format
-msgid "Contributors: %(authors)s"
-msgstr "Contributores: %(authors)s"
+#: mwlib/rl/rlwriter.py:610
+#, fuzzy
+msgid "License"
+msgstr "Licentia:"
 
+#: mwlib/rl/rlwriter.py:676
+msgid ""
+"<strong>WARNING: Article could not be rendered - ouputting plain text.</"
+"strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
+"software (b) problematic Mediawiki markup (c) table is too wide"
+msgstr ""
+"<strong>ATTENTION: Le rendition graphic del articulo ha fallite; solmente "
+"texto simple es producite.</strong><br/>Le causas potential de iste problema "
+"es: (a) un defecto in le software pdf-writer (b) notation MediaWiki "
+"problematic (c) un tabella troppo large"

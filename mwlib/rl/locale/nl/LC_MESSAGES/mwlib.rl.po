@@ -6,11 +6,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
-"PO-Revision-Date: 2009-05-17 16:32:57+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-05-17 16:47+0000\n"
+"PO-Revision-Date: 2009-05-17 16:43:19+0000\n"
 "Language-Team: Dutch\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.16alpha(r50698); Translate extension (11:2009-05-09)\n"
+"X-Generator: MediaWiki 1.16alpha(r50698); Translate extension (11:2009-05-"
+"09)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: nl\n"
 "X-Message-Group: out-mwlibrl\n"
@@ -76,22 +79,35 @@ msgid "Skipping Articles!"
 msgstr "Artikelen worden overgeslagen!"
 
 #: mwlib/rl/pdfmessages.py:42
-msgid "Please note:  This is only a preview intended to give an idea how the book is typeset."
-msgstr "Let op: dit is enkel een voorvertoning die ervoor dient om een idee te geven over hoe het boek eruit komt te zien."
+msgid ""
+"Please note:  This is only a preview intended to give an idea how the book "
+"is typeset."
+msgstr ""
+"Let op: dit is enkel een voorvertoning die ervoor dient om een idee te geven "
+"over hoe het boek eruit komt te zien."
 
-#: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:600
+#: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:685
 msgid "References"
 msgstr "Referenties"
 
 #: mwlib/rl/pdfmessages.py:46
-msgid "The following sections list the sources for all articles and images used in this book. Those sources provide more detailed licensing information including the copyright status, the copyright owner, and the license conditions."
-msgstr "In de volgende paragrafen worden de bronnen voor alle artikelen en afbeeldingen die gebruikt zijn in dit boek weergegeven. Deze bronnen geven gedetailleerdere licentie-informatie met onder andere de auteursrechtenstatus, de rechthebbende en de licentievoorwaarden."
+msgid ""
+"The following sections list the sources for all articles and images used in "
+"this book. Those sources provide more detailed licensing information "
+"including the copyright status, the copyright owner, and the license "
+"conditions."
+msgstr ""
+"In de volgende paragrafen worden de bronnen voor alle artikelen en "
+"afbeeldingen die gebruikt zijn in dit boek weergegeven. Deze bronnen geven "
+"gedetailleerdere licentie-informatie met onder andere de "
+"auteursrechtenstatus, de rechthebbende en de licentievoorwaarden."
 
-#: mwlib/rl/pdfmessages.py:48
-msgid "Article Sources, Licenses and Contributors"
-msgstr "Artikelbronnen, licenties en bijdragers"
+#: mwlib/rl/pdfmessages.py:48 mwlib/rl/rlwriter.py:588
+#, fuzzy
+msgid "Article Sources and Contributors"
+msgstr "Afbeeldingsbronnen, licenties en bijdragers"
 
-#: mwlib/rl/pdfmessages.py:50
+#: mwlib/rl/pdfmessages.py:50 mwlib/rl/rlwriter.py:605
 msgid "Image Sources, Licenses and Contributors"
 msgstr "Afbeeldingsbronnen, licenties en bijdragers"
 
@@ -99,7 +115,7 @@ msgstr "Afbeeldingsbronnen, licenties en bijdragers"
 msgid "Image"
 msgstr "Afbeelding"
 
-#: mwlib/rl/pdfmessages.py:54
+#: mwlib/rl/pdfmessages.py:54 mwlib/rl/rlwriter.py:580
 msgid "anonymous edits"
 msgstr "anonieme bewerkingen"
 
@@ -107,43 +123,60 @@ msgstr "anonieme bewerkingen"
 msgid "Figure"
 msgstr "Figuur"
 
-#: mwlib/rl/pdfstyles.py:209
-msgid "PDF generated using the open source mwlib toolkit<br/>see http://code.pediapress.com/ for more information"
-msgstr "De PDF is gemaakt met de open broncode toolkit mwlib<br />Zie http://code.pediapress.com/ voor meer informatie"
+#: mwlib/rl/pdfstyles.py:77
+msgid ""
+"PDF generated using the open source mwlib toolkit. See http://code."
+"pediapress.com/ for more information."
+msgstr ""
 
-#: mwlib/rl/rlwriter.py:276
+#: mwlib/rl/rlwriter.py:291
 msgid "layouting"
 msgstr "vormgeving"
 
-#: mwlib/rl/rlwriter.py:336
+#: mwlib/rl/rlwriter.py:353
 #, python-format
 msgid "mwlib.ext version: %(version)s"
 msgstr "mwlib.ext-versie: %(version)s"
 
-#: mwlib/rl/rlwriter.py:342
+#: mwlib/rl/rlwriter.py:359
 #, python-format
-msgid "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %(mwlibextversion)s"
-msgstr "mwlib-versie: %(mwlibversion)s, mwlib.rl-versie: %(mwlibrlversion)s, %(mwlibextversion)s"
+msgid ""
+"mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
+"(mwlibextversion)s"
+msgstr ""
+"mwlib-versie: %(mwlibversion)s, mwlib.rl-versie: %(mwlibrlversion)s, %"
+"(mwlibextversion)s"
 
-#: mwlib/rl/rlwriter.py:404
+#: mwlib/rl/rlwriter.py:431
 msgid "rendering"
 msgstr "bezig met verwerken"
 
-#: mwlib/rl/rlwriter.py:591
-msgid "<strong>WARNING: Article could not be rendered - ouputting plain text.</strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer software (b) problematic Mediawiki markup (c) table is too wide"
-msgstr "<strong>De pagina kon niet verwerkt worden. De uitvoer wordt opgemaakt als platte tekst.</strong>Mogelijke oorzaken voor het probleem zijn: (a) een fout in de software om de PDF te maken (b) niet te verwerken wikicode (c) te brede tabellen"
+#: mwlib/rl/rlwriter.py:593 mwlib/rl/rlwriter.py:615
+#, fuzzy
+msgid "Source"
+msgstr "Bron:"
 
-#: mwlib/rl/rlwriter.py:605
-#, python-format
-msgid "Source: <link href=\"%(url)s\">%(source)s</link>"
-msgstr "Bron: <link href=\"%(url)s\">%(source)s</link>"
+#: mwlib/rl/rlwriter.py:595 mwlib/rl/rlwriter.py:618
+#, fuzzy
+msgid "Contributors"
+msgstr "Auteurs:"
 
-#: mwlib/rl/rlwriter.py:614
-msgid "\\g<num> anonymous edits"
-msgstr "\\g<num> anonieme bewerkingen"
+#: mwlib/rl/rlwriter.py:609
+msgid "unknown"
+msgstr ""
 
-#: mwlib/rl/rlwriter.py:615
-#, python-format
-msgid "Contributors: %(authors)s"
-msgstr "Auteurs: %(author)s"
+#: mwlib/rl/rlwriter.py:610
+#, fuzzy
+msgid "License"
+msgstr "Licentie:"
 
+#: mwlib/rl/rlwriter.py:676
+msgid ""
+"<strong>WARNING: Article could not be rendered - ouputting plain text.</"
+"strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
+"software (b) problematic Mediawiki markup (c) table is too wide"
+msgstr ""
+"<strong>De pagina kon niet verwerkt worden. De uitvoer wordt opgemaakt als "
+"platte tekst.</strong>Mogelijke oorzaken voor het probleem zijn: (a) een "
+"fout in de software om de PDF te maken (b) niet te verwerken wikicode (c) te "
+"brede tabellen"

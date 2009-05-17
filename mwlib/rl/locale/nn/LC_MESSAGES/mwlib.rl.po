@@ -5,11 +5,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
-"PO-Revision-Date: 2009-05-17 16:32:57+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-05-17 16:47+0000\n"
+"PO-Revision-Date: 2009-05-17 16:43:19+0000\n"
 "Language-Team: Norwegian Nynorsk\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.16alpha(r50698); Translate extension (11:2009-05-09)\n"
+"X-Generator: MediaWiki 1.16alpha(r50698); Translate extension (11:2009-05-"
+"09)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: nn\n"
 "X-Message-Group: out-mwlibrl\n"
@@ -75,22 +78,34 @@ msgid "Skipping Articles!"
 msgstr "Hoppar over artiklar!"
 
 #: mwlib/rl/pdfmessages.py:42
-msgid "Please note:  This is only a preview intended to give an idea how the book is typeset."
-msgstr "Merk: Dette er berre ei førehandsvising oppretta for å gje deg ein idé om korleis boka vert sjåande ut."
+msgid ""
+"Please note:  This is only a preview intended to give an idea how the book "
+"is typeset."
+msgstr ""
+"Merk: Dette er berre ei førehandsvising oppretta for å gje deg ein idé om "
+"korleis boka vert sjåande ut."
 
-#: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:600
+#: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:685
 msgid "References"
 msgstr "Referansar"
 
 #: mwlib/rl/pdfmessages.py:46
-msgid "The following sections list the sources for all articles and images used in this book. Those sources provide more detailed licensing information including the copyright status, the copyright owner, and the license conditions."
-msgstr "Dei følgjande bolkane listar opp kjeldene for alle artiklane og bileta nytta i denne boka. Kjeldene gjev meir detaljert lisensinformasjon, slik som opphavsrettsstoda, eigaren av opphavsretten og lisenshøve."
+msgid ""
+"The following sections list the sources for all articles and images used in "
+"this book. Those sources provide more detailed licensing information "
+"including the copyright status, the copyright owner, and the license "
+"conditions."
+msgstr ""
+"Dei følgjande bolkane listar opp kjeldene for alle artiklane og bileta nytta "
+"i denne boka. Kjeldene gjev meir detaljert lisensinformasjon, slik som "
+"opphavsrettsstoda, eigaren av opphavsretten og lisenshøve."
 
-#: mwlib/rl/pdfmessages.py:48
-msgid "Article Sources, Licenses and Contributors"
-msgstr "Artikkelkjelder, -lisensar, og -bidragsytarar"
+#: mwlib/rl/pdfmessages.py:48 mwlib/rl/rlwriter.py:588
+#, fuzzy
+msgid "Article Sources and Contributors"
+msgstr "Biletkjelder, -lisensar og -bidragsytarar"
 
-#: mwlib/rl/pdfmessages.py:50
+#: mwlib/rl/pdfmessages.py:50 mwlib/rl/rlwriter.py:605
 msgid "Image Sources, Licenses and Contributors"
 msgstr "Biletkjelder, -lisensar og -bidragsytarar"
 
@@ -98,7 +113,7 @@ msgstr "Biletkjelder, -lisensar og -bidragsytarar"
 msgid "Image"
 msgstr "Bilete"
 
-#: mwlib/rl/pdfmessages.py:54
+#: mwlib/rl/pdfmessages.py:54 mwlib/rl/rlwriter.py:580
 msgid "anonymous edits"
 msgstr "anonyme endringar"
 
@@ -106,43 +121,60 @@ msgstr "anonyme endringar"
 msgid "Figure"
 msgstr "Figur"
 
-#: mwlib/rl/pdfstyles.py:209
-msgid "PDF generated using the open source mwlib toolkit<br/>see http://code.pediapress.com/ for more information"
-msgstr "PDF oppretta ved hjelp av open kjeldekode-verktøyet mwlib<br/>sjå http://code.pediapress.com/ for meir informasjon"
+#: mwlib/rl/pdfstyles.py:77
+msgid ""
+"PDF generated using the open source mwlib toolkit. See http://code."
+"pediapress.com/ for more information."
+msgstr ""
 
-#: mwlib/rl/rlwriter.py:276
+#: mwlib/rl/rlwriter.py:291
 msgid "layouting"
 msgstr "utformar"
 
-#: mwlib/rl/rlwriter.py:336
+#: mwlib/rl/rlwriter.py:353
 #, python-format
 msgid "mwlib.ext version: %(version)s"
 msgstr "mwlib.ext-versjon: %(version)s"
 
-#: mwlib/rl/rlwriter.py:342
+#: mwlib/rl/rlwriter.py:359
 #, python-format
-msgid "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %(mwlibextversion)s"
-msgstr "mwlib-versjon: %(mwlibversion)s, mwlib.rl-versjon: %(mwlibrlversion)s, %(mwlibextversion)s"
+msgid ""
+"mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
+"(mwlibextversion)s"
+msgstr ""
+"mwlib-versjon: %(mwlibversion)s, mwlib.rl-versjon: %(mwlibrlversion)s, %"
+"(mwlibextversion)s"
 
-#: mwlib/rl/rlwriter.py:404
+#: mwlib/rl/rlwriter.py:431
 msgid "rendering"
 msgstr "teikning"
 
-#: mwlib/rl/rlwriter.py:591
-msgid "<strong>WARNING: Article could not be rendered - ouputting plain text.</strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer software (b) problematic Mediawiki markup (c) table is too wide"
-msgstr "<strong>ÅTVARING: Artikkelen kunne ikkje verta teikna - gjev ut rein tekst i staden.</strong><br/>Moglege årsaker for problemet er: (a) ein feil i PDF-skrivarprogramvara (b) problematisk MediaWiki-oppsett (c) tabellen er for brei"
+#: mwlib/rl/rlwriter.py:593 mwlib/rl/rlwriter.py:615
+#, fuzzy
+msgid "Source"
+msgstr "Kjelda:"
 
-#: mwlib/rl/rlwriter.py:605
-#, python-format
-msgid "Source: <link href=\"%(url)s\">%(source)s</link>"
-msgstr "Kjelda: <link href=\"%(url)s\">%(source)s</link>"
+#: mwlib/rl/rlwriter.py:595 mwlib/rl/rlwriter.py:618
+#, fuzzy
+msgid "Contributors"
+msgstr "Forfattarar:"
 
-#: mwlib/rl/rlwriter.py:614
-msgid "\\g<num> anonymous edits"
-msgstr "\\g<num> anonyme endringar"
+#: mwlib/rl/rlwriter.py:609
+msgid "unknown"
+msgstr ""
 
-#: mwlib/rl/rlwriter.py:615
-#, python-format
-msgid "Contributors: %(authors)s"
-msgstr "Forfattarar: %(authors)s"
+#: mwlib/rl/rlwriter.py:610
+#, fuzzy
+msgid "License"
+msgstr "Lisens"
 
+#: mwlib/rl/rlwriter.py:676
+msgid ""
+"<strong>WARNING: Article could not be rendered - ouputting plain text.</"
+"strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
+"software (b) problematic Mediawiki markup (c) table is too wide"
+msgstr ""
+"<strong>ÅTVARING: Artikkelen kunne ikkje verta teikna - gjev ut rein tekst i "
+"staden.</strong><br/>Moglege årsaker for problemet er: (a) ein feil i PDF-"
+"skrivarprogramvara (b) problematisk MediaWiki-oppsett (c) tabellen er for "
+"brei"
