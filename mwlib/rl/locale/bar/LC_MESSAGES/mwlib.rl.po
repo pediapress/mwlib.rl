@@ -1,28 +1,36 @@
-# Translation of Mwlib.rl to Telugu
+# Translation of Mwlib.rl to Bavarian
 #
-# Author@translatewiki.net: Veeven
+# Author@translatewiki.net: Man77
 # --
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
-"PO-Revision-Date: 2009-05-17 16:32:58+0000\n"
-"Language-Team: Telugu\n"
+"PO-Revision-Date: 2009-05-17 16:32:57+0000\n"
+"Language-Team: Bavarian\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: MediaWiki 1.16alpha(r50698); Translate extension (11:2009-05-09)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
-"X-Language-Code: te\n"
+"X-Language-Code: bar\n"
 "X-Message-Group: out-mwlibrl\n"
 
-#: mwlib/rl/pdfmessages.py:20
-msgid "Title"
-msgstr "శీర్షిక"
+#: mwlib/rl/pdfmessages.py:12
+msgid "Source:"
+msgstr "Quön:"
+
+#: mwlib/rl/pdfmessages.py:14
+msgid "License:"
+msgstr "Lizenz:"
 
 #: mwlib/rl/pdfmessages.py:22
 msgid "Subtitle:"
-msgstr "ఉపశీర్షిక:"
+msgstr "Untatitl:"
 
 #: mwlib/rl/pdfmessages.py:38
 msgid "Table of Contents"
-msgstr "విషయ సూచిక"
+msgstr "Inhåitsvazeichnis"
+
+#: mwlib/rl/pdfmessages.py:52
+msgid "Image"
+msgstr "Büidl"
 

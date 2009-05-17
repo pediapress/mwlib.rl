@@ -1,102 +1,81 @@
-# Translation of Mwlib.rl to Luxembourgish
+# Translation of Mwlib.rl to Georgian
 #
-# Author@translatewiki.net: Robby
+# Author@translatewiki.net: Alsandro
+# Author@translatewiki.net: Temuri rajavi
 # --
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "PO-Revision-Date: 2009-05-17 16:32:57+0000\n"
-"Language-Team: Luxembourgish\n"
+"Language-Team: Georgian\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: MediaWiki 1.16alpha(r50698); Translate extension (11:2009-05-09)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
-"X-Language-Code: lb\n"
+"X-Language-Code: ka\n"
 "X-Message-Group: out-mwlibrl\n"
 
 #: mwlib/rl/pdfmessages.py:12
 msgid "Source:"
-msgstr "Quell:"
+msgstr "წყარო:"
 
 #: mwlib/rl/pdfmessages.py:14
 msgid "License:"
-msgstr "Lizenz:"
+msgstr "ლიცენზია:"
 
 #: mwlib/rl/pdfmessages.py:16
 msgid "Contributors:"
-msgstr "Auteuren:"
+msgstr "ავტორები:"
 
 #: mwlib/rl/pdfmessages.py:18
 msgid "Article Licenses"
-msgstr "Artikel-Lizenzen"
+msgstr "ლიცენზიის სტატია"
 
 #: mwlib/rl/pdfmessages.py:20
 msgid "Title"
-msgstr "Titel"
+msgstr "სათაური"
 
 #: mwlib/rl/pdfmessages.py:22
 msgid "Subtitle:"
-msgstr "Ënnertitel:"
+msgstr "ქვესათაური:"
 
 #: mwlib/rl/pdfmessages.py:24
 msgid "Editor:"
-msgstr "Editeur:"
+msgstr "რედაქტორი:"
+
+#: mwlib/rl/pdfmessages.py:26
+msgid "Created on:"
+msgstr "შექმნილია:"
 
 #: mwlib/rl/pdfmessages.py:28
 msgid "Contents"
-msgstr "Inhalter"
+msgstr "შინაარსი"
 
 #: mwlib/rl/pdfmessages.py:30
 msgid "Articles"
-msgstr "Artikelen"
+msgstr "სტატიები"
 
 #: mwlib/rl/pdfmessages.py:32
 msgid "Produced by:"
-msgstr "Gemaach vum"
-
-#: mwlib/rl/pdfmessages.py:34
-msgid "pdf writer version:"
-msgstr "pdf writer version:"
+msgstr "პროდიუსერები:"
 
 #: mwlib/rl/pdfmessages.py:36
 msgid "mwlib version:"
-msgstr "mwlib version:"
+msgstr "mwlib ვერსია:"
 
 #: mwlib/rl/pdfmessages.py:38
 msgid "Table of Contents"
-msgstr "Inhaltsverzeechnes"
+msgstr "სარჩევი"
 
 #: mwlib/rl/pdfmessages.py:40
 msgid "Skipping Articles!"
-msgstr "Artikelen iwwersprangen!"
-
-#: mwlib/rl/pdfmessages.py:42
-msgid "Please note:  This is only a preview intended to give an idea how the book is typeset."
-msgstr "Denkt w.e.g. drun: Dëst gëtt Iech just eng Impressioun wéi d'Buch herno ausgesäit."
+msgstr "სტატიების გამოტოვება!"
 
 #: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:600
 msgid "References"
-msgstr "Referenzen"
+msgstr "მინიშნებები"
 
 #: mwlib/rl/pdfmessages.py:52
 msgid "Image"
-msgstr "Bild"
-
-#: mwlib/rl/pdfmessages.py:54
-msgid "anonymous edits"
-msgstr "anonym Ännerungen"
-
-#: mwlib/rl/pdfmessages.py:56
-msgid "Figure"
-msgstr "Duerstellung"
-
-#: mwlib/rl/rlwriter.py:336
-#, python-format
-msgid "mwlib.ext version: %(version)s"
-msgstr "mwlib.ext-Versioun:  %(version)s"
-
-#: mwlib/rl/rlwriter.py:615
-#, python-format
-msgid "Contributors: %(authors)s"
-msgstr "Auteuren: %(authors)s"
+msgstr "სურათი"
 

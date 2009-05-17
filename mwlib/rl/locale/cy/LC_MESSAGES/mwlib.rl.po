@@ -1,0 +1,85 @@
+# Translation of Mwlib.rl to Welsh
+#
+# Author@translatewiki.net: Lloffiwr
+# --
+msgid ""
+msgstr ""
+"Project-Id-Version: Mwlib.rl\n"
+"PO-Revision-Date: 2009-05-17 16:32:57+0000\n"
+"Language-Team: Welsh\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: MediaWiki 1.16alpha(r50698); Translate extension (11:2009-05-09)\n"
+"X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
+"X-Language-Code: cy\n"
+"X-Message-Group: out-mwlibrl\n"
+
+#: mwlib/rl/pdfmessages.py:12
+msgid "Source:"
+msgstr "Ffynhonnell:"
+
+#: mwlib/rl/pdfmessages.py:14
+msgid "License:"
+msgstr "Trwydded:"
+
+#: mwlib/rl/pdfmessages.py:16
+msgid "Contributors:"
+msgstr "Cyfranwyr:"
+
+#: mwlib/rl/pdfmessages.py:18
+msgid "Article Licenses"
+msgstr "Trwyddedi'r Erthygl"
+
+#: mwlib/rl/pdfmessages.py:20
+msgid "Title"
+msgstr "Teitl"
+
+#: mwlib/rl/pdfmessages.py:22
+msgid "Subtitle:"
+msgstr "Isdeitl:"
+
+#: mwlib/rl/pdfmessages.py:24
+msgid "Editor:"
+msgstr "Golygydd:"
+
+#: mwlib/rl/pdfmessages.py:28
+msgid "Contents"
+msgstr "Cynnwys"
+
+#: mwlib/rl/pdfmessages.py:30
+msgid "Articles"
+msgstr "Erthyglau"
+
+#: mwlib/rl/pdfmessages.py:34
+msgid "pdf writer version:"
+msgstr "fersiwn y rhaglen ysgrifennu pdf:"
+
+#: mwlib/rl/pdfmessages.py:36
+msgid "mwlib version:"
+msgstr "y fersiwn mwlib:"
+
+#: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:600
+msgid "References"
+msgstr "Cyfeiriadau"
+
+#: mwlib/rl/pdfmessages.py:48
+msgid "Article Sources, Licenses and Contributors"
+msgstr "Ffynonellau'r Erthyglau, ei Thrwyddedi a'i Chyfranwyr"
+
+#: mwlib/rl/pdfmessages.py:50
+msgid "Image Sources, Licenses and Contributors"
+msgstr "Ffynonellau'r Ddelwedd, ei Thrwyddedi a'i Chyfranwyr"
+
+#: mwlib/rl/pdfmessages.py:52
+msgid "Image"
+msgstr "Delwedd"
+
+#: mwlib/rl/pdfmessages.py:54
+msgid "anonymous edits"
+msgstr "golygiadau dienw"
+
+#: mwlib/rl/rlwriter.py:605
+#, python-format
+msgid "Source: <link href=\"%(url)s\">%(source)s</link>"
+msgstr "Ffynhonnell: <link href=\"%(url)s\">%(source)s</link>"
+

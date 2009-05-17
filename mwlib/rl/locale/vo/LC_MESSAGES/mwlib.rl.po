@@ -6,62 +6,19 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-29 11:42+0200\n"
-"PO-Revision-Date: 2009-04-04 14:11:44+0000\n"
+"PO-Revision-Date: 2009-05-17 16:32:58+0000\n"
 "Language-Team: Volapük\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.15alpha (r49162); Translate extension (11:2009-03-"
-"27)\n"
+"X-Generator: MediaWiki 1.16alpha(r50698); Translate extension (11:2009-05-09)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: vo\n"
 "X-Message-Group: out-mwlibrl\n"
 
-#: mwlib/rl/pdfmessages.py:12
-msgid "Source:"
-msgstr ""
-
-#: mwlib/rl/pdfmessages.py:14
-msgid "License:"
-msgstr ""
-
 #: mwlib/rl/pdfmessages.py:16
 #, fuzzy
 msgid "Contributors:"
-msgstr "Lautans cifik: %(authors)s"
-
-#: mwlib/rl/pdfmessages.py:18
-msgid "Article Licenses"
-msgstr ""
-
-#: mwlib/rl/pdfmessages.py:20
-msgid "Title"
-msgstr ""
-
-#: mwlib/rl/pdfmessages.py:22
-msgid "Subtitle:"
-msgstr ""
-
-#: mwlib/rl/pdfmessages.py:24
-msgid "Editor:"
-msgstr ""
-
-#: mwlib/rl/pdfmessages.py:26
-msgid "Created on:"
-msgstr ""
-
-#: mwlib/rl/pdfmessages.py:28
-msgid "Contents"
-msgstr ""
-
-#: mwlib/rl/pdfmessages.py:30
-msgid "Articles"
-msgstr ""
-
-#: mwlib/rl/pdfmessages.py:32
-msgid "Produced by:"
-msgstr ""
+msgstr "Lautans cifik:"
 
 #: mwlib/rl/pdfmessages.py:34
 #, fuzzy
@@ -72,105 +29,18 @@ msgstr "fomam ela mwlib:"
 msgid "mwlib version:"
 msgstr "fomam ela mwlib:"
 
-#: mwlib/rl/pdfmessages.py:38
-msgid "Table of Contents"
-msgstr ""
-
-#: mwlib/rl/pdfmessages.py:40
-msgid "Skipping Articles!"
-msgstr ""
-
-#: mwlib/rl/pdfmessages.py:42
-msgid ""
-"Please note:  This is only a preview intended to give an idea how the book "
-"is typeset."
-msgstr ""
-
-#: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:684
-msgid "References"
-msgstr ""
-
-#: mwlib/rl/pdfmessages.py:46
-msgid ""
-"The following sections list the sources for all articles and images used in "
-"this book. Those sources provide more detailed licensing information "
-"including the copyright status, the copyright owner, and the license "
-"conditions."
-msgstr ""
-
-#: mwlib/rl/pdfmessages.py:48 mwlib/rl/rlwriter.py:579
-msgid "Article Sources and Contributors"
-msgstr ""
-
-#: mwlib/rl/pdfmessages.py:50 mwlib/rl/rlwriter.py:599
-msgid "Image Sources, Licenses and Contributors"
-msgstr ""
-
-#: mwlib/rl/pdfmessages.py:52
-msgid "Image"
-msgstr ""
-
-#: mwlib/rl/pdfmessages.py:54 mwlib/rl/rlwriter.py:583
-#: mwlib/rl/rlwriter.py:603
-msgid "anonymous edits"
-msgstr ""
-
-#: mwlib/rl/pdfmessages.py:56
-msgid "Figure"
-msgstr ""
-
-#: mwlib/rl/pdfstyles.py:77
-msgid ""
-"PDF generated using the open source mwlib toolkit. See http://code."
-"pediapress.com/ for more information."
-msgstr ""
-
-#: mwlib/rl/rlwriter.py:291
-msgid "layouting"
-msgstr ""
-
-#: mwlib/rl/rlwriter.py:353
+#: mwlib/rl/rlwriter.py:336
 #, python-format
 msgid "mwlib.ext version: %(version)s"
 msgstr "fomam ela mwlib.ext: %(version)s"
 
-#: mwlib/rl/rlwriter.py:359
+#: mwlib/rl/rlwriter.py:342
 #, python-format
-msgid ""
-"mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
-"(mwlibextversion)s"
-msgstr ""
-"fomam ela mwlib: %(mwlibversion)s, fomam ela mwlib.rl: %(mwlibrlversion)s, %"
-"(mwlibextversion)s"
+msgid "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %(mwlibextversion)s"
+msgstr "fomam ela mwlib: %(mwlibversion)s, fomam ela mwlib.rl: %(mwlibrlversion)s, %(mwlibextversion)s"
 
-#: mwlib/rl/rlwriter.py:431
-msgid "rendering"
-msgstr ""
-
-#: mwlib/rl/rlwriter.py:589 mwlib/rl/rlwriter.py:615
-msgid "Source"
-msgstr ""
-
-#: mwlib/rl/rlwriter.py:591 mwlib/rl/rlwriter.py:618
-#, fuzzy
-msgid "Contributors"
+#: mwlib/rl/rlwriter.py:615
+#, python-format, fuzzy
+msgid "Contributors: %(authors)s"
 msgstr "Lautans cifik: %(authors)s"
 
-#: mwlib/rl/rlwriter.py:608
-msgid "License"
-msgstr ""
-
-#: mwlib/rl/rlwriter.py:612
-msgid "unknown"
-msgstr ""
-
-#: mwlib/rl/rlwriter.py:675
-msgid ""
-"<strong>WARNING: Article could not be rendered - ouputting plain text.</"
-"strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
-"software (b) problematic Mediawiki markup (c) table is too wide"
-msgstr ""
-
-#, fuzzy
-#~ msgid "Contributors: %(authors)s"
-#~ msgstr "Lautans cifik: %(authors)s"

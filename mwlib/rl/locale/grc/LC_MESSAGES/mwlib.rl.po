@@ -1,0 +1,20 @@
+# Translation of Mwlib.rl to Ancient Greek
+#
+# Author@translatewiki.net: Omnipaedista
+# --
+msgid ""
+msgstr ""
+"Project-Id-Version: Mwlib.rl\n"
+"PO-Revision-Date: 2009-05-17 16:32:57+0000\n"
+"Language-Team: Ancient Greek\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: MediaWiki 1.16alpha(r50698); Translate extension (11:2009-05-09)\n"
+"X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
+"X-Language-Code: grc\n"
+"X-Message-Group: out-mwlibrl\n"
+
+#: mwlib/rl/pdfmessages.py:56
+msgid "Figure"
+msgstr "Εἰκών"
+

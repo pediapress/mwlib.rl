@@ -5,30 +5,19 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-29 11:42+0200\n"
-"PO-Revision-Date: 2009-04-04 14:11:44+0000\n"
+"PO-Revision-Date: 2009-05-17 16:32:58+0000\n"
 "Language-Team: Tagalog\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.15alpha (r49162); Translate extension (11:2009-03-"
-"27)\n"
+"X-Generator: MediaWiki 1.16alpha(r50698); Translate extension (11:2009-05-09)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: tl\n"
 "X-Message-Group: out-mwlibrl\n"
 
-#: mwlib/rl/pdfmessages.py:12
-msgid "Source:"
-msgstr ""
-
-#: mwlib/rl/pdfmessages.py:14
-msgid "License:"
-msgstr ""
-
 #: mwlib/rl/pdfmessages.py:16
 #, fuzzy
 msgid "Contributors:"
-msgstr "Pangunahing mga May-akda: %(may-akda)s"
+msgstr "Pangunahing mga May-akda:"
 
 #: mwlib/rl/pdfmessages.py:18
 msgid "Article Licenses"
@@ -79,37 +68,22 @@ msgid "Skipping Articles!"
 msgstr "Nilalaktawan ang mga Lathalain!"
 
 #: mwlib/rl/pdfmessages.py:42
-msgid ""
-"Please note:  This is only a preview intended to give an idea how the book "
-"is typeset."
-msgstr ""
-"Pakiunawa po: Isa lamang itong paunang-tanaw na nilalayong magbigay ng isang "
-"ideya kung paano inihanda ang pagkakalimbag (''typeset'') ng aklat."
+msgid "Please note:  This is only a preview intended to give an idea how the book is typeset."
+msgstr "Pakiunawa po: Isa lamang itong paunang-tanaw na nilalayong magbigay ng isang ideya kung paano inihanda ang pagkakalimbag (''typeset'') ng aklat."
 
-#: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:684
+#: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:600
 msgid "References"
 msgstr "Mga sanggunian"
 
 #: mwlib/rl/pdfmessages.py:46
-msgid ""
-"The following sections list the sources for all articles and images used in "
-"this book. Those sources provide more detailed licensing information "
-"including the copyright status, the copyright owner, and the license "
-"conditions."
-msgstr ""
-"Nagtatala ang sumusunod na mga seksyon ng mga pinagmulan para sa lahat ng "
-"mga lathalain/artikulo at mga larawang ginamit sa aklat na ito. Nagbibigay "
-"ang mga pinagmulang iyan ng mas detalyadong mga kabatiran ng lisensiya "
-"kabilang ang kalagayan ng karapatang-ari, ang may-ari ng karapatang-ari, at "
-"mga kalakaran ng lisensiya."
+msgid "The following sections list the sources for all articles and images used in this book. Those sources provide more detailed licensing information including the copyright status, the copyright owner, and the license conditions."
+msgstr "Nagtatala ang sumusunod na mga seksyon ng mga pinagmulan para sa lahat ng mga lathalain/artikulo at mga larawang ginamit sa aklat na ito. Nagbibigay ang mga pinagmulang iyan ng mas detalyadong mga kabatiran ng lisensiya kabilang ang kalagayan ng karapatang-ari, ang may-ari ng karapatang-ari, at mga kalakaran ng lisensiya."
 
-#: mwlib/rl/pdfmessages.py:48 mwlib/rl/rlwriter.py:579
-#, fuzzy
-msgid "Article Sources and Contributors"
-msgstr ""
-"Mga Pinagmulan, Mga Lisensiya at Mga Tagapag-ambag ng Lathalain/Artikulo"
+#: mwlib/rl/pdfmessages.py:48
+msgid "Article Sources, Licenses and Contributors"
+msgstr "Mga Pinagmulan, Mga Lisensiya at Mga Tagapag-ambag ng Lathalain/Artikulo"
 
-#: mwlib/rl/pdfmessages.py:50 mwlib/rl/rlwriter.py:599
+#: mwlib/rl/pdfmessages.py:50
 msgid "Image Sources, Licenses and Contributors"
 msgstr "Mga Pinagmulan, Mga Lisensiya, at Mga Tagapag-ambag ng Larawan"
 
@@ -117,80 +91,34 @@ msgstr "Mga Pinagmulan, Mga Lisensiya, at Mga Tagapag-ambag ng Larawan"
 msgid "Image"
 msgstr "Larawan"
 
-#: mwlib/rl/pdfmessages.py:54 mwlib/rl/rlwriter.py:583
-#: mwlib/rl/rlwriter.py:603
-msgid "anonymous edits"
-msgstr ""
+#: mwlib/rl/pdfstyles.py:209
+msgid "PDF generated using the open source mwlib toolkit<br/>see http://code.pediapress.com/ for more information"
+msgstr "Ginawa sa PDF na ginagamitan ng kasangkapang mwlib na pang-bukas na pinagmulan <br/>tingnan ang http://code.pediapress.com/ para sa mas marami pang kabatiran"
 
-#: mwlib/rl/pdfmessages.py:56
-msgid "Figure"
-msgstr ""
-
-#: mwlib/rl/pdfstyles.py:77
-#, fuzzy
-msgid ""
-"PDF generated using the open source mwlib toolkit. See http://code."
-"pediapress.com/ for more information."
-msgstr ""
-"Ginawa sa PDF na ginagamitan ng kasangkapang mwlib na pang-bukas na "
-"pinagmulan <br/>tingnan ang http://code.pediapress.com/ para sa mas marami "
-"pang kabatiran"
-
-#: mwlib/rl/rlwriter.py:291
+#: mwlib/rl/rlwriter.py:276
 msgid "layouting"
 msgstr "inaayos ang anyo ng paglalatag"
 
-#: mwlib/rl/rlwriter.py:353
+#: mwlib/rl/rlwriter.py:336
 #, python-format
 msgid "mwlib.ext version: %(version)s"
 msgstr "bersyong mwlib.ext: %(version)s"
 
-#: mwlib/rl/rlwriter.py:359
+#: mwlib/rl/rlwriter.py:342
 #, python-format
-msgid ""
-"mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
-"(mwlibextversion)s"
-msgstr ""
-"bersyong mwlib: %(mwlibversion)s, bersyong mwlib.rl: %(mwlibrlversion)s, %"
-"(mwlibextversion)s"
+msgid "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %(mwlibextversion)s"
+msgstr "bersyong mwlib: %(mwlibversion)s, bersyong mwlib.rl: %(mwlibrlversion)s, %(mwlibextversion)s"
 
-#: mwlib/rl/rlwriter.py:431
+#: mwlib/rl/rlwriter.py:404
 msgid "rendering"
 msgstr "naghahain"
 
-#: mwlib/rl/rlwriter.py:589 mwlib/rl/rlwriter.py:615
-msgid "Source"
-msgstr ""
+#: mwlib/rl/rlwriter.py:591
+msgid "<strong>WARNING: Article could not be rendered - ouputting plain text.</strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer software (b) problematic Mediawiki markup (c) table is too wide"
+msgstr "<strong>BABALA: Hindi maihain ang lathalain (artikulo).</strong><br/>Ang mga maaaring sanhi ng suliranin ay: (a) isang depekto (''bug'') sa sopwer na panulat ng pdf (b) may suliraning pangpaglalarawan at pagpapaliwanag ng kayarian (''markup'') (c) napakaluwang ng tabla"
 
-#: mwlib/rl/rlwriter.py:591 mwlib/rl/rlwriter.py:618
-#, fuzzy
-msgid "Contributors"
-msgstr "Pangunahing mga May-akda: %(may-akda)s"
+#: mwlib/rl/rlwriter.py:615
+#, python-format, fuzzy
+msgid "Contributors: %(authors)s"
+msgstr "Pangunahing mga May-akda: %(authors)s"
 
-#: mwlib/rl/rlwriter.py:608
-#, fuzzy
-msgid "License"
-msgstr "Mga Lisensya ng mga Lathalain/Artikulo"
-
-#: mwlib/rl/rlwriter.py:612
-msgid "unknown"
-msgstr ""
-
-#: mwlib/rl/rlwriter.py:675
-msgid ""
-"<strong>WARNING: Article could not be rendered - ouputting plain text.</"
-"strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
-"software (b) problematic Mediawiki markup (c) table is too wide"
-msgstr ""
-"<strong>BABALA: Hindi maihain ang lathalain (artikulo).</strong><br/>Ang mga "
-"maaaring sanhi ng suliranin ay: (a) isang depekto (''bug'') sa sopwer na "
-"panulat ng pdf (b) may suliraning pangpaglalarawan at pagpapaliwanag ng "
-"kayarian (''markup'') (c) napakaluwang ng tabla"
-
-#, fuzzy
-#~ msgid "Image Sources and Contributors"
-#~ msgstr "Mga Pinagmulan, Mga Lisensiya, at Mga Tagapag-ambag ng Larawan"
-
-#, fuzzy
-#~ msgid "Contributors: %(authors)s"
-#~ msgstr "Pangunahing mga May-akda: %(may-akda)s"

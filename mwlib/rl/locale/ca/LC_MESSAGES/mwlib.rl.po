@@ -1,0 +1,32 @@
+# Translation of Mwlib.rl to Catalan
+#
+# Author@translatewiki.net: Aleator
+# --
+msgid ""
+msgstr ""
+"Project-Id-Version: Mwlib.rl\n"
+"PO-Revision-Date: 2009-05-17 16:32:57+0000\n"
+"Language-Team: Catalan\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: MediaWiki 1.16alpha(r50698); Translate extension (11:2009-05-09)\n"
+"X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
+"X-Language-Code: ca\n"
+"X-Message-Group: out-mwlibrl\n"
+
+#: mwlib/rl/pdfmessages.py:12
+msgid "Source:"
+msgstr "Font:"
+
+#: mwlib/rl/pdfmessages.py:14
+msgid "License:"
+msgstr "Llicència:"
+
+#: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:600
+msgid "References"
+msgstr "Referències"
+
+#: mwlib/rl/pdfmessages.py:52
+msgid "Image"
+msgstr "Imatge"
+
