@@ -1,33 +1,34 @@
 # Translation of Mwlib.rl to Swedish
 #
 # Author@translatewiki.net: Hannibal
+# Author@translatewiki.net: Poxnar
 # --
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-17 16:47+0000\n"
-"PO-Revision-Date: 2009-04-04 14:11:44+0000\n"
+"POT-Creation-Date: 2009-05-22 09:44+0000\n"
+"PO-Revision-Date: 2009-05-22 09:43:13+0000\n"
 "Language-Team: Swedish\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.15alpha (r49162); Translate extension (11:2009-03-"
-"27)\n"
+"X-Generator: MediaWiki 1.16alpha(r50880); Translate extension (11:2009-05-"
+"09)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: sv\n"
 "X-Message-Group: out-mwlibrl\n"
 
 #: mwlib/rl/pdfmessages.py:12
 msgid "Source:"
-msgstr ""
+msgstr "Källa:"
 
 #: mwlib/rl/pdfmessages.py:14
 msgid "License:"
-msgstr ""
+msgstr "Licens:"
 
 #: mwlib/rl/pdfmessages.py:16
 msgid "Contributors:"
-msgstr ""
+msgstr "Bidragsgivare:"
 
 #: mwlib/rl/pdfmessages.py:18
 msgid "Article Licenses"
@@ -101,9 +102,8 @@ msgstr ""
 "upphovsrättsstatus, upphovsrättsinnehavare, och licensens villkor."
 
 #: mwlib/rl/pdfmessages.py:48 mwlib/rl/rlwriter.py:588
-#, fuzzy
 msgid "Article Sources and Contributors"
-msgstr "Artikelkällor, -licenser och -författare"
+msgstr "Artikelkällor och författare"
 
 #: mwlib/rl/pdfmessages.py:50 mwlib/rl/rlwriter.py:605
 msgid "Image Sources, Licenses and Contributors"
@@ -115,20 +115,19 @@ msgstr "Bild"
 
 #: mwlib/rl/pdfmessages.py:54 mwlib/rl/rlwriter.py:580
 msgid "anonymous edits"
-msgstr ""
+msgstr "anonyma redigeringar"
 
 #: mwlib/rl/pdfmessages.py:56
 msgid "Figure"
-msgstr ""
+msgstr "Figur"
 
 #: mwlib/rl/pdfstyles.py:77
-#, fuzzy
 msgid ""
 "PDF generated using the open source mwlib toolkit. See http://code."
 "pediapress.com/ for more information."
 msgstr ""
-"PDF är skapad med öppen källkod-verktyget mwlib <br/>se http://code."
-"pediapress.com/ för mer information"
+"PDF skapad med hjälp av det öppna källkod-verktyget mwlib. Se http://code."
+"pediapress.com/ för mer information."
 
 #: mwlib/rl/rlwriter.py:291
 msgid "layouting"
@@ -154,21 +153,19 @@ msgstr "renderar"
 
 #: mwlib/rl/rlwriter.py:593 mwlib/rl/rlwriter.py:615
 msgid "Source"
-msgstr ""
+msgstr "Källa"
 
 #: mwlib/rl/rlwriter.py:595 mwlib/rl/rlwriter.py:618
-#, fuzzy
 msgid "Contributors"
-msgstr "Innehåll"
+msgstr "Bidragsgivare"
 
 #: mwlib/rl/rlwriter.py:609
 msgid "unknown"
-msgstr ""
+msgstr "okänd"
 
 #: mwlib/rl/rlwriter.py:610
-#, fuzzy
 msgid "License"
-msgstr "Artikellicenser"
+msgstr "Licens"
 
 #: mwlib/rl/rlwriter.py:676
 msgid ""
@@ -179,7 +176,3 @@ msgstr ""
 "<strong>VARNING: Artikeln kunde inte renderas - istället visas ren text.</"
 "strong><br/>Tänkbara orsaker kan vara: (a) en bug i programvaran som skapar "
 "PDF:n (b) problematisk Mediawiki-märktext (c) för bred(a) tabell(er)"
-
-#, fuzzy
-#~ msgid "Image Sources and Contributors"
-#~ msgstr "Bildkällor, -licenser och -bidragsgivare"

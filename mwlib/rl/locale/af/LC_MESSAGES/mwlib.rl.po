@@ -6,13 +6,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-17 16:47+0000\n"
-"PO-Revision-Date: 2009-04-15 16:24+0200\n"
+"POT-Creation-Date: 2009-05-22 09:43+0000\n"
+"PO-Revision-Date: 2009-05-22 09:43:12+0000\n"
 "Language-Team: Afrikaans\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.15alpha (r49162); Translate extension (11:2009-03-"
-"27)\n"
+"X-Generator: MediaWiki 1.16alpha(r50880); Translate extension (11:2009-05-"
+"09)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: af\n"
 "X-Message-Group: out-mwlibrl\n"
@@ -22,12 +22,14 @@ msgid "Source:"
 msgstr ""
 
 #: mwlib/rl/pdfmessages.py:14
+#, fuzzy
 msgid "License:"
-msgstr ""
+msgstr "Bladsylisensies"
 
 #: mwlib/rl/pdfmessages.py:16
+#, fuzzy
 msgid "Contributors:"
-msgstr ""
+msgstr "Inhoud"
 
 #: mwlib/rl/pdfmessages.py:18
 msgid "Article Licenses"
@@ -176,7 +178,3 @@ msgstr ""
 "<strong>Die bladsy kon nie verwerk word nie. Die afvoer is suiwer teks.</"
 "strong>Moontlike oorsake vir die probleem is: (a) 'n fout in die sagteware "
 "wat die PDF skep (b) problematiese wikikode (c) te breë tabelle"
-
-#, fuzzy
-#~ msgid "Image Sources and Contributors"
-#~ msgstr "Beeldbronne, lisensies en bydraers"

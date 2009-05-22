@@ -13,12 +13,12 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-17 16:47+0000\n"
-"PO-Revision-Date: 2009-05-17 16:43:19+0000\n"
+"POT-Creation-Date: 2009-05-22 09:43+0000\n"
+"PO-Revision-Date: 2009-05-22 09:43:12+0000\n"
 "Language-Team: French\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.16alpha(r50698); Translate extension (11:2009-05-"
+"X-Generator: MediaWiki 1.16alpha(r50880); Translate extension (11:2009-05-"
 "09)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: fr\n"
@@ -109,9 +109,8 @@ msgstr ""
 "d'auteurs et les conditions de la licence."
 
 #: mwlib/rl/pdfmessages.py:48 mwlib/rl/rlwriter.py:588
-#, fuzzy
 msgid "Article Sources and Contributors"
-msgstr "Source des images, licences et contributeurs"
+msgstr "Source des articles et contributeurs"
 
 #: mwlib/rl/pdfmessages.py:50 mwlib/rl/rlwriter.py:605
 msgid "Image Sources, Licenses and Contributors"
@@ -134,6 +133,8 @@ msgid ""
 "PDF generated using the open source mwlib toolkit. See http://code."
 "pediapress.com/ for more information."
 msgstr ""
+"PDF générés en utilisant les outils open source mwlib. Voir http://code."
+"pediapress.com/ pour plus d’informations."
 
 #: mwlib/rl/rlwriter.py:291
 msgid "layouting"
@@ -158,23 +159,20 @@ msgid "rendering"
 msgstr "rendu"
 
 #: mwlib/rl/rlwriter.py:593 mwlib/rl/rlwriter.py:615
-#, fuzzy
 msgid "Source"
-msgstr "Source :"
+msgstr "Source"
 
 #: mwlib/rl/rlwriter.py:595 mwlib/rl/rlwriter.py:618
-#, fuzzy
 msgid "Contributors"
-msgstr "Contributeurs :"
+msgstr "Contributeurs"
 
 #: mwlib/rl/rlwriter.py:609
 msgid "unknown"
-msgstr ""
+msgstr "inconnu"
 
 #: mwlib/rl/rlwriter.py:610
-#, fuzzy
 msgid "License"
-msgstr "Licence :"
+msgstr "Licence"
 
 #: mwlib/rl/rlwriter.py:676
 msgid ""

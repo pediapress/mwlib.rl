@@ -6,12 +6,12 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-17 16:47+0000\n"
-"PO-Revision-Date: 2009-05-17 16:43:19+0000\n"
+"POT-Creation-Date: 2009-05-22 09:43+0000\n"
+"PO-Revision-Date: 2009-05-22 09:43:12+0000\n"
 "Language-Team: Welsh\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.16alpha(r50698); Translate extension (11:2009-05-"
+"X-Generator: MediaWiki 1.16alpha(r50880); Translate extension (11:2009-05-"
 "09)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: cy\n"
@@ -59,7 +59,7 @@ msgstr "Erthyglau"
 
 #: mwlib/rl/pdfmessages.py:32
 msgid "Produced by:"
-msgstr ""
+msgstr "Cynhyrchwyd gan:"
 
 #: mwlib/rl/pdfmessages.py:34
 msgid "pdf writer version:"
@@ -70,7 +70,6 @@ msgid "mwlib version:"
 msgstr "y fersiwn mwlib:"
 
 #: mwlib/rl/pdfmessages.py:38
-#, fuzzy
 msgid "Table of Contents"
 msgstr "Cynnwys"
 
@@ -84,6 +83,8 @@ msgid ""
 "Please note:  This is only a preview intended to give an idea how the book "
 "is typeset."
 msgstr ""
+"Dalier sylw: Rhagolwg yn unig yw hwn, yn cynnig golwg ar ymddangosiad y "
+"llyfr."
 
 #: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:685
 msgid "References"
@@ -98,9 +99,8 @@ msgid ""
 msgstr ""
 
 #: mwlib/rl/pdfmessages.py:48 mwlib/rl/rlwriter.py:588
-#, fuzzy
 msgid "Article Sources and Contributors"
-msgstr "Ffynonellau'r Ddelwedd, ei Thrwyddedi a'i Chyfranwyr"
+msgstr "Ffynonellau'r Erthygl a'i Chyfranwyr"
 
 #: mwlib/rl/pdfmessages.py:50 mwlib/rl/rlwriter.py:605
 msgid "Image Sources, Licenses and Contributors"
@@ -116,7 +116,7 @@ msgstr "golygiadau dienw"
 
 #: mwlib/rl/pdfmessages.py:56
 msgid "Figure"
-msgstr ""
+msgstr "Ffigur"
 
 #: mwlib/rl/pdfstyles.py:77
 msgid ""
@@ -129,9 +129,9 @@ msgid "layouting"
 msgstr ""
 
 #: mwlib/rl/rlwriter.py:353
-#, fuzzy, python-format
+#, python-format
 msgid "mwlib.ext version: %(version)s"
-msgstr "y fersiwn mwlib:"
+msgstr "y fersiwn mwlib.ext: %(version)s"
 
 #: mwlib/rl/rlwriter.py:359
 #, python-format
@@ -145,23 +145,20 @@ msgid "rendering"
 msgstr ""
 
 #: mwlib/rl/rlwriter.py:593 mwlib/rl/rlwriter.py:615
-#, fuzzy
 msgid "Source"
-msgstr "Ffynhonnell:"
+msgstr "Ffynhonnell"
 
 #: mwlib/rl/rlwriter.py:595 mwlib/rl/rlwriter.py:618
-#, fuzzy
 msgid "Contributors"
-msgstr "Cyfranwyr:"
+msgstr "Cyfranwyr"
 
 #: mwlib/rl/rlwriter.py:609
 msgid "unknown"
-msgstr ""
+msgstr "anhysbys"
 
 #: mwlib/rl/rlwriter.py:610
-#, fuzzy
 msgid "License"
-msgstr "Trwydded:"
+msgstr "Trwydded"
 
 #: mwlib/rl/rlwriter.py:676
 msgid ""

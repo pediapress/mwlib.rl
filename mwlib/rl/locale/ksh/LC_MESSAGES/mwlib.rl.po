@@ -6,12 +6,12 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-17 16:47+0000\n"
-"PO-Revision-Date: 2009-05-17 16:43:19+0000\n"
+"POT-Creation-Date: 2009-05-22 09:43+0000\n"
+"PO-Revision-Date: 2009-05-22 09:43:13+0000\n"
 "Language-Team: Ripoarisch\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.16alpha(r50698); Translate extension (11:2009-05-"
+"X-Generator: MediaWiki 1.16alpha(r50880); Translate extension (11:2009-05-"
 "09)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: ksh\n"
@@ -101,9 +101,8 @@ msgstr ""
 "Lizänze, un de Urhävverrääschte, de Urhävver, un de Lizänzbedingunge."
 
 #: mwlib/rl/pdfmessages.py:48 mwlib/rl/rlwriter.py:588
-#, fuzzy
 msgid "Article Sources and Contributors"
-msgstr "Quelle för Belder, Lizänze, un Metschriiver"
+msgstr "Quelle för Atikelle, un de Metschriiver"
 
 #: mwlib/rl/pdfmessages.py:50 mwlib/rl/rlwriter.py:605
 msgid "Image Sources, Licenses and Contributors"
@@ -126,6 +125,9 @@ msgid ""
 "PDF generated using the open source mwlib toolkit. See http://code."
 "pediapress.com/ for more information."
 msgstr ""
+"Hee di PDF-Dattei es met däm <i lang=\"en\">open source</i> Wärkzüsch <code "
+"lang=\"en\">mwlib</code> jemaat woode. Mieh doh drövver fengkß De op dä "
+"Websigg <code>http://code.pediapress.com/</code>."
 
 #: mwlib/rl/rlwriter.py:291
 msgid "layouting"
@@ -150,23 +152,20 @@ msgid "rendering"
 msgstr "Ben de Datei am ußjävve"
 
 #: mwlib/rl/rlwriter.py:593 mwlib/rl/rlwriter.py:615
-#, fuzzy
 msgid "Source"
-msgstr "Quell:"
+msgstr "Quell"
 
 #: mwlib/rl/rlwriter.py:595 mwlib/rl/rlwriter.py:618
-#, fuzzy
 msgid "Contributors"
-msgstr "Schriiver:"
+msgstr "Schriiver"
 
 #: mwlib/rl/rlwriter.py:609
 msgid "unknown"
-msgstr ""
+msgstr "unbekannt"
 
 #: mwlib/rl/rlwriter.py:610
-#, fuzzy
 msgid "License"
-msgstr "Lizänzbeshtemmunge:"
+msgstr "Lizänzbeshtemmunge"
 
 #: mwlib/rl/rlwriter.py:676
 msgid ""

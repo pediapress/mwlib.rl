@@ -6,12 +6,12 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-17 16:47+0000\n"
-"PO-Revision-Date: 2009-05-17 16:43:19+0000\n"
+"POT-Creation-Date: 2009-05-22 09:43+0000\n"
+"PO-Revision-Date: 2009-05-22 09:43:13+0000\n"
 "Language-Team: Luxembourgish\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.16alpha(r50698); Translate extension (11:2009-05-"
+"X-Generator: MediaWiki 1.16alpha(r50880); Translate extension (11:2009-05-"
 "09)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: lb\n"
@@ -47,7 +47,7 @@ msgstr "Editeur:"
 
 #: mwlib/rl/pdfmessages.py:26
 msgid "Created on:"
-msgstr ""
+msgstr "Ugeluecht den:"
 
 #: mwlib/rl/pdfmessages.py:28
 msgid "Contents"
@@ -125,7 +125,7 @@ msgstr ""
 
 #: mwlib/rl/rlwriter.py:291
 msgid "layouting"
-msgstr ""
+msgstr "Layout gëtt gemaach"
 
 #: mwlib/rl/rlwriter.py:353
 #, python-format
@@ -144,23 +144,20 @@ msgid "rendering"
 msgstr ""
 
 #: mwlib/rl/rlwriter.py:593 mwlib/rl/rlwriter.py:615
-#, fuzzy
 msgid "Source"
-msgstr "Quell:"
+msgstr "Quell"
 
 #: mwlib/rl/rlwriter.py:595 mwlib/rl/rlwriter.py:618
-#, fuzzy
 msgid "Contributors"
-msgstr "Auteuren:"
+msgstr "Auteuren"
 
 #: mwlib/rl/rlwriter.py:609
 msgid "unknown"
-msgstr ""
+msgstr "onbekannt"
 
 #: mwlib/rl/rlwriter.py:610
-#, fuzzy
 msgid "License"
-msgstr "Lizenz:"
+msgstr "Lizenz"
 
 #: mwlib/rl/rlwriter.py:676
 msgid ""

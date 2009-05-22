@@ -6,12 +6,12 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-17 16:47+0000\n"
-"PO-Revision-Date: 2009-05-17 16:43:20+0000\n"
+"POT-Creation-Date: 2009-05-22 09:44+0000\n"
+"PO-Revision-Date: 2009-05-22 09:43:13+0000\n"
 "Language-Team: Slovenian\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.16alpha(r50698); Translate extension (11:2009-05-"
+"X-Generator: MediaWiki 1.16alpha(r50880); Translate extension (11:2009-05-"
 "09)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: sl\n"
@@ -22,12 +22,14 @@ msgid "Source:"
 msgstr ""
 
 #: mwlib/rl/pdfmessages.py:14
+#, fuzzy
 msgid "License:"
-msgstr ""
+msgstr "Licence pod katerimi je članek izdan"
 
 #: mwlib/rl/pdfmessages.py:16
+#, fuzzy
 msgid "Contributors:"
-msgstr ""
+msgstr "Vsebina"
 
 #: mwlib/rl/pdfmessages.py:18
 #, fuzzy

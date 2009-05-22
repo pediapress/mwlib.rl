@@ -6,13 +6,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-17 16:47+0000\n"
-"PO-Revision-Date: 2009-04-04 14:11:43+0000\n"
+"POT-Creation-Date: 2009-05-22 09:43+0000\n"
+"PO-Revision-Date: 2009-05-22 09:43:12+0000\n"
 "Language-Team: Egyptian Spoken Arabic\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.15alpha (r49162); Translate extension (11:2009-03-"
-"27)\n"
+"X-Generator: MediaWiki 1.16alpha(r50880); Translate extension (11:2009-05-"
+"09)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: arz\n"
 "X-Message-Group: out-mwlibrl\n"
@@ -22,12 +22,14 @@ msgid "Source:"
 msgstr ""
 
 #: mwlib/rl/pdfmessages.py:14
+#, fuzzy
 msgid "License:"
-msgstr ""
+msgstr "رخص المقالة"
 
 #: mwlib/rl/pdfmessages.py:16
+#, fuzzy
 msgid "Contributors:"
-msgstr ""
+msgstr "محتويات"
 
 #: mwlib/rl/pdfmessages.py:18
 msgid "Article Licenses"
@@ -177,7 +179,3 @@ msgstr ""
 "<strong>تحذير: المقالة لم يمكن عرضها - عرض نص فقط.</strong><br/>الأسباب "
 "المحتملة للمشكلة هى: (a) علة فى برنامج pdf-writer (b) صيغة ميدياويكى معيوبة "
 "(c) الجدول عريض جدا"
-
-#, fuzzy
-#~ msgid "Image Sources and Contributors"
-#~ msgstr "مصادر، رخص ومساهمو الصور"
