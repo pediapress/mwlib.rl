@@ -868,17 +868,6 @@ class RlWriter(object):
     def writeNode(self,obj):
         return self.renderMixed(obj)
 
-    def transformEntities(self,s):
-        if not s:
-            return None
-        entities = re.findall('&([a-zA-Z]{1,10});', s)
-        if entities:
-            for e in entities:         
-                codepoint = htmlentitydefs.name2codepoint.get(e, None)
-                if codepoint:
-                    s = s.replace('&'+e+';', unichr(codepoint))
-        return s
-
     def renderText(self, txt):
         if useFriBidi:
             return xmlescape(pyfribidi.log2vis(txt, base_direction=pyfribidi.LTR))
@@ -894,8 +883,6 @@ class RlWriter(object):
             return []
         if self.source_mode:
             return [txt]
-        if not self.pre_mode:
-            txt = self.transformEntities(txt)
         txt = xmlescape(txt)
         if self.sectionTitle:
             return [self.font_switcher.fontifyText(txt, defaultFont=serif_font, breakLong=True)]
