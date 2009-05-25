@@ -1,6 +1,6 @@
-# Translation of Mwlib.rl to Basque
+# Translation of Mwlib.rl to Welsh
 #
-# Author@translatewiki.net: An13sa
+# Author@translatewiki.net: Lloffiwr
 # --
 msgid ""
 msgstr ""
@@ -8,84 +8,87 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-05-22 09:43+0000\n"
 "PO-Revision-Date: 2009-05-22 09:43:12+0000\n"
-"Language-Team: Basque\n"
+"Language-Team: Welsh\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: MediaWiki 1.16alpha(r50880); Translate extension (11:2009-05-"
 "09)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
-"X-Language-Code: eu\n"
+"X-Language-Code: cy\n"
 "X-Message-Group: out-mwlibrl\n"
 
 #: mwlib/rl/pdfmessages.py:12
 msgid "Source:"
-msgstr "Iturria:"
+msgstr "Ffynhonnell:"
 
 #: mwlib/rl/pdfmessages.py:14
 msgid "License:"
-msgstr "Lizentzia:"
+msgstr "Trwydded:"
 
 #: mwlib/rl/pdfmessages.py:16
 msgid "Contributors:"
-msgstr "Egileak:"
+msgstr "Cyfranwyr:"
 
 #: mwlib/rl/pdfmessages.py:18
 msgid "Article Licenses"
-msgstr "Artiikulu Lizentziak"
+msgstr "Trwyddedi'r Erthygl"
 
 #: mwlib/rl/pdfmessages.py:20
 msgid "Title"
-msgstr "Izenburua"
+msgstr "Teitl"
 
 #: mwlib/rl/pdfmessages.py:22
 msgid "Subtitle:"
-msgstr "Azpititulua:"
+msgstr "Isdeitl:"
 
 #: mwlib/rl/pdfmessages.py:24
 msgid "Editor:"
-msgstr "Aldatu duena:"
+msgstr "Golygydd:"
 
 #: mwlib/rl/pdfmessages.py:26
 msgid "Created on:"
-msgstr "Noiz sortua:"
+msgstr ""
 
 #: mwlib/rl/pdfmessages.py:28
 msgid "Contents"
-msgstr "Edukiak"
+msgstr "Cynnwys"
 
 #: mwlib/rl/pdfmessages.py:30
 msgid "Articles"
-msgstr "Artikuluak"
+msgstr "Erthyglau"
 
 #: mwlib/rl/pdfmessages.py:32
 msgid "Produced by:"
-msgstr "Ekoizlea(k):"
+msgstr "Cynhyrchwyd gan:"
 
 #: mwlib/rl/pdfmessages.py:34
 msgid "pdf writer version:"
-msgstr "pdf idatzizko bertsioa"
+msgstr "fersiwn y rhaglen ysgrifennu pdf:"
 
 #: mwlib/rl/pdfmessages.py:36
 msgid "mwlib version:"
-msgstr "mwlib bertsioa:"
+msgstr "y fersiwn mwlib:"
 
 #: mwlib/rl/pdfmessages.py:38
 msgid "Table of Contents"
-msgstr "Eduki-taula"
+msgstr "Cynnwys"
 
 #: mwlib/rl/pdfmessages.py:40
+#, fuzzy
 msgid "Skipping Articles!"
-msgstr "Artikuluetan jauzi egiten!"
+msgstr "Erthyglau"
 
 #: mwlib/rl/pdfmessages.py:42
 msgid ""
 "Please note:  This is only a preview intended to give an idea how the book "
 "is typeset."
-msgstr "Kontuan izan: Hau liburuaren aurreikuspen bat besterik ez da."
+msgstr ""
+"Dalier sylw: Rhagolwg yn unig yw hwn, yn cynnig golwg ar ymddangosiad y "
+"llyfr."
 
 #: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:685
 msgid "References"
-msgstr "Erreferentziak"
+msgstr "Cyfeiriadau"
 
 #: mwlib/rl/pdfmessages.py:46
 msgid ""
@@ -96,25 +99,24 @@ msgid ""
 msgstr ""
 
 #: mwlib/rl/pdfmessages.py:48 mwlib/rl/rlwriter.py:588
-#, fuzzy
 msgid "Article Sources and Contributors"
-msgstr "Irudi Iturriak, Lizentziak eta Lagundu dutenak"
+msgstr "Ffynonellau'r Erthygl a'i Chyfranwyr"
 
 #: mwlib/rl/pdfmessages.py:50 mwlib/rl/rlwriter.py:605
 msgid "Image Sources, Licenses and Contributors"
-msgstr "Irudi Iturriak, Lizentziak eta Lagundu dutenak"
+msgstr "Ffynonellau'r Ddelwedd, ei Thrwyddedi a'i Chyfranwyr"
 
 #: mwlib/rl/pdfmessages.py:52
 msgid "Image"
-msgstr "Irudia"
+msgstr "Delwedd"
 
 #: mwlib/rl/pdfmessages.py:54 mwlib/rl/rlwriter.py:580
 msgid "anonymous edits"
-msgstr ""
+msgstr "golygiadau dienw"
 
 #: mwlib/rl/pdfmessages.py:56
 msgid "Figure"
-msgstr ""
+msgstr "Ffigur"
 
 #: mwlib/rl/pdfstyles.py:77
 msgid ""
@@ -124,12 +126,12 @@ msgstr ""
 
 #: mwlib/rl/rlwriter.py:291
 msgid "layouting"
-msgstr "disenatzen"
+msgstr ""
 
 #: mwlib/rl/rlwriter.py:353
 #, python-format
 msgid "mwlib.ext version: %(version)s"
-msgstr "mwlib.ext bertsioa: %(version)s"
+msgstr "y fersiwn mwlib.ext: %(version)s"
 
 #: mwlib/rl/rlwriter.py:359
 #, python-format
@@ -137,31 +139,26 @@ msgid ""
 "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
 "(mwlibextversion)s"
 msgstr ""
-"mwlib bertsioa: %(mwlibversion)s, mwlib.rl bertsioa: %(mwlibrlversion)s, %"
-"(mwlibextversion)s"
 
 #: mwlib/rl/rlwriter.py:431
 msgid "rendering"
-msgstr "bihurtzen"
+msgstr ""
 
 #: mwlib/rl/rlwriter.py:593 mwlib/rl/rlwriter.py:615
-#, fuzzy
 msgid "Source"
-msgstr "Iturria:"
+msgstr "Ffynhonnell"
 
 #: mwlib/rl/rlwriter.py:595 mwlib/rl/rlwriter.py:618
-#, fuzzy
 msgid "Contributors"
-msgstr "Egileak:"
+msgstr "Cyfranwyr"
 
 #: mwlib/rl/rlwriter.py:609
 msgid "unknown"
-msgstr ""
+msgstr "anhysbys"
 
 #: mwlib/rl/rlwriter.py:610
-#, fuzzy
 msgid "License"
-msgstr "Lizentzia:"
+msgstr "Trwydded"
 
 #: mwlib/rl/rlwriter.py:676
 msgid ""

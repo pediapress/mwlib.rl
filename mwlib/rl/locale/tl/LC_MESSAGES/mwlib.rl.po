@@ -6,13 +6,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-29 11:42+0200\n"
-"PO-Revision-Date: 2009-04-04 14:11:44+0000\n"
+"POT-Creation-Date: 2009-05-22 09:44+0000\n"
+"PO-Revision-Date: 2009-05-22 09:43:13+0000\n"
 "Language-Team: Tagalog\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.15alpha (r49162); Translate extension (11:2009-03-"
-"27)\n"
+"X-Generator: MediaWiki 1.16alpha(r50880); Translate extension (11:2009-05-"
+"09)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: tl\n"
 "X-Message-Group: out-mwlibrl\n"
@@ -22,13 +22,14 @@ msgid "Source:"
 msgstr ""
 
 #: mwlib/rl/pdfmessages.py:14
+#, fuzzy
 msgid "License:"
-msgstr ""
+msgstr "Mga Lisensya ng mga Lathalain/Artikulo"
 
 #: mwlib/rl/pdfmessages.py:16
 #, fuzzy
 msgid "Contributors:"
-msgstr "Pangunahing mga May-akda: %(may-akda)s"
+msgstr "Pangunahing mga May-akda:"
 
 #: mwlib/rl/pdfmessages.py:18
 msgid "Article Licenses"
@@ -86,7 +87,7 @@ msgstr ""
 "Pakiunawa po: Isa lamang itong paunang-tanaw na nilalayong magbigay ng isang "
 "ideya kung paano inihanda ang pagkakalimbag (''typeset'') ng aklat."
 
-#: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:684
+#: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:685
 msgid "References"
 msgstr "Mga sanggunian"
 
@@ -103,13 +104,12 @@ msgstr ""
 "kabilang ang kalagayan ng karapatang-ari, ang may-ari ng karapatang-ari, at "
 "mga kalakaran ng lisensiya."
 
-#: mwlib/rl/pdfmessages.py:48 mwlib/rl/rlwriter.py:579
+#: mwlib/rl/pdfmessages.py:48 mwlib/rl/rlwriter.py:588
 #, fuzzy
 msgid "Article Sources and Contributors"
-msgstr ""
-"Mga Pinagmulan, Mga Lisensiya at Mga Tagapag-ambag ng Lathalain/Artikulo"
+msgstr "Mga Pinagmulan, Mga Lisensiya, at Mga Tagapag-ambag ng Larawan"
 
-#: mwlib/rl/pdfmessages.py:50 mwlib/rl/rlwriter.py:599
+#: mwlib/rl/pdfmessages.py:50 mwlib/rl/rlwriter.py:605
 msgid "Image Sources, Licenses and Contributors"
 msgstr "Mga Pinagmulan, Mga Lisensiya, at Mga Tagapag-ambag ng Larawan"
 
@@ -117,8 +117,7 @@ msgstr "Mga Pinagmulan, Mga Lisensiya, at Mga Tagapag-ambag ng Larawan"
 msgid "Image"
 msgstr "Larawan"
 
-#: mwlib/rl/pdfmessages.py:54 mwlib/rl/rlwriter.py:583
-#: mwlib/rl/rlwriter.py:603
+#: mwlib/rl/pdfmessages.py:54 mwlib/rl/rlwriter.py:580
 msgid "anonymous edits"
 msgstr ""
 
@@ -127,14 +126,10 @@ msgid "Figure"
 msgstr ""
 
 #: mwlib/rl/pdfstyles.py:77
-#, fuzzy
 msgid ""
 "PDF generated using the open source mwlib toolkit. See http://code."
 "pediapress.com/ for more information."
 msgstr ""
-"Ginawa sa PDF na ginagamitan ng kasangkapang mwlib na pang-bukas na "
-"pinagmulan <br/>tingnan ang http://code.pediapress.com/ para sa mas marami "
-"pang kabatiran"
 
 #: mwlib/rl/rlwriter.py:291
 msgid "layouting"
@@ -158,25 +153,25 @@ msgstr ""
 msgid "rendering"
 msgstr "naghahain"
 
-#: mwlib/rl/rlwriter.py:589 mwlib/rl/rlwriter.py:615
+#: mwlib/rl/rlwriter.py:593 mwlib/rl/rlwriter.py:615
 msgid "Source"
 msgstr ""
 
-#: mwlib/rl/rlwriter.py:591 mwlib/rl/rlwriter.py:618
+#: mwlib/rl/rlwriter.py:595 mwlib/rl/rlwriter.py:618
 #, fuzzy
 msgid "Contributors"
-msgstr "Pangunahing mga May-akda: %(may-akda)s"
+msgstr "Pangunahing mga May-akda:"
 
-#: mwlib/rl/rlwriter.py:608
+#: mwlib/rl/rlwriter.py:609
+msgid "unknown"
+msgstr ""
+
+#: mwlib/rl/rlwriter.py:610
 #, fuzzy
 msgid "License"
 msgstr "Mga Lisensya ng mga Lathalain/Artikulo"
 
-#: mwlib/rl/rlwriter.py:612
-msgid "unknown"
-msgstr ""
-
-#: mwlib/rl/rlwriter.py:675
+#: mwlib/rl/rlwriter.py:676
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
@@ -186,11 +181,3 @@ msgstr ""
 "maaaring sanhi ng suliranin ay: (a) isang depekto (''bug'') sa sopwer na "
 "panulat ng pdf (b) may suliraning pangpaglalarawan at pagpapaliwanag ng "
 "kayarian (''markup'') (c) napakaluwang ng tabla"
-
-#, fuzzy
-#~ msgid "Image Sources and Contributors"
-#~ msgstr "Mga Pinagmulan, Mga Lisensiya, at Mga Tagapag-ambag ng Larawan"
-
-#, fuzzy
-#~ msgid "Contributors: %(authors)s"
-#~ msgstr "Pangunahing mga May-akda: %(may-akda)s"

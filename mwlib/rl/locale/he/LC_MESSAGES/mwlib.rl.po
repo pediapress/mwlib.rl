@@ -7,29 +7,28 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-29 11:42+0200\n"
-"PO-Revision-Date: 2009-04-04 14:11:44+0000\n"
+"POT-Creation-Date: 2009-05-22 09:43+0000\n"
+"PO-Revision-Date: 2009-05-22 09:43:12+0000\n"
 "Language-Team: Hebrew\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.15alpha (r49162); Translate extension (11:2009-03-"
-"27)\n"
+"X-Generator: MediaWiki 1.16alpha(r50880); Translate extension (11:2009-05-"
+"09)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: he\n"
 "X-Message-Group: out-mwlibrl\n"
 
 #: mwlib/rl/pdfmessages.py:12
 msgid "Source:"
-msgstr ""
+msgstr "מקור:"
 
 #: mwlib/rl/pdfmessages.py:14
 msgid "License:"
-msgstr ""
+msgstr "רשיון:"
 
 #: mwlib/rl/pdfmessages.py:16
-#, fuzzy
 msgid "Contributors:"
-msgstr "עורכים ראשיים: %(authors)s"
+msgstr "תורמים:"
 
 #: mwlib/rl/pdfmessages.py:18
 msgid "Article Licenses"
@@ -85,7 +84,7 @@ msgid ""
 "is typeset."
 msgstr "שימו לב:  זוהי תצוגה מקדימה בלבד שנועדה לתת לכם מושג על הספר המוגמר."
 
-#: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:684
+#: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:685
 msgid "References"
 msgstr "הפניות"
 
@@ -100,12 +99,12 @@ msgstr ""
 "בספר זה. מקורות אלו מספקים מידע מפורט יותר אודות הרישוי כולל מצב זכויות "
 "היוצרים, בעלי זכויות היוצרים ותנאי הרשיון."
 
-#: mwlib/rl/pdfmessages.py:48 mwlib/rl/rlwriter.py:579
+#: mwlib/rl/pdfmessages.py:48 mwlib/rl/rlwriter.py:588
 #, fuzzy
 msgid "Article Sources and Contributors"
-msgstr "מקורות, רשיונות והתורמים לערך"
+msgstr "מקורות, רשיונות והתורמים לתמונה"
 
-#: mwlib/rl/pdfmessages.py:50 mwlib/rl/rlwriter.py:599
+#: mwlib/rl/pdfmessages.py:50 mwlib/rl/rlwriter.py:605
 msgid "Image Sources, Licenses and Contributors"
 msgstr "מקורות, רשיונות והתורמים לתמונה"
 
@@ -113,23 +112,19 @@ msgstr "מקורות, רשיונות והתורמים לתמונה"
 msgid "Image"
 msgstr "תמונה"
 
-#: mwlib/rl/pdfmessages.py:54 mwlib/rl/rlwriter.py:583
-#: mwlib/rl/rlwriter.py:603
+#: mwlib/rl/pdfmessages.py:54 mwlib/rl/rlwriter.py:580
 msgid "anonymous edits"
-msgstr ""
+msgstr "עריכות אנונימיות"
 
 #: mwlib/rl/pdfmessages.py:56
 msgid "Figure"
 msgstr ""
 
 #: mwlib/rl/pdfstyles.py:77
-#, fuzzy
 msgid ""
 "PDF generated using the open source mwlib toolkit. See http://code."
 "pediapress.com/ for more information."
 msgstr ""
-"מסמך ה־PDF נוצר באמצעות ערכת הכלים mwlib המופצת בקוד פתוח<br />בקרו באתר "
-"http://code.pediapress.com/ למידע נוסף"
 
 #: mwlib/rl/rlwriter.py:291
 msgid "layouting"
@@ -153,25 +148,26 @@ msgstr ""
 msgid "rendering"
 msgstr "עיבוד"
 
-#: mwlib/rl/rlwriter.py:589 mwlib/rl/rlwriter.py:615
+#: mwlib/rl/rlwriter.py:593 mwlib/rl/rlwriter.py:615
+#, fuzzy
 msgid "Source"
-msgstr ""
+msgstr "מקור:"
 
-#: mwlib/rl/rlwriter.py:591 mwlib/rl/rlwriter.py:618
+#: mwlib/rl/rlwriter.py:595 mwlib/rl/rlwriter.py:618
 #, fuzzy
 msgid "Contributors"
-msgstr "עורכים ראשיים: %(authors)s"
+msgstr "תורמים:"
 
-#: mwlib/rl/rlwriter.py:608
-#, fuzzy
-msgid "License"
-msgstr "רשיונות הערך"
-
-#: mwlib/rl/rlwriter.py:612
+#: mwlib/rl/rlwriter.py:609
 msgid "unknown"
 msgstr ""
 
-#: mwlib/rl/rlwriter.py:675
+#: mwlib/rl/rlwriter.py:610
+#, fuzzy
+msgid "License"
+msgstr "רשיון:"
+
+#: mwlib/rl/rlwriter.py:676
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
@@ -180,11 +176,3 @@ msgstr ""
 "<strong>אזהרה: לא ניתן לעבד את הערך - יתבצע ייצוא כטקסט רגיל.</strong><br/"
 ">הגורמים האפשריים לתקלה הינם: (א) תקלה בתוכנת ה־pdf-writer (ב) תחביר ויקי "
 "בעייתי (ג) טבלה רחבה מדי"
-
-#, fuzzy
-#~ msgid "Image Sources and Contributors"
-#~ msgstr "מקורות, רשיונות והתורמים לתמונה"
-
-#, fuzzy
-#~ msgid "Contributors: %(authors)s"
-#~ msgstr "עורכים ראשיים: %(authors)s"

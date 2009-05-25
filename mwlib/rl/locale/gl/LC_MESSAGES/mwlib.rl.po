@@ -6,29 +6,28 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-29 11:42+0200\n"
-"PO-Revision-Date: 2009-04-04 14:11:43+0000\n"
+"POT-Creation-Date: 2009-05-22 09:43+0000\n"
+"PO-Revision-Date: 2009-05-22 09:43:12+0000\n"
 "Language-Team: Galician\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.15alpha (r49162); Translate extension (11:2009-03-"
-"27)\n"
+"X-Generator: MediaWiki 1.16alpha(r50880); Translate extension (11:2009-05-"
+"09)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: gl\n"
 "X-Message-Group: out-mwlibrl\n"
 
 #: mwlib/rl/pdfmessages.py:12
 msgid "Source:"
-msgstr ""
+msgstr "Fonte:"
 
 #: mwlib/rl/pdfmessages.py:14
 msgid "License:"
-msgstr ""
+msgstr "Licenza:"
 
 #: mwlib/rl/pdfmessages.py:16
-#, fuzzy
 msgid "Contributors:"
-msgstr "Autores principais: %(authors)s"
+msgstr "Autores:"
 
 #: mwlib/rl/pdfmessages.py:18
 msgid "Article Licenses"
@@ -86,7 +85,7 @@ msgstr ""
 "Nota: esta é só unha vista previa que pretende dar unha idea do aspecto "
 "final do libro"
 
-#: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:684
+#: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:685
 msgid "References"
 msgstr "Referencias"
 
@@ -102,12 +101,11 @@ msgstr ""
 "licenza, incluíndo o estado dos dereitos de autor, o dono destes e as "
 "condicións da licenza."
 
-#: mwlib/rl/pdfmessages.py:48 mwlib/rl/rlwriter.py:579
-#, fuzzy
+#: mwlib/rl/pdfmessages.py:48 mwlib/rl/rlwriter.py:588
 msgid "Article Sources and Contributors"
-msgstr "Fontes dos artigos, licenzas e contribuíntes"
+msgstr "Fonte dos artigos e contribuíntes"
 
-#: mwlib/rl/pdfmessages.py:50 mwlib/rl/rlwriter.py:599
+#: mwlib/rl/pdfmessages.py:50 mwlib/rl/rlwriter.py:605
 msgid "Image Sources, Licenses and Contributors"
 msgstr "Fontes das imaxes, licenzas e contribuíntes"
 
@@ -115,23 +113,21 @@ msgstr "Fontes das imaxes, licenzas e contribuíntes"
 msgid "Image"
 msgstr "Imaxe"
 
-#: mwlib/rl/pdfmessages.py:54 mwlib/rl/rlwriter.py:583
-#: mwlib/rl/rlwriter.py:603
+#: mwlib/rl/pdfmessages.py:54 mwlib/rl/rlwriter.py:580
 msgid "anonymous edits"
-msgstr ""
+msgstr "edicións anónimas"
 
 #: mwlib/rl/pdfmessages.py:56
 msgid "Figure"
-msgstr ""
+msgstr "Figura"
 
 #: mwlib/rl/pdfstyles.py:77
-#, fuzzy
 msgid ""
 "PDF generated using the open source mwlib toolkit. See http://code."
 "pediapress.com/ for more information."
 msgstr ""
-"PDF xerado usando o xogo de ferramentas de código libre mwlib<br/>véxase "
-"http://code.pediapress.com/ para obter máis información"
+"PDF xerado utilizando as ferramentas de código aberto mwlib. Olle a páxina "
+"http://code.pediapress.com/ para obter máis información."
 
 #: mwlib/rl/rlwriter.py:291
 msgid "layouting"
@@ -155,25 +151,23 @@ msgstr ""
 msgid "rendering"
 msgstr "renderizando"
 
-#: mwlib/rl/rlwriter.py:589 mwlib/rl/rlwriter.py:615
+#: mwlib/rl/rlwriter.py:593 mwlib/rl/rlwriter.py:615
 msgid "Source"
-msgstr ""
+msgstr "Fonte"
 
-#: mwlib/rl/rlwriter.py:591 mwlib/rl/rlwriter.py:618
-#, fuzzy
+#: mwlib/rl/rlwriter.py:595 mwlib/rl/rlwriter.py:618
 msgid "Contributors"
-msgstr "Autores principais: %(authors)s"
+msgstr "Contribuíntes"
 
-#: mwlib/rl/rlwriter.py:608
-#, fuzzy
-msgid "License"
-msgstr "Licenzas de artigos"
-
-#: mwlib/rl/rlwriter.py:612
+#: mwlib/rl/rlwriter.py:609
 msgid "unknown"
-msgstr ""
+msgstr "descoñecido"
 
-#: mwlib/rl/rlwriter.py:675
+#: mwlib/rl/rlwriter.py:610
+msgid "License"
+msgstr "Licenza"
+
+#: mwlib/rl/rlwriter.py:676
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
@@ -182,11 +176,3 @@ msgstr ""
 "<strong>AVISO: o artigo non pode ser renderizado; texto de saída sinxelo.</"
 "strong><br/>As causas potenciais do problema son: (a) un erro no software "
 "editor de pdf (b) marcado de Mediawiki problemático (c) a táboa é moi ancha"
-
-#, fuzzy
-#~ msgid "Image Sources and Contributors"
-#~ msgstr "Fontes das imaxes, licenzas e contribuíntes"
-
-#, fuzzy
-#~ msgid "Contributors: %(authors)s"
-#~ msgstr "Autores principais: %(authors)s"

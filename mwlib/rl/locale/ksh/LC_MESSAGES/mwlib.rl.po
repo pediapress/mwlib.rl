@@ -6,29 +6,28 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-29 11:42+0200\n"
-"PO-Revision-Date: 2009-04-04 14:11:44+0000\n"
+"POT-Creation-Date: 2009-05-22 09:43+0000\n"
+"PO-Revision-Date: 2009-05-22 09:43:13+0000\n"
 "Language-Team: Ripoarisch\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.15alpha (r49162); Translate extension (11:2009-03-"
-"27)\n"
+"X-Generator: MediaWiki 1.16alpha(r50880); Translate extension (11:2009-05-"
+"09)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: ksh\n"
 "X-Message-Group: out-mwlibrl\n"
 
 #: mwlib/rl/pdfmessages.py:12
 msgid "Source:"
-msgstr ""
+msgstr "Quell:"
 
 #: mwlib/rl/pdfmessages.py:14
 msgid "License:"
-msgstr ""
+msgstr "Lizänzbeshtemmunge:"
 
 #: mwlib/rl/pdfmessages.py:16
-#, fuzzy
 msgid "Contributors:"
-msgstr "Houp-Schriiver: %(authors)s"
+msgstr "Schriiver:"
 
 #: mwlib/rl/pdfmessages.py:18
 msgid "Article Licenses"
@@ -86,7 +85,7 @@ msgstr ""
 "Opjepaß: Dat hee es ekesch en Vöraansich, domet De en Idee kriss,\n"
 "wie dat fäädeje Booch jesatz weede weed."
 
-#: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:684
+#: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:685
 msgid "References"
 msgstr "Verwiise"
 
@@ -101,12 +100,11 @@ msgstr ""
 "Belder in däm Boch hee. Die Quelle jevve jenoure Enfommazjuhne övver de "
 "Lizänze, un de Urhävverrääschte, de Urhävver, un de Lizänzbedingunge."
 
-#: mwlib/rl/pdfmessages.py:48 mwlib/rl/rlwriter.py:579
-#, fuzzy
+#: mwlib/rl/pdfmessages.py:48 mwlib/rl/rlwriter.py:588
 msgid "Article Sources and Contributors"
-msgstr "Quelle för Atikele, Lizänze, un Metschriiver"
+msgstr "Quelle för Atikelle, un de Metschriiver"
 
-#: mwlib/rl/pdfmessages.py:50 mwlib/rl/rlwriter.py:599
+#: mwlib/rl/pdfmessages.py:50 mwlib/rl/rlwriter.py:605
 msgid "Image Sources, Licenses and Contributors"
 msgstr "Quelle för Belder, Lizänze, un Metschriiver"
 
@@ -114,24 +112,22 @@ msgstr "Quelle för Belder, Lizänze, un Metschriiver"
 msgid "Image"
 msgstr "Beld"
 
-#: mwlib/rl/pdfmessages.py:54 mwlib/rl/rlwriter.py:583
-#: mwlib/rl/rlwriter.py:603
+#: mwlib/rl/pdfmessages.py:54 mwlib/rl/rlwriter.py:580
 msgid "anonymous edits"
-msgstr ""
+msgstr "Änderunge vun Namelose"
 
 #: mwlib/rl/pdfmessages.py:56
 msgid "Figure"
-msgstr ""
+msgstr "Beld"
 
 #: mwlib/rl/pdfstyles.py:77
-#, fuzzy
 msgid ""
 "PDF generated using the open source mwlib toolkit. See http://code."
 "pediapress.com/ for more information."
 msgstr ""
-"Dat PDF hee wood met däm <i lang=\"en\">Open-Source</i> Werkzeuch mwlib "
-"jemaat.<br />\n"
-"Süch op http://code.pediapress.com/ wann De mieh do drövvr wesse wells."
+"Hee di PDF-Dattei es met däm <i lang=\"en\">open source</i> Wärkzüsch <code "
+"lang=\"en\">mwlib</code> jemaat woode. Mieh doh drövver fengkß De op dä "
+"Websigg <code>http://code.pediapress.com/</code>."
 
 #: mwlib/rl/rlwriter.py:291
 msgid "layouting"
@@ -155,25 +151,23 @@ msgstr ""
 msgid "rendering"
 msgstr "Ben de Datei am ußjävve"
 
-#: mwlib/rl/rlwriter.py:589 mwlib/rl/rlwriter.py:615
+#: mwlib/rl/rlwriter.py:593 mwlib/rl/rlwriter.py:615
 msgid "Source"
-msgstr ""
+msgstr "Quell"
 
-#: mwlib/rl/rlwriter.py:591 mwlib/rl/rlwriter.py:618
-#, fuzzy
+#: mwlib/rl/rlwriter.py:595 mwlib/rl/rlwriter.py:618
 msgid "Contributors"
-msgstr "Houp-Schriiver: %(authors)s"
+msgstr "Schriiver"
 
-#: mwlib/rl/rlwriter.py:608
-#, fuzzy
-msgid "License"
-msgstr "Lizänze för Atikelle"
-
-#: mwlib/rl/rlwriter.py:612
+#: mwlib/rl/rlwriter.py:609
 msgid "unknown"
-msgstr ""
+msgstr "unbekannt"
 
-#: mwlib/rl/rlwriter.py:675
+#: mwlib/rl/rlwriter.py:610
+msgid "License"
+msgstr "Lizänzbeshtemmunge"
+
+#: mwlib/rl/rlwriter.py:676
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
@@ -183,11 +177,3 @@ msgstr ""
 "Wikitex uß.</strong><br />Müjjelesche Jrönd för dat Probleem: (a) ene "
 "unbikannte Fähler en de ßofwäer <i lang=\"en\">PDF-Writer</i> (b) "
 "problematische Ußzeichnunge em Wikikood (c) en Tabäll es zo breed jeroode."
-
-#, fuzzy
-#~ msgid "Image Sources and Contributors"
-#~ msgstr "Quelle för Belder, Lizänze, un Metschriiver"
-
-#, fuzzy
-#~ msgid "Contributors: %(authors)s"
-#~ msgstr "Houp-Schriiver: %(authors)s"

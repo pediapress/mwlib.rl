@@ -6,29 +6,28 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-29 11:42+0200\n"
-"PO-Revision-Date: 2009-04-15 16:33+0200\n"
+"POT-Creation-Date: 2009-05-22 09:44+0000\n"
+"PO-Revision-Date: 2009-05-22 09:43:13+0000\n"
 "Language-Team: Slovak\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.15alpha (r49162); Translate extension (11:2009-03-"
-"27)\n"
+"X-Generator: MediaWiki 1.16alpha(r50880); Translate extension (11:2009-05-"
+"09)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: sk\n"
 "X-Message-Group: out-mwlibrl\n"
 
 #: mwlib/rl/pdfmessages.py:12
 msgid "Source:"
-msgstr ""
+msgstr "Zdroj:"
 
 #: mwlib/rl/pdfmessages.py:14
 msgid "License:"
-msgstr ""
+msgstr "Licencia:"
 
 #: mwlib/rl/pdfmessages.py:16
-#, fuzzy
 msgid "Contributors:"
-msgstr "Hlavní autori: %(authors)s"
+msgstr "Autori:"
 
 #: mwlib/rl/pdfmessages.py:18
 msgid "Article Licenses"
@@ -86,7 +85,7 @@ msgstr ""
 "Pamätajte prosím, že toto je len náhľad, ktorého účelom je ukázať ako by "
 "vyzerala vysádzaná kniha."
 
-#: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:684
+#: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:685
 msgid "References"
 msgstr "Referencie"
 
@@ -101,11 +100,12 @@ msgstr ""
 "sú v knihe použité. Tieto zdroje poskytujú podrobnejšie informácie o "
 "licencovaní vrátane stavu a držiteľa autorských práv a licenčných podmienok."
 
-#: mwlib/rl/pdfmessages.py:48 mwlib/rl/rlwriter.py:579
+#: mwlib/rl/pdfmessages.py:48 mwlib/rl/rlwriter.py:588
+#, fuzzy
 msgid "Article Sources and Contributors"
-msgstr "Zdroje článkov a prispievatelia"
+msgstr "Zdroje obrázkov, licencie a prispievatelia"
 
-#: mwlib/rl/pdfmessages.py:50 mwlib/rl/rlwriter.py:599
+#: mwlib/rl/pdfmessages.py:50 mwlib/rl/rlwriter.py:605
 msgid "Image Sources, Licenses and Contributors"
 msgstr "Zdroje obrázkov, licencie a prispievatelia"
 
@@ -113,22 +113,19 @@ msgstr "Zdroje obrázkov, licencie a prispievatelia"
 msgid "Image"
 msgstr "Obrázok"
 
-#: mwlib/rl/pdfmessages.py:54 mwlib/rl/rlwriter.py:583
-#: mwlib/rl/rlwriter.py:603
+#: mwlib/rl/pdfmessages.py:54 mwlib/rl/rlwriter.py:580
 msgid "anonymous edits"
-msgstr ""
+msgstr "anonymné úpravy"
 
 #: mwlib/rl/pdfmessages.py:56
 msgid "Figure"
-msgstr ""
+msgstr "Obrázok"
 
 #: mwlib/rl/pdfstyles.py:77
 msgid ""
 "PDF generated using the open source mwlib toolkit. See http://code."
 "pediapress.com/ for more information."
 msgstr ""
-"PDF vytvorené pomocou open source nástroja mwlib. Pozri viac informácií "
-"http://code.pediapress.com/."
 
 #: mwlib/rl/rlwriter.py:291
 msgid "layouting"
@@ -152,25 +149,26 @@ msgstr ""
 msgid "rendering"
 msgstr "vykresľovanie"
 
-#: mwlib/rl/rlwriter.py:589 mwlib/rl/rlwriter.py:615
+#: mwlib/rl/rlwriter.py:593 mwlib/rl/rlwriter.py:615
+#, fuzzy
 msgid "Source"
-msgstr ""
+msgstr "Zdroj:"
 
-#: mwlib/rl/rlwriter.py:591 mwlib/rl/rlwriter.py:618
+#: mwlib/rl/rlwriter.py:595 mwlib/rl/rlwriter.py:618
 #, fuzzy
 msgid "Contributors"
-msgstr "Hlavní autori: %(authors)s"
+msgstr "Autori:"
 
-#: mwlib/rl/rlwriter.py:608
-#, fuzzy
-msgid "License"
-msgstr "Licencie článkov"
-
-#: mwlib/rl/rlwriter.py:612
+#: mwlib/rl/rlwriter.py:609
 msgid "unknown"
 msgstr ""
 
-#: mwlib/rl/rlwriter.py:675
+#: mwlib/rl/rlwriter.py:610
+#, fuzzy
+msgid "License"
+msgstr "Licencia:"
+
+#: mwlib/rl/rlwriter.py:676
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
@@ -179,7 +177,3 @@ msgstr ""
 "<strong>UPOZORNENIE: Článok nebolo možné vykresliť - na výstup sa zapíše "
 "čistý text.</strong><br/>Možné príčiny problému sú: (a) chyba v softvéri pdf-"
 "writer (b) problematická MediaWiki syntax článku (c) príliš široká tabuľka"
-
-#, fuzzy
-#~ msgid "Image Sources and Contributors"
-#~ msgstr "Zdroje obrázkov, licencie a prispievatelia"

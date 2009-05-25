@@ -1,18 +1,19 @@
 # Translation of Mwlib.rl to Korean
 #
 # Author@translatewiki.net: Kwj2772
+# Author@translatewiki.net: Yknok29
 # --
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-29 11:42+0200\n"
-"PO-Revision-Date: 2009-04-04 14:11:44+0000\n"
+"POT-Creation-Date: 2009-05-22 09:43+0000\n"
+"PO-Revision-Date: 2009-05-22 09:43:13+0000\n"
 "Language-Team: Korean\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.15alpha (r49162); Translate extension (11:2009-03-"
-"27)\n"
+"X-Generator: MediaWiki 1.16alpha(r50880); Translate extension (11:2009-05-"
+"09)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: ko\n"
 "X-Message-Group: out-mwlibrl\n"
@@ -26,9 +27,8 @@ msgid "License:"
 msgstr ""
 
 #: mwlib/rl/pdfmessages.py:16
-#, fuzzy
 msgid "Contributors:"
-msgstr "주요 편집자: %(authors)s"
+msgstr "편집자:"
 
 #: mwlib/rl/pdfmessages.py:18
 msgid "Article Licenses"
@@ -51,8 +51,9 @@ msgid "Created on:"
 msgstr ""
 
 #: mwlib/rl/pdfmessages.py:28
+#, fuzzy
 msgid "Contents"
-msgstr ""
+msgstr "편집자:"
 
 #: mwlib/rl/pdfmessages.py:30
 msgid "Articles"
@@ -84,7 +85,7 @@ msgid ""
 "is typeset."
 msgstr ""
 
-#: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:684
+#: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:685
 msgid "References"
 msgstr ""
 
@@ -96,11 +97,11 @@ msgid ""
 "conditions."
 msgstr ""
 
-#: mwlib/rl/pdfmessages.py:48 mwlib/rl/rlwriter.py:579
+#: mwlib/rl/pdfmessages.py:48 mwlib/rl/rlwriter.py:588
 msgid "Article Sources and Contributors"
 msgstr ""
 
-#: mwlib/rl/pdfmessages.py:50 mwlib/rl/rlwriter.py:599
+#: mwlib/rl/pdfmessages.py:50 mwlib/rl/rlwriter.py:605
 msgid "Image Sources, Licenses and Contributors"
 msgstr ""
 
@@ -108,8 +109,7 @@ msgstr ""
 msgid "Image"
 msgstr ""
 
-#: mwlib/rl/pdfmessages.py:54 mwlib/rl/rlwriter.py:583
-#: mwlib/rl/rlwriter.py:603
+#: mwlib/rl/pdfmessages.py:54 mwlib/rl/rlwriter.py:580
 msgid "anonymous edits"
 msgstr ""
 
@@ -143,30 +143,26 @@ msgstr ""
 msgid "rendering"
 msgstr "렌더링 중..."
 
-#: mwlib/rl/rlwriter.py:589 mwlib/rl/rlwriter.py:615
+#: mwlib/rl/rlwriter.py:593 mwlib/rl/rlwriter.py:615
 msgid "Source"
 msgstr ""
 
-#: mwlib/rl/rlwriter.py:591 mwlib/rl/rlwriter.py:618
+#: mwlib/rl/rlwriter.py:595 mwlib/rl/rlwriter.py:618
 #, fuzzy
 msgid "Contributors"
-msgstr "주요 편집자: %(authors)s"
+msgstr "편집자:"
 
-#: mwlib/rl/rlwriter.py:608
-msgid "License"
-msgstr ""
-
-#: mwlib/rl/rlwriter.py:612
+#: mwlib/rl/rlwriter.py:609
 msgid "unknown"
 msgstr ""
 
-#: mwlib/rl/rlwriter.py:675
+#: mwlib/rl/rlwriter.py:610
+msgid "License"
+msgstr ""
+
+#: mwlib/rl/rlwriter.py:676
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
 "software (b) problematic Mediawiki markup (c) table is too wide"
 msgstr ""
-
-#, fuzzy
-#~ msgid "Contributors: %(authors)s"
-#~ msgstr "주요 편집자: %(authors)s"

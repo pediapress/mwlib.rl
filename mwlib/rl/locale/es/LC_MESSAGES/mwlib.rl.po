@@ -6,13 +6,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-29 11:42+0200\n"
-"PO-Revision-Date: 2009-04-15 16:30+0200\n"
+"POT-Creation-Date: 2009-05-22 09:43+0000\n"
+"PO-Revision-Date: 2009-05-22 09:43:12+0000\n"
 "Language-Team: Spanish\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.15alpha (r49162); Translate extension (11:2009-03-"
-"27)\n"
+"X-Generator: MediaWiki 1.16alpha(r50880); Translate extension (11:2009-05-"
+"09)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: es\n"
 "X-Message-Group: out-mwlibrl\n"
@@ -85,7 +85,7 @@ msgstr ""
 "Por favor observe: Esta solamente es una previsualización que intenta dar "
 "una idea como el libro está compuesto."
 
-#: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:684
+#: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:685
 msgid "References"
 msgstr "Referencias"
 
@@ -101,11 +101,11 @@ msgstr ""
 "licencia detallada incluyendo el status de derechos de autor, el propietario "
 "del derecho de autor, y las condiciones de la licencia."
 
-#: mwlib/rl/pdfmessages.py:48 mwlib/rl/rlwriter.py:579
+#: mwlib/rl/pdfmessages.py:48 mwlib/rl/rlwriter.py:588
 msgid "Article Sources and Contributors"
-msgstr "Fuentes de artículo y contribuyentes"
+msgstr "Fuentes de artículos y contribuyentes"
 
-#: mwlib/rl/pdfmessages.py:50 mwlib/rl/rlwriter.py:599
+#: mwlib/rl/pdfmessages.py:50 mwlib/rl/rlwriter.py:605
 msgid "Image Sources, Licenses and Contributors"
 msgstr "Fuentes de imagen, Licencias y contribuyentes"
 
@@ -113,8 +113,7 @@ msgstr "Fuentes de imagen, Licencias y contribuyentes"
 msgid "Image"
 msgstr "Imagen"
 
-#: mwlib/rl/pdfmessages.py:54 mwlib/rl/rlwriter.py:583
-#: mwlib/rl/rlwriter.py:603
+#: mwlib/rl/pdfmessages.py:54 mwlib/rl/rlwriter.py:580
 msgid "anonymous edits"
 msgstr "ediciones anónimas"
 
@@ -127,8 +126,8 @@ msgid ""
 "PDF generated using the open source mwlib toolkit. See http://code."
 "pediapress.com/ for more information."
 msgstr ""
-"PDF generado usando la fuente abierta mwlib toolkit. vver http://code."
-"pediapress.com/ para mayor información"
+"PDF generado usando el kit de herramientas de fuente abierta mwlib. Ver "
+"http://code.pediapress.com/ para mayor información."
 
 #: mwlib/rl/rlwriter.py:291
 msgid "layouting"
@@ -152,26 +151,23 @@ msgstr ""
 msgid "rendering"
 msgstr "representando"
 
-#: mwlib/rl/rlwriter.py:589 mwlib/rl/rlwriter.py:615
-#, fuzzy
+#: mwlib/rl/rlwriter.py:593 mwlib/rl/rlwriter.py:615
 msgid "Source"
-msgstr "Fuente:"
+msgstr "Fuente"
 
-#: mwlib/rl/rlwriter.py:591 mwlib/rl/rlwriter.py:618
-#, fuzzy
+#: mwlib/rl/rlwriter.py:595 mwlib/rl/rlwriter.py:618
 msgid "Contributors"
-msgstr "Coagentes:"
+msgstr "Contribuyentes"
 
-#: mwlib/rl/rlwriter.py:608
-#, fuzzy
-msgid "License"
-msgstr "Licencia:"
-
-#: mwlib/rl/rlwriter.py:612
+#: mwlib/rl/rlwriter.py:609
 msgid "unknown"
-msgstr ""
+msgstr "desconocido"
 
-#: mwlib/rl/rlwriter.py:675
+#: mwlib/rl/rlwriter.py:610
+msgid "License"
+msgstr "Licencia"
+
+#: mwlib/rl/rlwriter.py:676
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
@@ -181,16 +177,3 @@ msgstr ""
 "sencillo.</strong><br/>Causas potenciales del problema son: (a) una falla en "
 "el software pdf-writer (b) margen problemático Mediawiki (c) la tabla es muy "
 "ancha"
-
-#, fuzzy
-#~ msgid "Image Sources and Contributors"
-#~ msgstr "Fuentes de imagen, Licencias y contribuyentes"
-
-#~ msgid "Source: <link href=\"%(url)s\">%(source)s</link>"
-#~ msgstr "Fuente: <link href=\"%(url)s\">%(source)s</link>"
-
-#~ msgid "\\g<num> anonymous edits"
-#~ msgstr "\\g<num> ediciones anónimas"
-
-#~ msgid "Contributors: %(authors)s"
-#~ msgstr "Coagentes: %(authors)s"

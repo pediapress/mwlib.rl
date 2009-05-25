@@ -1,33 +1,34 @@
 # Translation of Mwlib.rl to Vietnamese
 #
+# Author@translatewiki.net: Minh Nguyen
 # Author@translatewiki.net: Vinhtantran
 # --
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-29 11:42+0200\n"
-"PO-Revision-Date: 2009-04-04 14:11:44+0000\n"
+"POT-Creation-Date: 2009-05-22 09:44+0000\n"
+"PO-Revision-Date: 2009-05-22 09:43:13+0000\n"
 "Language-Team: Vietnamese\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.15alpha (r49162); Translate extension (11:2009-03-"
-"27)\n"
+"X-Generator: MediaWiki 1.16alpha(r50880); Translate extension (11:2009-05-"
+"09)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: vi\n"
 "X-Message-Group: out-mwlibrl\n"
 
 #: mwlib/rl/pdfmessages.py:12
 msgid "Source:"
-msgstr ""
+msgstr "Nguồn:"
 
 #: mwlib/rl/pdfmessages.py:14
 msgid "License:"
-msgstr ""
+msgstr "Giấy phép:"
 
 #: mwlib/rl/pdfmessages.py:16
 msgid "Contributors:"
-msgstr ""
+msgstr "Người đóng góp:"
 
 #: mwlib/rl/pdfmessages.py:18
 msgid "Article Licenses"
@@ -43,20 +44,19 @@ msgstr ""
 
 #: mwlib/rl/pdfmessages.py:24
 msgid "Editor:"
-msgstr ""
+msgstr "Người sửa đổi:"
 
 #: mwlib/rl/pdfmessages.py:26
 msgid "Created on:"
-msgstr ""
+msgstr "Ngày tạo:"
 
 #: mwlib/rl/pdfmessages.py:28
 msgid "Contents"
-msgstr ""
+msgstr "Nội dung"
 
 #: mwlib/rl/pdfmessages.py:30
-#, fuzzy
 msgid "Articles"
-msgstr "Giấy phép Bài viết"
+msgstr "Bài"
 
 #: mwlib/rl/pdfmessages.py:32
 msgid "Produced by:"
@@ -64,19 +64,19 @@ msgstr ""
 
 #: mwlib/rl/pdfmessages.py:34
 msgid "pdf writer version:"
-msgstr ""
+msgstr "Phiên bản bộ tạo PDF:"
 
 #: mwlib/rl/pdfmessages.py:36
 msgid "mwlib version:"
-msgstr ""
+msgstr "Phiên bản mwlib:"
 
 #: mwlib/rl/pdfmessages.py:38
 msgid "Table of Contents"
-msgstr ""
+msgstr "Mục lục"
 
 #: mwlib/rl/pdfmessages.py:40
 msgid "Skipping Articles!"
-msgstr ""
+msgstr "Bỏ qua những bài!"
 
 #: mwlib/rl/pdfmessages.py:42
 msgid ""
@@ -84,9 +84,9 @@ msgid ""
 "is typeset."
 msgstr ""
 
-#: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:684
+#: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:685
 msgid "References"
-msgstr ""
+msgstr "Chú thích"
 
 #: mwlib/rl/pdfmessages.py:46
 msgid ""
@@ -96,22 +96,21 @@ msgid ""
 "conditions."
 msgstr ""
 
-#: mwlib/rl/pdfmessages.py:48 mwlib/rl/rlwriter.py:579
+#: mwlib/rl/pdfmessages.py:48 mwlib/rl/rlwriter.py:588
 msgid "Article Sources and Contributors"
-msgstr ""
+msgstr "Nguồn, giấy phép, và người đóng góp vào bài"
 
-#: mwlib/rl/pdfmessages.py:50 mwlib/rl/rlwriter.py:599
+#: mwlib/rl/pdfmessages.py:50 mwlib/rl/rlwriter.py:605
 msgid "Image Sources, Licenses and Contributors"
-msgstr ""
+msgstr "Nguồn, giấy phép, và người đóng góp vào hình"
 
 #: mwlib/rl/pdfmessages.py:52
 msgid "Image"
-msgstr ""
+msgstr "Hình"
 
-#: mwlib/rl/pdfmessages.py:54 mwlib/rl/rlwriter.py:583
-#: mwlib/rl/rlwriter.py:603
+#: mwlib/rl/pdfmessages.py:54 mwlib/rl/rlwriter.py:580
 msgid "anonymous edits"
-msgstr ""
+msgstr "sửa đổi vô danh"
 
 #: mwlib/rl/pdfmessages.py:56
 msgid "Figure"
@@ -130,7 +129,7 @@ msgstr ""
 #: mwlib/rl/rlwriter.py:353
 #, python-format
 msgid "mwlib.ext version: %(version)s"
-msgstr ""
+msgstr "Phiên bản mwlib.ext: %(version)s"
 
 #: mwlib/rl/rlwriter.py:359
 #, python-format
@@ -138,29 +137,30 @@ msgid ""
 "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
 "(mwlibextversion)s"
 msgstr ""
+"Phiên bản mwlib: %(mwlibversion)s, phiên bản mwlib.rl: %(mwlibrlversion)s, %"
+"(mwlibextversion)s"
 
 #: mwlib/rl/rlwriter.py:431
 msgid "rendering"
-msgstr ""
+msgstr "đang kết xuất"
 
-#: mwlib/rl/rlwriter.py:589 mwlib/rl/rlwriter.py:615
+#: mwlib/rl/rlwriter.py:593 mwlib/rl/rlwriter.py:615
 msgid "Source"
-msgstr ""
+msgstr "Nguồn"
 
-#: mwlib/rl/rlwriter.py:591 mwlib/rl/rlwriter.py:618
+#: mwlib/rl/rlwriter.py:595 mwlib/rl/rlwriter.py:618
 msgid "Contributors"
-msgstr ""
+msgstr "Người đóng góp"
 
-#: mwlib/rl/rlwriter.py:608
-#, fuzzy
-msgid "License"
-msgstr "Giấy phép Bài viết"
-
-#: mwlib/rl/rlwriter.py:612
+#: mwlib/rl/rlwriter.py:609
 msgid "unknown"
-msgstr ""
+msgstr "không rõ"
 
-#: mwlib/rl/rlwriter.py:675
+#: mwlib/rl/rlwriter.py:610
+msgid "License"
+msgstr "Giấy phép"
+
+#: mwlib/rl/rlwriter.py:676
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "

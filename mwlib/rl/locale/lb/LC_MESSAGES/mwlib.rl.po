@@ -6,29 +6,28 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-29 11:42+0200\n"
-"PO-Revision-Date: 2009-04-04 14:11:44+0000\n"
+"POT-Creation-Date: 2009-05-22 09:43+0000\n"
+"PO-Revision-Date: 2009-05-22 09:43:13+0000\n"
 "Language-Team: Luxembourgish\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.15alpha (r49162); Translate extension (11:2009-03-"
-"27)\n"
+"X-Generator: MediaWiki 1.16alpha(r50880); Translate extension (11:2009-05-"
+"09)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: lb\n"
 "X-Message-Group: out-mwlibrl\n"
 
 #: mwlib/rl/pdfmessages.py:12
 msgid "Source:"
-msgstr ""
+msgstr "Quell:"
 
 #: mwlib/rl/pdfmessages.py:14
 msgid "License:"
-msgstr ""
+msgstr "Lizenz:"
 
 #: mwlib/rl/pdfmessages.py:16
-#, fuzzy
 msgid "Contributors:"
-msgstr "Haaptauteuren: %(authors)s"
+msgstr "Auteuren:"
 
 #: mwlib/rl/pdfmessages.py:18
 msgid "Article Licenses"
@@ -48,12 +47,11 @@ msgstr "Editeur:"
 
 #: mwlib/rl/pdfmessages.py:26
 msgid "Created on:"
-msgstr ""
+msgstr "Ugeluecht den:"
 
 #: mwlib/rl/pdfmessages.py:28
-#, fuzzy
 msgid "Contents"
-msgstr "Inhaltsverzeechnes"
+msgstr "Inhalter"
 
 #: mwlib/rl/pdfmessages.py:30
 msgid "Articles"
@@ -87,7 +85,7 @@ msgstr ""
 "Denkt w.e.g. drun: Dëst gëtt Iech just eng Impressioun wéi d'Buch herno "
 "ausgesäit."
 
-#: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:684
+#: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:685
 msgid "References"
 msgstr "Referenzen"
 
@@ -99,11 +97,11 @@ msgid ""
 "conditions."
 msgstr ""
 
-#: mwlib/rl/pdfmessages.py:48 mwlib/rl/rlwriter.py:579
+#: mwlib/rl/pdfmessages.py:48 mwlib/rl/rlwriter.py:588
 msgid "Article Sources and Contributors"
 msgstr ""
 
-#: mwlib/rl/pdfmessages.py:50 mwlib/rl/rlwriter.py:599
+#: mwlib/rl/pdfmessages.py:50 mwlib/rl/rlwriter.py:605
 msgid "Image Sources, Licenses and Contributors"
 msgstr ""
 
@@ -111,14 +109,13 @@ msgstr ""
 msgid "Image"
 msgstr "Bild"
 
-#: mwlib/rl/pdfmessages.py:54 mwlib/rl/rlwriter.py:583
-#: mwlib/rl/rlwriter.py:603
+#: mwlib/rl/pdfmessages.py:54 mwlib/rl/rlwriter.py:580
 msgid "anonymous edits"
-msgstr ""
+msgstr "anonym Ännerungen"
 
 #: mwlib/rl/pdfmessages.py:56
 msgid "Figure"
-msgstr ""
+msgstr "Duerstellung"
 
 #: mwlib/rl/pdfstyles.py:77
 msgid ""
@@ -128,7 +125,7 @@ msgstr ""
 
 #: mwlib/rl/rlwriter.py:291
 msgid "layouting"
-msgstr ""
+msgstr "Layout gëtt gemaach"
 
 #: mwlib/rl/rlwriter.py:353
 #, python-format
@@ -146,31 +143,25 @@ msgstr ""
 msgid "rendering"
 msgstr ""
 
-#: mwlib/rl/rlwriter.py:589 mwlib/rl/rlwriter.py:615
+#: mwlib/rl/rlwriter.py:593 mwlib/rl/rlwriter.py:615
 msgid "Source"
-msgstr ""
+msgstr "Quell"
 
-#: mwlib/rl/rlwriter.py:591 mwlib/rl/rlwriter.py:618
-#, fuzzy
+#: mwlib/rl/rlwriter.py:595 mwlib/rl/rlwriter.py:618
 msgid "Contributors"
-msgstr "Haaptauteuren: %(authors)s"
+msgstr "Auteuren"
 
-#: mwlib/rl/rlwriter.py:608
-#, fuzzy
-msgid "License"
-msgstr "Artikel-Lizenzen"
-
-#: mwlib/rl/rlwriter.py:612
+#: mwlib/rl/rlwriter.py:609
 msgid "unknown"
-msgstr ""
+msgstr "onbekannt"
 
-#: mwlib/rl/rlwriter.py:675
+#: mwlib/rl/rlwriter.py:610
+msgid "License"
+msgstr "Lizenz"
+
+#: mwlib/rl/rlwriter.py:676
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
 "software (b) problematic Mediawiki markup (c) table is too wide"
 msgstr ""
-
-#, fuzzy
-#~ msgid "Contributors: %(authors)s"
-#~ msgstr "Haaptauteuren: %(authors)s"
