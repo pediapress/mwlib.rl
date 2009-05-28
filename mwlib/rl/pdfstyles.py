@@ -295,7 +295,7 @@ def heading_style(mode='chapter', lvl=1):
         style.fontSize = 8
         style.leading = 5
         style.spaceAfter = 0
-        style.spaceBefore = 5
+        style.spaceBefore = 2
 
     elif mode == "licensearticle":
         style.fontSize = 10
