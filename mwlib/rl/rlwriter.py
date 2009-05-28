@@ -165,6 +165,9 @@ class RlWriter(object):
         else:
             self.imgDB = None
 
+        self.strict = strict
+        self.debug = debug
+
         self.license_checker = LicenseChecker(image_db=self.imgDB, filter_type='blacklist')
         self.license_checker.readLicensesCSV()
 
@@ -177,6 +180,8 @@ class RlWriter(object):
         self.font_switcher.registerFontDefinitionList(fontconfig.fonts)
         self.font_switcher.registerReportlabFonts(fontconfig.fonts)
 
+        self.tc = TreeCleaner([], save_reports=self.debug)
+        self.tc.skipMethods = ['fixPreFormatted', 'removeEmptyReferenceLists']
 
         self.image_utils = ImageUtils(pdfstyles.printWidth,
                                       pdfstyles.printHeight,
@@ -188,8 +193,6 @@ class RlWriter(object):
                                       pdfstyles.print_width_px,
                                       )
         
-        self.strict = strict
-        self.debug = debug
         self.level = 0  # level of article sections --> similar to html heading tag levels
         self.references = []
         self.ref_name_map = {}
@@ -284,6 +287,149 @@ class RlWriter(object):
         m=getattr(self, m)
         return m(obj)
 
+    def getVersion(self):
+        try:
+            extversion = _('mwlib.ext version: %(version)s') % {
+                'version': str(_extversion.version),
+            }
+        except NameError:
+            extversion = 'mwlib.ext not used'
+            
+        version = _('mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %(mwlibextversion)s') % {
+            'mwlibrlversion': rlwriterversion,
+            'mwlibversion': mwlibversion,
+            'mwlibextversion': extversion,
+        }
+        return version
+    
+    def buildArticle(self, item):
+        art = self.env.wiki.getParsedArticle(title=item['title'], 
+                                        revision=item.get('revision'))
+        if not art:
+            return # FIXME
+        art.url = self.env.wiki.getURL(item['title'], item.get('revision'))
+        art.authors = self.env.wiki.getAuthors(item['title'], revision=item.get('revision'))
+        if 'displaytitle' in item:
+            art.caption = item['displaytitle']
+        url = self.env.wiki.getURL(item['title'], item.get('revision'))                
+        if url:
+            art.url = url
+        else:
+            art.url = None
+        source = self.env.wiki.getSource(item['title'], item.get('revision'))
+        if source:
+            art.wikiurl = source.get('url', '')
+        else:
+            art.wikiurl = None
+        art.authors = self.env.wiki.getAuthors(item['title'], revision=item.get('revision'))
+
+            
+        advtree.buildAdvancedTree(art)
+        if self.debug:
+            #parser.show(sys.stdout, art, verbose=True)
+            pass
+        self.tc.tree = art
+        self.tc.cleanAll()
+        if self.debug:
+            parser.show(sys.stdout, art, verbose=True)
+            print "\n".join([repr(r) for r in self.tc.getReports()])
+        return art
+
+    
+    def initReportlabDoc(self, output, status_callback=None):
+        version = self.getVersion()
+        if self.enable_toc:
+            tocCallback = self.tocCallback
+        else:
+            tocCallback = None
+        self.doc = PPDocTemplate(output,
+                                 topMargin=pageMarginVert,
+                                 leftMargin=pageMarginHor,
+                                 rightMargin=pageMarginHor,
+                                 bottomMargin=pageMarginVert,
+                                 title=self.book.get('title'),
+                                 keywords=version,
+                                 status_callback=self.render_status,
+                                 #tocCallback=tocCallback,
+        )
+
+
+    def writeBookSaveMem(self, output, removedArticlesFile=None, coverimage=None, status_callback=None):
+        self.numarticles = len(metabook.get_item_list(self.env.metabook, filter_type='article'))
+        self.articlecount = 0
+        
+        if status_callback:
+            self.layout_status = status_callback.getSubRange(0, 50)
+            self.render_status = status_callback.getSubRange(51, 100)
+        else:
+            self.layout_status = None
+            self.render_status = None
+        self.initReportlabDoc(output, status_callback=status_callback)
+
+        elements = []
+        got_chapter = False
+        for (i, item) in enumerate(metabook.get_item_list(self.env.metabook)):
+            if item['type'] == 'chapter':
+                elements.extend(self.writeChapter(parser.Chapter(item['title'].strip())))
+                got_chapter = True
+            elif item['type'] == 'article':
+                art = self.buildArticle(item)
+                if got_chapter:
+                    art.has_preceeding_chapter = True
+                    got_chapter = False
+                elements.extend(self.writeArticle(art))
+                elements = self.groupElements(elements)
+                
+        try:
+            self.renderBookSaveMem(elements, output, coverimage=coverimage)
+            log.info('RENDERING OK')
+            if hasattr(self, 'tmpdir'):
+                shutil.rmtree(self.tmpdir, ignore_errors=True)
+            return
+        except Exception, err:
+            traceback.print_exc()
+            log.error('RENDERING FAILED: %s' % err)               
+
+        
+    def renderBookSaveMem(self, elements, output, coverimage=None):
+        if pdfstyles.showTitlePage:
+            for item in self.writeTitlePage(coverimage=coverimage)[::-1]:
+                elements.insert(0, item)
+
+        if pdfstyles.showArticleAttribution:
+            elements.append(NotAtTopPageBreak())
+            elements.extend(self.writeArticleMetainfo())
+
+            elements.append(NotAtTopPageBreak())
+            elements.extend(self.writeImageMetainfo())
+
+        self.renderLicense(elements)
+                   
+        if not self.failSaveRendering:
+            self.doc.bookmarks = self.bookmarks
+
+        #debughelper.dumpElements(elements)
+
+##         if not bookParseTree.getChildNodesByClass(parser.Article): ###FIXME
+##             pt = WikiPage('')
+##             self.doc.addPageTemplates(pt)
+##             elements.append(Paragraph(' ', text_style()))
+
+        log.info("start rendering: %r" % output)
+
+        self.doc.build(elements)
+
+    def renderLicense(self, elements):
+        self.license_mode = True
+        for license in self.env.wiki.getLicenses():
+            license_node = uparser.parseString(title=license['title'], raw=license['wikitext'], wikidb=self.env.wiki)
+            advtree.buildAdvancedTree(license_node)
+            self.tc.tree = license_node
+            self.tc.cleanAll()
+            elements.extend(self.writeArticle(license_node))
+        self.license_mode = False
+
+        
     def writeBook(self, bookParseTree, output, removedArticlesFile=None,
                   coverimage=None, status_callback=None):
         
@@ -343,6 +489,20 @@ class RlWriter(object):
         for article in parseTree.getChildNodesByClass(advtree.Article):
             article_id = self.buildArticleID(article.wikiurl, article.caption)
             self.articleids.append(article_id)
+
+        for (i, item) in enumerate(metabook.get_item_list(self.env.metabook)):
+            if not item['type'] == 'article':
+                continue
+            if 'displaytitle' in item:
+                title = item['displaytitle']
+            else:
+                title = None
+            source = self.env.wiki.getSource(item['title'], item.get('revision'))
+            if source:
+                wikiurl = source.get('url', '')
+            else:
+                wikiurl = None
+            article_id = self.buildArticleID(wikiurl, title)
 
     def tocCallback(self, info):
         self.toc_entries.append(info)
@@ -635,7 +795,8 @@ class RlWriter(object):
         if hasattr(self, 'doc'): # doc is not present if tests are run
             self.doc.addPageTemplates(pt)
             elements.append(NextPageTemplate(title.encode('utf-8'))) # pagetemplate.id cant handle unicode
-            if isinstance(article.getPrevious(), advtree.Article) or self.license_mode:
+            # FIXME remove the getPrevious below
+            if not getattr(article, 'has_preceeding_chapter', False)  or isinstance(article.getPrevious(), advtree.Article) or self.license_mode:
                 if pdfstyles.pageBreakAfterArticle: # if configured and preceded by an article
                     elements.append(NotAtTopPageBreak())
                 elif miscutils.articleStartsWithInfobox(article, max_text_until_infobox=100):
@@ -1846,7 +2007,8 @@ def writer(env, output,
     debug=False,
     mathcache=None,
     lang=None,
-    enable_toc=False,       
+    enable_toc=False,
+    save_mem = False,
 ):
     r = RlWriter(env, strict=strict, debug=debug, mathcache=mathcache, lang=lang, enable_toc=enable_toc)
     if coverimage is None and env.configparser.has_section('pdf'):
@@ -1856,8 +2018,13 @@ def writer(env, output,
         writer_status = status_callback.getSubRange(21, 100)
     else:
         buildbook_status = writer_status = None
-    book = writerbase.build_book(env, status_callback=buildbook_status)
-    r.writeBook(book, output=output, coverimage=coverimage, status_callback=writer_status)
+    if not save_mem:
+        book = writerbase.build_book(env, status_callback=buildbook_status)
+        r.writeBook(book, output=output, coverimage=coverimage, status_callback=writer_status)
+    else:
+        r.writeBookSaveMem(output=output, coverimage=coverimage, status_callback=writer_status)
+
+
 
 writer.description = 'PDF documents (using ReportLab)'
 writer.content_type = 'application/pdf'
@@ -1884,5 +2051,9 @@ writer.options = {
     'enable_toc': {
         'help':'render Table of Contents - this is still highly EXPERIMENTAL',
     },
+    'save_mem': {
+        'help':'use memory saving rendering - this is supposed to be the permanent solution once ready',
+    },
+    
     
 }
