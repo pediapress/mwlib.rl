@@ -11,13 +11,12 @@ import sys
 import os
 import re
 import urllib
-import urlparse
 import traceback
 import tempfile
-import htmlentitydefs
 import shutil
-import inspect
 import subprocess
+import copy
+import gc
 
 try:
     from hashlib import md5
@@ -32,7 +31,7 @@ from pygments  import lexers
 from rlsourceformatter import ReportlabFormatter
 
 from mwlib.utils import all
-
+from mwlib import linuxmem
 def _check_reportlab():
     from reportlab.pdfbase.pdfdoc import PDFDictionary
     try:
@@ -53,7 +52,7 @@ from pagetemplates import PPDocTemplate
 
 from reportlab.platypus.doctemplate import NextPageTemplate, NotAtTopPageBreak
 from reportlab.platypus.tables import Table
-from reportlab.platypus.flowables import Spacer, HRFlowable, PageBreak, KeepTogether, Image, CondPageBreak
+from reportlab.platypus.flowables import Spacer, HRFlowable, PageBreak, Image, CondPageBreak
 from reportlab.platypus.xpreformatted import XPreformatted
 from reportlab.lib.units import cm
 from reportlab.lib import colors
@@ -214,7 +213,8 @@ class RlWriter(object):
 
         self.linkList = []
         self.disable_group_elements = False
-        self.failSaveRendering = False
+        self.failSaveRendering = False #FIXME remove
+        self.fail_safe_rendering = False
 
         self.sourceCount = 0        
         self.currentColCount = 0
@@ -232,6 +232,7 @@ class RlWriter(object):
         self.reference_list_rendered = False
         self.article_meta_info = []
         
+    
     def ignore(self, obj):
         return []
         
@@ -307,6 +308,7 @@ class RlWriter(object):
                                         revision=item.get('revision'))
         if not art:
             return # FIXME
+        
         art.url = self.env.wiki.getURL(item['title'], item.get('revision'))
         art.authors = self.env.wiki.getAuthors(item['title'], revision=item.get('revision'))
         if 'displaytitle' in item:
@@ -350,11 +352,36 @@ class RlWriter(object):
                                  title=self.book.get('title'),
                                  keywords=version,
                                  status_callback=self.render_status,
-                                 #tocCallback=tocCallback,
+                                 tocCallback=tocCallback,
         )
 
 
-    def writeBookSaveMem(self, output, removedArticlesFile=None, coverimage=None, status_callback=None):
+    def articleRenderingOK(self, node, output):
+        elements = self.writeArticle(node)
+        try:
+            testdoc = BaseDocTemplate(output,
+                                      topMargin=pageMarginVert,
+                                      leftMargin=pageMarginHor,
+                                      rightMargin=pageMarginHor,
+                                      bottomMargin=pageMarginVert,
+                                      title='',
+                                      )
+            testdoc.addPageTemplates(WikiPage(title=node.caption))
+            testdoc.build(elements)
+            return True
+        except Exception, err:
+            log.error('article failed:' , repr(node.caption))
+            tr = traceback.format_exc()
+            log.error(tr)
+            return False
+
+    def addDummyPage(self):
+        pt = WikiPage('')
+        self.doc.addPageTemplates(pt)
+        return Paragraph(' ', text_style())
+
+
+    def writeBookSaveMem(self, output, coverimage=None, status_callback=None):
         self.numarticles = len(metabook.get_item_list(self.env.metabook, filter_type='article'))
         self.articlecount = 0
         
@@ -367,6 +394,8 @@ class RlWriter(object):
         self.initReportlabDoc(output, status_callback=status_callback)
 
         elements = []
+        if self.numarticles == 0:
+            elements.append(self.addDummyPage())
         got_chapter = False
         for (i, item) in enumerate(metabook.get_item_list(self.env.metabook)):
             if item['type'] == 'chapter':
@@ -377,19 +406,32 @@ class RlWriter(object):
                 if got_chapter:
                     art.has_preceeding_chapter = True
                     got_chapter = False
-                elements.extend(self.writeArticle(art))
-                elements = self.groupElements(elements)
+                if self.fail_safe_rendering:
+                    if not self.articleRenderingOK(copy.deepcopy(art), output):
+                        art.renderFailed = True
+                art_elements = self.writeArticle(art)
+                del art
+                elements.extend(self.groupElements(art_elements))
                 
         try:
             self.renderBookSaveMem(elements, output, coverimage=coverimage)
             log.info('RENDERING OK')
-            if hasattr(self, 'tmpdir'):
-                shutil.rmtree(self.tmpdir, ignore_errors=True)
+            shutil.rmtree(self.tmpdir, ignore_errors=True)
             return
+        except MemoryError:            
+            shutil.rmtree(self.tmpdir, ignore_errors=True)
+            raise
         except Exception, err:
             traceback.print_exc()
-            log.error('RENDERING FAILED: %s' % err)               
-
+            log.error('RENDERING FAILED: %s' % err)
+            if self.fail_safe_rendering:
+                log.error('GIVING UP')
+                shutil.rmtree(self.tmpdir, ignore_errors=True)
+                sys.exit(1)
+            else:
+                self.fail_safe_rendering = True
+                self.writeBookSaveMem(output, coverimage=coverimage, status_callback=status_callback)
+                
         
     def renderBookSaveMem(self, elements, output, coverimage=None):
         if pdfstyles.showTitlePage:
@@ -399,28 +441,29 @@ class RlWriter(object):
         if pdfstyles.showArticleAttribution:
             elements.append(NotAtTopPageBreak())
             elements.extend(self.writeArticleMetainfo())
-
             elements.append(NotAtTopPageBreak())
             elements.extend(self.writeImageMetainfo())
 
-        self.renderLicense(elements)
+        elements.extend(self.renderLicense())
                    
         if not self.failSaveRendering:
             self.doc.bookmarks = self.bookmarks
 
         #debughelper.dumpElements(elements)
 
-##         if not bookParseTree.getChildNodesByClass(parser.Article): ###FIXME
-##             pt = WikiPage('')
-##             self.doc.addPageTemplates(pt)
-##             elements.append(Paragraph(' ', text_style()))
-
         log.info("start rendering: %r" % output)
 
-        self.doc.build(elements)
+        try:
+            gc.collect()
+            print "MEM:", linuxmem.memory()
+            self.doc.build(elements)
+            print "MEM:", linuxmem.memory()
+        except:
+            log.info('rendering failed - trying safe rendering')
 
-    def renderLicense(self, elements):
+    def renderLicense(self):
         self.license_mode = True
+        elements = []
         for license in self.env.wiki.getLicenses():
             license_node = uparser.parseString(title=license['title'], raw=license['wikitext'], wikidb=self.env.wiki)
             advtree.buildAdvancedTree(license_node)
@@ -428,7 +471,7 @@ class RlWriter(object):
             self.tc.cleanAll()
             elements.extend(self.writeArticle(license_node))
         self.license_mode = False
-
+        return elements
         
     def writeBook(self, bookParseTree, output, removedArticlesFile=None,
                   coverimage=None, status_callback=None):
@@ -486,10 +529,6 @@ class RlWriter(object):
                 raise writerbase.WriterError('Collection/article could not be rendered')
 
     def getArticleIDs(self, parseTree):
-        for article in parseTree.getChildNodesByClass(advtree.Article):
-            article_id = self.buildArticleID(article.wikiurl, article.caption)
-            self.articleids.append(article_id)
-
         for (i, item) in enumerate(metabook.get_item_list(self.env.metabook)):
             if not item['type'] == 'article':
                 continue
@@ -503,6 +542,7 @@ class RlWriter(object):
             else:
                 wikiurl = None
             article_id = self.buildArticleID(wikiurl, title)
+            self.articleids.append(article_id)
 
     def tocCallback(self, info):
         self.toc_entries.append(info)
@@ -590,7 +630,9 @@ class RlWriter(object):
         if render_status:
             render_status(status=_('rendering'), article='', progress=0)
         try:
+            print "MEM:", linuxmem.memory()
             self.doc.build(elements)
+            print "MEM:", linuxmem.memory()
             if self.enable_toc:
                 self.toc_renderer.build(output, self.toc_entries) # uncomment this to enable experimental TOC rendering
             return 0
@@ -846,7 +888,7 @@ class RlWriter(object):
             elements.append(Paragraph('<b>' + _('References') + '</b>', heading_style('section', lvl=3)))
             elements.extend(self.writeReferenceList())
             
-        if not self.license_mode:
+        if not self.license_mode and not self.fail_safe_rendering:
             self.article_meta_info.append((title, url, getattr(article, 'authors', '')))
 
         if self.layout_status:
@@ -1429,7 +1471,7 @@ class RlWriter(object):
         else:
             linkstart = ''
             linkend = ''
-            
+
         img_name = img_node.target
         if not self.img_meta_info.get(img_name):
             self.img_count += 1
@@ -1806,6 +1848,7 @@ class RlWriter(object):
         if not has_data:
             self.tableNestingLevel -= 1
             return []
+
         table = Table(data, colWidths=colwidthList, splitByRow=1)        
         styles = rltables.style(t)
         table.setStyle(styles)
@@ -1821,20 +1864,19 @@ class RlWriter(object):
             flatData = [cell for cell in flatten(data) if not isinstance(cell, str)]            
             self.tableNestingLevel -= 1
             return flatData 
-       
+
         if table_style.get('spaceBefore', 0) > 0:
             elements.append(Spacer(0, table_style['spaceBefore']))
         elements.append(table)
         if table_style.get('spaceAfter', 0) > 0:
             elements.append(Spacer(0, table_style['spaceAfter']))
-
+            
         (renderingOk, renderedTable) = self.renderTable(table, t)
         self.tableNestingLevel -= 1
         if not renderingOk:
             return []
         if renderingOk and renderedTable:
             return renderedTable
-        #debughelper.dumpTable(table)
         return elements
     
     def renderTable(self, table, t_node):
