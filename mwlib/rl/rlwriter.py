@@ -379,13 +379,13 @@ class RlWriter(object):
         return Paragraph(' ', text_style())
 
 
-    def writeBookSaveMem(self, output, coverimage=None, status_callback=None):
+    def writeBook(self, output, coverimage=None, status_callback=None):
         self.numarticles = len(metabook.get_item_list(self.env.metabook, filter_type='article'))
         self.articlecount = 0
         
         if status_callback:
-            self.layout_status = status_callback.getSubRange(0, 50)
-            self.render_status = status_callback.getSubRange(51, 100)
+            self.layout_status = status_callback.getSubRange(0, 75)
+            self.render_status = status_callback.getSubRange(76, 100)
         else:
             self.layout_status = None
             self.render_status = None
@@ -416,7 +416,7 @@ class RlWriter(object):
                 elements.extend(self.groupElements(art_elements))
                 
         try:
-            self.renderBookSaveMem(elements, output, coverimage=coverimage)
+            self.renderBook(elements, output, coverimage=coverimage)
             log.info('RENDERING OK')
             shutil.rmtree(self.tmpdir, ignore_errors=True)
             return
@@ -432,10 +432,10 @@ class RlWriter(object):
                 sys.exit(1)
             else:
                 self.fail_safe_rendering = True
-                self.writeBookSaveMem(output, coverimage=coverimage, status_callback=status_callback)
+                self.writeBook(output, coverimage=coverimage, status_callback=status_callback)
                 
         
-    def renderBookSaveMem(self, elements, output, coverimage=None):
+    def renderBook(self, elements, output, coverimage=None):
 
         if pdfstyles.show_article_attribution:
             elements.append(NotAtTopPageBreak())
@@ -472,60 +472,6 @@ class RlWriter(object):
         self.license_mode = False
         return elements
         
-    def writeBook(self, bookParseTree, output, removedArticlesFile=None,
-                  coverimage=None, status_callback=None):
-        
-        if status_callback:
-            status_callback(status=_('layouting'), progress=0)
-        if self.debug:
-            #parser.show(sys.stdout, bookParseTree, verbose=True)
-            pass
-
-        advtree.buildAdvancedTree(bookParseTree)
-        tc = TreeCleaner(bookParseTree, save_reports=self.debug)
-        tc.cleanAll(skipMethods=['fixPreFormatted',
-                                 'removeEmptyReferenceLists',
-                                 ]) # FIXME: check if the fixPreFormatted method makes sense for mwlib.rl
-
-        self.getArticleIDs(bookParseTree)
-
-        self.numarticles = len(bookParseTree.getChildNodesByClass(advtree.Article))
-        self.articlecount = 0
-        
-        if self.debug:
-            parser.show(sys.stdout, bookParseTree, verbose=True)
-            print "TREECLEANER REPORTS:"
-            print "\n".join([repr(r) for r in tc.getReports()])
-            
-        try:
-            self.renderBook(bookParseTree, output, coverimage=coverimage, status_callback=status_callback)
-            log.info('###### RENDERING OK')
-            if hasattr(self, 'tmpdir'):
-                shutil.rmtree(self.tmpdir, ignore_errors=True)
-            return
-        except Exception, err:
-            traceback.print_exc()
-            log.error('###### renderBookFailed: %s' % err)               
-            try:
-                self.failSaveRendering = True
-                (ok_count, fail_count, fail_articles) = self.flagFailedArticles(bookParseTree, output)
-
-                if self.strict:
-                    raise writerbase.WriterError('Error rendering articles: %s' % repr(' | '.join(fail_articles)))
-                
-                self.renderBook(bookParseTree, output, coverimage=coverimage)
-                log.info('###### RENDERING OK - SOME ARTICLES WRITTEN IN PLAINTEXT')
-                log.info('ok count: %d fail count: %d failed articles: %s' % (ok_count, fail_count, ' '.join(fail_articles)))
-                if hasattr(self, 'tmpdir'):
-                    shutil.rmtree(self.tmpdir, ignore_errors=True)
-                return
-            except Exception, err: # cant render book
-                traceback.print_exc()
-                log.error('###### RENDERING FAILED:')
-                log.error(err)
-                if hasattr(self, 'tmpdir'):
-                    shutil.rmtree(self.tmpdir, ignore_errors=True)
-                raise writerbase.WriterError('Collection/article could not be rendered')
 
     def getArticleIDs(self, parseTree):
         for (i, item) in enumerate(metabook.get_item_list(self.env.metabook)):
@@ -545,137 +491,8 @@ class RlWriter(object):
 
     def tocCallback(self, info):
         self.toc_entries.append(info)
-        
-    def renderBook(self, bookParseTree, output, coverimage=None, status_callback=None):
-        elements = []
-        try:
-            extversion = _('mwlib.ext version: %(version)s') % {
-                'version': str(_extversion.version),
-            }
-        except NameError:
-            extversion = 'mwlib.ext not used'
             
-        version = _('mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %(mwlibextversion)s') % {
-            'mwlibrlversion': rlwriterversion,
-            'mwlibversion': mwlibversion,
-            'mwlibextversion': extversion,
-        }
-
-        if status_callback:
-            self.layout_status = status_callback.getSubRange(0, 50)
-            render_status = status_callback.getSubRange(51, 100)
-        else:
-            self.layout_status = None
-            render_status = None
-        if self.enable_toc:
-            tocCallback = self.tocCallback
-        else:
-            tocCallback = None
-        self.doc = PPDocTemplate(output,
-                                 topMargin=pdfstyles.page_margin_top,
-                                 leftMargin=pdfstyles.page_margin_left,
-                                 rightMargin=pdfstyles.page_margin_right,
-                                 bottomMargin=pdfstyles.page_margin_bottom,
-                                 title=self.book.get('title'),
-                                 keywords=version,
-                                 status_callback=render_status,
-                                 tocCallback=tocCallback,
-        )
-
-        self.output = output
-        if pdfstyles.show_title_page:
-            elements.extend(self.writeTitlePage(coverimage=coverimage))
-        try:
-            for e in bookParseTree.children:
-                r = self.write(e)
-                elements.extend(r)
-        except:
-            traceback.print_exc()
-            raise
-
-        if not self.disable_group_elements:
-            elements = self.groupElements(elements)
-
-        if pdfstyles.show_article_attribution:
-            elements.append(NotAtTopPageBreak())
-            elements.extend(self.writeArticleMetainfo())
-
-            elements.append(NotAtTopPageBreak())
-            elements.extend(self.writeImageMetainfo())
-
-                   
-        self.license_mode = True
-        for license in self.env.wiki.getLicenses():
-            license_node = uparser.parseString(title=license['title'], raw=license['wikitext'], wikidb=self.env.wiki)
-            advtree.buildAdvancedTree(license_node)
-            tc = TreeCleaner(license_node, save_reports=self.debug)
-            tc.cleanAll(skipMethods=['fixPreFormatted',
-                                     'removeEmptyReferenceLists',
-                                     ])
-            elements.extend(self.writeArticle(license_node))
-        self.license_mode = False
-
-        if not self.failSaveRendering:
-            self.doc.bookmarks = self.bookmarks
-
-        #debughelper.dumpElements(elements)
-
-        if not bookParseTree.getChildNodesByClass(parser.Article):
-            pt = WikiPage('')
-            self.doc.addPageTemplates(pt)
-            elements.append(Paragraph(' ', text_style()))
-
-        log.info("start rendering: %r" % output)
-        if render_status:
-            render_status(status=_('rendering'), article='', progress=0)
-        try:
-            print "MEM:", linuxmem.memory()
-            self.doc.build(elements)
-            print "MEM:", linuxmem.memory()
-            if self.enable_toc:
-                self.toc_renderer.build(output, self.toc_entries) # uncomment this to enable experimental TOC rendering
-            return 0
-        except LayoutError, err: # do special handling for reportlab splitting errors
-            log.error('layout error:\n', err)
-            if len(err.args):
-                exception_txt = err.args[0]
-                if isinstance(exception_txt, basestring) and exception_txt.find('Splitting') >-1:
-                    self.disable_group_elements = True
-            raise
-        except Exception, err:
-            log.error('error rendering document:\n', err)
-            traceback.print_exc()
-            raise
-    
-
-    def flagFailedArticles(self, bookParseTree, output):
-        ok_count = 0
-        fail_count = 0
-        fail_articles = []
-        for (i,node) in enumerate(bookParseTree):
-            if isinstance(node, advtree.Article):
-                elements = []
-                elements.extend(self.writeArticle(node))
-                try:
-                    testdoc = BaseDocTemplate(output,
-                                              topMargin=pdfstyles.page_margin_top,
-                                              leftMargin=pdfstyles.page_margin_left,
-                                              rightMargin=pdfstyles.page_margin_right,
-                                              bottomMargin=pdfstyles.page_margin_bottom,
-                                              title=self.book.get('title'),
-                                              )
-                    testdoc.addPageTemplates(WikiPage(title=node.caption))
-                    testdoc.build(elements)
-                    ok_count += 1
-                except Exception, err:
-                    log.error('article failed:' , repr(node.caption))
-                    tr = traceback.format_exc()
-                    log.error(tr)
-                    node.renderFailed = True
-                    fail_count += 1
-                    fail_articles.append(repr(node.caption))
-        return (ok_count, fail_count, fail_articles)
-    
+   
     def writeTitlePage(self, coverimage=None):       
         # FIXME: clean this up. there seems to be quite a bit of deprecated here
         title = self.book.get('title')
@@ -2050,21 +1867,12 @@ def writer(env, output,
     mathcache=None,
     lang=None,
     enable_toc=False,
-    save_mem = False,
 ):
     r = RlWriter(env, strict=strict, debug=debug, mathcache=mathcache, lang=lang, enable_toc=enable_toc)
     if coverimage is None and env.configparser.has_section('pdf'):
         coverimage = env.configparser.get('pdf', 'coverimage', None)
-    if status_callback:
-        buildbook_status = status_callback.getSubRange(0,20)
-        writer_status = status_callback.getSubRange(21, 100)
-    else:
-        buildbook_status = writer_status = None
-    if not save_mem:
-        book = writerbase.build_book(env, status_callback=buildbook_status)
-        r.writeBook(book, output=output, coverimage=coverimage, status_callback=writer_status)
-    else:
-        r.writeBookSaveMem(output=output, coverimage=coverimage, status_callback=writer_status)
+
+    r.writeBook(output=output, coverimage=coverimage, status_callback=status_callback)
 
 
 
@@ -2092,10 +1900,6 @@ writer.options = {
     },
     'enable_toc': {
         'help':'render Table of Contents - this is still highly EXPERIMENTAL',
-    },
-    'save_mem': {
-        'help':'use memory saving rendering - this is supposed to be the permanent solution once ready',
-    },
-    
+    },    
     
 }
