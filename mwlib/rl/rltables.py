@@ -16,7 +16,7 @@ from mwlib.writer import styleutils
 from reportlab.lib import colors
 from customflowables import Figure
 #import debughelper
-from pdfstyles import printHeight, printWidth
+from pdfstyles import print_height, print_width
 
 
 log = log.Log('rlwriter')
@@ -92,7 +92,7 @@ def getColWidths(data, table=None, recursionDepth=0, nestingLevel=1):
     if not data:
         return None
        
-    availWidth = printWidth - 12 # twice the total cell padding
+    availWidth = print_width - 12 # twice the total cell padding
     minwidths  = [ 0 for x in range(len(data[0]))]
     summedwidths = [ 0 for x in range(len(data[0]))]
     maxbreaks = [ 0 for x in range(len(data[0]))]
@@ -104,8 +104,8 @@ def getColWidths(data, table=None, recursionDepth=0, nestingLevel=1):
             except IndexError: # caused by empty row b/c of rowspanning
                 colspan = 1
             for e in cell:
-                minw, minh = e.wrap(0,printHeight)
-                maxw, maxh = e.wrap(availWidth, printHeight)
+                minw, minh = e.wrap(0, print_height)
+                maxw, maxh = e.wrap(availWidth, print_height)
                 minw += 6  # FIXME +6 is the cell padding we are using
                 cellwidth += minw
                 if maxh > 0:

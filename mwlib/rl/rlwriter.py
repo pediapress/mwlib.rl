@@ -64,11 +64,9 @@ from mwlib.rl.customflowables import Figure, FiguresAndParagraphs, SmartKeepToge
 
 from pdfstyles import text_style, heading_style, table_style
 
-from pdfstyles import pageMarginHor, pageMarginVert, serif_font, mono_font
-from pdfstyles import printWidth, printHeight, smallfontsize, bigfontsize, fontsize
+from pdfstyles import serif_font, mono_font
+from pdfstyles import print_width, print_height
 from pdfstyles import tableOverflowTolerance
-from pdfstyles import max_img_width, max_img_height, min_img_dpi, inline_img_dpi
-from pdfstyles import maxCharsInSourceLine
 import pdfstyles 
 
 from mwlib.writer.imageutils import ImageUtils
@@ -182,8 +180,8 @@ class RlWriter(object):
         self.tc = TreeCleaner([], save_reports=self.debug)
         self.tc.skipMethods = ['fixPreFormatted', 'removeEmptyReferenceLists']
 
-        self.image_utils = ImageUtils(pdfstyles.printWidth,
-                                      pdfstyles.printHeight,
+        self.image_utils = ImageUtils(pdfstyles.print_width,
+                                      pdfstyles.print_height,
                                       pdfstyles.img_default_thumb_width,
                                       pdfstyles.img_min_res,
                                       pdfstyles.img_max_thumb_width,
@@ -258,11 +256,11 @@ class RlWriter(object):
                 last = group[-1]
                 if not isHeading(last):
                     try:
-                        w,h = last.wrap(printWidth,printHeight)
+                        w,h = last.wrap(print_width, print_height)
                     except:
                         h = 0
                     groupHeight += h
-                    if groupHeight > printHeight / 10 or isinstance(elements[0], NotAtTopPageBreak): # 10 % of pageHeight               
+                    if groupHeight > print_height / 10 or isinstance(elements[0], NotAtTopPageBreak): # 10 % of page_height               
                         groupedElements.append(SmartKeepTogether(group))
                         group = []
                         groupHeight = 0
@@ -345,10 +343,10 @@ class RlWriter(object):
         else:
             tocCallback = None
         self.doc = PPDocTemplate(output,
-                                 topMargin=pageMarginVert,
-                                 leftMargin=pageMarginHor,
-                                 rightMargin=pageMarginHor,
-                                 bottomMargin=pageMarginVert,
+                                 topMargin=pdfstyles.page_margin_top,
+                                 leftMargin=pdfstyles.page_margin_left,
+                                 rightMargin=pdfstyles.page_margin_right,
+                                 bottomMargin=pdfstyles.page_margin_bottom,
                                  title=self.book.get('title'),
                                  keywords=version,
                                  status_callback=self.render_status,
@@ -360,10 +358,10 @@ class RlWriter(object):
         elements = self.writeArticle(node)
         try:
             testdoc = BaseDocTemplate(output,
-                                      topMargin=pageMarginVert,
-                                      leftMargin=pageMarginHor,
-                                      rightMargin=pageMarginHor,
-                                      bottomMargin=pageMarginVert,
+                                      topMargin=pdfstyles.page_margin_top,
+                                      leftMargin=pdfstyles.page_margin_left,
+                                      rightMargin=pdfstyles.page_margin_right,
+                                      bottomMargin=pdfstyles.page_margin_bottom,
                                       title='',
                                       )
             testdoc.addPageTemplates(WikiPage(title=node.caption))
@@ -434,11 +432,11 @@ class RlWriter(object):
                 
         
     def renderBookSaveMem(self, elements, output, coverimage=None):
-        if pdfstyles.showTitlePage:
+        if pdfstyles.show_title_page:
             for item in self.writeTitlePage(coverimage=coverimage)[::-1]:
                 elements.insert(0, item)
 
-        if pdfstyles.showArticleAttribution:
+        if pdfstyles.show_article_attribution:
             elements.append(NotAtTopPageBreak())
             elements.extend(self.writeArticleMetainfo())
             elements.append(NotAtTopPageBreak())
@@ -573,10 +571,10 @@ class RlWriter(object):
         else:
             tocCallback = None
         self.doc = PPDocTemplate(output,
-                                 topMargin=pageMarginVert,
-                                 leftMargin=pageMarginHor,
-                                 rightMargin=pageMarginHor,
-                                 bottomMargin=pageMarginVert,
+                                 topMargin=pdfstyles.page_margin_top,
+                                 leftMargin=pdfstyles.page_margin_left,
+                                 rightMargin=pdfstyles.page_margin_right,
+                                 bottomMargin=pdfstyles.page_margin_bottom,
                                  title=self.book.get('title'),
                                  keywords=version,
                                  status_callback=render_status,
@@ -584,7 +582,7 @@ class RlWriter(object):
         )
 
         self.output = output
-        if pdfstyles.showTitlePage:
+        if pdfstyles.show_title_page:
             elements.extend(self.writeTitlePage(coverimage=coverimage))
         try:
             for e in bookParseTree.children:
@@ -597,7 +595,7 @@ class RlWriter(object):
         if not self.disable_group_elements:
             elements = self.groupElements(elements)
 
-        if pdfstyles.showArticleAttribution:
+        if pdfstyles.show_article_attribution:
             elements.append(NotAtTopPageBreak())
             elements.extend(self.writeArticleMetainfo())
 
@@ -659,12 +657,12 @@ class RlWriter(object):
                 elements.extend(self.writeArticle(node))
                 try:
                     testdoc = BaseDocTemplate(output,
-                        topMargin=pageMarginVert,
-                        leftMargin=pageMarginHor,
-                        rightMargin=pageMarginHor,
-                        bottomMargin=pageMarginVert,
-                        title=self.book.get('title'),
-                    )
+                                              topMargin=pdfstyles.page_margin_top,
+                                              leftMargin=pdfstyles.page_margin_left,
+                                              rightMargin=pdfstyles.page_margin_right,
+                                              bottomMargin=pdfstyles.page_margin_bottom,
+                                              title=self.book.get('title'),
+                                              )
                     testdoc.addPageTemplates(WikiPage(title=node.caption))
                     testdoc.build(elements)
                     ok_count += 1
@@ -839,7 +837,7 @@ class RlWriter(object):
             elements.append(NextPageTemplate(title.encode('utf-8'))) # pagetemplate.id cant handle unicode
             # FIXME remove the getPrevious below
             if not getattr(article, 'has_preceeding_chapter', False)  or isinstance(article.getPrevious(), advtree.Article) or self.license_mode:
-                if pdfstyles.pageBreakAfterArticle: # if configured and preceded by an article
+                if pdfstyles.page_break_after_article: # if configured and preceded by an article
                     elements.append(NotAtTopPageBreak())
                 elif miscutils.articleStartsWithInfobox(article, max_text_until_infobox=100):
                     elements.append(CondPageBreak(pdfstyles.article_start_min_space_infobox))
@@ -937,7 +935,7 @@ class RlWriter(object):
                 maxImgWidth = max(maxImgWidth, f.imgWidth)
             for p in paras:
                 if isinstance(p,Paragraph):
-                    w,h = p.wrap(printWidth - maxImgWidth, printHeight)
+                    w,h = p.wrap(print_width - maxImgWidth, print_height)
                     h += p.style.spaceBefore + p.style.spaceAfter
                     hp += h
             if hp > hf - 10:
@@ -1013,7 +1011,7 @@ class RlWriter(object):
             scaled_images = []
             for img in images:
                 ar = img.imgWidth/img.imgHeight
-                w = printWidth / 2 - (img.margin[1] + img.margin[3] + img.padding[1] + img.padding[3])
+                w = print_width / 2 - (img.margin[1] + img.margin[3] + img.padding[1] + img.padding[3])
                 h = w/ar
                 if w > img.imgWidth:
                     scaled = img
@@ -1061,7 +1059,7 @@ class RlWriter(object):
             return []
         
         maxCharOnLine = max( [ len(line) for line in t.split("\n")])
-        char_limit = max(1, int(maxCharsInSourceLine / (max(1, 0.75*self.currentColCount))))
+        char_limit = max(1, int(pdfstyles.source_max_line_len / (max(1, 0.75*self.currentColCount))))
         if maxCharOnLine > char_limit:
             t = self.breakLongLines(t, char_limit)
         pre = XPreformatted(t, text_style(mode='preformatted', in_table=self.tableNestingLevel))
@@ -1222,10 +1220,10 @@ class RlWriter(object):
         return self.renderInlineTag(n, 'super')
         
     def writeSmall(self, n):
-        return self.renderInlineTag(n, 'font', tag_attrs=' size=%d' % smallfontsize)
+        return self.renderInlineTag(n, 'font', tag_attrs=' size=%d' % pdfstyles.small_font_size)
 
     def writeBig(self, n):
-        return self.renderInlineTag(n, 'font', tag_attrs=' size=%d' % bigfontsize)
+        return self.renderInlineTag(n, 'font', tag_attrs=' size=%d' % pdfstyles.big_font_size)
         
     def writeCite(self, n):
         return self.writeEmphasized(n)
@@ -1446,12 +1444,12 @@ class RlWriter(object):
         if self.tableNestingLevel > 0 and not max_width:
             cell = img_node.getParentNodesByClass(advtree.Cell)
             if cell:
-                max_width = printWidth / len(cell[0].getAllSiblings()) - 10
-        max_height = max_img_height * cm
+                max_width = print_width / len(cell[0].getAllSiblings()) - 10
+        max_height = pdfstyles.img_max_thumb_height * pdfstyles.print_height 
         if self.tableNestingLevel > 0:
-            max_height = printHeight/4 # fixme this needs to be read from config
+            max_height = print_height/4 # fixme this needs to be read from config
         if self.gallery_mode:
-            max_height = printHeight/3 # same as above
+            max_height = print_height/3 # same as above
         w, h = self.image_utils.getImageSize(img_node, img_path, max_print_width=max_width, max_print_height=max_height)
         
         align = img_node.align
@@ -1520,7 +1518,7 @@ class RlWriter(object):
         data = []
         row = []
         if obj.children:
-            self.colwidth = printWidth/perrow - 12
+            self.colwidth = print_width/perrow - 12
         colwidths = [self.colwidth+12]*perrow
 
         for node in obj.children:
@@ -1585,12 +1583,12 @@ class RlWriter(object):
         
 
     def _writeSourceInSourceMode(self, n, src_lang, lexer):        
-        sourceFormatter = ReportlabFormatter(font_size=fontsize, font_name='DejaVuSansMono', background_color='#eeeeee', line_numbers=False)
+        sourceFormatter = ReportlabFormatter(font_size=pdfstyles.font_size, font_name='DejaVuSansMono', background_color='#eeeeee', line_numbers=False)
         sourceFormatter.encoding = 'utf-8'
         source = ''.join(self.renderInline(n))        
         source = source.replace('\t', ' '*pdfstyles.tabsize)
         maxCharOnLine = max( [ len(line) for line in source.split("\n")])
-        char_limit = max(1, int(maxCharsInSourceLine / (max(1, self.currentColCount))))
+        char_limit = max(1, int(pdfstyles.source_max_line_len / (max(1, self.currentColCount))))
 
         if maxCharOnLine > char_limit:
             source = self.breakLongLines(source, char_limit)
@@ -1859,8 +1857,8 @@ class RlWriter(object):
                         ])
         table.setStyle(rltables.tableBgStyle(t))
                        
-        w,h = table.wrap(printWidth, printHeight)
-        if maxCols == 1 and h > printHeight: # big tables with only 1 col are removed - the content is kept
+        w,h = table.wrap(print_width, print_height)
+        if maxCols == 1 and h > print_height: # big tables with only 1 col are removed - the content is kept
             flatData = [cell for cell in flatten(data) if not isinstance(cell, str)]            
             self.tableNestingLevel -= 1
             return flatData 
@@ -1893,13 +1891,13 @@ class RlWriter(object):
         doc = BaseDocTemplate(fn)
         doc.addPageTemplates(SimplePage(pageSize=A4))
         try:
-            w,h=table.wrap(printWidth, printHeight)
+            w,h=table.wrap(print_width, print_height)
             if self.debug:
-                log.info("tablesize:(%f, %f) pagesize:(%f, %f) tableOverflowTolerance: %f" %(w, h, printWidth, printHeight, tableOverflowTolerance))
-            if w > (printWidth + tableOverflowTolerance):
-                log.warning('table test rendering: too wide - printwidth: %f (tolerance %f) tablewidth: %f' % (printWidth, tableOverflowTolerance, w))
+                log.info("tablesize:(%f, %f) pagesize:(%f, %f) tableOverflowTolerance: %f" %(w, h, print_width, print_height, tableOverflowTolerance))
+            if w > (print_width + tableOverflowTolerance):
+                log.warning('table test rendering: too wide - printwidth: %f (tolerance %f) tablewidth: %f' % (print_width, tableOverflowTolerance, w))
                 raise LayoutError
-            if self.tableNestingLevel > 1 and h > printHeight:
+            if self.tableNestingLevel > 1 and h > print_height:
                 log.warning('nested table too high')
                 raise LayoutError
             self.addAnchors(table)
@@ -1915,13 +1913,13 @@ class RlWriter(object):
         log.info('trying safe table rendering')
                    
         fail = True
-        pw = printWidth
-        ph = printHeight
+        pw = print_width
+        ph = print_height
         ar = ph/pw
         while fail:
             pw += 20
             ph += 20*ar
-            if pw > printWidth * 2:
+            if pw > print_width * 2:
                 break
             try:
                 doc = BaseDocTemplate(fn)
@@ -1955,12 +1953,12 @@ class RlWriter(object):
 
         images = []
         if os.path.exists(imgname):
-            images = [Image(imgname, width=printWidth*0.90, height=printHeight*0.90)]
+            images = [Image(imgname, width=print_width*0.90, height=print_height*0.90)]
         else: # if the table spans multiple pages, convert generates multiple images
             import glob
             imageFns = glob.glob(fn + '-*.png')
             for imageFn in imageFns:
-                images.append(Image(imageFn, width=printWidth*0.90, height=printHeight*0.90))
+                images.append(Image(imageFn, width=print_width*0.90, height=print_height*0.90))
         return (True, images)
 
     def addAnchors(self, table):
@@ -2010,8 +2008,8 @@ class RlWriter(object):
         del img
 
         if self.tableNestingLevel: # scale down math-formulas in tables
-            w = w * smallfontsize/fontsize
-            h = h * smallfontsize/fontsize
+            w = w * pdfstyles.small_font_size/pdfstyles.font_size
+            h = h * pdfstyles.small_font_size/pdfstyles.font_size
             
         density = 120 # resolution in dpi in which math images are rendered by latex
         # the vertical image placement is calculated below:

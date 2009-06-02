@@ -42,30 +42,32 @@ tableOverflowTolerance = 20  # max width overflow for tables    unit: pt
 
 ######### PAGE CONFIGURATION
 
-pageWidth, pageHeight = A4   # roughly: pW= 21*cm pH=29*cm
+page_width, page_height = A4   # roughly: pW= 21*cm pH=29*cm
 
-pageMarginHor = 2 * cm
-pageMarginVert= 2 * cm
+page_margin_left = 1 * cm
+page_margin_right = 1 * cm
+page_margin_top = 1 * cm
+page_margin_bottom = 1 * cm
 
-headerMarginHor = 1.5 * cm
-headerMarginVert= 1.5 * cm
+print_width = page_width - page_margin_left - page_margin_right
+print_height = page_height - page_margin_top - page_margin_bottom
 
-printWidth = pageWidth - 2*pageMarginHor
-printHeight = pageHeight - 2*pageMarginVert
+header_margin_hor = 1.5 * cm
+header_margin_vert= 1.5 * cm
 
-footerMarginHor = 1.5 * cm
-footerMarginVert= 1.5 * cm
+footer_margin_hor = 1.5 * cm
+footer_margin_vert= 1.5 * cm
 
-showTitlePage = True
-showPageHeader = True 
-showPageFooter = True
-showTitlePageFooter = True
-pageBreakAfterArticle = False
+show_title_page = True
+show_title_page_footer = True
+show_page_header = True 
+show_page_footer = True
+page_break_after_article = False
 
-showArticleAttribution = True   # Show/Hide article source and contributors
+show_article_attribution = True   # Show/Hide article source and contributors
 
-article_start_min_space = 0.5*printHeight # if less space is available on the current page a page break is inserted
-article_start_min_space_infobox = 0.9*printHeight # as above. but if the article starts with an infobox the required space should be higher
+article_start_min_space = 0.5*print_height # if less space is available on the current page a page break is inserted
+article_start_min_space_infobox = 0.9*print_height # as above. but if the article starts with an infobox the required space should be higher
 
 # NOTE: strings can contain reportlab styling tags the text needs to be xml excaped.
 # more information is available in the reportlab user documentation (http://www.reportlab.com/docs/userguide.pdf)
@@ -79,44 +81,38 @@ show_creation_date = True
 
 ######### IMAGE CONFIGURATION
 
-max_img_width = 9 # max size in cm 
-max_img_height = 12 
-min_img_dpi = 75 # scaling factor in respect to the thumbnail-size in the wikimarkup which limits image-size
-inline_img_dpi = 100 # scaling factor for inline images. 100 dpi should be the ideal size in relation to 10pt text size 
-
 # margins for floated images - margins like in html/css: (top, right, bottom, left)
 img_margins_float_left = (0, 0.4*cm, 0.7*cm, 0) # img that is left aligned
 img_margins_float_right = (0, 0, 0.7*cm, 0.4*cm) # ...
 img_margins_float = (0.2*cm,0.2*cm,0.2*cm,0.2*cm) # any other alignment
 
-
-### new imageutils options, the above are probably obsolete
 img_default_thumb_width = 180
 img_max_thumb_width = 0.6 # fraction of print width for floated images
 img_max_thumb_height = 0.45
 img_min_res = 75
 img_inline_scale_factor = 0.7 # factor by which inline images are scaled.
 print_width_px = 540 # 540px are assumed to be the equivalent for a full print width
+
 ######### TEXT CONFIGURATION
-fontsize = 10
+font_size = 10
 leading = 15
 text_align = TA_JUSTIFY # default alignment of text outside of tables TA_LEFT, TA_JUSTIFY, TA_RIGHT, TA_CENTER are valid
 table_text_align = TA_LEFT # ... inside of tables
 min_lines_after_heading = 5
 
-smallfontsize = 8
-smallleading = 12
+small_font_size = 8
+small_leading = 12
 
-bigfontsize = 12
-bigleading = 17
+big_font_size = 12
+big_leading = 17
 
-LEFTINDENT = 25 # indentation of paragraphs...
-RIGHTINDENT = 25 # indentation of paragraphs...
-LISTINDENT = 12 # indentation of lists per level
+para_left_indent = 25 # indentation of paragraphs...
+para_right_indent = 25 # indentation of paragraphs...
+list_left_indent = 12 # indentation of lists per level
 
 tabsize = 6
 
-maxCharsInSourceLine = 72 # if printing a source node, the maximum number of chars in one line
+source_max_line_len = 72 # if printing a source node, the maximum number of chars in one line
 
 no_float_math_len = 15
 
@@ -125,7 +121,7 @@ class BaseStyle(ParagraphStyle):
     def __init__(self, name, parent=None, **kw):
         ParagraphStyle.__init__(self, name=name, parent=parent, **kw)
         self.fontName = sans_font
-        self.fontSize = fontsize
+        self.fontSize = font_size
         self.leading = leading
         self.autoLeading = 'max'
         self.leftIndent = 0
@@ -135,7 +131,7 @@ class BaseStyle(ParagraphStyle):
         self.spaceBefore = 3
         self.spaceAfter = 0
         self.bulletFontName = sans_font
-        self.bulletFontSize = fontsize
+        self.bulletFontSize = font_size
         self.bulletIndent = 0
         self.textColor = colors.black
         self.backColor = None
@@ -164,16 +160,16 @@ def text_style(mode='p', indent_lvl=0, in_table=0, relsize='normal', text_align=
         style.alignment = TA_CENTER
 
     if in_table or mode in ['footer', 'figure'] or (mode=='preformatted' and relsize=='small'):
-        style.fontSize=smallfontsize
-        style.bulletFontSize = smallfontsize
-        style.leading = smallleading
+        style.fontSize=small_font_size
+        style.bulletFontSize = small_font_size
+        style.leading = small_leading
         if relsize == 'small':
             style.fontSize -= 1
         elif relsize == 'big':
             style.fontSize += 1
 
     if mode == 'blockquote':
-        style.rightIndent = RIGHTINDENT
+        style.rightIndent = para_right_indent
         indent_lvl += 1
 
     if mode in ['footer', 'figure', 'center']:
@@ -191,9 +187,9 @@ def text_style(mode='p', indent_lvl=0, in_table=0, relsize='normal', text_align=
         style.spaceBefore = 2
         
     if mode in ['articlefoot', 'references']:
-        style.fontSize=smallfontsize
-        style.leading=smallleading
-        style.bulletFontSize = smallfontsize
+        style.fontSize=small_font_size
+        style.leading=small_leading
+        style.bulletFontSize = small_font_size
 
     if mode == 'box' or mode == 'source' or mode == 'preformatted':
         style.backColor = '#eeeeee'
@@ -206,10 +202,10 @@ def text_style(mode='p', indent_lvl=0, in_table=0, relsize='normal', text_align=
         
     if mode == 'list' or mode == 'references':
         style.spaceBefore = 0
-        style.bulletIndent = LISTINDENT * max(0, indent_lvl-1)
-        style.leftIndent = LISTINDENT * indent_lvl
+        style.bulletIndent = list_left_indent * max(0, indent_lvl-1)
+        style.leftIndent = list_left_indent * indent_lvl
     else:
-        style.leftIndent = indent_lvl*LEFTINDENT
+        style.leftIndent = indent_lvl*para_left_indent
 
     if mode == 'booktitle':
         style.fontSize = 36
@@ -231,8 +227,8 @@ def text_style(mode='p', indent_lvl=0, in_table=0, relsize='normal', text_align=
         style.fontSize = 6
         style.leading = 1
         style.spaceBefore = 0
-        style.bulletIndent = LISTINDENT * max(0, indent_lvl-1)
-        style.leftIndent = LISTINDENT * indent_lvl
+        style.bulletIndent = list_left_indent * max(0, indent_lvl-1)
+        style.leftIndent = list_left_indent * indent_lvl
         style.bulletFontSize = 6
         
     return style
@@ -246,7 +242,7 @@ class BaseHeadingStyle(ParagraphStyle):
     def __init__(self, name, parent=None, **kw):
         ParagraphStyle.__init__(self, name=name, parent=parent, **kw)
         self.fontName = sans_font
-        self.fontSize = bigfontsize
+        self.fontSize = big_font_size
         self.leading = leading
         self.autoLeading = 'max'
         self.leftIndent = 0
@@ -256,7 +252,7 @@ class BaseHeadingStyle(ParagraphStyle):
         self.spaceBefore = 12
         self.spaceAfter = 6
         self.bulletFontName = sans_font
-        self.bulletFontSize = bigfontsize
+        self.bulletFontSize = big_font_size
         self.bulletIndent = 0
         self.textColor = colors.black
         self.backcolor = None
@@ -286,7 +282,7 @@ def heading_style(mode='chapter', lvl=1):
         if lvl > 1: # needed for "flowing" paragraphs around figures
             style.flowable = True
     elif mode == 'tablecaption':
-        style.fontsize = 12
+        style.fontSize = 12
         style.leading = 16
         style.alignment = TA_CENTER
         style.flowable = False

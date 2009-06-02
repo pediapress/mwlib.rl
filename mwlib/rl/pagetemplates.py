@@ -13,8 +13,10 @@ from reportlab.platypus.paragraph import Paragraph
 from reportlab.lib.units import cm
 from reportlab.platypus.doctemplate import PageTemplate
 from reportlab.platypus.frames import Frame
-from mwlib.rl.pdfstyles import pageMarginHor, pageMarginVert, headerMarginHor, headerMarginVert, footerMarginHor, footerMarginVert
-from mwlib.rl.pdfstyles import pageWidth, pageHeight, pagefooter, titlepagefooter, showPageHeader, showPageFooter, showTitlePageFooter , serif_font
+from mwlib.rl.pdfstyles import page_margin_left, page_margin_right, page_margin_top, page_margin_bottom
+from mwlib.rl.pdfstyles import page_width, page_height, print_height, print_width
+from mwlib.rl.pdfstyles import header_margin_hor, header_margin_vert, footer_margin_hor, footer_margin_vert
+from mwlib.rl.pdfstyles import pagefooter, titlepagefooter, serif_font
 from mwlib.rl import pdfstyles
 
 from reportlab.lib.pagesizes import  A3
@@ -39,19 +41,19 @@ class SimplePage(PageTemplate):
         #frames = Frame(0, 0, pageSize[0], pageSize[1])
         pw = pageSize[0]
         ph = pageSize[1]
-        frames = Frame(pageMarginHor,pageMarginVert, pw - 2*pageMarginHor, ph - 2*pageMarginVert)
+        frames = Frame(page_margin_left, page_margin_top, pw-page_margin_left-page_margin_right, ph-page_margin_top-page_margin_bottom)
 
         PageTemplate.__init__(self, id=id, frames=frames, pagesize=pageSize)
         
 class WikiPage(PageTemplate):
 
-    def __init__(self,title=None, id=None, wikititle=u'undefined', wikiurl=u'undefined', onPage=_doNothing, onPageEnd=_doNothing, pagesize=(pageWidth, pageHeight)):
+    def __init__(self,title=None, id=None, wikititle=u'undefined', wikiurl=u'undefined', onPage=_doNothing, onPageEnd=_doNothing, pagesize=(page_width, page_height)):
         """
         @type title: unicode
         """
         
         id = title.encode('utf-8')
-        frames = Frame(pageMarginHor,pageMarginVert,pageWidth - 2*pageMarginHor, pageHeight - 2*pageMarginVert)
+        frames = Frame(page_margin_left,page_margin_top, print_width, print_height)
         
         PageTemplate.__init__(self,id=id, frames=frames,onPage=onPage,onPageEnd=onPageEnd,pagesize=pagesize)
 
@@ -62,28 +64,28 @@ class WikiPage(PageTemplate):
         canvas.setLineWidth(0)
         canvas.saveState()
         #header
-        canvas.line(headerMarginHor, pageHeight - headerMarginVert, pageWidth - headerMarginHor, pageHeight - headerMarginVert )
-        if showPageHeader:
+        canvas.line(header_margin_hor, page_height - header_margin_vert, page_width - header_margin_hor, page_height - header_margin_vert )
+        if pdfstyles.show_page_header:
             canvas.saveState()
             canvas.resetTransforms()
-            canvas.translate(headerMarginHor, pageHeight - headerMarginVert - 0.1*cm)
+            canvas.translate(header_margin_hor, page_height - header_margin_vert - 0.1*cm)
             p = Paragraph(font_switcher.fontifyText(self.title), text_style())
             p.canv = canvas
-            p.wrap(pageWidth - headerMarginHor*2.5, pageHeight) # add an extra 0.5 margin to have enough space for page number
+            p.wrap(page_width - header_margin_hor*2.5, page_height) # add an extra 0.5 margin to have enough space for page number
             p.drawPara()
             canvas.restoreState()
             
-        canvas.drawRightString(pageWidth - headerMarginHor, pageHeight - headerMarginVert + 0.1 * cm, "%d" % doc.page)
+        canvas.drawRightString(page_width - header_margin_hor, page_height - header_margin_vert + 0.1 * cm, "%d" % doc.page)
 
         #Footer
         canvas.saveState()
         canvas.setFont(serif_font,8)
-        canvas.line(footerMarginHor, footerMarginVert, pageWidth - footerMarginHor, footerMarginVert )
-        if showPageFooter:
+        canvas.line(footer_margin_hor, footer_margin_vert, page_width - footer_margin_hor, footer_margin_vert )
+        if pdfstyles.show_page_footer:
             p = Paragraph(font_switcher.fontifyText(pagefooter), text_style())
             p.canv = canvas
-            w,h = p.wrap(pageWidth - headerMarginHor*2.5, pageHeight)
-            p.drawOn(canvas, footerMarginHor, footerMarginVert - 10 - h)
+            w,h = p.wrap(page_width - header_margin_hor*2.5, page_height)
+            p.drawOn(canvas, footer_margin_hor, footer_margin_vert - 10 - h)
         canvas.restoreState()
     
 
@@ -91,10 +93,10 @@ class WikiPage(PageTemplate):
 class TitlePage(PageTemplate):
 
     def __init__(self, wikititle=u'undefined', wikiurl=u'undefined', cover=None, id=None,
-        onPage=_doNothing, onPageEnd=_doNothing, pagesize=(pageWidth, pageHeight)):
+        onPage=_doNothing, onPageEnd=_doNothing, pagesize=(page_width, page_height)):
 
         id = 'TitlePage'
-        frames = Frame(pageMarginHor,pageMarginVert,pageWidth - 2*pageMarginHor, pageHeight - 2*pageMarginVert)        
+        frames = Frame(page_margin_left, page_margin_top, print_width, print_height)
         PageTemplate.__init__(self,id=id, frames=frames,onPage=onPage,onPageEnd=onPageEnd,pagesize=pagesize)
         self.wikititle = wikititle
         self.wikiurl = wikiurl
@@ -103,14 +105,14 @@ class TitlePage(PageTemplate):
     def beforeDrawPage(self,canvas,doc):
         canvas.setFont(serif_font,8)
         canvas.saveState()
-        if showTitlePageFooter:
-            canvas.line(footerMarginHor, footerMarginVert, pageWidth - footerMarginHor, footerMarginVert )
+        if pdfstyles.show_title_page_footer:
+            canvas.line(footer_margin_hor, footer_margin_vert, page_width - footer_margin_hor, footer_margin_vert )
             footertext = _(titlepagefooter).replace('@WIKITITLE@', self.wikititle).replace('@WIKIURL@', self.wikiurl)            
             if pdfstyles.show_creation_date:
                 footertext += ' PDF&nbsp;generated&nbsp;at:&nbsp;%s' % strftime("%a, %d %b %Y %H:%M:%S %Z", gmtime())
             p = Paragraph(font_switcher.fontifyText(footertext), text_style(mode='footer'))           
-            w,h = p.wrap(pageWidth - 2*pageMarginHor,pageHeight-pageMarginVert)
-            canvas.translate( (pageWidth-w)/2.0, 0.2*cm)
+            w,h = p.wrap(print_width, print_height)
+            canvas.translate( (page_width-w)/2.0, 0.2*cm)
             p.canv = canvas
             p.draw()
         canvas.restoreState()
@@ -119,8 +121,8 @@ class TitlePage(PageTemplate):
             img = Image.open(self.cover)
             w,h = img.size
             height = width/w*h 
-            x = (pageWidth - width) / 2.0
-            y = (pageHeight - height) / 2.0
+            x = (page_width - width) / 2.0
+            y = (page_height - height) / 2.0
             canvas.drawImage(self.cover, x, y, width , height)
 
 from reportlab.platypus.doctemplate import BaseDocTemplate

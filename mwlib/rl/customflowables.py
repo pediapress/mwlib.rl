@@ -290,7 +290,7 @@ class SmartKeepTogether(_ContainerSpace, Flowable):
         if not hasattr(self, 'height'):
             self.wrap(aW, aH)
         remaining_space = aH - sum([h for w,h in self.content_dims[:-1]])
-        if remaining_space < 0.1*pdfstyles.pageHeight:
+        if remaining_space < 0.1*pdfstyles.page_height:
             self._content.insert(0, PageBreak())
             return self._content
         if self.height < aH:
