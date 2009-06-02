@@ -44,10 +44,10 @@ tableOverflowTolerance = 20  # max width overflow for tables    unit: pt
 
 page_width, page_height = A4   # roughly: pW= 21*cm pH=29*cm
 
-page_margin_left = 1 * cm
-page_margin_right = 1 * cm
-page_margin_top = 1 * cm
-page_margin_bottom = 1 * cm
+page_margin_left = 2 * cm
+page_margin_right = 2 * cm
+page_margin_top = 2 * cm
+page_margin_bottom = 2 * cm
 
 print_width = page_width - page_margin_left - page_margin_right
 print_height = page_height - page_margin_top - page_margin_bottom
