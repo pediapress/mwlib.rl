@@ -392,6 +392,10 @@ class RlWriter(object):
         self.initReportlabDoc(output, status_callback=status_callback)
 
         elements = []
+
+        if pdfstyles.show_title_page:
+            elements.extend(self.writeTitlePage(coverimage=coverimage))
+
         if self.numarticles == 0:
             elements.append(self.addDummyPage())
         got_chapter = False
@@ -432,9 +436,6 @@ class RlWriter(object):
                 
         
     def renderBookSaveMem(self, elements, output, coverimage=None):
-        if pdfstyles.show_title_page:
-            for item in self.writeTitlePage(coverimage=coverimage)[::-1]:
-                elements.insert(0, item)
 
         if pdfstyles.show_article_attribution:
             elements.append(NotAtTopPageBreak())
@@ -698,7 +699,8 @@ class RlWriter(object):
                 if src.get('url'):
                     kwargs['wikiurl'] = src['url']                    
         self.doc.addPageTemplates(TitlePage(cover=coverimage, **kwargs))
-        elements = [Paragraph(self.font_switcher.fontifyText(xmlescape(title)), text_style(mode='booktitle'))]
+        elements = []
+        elements.append(Paragraph(self.font_switcher.fontifyText(xmlescape(title)), text_style(mode='booktitle')))
         if subtitle:
             elements.append(Paragraph(self.font_switcher.fontifyText(xmlescape(subtitle)), text_style(mode='booksubtitle')))
         if not firstArticle:
