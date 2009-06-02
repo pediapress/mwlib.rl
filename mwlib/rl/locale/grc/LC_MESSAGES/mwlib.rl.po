@@ -1,25 +1,26 @@
 # Translation of Mwlib.rl to Ancient Greek
 #
+# Author@translatewiki.net: Crazymadlover
 # Author@translatewiki.net: Omnipaedista
 # --
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-22 09:43+0000\n"
-"PO-Revision-Date: 2009-05-17 16:43:19+0000\n"
+"POT-Creation-Date: 2009-06-02 11:04+0000\n"
+"PO-Revision-Date: 2009-06-02 11:02:55+0000\n"
 "Language-Team: Ancient Greek\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.16alpha(r50698); Translate extension (11:2009-05-"
-"09)\n"
+"X-Generator: MediaWiki 1.16alpha(r51296); Translate extension (12bb:2009-05-"
+"28)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: grc\n"
 "X-Message-Group: out-mwlibrl\n"
 
 #: mwlib/rl/pdfmessages.py:12
 msgid "Source:"
-msgstr ""
+msgstr "Πηγή:"
 
 #: mwlib/rl/pdfmessages.py:14
 msgid "License:"
@@ -30,8 +31,9 @@ msgid "Contributors:"
 msgstr ""
 
 #: mwlib/rl/pdfmessages.py:18
+#, fuzzy
 msgid "Article Licenses"
-msgstr ""
+msgstr "Ἐγγραφαί"
 
 #: mwlib/rl/pdfmessages.py:20
 msgid "Title"
@@ -43,7 +45,7 @@ msgstr ""
 
 #: mwlib/rl/pdfmessages.py:24
 msgid "Editor:"
-msgstr ""
+msgstr "Μεταγραφεύς:"
 
 #: mwlib/rl/pdfmessages.py:26
 msgid "Created on:"
@@ -51,11 +53,11 @@ msgstr ""
 
 #: mwlib/rl/pdfmessages.py:28
 msgid "Contents"
-msgstr ""
+msgstr "Περιεχόμενα"
 
 #: mwlib/rl/pdfmessages.py:30
 msgid "Articles"
-msgstr ""
+msgstr "Ἐγγραφαί"
 
 #: mwlib/rl/pdfmessages.py:32
 msgid "Produced by:"
@@ -70,12 +72,14 @@ msgid "mwlib version:"
 msgstr ""
 
 #: mwlib/rl/pdfmessages.py:38
+#, fuzzy
 msgid "Table of Contents"
-msgstr ""
+msgstr "Περιεχόμενα"
 
 #: mwlib/rl/pdfmessages.py:40
+#, fuzzy
 msgid "Skipping Articles!"
-msgstr ""
+msgstr "Ἐγγραφαί"
 
 #: mwlib/rl/pdfmessages.py:42
 msgid ""
@@ -105,7 +109,7 @@ msgstr ""
 
 #: mwlib/rl/pdfmessages.py:52
 msgid "Image"
-msgstr ""
+msgstr "Εἰκών"
 
 #: mwlib/rl/pdfmessages.py:54 mwlib/rl/rlwriter.py:580
 msgid "anonymous edits"
@@ -143,15 +147,16 @@ msgstr ""
 
 #: mwlib/rl/rlwriter.py:593 mwlib/rl/rlwriter.py:615
 msgid "Source"
-msgstr ""
+msgstr "Πηγή"
 
 #: mwlib/rl/rlwriter.py:595 mwlib/rl/rlwriter.py:618
+#, fuzzy
 msgid "Contributors"
-msgstr ""
+msgstr "Περιεχόμενα"
 
 #: mwlib/rl/rlwriter.py:609
 msgid "unknown"
-msgstr ""
+msgstr "Ἄγνωτον"
 
 #: mwlib/rl/rlwriter.py:610
 msgid "License"

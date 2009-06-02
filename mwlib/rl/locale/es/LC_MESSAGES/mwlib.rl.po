@@ -1,18 +1,19 @@
 # Translation of Mwlib.rl to Spanish
 #
 # Author@translatewiki.net: Crazymadlover
+# Author@translatewiki.net: McDutchie
 # --
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-22 09:43+0000\n"
-"PO-Revision-Date: 2009-05-22 09:43:12+0000\n"
+"POT-Creation-Date: 2009-06-02 11:04+0000\n"
+"PO-Revision-Date: 2009-06-02 11:02:55+0000\n"
 "Language-Team: Spanish\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.16alpha(r50880); Translate extension (11:2009-05-"
-"09)\n"
+"X-Generator: MediaWiki 1.16alpha(r51296); Translate extension (12bb:2009-05-"
+"28)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: es\n"
 "X-Message-Group: out-mwlibrl\n"
@@ -103,7 +104,7 @@ msgstr ""
 
 #: mwlib/rl/pdfmessages.py:48 mwlib/rl/rlwriter.py:588
 msgid "Article Sources and Contributors"
-msgstr "Fuentes de artículos y contribuyentes"
+msgstr "Fuentes y contribuyentes del artículo"
 
 #: mwlib/rl/pdfmessages.py:50 mwlib/rl/rlwriter.py:605
 msgid "Image Sources, Licenses and Contributors"

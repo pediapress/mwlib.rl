@@ -1,18 +1,19 @@
 # Translation of Mwlib.rl to Catalan
 #
 # Author@translatewiki.net: Aleator
+# Author@translatewiki.net: Solde
 # --
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-22 09:43+0000\n"
-"PO-Revision-Date: 2009-05-22 09:43:12+0000\n"
+"POT-Creation-Date: 2009-06-02 11:04+0000\n"
+"PO-Revision-Date: 2009-06-02 11:02:54+0000\n"
 "Language-Team: Catalan\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.16alpha(r50880); Translate extension (11:2009-05-"
-"09)\n"
+"X-Generator: MediaWiki 1.16alpha(r51296); Translate extension (12bb:2009-05-"
+"28)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: ca\n"
 "X-Message-Group: out-mwlibrl\n"
@@ -27,56 +28,57 @@ msgstr "Llicència:"
 
 #: mwlib/rl/pdfmessages.py:16
 msgid "Contributors:"
-msgstr ""
+msgstr "Contribuïdors:"
 
 #: mwlib/rl/pdfmessages.py:18
-#, fuzzy
 msgid "Article Licenses"
-msgstr "Llicència:"
+msgstr "Llicències dels articles"
 
 #: mwlib/rl/pdfmessages.py:20
 msgid "Title"
-msgstr ""
+msgstr "Títol"
 
 #: mwlib/rl/pdfmessages.py:22
 msgid "Subtitle:"
-msgstr ""
+msgstr "Subtítol:"
 
 #: mwlib/rl/pdfmessages.py:24
 msgid "Editor:"
-msgstr ""
+msgstr "Editor:"
 
 #: mwlib/rl/pdfmessages.py:26
 msgid "Created on:"
-msgstr ""
+msgstr "Creat a:"
 
 #: mwlib/rl/pdfmessages.py:28
 msgid "Contents"
-msgstr ""
+msgstr "Contingut"
 
 #: mwlib/rl/pdfmessages.py:30
 msgid "Articles"
-msgstr ""
+msgstr "Articles"
 
 #: mwlib/rl/pdfmessages.py:32
 msgid "Produced by:"
-msgstr ""
+msgstr "Produït per:"
 
 #: mwlib/rl/pdfmessages.py:34
+#, fuzzy
 msgid "pdf writer version:"
-msgstr ""
+msgstr "versió mwlib:"
 
 #: mwlib/rl/pdfmessages.py:36
 msgid "mwlib version:"
-msgstr ""
+msgstr "versió mwlib:"
 
 #: mwlib/rl/pdfmessages.py:38
 msgid "Table of Contents"
-msgstr ""
+msgstr "Taula de continguts"
 
 #: mwlib/rl/pdfmessages.py:40
+#, fuzzy
 msgid "Skipping Articles!"
-msgstr ""
+msgstr "Articles"
 
 #: mwlib/rl/pdfmessages.py:42
 msgid ""
@@ -127,9 +129,9 @@ msgid "layouting"
 msgstr ""
 
 #: mwlib/rl/rlwriter.py:353
-#, python-format
+#, fuzzy, python-format
 msgid "mwlib.ext version: %(version)s"
-msgstr ""
+msgstr "versió mwlib:"
 
 #: mwlib/rl/rlwriter.py:359
 #, python-format
@@ -143,22 +145,20 @@ msgid "rendering"
 msgstr ""
 
 #: mwlib/rl/rlwriter.py:593 mwlib/rl/rlwriter.py:615
-#, fuzzy
 msgid "Source"
-msgstr "Font:"
+msgstr "Font"
 
 #: mwlib/rl/rlwriter.py:595 mwlib/rl/rlwriter.py:618
 msgid "Contributors"
-msgstr ""
+msgstr "Contribuïdors"
 
 #: mwlib/rl/rlwriter.py:609
 msgid "unknown"
-msgstr ""
+msgstr "desconegut"
 
 #: mwlib/rl/rlwriter.py:610
-#, fuzzy
 msgid "License"
-msgstr "Llicència:"
+msgstr "Llicència"
 
 #: mwlib/rl/rlwriter.py:676
 msgid ""
