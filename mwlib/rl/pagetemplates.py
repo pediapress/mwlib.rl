@@ -62,7 +62,6 @@ class WikiPage(PageTemplate):
     def beforeDrawPage(self,canvas,doc):
         canvas.setFont(serif_font,10)      
         canvas.setLineWidth(0)
-        canvas.saveState()
         #header
         canvas.line(header_margin_hor, page_height - header_margin_vert, page_width - header_margin_hor, page_height - header_margin_vert )
         if pdfstyles.show_page_header:
