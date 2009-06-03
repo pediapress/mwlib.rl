@@ -5,7 +5,7 @@
 # See README.txt for additional licensing information.
 
 try:
-    from customtransforms import css_map
+    from customconfig import css_map
 except ImportError:
     css_map = {}
     

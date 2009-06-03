@@ -62,6 +62,7 @@ Basically you can override anything in the pdfstyles.py file with your custom co
 Any changes need to be done with care in order not to break things!
 Check the pdfstyles.py file for more information.
 
+Also check the customnodetransformer.py file for more options for customization.
     
 Contact/Further Information
 ======================================================================
