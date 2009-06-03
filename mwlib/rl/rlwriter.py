@@ -78,6 +78,7 @@ from pagetemplates import WikiPage, TitlePage, SimplePage
 from mwlib import parser, log, uparser, metabook, timeline
 from mwlib.writer.licensechecker import LicenseChecker
 from mwlib.rl import fontconfig
+from mwlib.rl.customnodetransformer import CustomNodeTransformer
 
 log = log.Log('rlwriter')
 
@@ -180,6 +181,8 @@ class RlWriter(object):
         self.tc = TreeCleaner([], save_reports=self.debug)
         self.tc.skipMethods = ['fixPreFormatted', 'removeEmptyReferenceLists']
 
+        self.cnt = CustomNodeTransformer()
+        
         self.image_utils = ImageUtils(pdfstyles.print_width,
                                       pdfstyles.print_height,
                                       pdfstyles.img_default_thumb_width,
@@ -333,6 +336,8 @@ class RlWriter(object):
         if self.debug:
             parser.show(sys.stdout, art, verbose=True)
             print "\n".join([repr(r) for r in self.tc.getReports()])
+            
+        self.cnt.transformCSS(art)
         return art
 
     
@@ -1495,7 +1500,7 @@ class RlWriter(object):
     def writeCenter(self, n):
         return self.renderMixed(n, text_style(mode='center', in_table=self.tableNestingLevel))
 
-    def writeDiv(self, n):
+    def writeDiv(self, n):    
         if getattr(n, 'border', False) and not n.getParentNodesByClass(Table) and not n.getChildNodesByClass(advtree.PreFormatted):
             return self.renderMixed(n, text_style(mode='box', indent_lvl=self.paraIndentLevel, in_table=self.tableNestingLevel)) 
         else:
