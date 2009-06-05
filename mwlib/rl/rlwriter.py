@@ -410,6 +410,8 @@ class RlWriter(object):
                 got_chapter = True
             elif item['type'] == 'article':
                 art = self.buildArticle(item)
+                if not art:
+                    continue
                 if got_chapter:
                     art.has_preceeding_chapter = True
                     got_chapter = False
