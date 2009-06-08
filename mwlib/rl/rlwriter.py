@@ -333,13 +333,13 @@ class RlWriter(object):
             
         advtree.buildAdvancedTree(art)
         if self.debug:
-            parser.show(sys.stdout, art)
+            #parser.show(sys.stdout, art)
             pass
         self.tc.tree = art
         self.tc.cleanAll()
         self.cnt.transformCSS(art)
         if self.debug:
-            #parser.show(sys.stdout, art)
+            parser.show(sys.stdout, art)
             print "\n".join([repr(r) for r in self.tc.getReports()])
 
         return art
@@ -571,7 +571,10 @@ class RlWriter(object):
             return ''
 
         self.formatter.sectiontitle_mode = True
-        headingTxt = ''.join(self.renderInline(obj.children[0])).strip()
+        try:
+            heading_txt = ''.join(self.renderInline(obj.children[0])).strip()
+        except TypeError:
+            heading_txt = ''
         self.formatter.sectiontitle_mode = False
 
         if lvl <= 4 and self.inline_mode == 0 and self.tableNestingLevel==0:
@@ -579,7 +582,7 @@ class RlWriter(object):
             self.bookmarks.append((obj.children[0].getAllDisplayText(), 'heading'))
         else:
             anchor = ''
-        elements = [Paragraph('<font name="%s"><b>%s</b></font>%s' % (serif_font, headingTxt, anchor), headingStyle)]
+        elements = [Paragraph('<font name="%s"><b>%s</b></font>%s' % (serif_font, heading_txt, anchor), headingStyle)]
         
         obj.removeChild(obj.children[0])
         elements.extend(self.renderMixed(obj))
