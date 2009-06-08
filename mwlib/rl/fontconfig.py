@@ -128,11 +128,11 @@ class RLFontSwitcher(FontSwitcher):
             res.append((txt, font))
         return res
     
-    def fontifyText(self, txt, defaultFont='', breakLong=False):
+    def fontifyText(self, txt, break_long=False):
         if self.force_font:
             return '<font name="%s">%s</font>' % (self.force_font, txt)
         font_list = self.getFontList(txt)
-        if breakLong:
+        if break_long:
             font_list = self.fakeHyphenate(font_list)
 
         res = []

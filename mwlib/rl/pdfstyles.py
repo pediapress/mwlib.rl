@@ -32,7 +32,7 @@ if '_' not in globals():
 serif_font =  "DejaVuSerif"
 sans_font = "DejaVuSans"
 mono_font = "DejaVuSansMono"
-default_font = 'DejaVuSans'
+default_font = 'DejaVuSerif'
 
 
 ### TABLE CONFIG
@@ -120,7 +120,7 @@ class BaseStyle(ParagraphStyle):
 
     def __init__(self, name, parent=None, **kw):
         ParagraphStyle.__init__(self, name=name, parent=parent, **kw)
-        self.fontName = sans_font
+        self.fontName = serif_font
         self.fontSize = font_size
         self.leading = leading
         self.autoLeading = 'max'
@@ -130,7 +130,7 @@ class BaseStyle(ParagraphStyle):
         self.alignment = text_align
         self.spaceBefore = 3
         self.spaceAfter = 0
-        self.bulletFontName = sans_font
+        self.bulletFontName = serif_font
         self.bulletFontSize = font_size
         self.bulletIndent = 0
         self.textColor = colors.black
@@ -241,7 +241,7 @@ class BaseHeadingStyle(ParagraphStyle):
 
     def __init__(self, name, parent=None, **kw):
         ParagraphStyle.__init__(self, name=name, parent=parent, **kw)
-        self.fontName = sans_font
+        self.fontName = serif_font
         self.fontSize = big_font_size
         self.leading = leading
         self.autoLeading = 'max'
@@ -251,7 +251,7 @@ class BaseHeadingStyle(ParagraphStyle):
         self.alignment = TA_LEFT        
         self.spaceBefore = 12
         self.spaceAfter = 6
-        self.bulletFontName = sans_font
+        self.bulletFontName = serif_font
         self.bulletFontSize = big_font_size
         self.bulletIndent = 0
         self.textColor = colors.black
