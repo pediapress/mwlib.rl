@@ -151,7 +151,7 @@ class ReportlabError(Exception):
 
 class RlWriter(object):
 
-    def __init__(self, env=None, strict=False, debug=False, mathcache=None, lang=None, enable_toc=False):
+    def __init__(self, env=None, strict=False, debug=False, mathcache=None, lang=None, enable_toc=False, test_mode=False):
         localedir = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'locale')
         translation = gettext.NullTranslations()
         if lang:
@@ -170,7 +170,8 @@ class RlWriter(object):
 
         self.strict = strict
         self.debug = debug
-
+        self.test_mode = test_mode
+        
         self.license_checker = LicenseChecker(image_db=self.imgDB, filter_type='blacklist')
         self.license_checker.readLicensesCSV()
 
@@ -1296,8 +1297,13 @@ class RlWriter(object):
                 url = unicode(urllib.unquote(url.encode('utf-8')), 'utf-8')
             else:
                 url = ''
-            license_name = self.license_checker.getLicenseDisplayName(img_name)
-            self.img_meta_info[img_name] = (self.img_count, img_name, url, license_name, self.imgDB.getContributors(img_node.target))
+            if not self.test_mode:
+                license_name = self.license_checker.getLicenseDisplayName(img_name)
+                contributors = self.imgDB.getContributors(img_node.target)
+            else:
+                license_name = ''
+                contributors = ''
+            self.img_meta_info[img_name] = (self.img_count, img_name, url, license_name, contributors)
 
         if is_inline:
             txt = '%(linkstart)s<img src="%(src)s" width="%(width)fpt" height="%(height)fpt" valign="%(align)s"/>%(linkend)s' % {
@@ -1446,6 +1452,8 @@ class RlWriter(object):
     def writeCode(self, n):
         return self.writeTeletyped(n)
 
+    writeVar = writeCode
+
     def writeTeletyped(self, n):
         txt = self.renderInlineStyle(n, 'teletype_style')
         return txt    
@@ -1507,6 +1515,7 @@ class RlWriter(object):
     def writeStrike(self, n):
         return self.renderInlineStyle(n, 'strike_style')
 
+    writeS = writeStrike
     writeDeleted = writeStrike
 
     def writeImageMap(self, n):

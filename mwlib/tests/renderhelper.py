@@ -46,7 +46,7 @@ def renderMW(txt, filesuffix=None):
     tc.cleanAll()
 
     tmpdir = tempfile.mkdtemp()    
-    rw = RlWriter()
+    rw = RlWriter(test_mode=True)
     rw.wikiTitle = 'testwiki'
     rw.tmpdir = tmpdir
     rw.imgDB = dummyImageDB(basedir=tmpdir)
