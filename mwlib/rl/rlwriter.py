@@ -44,7 +44,6 @@ _check_reportlab()
 #import reportlab
 #reportlab.rl_config.platypus_link_underline = 1
 
-#from reportlab.rl_config import defaultPageSize
 from reportlab.platypus.paragraph import Paragraph
 from reportlab.platypus.doctemplate import BaseDocTemplate
 
@@ -79,6 +78,7 @@ from mwlib import parser, log, uparser, metabook, timeline
 from mwlib.writer.licensechecker import LicenseChecker
 from mwlib.rl import fontconfig
 from mwlib.rl.customnodetransformer import CustomNodeTransformer
+from mwlib.rl.formatter import RLFormatter
 
 log = log.Log('rlwriter')
 
@@ -182,6 +182,8 @@ class RlWriter(object):
         self.tc.skipMethods = ['fixPreFormatted', 'removeEmptyReferenceLists']
 
         self.cnt = CustomNodeTransformer()
+        self.formatter = RLFormatter(font_switcher=self.font_switcher)
+        
         
         self.image_utils = ImageUtils(pdfstyles.print_width,
                                       pdfstyles.print_height,
@@ -193,7 +195,6 @@ class RlWriter(object):
                                       pdfstyles.print_width_px,
                                       )
         
-        self.level = 0  # level of article sections --> similar to html heading tag levels
         self.references = []
         self.ref_name_map = {}
         self.listIndentation = 0  # nesting level of lists
@@ -201,15 +202,12 @@ class RlWriter(object):
         self.tmpImages = set()
         self.namedLinkCount = 1
         self.tableNestingLevel = 0       
-        self.sectionTitle = False
         self.tablecount = 0
         self.paraIndentLevel = 0
 
         self.gallery_mode = False
-        self.pre_mode = False
         self.ref_mode = False
         self.license_mode = False
-        self.source_mode = False
         self.inline_mode = 0
 
         self.linkList = []
@@ -278,8 +276,6 @@ class RlWriter(object):
 
                                 
     def write(self, obj):
-        if not obj.visible:
-            return []
         m = "write" + obj.__class__.__name__
         if not hasattr(self, m):
             log.error('unknown node:', repr(obj.__class__.__name__))
@@ -287,7 +283,10 @@ class RlWriter(object):
                 raise writerbase.WriterError('Unkown Node: %s ' % obj.__class__.__name__)
             return []
         m=getattr(self, m)
-        return m(obj)
+        styles = self.formatter.setStyle(obj)
+        res = m(obj)
+        self.formatter.resetStyle(styles)
+        return res
 
     def getVersion(self):
         try:
@@ -329,12 +328,12 @@ class RlWriter(object):
             
         advtree.buildAdvancedTree(art)
         if self.debug:
-            #parser.show(sys.stdout, art, verbose=True)
+            #parser.show(sys.stdout, art)
             pass
         self.tc.tree = art
         self.tc.cleanAll()
         if self.debug:
-            parser.show(sys.stdout, art, verbose=True)
+            parser.show(sys.stdout, art)
             print "\n".join([repr(r) for r in self.tc.getReports()])
             
         self.cnt.transformCSS(art)
@@ -524,9 +523,9 @@ class RlWriter(object):
                     kwargs['wikiurl'] = src['url']                    
         self.doc.addPageTemplates(TitlePage(cover=coverimage, **kwargs))
         elements = []
-        elements.append(Paragraph(self.font_switcher.fontifyText(xmlescape(title)), text_style(mode='booktitle')))
+        elements.append(Paragraph(self.formatter.cleanText(title), text_style(mode='booktitle')))
         if subtitle:
-            elements.append(Paragraph(self.font_switcher.fontifyText(xmlescape(subtitle)), text_style(mode='booksubtitle')))
+            elements.append(Paragraph(self.formatter.cleanText(subtitle), text_style(mode='booksubtitle')))
         if not firstArticle:
             return elements
         self.doc.addPageTemplates(WikiPage(firstArticleTitle, **kwargs))
@@ -563,10 +562,11 @@ class RlWriter(object):
             headingStyle = heading_style('section', lvl=lvl+1)
         if not obj.children:
             return ''
-        self.sectionTitle = True       
 
+        self.formatter.sectiontitle_mode = True
         headingTxt = ''.join(self.renderInline(obj.children[0])).strip()
-        self.sectionTitle = False
+        self.formatter.sectiontitle_mode = False
+
         if lvl <= 4 and self.inline_mode == 0 and self.tableNestingLevel==0:
             anchor = '<a name="%d"/>' % len(self.bookmarks)
             self.bookmarks.append((obj.children[0].getAllDisplayText(), 'heading'))
@@ -574,10 +574,9 @@ class RlWriter(object):
             anchor = ''
         elements = [Paragraph('<font name="%s"><b>%s</b></font>%s' % (serif_font, headingTxt, anchor), headingStyle)]
         
-        self.level += 1
         obj.removeChild(obj.children[0])
         elements.extend(self.renderMixed(obj))
-        self.level -= 1
+        
         return elements
 
     def renderFailedNode(self, node, infoText):
@@ -604,7 +603,7 @@ class RlWriter(object):
         if authors:
             authors_text = ', '.join([a for a in authors if a != 'ANONIPEDITS:0'])
             authors_text = re.sub(u'ANONIPEDITS:(?P<num>\d+)', u'\g<num> %s' % _(u'anonymous edits'), authors_text) 
-            authors_text = self.font_switcher.fontifyText(xmlescape(authors_text))
+            authors_text = self.formatter.cleanText(authors_text)
         else:
             authors_text = '-'
         return authors_text
@@ -617,7 +616,7 @@ class RlWriter(object):
             txt = '<b>%(title)s</b> &nbsp;<i>%(source_label)s</i>: %(source)s &nbsp;<i>%(contribs_label)s</i>: %(contribs)s ' % {
                 'title': title,
                 'source_label': _('Source'),
-                'source': self.font_switcher.fontifyText(xmlescape(url)),
+                'source': self.formatter.cleanText(url),
                 'contribs_label': _('Contributors'),
                 'contribs': authors_text,
                 }
@@ -634,12 +633,12 @@ class RlWriter(object):
             if not license:
                 license = _('unknown')
             license_txt = '<i>%(license_label)s</i>: %(license)s &nbsp;' % {'license_label': _('License'),
-                                                                            'license': self.font_switcher.fontifyText(license),
+                                                                            'license': self.formatter.cleanText(license),
                                                                             }
             txt = '<b>%(title)s</b> &nbsp;<i>%(source_label)s</i>: %(source)s &nbsp;%(license_txt)s<i>%(contribs_label)s</i>: %(contribs)s ' % {
-                'title': self.font_switcher.fontifyText(xmlescape(title)),
+                'title': self.formatter.cleanText(title),
                 'source_label': _('Source'),
-                'source': self.font_switcher.fontifyText(xmlescape(url)),
+                'source': self.formatter.cleanText(url),
                 'license_txt': license_txt,
                 'contribs_label': _('Contributors'),
                 'contribs': authors_text,
@@ -670,7 +669,7 @@ class RlWriter(object):
                 else:
                     elements.append(CondPageBreak(pdfstyles.article_start_min_space))
 
-        title = self.font_switcher.fontifyText(title, defaultFont=serif_font, breakLong=True)
+        title = self.formatter.cleanText(title, break_long=True)
         self.currentArticle = repr(title)
 
         if self.inline_mode == 0 and self.tableNestingLevel==0:
@@ -875,12 +874,12 @@ class RlWriter(object):
         return finalNodes
 
     def writePreFormatted(self, obj):
-        self.pre_mode = True
+        self.formatter.pre_mode = True
         txt = self.renderInline(obj)
         t = ''.join(txt)
         t = re.sub( u'<br */>', u'\n', t)
         t = t.replace('\t', ' '*pdfstyles.tabsize)
-        self.pre_mode = False
+        self.formatter.pre_mode = False
         if not len(t):
             return []
         
@@ -897,27 +896,11 @@ class RlWriter(object):
 
     def renderText(self, txt):
         if useFriBidi:
-            return xmlescape(pyfribidi.log2vis(txt, base_direction=pyfribidi.LTR))
-        else:
-            return xmlescape(txt)
-
-    def writeText(self,obj):
-        txt = obj.caption
-        if useFriBidi:
             txt = pyfribidi.log2vis(txt, base_direction=pyfribidi.LTR)
-                
-        if not txt:
-            return []
-        if self.source_mode:
-            return [txt]
-        txt = xmlescape(txt)
-        if self.sectionTitle:
-            return [self.font_switcher.fontifyText(txt, defaultFont=serif_font, breakLong=True)]
-        if self.pre_mode:
-            return [txt]
-        if self.gallery_mode:
-            return [self.font_switcher.fontifyText(txt, breakLong=True)]
-        return [self.font_switcher.fontifyText(txt)]
+        return self.formatter.styleText(txt)
+
+    def writeText(self, obj):
+        return [self.renderText(obj.caption)]
 
     def renderInline(self, node):
         txt = []
@@ -928,10 +911,9 @@ class RlWriter(object):
                 txt.extend(res)
             else:
                 log.warning(node.__class__.__name__, ' contained block element: ', child.__class__.__name__)
-                txt.append(self.font_switcher.fontifyText(xmlescape(child.getAllDisplayText())))
+                txt.append(self.formatter.styleText(child.getAllDisplayText()))
         self.inline_mode -= 1
         return txt
-
 
     def renderMixed(self, node, para_style=None, textPrefix=None):        
         if not para_style:
@@ -996,17 +978,17 @@ class RlWriter(object):
             items.extend(self.write(c))
         return items
 
-    def renderInlineTag(self, node, tag, tag_attrs=''):
-        txt = ['<%s %s>' % (tag, tag_attrs)]
-        txt.extend(self.renderInline(node))
-        txt.append('</%s>' % tag)
+    def renderInlineStyle(self, node, style):
+        setattr(self.formatter, style, getattr(self.formatter, style) + 1)
+        txt = self.renderInline(node)
+        setattr(self.formatter, style, getattr(self.formatter, style) - 1)
         return txt
         
     def writeEmphasized(self, n):
-        return self.renderInlineTag(n, 'i')
+        return self.renderInlineStyle(n, 'emphasized_style')
 
     def writeStrong(self, n):
-        return self.renderInlineTag(n, 'b')
+        return self.renderInlineStyle(n, 'strong_style')
 
     def writeDefinitionList(self, n):
         return self.renderChildren(n)        
@@ -1035,21 +1017,21 @@ class RlWriter(object):
         return self.renderInline(n)
 
     def writeUnderline(self, n):
-        return self.renderInlineTag(n, 'u')
+        return self.renderInlineStyle(n, 'underline_style')
 
     writeInserted = writeUnderline
 
     def writeSub(self, n):
-        return self.renderInlineTag(n, 'sub')
+        return self.renderInlineStyle(n, 'sub_style')
 
     def writeSup(self, n):
-        return self.renderInlineTag(n, 'super')
+        return self.renderInlineStyle(n, 'sup_style')
         
     def writeSmall(self, n):
-        return self.renderInlineTag(n, 'font', tag_attrs=' size=%d' % pdfstyles.small_font_size)
+        return self.renderInlineStyle(n, 'small_style')
 
     def writeBig(self, n):
-        return self.renderInlineTag(n, 'font', tag_attrs=' size=%d' % pdfstyles.big_font_size)
+        return self.renderInlineStyle(n, 'big_style')
         
     def writeCite(self, n):
         return self.writeEmphasized(n)
@@ -1093,7 +1075,7 @@ class RlWriter(object):
         else:
             txt = [href]
             txt = [obj.target]
-            t = self.font_switcher.fontifyText(xmlescape(''.join(txt).strip())).encode('utf-8')
+            t = self.formatter.styleText(''.join(txt).strip()).encode('utf-8')
             t = unicode(urllib.unquote(t), 'utf-8')
 
         if not internallink:
@@ -1156,7 +1138,7 @@ class RlWriter(object):
         return linktext
                
 
-    def writeCategoryLink(self,obj): 
+    def writeCategoryLink(self, obj): 
         txt = []
         if obj.colon: # CategoryLink inside the article
             if obj.children:
@@ -1316,7 +1298,7 @@ class RlWriter(object):
                 'linkstart': linkstart,
                 'linkend': linkend,
                 }
-            return txt
+            return [txt]
         captionTxt = ''.join(txt)        
         figure = Figure(img_path,
                         captionTxt=captionTxt,
@@ -1373,7 +1355,7 @@ class RlWriter(object):
         caption = obj.attributes.get('caption', None)
         self.colwidth = None
         if caption:
-            txt = self.font_switcher.fontifyText(caption)
+            txt = self.formatter.styleText(caption)
             elements = buildPara(txt, heading_style(mode='tablecaption'))
             elements.append(table)
             return elements
@@ -1411,7 +1393,9 @@ class RlWriter(object):
     def _writeSourceInSourceMode(self, n, src_lang, lexer):        
         sourceFormatter = ReportlabFormatter(font_size=pdfstyles.font_size, font_name='DejaVuSansMono', background_color='#eeeeee', line_numbers=False)
         sourceFormatter.encoding = 'utf-8'
-        source = ''.join(self.renderInline(n))        
+        self.formatter.source_mode += 1
+        source = ''.join(self.renderInline(n))
+        self.formatter.source_mode -= 1
         source = source.replace('\t', ' '*pdfstyles.tabsize)
         maxCharOnLine = max( [ len(line) for line in source.split("\n")])
         char_limit = max(1, int(pdfstyles.source_max_line_len / (max(1, self.currentColCount))))
@@ -1443,9 +1427,7 @@ class RlWriter(object):
         src_lang = n.vlist.get('lang', '').lower()
         lexer = getLexer(src_lang)
         if lexer:
-            self.source_mode = True
             res = self._writeSourceInSourceMode(n, src_lang, lexer)
-            self.source_mode = False
             if res:
                 return res
         return self.writePreFormatted(n)
@@ -1455,10 +1437,8 @@ class RlWriter(object):
         return self.writeTeletyped(n)
 
     def writeTeletyped(self, n):
-        self.font_switcher.force_font = 'DejaVuSansMono'
-        txt = self.renderInlineTag(n, 'font', tag_attrs='fontName="%s"' % mono_font)
-        self.font_switcher.force_font = None
-        return txt
+        txt = self.renderInlineStyle(n, 'teletype_style')
+        return txt    
     
     def writeBreakingReturn(self, n):
         return ['<br />']
@@ -1515,7 +1495,7 @@ class RlWriter(object):
         return self.renderInline(n)
 
     def writeStrike(self, n):
-        return self.renderInlineTag(n, 'strike')
+        return self.renderInlineStyle(n, 'strike_style')
 
     writeDeleted = writeStrike
 
