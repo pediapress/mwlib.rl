@@ -1741,6 +1741,10 @@ class RlWriter(object):
         pw = print_width
         ph = print_height
         ar = ph/pw
+        w,h = table.wrap(pw, ph)
+        if w > pw:
+            pw = w
+            ph = pw*ar
         while fail:
             pw += 20
             ph += 20*ar
