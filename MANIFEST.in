@@ -28,6 +28,7 @@ include mwlib/rl/customflowables.py
 include mwlib/rl/customnodetransformer.py
 include mwlib/rl/debughelper.py
 include mwlib/rl/fontconfig.py
+include mwlib/rl/formatter.py
 include mwlib/rl/locale/af/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/af/LC_MESSAGES/mwlib.rl.po
 include mwlib/rl/locale/ar/LC_MESSAGES/mwlib.rl.mo
