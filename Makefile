@@ -13,7 +13,7 @@ develop:: all
 	python setup.py develop
 
 sdist:: all
-	python setup.py build sdist
+	python setup.py -q build sdist
 
 egg:: all
 	python setup.py bdist_egg
