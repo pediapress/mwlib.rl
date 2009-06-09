@@ -236,6 +236,7 @@ class RlWriter(object):
         self.toc_renderer = TocRenderer()
         self.reference_list_rendered = False
         self.article_meta_info = []
+        self.url_map = {}
         
     
     def ignore(self, obj):
@@ -1132,19 +1133,21 @@ class RlWriter(object):
     def writeNamedURL(self,obj):
         href = obj.caption.strip()
         if not self.ref_mode and not self.reference_list_rendered:
-            i = parser.Item()
-            i.children = [advtree.URL(href)]
-            self.references.append(i)
+            if not self.url_map.get(href):                
+                i = parser.Item()
+                i.children = [advtree.URL(href)]
+                self.references.append(i)
+                self.url_map[href] = len(self.references)
         else: # we are writing a reference section. we therefore directly print URLs
             txt = self.renderInline(obj)
             txt.append(' <link href="%s">(%s)</link>' % (xmlescape(href), self.renderURL(urllib.unquote(href))))
             return [''.join(txt)]           
             
         if not obj.children:
-            linktext = '<link href="%s">[%s]</link>' % (xmlescape(href), len(self.references))
+            linktext = '<link href="%s">[%s]</link>' % (xmlescape(href), self.url_map[href])
         else:
             linktext = self.renderInline(obj)
-            linktext.append(' <super><link href="%s"><font size="10">[%s]</font></link></super> ' % (xmlescape(href), len(self.references)))
+            linktext.append(' <super><link href="%s"><font size="10">[%s]</font></link></super> ' % (xmlescape(href), self.url_map[href]))
             linktext = ''.join(linktext).strip()
         return linktext
                
