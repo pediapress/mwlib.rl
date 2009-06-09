@@ -283,13 +283,16 @@ def removeContainerTable(containertable):
 
 
 def tableBgStyle(table):
-    bg_style = []    
+    bg_style = []
+    table_bg = styleutils.rgbBgColorFromNode(table)
     for (i, row) in enumerate(table.children):
         if not row.__class__ == Row:
             continue
         rgb = styleutils.rgbBgColorFromNode(row)
         if rgb:
             bg_style.append(('BACKGROUND', (0,i), (-1,i), colors.Color(rgb[0], rgb[1], rgb[2])))
+        elif table_bg:
+            bg_style.append(('BACKGROUND', (0,i), (-1,i), colors.Color(table_bg[0], table_bg[1], table_bg[2])))
         colspan_sum = 0
         for (j, cell) in enumerate(row.children):
             if not cell.__class__ == Cell:
