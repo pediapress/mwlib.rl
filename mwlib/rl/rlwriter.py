@@ -1421,6 +1421,9 @@ class RlWriter(object):
         txt = ''
         try:
             txt = highlight(source, lexer, sourceFormatter)           
+            if n.vlist.get('enclose', False) == 'none': #FIXME: needs fix in parser before this can work
+                txt = re.sub('<para.*?>', '', txt).replace('</para>', '')
+                return txt
             return [XPreformatted(txt, text_style(mode='source', in_table=self.tableNestingLevel))]            
         except:
             log.error('unsuitable lexer for source code language: %s - Lexer: %s' % (repr(src_lang), lexer.__class__.__name__))
