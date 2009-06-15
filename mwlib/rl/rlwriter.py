@@ -662,7 +662,7 @@ class RlWriter(object):
     
     def writeArticle(self, article):
         self.references = [] 
-        title = self.renderText(article.caption)
+        title = self.renderText(article.caption, break_long=True)
         log.info('rendering: %r' % title)        
         if self.layout_status:
             self.layout_status(article=title)
@@ -681,7 +681,6 @@ class RlWriter(object):
                 else:
                     elements.append(CondPageBreak(pdfstyles.article_start_min_space))
 
-        title = self.formatter.cleanText(title, break_long=True)
         self.currentArticle = repr(title)
 
         if self.inline_mode == 0 and self.tableNestingLevel==0:
@@ -906,10 +905,10 @@ class RlWriter(object):
     def writeNode(self,obj):
         return self.renderMixed(obj)
 
-    def renderText(self, txt):
+    def renderText(self, txt, **kwargs):
         if useFriBidi:
             txt = pyfribidi.log2vis(txt, base_direction=pyfribidi.LTR)
-        return self.formatter.styleText(txt)
+        return self.formatter.styleText(txt, kwargs)
 
     def writeText(self, obj):
         return [self.renderText(obj.caption)]
