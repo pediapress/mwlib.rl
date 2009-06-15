@@ -212,11 +212,13 @@ def text_style(mode='p', indent_lvl=0, in_table=0, relsize='normal', text_align=
         style.leading = 40
         style.spaceBefore = 16
         style.fontName= sans_font
-
+        style.alignment = TA_LEFT
+        
     if mode == 'booksubtitle':
         style.fontSize = 24
         style.leading = 30
         style.fontName= sans_font
+        style.alignment = TA_LEFT
 
     if mode == 'license':
         style.fontSize = 6
