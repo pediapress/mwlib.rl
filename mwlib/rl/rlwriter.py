@@ -900,7 +900,6 @@ class RlWriter(object):
             t = self.breakLongLines(t, char_limit)
         pre = XPreformatted(t, text_style(mode='preformatted', in_table=self.tableNestingLevel))
         return [pre]
-
         
     def writeNode(self,obj):
         return self.renderMixed(obj)
@@ -1392,6 +1391,34 @@ class RlWriter(object):
             elif not in_tag:
                 length += 1
         return length
+
+    def _getFrags(self, txt):
+        #Words = re.findall('([ \t]+|[^ \t]+)', txt)
+        words = []
+        word = []
+        in_tag = False
+        in_space = False
+        for c in txt:
+            if c == '<':
+                in_tag = True
+            if c in [' ', '\t']:
+                if not in_tag:
+                    if not in_space:
+                        words.append(''.join(word))
+                        word = []
+                word.append(c)
+                in_space = True
+            else:
+                if in_space and not in_tag:
+                    words.append(''.join(word))
+                    word = []
+                word.append(c)
+                in_space = False
+            if c == '>':
+                in_tag = False
+        if word:
+            words.append(''.join(word))            
+        return words
     
     def breakLongLines(self, txt, char_limit):
        broken_source = []
@@ -1399,7 +1426,7 @@ class RlWriter(object):
            if len(line) < char_limit:
                broken_source.append(line)
            else:
-               words = re.findall('([ \t]+|[^ \t]+)', line)
+               words = self._getFrags(line)
                while words:
                    new_line = [words.pop(0)]
                    while words and (self._len(''.join(new_line)) + self._len(words[0])) < char_limit:
