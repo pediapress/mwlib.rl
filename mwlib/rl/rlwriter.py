@@ -1093,7 +1093,7 @@ class RlWriter(object):
             if not href:
                 return [t]
         else:
-            txt = unicode(urllib.unquote(obj.target.encode('utf-8')), 'utf-8')
+            txt = unicode(urllib.unquote(obj.target.encode('utf-8')), 'utf-8', 'replace')
             t = self.formatter.styleText(txt.strip())
 
         if not internallink:
