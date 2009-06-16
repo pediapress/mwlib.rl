@@ -410,9 +410,15 @@ class RlWriter(object):
         if self.numarticles == 0:
             elements.append(self.addDummyPage())
         got_chapter = False
-        for (i, item) in enumerate(metabook.get_item_list(self.env.metabook)):
+        item_list = metabook.get_item_list(self.env.metabook)
+        for (i, item) in enumerate(item_list):
             if item['type'] == 'chapter':
-                elements.extend(self.writeChapter(parser.Chapter(item['title'].strip())))
+                chapter = parser.Chapter(item['title'].strip())
+                if len(item_list) > i+1 and item_list[i+1]['type'] == 'article':
+                    chapter.next_article_title = item_list[i+1]['title']
+                else:
+                    chapter.next_article_title = ''
+                elements.extend(self.writeChapter(chapter))
                 got_chapter = True
             elif item['type'] == 'article':
                 art = self.buildArticle(item)
@@ -449,10 +455,11 @@ class RlWriter(object):
                 
         
     def renderBook(self, elements, output, coverimage=None):
-
         if pdfstyles.show_article_attribution:
+            elements.append(self._getPageTemplate(_('Article Sources and Contributors')))
             elements.append(NotAtTopPageBreak())
             elements.extend(self.writeArticleMetainfo())
+            elements.append(self._getPageTemplate(_('Image Sources, Licenses and Contributors')))
             elements.append(NotAtTopPageBreak())
             elements.extend(self.writeImageMetainfo())
 
@@ -542,6 +549,12 @@ class RlWriter(object):
         elements.append(PageBreak())
         return elements
 
+    def _getPageTemplate(self, title):
+        title = self.renderText(title)
+        page_template = WikiPage(title)
+        self.doc.addPageTemplates(page_template)
+        return NextPageTemplate(title.encode('utf-8'))
+        
     def writeChapter(self, chapter):
         hr = HRFlowable(width="80%", spaceBefore=6, spaceAfter=0, color=colors.black, thickness=0.5)
 
@@ -554,11 +567,8 @@ class RlWriter(object):
         chapter_para = Paragraph('%s%s' % (title, chapter_anchor), heading_style('chapter'))
         elements = []
 
-        if chapter.getChildNodesByClass(advtree.Article):
-            next_article_title = self.renderText(chapter.getChildNodesByClass(advtree.Article)[0].caption)
-            pt = WikiPage(next_article_title)
-            self.doc.addPageTemplates(pt)
-            elements.append(NextPageTemplate(next_article_title.encode('utf-8')))
+        elements.append(self._getPageTemplate(chapter.next_article_title))
+
         elements.extend([NotAtTopPageBreak(), hr, chapter_para, hr])
         elements.extend(self.renderChildren(chapter))       
         return elements
