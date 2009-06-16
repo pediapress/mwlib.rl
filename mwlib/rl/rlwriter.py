@@ -1093,10 +1093,8 @@ class RlWriter(object):
             if not href:
                 return [t]
         else:
-            txt = [href]
-            txt = [obj.target]
-            t = self.formatter.styleText(''.join(txt).strip()).encode('utf-8')
-            t = unicode(urllib.unquote(t), 'utf-8')
+            txt = unicode(urllib.unquote(obj.target.encode('utf-8')), 'utf-8')
+            t = self.formatter.styleText(txt.strip())
 
         if not internallink:
             if obj.target.startswith('#'): # intrapage links are filtered
@@ -1134,7 +1132,6 @@ class RlWriter(object):
         href = xmlescape(href)
         if (self.tableNestingLevel and len(href) > 30) and not self.ref_mode:
             return self.writeNamedURL(obj)
-        
         txt = '<link href="%s">%s</link>' % (href, display_text)
         return [txt]
     
