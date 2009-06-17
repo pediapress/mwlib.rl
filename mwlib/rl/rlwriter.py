@@ -481,6 +481,7 @@ class RlWriter(object):
                 print "memory after rendering:", linuxmem.memory()
         except:
             log.info('rendering failed - trying safe rendering')
+            raise
 
     def renderLicense(self):
         self.license_mode = True
@@ -525,6 +526,8 @@ class RlWriter(object):
         firstArticle=None
         firstArticleTitle = None
         for item in metabook.get_item_list(self.book):
+            if item['type'] == 'chapter': # dont set page header if pdf starts with a chapter
+                break
             if item['type'] == 'article':
                 firstArticle = xmlescape(item['title'])
                 firstArticleTitle = xmlescape(item.get('displaytitle', item['title']))
@@ -567,9 +570,10 @@ class RlWriter(object):
         chapter_para = Paragraph('%s%s' % (title, chapter_anchor), heading_style('chapter'))
         elements = []
 
+        elements.append(self._getPageTemplate(''))
+        elements.extend([NotAtTopPageBreak(), hr, chapter_para, hr])
         elements.append(self._getPageTemplate(chapter.next_article_title))
 
-        elements.extend([NotAtTopPageBreak(), hr, chapter_para, hr])
         elements.extend(self.renderChildren(chapter))       
         return elements
 
