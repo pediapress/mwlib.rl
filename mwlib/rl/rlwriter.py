@@ -396,6 +396,7 @@ class RlWriter(object):
         
         if status_callback:
             self.layout_status = status_callback.getSubRange(0, 75)
+            self.layout_status(status='layouting')
             self.render_status = status_callback.getSubRange(76, 100)
         else:
             self.layout_status = None
@@ -435,6 +436,7 @@ class RlWriter(object):
                 elements.extend(self.groupElements(art_elements))
                 
         try:
+            self.render_status(status="rendering")
             self.renderBook(elements, output, coverimage=coverimage)
             log.info('RENDERING OK')
             shutil.rmtree(self.tmpdir, ignore_errors=True)
