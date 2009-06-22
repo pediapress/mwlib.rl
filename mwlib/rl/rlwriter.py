@@ -681,7 +681,7 @@ class RlWriter(object):
         title = self.renderText(article.caption, break_long=True)
         log.info('rendering: %r' % article.caption)
         if self.layout_status:
-            self.layout_status(article=title)
+            self.layout_status(article=article.caption)
             self.articlecount += 1
         elements = []
         pt = WikiPage(title)
@@ -1462,12 +1462,14 @@ class RlWriter(object):
             source = self.breakLongLines(source, char_limit)
         txt = ''
         try:
-            txt = highlight(source, lexer, sourceFormatter)           
-            if n.vlist.get('enclose', False) == 'none': #FIXME: needs fix in parser before this can work
+            txt = highlight(source, lexer, sourceFormatter)
+            txt = unicode(txt, 'utf-8')
+            if n.vlist.get('enclose', False) == 'none':
                 txt = re.sub('<para.*?>', '', txt).replace('</para>', '')
                 return txt
             return [XPreformatted(txt, text_style(mode='source', in_table=self.tableNestingLevel))]            
         except:
+            traceback.print_exc()
             log.error('unsuitable lexer for source code language: %s - Lexer: %s' % (repr(src_lang), lexer.__class__.__name__))
             return []
 
