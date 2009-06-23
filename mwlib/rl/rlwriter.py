@@ -1548,6 +1548,13 @@ class RlWriter(object):
         return self.renderMixed(n, text_style(mode='center', in_table=self.tableNestingLevel))
 
     def writeDiv(self, n):    
+        if not n.children:
+            div_height = n.style.get('height')
+            if div_height:
+                height = styleutils.scaleLength(div_height)
+                if height:
+                    return [Spacer(0, height)]
+            return []
         if getattr(n, 'border', False) and not n.getParentNodesByClass(Table) and not n.getChildNodesByClass(advtree.PreFormatted):
             return self.renderMixed(n, text_style(mode='box', indent_lvl=self.paraIndentLevel, in_table=self.tableNestingLevel)) 
         else:
