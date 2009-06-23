@@ -1551,7 +1551,7 @@ class RlWriter(object):
         if not n.children:
             div_height = n.style.get('height')
             if div_height:
-                height = styleutils.scaleLength(div_height)
+                height = min(styleutils.scaleLength(div_height), pdfstyles.print_height-20)
                 if height:
                     return [Spacer(0, height)]
             return []
