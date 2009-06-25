@@ -1583,7 +1583,6 @@ class RlWriter(object):
 
     
     def writeItem(self, item, style='itemize', counterID=None, resetCounter=False):
-        txt = []
         items = []
         if resetCounter:
             seqReset = '<seqreset id="liCounter%d" base="0" />' % (counterID)
