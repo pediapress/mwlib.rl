@@ -525,18 +525,22 @@ class RlWriter(object):
 
         if not title:
             return []
-        firstArticle=None
-        firstArticleTitle = None
+        first_article=None
+        first_article_title = None
         for item in metabook.get_item_list(self.book):
             if item['type'] == 'chapter': # dont set page header if pdf starts with a chapter
                 break
             if item['type'] == 'article':
-                firstArticle = xmlescape(item['title'])
-                firstArticleTitle = xmlescape(item.get('displaytitle', item['title']))
+                first_article = item['title']
+                if first_article:
+                    first_article = xmlescape(item['title'])
+                first_article_title = item.get('displaytitle', item['title'])
+                if first_article_title:                    
+                    first_article_title = xmlescape(first_article_title)
                 break
         kwargs = {}
-        if firstArticle and self.env is not None:
-            src = self.env.wiki.getSource(firstArticle)
+        if first_article and self.env is not None:
+            src = self.env.wiki.getSource(first_article)
             if src:
                 if src.get('name'):
                     kwargs['wikititle'] = src['name']
@@ -547,10 +551,10 @@ class RlWriter(object):
         elements.append(Paragraph(self.formatter.cleanText(title), text_style(mode='booktitle')))
         if subtitle:
             elements.append(Paragraph(self.formatter.cleanText(subtitle), text_style(mode='booksubtitle')))
-        if not firstArticle:
+        if not first_article:
             return elements
-        self.doc.addPageTemplates(WikiPage(firstArticleTitle, **kwargs))
-        elements.append(NextPageTemplate(firstArticleTitle.encode('utf-8')))
+        self.doc.addPageTemplates(WikiPage(first_article_title, **kwargs))
+        elements.append(NextPageTemplate(first_article_title.encode('utf-8')))
         elements.append(PageBreak())
         return elements
 
