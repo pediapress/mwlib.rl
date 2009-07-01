@@ -391,7 +391,7 @@ class RlWriter(object):
 
 
     def writeBook(self, output, coverimage=None, status_callback=None):
-        self.numarticles = len(metabook.get_item_list(self.env.metabook, filter_type='article'))
+        self.numarticles = len(self.env.metabook.articles())
         self.articlecount = 0
         
         if status_callback:
@@ -411,7 +411,7 @@ class RlWriter(object):
         if self.numarticles == 0:
             elements.append(self.addDummyPage())
         got_chapter = False
-        item_list = metabook.get_item_list(self.env.metabook)
+        item_list = self.env.metabook.walk()
         for (i, item) in enumerate(item_list):
             if item.type == 'chapter':
                 chapter = parser.Chapter(item.title.strip())
@@ -499,7 +499,7 @@ class RlWriter(object):
         
 
     def getArticleIDs(self, parseTree):
-        for (i, item) in enumerate(metabook.get_item_list(self.env.metabook)):
+        for (i, item) in enumerate(self.env.metabook.walk()):
             if not item['type'] == 'article':
                 continue
             if 'displaytitle' in item:
@@ -527,7 +527,7 @@ class RlWriter(object):
             return []
         first_article=None
         first_article_title = None
-        for item in metabook.get_item_list(self.book):
+        for item in self.book.walk():
             if item['type'] == 'chapter': # dont set page header if pdf starts with a chapter
                 break
             if item['type'] == 'article':
