@@ -476,11 +476,11 @@ class RlWriter(object):
 
         try:
             gc.collect()
-            if self.debug and linuxmem:
-                print "memory after layouting:", linuxmem.memory()
+            if linuxmem:
+                log.info('memory usage after layouting:', linuxmem.memory())
             self.doc.build(elements)
-            if self.debug and linuxmem:
-                print "memory after rendering:", linuxmem.memory()
+            if linuxmem:
+                log.info('memory usage after reportlab rendering:', linuxmem.memory())
         except:
             log.info('rendering failed - trying safe rendering')
             raise
