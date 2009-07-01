@@ -66,10 +66,21 @@ def style(table):
     
     styleList = []
     styleList.append( ('VALIGN',(0,0),(-1,-1),'TOP') )
+
     if styleutils.tableBorder(table):
-        styleList.extend([('INNERGRID',(0,0),(-1,-1),0.25,colors.black),
-                          ('BOX',(0,0),(-1,-1),0.25,colors.black),
-                          ])
+        styleList.append(('BOX',(0,0),(-1,-1),0.25,colors.black))
+        for idx, row in enumerate(table):
+            if not getattr(row, 'suppress_bottom_border', False):
+                styleList.append(('LINEBELOW', (0, idx), (-1, idx), 0.25, colors.black))
+        for col in range(table.numcols):
+            styleList.append(('LINEAFTER', (col, 0), (col, -1), 0.25, colors.black))
+
+    for row_idx, row in enumerate(table):
+        for col_idx, cell in enumerate(row):
+            if getattr(cell, 'compact', False):
+                styleList.append(('TOPPADDING', (col_idx, row_idx), (col_idx, row_idx), 2))
+                styleList.append(('BOTTOMPADDING', (col_idx, row_idx), (col_idx, row_idx), 0))
+
     return styleList
 
 def scaleImages(data):
