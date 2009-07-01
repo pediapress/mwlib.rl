@@ -311,26 +311,26 @@ class RlWriter(object):
         return version
     
     def buildArticle(self, item):
-        art = self.env.wiki.getParsedArticle(title=item['title'], 
-                                        revision=item.get('revision'))
+        art = self.env.wiki.getParsedArticle(title=item.title, 
+                                             revision=item.revision)
         if not art:
             return # FIXME
         
-        art.url = self.env.wiki.getURL(item['title'], item.get('revision'))
-        art.authors = self.env.wiki.getAuthors(item['title'], revision=item.get('revision'))
-        if 'displaytitle' in item:
-            art.caption = item['displaytitle']
-        url = self.env.wiki.getURL(item['title'], item.get('revision'))                
+        art.url = self.env.wiki.getURL(item.title, item.revision)
+        art.authors = self.env.wiki.getAuthors(item.title, revision=item.revision)
+        if item.displaytitle is not None:
+            art.caption = item.displaytitle
+        url = self.env.wiki.getURL(item.title, item.revision)                
         if url:
             art.url = url
         else:
             art.url = None
-        source = self.env.wiki.getSource(item['title'], item.get('revision'))
+        source = self.env.wiki.getSource(item.title, item.revision)
         if source:
-            art.wikiurl = source.get('url', '')
+            art.wikiurl = source.url or ""
         else:
             art.wikiurl = None
-        art.authors = self.env.wiki.getAuthors(item['title'], revision=item.get('revision'))
+        art.authors = self.env.wiki.getAuthors(item.title, revision=item.revision)
 
             
         advtree.buildAdvancedTree(art)
@@ -358,7 +358,7 @@ class RlWriter(object):
                                  leftMargin=pdfstyles.page_margin_left,
                                  rightMargin=pdfstyles.page_margin_right,
                                  bottomMargin=pdfstyles.page_margin_bottom,
-                                 title=self.book.get('title'),
+                                 title=self.book.title,
                                  keywords=version,
                                  status_callback=self.render_status,
                                  tocCallback=tocCallback,
@@ -413,15 +413,15 @@ class RlWriter(object):
         got_chapter = False
         item_list = metabook.get_item_list(self.env.metabook)
         for (i, item) in enumerate(item_list):
-            if item['type'] == 'chapter':
-                chapter = parser.Chapter(item['title'].strip())
-                if len(item_list) > i+1 and item_list[i+1]['type'] == 'article':
+            if item.type == 'chapter':
+                chapter = parser.Chapter(item.title.strip())
+                if len(item_list) > i+1 and item_list[i+1].type == 'article':
                     chapter.next_article_title = item_list[i+1]['title']
                 else:
                     chapter.next_article_title = ''
                 elements.extend(self.writeChapter(chapter))
                 got_chapter = True
-            elif item['type'] == 'article':
+            elif item.type == 'article':
                 art = self.buildArticle(item)
                 if not art:
                     continue
@@ -520,8 +520,8 @@ class RlWriter(object):
    
     def writeTitlePage(self, coverimage=None):       
         # FIXME: clean this up. there seems to be quite a bit of deprecated here
-        title = self.book.get('title')
-        subtitle =  self.book.get('subtitle')
+        title = self.book.title
+        subtitle =  self.book.subtitle
 
         if not title:
             return []
