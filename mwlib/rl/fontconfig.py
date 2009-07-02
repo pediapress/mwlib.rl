@@ -43,7 +43,7 @@ fonts = [
      'type': 'cid',
      },
     {'name': 'AR PL UMing HK',
-     'code_points': ['CJK Unified Ideographs', 'CJK Strokes', 'CJK Unified Ideographs Extension A', 'Halfwidth and Fullwidth Forms', 'CJK Compatibility Ideographs', 'Small Form Variants', 'Low Surrogates', 'CJK Radicals Supplement', 'Hiragana', 'Katakana', 'Bopomofo', 'Bopomofo Extended'] ,
+     'code_points': ['CJK Unified Ideographs', 'CJK Strokes', 'CJK Unified Ideographs Extension A', 'Halfwidth and Fullwidth Forms', 'CJK Compatibility Ideographs', 'Small Form Variants', 'Low Surrogates', 'CJK Radicals Supplement', 'Hiragana', 'Katakana', 'Bopomofo', 'Bopomofo Extended', 'CJK Symbols and Punctuation'] ,
      'file_names': ['arphic/uming.ttc'],
      },   
     {'name': 'Ezra SIL',
