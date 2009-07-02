@@ -27,7 +27,7 @@ fonts = [
      'file_names': ['ttf-dejavu/DejaVuSerif.ttf', 'ttf-dejavu/DejaVuSerif-Bold.ttf', 'ttf-dejavu/DejaVuSerif-Italic.ttf', 'ttf-dejavu/DejaVuSerif-BoldItalic.ttf'],
      },
     {'name': 'DejaVuSans',
-     'code_points': [] ,
+     'code_points': ['IPA Extensions', 'Spacing Modifier Letters', 'Combining Diacritical Marks', 'Cyrillic Supplement', 'Armenian', 'NKo', 'Lao', 'Georgian', 'Unified Canadian Aboriginal Syllabics', 'Ogham', 'Phonetic Extensions', 'Phonetic Extensions Supplement', 'Combining Diacritical Marks Supplement', 'Latin Extended Additional', 'General Punctuation', 'Superscripts and Subscripts', 'Currency Symbols', 'Combining Diacritical Marks for Symbols', 'Letterlike Symbols', 'Number Forms', 'Arrows', 'Mathematical Operators', 'Miscellaneous Technical', 'Control Pictures', 'Enclosed Alphanumerics', 'Block Elements', 'Geometric Shapes', 'Miscellaneous Symbols', 'Dingbats', 'Miscellaneous Mathematical Symbols-A', 'Supplemental Arrows-A', 'Braille Patterns', 'Miscellaneous Mathematical Symbols-B', 'Supplemental Mathematical Operators', 'Miscellaneous Symbols and Arrows', 'Latin Extended-C', 'Tifinagh', 'Supplemental Punctuation', 'Yijing Hexagram Symbols', 'Cyrillic Extended-B', 'Modifier Tone Letters', 'Latin Extended-D', 'Variation Selectors', 'Combining Half Marks', 'Specials', 'Tai Xuan Jing Symbols', 'Mathematical Alphanumeric Symbols'] ,
      'file_names': ['ttf-dejavu/DejaVuSans.ttf', 'ttf-dejavu/DejaVuSans-Bold.ttf', 'ttf-dejavu/DejaVuSans-Oblique.ttf', 'ttf-dejavu/DejaVuSans-BoldOblique.ttf'],
      },
     {'name': 'DejaVuSansMono',
