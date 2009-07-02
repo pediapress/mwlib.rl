@@ -462,7 +462,8 @@ class RlWriter(object):
             elements.append(NotAtTopPageBreak())
             elements.extend(self.writeArticleMetainfo())
             elements.append(self._getPageTemplate(_('Image Sources, Licenses and Contributors')))
-            elements.append(NotAtTopPageBreak())
+            if self.numarticles > 1:
+                elements.append(NotAtTopPageBreak())
             elements.extend(self.writeImageMetainfo())
 
         elements.extend(self.renderLicense())
@@ -642,7 +643,7 @@ class RlWriter(object):
 
     def writeArticleMetainfo(self):
         elements = []
-        elements.append(Paragraph(_('Article Sources and Contributors'), heading_style(mode='article')))
+        elements.append(Paragraph(_('<b>Article Sources and Contributors</b>'), heading_style(mode='article')))
         for title, url, authors in self.article_meta_info:
             authors_text = self._filterAnonIpEdits(authors)
             txt = '<b>%(title)s</b> &nbsp;<i>%(source_label)s</i>: %(source)s &nbsp;<i>%(contribs_label)s</i>: %(contribs)s ' % {
@@ -659,7 +660,7 @@ class RlWriter(object):
         if not self.img_meta_info:
             return []
         elements = []
-        elements.append(Paragraph(_('Image Sources, Licenses and Contributors'), heading_style(mode='article')))
+        elements.append(Paragraph(_('<b>Image Sources, Licenses and Contributors</b>'), heading_style(mode='article')))
         for _id, title, url, license, authors in sorted(self.img_meta_info.values()):
             authors_text = self._filterAnonIpEdits(authors)
             if not license:
@@ -693,7 +694,11 @@ class RlWriter(object):
             self.doc.addPageTemplates(pt)
             elements.append(NextPageTemplate(title.encode('utf-8'))) # pagetemplate.id cant handle unicode
             # FIXME remove the getPrevious below
-            if not getattr(article, 'has_preceeding_chapter', False)  or isinstance(article.getPrevious(), advtree.Article) or self.license_mode:
+            if self.license_mode:
+                if self.numarticles > 1:
+                    elements.append(NotAtTopPageBreak())
+            elif not getattr(article, 'has_preceeding_chapter', False) \
+                   or isinstance(article.getPrevious(), advtree.Article):              
                 if pdfstyles.page_break_after_article: # if configured and preceded by an article
                     elements.append(NotAtTopPageBreak())
                 elif miscutils.articleStartsWithInfobox(article, max_text_until_infobox=100):
@@ -717,12 +722,7 @@ class RlWriter(object):
         else:
             article_id = None
             
-        if self.license_mode:            
-            elements.append(NotAtTopPageBreak())
-            heading_para = Paragraph('<b>%s</b>%s' % (title, heading_anchor), heading_style("licensearticle"))
-        else:
-            heading_para = Paragraph('<b>%s</b>%s' % (title, heading_anchor), heading_style("article"))
-            
+        heading_para = Paragraph('<b>%s</b>%s' % (title, heading_anchor), heading_style("article"))            
         elements.append(heading_para)
 
         elements.append(HRFlowable(width='100%', hAlign='LEFT', thickness=1, spaceBefore=0, spaceAfter=10, color=colors.black))

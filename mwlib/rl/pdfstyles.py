@@ -221,17 +221,17 @@ def text_style(mode='p', indent_lvl=0, in_table=0, relsize='normal', text_align=
         style.alignment = TA_LEFT
 
     if mode == 'license':
-        style.fontSize = 6
+        style.fontSize = 5
         style.leading = 1
         style.spaceBefore = 0
 
     if mode == 'licenselist':
-        style.fontSize = 6
+        style.fontSize = 5
         style.leading = 1
         style.spaceBefore = 0
         style.bulletIndent = list_left_indent * max(0, indent_lvl-1)
         style.leftIndent = list_left_indent * indent_lvl
-        style.bulletFontSize = 6
+        style.bulletFontSize = 5
         
     return style
 
@@ -290,16 +290,10 @@ def heading_style(mode='chapter', lvl=1):
         style.flowable = False
         style.spaceAfter = 0
     elif mode == "license":
-        style.fontSize = 8
+        style.fontSize = 7
         style.leading = 5
         style.spaceAfter = 0
         style.spaceBefore = 2
-
-    elif mode == "licensearticle":
-        style.fontSize = 10
-        style.leading = 5
-        style.spaceAfter = 0
-        style.spaceBefore = 5
 
     style.prevent_post_pagebreak = True
     return style
