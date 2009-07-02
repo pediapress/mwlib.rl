@@ -466,7 +466,8 @@ class RlWriter(object):
                 elements.append(NotAtTopPageBreak())
             elements.extend(self.writeImageMetainfo())
 
-        elements.extend(self.renderLicense())
+        if not self.debug:
+            elements.extend(self.renderLicense())
                    
         if not self.failSaveRendering:
             self.doc.bookmarks = self.bookmarks
