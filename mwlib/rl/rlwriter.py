@@ -390,9 +390,10 @@ class RlWriter(object):
         return Paragraph(' ', text_style())
 
 
-    def writeBook(self, output, coverimage=None, status_callback=None):
+    def writeBook(self, output, coverimage=None, status_callback=None):        
         self.numarticles = len(self.env.metabook.articles())
         self.articlecount = 0
+        self.getArticleIDs()
         
         if status_callback:
             self.layout_status = status_callback.getSubRange(0, 75)
@@ -500,12 +501,14 @@ class RlWriter(object):
         return elements
         
 
-    def getArticleIDs(self, parseTree):
+    def getArticleIDs(self):
         for (i, item) in enumerate(self.env.metabook.walk()):
             if not item['type'] == 'article':
                 continue
             if 'displaytitle' in item:
                 title = item['displaytitle']
+            elif 'title' in item:
+                title = item['title']
             else:
                 title = None
             source = self.env.wiki.getSource(item['title'], item.get('revision'))
@@ -1078,7 +1081,7 @@ class RlWriter(object):
         """
 
         href = obj.url 
-
+        
         #looking for internal links
         internallink = False
         if isinstance(obj, advtree.ArticleLink) and obj.url:            
@@ -1089,7 +1092,7 @@ class RlWriter(object):
             article_id = self.buildArticleID(wikiurl, obj.full_target)
             if article_id in self.articleids:
                 internallink = True
-        
+       
         if not href:
             log.warning('no link target specified')
             if not obj.children:
