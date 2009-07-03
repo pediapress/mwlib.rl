@@ -502,18 +502,13 @@ class RlWriter(object):
         
 
     def getArticleIDs(self):
-        for (i, item) in enumerate(self.env.metabook.walk()):
-            if not item['type'] == 'article':
+        for item in self.env.metabook.walk():
+            if item.type != 'article':
                 continue
-            if 'title' in item:
-                title = item['title']
-            else:
-                title = None
-            source = self.env.wiki.getSource(item['title'], item.get('revision'))
-            if source:
-                wikiurl = source.get('url', '')
-            else:
-                wikiurl = None
+            title = item.title
+            
+            source = self.env.wiki.getSource(item.title, item.revision)
+            wikiurl = source.url
             article_id = self.buildArticleID(wikiurl, title)
             self.articleids.append(article_id)
 
