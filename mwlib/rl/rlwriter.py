@@ -311,26 +311,27 @@ class RlWriter(object):
         return version
     
     def buildArticle(self, item):
-        art = self.env.wiki.getParsedArticle(title=item.title, 
+        mywiki = item.wiki
+        art = mywiki.getParsedArticle(title=item.title, 
                                              revision=item.revision)
         if not art:
             return # FIXME
         
-        art.url = self.env.wiki.getURL(item.title, item.revision)
-        art.authors = self.env.wiki.getAuthors(item.title, revision=item.revision)
+        art.url = mywiki.getURL(item.title, item.revision)
+        art.authors = mywiki.getAuthors(item.title, revision=item.revision)
         if item.displaytitle is not None:
             art.caption = item.displaytitle
-        url = self.env.wiki.getURL(item.title, item.revision)                
+        url = mywiki.getURL(item.title, item.revision)                
         if url:
             art.url = url
         else:
             art.url = None
-        source = self.env.wiki.getSource(item.title, item.revision)
+        source = mywiki.getSource(item.title, item.revision)
         if source:
             art.wikiurl = source.url or ""
         else:
             art.wikiurl = None
-        art.authors = self.env.wiki.getAuthors(item.title, revision=item.revision)
+        art.authors = mywiki.getAuthors(item.title, revision=item.revision)
 
             
         advtree.buildAdvancedTree(art)
@@ -507,7 +508,7 @@ class RlWriter(object):
                 continue
             title = item.title
             
-            source = self.env.wiki.getSource(item.title, item.revision)
+            source = item.wiki.getSource(item.title, item.revision)
             wikiurl = source.url
             article_id = self.buildArticleID(wikiurl, title)
             self.articleids.append(article_id)
