@@ -492,8 +492,8 @@ class RlWriter(object):
     def renderLicense(self):
         self.license_mode = True
         elements = []
-        for license in self.env.wiki.getLicenses():
-            license_node = uparser.parseString(title=license['title'], raw=license['wikitext'], wikidb=self.env.wiki)
+        for license in self.env.getLicenses():
+            license_node = uparser.parseString(title=license['title'], raw=license['wikitext'], wikidb=license._env.wiki)
             advtree.buildAdvancedTree(license_node)
             self.tc.tree = license_node
             self.tc.cleanAll()
