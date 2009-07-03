@@ -505,9 +505,7 @@ class RlWriter(object):
         for (i, item) in enumerate(self.env.metabook.walk()):
             if not item['type'] == 'article':
                 continue
-            if 'displaytitle' in item:
-                title = item['displaytitle']
-            elif 'title' in item:
+            if 'title' in item:
                 title = item['title']
             else:
                 title = None
