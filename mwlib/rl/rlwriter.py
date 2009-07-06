@@ -418,7 +418,7 @@ class RlWriter(object):
             if item.type == 'chapter':
                 chapter = parser.Chapter(item.title.strip())
                 if len(item_list) > i+1 and item_list[i+1].type == 'article':
-                    chapter.next_article_title = item_list[i+1]['title']
+                    chapter.next_article_title = item_list[i+1].title
                 else:
                     chapter.next_article_title = ''
                 elements.extend(self.writeChapter(chapter))
@@ -527,13 +527,13 @@ class RlWriter(object):
         first_article=None
         first_article_title = None
         for item in self.book.walk():
-            if item['type'] == 'chapter': # dont set page header if pdf starts with a chapter
+            if item.type == 'chapter': # dont set page header if pdf starts with a chapter
                 break
-            if item['type'] == 'article':
-                first_article = item['title']
+            if item.type == 'article':
+                first_article = item.title
                 if first_article:
-                    first_article = xmlescape(item['title'])
-                first_article_title = item.get('displaytitle', item['title'])
+                    first_article = xmlescape(item.title)
+                first_article_title = item.displaytitle or item.title
                 if first_article_title:                    
                     first_article_title = xmlescape(first_article_title)
                 break
