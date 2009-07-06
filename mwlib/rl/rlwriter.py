@@ -425,6 +425,8 @@ class RlWriter(object):
                 got_chapter = True
             elif item.type == 'article':
                 art = self.buildArticle(item)
+                self.imgDB = item.images
+                self.license_checker.image_db = self.imgDB
                 if not art:
                     continue
                 if got_chapter:
