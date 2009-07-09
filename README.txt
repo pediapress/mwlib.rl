@@ -63,6 +63,24 @@ Any changes need to be done with care in order not to break things!
 Check the pdfstyles.py file for more information.
 
 Also check the customnodetransformer.py file for more options for customization.
+
+Font configuration:
+-------------------
+
+The font configuration can be changed in fontconfig.py. For the default configuration to 
+work properly it is necessary to install a couple of fonts. If these fonts are not installed 
+built-in Adone fonts are used where necessary.
+
+The following fonts need to be installed:
+AR PL UMing HK, Ezra SIL, Nazli, UnBatang, Arundina Serif, Lohit Telugu, Sarai, Lohit Punjabi, 
+Lohit Oriya, AnjaliOldLipi, Kedage, LikhanNormal, Lohit Tamil, Linux Libertine
+
+These fonts are contained in the following debian (meta-)packages:
+ttf-indic-fonts, ttf-unfonts, ttf-farsiweb, ttf-arphic-uming, ttf-sil-ezra, ttf-thai-arundina, 
+linux-libertine
+
+After the font installation a directory "mwlibfonts" needs to be created in the home directory.
+All fonts need to be symblinked to the appropriate directories (see fontconfig.py).
     
 Contact/Further Information
 ======================================================================
