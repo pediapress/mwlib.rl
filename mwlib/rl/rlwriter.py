@@ -462,7 +462,7 @@ class RlWriter(object):
                 
         
     def renderBook(self, elements, output, coverimage=None):
-        if pdfstyles.show_article_attribution and not self.debug:
+        if pdfstyles.show_article_attribution:
             elements.append(self._getPageTemplate(_('Article Sources and Contributors')))
             elements.append(NotAtTopPageBreak())
             elements.extend(self.writeArticleMetainfo())
