@@ -22,7 +22,7 @@ try:
     from hashlib import md5
 except ImportError:
     from md5 import md5
-    
+
 from xml.sax.saxutils import escape as xmlescape
 from PIL import Image as PilImage
 
@@ -37,12 +37,14 @@ try:
 except ImportError:
     linuxmem = None
 
+
 def _check_reportlab():
     from reportlab.pdfbase.pdfdoc import PDFDictionary
     try:
         PDFDictionary.__getitem__
     except AttributeError:
-        raise ImportError("you need to have the svn version of reportlab installed")
+        raise ImportError(
+            "you need to have the svn version of reportlab installed")
 _check_reportlab()
 
 
@@ -71,7 +73,7 @@ from pdfstyles import text_style, heading_style, table_style
 from pdfstyles import serif_font, mono_font
 from pdfstyles import print_width, print_height
 from pdfstyles import tableOverflowTolerance
-import pdfstyles 
+import pdfstyles
 
 from mwlib.writer.imageutils import ImageUtils
 from mwlib.writer import miscutils, styleutils
@@ -106,6 +108,7 @@ except ImportError:
 from mwlib import advtree, writerbase
 from mwlib.treecleaner import TreeCleaner
 
+
 def flatten(x):
     result = []
     for el in x:
@@ -113,11 +116,12 @@ def flatten(x):
             result.extend(flatten(el))
         else:
             result.append(el)
-    return result    
+    return result
+
 
 def isInline(objs):
     for obj in flatten(objs):
-        if not (isinstance(obj, unicode) or isinstance(obj,str)):
+        if not (isinstance(obj, unicode) or isinstance(obj, str)):
             return False
     return True
 
@@ -141,12 +145,14 @@ def buildPara(txtList, style=text_style(), txt_style=None):
     else:
         return []
 
+
 class ReportlabError(Exception):
+
     def __init__(self, value):
         self.value = value
+
     def __str__(self):
         return repr(self.value)
-    
 
 
 class RlWriter(object):
@@ -160,7 +166,7 @@ class RlWriter(object):
             except IOError, exc:
                 log.warn(str(exc))
         translation.install(unicode=True)
-        
+
         self.env = env
         if self.env is not None:
             self.book = self.env.metabook
@@ -171,7 +177,7 @@ class RlWriter(object):
         self.strict = strict
         self.debug = debug
         self.test_mode = test_mode
-        
+
         self.license_checker = LicenseChecker(image_db=self.imgDB, filter_type='blacklist')
         self.license_checker.readLicensesCSV()
 
@@ -180,7 +186,7 @@ class RlWriter(object):
 
         self.font_switcher = fontconfig.RLFontSwitcher()
         self.font_switcher.font_paths = fontconfig.font_paths
-        self.font_switcher.registerDefaultFont(pdfstyles.default_font)        
+        self.font_switcher.registerDefaultFont(pdfstyles.default_font)
         self.font_switcher.registerFontDefinitionList(fontconfig.fonts)
         self.font_switcher.registerReportlabFonts(fontconfig.fonts)
 
@@ -189,8 +195,7 @@ class RlWriter(object):
 
         self.cnt = CustomNodeTransformer()
         self.formatter = RLFormatter(font_switcher=self.font_switcher)
-        
-        
+
         self.image_utils = ImageUtils(pdfstyles.print_width,
                                       pdfstyles.print_height,
                                       pdfstyles.img_default_thumb_width,
@@ -200,14 +205,14 @@ class RlWriter(object):
                                       pdfstyles.img_inline_scale_factor,
                                       pdfstyles.print_width_px,
                                       )
-        
+
         self.references = []
         self.ref_name_map = {}
         self.listIndentation = 0  # nesting level of lists
         self.listCounterID = 1
         self.tmpImages = set()
         self.namedLinkCount = 1
-        self.tableNestingLevel = 0       
+        self.tableNestingLevel = 0
         self.tablecount = 0
         self.paraIndentLevel = 0
 
@@ -221,7 +226,7 @@ class RlWriter(object):
         self.failSaveRendering = False #FIXME remove
         self.fail_safe_rendering = False
 
-        self.sourceCount = 0        
+        self.sourceCount = 0
         self.currentColCount = 0
         self.currentArticle = None
         self.math_cache_dir = mathcache or os.environ.get('MWLIBRL_MATHCACHE')
@@ -229,7 +234,7 @@ class RlWriter(object):
         self.bookmarks = []
         self.colwidth = 0
 
-        self.articleids = []        
+        self.articleids = []
         self.layout_status = None
         self.enable_toc = enable_toc
         self.toc_entries = []
@@ -237,11 +242,10 @@ class RlWriter(object):
         self.reference_list_rendered = False
         self.article_meta_info = []
         self.url_map = {}
-        
-    
+
     def ignore(self, obj):
         return []
-        
+
     def groupElements(self, elements):
         """Group reportlab flowables into KeepTogether flowables
         to achieve meaningful pagebreaks
@@ -251,8 +255,9 @@ class RlWriter(object):
         """
         groupedElements = []
         group = []
+
         def isHeading(e):
-            return isinstance(e, HRFlowable) or (hasattr(e, 'style') and  e.style.name.startswith('heading_style') )
+            return isinstance(e, HRFlowable) or (hasattr(e, 'style') and e.style.name.startswith('heading_style'))
         groupHeight = 0
         while elements:
             if not group:
@@ -264,11 +269,11 @@ class RlWriter(object):
                 last = group[-1]
                 if not isHeading(last):
                     try:
-                        w,h = last.wrap(print_width, print_height)
+                        w, h = last.wrap(print_width, print_height)
                     except:
                         h = 0
                     groupHeight += h
-                    if groupHeight > print_height / 10 or isinstance(elements[0], NotAtTopPageBreak): # 10 % of page_height               
+                    if groupHeight > print_height / 10 or isinstance(elements[0], NotAtTopPageBreak): # 10 % of page_height
                         groupedElements.append(SmartKeepTogether(group))
                         group = []
                         groupHeight = 0
@@ -279,9 +284,8 @@ class RlWriter(object):
         if group:
             groupedElements.append(SmartKeepTogether(group))
 
-        return groupedElements           
+        return groupedElements
 
-                                
     def write(self, obj):
         m = "write" + obj.__class__.__name__
         if not hasattr(self, m):
@@ -302,7 +306,7 @@ class RlWriter(object):
             }
         except NameError:
             extversion = 'mwlib.ext not used'
-            
+
         version = _('mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %(mwlibextversion)s') % {
             'mwlibrlversion': rlwriterversion,
             'mwlibversion': mwlibversion,
@@ -458,7 +462,7 @@ class RlWriter(object):
                 
         
     def renderBook(self, elements, output, coverimage=None):
-        if pdfstyles.show_article_attribution:
+        if pdfstyles.show_article_attribution and not self.debug:
             elements.append(self._getPageTemplate(_('Article Sources and Contributors')))
             elements.append(NotAtTopPageBreak())
             elements.extend(self.writeArticleMetainfo())
