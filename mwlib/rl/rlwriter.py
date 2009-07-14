@@ -315,26 +315,27 @@ class RlWriter(object):
         return version
     
     def buildArticle(self, item):
-        art = self.env.wiki.getParsedArticle(title=item.title, 
+        mywiki = item.wiki
+        art = mywiki.getParsedArticle(title=item.title, 
                                              revision=item.revision)
         if not art:
             return # FIXME
         
-        art.url = self.env.wiki.getURL(item.title, item.revision)
-        art.authors = self.env.wiki.getAuthors(item.title, revision=item.revision)
+        art.url = mywiki.getURL(item.title, item.revision)
+        art.authors = mywiki.getAuthors(item.title, revision=item.revision)
         if item.displaytitle is not None:
             art.caption = item.displaytitle
-        url = self.env.wiki.getURL(item.title, item.revision)                
+        url = mywiki.getURL(item.title, item.revision)                
         if url:
             art.url = url
         else:
             art.url = None
-        source = self.env.wiki.getSource(item.title, item.revision)
+        source = mywiki.getSource(item.title, item.revision)
         if source:
             art.wikiurl = source.url or ""
         else:
             art.wikiurl = None
-        art.authors = self.env.wiki.getAuthors(item.title, revision=item.revision)
+        art.authors = mywiki.getAuthors(item.title, revision=item.revision)
 
             
         advtree.buildAdvancedTree(art)
@@ -421,13 +422,15 @@ class RlWriter(object):
             if item.type == 'chapter':
                 chapter = parser.Chapter(item.title.strip())
                 if len(item_list) > i+1 and item_list[i+1].type == 'article':
-                    chapter.next_article_title = item_list[i+1]['title']
+                    chapter.next_article_title = item_list[i+1].title
                 else:
                     chapter.next_article_title = ''
                 elements.extend(self.writeChapter(chapter))
                 got_chapter = True
             elif item.type == 'article':
                 art = self.buildArticle(item)
+                self.imgDB = item.images
+                self.license_checker.image_db = self.imgDB
                 if not art:
                     continue
                 if got_chapter:
@@ -495,8 +498,8 @@ class RlWriter(object):
     def renderLicense(self):
         self.license_mode = True
         elements = []
-        for license in self.env.wiki.getLicenses():
-            license_node = uparser.parseString(title=license['title'], raw=license['wikitext'], wikidb=self.env.wiki)
+        for license in self.env.getLicenses():
+            license_node = uparser.parseString(title=license['title'], raw=license['wikitext'], wikidb=license._wiki)
             advtree.buildAdvancedTree(license_node)
             self.tc.tree = license_node
             self.tc.cleanAll()
@@ -506,18 +509,13 @@ class RlWriter(object):
         
 
     def getArticleIDs(self):
-        for (i, item) in enumerate(self.env.metabook.walk()):
-            if not item['type'] == 'article':
+        for item in self.env.metabook.walk():
+            if item.type != 'article':
                 continue
-            if 'title' in item:
-                title = item['title']
-            else:
-                title = None
-            source = self.env.wiki.getSource(item['title'], item.get('revision'))
-            if source:
-                wikiurl = source.get('url', '')
-            else:
-                wikiurl = None
+            title = item.title
+            
+            source = item.wiki.getSource(item.title, item.revision)
+            wikiurl = source.url
             article_id = self.buildArticleID(wikiurl, title)
             self.articleids.append(article_id)
 
@@ -535,13 +533,13 @@ class RlWriter(object):
         first_article=None
         first_article_title = None
         for item in self.book.walk():
-            if item['type'] == 'chapter': # dont set page header if pdf starts with a chapter
+            if item.type == 'chapter': # dont set page header if pdf starts with a chapter
                 break
-            if item['type'] == 'article':
-                first_article = item['title']
+            if item.type == 'article':
+                first_article = item.title
                 if first_article:
-                    first_article = xmlescape(item['title'])
-                first_article_title = item.get('displaytitle', item['title'])
+                    first_article = xmlescape(item.title)
+                first_article_title = item.displaytitle or item.title
                 if first_article_title:                    
                     first_article_title = xmlescape(first_article_title)
                 break
