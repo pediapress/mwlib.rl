@@ -35,6 +35,10 @@ mono_font = "DejaVuSansMono"
 default_font = 'DejaVuSerif'
 
 
+from reportlab import rl_config
+rl_config.canvas_basefontname = default_font
+
+
 ### TABLE CONFIG
 
 tableOverflowTolerance = 20  # max width overflow for tables    unit: pt 
