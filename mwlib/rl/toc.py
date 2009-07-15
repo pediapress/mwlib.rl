@@ -34,7 +34,7 @@ class TocRenderer(object):
         tocpath = os.path.join(outpath, 'toc.pdf')
         finalpath = os.path.join(outpath, 'final.pdf')
         self.renderToc(tocpath, toc_entries)
-        self.combinePdfs(pdfpath, tocpath, finalpath)
+        return self.combinePdfs(pdfpath, tocpath, finalpath)
 
     def _getColWidths(self):
         p = Paragraph('<b>%d</b>' % 9999, pdfstyles.text_style(mode='toc_article', text_align='right'))        
@@ -59,13 +59,16 @@ class TocRenderer(object):
 
     def combinePdfs(self, pdfpath, tocpath, finalpath):
 
-        cmd =  ['pdftk',
+        cmd =  ['pdftkX',
                 'A=%s' % pdfpath,
                 'B=%s' % tocpath,
                 'cat', 'A1', 'B', 'A2-end',
                 'output','%s' % finalpath,
                 ]
-        retcode = subprocess.call(cmd)
-        if retcode != 0:
-            raise Exception('pdf and toc could not be combined')
-        shutil.move(finalpath, pdfpath)
+        try:
+            retcode = subprocess.call(cmd)
+        except OSError:
+            retcode = 1
+        if retcode == 0:
+            shutil.move(finalpath, pdfpath)
+        return retcode

@@ -157,7 +157,7 @@ class ReportlabError(Exception):
 
 class RlWriter(object):
 
-    def __init__(self, env=None, strict=False, debug=False, mathcache=None, lang=None, enable_toc=False, test_mode=False):
+    def __init__(self, env=None, strict=False, debug=False, mathcache=None, lang=None, test_mode=False):
         localedir = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'locale')
         translation = gettext.NullTranslations()
         if lang:
@@ -236,7 +236,6 @@ class RlWriter(object):
 
         self.articleids = []
         self.layout_status = None
-        self.enable_toc = enable_toc
         self.toc_entries = []
         self.toc_renderer = TocRenderer()
         self.reference_list_rendered = False
@@ -354,7 +353,7 @@ class RlWriter(object):
     
     def initReportlabDoc(self, output, status_callback=None):
         version = self.getVersion()
-        if self.enable_toc:
+        if pdfstyles.render_toc:
             tocCallback = self.tocCallback
         else:
             tocCallback = None
@@ -491,8 +490,10 @@ class RlWriter(object):
             if linuxmem:
                 log.info('memory usage after layouting:', linuxmem.memory())
             self.doc.build(elements)
-            if self.enable_toc:
-                self.toc_renderer.build(output, self.toc_entries)
+            if pdfstyles.render_toc and self.numarticles > 1:
+                err = self.toc_renderer.build(output, self.toc_entries)
+                if err:
+                    log.warning('TOC not rendered. Probably pdftk is not properly installed. returncode: %r' % err)
             if linuxmem:
                 log.info('memory usage after reportlab rendering:', linuxmem.memory())
         except:
@@ -1951,9 +1952,8 @@ def writer(env, output,
     debug=False,
     mathcache=None,
     lang=None,
-    enable_toc=False,
 ):
-    r = RlWriter(env, strict=strict, debug=debug, mathcache=mathcache, lang=lang, enable_toc=enable_toc)
+    r = RlWriter(env, strict=strict, debug=debug, mathcache=mathcache, lang=lang)
     if coverimage is None and env.configparser.has_section('pdf'):
         coverimage = env.configparser.get('pdf', 'coverimage', None)
 
@@ -1983,8 +1983,4 @@ writer.options = {
         'param': 'LANGUAGE',
         'help': 'use translated strings in given language (defaults to "en" for English)',
     },
-    'enable_toc': {
-        'help':'render Table of Contents - this is still highly EXPERIMENTAL',
-    },    
-    
 }

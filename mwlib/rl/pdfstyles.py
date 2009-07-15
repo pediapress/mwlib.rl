@@ -44,6 +44,12 @@ rl_config.canvas_basefontname = default_font
 tableOverflowTolerance = 20  # max width overflow for tables    unit: pt 
 
 
+#### TITLE PAGE
+
+# if enabled a table of contents is printed at the beginning of the pdf
+# note that no TOC is generated if only one article is rendered
+render_toc = True 
+
 ######### PAGE CONFIGURATION
 
 page_width, page_height = A4   # roughly: pW= 21*cm pH=29*cm
