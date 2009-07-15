@@ -59,7 +59,7 @@ class TocRenderer(object):
 
     def combinePdfs(self, pdfpath, tocpath, finalpath):
 
-        cmd =  ['pdftkX',
+        cmd =  ['pdftk',
                 'A=%s' % pdfpath,
                 'B=%s' % tocpath,
                 'cat', 'A1', 'B', 'A2-end',
