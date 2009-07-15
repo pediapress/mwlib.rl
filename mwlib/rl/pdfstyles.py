@@ -236,7 +236,21 @@ def text_style(mode='p', indent_lvl=0, in_table=0, relsize='normal', text_align=
         style.bulletIndent = list_left_indent * max(0, indent_lvl-1)
         style.leftIndent = list_left_indent * indent_lvl
         style.bulletFontSize = 5
+
+    if mode == 'toc_group':
+        style.fontSize = 18
+        style.leading = 22
+
+    if mode == 'toc_chapter':
+        style.fontSize = 14
+        style.leading = 18
         
+    if mode == 'toc_article':
+        style.fontSize = 10
+        style.leading = 14
+        style.leftIndent = para_left_indent
+        style.spaceBefore =0
+
     return style
 
 table_style = {'spaceBefore': 0.25*cm,
@@ -267,7 +281,7 @@ class BaseHeadingStyle(ParagraphStyle):
         #self.allowWidows = 0
         #self.allowOrphans = 0
         
-def heading_style(mode='chapter', lvl=1):
+def heading_style(mode='chapter', lvl=1, text_align=None):
 
     style = BaseHeadingStyle(name='heading_style_%s_%d' % (mode, lvl))
 
@@ -299,6 +313,15 @@ def heading_style(mode='chapter', lvl=1):
         style.spaceAfter = 0
         style.spaceBefore = 2
 
+    if text_align == 'left':
+        style.alignment = TA_LEFT
+    elif text_align == 'center':
+        style.alignment = TA_CENTER
+    elif text_align == 'right':
+        style.alignment = TA_RIGHT
+    elif text_align == 'justify':
+        style.alignment = TA_JUSTIFY
+    
     style.prevent_post_pagebreak = True
     return style
     

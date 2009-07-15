@@ -304,3 +304,14 @@ class SmartKeepTogether(_ContainerSpace, Flowable):
         if not split_last or (split_last and split_last[0].__class__ == PageBreak):
             self._content.insert(0, PageBreak())
         return self._content
+
+class TocEntry(Flowable):
+    """Invisible flowable used to build toc. FIXME: probably an ActionFlowable should be used."""
+    
+    def __init__(self, txt, lvl):
+        Flowable.__init__(self)
+        self.txt = txt
+        self.lvl = lvl
+
+    def draw(self):
+        pass

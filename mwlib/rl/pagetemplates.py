@@ -18,6 +18,7 @@ from mwlib.rl.pdfstyles import page_width, page_height, print_height, print_widt
 from mwlib.rl.pdfstyles import header_margin_hor, header_margin_vert, footer_margin_hor, footer_margin_vert
 from mwlib.rl.pdfstyles import pagefooter, titlepagefooter, serif_font
 from mwlib.rl import pdfstyles
+from mwlib.rl.customflowables import TocEntry
 
 from reportlab.lib.pagesizes import  A3
 
@@ -169,11 +170,6 @@ class PPDocTemplate(BaseDocTemplate):
         the TOC and let it pull them out."""
         if not self.tocCallback:
             return
-        if hasattr(flowable, 'style'):
-            n = flowable.style.name
-
-            if n == 'heading_style_chapter_1':
-                self.tocCallback((0, flowable.getPlainText(), self.page))
-            elif n == 'heading_style_article_1':
-                self.tocCallback((1, flowable.getPlainText(), self.page))
-        
+        if flowable.__class__ == TocEntry:
+            self.tocCallback((flowable.lvl, flowable.txt, self.page))
+                

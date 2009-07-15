@@ -66,7 +66,7 @@ from reportlab.platypus.doctemplate import LayoutError
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.enums import TA_LEFT, TA_CENTER, TA_JUSTIFY, TA_RIGHT
 
-from mwlib.rl.customflowables import Figure, FiguresAndParagraphs, SmartKeepTogether
+from mwlib.rl.customflowables import Figure, FiguresAndParagraphs, SmartKeepTogether, TocEntry
 
 from pdfstyles import text_style, heading_style, table_style
 
@@ -418,6 +418,7 @@ class RlWriter(object):
             elements.append(self.addDummyPage())
         got_chapter = False
         item_list = self.env.metabook.walk()
+        elements.append(TocEntry(txt=_('Articles'), lvl='group'))
         for (i, item) in enumerate(item_list):
             if item.type == 'chapter':
                 chapter = parser.Chapter(item.title.strip())
@@ -466,6 +467,7 @@ class RlWriter(object):
         
     def renderBook(self, elements, output, coverimage=None):
         if pdfstyles.show_article_attribution:
+            elements.append(TocEntry(txt=_('References'), lvl='group'))
             elements.append(self._getPageTemplate(_('Article Sources and Contributors')))
             elements.append(NotAtTopPageBreak())
             elements.extend(self.writeArticleMetainfo())
@@ -489,6 +491,8 @@ class RlWriter(object):
             if linuxmem:
                 log.info('memory usage after layouting:', linuxmem.memory())
             self.doc.build(elements)
+            if self.enable_toc:
+                self.toc_renderer.build(output, self.toc_entries)
             if linuxmem:
                 log.info('memory usage after reportlab rendering:', linuxmem.memory())
         except:
@@ -498,6 +502,9 @@ class RlWriter(object):
     def renderLicense(self):
         self.license_mode = True
         elements = []
+        if self.env.getLicenses():
+            elements.append(TocEntry(txt=_('Article Licenses'), lvl='group'))
+
         for license in self.env.getLicenses():
             license_node = uparser.parseString(title=license['title'], raw=license['wikitext'], wikidb=license._wiki)
             advtree.buildAdvancedTree(license_node)
@@ -583,9 +590,11 @@ class RlWriter(object):
 
         elements.append(self._getPageTemplate(''))
         elements.extend([NotAtTopPageBreak(), hr, chapter_para, hr])
+        elements.append(TocEntry(txt=title, lvl='chapter'))
         elements.append(self._getPageTemplate(chapter.next_article_title))
+        elements.extend(self.renderChildren(chapter))
+        
 
-        elements.extend(self.renderChildren(chapter))       
         return elements
 
     def writeSection(self, obj):
@@ -647,7 +656,9 @@ class RlWriter(object):
 
     def writeArticleMetainfo(self):
         elements = []
-        elements.append(Paragraph(_('<b>Article Sources and Contributors</b>'), heading_style(mode='article')))
+        title = _('Article Sources and Contributors')
+        elements.append(Paragraph('<b>%s</b>' % title, heading_style(mode='article')))
+        elements.append(TocEntry(txt=title, lvl='article'))
         for title, url, authors in self.article_meta_info:
             authors_text = self._filterAnonIpEdits(authors)
             txt = '<b>%(title)s</b> &nbsp;<i>%(source_label)s</i>: %(source)s &nbsp;<i>%(contribs_label)s</i>: %(contribs)s ' % {
@@ -664,7 +675,9 @@ class RlWriter(object):
         if not self.img_meta_info:
             return []
         elements = []
-        elements.append(Paragraph(_('<b>Image Sources, Licenses and Contributors</b>'), heading_style(mode='article')))
+        title = _('Image Sources, Licenses and Contributors')
+        elements.append(Paragraph('<b>%s</b>' % title, heading_style(mode='article')))
+        elements.append(TocEntry(txt=title, lvl='article'))
         for _id, title, url, license, authors in sorted(self.img_meta_info.values()):
             authors_text = self._filterAnonIpEdits(authors)
             if not license:
@@ -728,6 +741,7 @@ class RlWriter(object):
             
         heading_para = Paragraph('<b>%s</b>%s' % (title, heading_anchor), heading_style("article"))            
         elements.append(heading_para)
+        elements.append(TocEntry(txt=title, lvl='article'))
 
         elements.append(HRFlowable(width='100%', hAlign='LEFT', thickness=1, spaceBefore=0, spaceAfter=10, color=colors.black))
         
