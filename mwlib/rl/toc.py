@@ -29,12 +29,12 @@ class TocRenderer(object):
         font_switcher.registerReportlabFonts(fontconfig.fonts)
 
         
-    def build(self, pdfpath, toc_entries):
+    def build(self, pdfpath, toc_entries, has_title_page=False):
         outpath = os.path.dirname(pdfpath)
         tocpath = os.path.join(outpath, 'toc.pdf')
         finalpath = os.path.join(outpath, 'final.pdf')
         self.renderToc(tocpath, toc_entries)
-        return self.combinePdfs(pdfpath, tocpath, finalpath)
+        return self.combinePdfs(pdfpath, tocpath, finalpath, has_title_page)
 
     def _getColWidths(self):
         p = Paragraph('<b>%d</b>' % 9999, pdfstyles.text_style(mode='toc_article', text_align='right'))        
@@ -49,7 +49,14 @@ class TocRenderer(object):
         toc_table =[]
         col_widths = self._getColWidths()
         for lvl, txt, page_num in toc_entries:
-            page_num = '<b>%d</b>' % (page_num) if lvl != 'article' else str(page_num)
+            if lvl == 'article':
+                page_num = str(page_num)
+            elif lvl == 'chapter':
+                page_num = '<b>%d</b>' % page_num
+            elif lvl == 'group':
+                page_num = ' '
+        
+
             toc_table.append([
                 Paragraph(txt, pdfstyles.text_style(mode='toc_%s' % str(lvl), text_align='left')),
                 Paragraph(page_num, pdfstyles.text_style(mode='toc_article', text_align='right'))
@@ -57,14 +64,18 @@ class TocRenderer(object):
         elements.append(Table(toc_table, colWidths=col_widths))
         doc.build(elements)
 
-    def combinePdfs(self, pdfpath, tocpath, finalpath):
+    def combinePdfs(self, pdfpath, tocpath, finalpath, has_title_page):
 
         cmd =  ['pdftk',
                 'A=%s' % pdfpath,
                 'B=%s' % tocpath,
-                'cat', 'A1', 'B', 'A2-end',
-                'output','%s' % finalpath,
-                ]
+                ]        
+        if not has_title_page:
+            cmd.extend(['cat', 'B', 'A'])
+        else:
+            cmd.extend(['cat', 'A1', 'B', 'A2-end'])
+        cmd.extend(['output','%s' % finalpath])
+
         try:
             retcode = subprocess.call(cmd)
         except OSError:

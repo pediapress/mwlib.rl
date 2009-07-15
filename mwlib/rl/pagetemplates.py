@@ -139,6 +139,7 @@ class PPDocTemplate(BaseDocTemplate):
             self.setProgressCallBack(self.progressCB)
             self.status_callback = status_callback
         self.tocCallback=tocCallback
+        self.title = kwargs['title']
         
     def progressCB(self, typ, value):
         if typ == 'SIZE_EST':
@@ -147,6 +148,10 @@ class PPDocTemplate(BaseDocTemplate):
             self.progress = 100 * int(value) / self.estimatedDuration
         if typ == 'PAGE':
             self.status_callback(progress=self.progress, page=value)
+
+    def beforeDocument(self):
+        if self.title:
+            self.page = -1
         
     def _startBuild(self, filename=None, canvasmaker=canvas.Canvas):
         BaseDocTemplate._startBuild(self, filename=filename, canvasmaker=canvasmaker)
