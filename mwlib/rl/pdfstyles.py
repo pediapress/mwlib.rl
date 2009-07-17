@@ -246,16 +246,15 @@ def text_style(mode='p', indent_lvl=0, in_table=0, relsize='normal', text_align=
     if mode == 'toc_group':
         style.fontSize = 18
         style.leading = 22
-
+       
     if mode == 'toc_chapter':
         style.fontSize = 14
         style.leading = 18
         
     if mode == 'toc_article':
         style.fontSize = 10
-        style.leading = 14
+        style.leading = 12
         style.leftIndent = para_left_indent
-        style.spaceBefore =0
 
     return style
 
