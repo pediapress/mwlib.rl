@@ -167,6 +167,9 @@ class RlWriter(object):
                 log.warn(str(exc))
         translation.install(unicode=True)
 
+        if lang in ['ja', 'ch', 'ko']:
+            pdfstyles.word_wrap = 'CJK'
+
         self.env = env
         if self.env is not None:
             self.book = self.env.metabook

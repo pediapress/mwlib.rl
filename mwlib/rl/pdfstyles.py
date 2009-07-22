@@ -126,6 +126,9 @@ source_max_line_len = 72 # if printing a source node, the maximum number of char
 
 no_float_math_len = 15
 
+#set to CJK if a PDF is rendered mainly using chinese, japanese or korean glyphs
+word_wrap=None
+
 class BaseStyle(ParagraphStyle):
 
     def __init__(self, name, parent=None, **kw):
@@ -148,7 +151,6 @@ class BaseStyle(ParagraphStyle):
         self.wordWrap = None
         self.textTransform = None
         
-        
 def text_style(mode='p', indent_lvl=0, in_table=0, relsize='normal', text_align='left'):
     """
     mode: p (normal paragraph), blockquote, center (centered paragraph), footer, figure (figure caption text),
@@ -157,10 +159,14 @@ def text_style(mode='p', indent_lvl=0, in_table=0, relsize='normal', text_align=
     indent_lvl: level of indentation in lists or indented paragraphs
     in_table: 0 - outside table
               1 or above - inside table (nesting level of table)
+    text_align: left, center, right, justify
     """
 
     style = BaseStyle(name='text_style_%s_indent_%d_table_%d_size_%s' % (mode, indent_lvl, in_table, relsize))
     style.flowable = True # needed for "flowing" paragraphs around figures
+
+    if word_wrap == 'CJK':
+        style.wordWrap = 'CJK'
 
     if in_table > 0:
         style.alignment = table_text_align
