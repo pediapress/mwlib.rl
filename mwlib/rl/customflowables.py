@@ -92,7 +92,7 @@ class FiguresAndParagraphs(Flowable):
                 return p.style.spaceBefore
         return 0
     
-    def wrap(self,availWidth,availHeight):
+    def wrap(self, availWidth, availHeight):
         maxWf = 0
         self.wfs = []
         self.hfs = []
@@ -121,7 +121,10 @@ class FiguresAndParagraphs(Flowable):
             p.width = 0
             if hasattr(p, 'blPara'):
                 del p.blPara
-            p.blPara = p.breakLines(nfloatLines*[floatWidth] + [fullWidth])
+            if hasattr(p, 'style') and p.style.wordWrap == 'CJK':
+                p.blPara = p.breakLinesCJK(nfloatLines*[floatWidth] + [fullWidth])
+            else:
+                p.blPara = p.breakLines(nfloatLines*[floatWidth] + [fullWidth])
             if self.figAlign=='left':
                 self._offsets.append([maxWf]*(nfloatLines) + [0])
             if hasattr(p, 'style'):
@@ -141,7 +144,7 @@ class FiguresAndParagraphs(Flowable):
 
         self.width = availWidth
         self.height =  max(sum(self.paraHeights), totalHf)
-        return (availWidth,self.height)
+        return (availWidth, self.height)
 
     def draw(self):
         canv = self.canv
@@ -158,8 +161,6 @@ class FiguresAndParagraphs(Flowable):
 
         canv.translate(0, self.height)
        
-        #bulletIndent = li_style.bulletIndent
-        lastSpace = 0
         for (count,p) in enumerate(self.ps):
             if self.figAlign == 'left':
                 p._offsets = self._offsets[count]
@@ -177,7 +178,7 @@ class FiguresAndParagraphs(Flowable):
                 p.canv = canv
                 p.draw()
                 canv.translate(0, - self.paraHeights[count] + p.style.spaceBefore )
-        #li_style.bulletIndent = bulletIndent
+
         canv.restoreState()
 
     def split(self, availWidth, availheight):
