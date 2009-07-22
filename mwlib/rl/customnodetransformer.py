@@ -38,7 +38,6 @@ class CustomNodeTransformer(object):
             node_classes = []
         else:
             node_classes = node.vlist.get('class', '').split()
-        style = node.style
 
         for node_class in node_classes:
             if node_class in css_map:
