@@ -660,7 +660,7 @@ class RlWriter(object):
 
     def writeArticleMetainfo(self):
         elements = []
-        title = _('Article Sources and Contributors')
+        title = self.formatter.cleanText(_('Article Sources and Contributors'))
         elements.append(Paragraph('<b>%s</b>' % title, heading_style(mode='article')))
         elements.append(TocEntry(txt=title, lvl='article'))
         for title, url, authors in self.article_meta_info:
@@ -679,7 +679,7 @@ class RlWriter(object):
         if not self.img_meta_info:
             return []
         elements = []
-        title = _('Image Sources, Licenses and Contributors')
+        title = self.formatter.cleanText(_('Image Sources, Licenses and Contributors'))
         elements.append(Paragraph('<b>%s</b>' % title, heading_style(mode='article')))
         elements.append(TocEntry(txt=title, lvl='article'))
         for _id, title, url, license, authors in sorted(self.img_meta_info.values()):
