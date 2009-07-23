@@ -667,9 +667,9 @@ class RlWriter(object):
             authors_text = self._filterAnonIpEdits(authors)
             txt = '<b>%(title)s</b> &nbsp;<i>%(source_label)s</i>: %(source)s &nbsp;<i>%(contribs_label)s</i>: %(contribs)s ' % {
                 'title': title,
-                'source_label': _('Source'),
+                'source_label': self.formatter.cleanText(_('Source')),
                 'source': self.formatter.cleanText(url),
-                'contribs_label': _('Contributors'),
+                'contribs_label': self.formatter.cleanText(_('Contributors')),
                 'contribs': authors_text,
                 }
             elements.append(Paragraph(txt, text_style('attribution')))
@@ -686,15 +686,16 @@ class RlWriter(object):
             authors_text = self._filterAnonIpEdits(authors)
             if not license:
                 license = _('unknown')
-            license_txt = '<i>%(license_label)s</i>: %(license)s &nbsp;' % {'license_label': _('License'),
-                                                                            'license': self.formatter.cleanText(license),
-                                                                            }
+            license_txt = '<i>%(license_label)s</i>: %(license)s &nbsp;' % {
+                'license_label': self.formatter.cleanText(_('License')),
+                'license': self.formatter.cleanText(license),
+                }
             txt = '<b>%(title)s</b> &nbsp;<i>%(source_label)s</i>: %(source)s &nbsp;%(license_txt)s<i>%(contribs_label)s</i>: %(contribs)s ' % {
                 'title': self.formatter.cleanText(title),
-                'source_label': _('Source'),
+                'source_label': self.formatter.cleanText(_('Source')),
                 'source': self.formatter.cleanText(url),
                 'license_txt': license_txt,
-                'contribs_label': _('Contributors'),
+                'contribs_label': self.formatter.cleanText(_('Contributors')),
                 'contribs': authors_text,
                 }
             elements.append(Paragraph(txt, text_style('img_attribution')))
