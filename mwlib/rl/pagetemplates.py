@@ -158,14 +158,20 @@ class PPDocTemplate(BaseDocTemplate):
 
         type2lvl = {'chapter': 0,
                     'article': 1,
-                    'heading': 2}
+                    'heading2': 2,
+                    'heading3': 3,
+                    'heading4': 4,
+                    }
         got_chapter = False
+        last_lvl =  0
         for (bm_id, (bm_title, bm_type)) in enumerate(self.bookmarks):            
             lvl = type2lvl[bm_type]
             if bm_type== 'chapter':
                 got_chapter = True
             elif not got_chapter: # outline-lvls can't start above zero
                 lvl -= 1
+            lvl = min(lvl, last_lvl + 1)
+            last_lvl = lvl
             self.canv.addOutlineEntry(bm_title, str(bm_id), lvl, bm_type == 'article')
 
     def afterFlowable(self, flowable):

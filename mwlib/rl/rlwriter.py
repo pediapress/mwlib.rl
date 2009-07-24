@@ -617,9 +617,9 @@ class RlWriter(object):
             heading_txt = ''
         self.formatter.sectiontitle_mode = False
 
-        if lvl <= 4 and self.inline_mode == 0 and self.tableNestingLevel==0:
+        if 1 < lvl <= 4 and self.inline_mode == 0 and self.tableNestingLevel==0:
             anchor = '<a name="%d"/>' % len(self.bookmarks)
-            self.bookmarks.append((obj.children[0].getAllDisplayText(), 'heading'))
+            self.bookmarks.append((obj.children[0].getAllDisplayText(), 'heading%s' % lvl))
         else:
             anchor = ''
         elements = [Paragraph('<font name="%s"><b>%s</b></font>%s' % (serif_font, heading_txt, anchor), headingStyle)]
