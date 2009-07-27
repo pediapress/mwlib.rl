@@ -711,10 +711,10 @@ class RlWriter(object):
             self.layout_status(article=article.caption)
             self.articlecount += 1
         elements = []
-        pt = WikiPage(title)
+        pt = WikiPage(article.caption)
         if hasattr(self, 'doc'): # doc is not present if tests are run
             self.doc.addPageTemplates(pt)
-            elements.append(NextPageTemplate(title.encode('utf-8'))) # pagetemplate.id cant handle unicode
+            elements.append(NextPageTemplate(article.caption.encode('utf-8'))) # pagetemplate.id cant handle unicode
             # FIXME remove the getPrevious below
             if self.license_mode:
                 if self.numarticles > 1:
