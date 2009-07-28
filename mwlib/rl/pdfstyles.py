@@ -165,7 +165,7 @@ def text_style(mode='p', indent_lvl=0, in_table=0, relsize='normal', text_align=
     style = BaseStyle(name='text_style_%s_indent_%d_table_%d_size_%s' % (mode, indent_lvl, in_table, relsize))
     style.flowable = True # needed for "flowing" paragraphs around figures
 
-    if word_wrap == 'CJK':
+    if word_wrap == 'CJK' and mode not in ['preformatted', 'source']:
         style.wordWrap = 'CJK'
 
     if in_table > 0:
