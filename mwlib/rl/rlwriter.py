@@ -342,13 +342,13 @@ class RlWriter(object):
             
         advtree.buildAdvancedTree(art)
         if self.debug:
-            #parser.show(sys.stdout, art)
+            parser.show(sys.stdout, art)
             pass
         self.tc.tree = art
         self.tc.cleanAll()
         self.cnt.transformCSS(art)
         if self.debug:
-            parser.show(sys.stdout, art)
+            #parser.show(sys.stdout, art)
             print "\n".join([repr(r) for r in self.tc.getReports()])
 
         return art
@@ -964,7 +964,7 @@ class RlWriter(object):
                 txt.extend(res)
             else:
                 log.warning(node.__class__.__name__, ' contained block element: ', child.__class__.__name__)
-                txt.append(self.formatter.styleText(child.getAllDisplayText()))
+                txt.append(self.renderText(child.getAllDisplayText()))
         self.inline_mode -= 1
         return txt
 
@@ -1489,8 +1489,8 @@ class RlWriter(object):
             source = self.breakLongLines(source, char_limit)
         txt = ''
         try:
-            txt = highlight(source, lexer, sourceFormatter)
-            txt = unicode(txt, 'utf-8')
+            txt = unicode(highlight(source, lexer, sourceFormatter), 'utf-8')
+            txt = self.font_switcher.fontifyText(txt)
             if n.vlist.get('enclose', False) == 'none':
                 txt = re.sub('<para.*?>', '', txt).replace('</para>', '')
                 return txt
