@@ -22,8 +22,12 @@ font_paths = [os.path.dirname(mwlib.fonts.__file__),
 # aptitude install ttf-indic-fonts ttf-unfonts ttf-farsiweb ttf-arphic-uming ttf-gfs-artemisia ttf-sil-ezra ttf-thai-arundina linux-libertine
 # after that the fonts need to be moved or symlinked to one of the font_paths
 fonts = [
+    {'name': 'Ezra SIL',
+     'code_points': ['Alphabetic Presentation Forms', 'Hebrew'] ,
+     'file_names': ['ttf-sil-ezra/SILEOT.ttf'],
+     },
     {'name': 'DejaVuSerif',
-     'code_points': ['Latin Extended-B', 'Latin-1 Supplement', 'Latin Extended-A', 'Basic Latin'] ,
+     'code_points': ['Latin Extended-B', 'Latin-1 Supplement', 'Latin Extended-A', 'Basic Latin', (64256, 64262)] ,
      'file_names': ['ttf-dejavu/DejaVuSerif.ttf', 'ttf-dejavu/DejaVuSerif-Bold.ttf', 'ttf-dejavu/DejaVuSerif-Italic.ttf', 'ttf-dejavu/DejaVuSerif-BoldItalic.ttf'],
      },
     {'name': 'DejaVuSans',
@@ -46,14 +50,6 @@ fonts = [
      'code_points': ['CJK Unified Ideographs', 'CJK Strokes', 'CJK Unified Ideographs Extension A', 'Halfwidth and Fullwidth Forms', 'CJK Compatibility Ideographs', 'Small Form Variants', 'Low Surrogates', 'CJK Radicals Supplement', 'Hiragana', 'Katakana', 'Bopomofo', 'Bopomofo Extended', 'CJK Symbols and Punctuation'] ,
      'file_names': ['arphic/uming.ttc'],
      },   
-    {'name': 'Ezra SIL',
-     'code_points': ['Alphabetic Presentation Forms', 'Hebrew'] ,
-     'file_names': ['ttf-sil-ezra/SILEOT.ttf'],
-     },
-#      {'name': 'GFS Artemisia', # fixme open type fonts are not supported by reportlab. currently dejavu is used - seems to work
-#       'code_points': ['Greek Extended', 'Greek and Coptic'] ,
-#       'file_names': ['ttf-gfs-artemisia/GFSArtemisia.otf', 'ttf-gfs-artemisia/GFSArtemisiaBold.otf', 'ttf-gfs-artemisia/GFSArtemisiaIt.otf', 'ttf-gfs-artemisia/GFSArtemisiaBoldIt.otf'],
-#       },
     {'name': 'Nazli',
      'code_points': ['Arabic Presentation Forms-A', 'Arabic', 'Arabic Presentation Forms-B', 'Arabic Supplement'] ,
      'file_names': ['ttf-farsiweb/nazli.ttf'],
