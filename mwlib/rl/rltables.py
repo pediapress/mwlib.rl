@@ -317,3 +317,20 @@ def tableBgStyle(table):
             if rgb:
                 bg_style.append(('BACKGROUND', (start_col,i), (end_col,i+rowspan-1), colors.Color(rgb[0], rgb[1], rgb[2])))
     return bg_style
+
+
+#############################################
+
+def optimizeWidths(min_widths, max_widths, avail_width):
+    remaining_space = avail_width - sum(min_widths)
+    total_delta = sum([ max_widths[i] - min_widths[i] for i in range(len(min_widths))])
+    
+    # prevent remaining_space to get negative. -5 compensates for table margins
+    remaining_space = max(-5, remaining_space)
+    
+    if total_delta < 0.1 or sum(max_widths) < avail_width:
+        return max_widths
+    col_widths = []
+    for i in range(len(min_widths)):
+        col_widths.append( min_widths[i] + remaining_space*(max_widths[i]-min_widths[i])/total_delta)
+    return col_widths
