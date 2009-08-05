@@ -17,6 +17,7 @@ import shutil
 import subprocess
 import copy
 import gc
+import math
 
 try:
     from hashlib import md5
@@ -1730,13 +1731,17 @@ class RlWriter(object):
         return width_correction
     
 
-    def getMinCellSize(self, element):        
+    def getMinElementSize(self, element):        
         w_min, h_min = element.wrap(0, pdfstyles.page_height)
         min_width = w_min + self._correctWidth(element)
         min_width += (2 * pdfstyles.cell_padding)
         return min_width, h_min
 
-    def getMaxCellSize(self, element, w_min, h_min):
+    def getMaxElementSize(self, element, w_min, h_min):
+        if element.__class__ == Paragraph and hasattr(element, 'blPara'):
+            max_width = sum([math.fabs(line[0]) for line in element.blPara.lines])
+            max_width += (1 + len(element.blPara.lines)) * pdfstyles.cell_padding
+            return max_width, 0
         w_max, h_max = element.wrap(10*pdfstyles.page_width, pdfstyles.page_height)
         rows = h_min / h_max
         max_width = rows * w_min
@@ -1748,11 +1753,10 @@ class RlWriter(object):
         max_width =0
         print '*'*10
         for element in elements:
-            w_min, h_min = self.getMinCellSize(element)
+            w_min, h_min = self.getMinElementSize(element)
             min_width = max(min_width, w_min)
-            w_max, h_max = self.getMaxCellSize(element, w_min, h_min)
+            w_max, h_max = self.getMaxElementSize(element, w_min, h_min)
             max_width = max(max_width, w_max)
-
             print getattr(element, 'text', '')
         print 'min', min_width, 'max', max_width
         
