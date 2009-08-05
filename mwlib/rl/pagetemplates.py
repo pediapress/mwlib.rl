@@ -48,7 +48,7 @@ class SimplePage(PageTemplate):
         
 class WikiPage(PageTemplate):
 
-    def __init__(self,title=None, id=None, wikititle=u'undefined', wikiurl=u'undefined', onPage=_doNothing, onPageEnd=_doNothing, pagesize=(page_width, page_height)):
+    def __init__(self,title=None, id=None, onPage=_doNothing, onPageEnd=_doNothing, pagesize=(page_width, page_height)):
         """
         @type title: unicode
         """
@@ -92,14 +92,12 @@ class WikiPage(PageTemplate):
 
 class TitlePage(PageTemplate):
 
-    def __init__(self, wikititle=u'undefined', wikiurl=u'undefined', cover=None, id=None,
+    def __init__(self, cover=None, id=None,
         onPage=_doNothing, onPageEnd=_doNothing, pagesize=(page_width, page_height)):
 
         id = 'TitlePage'
         frames = Frame(page_margin_left, page_margin_top, print_width, print_height)
         PageTemplate.__init__(self,id=id, frames=frames,onPage=onPage,onPageEnd=onPageEnd,pagesize=pagesize)
-        self.wikititle = wikititle
-        self.wikiurl = wikiurl
         self.cover = cover
     
     def beforeDrawPage(self,canvas,doc):
@@ -107,7 +105,7 @@ class TitlePage(PageTemplate):
         canvas.saveState()
         if pdfstyles.show_title_page_footer:
             canvas.line(footer_margin_hor, footer_margin_vert, page_width - footer_margin_hor, footer_margin_vert )
-            footertext = _(titlepagefooter).replace('@WIKITITLE@', self.wikititle).replace('@WIKIURL@', self.wikiurl)            
+            footertext = _(titlepagefooter)
             if pdfstyles.show_creation_date:
                 footertext += ' PDF&nbsp;generated&nbsp;at:&nbsp;%s' % strftime("%a, %d %b %Y %H:%M:%S %Z", gmtime())
             p = Paragraph(font_switcher.fontifyText(footertext), text_style(mode='footer'))           
