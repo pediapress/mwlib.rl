@@ -30,7 +30,7 @@ font_switcher.font_paths = fontconfig.font_paths
 font_switcher.registerDefaultFont(pdfstyles.default_font)        
 font_switcher.registerFontDefinitionList(fontconfig.fonts)
 
-
+formatter = RLFormatter(font_switcher=font_switcher)
         
 def _doNothing(canvas, doc):
     "Dummy callback for onPage"
@@ -69,7 +69,7 @@ class WikiPage(PageTemplate):
             canvas.saveState()
             canvas.resetTransforms()
             canvas.translate(header_margin_hor, page_height - header_margin_vert - 0.1*cm)
-            p = Paragraph(font_switcher.fontifyText(self.title), text_style())
+            p = Paragraph(formatter.cleanText(self.title), text_style())
             p.canv = canvas
             p.wrap(page_width - header_margin_hor*2.5, page_height) # add an extra 0.5 margin to have enough space for page number
             p.drawPara()
@@ -82,7 +82,7 @@ class WikiPage(PageTemplate):
         canvas.setFont(serif_font,8)
         canvas.line(footer_margin_hor, footer_margin_vert, page_width - footer_margin_hor, footer_margin_vert )
         if pdfstyles.show_page_footer:
-            p = Paragraph(font_switcher.fontifyText(pagefooter), text_style())
+            p = Paragraph(formatter.cleanText(pagefooter), text_style())
             p.canv = canvas
             w,h = p.wrap(page_width - header_margin_hor*2.5, page_height)
             p.drawOn(canvas, footer_margin_hor, footer_margin_vert - 10 - h)
@@ -108,7 +108,7 @@ class TitlePage(PageTemplate):
             footertext = _(titlepagefooter)
             if pdfstyles.show_creation_date:
                 footertext += ' PDF&nbsp;generated&nbsp;at:&nbsp;%s' % strftime("%a, %d %b %Y %H:%M:%S %Z", gmtime())
-            p = Paragraph(font_switcher.fontifyText(footertext), text_style(mode='footer'))           
+            p = Paragraph(formatter.cleanText(footertext), text_style(mode='footer'))           
             w,h = p.wrap(print_width, print_height)
             canvas.translate( (page_width-w)/2.0, 0.2*cm)
             p.canv = canvas
