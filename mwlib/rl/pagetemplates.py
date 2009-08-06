@@ -25,6 +25,7 @@ from reportlab.lib.pagesizes import  A3
 from mwlib.rl.pdfstyles import text_style
 
 from mwlib.rl import fontconfig
+from mwlib.rl.formatter import RLFormatter
 font_switcher = fontconfig.RLFontSwitcher()
 font_switcher.font_paths = fontconfig.font_paths
 font_switcher.registerDefaultFont(pdfstyles.default_font)        
