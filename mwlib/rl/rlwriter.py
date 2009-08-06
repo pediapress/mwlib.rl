@@ -500,6 +500,7 @@ class RlWriter(object):
             if linuxmem:
                 log.info('memory usage after reportlab rendering:', linuxmem.memory())
         except:
+            traceback.print_exc()
             log.info('rendering failed - trying safe rendering')
             raise
 
