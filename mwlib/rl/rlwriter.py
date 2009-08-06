@@ -461,7 +461,7 @@ class RlWriter(object):
             if self.fail_safe_rendering:
                 log.error('GIVING UP')
                 shutil.rmtree(self.tmpdir, ignore_errors=True)
-                sys.exit(1)
+                raise RuntimeError('Giving up.')
             else:
                 self.fail_safe_rendering = True
                 self.writeBook(output, coverimage=coverimage, status_callback=status_callback)
