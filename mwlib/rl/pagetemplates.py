@@ -106,10 +106,11 @@ class TitlePage(PageTemplate):
         canvas.saveState()
         if pdfstyles.show_title_page_footer:
             canvas.line(footer_margin_hor, footer_margin_vert, page_width - footer_margin_hor, footer_margin_vert )
-            footertext = _(titlepagefooter)
+            footertext = [_(titlepagefooter)]
             if pdfstyles.show_creation_date:
-                footertext += ' PDF&nbsp;generated&nbsp;at:&nbsp;%s' % strftime("%a, %d %b %Y %H:%M:%S %Z", gmtime())
-            p = Paragraph(formatter.cleanText(footertext), text_style(mode='footer'))           
+                footertext.append('PDF generated at: %s' % strftime("%a, %d %b %Y %H:%M:%S %Z", gmtime()))
+            p = Paragraph('<br/>'.join([formatter.cleanText(line) for line in footertext]),
+                          text_style(mode='footer'))
             w,h = p.wrap(print_width, print_height)
             canvas.translate( (page_width-w)/2.0, 0.2*cm)
             p.canv = canvas
