@@ -22,66 +22,42 @@ from pdfstyles import print_height, print_width
 log = log.Log('rlwriter')
 
 
-def checkSpans(data, t):
-    """
-    use colspan and rowspan attributes to build rectangular table data array
-    """
-    styles = []
-    rowspans = []
-    maxCols = 0
+# def checkSpans(data, t):
+#     """
+#     use colspan and rowspan attributes to build rectangular table data array
+#     """
+#     styles = []
+#     rowspans = []
+#     maxCols = 0
 
-    for (i,row) in enumerate(data):
-        added_cells = 0
-        for (j,cell) in enumerate(row):
-            colspan = cell.get('colspan', 1)
-            rowspan  = cell.get('rowspan', 1)
-            if rowspan > (len(data) - i):  # check for broken rowspans
-                rowspan = len(data) - i       
-            if colspan > 1:
-                styles.append( ('SPAN',(j,i), (j+colspan-1,i)) ) 
-                for cols in range(colspan-1):
-                    data[i].insert(j + 1,{'content':'','inserted':'colspan'})
-            if rowspan > 1:
-                styles.append( ('SPAN',(j,i),(j + colspan-1,i+rowspan-1)) )
-                for row_offset in range(rowspan-1):
-                    for c in range(colspan):
-                        data[i+row_offset+1].insert(j,{'content':'', 'inserted':'rowspan'})
-                        t.children[i+row_offset+1].children.insert(j, Cell())
-        maxCols = max(maxCols, len(data[i]))
+#     for (i,row) in enumerate(data):
+#         added_cells = 0
+#         for (j,cell) in enumerate(row):
+#             colspan = cell.get('colspan', 1)
+#             rowspan  = cell.get('rowspan', 1)
+#             if rowspan > (len(data) - i):  # check for broken rowspans
+#                 rowspan = len(data) - i       
+#             if colspan > 1:
+#                 styles.append( ('SPAN',(j,i), (j+colspan-1,i)) ) 
+#                 for cols in range(colspan-1):
+#                     data[i].insert(j + 1,{'content':'','inserted':'colspan'})
+#             if rowspan > 1:
+#                 styles.append( ('SPAN',(j,i),(j + colspan-1,i+rowspan-1)) )
+#                 for row_offset in range(rowspan-1):
+#                     for c in range(colspan):
+#                         data[i+row_offset+1].insert(j,{'content':'', 'inserted':'rowspan'})
+#                         t.children[i+row_offset+1].children.insert(j, Cell())
+#         maxCols = max(maxCols, len(data[i]))
 
-    d = []
-    for row in data: # extract content from cells
-        newRow = [cell['content'] for cell in row] 
-        while len(newRow) < maxCols: # make sure table is rectangular
-            newRow.append('')
-        d.append(newRow)
-    return (d, styles)
+#     d = []
+#     for row in data: # extract content from cells
+#         newRow = [cell['content'] for cell in row] 
+#         while len(newRow) < maxCols: # make sure table is rectangular
+#             newRow.append('')
+#         d.append(newRow)
+#     return (d, styles)
 
 
-def style(table):
-    """
-    extract the style info and return a reportlab style list
-    try to guess if a border and/or frame
-    """
-    
-    styleList = []
-    styleList.append( ('VALIGN',(0,0),(-1,-1),'TOP') )
-
-    if styleutils.tableBorder(table):
-        styleList.append(('BOX',(0,0),(-1,-1),0.25,colors.black))
-        for idx, row in enumerate(table):
-            if not getattr(row, 'suppress_bottom_border', False):
-                styleList.append(('LINEBELOW', (0, idx), (-1, idx), 0.25, colors.black))
-        for col in range(table.numcols):
-            styleList.append(('LINEAFTER', (col, 0), (col, -1), 0.25, colors.black))
-
-    for row_idx, row in enumerate(table):
-        for col_idx, cell in enumerate(row):
-            if getattr(cell, 'compact', False):
-                styleList.append(('TOPPADDING', (col_idx, row_idx), (col_idx, row_idx), 2))
-                styleList.append(('BOTTOMPADDING', (col_idx, row_idx), (col_idx, row_idx), 0))
-
-    return styleList
 
 def scaleImages(data):
     for row in data:
@@ -293,6 +269,91 @@ def removeContainerTable(containertable):
     return newtables
 
 
+#############################################
+
+def optimizeWidths(min_widths, max_widths, avail_width):
+    remaining_space = avail_width - sum(min_widths)
+    total_delta = sum([ max_widths[i] - min_widths[i] for i in range(len(min_widths))])
+    
+    # prevent remaining_space to get negative. -5 compensates for table margins
+    remaining_space = max(-5, remaining_space)
+    
+    if total_delta < 0.1 or sum(max_widths) < avail_width:
+        return max_widths
+    col_widths = []
+    for i in range(len(min_widths)):
+        col_widths.append( min_widths[i] + remaining_space*(max_widths[i]-min_widths[i])/total_delta)
+    return col_widths
+
+from mwlib import parser
+
+def getEmptyCell(color, colspan=1, rowspan=1):
+    emptyCell = parser.Cell()
+    #emptyCell.appendChild(emptyNode)
+    emptyCell.color = color
+    emptyCell.attributes['colspan'] = max(1, colspan)
+    emptyCell.attributes['rowspan'] = max(1, rowspan)
+    return emptyCell
+
+
+
+def checkSpans(t):
+    styles = []
+    for row_idx, row in enumerate(t.children):
+        col_idx = 0
+        for cell in row.children:
+            if cell.colspan > 1:
+                emptycell = getEmptyCell(None, cell.colspan-1, cell.rowspan)
+                emptycell.moveto(cell) # move behind orignal cell
+                emptycell.colspanned = True
+                if cell.rowspan == 1:
+                    styles.append( ('SPAN',(col_idx,row_idx), (col_idx+cell.colspan-1,row_idx)) ) 
+            col_idx += 1
+
+    for row_idx, row in enumerate(t.children):
+        col_idx = 0
+        for cell in row.children:
+            if cell.rowspan > 1:        
+                emptycell = getEmptyCell(None, cell.colspan, cell.rowspan-1)
+                last_col = len(t.children[row_idx+1].children)
+                if col_idx >= last_col:
+                    emptycell.moveto(t.children[row_idx+1].children[last_col-1])
+                else:
+                    emptycell.moveto(t.children[row_idx+1].children[col_idx], prefix=True)
+                emptycell.rowspanned = True
+                styles.append( ('SPAN',(col_idx,row_idx),(col_idx + cell.colspan-1,row_idx+cell.rowspan-1)) )
+            col_idx += 1
+
+    for row in t.children:
+        while len(row.children) < t.num_cols:
+            row.appendChild(getEmptyCell(None, colspan=1, rowspan=1))
+    return styles
+
+def style(table):
+    """
+    extract the style info and return a reportlab style list
+    try to guess if a border and/or frame
+    """
+    
+    styleList = []
+    styleList.append( ('VALIGN',(0,0),(-1,-1),'TOP') )
+
+    if styleutils.tableBorder(table):
+        styleList.append(('BOX',(0,0),(-1,-1),0.25,colors.black))
+        for idx, row in enumerate(table):
+            if not getattr(row, 'suppress_bottom_border', False):
+                styleList.append(('LINEBELOW', (0, idx), (-1, idx), 0.25, colors.black))
+        for col in range(table.numcols):
+            styleList.append(('LINEAFTER', (col, 0), (col, -1), 0.25, colors.black))
+
+    for row_idx, row in enumerate(table):
+        for col_idx, cell in enumerate(row):
+            if getattr(cell, 'compact', False):
+                styleList.append(('TOPPADDING', (col_idx, row_idx), (col_idx, row_idx), 2))
+                styleList.append(('BOTTOMPADDING', (col_idx, row_idx), (col_idx, row_idx), 0))
+
+    return styleList
+
 def tableBgStyle(table):
     bg_style = []
     table_bg = styleutils.rgbBgColorFromNode(table)
@@ -317,20 +378,3 @@ def tableBgStyle(table):
             if rgb:
                 bg_style.append(('BACKGROUND', (start_col,i), (end_col,i+rowspan-1), colors.Color(rgb[0], rgb[1], rgb[2])))
     return bg_style
-
-
-#############################################
-
-def optimizeWidths(min_widths, max_widths, avail_width):
-    remaining_space = avail_width - sum(min_widths)
-    total_delta = sum([ max_widths[i] - min_widths[i] for i in range(len(min_widths))])
-    
-    # prevent remaining_space to get negative. -5 compensates for table margins
-    remaining_space = max(-5, remaining_space)
-    
-    if total_delta < 0.1 or sum(max_widths) < avail_width:
-        return max_widths
-    col_widths = []
-    for i in range(len(min_widths)):
-        col_widths.append( min_widths[i] + remaining_space*(max_widths[i]-min_widths[i])/total_delta)
-    return col_widths

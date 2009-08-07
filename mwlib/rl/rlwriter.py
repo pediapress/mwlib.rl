@@ -67,7 +67,7 @@ from reportlab.platypus.doctemplate import LayoutError
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.enums import TA_LEFT, TA_CENTER, TA_JUSTIFY, TA_RIGHT
 
-from mwlib.rl.customflowables import Figure, FiguresAndParagraphs, SmartKeepTogether, TocEntry
+from mwlib.rl.customflowables import Figure, FiguresAndParagraphs, SmartKeepTogether, TocEntry, DummyTable
 
 from pdfstyles import text_style, heading_style, table_style
 
@@ -146,7 +146,15 @@ def buildPara(txtList, style=text_style(), txt_style=None):
     else:
         return []
 
+# class DummyTable(object):
 
+#     def __init__(self, min_widths, max_widths):
+#         self.min_widths = min_widths
+#         self.max_widths = max_widths
+
+#     def getKeepWithNext(self):
+#         return False
+        
 class ReportlabError(Exception):
 
     def __init__(self, value):
@@ -217,6 +225,7 @@ class RlWriter(object):
         self.tmpImages = set()
         self.namedLinkCount = 1
         self.table_nesting = 0
+        self.table_size_calc = 0
         self.tablecount = 0
         self.paraIndentLevel = 0
 
@@ -1672,8 +1681,8 @@ class RlWriter(object):
 
     def getAvailWidth(self):
         indent_amount = self.paraIndentLevel * pdfstyles.para_left_indent \
-                        + self.listIndentation * pdfstyles.list_left_indent
-        if self.table_nesting > 0 and self.colwidth !=0:
+                        + self.listIndentation * pdfstyles.list_left_indent                
+        if self.table_nesting > 1 and self.colwidth !=0:
             availwidth = self.colwidth - indent_amount
         else:
             availwidth = pdfstyles.print_width - indent_amount
@@ -1693,9 +1702,7 @@ class RlWriter(object):
 
     def writeCell(self, cell):
         elements = []
-        self.colwidth = cell.width
         elements.extend(self.renderCell(cell))
-        self.colwidth = 0
         return elements
 
     def _extraCellPadding(self, cell):
@@ -1714,8 +1721,7 @@ class RlWriter(object):
 
     def writeRow(self,row):
         r = []
-        
-        for cell in row:
+        for cell in row:            
             if cell.__class__ == advtree.Cell:
                 r.append(self.writeCell(cell))
             else:
@@ -1737,28 +1743,51 @@ class RlWriter(object):
         min_width += (2 * pdfstyles.cell_padding)
         return min_width, h_min
 
+    def getMaxParaWidth(self, p, print_width):
+        from reportlab.pdfbase.pdfmetrics import stringWidth
+        kind = p.blPara.kind
+        space_width = stringWidth(' ', p.style.fontName, p.style.fontSize)
+        total_width = 0
+        current_width = 0
+        for line in p.blPara.lines:
+            if kind == 0:
+                extraspace = line[0]
+            else:
+                extraspace = line.extraSpace
+            line_width = print_width - extraspace
+            current_width += line_width
+            if getattr(line, 'lineBreak', False):
+                total_width = max(total_width, current_width)
+                current_width = 0
+            else:
+                current_width += space_width
+        total_width = max(total_width, current_width)
+        return total_width - space_width
+
+    
     def getMaxElementSize(self, element, w_min, h_min):
-        if element.__class__ == Paragraph and hasattr(element, 'blPara'):
-            max_width = sum([math.fabs(line[0]) for line in element.blPara.lines])
-            max_width += (1 + len(element.blPara.lines)) * pdfstyles.cell_padding
-            return max_width, 0
+        if element.__class__ == Paragraph:
+            element.wrap(pdfstyles.print_width, pdfstyles.print_height)
+            pad = 2 * pdfstyles.cell_padding
+            width = self.getMaxParaWidth(element, pdfstyles.print_width)
+            return  width + pad, 0
         w_max, h_max = element.wrap(10*pdfstyles.page_width, pdfstyles.page_height)
         rows = h_min / h_max
         max_width = rows * w_min
         max_width += (2 * rows * pdfstyles.cell_padding)
         return max_width, h_max
     
-    def getCellSize(self, elements, cell):
+    def getCellSize(self, elements, cell):        
         min_width = 0
         max_width =0
-        print '*'*10
         for element in elements:
+            if element.__class__ == DummyTable:
+                pad = 2 * pdfstyles.cell_padding
+                return sum(element.min_widths) + pad, sum(element.max_widths) + pad
             w_min, h_min = self.getMinElementSize(element)
             min_width = max(min_width, w_min)
             w_max, h_max = self.getMaxElementSize(element, w_min, h_min)
             max_width = max(max_width, w_max)
-            print getattr(element, 'text', '')
-        print 'min', min_width, 'max', max_width
         
         return min_width, max_width
 
@@ -1766,62 +1795,70 @@ class RlWriter(object):
         min_widths = [0 for x in range(t.num_cols)]
         max_widths = [0 for x in range(t.num_cols)]
         for row in t.children:
-            colindex = 0
-            for cell in row.children:
+            for col_idx, cell in enumerate(row.children):
                 content = self.renderCell(cell)
                 min_width, max_width = self.getCellSize(content, cell)
                 cell.min_width, cell.max_width = min_width, max_width
                 if cell.colspan == 1:
-                    min_widths[colindex] = max(min_width, min_widths[colindex])
-                    max_widths[colindex] = max(max_width, max_widths[colindex])                   
-                cell.colindex = colindex
-                colindex += cell.colspan
-        avail_width = self.getAvailWidth()
-
+                    min_widths[col_idx] = max(min_width, min_widths[col_idx])
+                    max_widths[col_idx] = max(max_width, max_widths[col_idx])                   
+                cell.col_idx = col_idx
+        
         for row in t.children: # handle colspanned cells
-            colindex = 0
+            col_idx = 0
             for cell in row.children:
                 if cell.colspan > 1:                    
-                    if cell.min_width > sum(min_widths[colindex:colindex+cell.colspan]):
+                    if cell.min_width > sum(min_widths[col_idx:col_idx+cell.colspan]):
                         for k in range(cell.colspan):
-                            min_widths[colindex+k] = max(cell.min_width/cell.colspan, min_widths[colindex+k])
-                    if cell.max_width > sum(max_widths[colindex:colindex+cell.colspan]):
+                            min_widths[col_idx+k] = max(cell.min_width/cell.colspan, min_widths[col_idx+k])
+                    if cell.max_width > sum(max_widths[col_idx:col_idx+cell.colspan]):
                         for k in range(cell.colspan):
-                            max_widths[colindex+k] = max(cell.max_width/cell.colspan, max_widths[colindex+k])
-                colindex += cell.colspan
-
-        colwidths = rltables.optimizeWidths(min_widths, max_widths, avail_width)
-                   
-        for row in t.children:
-            for cell in row.children:
-                cell.width = sum( [ colwidths[colindex] for colindex in range(cell.colindex, cell.colindex + cell.colspan)])
-        return colwidths
+                            max_widths[col_idx+k] = max(cell.max_width/cell.colspan, max_widths[col_idx+k])
+                #col_idx += cell.colspan
+                col_idx += 1
+        return min_widths, max_widths
     
     def writeTable(self, t):
         self.table_nesting += 1
         t.num_cols = t.numcols
-        t.colwidths = self.getTableSize(t)
-        print 'COLWIDTHS', t.colwidths
+        elements = []                
+        for row in t.children:
+            if row.__class__ == advtree.Caption:
+                elements.extend(self.writeCaption(row))                
+                t.removeChild(row) # this is slight a hack. we do this in order not to simplify cell-coloring code
 
+        span_styles = rltables.checkSpans(t)
+        
+        self.table_size_calc += 1
+        min_widths, max_widths = self.getTableSize(t)
+        self.table_size_calc -= 1
+
+        if self.table_size_calc > 0:
+            self.table_nesting -= 1
+            return [DummyTable(min_widths, max_widths)]
+
+        avail_width = self.getAvailWidth()
+        t.colwidths = rltables.optimizeWidths(min_widths, max_widths, avail_width)
+        
         table_data =[]
         for row in t.children:
             row_data = []
-            for cell in row.children:
+            for col_idx, cell in enumerate(row.children):
+                self.colwidth = t.colwidths[col_idx] - (self.paraIndentLevel * pdfstyles.para_left_indent \
+                                + self.listIndentation * pdfstyles.list_left_indent)
                 row_data.append(self.write(cell))
             table_data.append(row_data)
             
-        elements = []                
-
         table = Table(table_data, colWidths=t.colwidths, splitByRow=1)
         styles = rltables.style(t)
         table.setStyle(styles)
-        #table.setStyle(span_styles)
     
         table.setStyle([('LEFTPADDING', (0,0),(-1,-1), pdfstyles.cell_padding),
                         ('RIGHTPADDING', (0,0),(-1,-1), pdfstyles.cell_padding),
                         ])
         table.setStyle(rltables.tableBgStyle(t))
-
+        table.setStyle(span_styles)
+        
         if table_style.get('spaceBefore', 0) > 0:
             elements.append(Spacer(0, table_style['spaceBefore']))
         elements.append(table)
