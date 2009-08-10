@@ -1850,20 +1850,14 @@ class RlWriter(object):
             table_data.append(row_data)
             
         table = Table(table_data, colWidths=t.colwidths, splitByRow=1)
-        styles = rltables.style(t)
-        table.setStyle(styles)
-    
-        table.setStyle([('LEFTPADDING', (0,0),(-1,-1), pdfstyles.cell_padding),
-                        ('RIGHTPADDING', (0,0),(-1,-1), pdfstyles.cell_padding),
-                        ])
-        table.setStyle(rltables.tableBgStyle(t))
-        table.setStyle(span_styles)
+        table.setStyle(rltables.getStyles(t, span_styles))
         
         if table_style.get('spaceBefore', 0) > 0:
             elements.append(Spacer(0, table_style['spaceBefore']))
         elements.append(table)
         if table_style.get('spaceAfter', 0) > 0:
             elements.append(Spacer(0, table_style['spaceAfter']))        
+
         self.table_nesting -= 1
         return elements
     
