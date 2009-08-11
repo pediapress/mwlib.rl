@@ -1821,14 +1821,13 @@ class RlWriter(object):
     def writeTable(self, t):
         self.table_nesting += 1
         t.num_cols = t.numcols
-        elements = []                
+        elements = []
         for row in t.children:
             if row.__class__ == advtree.Caption:
                 elements.extend(self.writeCaption(row))                
                 t.removeChild(row) # this is slight a hack. we do this in order not to simplify cell-coloring code
 
-        span_styles = rltables.checkSpans(t)
-        
+        rltables.checkSpans(t)
         self.table_size_calc += 1
         min_widths, max_widths = self.getTableSize(t)
         self.table_size_calc -= 1
@@ -1850,7 +1849,7 @@ class RlWriter(object):
             table_data.append(row_data)
             
         table = Table(table_data, colWidths=t.colwidths, splitByRow=1)
-        table.setStyle(rltables.getStyles(t, span_styles))
+        table.setStyle(rltables.getStyles(t))
         
         if table_style.get('spaceBefore', 0) > 0:
             elements.append(Spacer(0, table_style['spaceBefore']))

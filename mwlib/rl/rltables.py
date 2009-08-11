@@ -260,7 +260,10 @@ def getEmptyCell(color, colspan=1, rowspan=1):
 
 
 def checkSpans(t):
+    if getattr(t, 'checked_spans', False):
+        return
     styles = []
+
     for row_idx, row in enumerate(t.children):
         col_idx = 0
         for cell in row.children:
@@ -290,11 +293,13 @@ def checkSpans(t):
         while len(row.children) < t.num_cols:
             row.appendChild(getEmptyCell(None, colspan=1, rowspan=1))
 
-    return styles
+    t.checked_spans = True
+    t.span_styles = styles
 
-def getStyles(table, span_styles):
+
+def getStyles(table):
     styles = []
-    styles.extend(span_styles)
+    styles.extend(table.span_styles)
     styles.extend(base_styles(table))
     styles.extend(border_styles(table))
     styles.extend(background_styles(table))
@@ -311,7 +316,6 @@ def base_styles(table):
             if getattr(cell, 'compact', False):
                 styles.append(('TOPPADDING', (col_idx, row_idx), (col_idx, row_idx), 2))
                 styles.append(('BOTTOMPADDING', (col_idx, row_idx), (col_idx, row_idx), 0))
-
     return styles
                 
 def border_styles(table):
@@ -324,7 +328,6 @@ def border_styles(table):
                 styles.append(('LINEBELOW', (0, idx), (-1, idx), 0.25, colors.black))
         for col in range(table.numcols):
             styles.append(('LINEAFTER', (col, 0), (col, -1), 0.25, colors.black))
-
     return styles
 
 def background_styles(table): # FIXME: this function seems to need so
