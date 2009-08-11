@@ -286,7 +286,7 @@ def checkSpans(t):
                 else:
                     emptycell.moveto(t.children[row_idx+1].children[col_idx], prefix=True)
                 emptycell.rowspanned = True
-                styles.extend(('SPAN',(col_idx,row_idx),(col_idx + cell.colspan-1,row_idx+cell.rowspan-1)))
+                styles.append(('SPAN',(col_idx,row_idx),(col_idx + cell.colspan-1,row_idx+cell.rowspan-1)))
             col_idx += 1
 
     for row in t.children:
