@@ -1858,6 +1858,8 @@ class RlWriter(object):
             elements.append(Spacer(0, table_style['spaceAfter']))        
 
         self.table_nesting -= 1
+        if self.table_nesting == 0:
+            self.colwidth = 0
         return elements
     
 
