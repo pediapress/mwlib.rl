@@ -330,21 +330,19 @@ def border_styles(table):
             styles.append(('LINEAFTER', (col, 0), (col, -1), 0.25, colors.black))
     return styles
 
-def background_styles(table): # FIXME: this function seems to need so
+def background_styles(table):
     styles = []
     table_bg = styleutils.rgbBgColorFromNode(table)
+    if table_bg:
+        styles.append(('BACKGROUND', (0, 0), (-1, -1), colors.Color(table_bg[0], table_bg[1], table_bg[2])))
     for (row_idx, row) in enumerate(table.children):
         if not row.__class__ == Row:
             continue
         rgb = styleutils.rgbBgColorFromNode(row)
         if rgb:
             styles.append(('BACKGROUND', (0,row_idx), (-1,row_idx), colors.Color(rgb[0], rgb[1], rgb[2])))
-        elif table_bg:
-            styles.append(('BACKGROUND', (0,row_idx), (-1,row_idx), colors.Color(table_bg[0], table_bg[1], table_bg[2])))
         for (col_idx, cell) in enumerate(row.children):
-            if not cell.__class__ == Cell \
-                   or getattr(cell, 'colspanned', False) \
-                   or getattr(cell, 'rowspanned', False):
+            if cell.__class__ != Cell:
                 continue            
             rgb = styleutils.rgbBgColorFromNode(cell)
             if rgb:
