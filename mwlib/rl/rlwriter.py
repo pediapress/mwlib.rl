@@ -1776,6 +1776,12 @@ class RlWriter(object):
         max_width = rows * w_min
         max_width += (2 * rows * pdfstyles.cell_padding)
         return max_width, h_max
+
+    def getCurrentColWidth(self, table, cell, col_idx):
+        colwidth = sum(table.colwidths[col_idx:col_idx + cell.colspan])
+        padding = (self.paraIndentLevel * pdfstyles.para_left_indent + self.listIndentation * pdfstyles.list_left_indent)
+        return colwidth - padding
+
     
     def getCellSize(self, elements, cell):        
         min_width = 0
@@ -1829,22 +1835,22 @@ class RlWriter(object):
 
         rltables.checkSpans(t)
         self.table_size_calc += 1
-        min_widths, max_widths = self.getTableSize(t)
+        if not getattr(t, 'min_widths', None) and not getattr(t, 'max_widths', None):
+            t.min_widths, t.max_widths = self.getTableSize(t)
         self.table_size_calc -= 1
 
         if self.table_size_calc > 0:
             self.table_nesting -= 1
-            return [DummyTable(min_widths, max_widths)]
+            return [DummyTable(t.min_widths, t.max_widths)]
 
         avail_width = self.getAvailWidth()
-        t.colwidths = rltables.optimizeWidths(min_widths, max_widths, avail_width)
+        t.colwidths = rltables.optimizeWidths(t.min_widths, t.max_widths, avail_width)
         
         table_data =[]
         for row in t.children:
             row_data = []
             for col_idx, cell in enumerate(row.children):
-                self.colwidth = t.colwidths[col_idx] - (self.paraIndentLevel * pdfstyles.para_left_indent \
-                                + self.listIndentation * pdfstyles.list_left_indent)
+                self.colwidth = self.getCurrentColWidth(t, cell, col_idx)
                 row_data.append(self.write(cell))
             table_data.append(row_data)
             
@@ -1861,7 +1867,7 @@ class RlWriter(object):
         if self.table_nesting == 0:
             self.colwidth = 0
         return elements
-    
+
 
     def addAnchors(self, table):
         anchors = ""
