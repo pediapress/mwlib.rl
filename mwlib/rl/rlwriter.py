@@ -325,7 +325,7 @@ class RlWriter(object):
             'mwlibextversion': extversion,
         }
         return version
-    
+
     def buildArticle(self, item):
         mywiki = item.wiki
         art = mywiki.getParsedArticle(title=item.title, 
@@ -349,7 +349,6 @@ class RlWriter(object):
             art.wikiurl = None
         art.authors = mywiki.getAuthors(item.title, revision=item.revision)
 
-            
         advtree.buildAdvancedTree(art)
         if self.debug:
             parser.show(sys.stdout, art)
@@ -1554,21 +1553,23 @@ class RlWriter(object):
 
     def writeReference(self, n, isLink=False):
         ref_name = n.attributes.get('name')
-        if ref_name and not n.children:
-            ref_num = self.ref_name_map.get(ref_name, '')
-        else:
-            i = parser.Item()
-            for c in n.children:
-                i.appendChild(c)            
-            self.references.append(i)
-            ref_num = len(self.references)
-            self.ref_name_map[ref_name] = ref_num
+        if not getattr(n, 'ref_num', None):
+            if ref_name and not n.children:
+                ref_num = self.ref_name_map.get(ref_name, '')
+            else:
+                i = parser.Item()
+                for c in n.children:
+                    i.appendChild(c)
+                self.references.append(i)
+                ref_num = len(self.references)
+                self.ref_name_map[ref_name] = ref_num
+            n.ref_num = ref_num
         if getattr(n, 'no_display', False):
             return []
         if isLink:
             return ['[%s]' % len(self.references)]
         else:
-            return ['<super><font size="10">[%s]</font></super> ' % ref_num]
+            return ['<super><font size="10">[%s]</font></super> ' % n.ref_num]
     
     def writeReferenceList(self, n=None):
         if self.references:                
