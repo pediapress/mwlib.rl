@@ -263,8 +263,10 @@ def checkSpans(t):
     if getattr(t, 'checked_spans', False):
         return
     styles = []
-
+    num_rows = len(t.children)
     for row_idx, row in enumerate(t.children):
+        if row.__class__ != Row:
+            continue
         col_idx = 0
         for cell in row.children:
             if cell.colspan > 1:
@@ -273,24 +275,33 @@ def checkSpans(t):
                 emptycell.colspanned = True
                 if cell.rowspan == 1:
                     styles.append( ('SPAN',(col_idx,row_idx), (col_idx+cell.colspan-1,row_idx)) ) 
+            if row_idx + cell.rowspan > num_rows: # fix broken rowspans
+                cell.attributes['rowspan'] = num_rows - row_idx
             col_idx += 1
 
-    for row_idx, row in enumerate(t.children):
+    for row_idx, row in enumerate(t.children):        
         col_idx = 0
+        if row.__class__ != Row:
+            continue
         for cell in row.children:
             if cell.rowspan > 1:        
                 emptycell = getEmptyCell(None, cell.colspan, cell.rowspan-1)
-                last_col = len(t.children[row_idx+1].children)
-                if col_idx >= last_col:
-                    emptycell.moveto(t.children[row_idx+1].children[last_col-1])
+                last_col_idx = len(t.children[row_idx+1].children) - 1
+                if col_idx > last_col_idx:
+                    emptycell.moveto(t.children[row_idx+1].children[last_col_idx])
                 else:
                     emptycell.moveto(t.children[row_idx+1].children[col_idx], prefix=True)
                 emptycell.rowspanned = True
+                if cell.colspan > 1:
+                    emptycell.colspanned = True
                 styles.append(('SPAN',(col_idx,row_idx),(col_idx + cell.colspan-1,row_idx+cell.rowspan-1)))
             col_idx += 1
 
+    numcols = t.numcols
     for row in t.children:
-        while len(row.children) < t.num_cols:
+        if row.__class__ != Row:
+            continue
+        while len(row.children) < numcols:
             row.appendChild(getEmptyCell(None, colspan=1, rowspan=1))
 
     t.checked_spans = True

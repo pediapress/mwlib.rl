@@ -1801,6 +1801,8 @@ class RlWriter(object):
         min_widths = [0 for x in range(t.num_cols)]
         max_widths = [0 for x in range(t.num_cols)]
         for row in t.children:
+            if row.__class__ != advtree.Row:
+                continue
             for col_idx, cell in enumerate(row.children):
                 content = self.renderCell(cell)
                 min_width, max_width = self.getCellSize(content, cell)
@@ -1811,6 +1813,8 @@ class RlWriter(object):
                 cell.col_idx = col_idx
         
         for row in t.children: # handle colspanned cells
+            if row.__class__ != advtree.Row:
+                continue
             col_idx = 0
             for cell in row.children:
                 if cell.colspan > 1:                    
@@ -1820,28 +1824,41 @@ class RlWriter(object):
                     if cell.max_width > sum(max_widths[col_idx:col_idx+cell.colspan]):
                         for k in range(cell.colspan):
                             max_widths[col_idx+k] = max(cell.max_width/cell.colspan, max_widths[col_idx+k])
-                #col_idx += cell.colspan
                 col_idx += 1
         return min_widths, max_widths
     
     def writeTable(self, t):
         self.table_nesting += 1
-        t.num_cols = t.numcols
-        elements = []
-        for row in t.children:
-            if row.__class__ == advtree.Caption:
-                elements.extend(self.writeCaption(row))                
-                t.removeChild(row) # this is slight a hack. we do this in order not to simplify cell-coloring code
-
         rltables.checkSpans(t)
+        t.num_cols = t.numcols
+
         self.table_size_calc += 1
         if not getattr(t, 'min_widths', None) and not getattr(t, 'max_widths', None):
             t.min_widths, t.max_widths = self.getTableSize(t)
+            table_width = sum(t.min_widths)
+            if (table_width > self.getAvailWidth() and self.table_nesting > 1) \
+                                or (table_width > (pdfstyles.page_width - \
+                                (pdfstyles.page_margin_left + pdfstyles.page_margin_right)/4) \
+                                and self.table_nesting == 1):
+                pdfstyles.cell_padding = 2
+                total_padding = t.num_cols * pdfstyles.cell_padding
+                scale = (pdfstyles.print_width - total_padding) / (sum(t.min_widths) - total_padding)
+                log.info('scaling down text in wide table by factor of %.2f' % scale)
+                t.rel_font_size = self.formatter.rel_font_size
+                self.formatter.setRelativeFontSize(scale)
+                t.small_table = True
+                t.min_widths, t.max_widths = self.getTableSize(t)
         self.table_size_calc -= 1
 
         if self.table_size_calc > 0:
             self.table_nesting -= 1
             return [DummyTable(t.min_widths, t.max_widths)]
+
+        elements = []
+        for row in t.children:
+            if row.__class__ == advtree.Caption:
+                elements.extend(self.writeCaption(row))                
+                t.removeChild(row) # this is slight a hack. we do this in order not to simplify cell-coloring code
 
         avail_width = self.getAvailWidth()
         t.colwidths = rltables.optimizeWidths(t.min_widths, t.max_widths, avail_width)
@@ -1866,6 +1883,9 @@ class RlWriter(object):
         self.table_nesting -= 1
         if self.table_nesting == 0:
             self.colwidth = 0
+        if getattr(t, 'small_table', False):
+            pdfstyles.cell_padding = 3
+            self.formatter.setRelativeFontSize(t.rel_font_size)
         return elements
 
 
