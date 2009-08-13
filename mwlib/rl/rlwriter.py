@@ -847,7 +847,7 @@ class RlWriter(object):
                                     figures.append(n)
                                 else:
                                     combinedNodes.append(n)
-                                lastnode=n
+                                lastNode=n
                                 continue
                             fm = getMargins(figures[0].align or 'right')
                             combinedNodes.append(FiguresAndParagraphs(figures,floatingNodes, figure_margin=fm ))
@@ -861,6 +861,7 @@ class RlWriter(object):
                                 combinedNodes.append(n)                                                       
                         else:
                             combinedNodes.extend(figures)
+                            combinedNodes.append(n)
                             figures = []
             lastNode = n
 
