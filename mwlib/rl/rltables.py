@@ -265,24 +265,20 @@ def checkSpans(t):
     styles = []
     num_rows = len(t.children)
     for row_idx, row in enumerate(t.children):
-        if row.__class__ != Row:
-            continue
         col_idx = 0
         for cell in row.children:
             if cell.colspan > 1:
                 emptycell = getEmptyCell(None, cell.colspan-1, cell.rowspan)
                 emptycell.moveto(cell) # move behind orignal cell
-                emptycell.colspanned = True
-                if cell.rowspan == 1:
+                if cell.rowspan == 1 and not getattr(cell, 'colspanned', False):
                     styles.append( ('SPAN',(col_idx,row_idx), (col_idx+cell.colspan-1,row_idx)) ) 
+                emptycell.colspanned = True
             if row_idx + cell.rowspan > num_rows: # fix broken rowspans
                 cell.attributes['rowspan'] = num_rows - row_idx
             col_idx += 1
 
     for row_idx, row in enumerate(t.children):        
         col_idx = 0
-        if row.__class__ != Row:
-            continue
         for cell in row.children:
             if cell.rowspan > 1:        
                 emptycell = getEmptyCell(None, cell.colspan, cell.rowspan-1)
@@ -291,16 +287,15 @@ def checkSpans(t):
                     emptycell.moveto(t.children[row_idx+1].children[last_col_idx])
                 else:
                     emptycell.moveto(t.children[row_idx+1].children[col_idx], prefix=True)
+                if not getattr(cell, 'rowspanned', False):
+                    styles.append(('SPAN',(col_idx,row_idx),(col_idx + cell.colspan-1,row_idx+cell.rowspan-1)))
                 emptycell.rowspanned = True
                 if cell.colspan > 1:
                     emptycell.colspanned = True
-                styles.append(('SPAN',(col_idx,row_idx),(col_idx + cell.colspan-1,row_idx+cell.rowspan-1)))
             col_idx += 1
 
     numcols = t.numcols
     for row in t.children:
-        if row.__class__ != Row:
-            continue
         while len(row.children) < numcols:
             row.appendChild(getEmptyCell(None, colspan=1, rowspan=1))
 
@@ -347,8 +342,6 @@ def background_styles(table):
     if table_bg:
         styles.append(('BACKGROUND', (0, 0), (-1, -1), colors.Color(table_bg[0], table_bg[1], table_bg[2])))
     for (row_idx, row) in enumerate(table.children):
-        if not row.__class__ == Row:
-            continue
         rgb = styleutils.rgbBgColorFromNode(row)
         if rgb:
             styles.append(('BACKGROUND', (0,row_idx), (-1,row_idx), colors.Color(rgb[0], rgb[1], rgb[2])))

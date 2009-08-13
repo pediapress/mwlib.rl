@@ -146,15 +146,7 @@ def buildPara(txtList, style=text_style(), txt_style=None):
     else:
         return []
 
-# class DummyTable(object):
-
-#     def __init__(self, min_widths, max_widths):
-#         self.min_widths = min_widths
-#         self.max_widths = max_widths
-
-#     def getKeepWithNext(self):
-#         return False
-        
+       
 class ReportlabError(Exception):
 
     def __init__(self, value):
@@ -1684,7 +1676,7 @@ class RlWriter(object):
         return availwidth
 
            
-    def writeCaption(self,node): 
+    def writeCaption(self, node):
         txt = []
         for x in node.children:
             res = self.write(x)
@@ -1694,7 +1686,16 @@ class RlWriter(object):
         txt.append('</b>')
         return buildPara(txt, heading_style(mode='tablecaption'))
 
-
+    def renderCaption(self, table):
+        res = []
+        for row in table.children:
+            if row.__class__ == advtree.Caption:
+                res = self.writeCaption(row)
+                table.removeChild(row) # this is slight a hack. we do this in order not to simplify cell-coloring code
+            elif row.__class__ != advtree.Row:
+                table.removeChild(row)
+        return res
+    
     def writeCell(self, cell):
         elements = []
         elements.extend(self.renderCell(cell))
@@ -1796,8 +1797,6 @@ class RlWriter(object):
         min_widths = [0 for x in range(t.num_cols)]
         max_widths = [0 for x in range(t.num_cols)]
         for row in t.children:
-            if row.__class__ != advtree.Row:
-                continue
             for col_idx, cell in enumerate(row.children):
                 content = self.renderCell(cell)
                 min_width, max_width = self.getCellSize(content, cell)
@@ -1808,8 +1807,6 @@ class RlWriter(object):
                 cell.col_idx = col_idx
         
         for row in t.children: # handle colspanned cells
-            if row.__class__ != advtree.Row:
-                continue
             col_idx = 0
             for cell in row.children:
                 if cell.colspan > 1:                    
@@ -1824,6 +1821,8 @@ class RlWriter(object):
     
     def writeTable(self, t):
         self.table_nesting += 1
+        elements = []
+        elements.extend(self.renderCaption(t))
         rltables.checkSpans(t)
         t.num_cols = t.numcols
 
@@ -1848,12 +1847,6 @@ class RlWriter(object):
         if self.table_size_calc > 0:
             self.table_nesting -= 1
             return [DummyTable(t.min_widths, t.max_widths)]
-
-        elements = []
-        for row in t.children:
-            if row.__class__ == advtree.Caption:
-                elements.extend(self.writeCaption(row))                
-                t.removeChild(row) # this is slight a hack. we do this in order not to simplify cell-coloring code
 
         avail_width = self.getAvailWidth()
         t.colwidths = rltables.optimizeWidths(t.min_widths, t.max_widths, avail_width)
