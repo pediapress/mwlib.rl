@@ -33,7 +33,7 @@ def renderElements(elements, filesuffix=None, tmpdir=None):
         fn = 'test.pdf'
     fn = os.path.join(tmpdir, fn)
     doc = BaseDocTemplate(fn, topMargin=margin, leftMargin=margin, rightMargin=margin, bottomMargin=margin)
-    pt = WikiPage('Title', wikiurl='http://test.com', wikititle='Title')
+    pt = WikiPage("Title")
     doc.addPageTemplates(pt)
     elements.insert(0, NextPageTemplate('Title'))   
     doc.build(elements)

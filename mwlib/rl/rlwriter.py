@@ -470,7 +470,7 @@ class RlWriter(object):
             if self.fail_safe_rendering:
                 log.error('GIVING UP')
                 shutil.rmtree(self.tmpdir, ignore_errors=True)
-                sys.exit(1)
+                raise RuntimeError('Giving up.')
             else:
                 self.fail_safe_rendering = True
                 self.writeBook(output, coverimage=coverimage, status_callback=status_callback)
@@ -509,6 +509,7 @@ class RlWriter(object):
             if linuxmem:
                 log.info('memory usage after reportlab rendering:', linuxmem.memory())
         except:
+            traceback.print_exc()
             log.info('rendering failed - trying safe rendering')
             raise
 
@@ -563,22 +564,14 @@ class RlWriter(object):
                 if first_article_title:                    
                     first_article_title = xmlescape(first_article_title)
                 break
-        kwargs = {}
-        if first_article and self.env is not None:
-            src = self.env.wiki.getSource(first_article)
-            if src:
-                if src.get('name'):
-                    kwargs['wikititle'] = src['name']
-                if src.get('url'):
-                    kwargs['wikiurl'] = src['url']                    
-        self.doc.addPageTemplates(TitlePage(cover=coverimage, **kwargs))
+        self.doc.addPageTemplates(TitlePage(cover=coverimage))
         elements = []
         elements.append(Paragraph(self.formatter.cleanText(title), text_style(mode='booktitle')))
         if subtitle:
             elements.append(Paragraph(self.formatter.cleanText(subtitle), text_style(mode='booksubtitle')))
         if not first_article:
             return elements
-        self.doc.addPageTemplates(WikiPage(first_article_title, **kwargs))
+        self.doc.addPageTemplates(WikiPage(first_article_title))
         elements.append(NextPageTemplate(first_article_title.encode('utf-8')))
         elements.append(PageBreak())
         return elements
@@ -863,7 +856,7 @@ class RlWriter(object):
                                     figures.append(n)
                                 else:
                                     combinedNodes.append(n)
-                                lastnode=n
+                                lastNode=n
                                 continue
                             fm = getMargins(figures[0].align or 'right')
                             combinedNodes.append(FiguresAndParagraphs(figures,floatingNodes, figure_margin=fm ))
@@ -877,6 +870,7 @@ class RlWriter(object):
                                 combinedNodes.append(n)                                                       
                         else:
                             combinedNodes.extend(figures)
+                            combinedNodes.append(n)
                             figures = []
             lastNode = n
 
