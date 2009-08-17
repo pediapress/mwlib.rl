@@ -91,6 +91,15 @@ The current development version can also be found there.
 ChangeLog
 ======================================================================
 
+2009-08-17 release 0.12.0
+-------------------------
+* fixes
+* add Table of Contents
+* improve support for CJK languages
+* fix printing problems
+* use formatter class to style text
+* add CustomNodeTransformer
+
 2009-05-06 release 0.11.3
 -------------------------
 * fix
