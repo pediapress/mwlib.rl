@@ -91,6 +91,10 @@ The current development version can also be found there.
 ChangeLog
 ======================================================================
 
+2009-??-?? release 0.12.2
+-------------------------
+* rewrite table rendering code
+
 2009-08-17 release 0.12.0
 -------------------------
 * fixes
