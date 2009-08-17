@@ -17,6 +17,7 @@ import shutil
 import subprocess
 import copy
 import gc
+import math
 
 try:
     from hashlib import md5
@@ -66,7 +67,7 @@ from reportlab.platypus.doctemplate import LayoutError
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.enums import TA_LEFT, TA_CENTER, TA_JUSTIFY, TA_RIGHT
 
-from mwlib.rl.customflowables import Figure, FiguresAndParagraphs, SmartKeepTogether, TocEntry
+from mwlib.rl.customflowables import Figure, FiguresAndParagraphs, SmartKeepTogether, TocEntry, DummyTable
 
 from pdfstyles import text_style, heading_style, table_style
 
@@ -145,7 +146,7 @@ def buildPara(txtList, style=text_style(), txt_style=None):
     else:
         return []
 
-
+       
 class ReportlabError(Exception):
 
     def __init__(self, value):
@@ -215,7 +216,8 @@ class RlWriter(object):
         self.listCounterID = 1
         self.tmpImages = set()
         self.namedLinkCount = 1
-        self.tableNestingLevel = 0
+        self.table_nesting = 0
+        self.table_size_calc = 0
         self.tablecount = 0
         self.paraIndentLevel = 0
 
@@ -315,7 +317,7 @@ class RlWriter(object):
             'mwlibextversion': extversion,
         }
         return version
-    
+
     def buildArticle(self, item):
         mywiki = item.wiki
         art = mywiki.getParsedArticle(title=item.title, 
@@ -339,7 +341,6 @@ class RlWriter(object):
             art.wikiurl = None
         art.authors = mywiki.getAuthors(item.title, revision=item.revision)
 
-            
         advtree.buildAdvancedTree(art)
         if self.debug:
             parser.show(sys.stdout, art)
@@ -577,7 +578,7 @@ class RlWriter(object):
         hr = HRFlowable(width="80%", spaceBefore=6, spaceAfter=0, color=colors.black, thickness=0.5)
 
         title = self.renderText(chapter.caption)
-        if self.inline_mode == 0 and self.tableNestingLevel==0:
+        if self.inline_mode == 0 and self.table_nesting==0:
             chapter_anchor = '<a name="%s" />' % len(self.bookmarks)
             self.bookmarks.append((title, 'chapter'))
         else:
@@ -610,7 +611,7 @@ class RlWriter(object):
             heading_txt = ''
         self.formatter.sectiontitle_mode = False
 
-        if 1 < lvl <= 4 and self.inline_mode == 0 and self.tableNestingLevel==0:
+        if 1 < lvl <= 4 and self.inline_mode == 0 and self.table_nesting==0:
             anchor = '<a name="%d"/>' % len(self.bookmarks)
             self.bookmarks.append((obj.children[0].getAllDisplayText(), 'heading%s' % lvl))
         else:
@@ -723,7 +724,7 @@ class RlWriter(object):
 
         self.currentArticle = repr(title)
 
-        if self.inline_mode == 0 and self.tableNestingLevel==0:
+        if self.inline_mode == 0 and self.table_nesting==0:
             heading_anchor = '<a name="%d"/>' % len(self.bookmarks)
             self.bookmarks.append((article.caption, 'article'))
         else:
@@ -935,7 +936,7 @@ class RlWriter(object):
         char_limit = max(1, int(pdfstyles.source_max_line_len / (max(1, 0.75*self.currentColCount))))
         if maxCharOnLine > char_limit:
             t = self.breakLongLines(t, char_limit)
-        pre = XPreformatted(t, text_style(mode='preformatted', in_table=self.tableNestingLevel))
+        pre = XPreformatted(t, text_style(mode='preformatted', in_table=self.table_nesting))
         return [pre]
         
     def writeNode(self,obj):
@@ -967,7 +968,7 @@ class RlWriter(object):
             if self.license_mode:
                 para_style = text_style("license")
             else:
-                para_style = text_style(indent_lvl=self.paraIndentLevel,in_table=self.tableNestingLevel)
+                para_style = text_style(indent_lvl=self.paraIndentLevel,in_table=self.table_nesting)
         elif self.license_mode:
             para_style.fontSize = max(text_style('license').fontSize, para_style.fontSize - 4)
             para_style.leading = 1
@@ -1042,20 +1043,20 @@ class RlWriter(object):
 
     def writeDefinitionTerm(self, n):
         txt = self.writeStrong(n)
-        return [Paragraph(''.join(txt), text_style(in_table=self.tableNestingLevel))]
+        return [Paragraph(''.join(txt), text_style(in_table=self.table_nesting))]
 
     def writeDefinitionDescription(self, n):
         return self.writeIndented(n)
 
     def writeIndented(self, n):
         self.paraIndentLevel += getattr(n, 'indentlevel', 1)
-        items = self.renderMixed(n, para_style=text_style(indent_lvl=self.paraIndentLevel, in_table=self.tableNestingLevel))
+        items = self.renderMixed(n, para_style=text_style(indent_lvl=self.paraIndentLevel, in_table=self.table_nesting))
         self.paraIndentLevel -= getattr(n, 'indentlevel', 1)
         return items
         
     def writeBlockquote(self, n):
         self.paraIndentLevel += 1
-        items = self.renderMixed(n, text_style(mode='blockquote', in_table=self.tableNestingLevel))
+        items = self.renderMixed(n, text_style(mode='blockquote', in_table=self.table_nesting))
         self.paraIndentLevel -= 1
         return items     
         
@@ -1157,7 +1158,7 @@ class RlWriter(object):
                 href = href[:quote_idx]
         display_text = self.renderURL(href)
         href = xmlescape(href)
-        if (self.tableNestingLevel and len(href) > 30) and not self.ref_mode:
+        if (self.table_nesting and len(href) > 30) and not self.ref_mode:
             return self.writeNamedURL(obj)
         txt = '<link href="%s">%s</link>' % (href, display_text)
         return [txt]
@@ -1295,12 +1296,12 @@ class RlWriter(object):
             return []
 
         max_width = self.colwidth
-        if self.tableNestingLevel > 0 and not max_width:
+        if self.table_nesting > 0 and not max_width:
             cell = img_node.getParentNodesByClass(advtree.Cell)
             if cell:
                 max_width = print_width / len(cell[0].getAllSiblings()) - 10
         max_height = pdfstyles.img_max_thumb_height * pdfstyles.print_height 
-        if self.tableNestingLevel > 0:
+        if self.table_nesting > 0:
             max_height = print_height/4 # fixme this needs to be read from config
         if self.gallery_mode:
             max_height = print_height/3 # same as above
@@ -1353,7 +1354,7 @@ class RlWriter(object):
         captionTxt = ''.join(txt)        
         figure = Figure(img_path,
                         captionTxt=captionTxt,
-                        captionStyle=text_style('figure', in_table=self.tableNestingLevel),
+                        captionStyle=text_style('figure', in_table=self.table_nesting),
                         imgWidth=w,
                         imgHeight=h,
                         margin=(0.2*cm, 0.2*cm, 0.2*cm, 0.2*cm),
@@ -1389,7 +1390,7 @@ class RlWriter(object):
                 try:
                     res = buildPara(res)
                 except:
-                    res = Paragraph('',text_style(in_table=self.tableNestingLevel))
+                    res = Paragraph('',text_style(in_table=self.table_nesting))
             if len(row) < perrow:
                 row.append(res)
             else:
@@ -1488,7 +1489,7 @@ class RlWriter(object):
             if n.vlist.get('enclose', False) == 'none':
                 txt = re.sub('<para.*?>', '', txt).replace('</para>', '')
                 return txt
-            return [XPreformatted(txt, text_style(mode='source', in_table=self.tableNestingLevel))]            
+            return [XPreformatted(txt, text_style(mode='source', in_table=self.table_nesting))]            
         except:
             traceback.print_exc()
             log.error('unsuitable lexer for source code language: %s - Lexer: %s' % (repr(src_lang), lexer.__class__.__name__))
@@ -1538,21 +1539,23 @@ class RlWriter(object):
 
     def writeReference(self, n, isLink=False):
         ref_name = n.attributes.get('name')
-        if ref_name and not n.children:
-            ref_num = self.ref_name_map.get(ref_name, '')
-        else:
-            i = parser.Item()
-            for c in n.children:
-                i.appendChild(c)            
-            self.references.append(i)
-            ref_num = len(self.references)
-            self.ref_name_map[ref_name] = ref_num
+        if not getattr(n, 'ref_num', None):
+            if ref_name and not n.children:
+                ref_num = self.ref_name_map.get(ref_name, '')
+            else:
+                i = parser.Item()
+                for c in n.children:
+                    i.appendChild(c)
+                self.references.append(i)
+                ref_num = len(self.references)
+                self.ref_name_map[ref_name] = ref_num
+            n.ref_num = ref_num
         if getattr(n, 'no_display', False):
             return []
         if isLink:
             return ['[%s]' % len(self.references)]
         else:
-            return ['<super><font size="10">[%s]</font></super> ' % ref_num]
+            return ['<super><font size="10">[%s]</font></super> ' % n.ref_num]
     
     def writeReferenceList(self, n=None):
         if self.references:                
@@ -1566,7 +1569,7 @@ class RlWriter(object):
             return []
 
     def writeCenter(self, n):
-        return self.renderMixed(n, text_style(mode='center', in_table=self.tableNestingLevel))
+        return self.renderMixed(n, text_style(mode='center', in_table=self.table_nesting))
 
     def writeDiv(self, n):    
         if not n.children:
@@ -1577,9 +1580,9 @@ class RlWriter(object):
                     return [Spacer(0, height)]
             return []
         if getattr(n, 'border', False) and not n.getParentNodesByClass(Table) and not n.getChildNodesByClass(advtree.PreFormatted):
-            return self.renderMixed(n, text_style(mode='box', indent_lvl=self.paraIndentLevel, in_table=self.tableNestingLevel)) 
+            return self.renderMixed(n, text_style(mode='box', indent_lvl=self.paraIndentLevel, in_table=self.table_nesting)) 
         else:
-            return self.renderMixed(n, text_style(indent_lvl=self.paraIndentLevel, in_table=self.tableNestingLevel)) 
+            return self.renderMixed(n, text_style(indent_lvl=self.paraIndentLevel, in_table=self.table_nesting)) 
 
     def writeSpan(self, n):
         return self.renderInline(n)
@@ -1628,7 +1631,7 @@ class RlWriter(object):
         elif self.ref_mode:
             para_style = text_style(mode="references",indent_lvl=listIndent)
         else:
-            para_style = text_style(mode='list', indent_lvl=listIndent, in_table=self.tableNestingLevel)
+            para_style = text_style(mode='list', indent_lvl=listIndent, in_table=self.table_nesting)
         if resetCounter: # first list item gets extra spaceBefore
             para_style.spaceBefore = text_style().spaceBefore
 
@@ -1662,34 +1665,18 @@ class RlWriter(object):
                 log.warning('got %s node in itemlist - skipped' % node.__class__.__name__)
         self.listIndentation -= 1
         return items
+
+    def getAvailWidth(self):
+        indent_amount = self.paraIndentLevel * pdfstyles.para_left_indent \
+                        + self.listIndentation * pdfstyles.list_left_indent                
+        if self.table_nesting > 1 and self.colwidth !=0:
+            availwidth = self.colwidth - indent_amount
+        else:
+            availwidth = pdfstyles.print_width - indent_amount
+        return availwidth
+
            
-
-    def writeCell(self, cell, row):
-        colspan = cell.attributes.get('colspan', 1)
-        rowspan = cell.attributes.get('rowspan', 1)
-        align = cell.attributes.get('align') or row.attributes.get('align')
-        if not align and getattr(cell, 'is_header', False):
-            align = 'center'
-        elements = []
-        if cell.getChildNodesByClass(advtree.NamedURL) or cell.getChildNodesByClass(advtree.Reference) or cell.getChildNodesByClass(advtree.Sup):
-            elements.append(Spacer(0, 1))            
-        elements.extend(self.renderMixed(cell, text_style(in_table=self.tableNestingLevel, text_align=align)))
-        return {'content':elements,
-                'rowspan':rowspan,
-                'colspan':colspan}
-
-    def writeRow(self,row):
-        r = []
-        
-        for cell in row:
-            if cell.__class__ == advtree.Cell:
-                r.append(self.writeCell(cell, row))
-            else:
-                log.warning('table row contains non-cell node, skipped: %r' % cell.__class__.__name__)
-        return r
-
-
-    def writeCaption(self,node): 
+    def writeCaption(self, node):
         txt = []
         for x in node.children:
             res = self.write(x)
@@ -1699,170 +1686,196 @@ class RlWriter(object):
         txt.append('</b>')
         return buildPara(txt, heading_style(mode='tablecaption'))
 
+    def renderCaption(self, table):
+        res = []
+        for row in table.children:
+            if row.__class__ == advtree.Caption:
+                res = self.writeCaption(row)
+                table.removeChild(row) # this is slight a hack. we do this in order not to simplify cell-coloring code
+            elif row.__class__ != advtree.Row:
+                table.removeChild(row)
+        return res
+    
+    def writeCell(self, cell):
+        elements = []
+        elements.extend(self.renderCell(cell))
+        return elements
+
+    def _extraCellPadding(self, cell):
+        return cell.getChildNodesByClass(advtree.NamedURL) \
+               or cell.getChildNodesByClass(advtree.Reference) \
+               or cell.getChildNodesByClass(advtree.Sup)
+
+    def renderCell(self, cell):
+        align = styleutils.getTextAlign(cell)
+        elements = []
+        if self._extraCellPadding(cell):
+            elements.append(Spacer(0, 1))
+        elements.extend(self.renderMixed(cell, text_style(in_table=self.table_nesting, text_align=align)))
+        return elements
+        
+
+    def writeRow(self,row):
+        r = []
+        for cell in row:            
+            if cell.__class__ == advtree.Cell:
+                r.append(self.writeCell(cell))
+            else:
+                log.warning('table row contains non-cell node, skipped: %r' % cell.__class__.__name__)
+        return r
+
+    def _correctWidth(self, element):
+        width_correction = 0
+        if hasattr(element, 'style'):
+            width_correction += element.style.leftIndent + element.style.rightIndent
+        #if element.__class__ == Table:
+        #    width_correction += pdfstyles.cell_padding * 2
+        return width_correction
+    
+
+    def getMinElementSize(self, element):        
+        w_min, h_min = element.wrap(0, pdfstyles.page_height)
+        min_width = w_min + self._correctWidth(element)
+        min_width += (2 * pdfstyles.cell_padding)
+        return min_width, h_min
+
+    def getMaxParaWidth(self, p, print_width):
+        from reportlab.pdfbase.pdfmetrics import stringWidth
+        kind = p.blPara.kind
+        space_width = stringWidth(' ', p.style.fontName, p.style.fontSize)
+        total_width = 0
+        current_width = 0
+        for line in p.blPara.lines:
+            if kind == 0:
+                extraspace = line[0]
+            else:
+                extraspace = line.extraSpace
+            line_width = print_width - extraspace
+            current_width += line_width
+            if getattr(line, 'lineBreak', False):
+                total_width = max(total_width, current_width)
+                current_width = 0
+            else:
+                current_width += space_width
+        total_width = max(total_width, current_width)
+        return total_width - space_width
+
+    
+    def getMaxElementSize(self, element, w_min, h_min):
+        if element.__class__ == Paragraph:
+            element.wrap(pdfstyles.print_width, pdfstyles.print_height)
+            pad = 2 * pdfstyles.cell_padding
+            width = self.getMaxParaWidth(element, pdfstyles.print_width)
+            return  width + pad, 0
+        w_max, h_max = element.wrap(10*pdfstyles.page_width, pdfstyles.page_height)
+        rows = h_min / h_max
+        max_width = rows * w_min
+        max_width += (2 * rows * pdfstyles.cell_padding)
+        return max_width, h_max
+
+    def getCurrentColWidth(self, table, cell, col_idx):
+        colwidth = sum(table.colwidths[col_idx:col_idx + cell.colspan])
+        padding = (self.paraIndentLevel * pdfstyles.para_left_indent + self.listIndentation * pdfstyles.list_left_indent)
+        return colwidth - padding
+
+    
+    def getCellSize(self, elements, cell):        
+        min_width = 0
+        max_width =0
+        for element in elements:
+            if element.__class__ == DummyTable:
+                pad = 2 * pdfstyles.cell_padding
+                return sum(element.min_widths) + pad, sum(element.max_widths) + pad
+            w_min, h_min = self.getMinElementSize(element)
+            min_width = max(min_width, w_min)
+            w_max, h_max = self.getMaxElementSize(element, w_min, h_min)
+            max_width = max(max_width, w_max)
+        
+        return min_width, max_width
+
+    def getTableSize(self, t):
+        min_widths = [0 for x in range(t.num_cols)]
+        max_widths = [0 for x in range(t.num_cols)]
+        for row in t.children:
+            for col_idx, cell in enumerate(row.children):
+                content = self.renderCell(cell)
+                min_width, max_width = self.getCellSize(content, cell)
+                cell.min_width, cell.max_width = min_width, max_width
+                if cell.colspan == 1:
+                    min_widths[col_idx] = max(min_width, min_widths[col_idx])
+                    max_widths[col_idx] = max(max_width, max_widths[col_idx])                   
+                cell.col_idx = col_idx
+        
+        for row in t.children: # handle colspanned cells
+            col_idx = 0
+            for cell in row.children:
+                if cell.colspan > 1:                    
+                    if cell.min_width > sum(min_widths[col_idx:col_idx+cell.colspan]):
+                        for k in range(cell.colspan):
+                            min_widths[col_idx+k] = max(cell.min_width/cell.colspan, min_widths[col_idx+k])
+                    if cell.max_width > sum(max_widths[col_idx:col_idx+cell.colspan]):
+                        for k in range(cell.colspan):
+                            max_widths[col_idx+k] = max(cell.max_width/cell.colspan, max_widths[col_idx+k])
+                col_idx += 1
+        return min_widths, max_widths
     
     def writeTable(self, t):
-        self.tableNestingLevel += 1
+        self.table_nesting += 1
         elements = []
-        data = []        
+        elements.extend(self.renderCaption(t))
+        rltables.checkSpans(t)
+        t.num_cols = t.numcols
 
-        maxCols = getattr(t, 'numcols', 0)
-        t = rltables.reformatTable(t, maxCols)
-        if t.__class__ == advtree.Table:
-            maxCols = t.numcols
+        self.table_size_calc += 1
+        if not getattr(t, 'min_widths', None) and not getattr(t, 'max_widths', None):
+            t.min_widths, t.max_widths = self.getTableSize(t)
+            table_width = sum(t.min_widths)
+            if (table_width > self.getAvailWidth() and self.table_nesting > 1) \
+                                or (table_width > (pdfstyles.page_width - \
+                                (pdfstyles.page_margin_left + pdfstyles.page_margin_right)/4) \
+                                and self.table_nesting == 1):
+                pdfstyles.cell_padding = 2
+                total_padding = t.num_cols * pdfstyles.cell_padding
+                scale = (pdfstyles.print_width - total_padding) / (sum(t.min_widths) - total_padding)
+                log.info('scaling down text in wide table by factor of %.2f' % scale)
+                t.rel_font_size = self.formatter.rel_font_size
+                self.formatter.setRelativeFontSize(scale)
+                t.small_table = True
+                t.min_widths, t.max_widths = self.getTableSize(t)
+        self.table_size_calc -= 1
 
-        self.currentColCount += maxCols
+        if self.table_size_calc > 0:
+            self.table_nesting -= 1
+            return [DummyTable(t.min_widths, t.max_widths)]
+
+        avail_width = self.getAvailWidth()
+        t.colwidths = rltables.optimizeWidths(t.min_widths, t.max_widths, avail_width)
         
-        # if a table contains only tables it is transformed to a list of the containing tables - that is handled below
-        if t.__class__ != advtree.Table and all([c.__class__==advtree.Table for c in t]):
-            tables = []
-            self.tableNestingLevel -= 1
-            self.currentColCount -= maxCols
-            for c in t:
-                tables.extend(self.writeTable(c))
-            return tables        
+        table_data =[]
+        for row in t.children:
+            row_data = []
+            for col_idx, cell in enumerate(row.children):
+                self.colwidth = self.getCurrentColWidth(t, cell, col_idx)
+                row_data.append(self.write(cell))
+            table_data.append(row_data)
+            
+        table = Table(table_data, colWidths=t.colwidths, splitByRow=1)
+        table.setStyle(rltables.getStyles(t))
         
-        for r in t.children[:]:
-            if r.__class__ == advtree.Row:
-                data.append(self.writeRow(r))
-            elif r.__class__ == advtree.Caption:
-                elements.extend(self.writeCaption(r))                
-                t.removeChild(r) # this is slight a hack. we do this in order not to simplify cell-coloring code
-
-        (data, span_styles) = rltables.checkSpans(data, t)
-        self.currentColCount -= maxCols
-
-        if not data:
-            self.tableNestingLevel -= 1
-            return []
-        colwidthList = rltables.getColWidths(data, t, nestingLevel=self.tableNestingLevel)
-        data = rltables.splitCellContent(data)
-
-        has_data = False
-        for row in data:
-            if row:
-                has_data = True
-                break
-        if not has_data:
-            self.tableNestingLevel -= 1
-            return []
-
-        table = Table(data, colWidths=colwidthList, splitByRow=1)        
-        styles = rltables.style(t)
-        table.setStyle(styles)
-        table.setStyle(span_styles)
-    
-        table.setStyle([('LEFTPADDING', (0,0),(-1,-1), 3),
-                        ('RIGHTPADDING', (0,0),(-1,-1), 3),
-                        ])
-        table.setStyle(rltables.tableBgStyle(t))
-                       
-        w,h = table.wrap(print_width, print_height)
-        if maxCols == 1 and h > print_height: # big tables with only 1 col are removed - the content is kept
-            flatData = [cell for cell in flatten(data) if not isinstance(cell, str)]            
-            self.tableNestingLevel -= 1
-            return flatData 
-
         if table_style.get('spaceBefore', 0) > 0:
             elements.append(Spacer(0, table_style['spaceBefore']))
         elements.append(table)
         if table_style.get('spaceAfter', 0) > 0:
-            elements.append(Spacer(0, table_style['spaceAfter']))
-            
-        (renderingOk, renderedTable) = self.renderTable(table, t)
-        self.tableNestingLevel -= 1
-        if not renderingOk:
-            return []
-        if renderingOk and renderedTable:
-            return renderedTable
+            elements.append(Spacer(0, table_style['spaceAfter']))        
+
+        self.table_nesting -= 1
+        if self.table_nesting == 0:
+            self.colwidth = 0
+        if getattr(t, 'small_table', False):
+            pdfstyles.cell_padding = 3
+            self.formatter.setRelativeFontSize(t.rel_font_size)
         return elements
-    
-    def renderTable(self, table, t_node):
-        """
-        method that checks if a table can be rendered by reportlab. this is done, b/c large tables cause problems.
-        if a large table is detected, it is rendered on a larger canvas and - on success - embedded as an
-        scaled down image.
-        """
-        if self.debug:
-            log.info("testrendering:", os.path.join(self.tmpdir, 'table%d.pdf' % self.tablecount))
-        fn = os.path.join(self.tmpdir, 'table%d.pdf' % self.tablecount)
-        self.tablecount += 1
 
-        doc = BaseDocTemplate(fn)
-        doc.addPageTemplates(SimplePage(pageSize=A4))
-        try:
-            w,h=table.wrap(print_width, print_height)
-            if self.debug:
-                log.info("tablesize:(%f, %f) pagesize:(%f, %f) tableOverflowTolerance: %f" %(w, h, print_width, print_height, tableOverflowTolerance))
-            if w > (print_width + tableOverflowTolerance):
-                log.warning('table test rendering: too wide - printwidth: %f (tolerance %f) tablewidth: %f' % (print_width, tableOverflowTolerance, w))
-                raise LayoutError
-            if self.tableNestingLevel > 1 and h > print_height:
-                log.warning('nested table too high')
-                raise LayoutError
-            self.addAnchors(table)
-            doc.build([table])
-            self.delAnchors(table)
-            del doc
-            if self.debug:
-                log.info('table test rendering: ok')
-            return (True, None)
-        except LayoutError:
-            log.warning('table test rendering: reportlab LayoutError')
-
-        log.info('trying safe table rendering')
-                   
-        fail = True
-        pw = print_width
-        ph = print_height
-        ar = ph/pw
-        w,h = table.wrap(pw, ph)
-        if w > pw:
-            pw = w
-            ph = pw*ar
-        while fail:
-            pw += 20
-            ph += 20*ar
-            if pw > print_width * 2:
-                break
-            try:
-                doc = BaseDocTemplate(fn)
-                doc.addPageTemplates(SimplePage(pageSize=(pw,ph)))
-                doc.build([table])
-                fail = False
-                del doc
-            except:
-                log.info('safe rendering fail for width:', pw)
-                break
-
-        tableFailText = '<strong>WARNING: Table could not be rendered - ouputting plain text.</strong><br/>Potential causes of the problem are: (a) table contains a cell with content that does not fit on a single page (b) nested tables (c) table is too wide'
-
-        if fail:
-            log.warning('error rendering table - outputting plain text')
-            elements = self.renderFailedNode(t_node, tableFailText)
-            return (True, elements)
-
-        imgname = fn +'.png'
-        resolutions = [300, 200, 100, 50]
-        convertFail = 1
-        # conversion of large tables fails for high resolutions - try converting from high to low resolutions 
-        while convertFail and resolutions:
-            res = resolutions.pop(0)
-            convertFail = os.system('convert  -density %d %s %s' % (res, fn, imgname))
-
-        if convertFail:
-            elements = self.renderFailedNode(t_node, tableFailText)
-            log.warning('error rendering table - (pdf->png failed) outputting plain text')
-            return (True, elements)
-
-        images = []
-        if os.path.exists(imgname):
-            images = [Image(imgname, width=print_width*0.90, height=print_height*0.90)]
-        else: # if the table spans multiple pages, convert generates multiple images
-            import glob
-            imageFns = glob.glob(fn + '-*.png')
-            for imageFn in imageFns:
-                images.append(Image(imageFn, width=print_width*0.90, height=print_height*0.90))
-        return (True, images)
 
     def addAnchors(self, table):
         anchors = ""
@@ -1910,7 +1923,7 @@ class RlWriter(object):
         w,h = img.size
         del img
 
-        if self.tableNestingLevel: # scale down math-formulas in tables
+        if self.table_nesting: # scale down math-formulas in tables
             w = w * pdfstyles.small_font_size/pdfstyles.font_size
             h = h * pdfstyles.small_font_size/pdfstyles.font_size
             

@@ -42,7 +42,7 @@ rl_config.canvas_basefontname = default_font
 ### TABLE CONFIG
 
 tableOverflowTolerance = 20  # max width overflow for tables    unit: pt 
-
+cell_padding = 3
 
 #### TITLE PAGE
 

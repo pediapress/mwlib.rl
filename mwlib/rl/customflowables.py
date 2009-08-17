@@ -165,7 +165,7 @@ class FiguresAndParagraphs(Flowable):
             if self.figAlign == 'left':
                 p._offsets = self._offsets[count]
                 if hasattr(p, 'style') and hasattr(p.style, 'bulletIndent'):
-                    p.style.bulletIndent = p._offsets[0]
+                    p.style.bulletIndent += p._offsets[0]
             if isinstance(p, HRFlowable):
                 p.canv = canv
                 widthOffset = self.horizontalRuleOffsets.pop(0)
@@ -316,3 +316,13 @@ class TocEntry(Flowable):
 
     def draw(self):
         pass
+
+class DummyTable(Flowable):
+
+    def __init__(self, min_widths, max_widths):
+        self.min_widths = min_widths
+        self.max_widths = max_widths
+        Flowable.__init__(self)
+
+    def draw(self):
+        return
