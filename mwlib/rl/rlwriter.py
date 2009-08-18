@@ -355,7 +355,7 @@ class RlWriter(object):
         return art
 
     
-    def initReportlabDoc(self, output, status_callback=None):
+    def initReportlabDoc(self, output):
         version = self.getVersion()
         if pdfstyles.render_toc:
             tocCallback = self.tocCallback
@@ -404,13 +404,13 @@ class RlWriter(object):
         self.getArticleIDs()
         
         if status_callback:
-            self.layout_status = status_callback.getSubRange(0, 75)
+            self.layout_status = status_callback.getSubRange(1, 75)
             self.layout_status(status='layouting')
             self.render_status = status_callback.getSubRange(76, 100)
         else:
             self.layout_status = None
             self.render_status = None
-        self.initReportlabDoc(output, status_callback=status_callback)
+        self.initReportlabDoc(output)
 
         elements = []
 
