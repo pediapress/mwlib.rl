@@ -95,7 +95,7 @@ ChangeLog
 -------------------------
 * rewrite table rendering code
 
-2009-08-17 release 0.12.0
+2009-08-17 release 0.12.1
 -------------------------
 * fixes
 * add Table of Contents
