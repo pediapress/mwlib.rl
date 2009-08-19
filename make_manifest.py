@@ -12,7 +12,7 @@ def get_mo_files():
     return mo_files
 
 def main():
-    files = [x.strip() for x in os.popen("hg manifest")]
+    files = [x.strip() for x in os.popen("git ls-files")]
     files.append("README.html")
     def remove(n):
         try:
