@@ -1708,6 +1708,8 @@ class RlWriter(object):
 
     def renderCell(self, cell):
         align = styleutils.getTextAlign(cell)
+        if not align and getattr(cell, 'is_header', False):
+            align = 'center'
         elements = []
         if self._extraCellPadding(cell):
             elements.append(Spacer(0, 1))
@@ -1793,7 +1795,7 @@ class RlWriter(object):
         
         return min_width, max_width
 
-    def getTableSize(self, t):
+    def _getTableSize(self, t):
         min_widths = [0 for x in range(t.num_cols)]
         max_widths = [0 for x in range(t.num_cols)]
         for row in t.children:
@@ -1818,17 +1820,10 @@ class RlWriter(object):
                             max_widths[col_idx+k] = max(cell.max_width/cell.colspan, max_widths[col_idx+k])
                 col_idx += 1
         return min_widths, max_widths
-    
-    def writeTable(self, t):
-        self.table_nesting += 1
-        elements = []
-        elements.extend(self.renderCaption(t))
-        rltables.checkSpans(t)
-        t.num_cols = t.numcols
 
-        self.table_size_calc += 1
+    def getTableSize(self, t):
         if not getattr(t, 'min_widths', None) and not getattr(t, 'max_widths', None):
-            t.min_widths, t.max_widths = self.getTableSize(t)
+            t.min_widths, t.max_widths = self._getTableSize(t)
             table_width = sum(t.min_widths)
             if (table_width > self.getAvailWidth() and self.table_nesting > 1) \
                                 or (table_width > (pdfstyles.page_width - \
@@ -1841,7 +1836,18 @@ class RlWriter(object):
                 t.rel_font_size = self.formatter.rel_font_size
                 self.formatter.setRelativeFontSize(scale)
                 t.small_table = True
-                t.min_widths, t.max_widths = self.getTableSize(t)
+                t.min_widths, t.max_widths = self._getTableSize(t)
+
+  
+    def writeTable(self, t):
+        self.table_nesting += 1
+        elements = []
+        elements.extend(self.renderCaption(t))
+        rltables.checkSpans(t)
+        t.num_cols = t.numcols
+
+        self.table_size_calc += 1
+        self.getTableSize(t)
         self.table_size_calc -= 1
 
         if self.table_size_calc > 0:
