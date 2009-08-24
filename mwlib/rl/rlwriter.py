@@ -1667,12 +1667,10 @@ class RlWriter(object):
         return items
 
     def getAvailWidth(self):
-        indent_amount = self.paraIndentLevel * pdfstyles.para_left_indent \
-                        + self.listIndentation * pdfstyles.list_left_indent                
         if self.table_nesting > 1 and self.colwidth !=0:
-            availwidth = self.colwidth - indent_amount
+            availwidth = self.colwidth - 2 * pdfstyles.cell_padding
         else:
-            availwidth = pdfstyles.print_width - indent_amount
+            availwidth = pdfstyles.print_width
         return availwidth
 
            
@@ -1730,8 +1728,6 @@ class RlWriter(object):
         width_correction = 0
         if hasattr(element, 'style'):
             width_correction += element.style.leftIndent + element.style.rightIndent
-        #if element.__class__ == Table:
-        #    width_correction += pdfstyles.cell_padding * 2
         return width_correction
     
 
@@ -1777,8 +1773,7 @@ class RlWriter(object):
 
     def getCurrentColWidth(self, table, cell, col_idx):
         colwidth = sum(table.colwidths[col_idx:col_idx + cell.colspan])
-        padding = (self.paraIndentLevel * pdfstyles.para_left_indent + self.listIndentation * pdfstyles.list_left_indent)
-        return colwidth - padding
+        return colwidth
 
     
     def getCellSize(self, elements, cell):        
@@ -1856,7 +1851,6 @@ class RlWriter(object):
 
         avail_width = self.getAvailWidth()
         t.colwidths = rltables.optimizeWidths(t.min_widths, t.max_widths, avail_width)
-        
         table_data =[]
         for row in t.children:
             row_data = []
