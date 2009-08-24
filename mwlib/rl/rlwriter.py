@@ -1667,7 +1667,7 @@ class RlWriter(object):
         return items
 
     def getAvailWidth(self):
-        if self.table_nesting > 1 and self.colwidth !=0:
+        if self.table_nesting > 1 and self.colwidth:
             availwidth = self.colwidth - 2 * pdfstyles.cell_padding
         else:
             availwidth = pdfstyles.print_width
