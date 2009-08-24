@@ -2,15 +2,6 @@
 
 import os
 
-def get_mo_files():
-    mo_files = []
-    for dirpath, dirnames, filenames in os.walk('mwlib/rl/locale/'):
-        for f in filenames:
-            file_base, file_ext = os.path.splitext(f)
-            if file_ext == '.mo':
-                mo_files.append(os.path.join(dirpath, f))
-    return mo_files
-
 def main():
     files = [x.strip() for x in os.popen("git ls-files")]
     files.append("README.html")
@@ -21,10 +12,10 @@ def main():
             pass
     
     remove("make_manifest.py")
-    remove(".hgtags")
+    remove(".gitignore")
     remove("Makefile")
-    
-    files.extend(get_mo_files())
+
+    files += [x[:-3]+".mo" for x in files if x.endswith(".po")]
     
     files.sort()
 
