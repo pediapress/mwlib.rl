@@ -700,7 +700,7 @@ class RlWriter(object):
     def writeArticle(self, article):
         self.references = [] 
         title = self.renderText(article.caption, break_long=True)
-        log.info('rendering: %r' % article.caption)
+        log.info('rendering: %r' % (article.url or article.caption))
         if self.layout_status:
             self.layout_status(article=article.caption)
             self.articlecount += 1
