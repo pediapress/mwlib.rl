@@ -69,7 +69,7 @@ Font configuration:
 
 The font configuration can be changed in fontconfig.py. For the default configuration to 
 work properly it is necessary to install a couple of fonts. If these fonts are not installed 
-built-in Adone fonts are used where necessary.
+built-in Adobe fonts are used where necessary.
 
 The following fonts need to be installed:
 AR PL UMing HK, Ezra SIL, Nazli, UnBatang, Arundina Serif, Lohit Telugu, Sarai, Lohit Punjabi, 
@@ -80,7 +80,7 @@ ttf-indic-fonts, ttf-unfonts, ttf-farsiweb, ttf-arphic-uming, ttf-sil-ezra, ttf-
 linux-libertine
 
 After the font installation a directory "mwlibfonts" needs to be created in the home directory.
-All fonts need to be symblinked to the appropriate directories (see fontconfig.py).
+All fonts need to be symlinked to the appropriate directories (see fontconfig.py).
     
 Contact/Further Information
 ======================================================================
@@ -91,9 +91,10 @@ The current development version can also be found there.
 ChangeLog
 ======================================================================
 
-2009-??-?? release 0.12.2
+2009-08-25 release 0.12.3
 -------------------------
 * rewrite table rendering code
+* make it compatible with latest mwlib.ext
 
 2009-08-17 release 0.12.1
 -------------------------
