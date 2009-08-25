@@ -13,7 +13,7 @@ version=None
 execfile(distutils.util.convert_path('mwlib/rl/_version.py')) 
 # adds 'version' to local namespace
 
-install_requires=["mwlib>=0.12.3, <0.13", "pygments>=0.10", "mwlib.ext>=0.9.3, <0.10"]
+install_requires=["mwlib>=0.12.3, <0.13", "pygments>=0.10", "mwlib.ext>=0.9.3, <0.13"]
 
 def read_long_description():
     fn = os.path.join(os.path.dirname(os.path.abspath(__file__)), "README.txt")
