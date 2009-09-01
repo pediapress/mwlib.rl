@@ -294,7 +294,7 @@ def checkSpans(t):
                     emptycell.colspanned = True
             col_idx += 1
 
-    numcols = t.numcols
+    numcols = max(len(row.children) for row in t.children)
     for row in t.children:
         while len(row.children) < numcols:
             row.appendChild(getEmptyCell(None, colspan=1, rowspan=1))
