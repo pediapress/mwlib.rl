@@ -448,7 +448,7 @@ class RlWriter(object):
                 elements.extend(self.groupElements(art_elements))
                 
         try:
-            self.render_status(status="rendering")
+            
             self.renderBook(elements, output, coverimage=coverimage)
             log.info('RENDERING OK')
             shutil.rmtree(self.tmpdir, ignore_errors=True)
@@ -481,6 +481,8 @@ class RlWriter(object):
 
         if not self.debug:
             elements.extend(self.renderLicense())
+
+        self.render_status(status='rendering', article='')
                    
         if not self.failSaveRendering:
             self.doc.bookmarks = self.bookmarks
@@ -698,6 +700,8 @@ class RlWriter(object):
 
     
     def writeArticle(self, article):
+        if self.license_mode and self.debug:
+            return []
         self.references = [] 
         title = self.renderText(article.caption, break_long=True)
         log.info('rendering: %r' % (article.url or article.caption))
