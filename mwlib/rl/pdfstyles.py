@@ -29,10 +29,10 @@ if '_' not in globals():
     _ = lambda x: x
 
 
-serif_font =  "DejaVuSerif"
-sans_font = "DejaVuSans"
-mono_font = "DejaVuSansMono"
-default_font = 'DejaVuSerif'
+serif_font =  "FreeSerif"
+sans_font = "FreeSans"
+mono_font = "FreeMono"
+default_font = 'FreeSerif'
 
 
 from reportlab import rl_config

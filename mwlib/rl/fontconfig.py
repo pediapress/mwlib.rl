@@ -17,7 +17,7 @@ font_paths = [os.path.dirname(mwlib.fonts.__file__),
               os.path.expanduser('~/mwlibfonts/')
               ]
 
-# from the fonts defined below only DejaVu is part of the mwlib packet
+# from the fonts defined below only FreeFont is part of the mwlib packet
 # the other fonts can be obtained by installing the following debian packets:
 # aptitude install ttf-indic-fonts ttf-unfonts ttf-farsiweb ttf-arphic-uming ttf-gfs-artemisia ttf-sil-ezra ttf-thai-arundina linux-libertine
 # after that the fonts need to be moved or symlinked to one of the font_paths
@@ -26,18 +26,20 @@ fonts = [
      'code_points': ['Alphabetic Presentation Forms', 'Hebrew'] ,
      'file_names': ['ttf-sil-ezra/SILEOT.ttf'],
      },
-    {'name': 'DejaVuSerif',
-     'code_points': ['Latin Extended-B', 'Latin-1 Supplement', 'Latin Extended-A', 'Basic Latin', (64256, 64262)] ,
-     'file_names': ['ttf-dejavu/DejaVuSerif.ttf', 'ttf-dejavu/DejaVuSerif-Bold.ttf', 'ttf-dejavu/DejaVuSerif-Italic.ttf', 'ttf-dejavu/DejaVuSerif-BoldItalic.ttf'],
+    {'name': 'FreeSerif',
+     'code_points': ['Basic Latin', 'Latin-1 Supplement', 'Latin Extended-A', 'Latin Extended-B', 'Latin Extended Additional', (64256, 64262)] ,
+     'xl_scripts': ['Latin'],
+     'file_names': ['freefont/FreeSerif.ttf', 'freefont/FreeSerifBold.ttf', 'freefont/FreeSerifItalic.ttf', 'freefont/FreeSerifBoldItalic.ttf'],
      },
-    {'name': 'DejaVuSans',
-     'code_points': ['IPA Extensions', 'Spacing Modifier Letters', 'Combining Diacritical Marks', 'Cyrillic Supplement', 'Armenian', 'NKo', 'Lao', 'Georgian', 'Unified Canadian Aboriginal Syllabics', 'Ogham', 'Phonetic Extensions', 'Phonetic Extensions Supplement', 'Combining Diacritical Marks Supplement', 'Latin Extended Additional', 'General Punctuation', 'Superscripts and Subscripts', 'Currency Symbols', 'Combining Diacritical Marks for Symbols', 'Letterlike Symbols', 'Number Forms', 'Arrows', 'Mathematical Operators', 'Miscellaneous Technical', 'Control Pictures', 'Enclosed Alphanumerics', 'Block Elements', 'Geometric Shapes', 'Miscellaneous Symbols', 'Dingbats', 'Miscellaneous Mathematical Symbols-A', 'Supplemental Arrows-A', 'Braille Patterns', 'Miscellaneous Mathematical Symbols-B', 'Supplemental Mathematical Operators', 'Miscellaneous Symbols and Arrows', 'Latin Extended-C', 'Tifinagh', 'Supplemental Punctuation', 'Yijing Hexagram Symbols', 'Cyrillic Extended-B', 'Modifier Tone Letters', 'Latin Extended-D', 'Variation Selectors', 'Combining Half Marks', 'Specials', 'Tai Xuan Jing Symbols', 'Mathematical Alphanumeric Symbols'] ,
-     'file_names': ['ttf-dejavu/DejaVuSans.ttf', 'ttf-dejavu/DejaVuSans-Bold.ttf', 'ttf-dejavu/DejaVuSans-Oblique.ttf', 'ttf-dejavu/DejaVuSans-BoldOblique.ttf'],
+    {'name': 'FreeSans',
+     'code_points': ['IPA Extensions', 'Spacing Modifier Letters', 'Combining Diacritical Marks', 'Cyrillic Supplement', 'Armenian', 'NKo', 'Lao', 'Georgian', 'Unified Canadian Aboriginal Syllabics', 'Ogham', 'Phonetic Extensions', 'Phonetic Extensions Supplement', 'Combining Diacritical Marks Supplement', 'General Punctuation', 'Superscripts and Subscripts', 'Currency Symbols', 'Combining Diacritical Marks for Symbols', 'Letterlike Symbols', 'Number Forms', 'Arrows', 'Mathematical Operators', 'Miscellaneous Technical', 'Control Pictures', 'Enclosed Alphanumerics', 'Block Elements', 'Geometric Shapes', 'Miscellaneous Symbols', 'Dingbats', 'Miscellaneous Mathematical Symbols-A', 'Supplemental Arrows-A', 'Braille Patterns', 'Miscellaneous Mathematical Symbols-B', 'Supplemental Mathematical Operators', 'Miscellaneous Symbols and Arrows', 'Latin Extended-C', 'Tifinagh', 'Supplemental Punctuation', 'Yijing Hexagram Symbols', 'Cyrillic Extended-B', 'Modifier Tone Letters', 'Latin Extended-D', 'Variation Selectors', 'Combining Half Marks', 'Specials', 'Tai Xuan Jing Symbols', 'Mathematical Alphanumeric Symbols'] ,
+     'file_names': ['freefont/FreeSans.ttf', 'freefont/FreeSansBold.ttf', 'freefont/FreeSansOblique.ttf', 'freefont/FreeSansBoldOblique.ttf'],
      },
-    {'name': 'DejaVuSansMono',
+    {'name': 'FreeMono',
      'code_points': ['Box Drawing'] , # also used for code/source/etc.
-     'file_names': ['ttf-dejavu/DejaVuSansMono.ttf', 'ttf-dejavu/DejaVuSansMono-Bold.ttf', 'ttf-dejavu/DejaVuSansMono-Oblique.ttf', 'ttf-dejavu/DejaVuSansMono-BoldOblique.ttf'],
-     },
+     'xl_scripts': [],
+     'file_names': ['freefont/FreeMono.ttf', 'freefont/FreeMonoBold.ttf', 'freefont/FreeMonoOblique.ttf', 'freefont/FreeMonoBoldOblique.ttf'],
+     },    
     {'name': 'STSong-Light', # built in Adobe font - only used if AR PL UMing HK is not found
      'code_points': ['Bopomofo', 'CJK Radicals Supplement', 'Bopomofo Extended', 'CJK Unified Ideographs Extension A', 'CJK Unified Ideographs', 'Small Form Variants'],
      'type': 'cid',
