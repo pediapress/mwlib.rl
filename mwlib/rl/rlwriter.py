@@ -1770,7 +1770,10 @@ class RlWriter(object):
             width = self.getMaxParaWidth(element, pdfstyles.print_width)
             return  width + pad, 0
         w_max, h_max = element.wrap(10*pdfstyles.page_width, pdfstyles.page_height)
-        rows = h_min / h_max
+        if h_max > 0:
+            rows = h_min / h_max
+        else:
+            rows = 1
         max_width = rows * w_min
         max_width += (2 * rows * pdfstyles.cell_padding)
         return max_width, h_max
