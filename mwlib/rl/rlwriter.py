@@ -168,7 +168,7 @@ class RlWriter(object):
                 log.warn(str(exc))
         translation.install(unicode=True)
 
-        if lang in ['ja', 'ch', 'ko']:
+        if lang in ['ja', 'ch', 'ko', 'zh']:
             pdfstyles.word_wrap = 'CJK'
 
         self.env = env
@@ -343,13 +343,13 @@ class RlWriter(object):
 
         advtree.buildAdvancedTree(art)
         if self.debug:
-            parser.show(sys.stdout, art)
+            #parser.show(sys.stdout, art)
             pass
         self.tc.tree = art
         self.tc.cleanAll()
         self.cnt.transformCSS(art)
         if self.debug:
-            #parser.show(sys.stdout, art)
+            parser.show(sys.stdout, art)
             print "\n".join([repr(r) for r in self.tc.getReports()])
 
         return art
@@ -605,7 +605,6 @@ class RlWriter(object):
             headingStyle = heading_style('section', lvl=lvl+1)
         if not obj.children:
             return ''
-
         self.formatter.sectiontitle_mode = True
         try:
             heading_txt = ''.join(self.renderInline(obj.children[0])).strip()
@@ -619,8 +618,9 @@ class RlWriter(object):
         else:
             anchor = ''
         elements = [Paragraph('<font name="%s"><b>%s</b></font>%s' % (serif_font, heading_txt, anchor), headingStyle)]
-        
-        obj.removeChild(obj.children[0])
+
+        if self.table_size_calc == 0:
+            obj.removeChild(obj.children[0])
         elements.extend(self.renderMixed(obj))
         
         return elements
