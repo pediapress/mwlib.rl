@@ -572,7 +572,6 @@ class RlWriter(object):
 
     def _getPageTemplate(self, title):
         #title = self.renderText(title)
-        print 'page template:', title
         page_template = WikiPage(title)
         self.doc.addPageTemplates(page_template)
         return NextPageTemplate(title.encode('utf-8'))
