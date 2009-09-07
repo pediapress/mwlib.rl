@@ -343,13 +343,13 @@ class RlWriter(object):
 
         advtree.buildAdvancedTree(art)
         if self.debug:
-            #parser.show(sys.stdout, art)
+            parser.show(sys.stdout, art)
             pass
         self.tc.tree = art
         self.tc.cleanAll()
         self.cnt.transformCSS(art)
         if self.debug:
-            parser.show(sys.stdout, art)
+            #parser.show(sys.stdout, art)
             print "\n".join([repr(r) for r in self.tc.getReports()])
 
         return art
@@ -1840,8 +1840,17 @@ class RlWriter(object):
                 t.small_table = True
                 t.min_widths, t.max_widths = self._getTableSize(t)
 
-  
+    def emptyTable(self, t):
+        for row in t.children:
+            if row.__class__ == advtree.Row:
+                for cell in row.children:
+                    return False
+        return True
+                
     def writeTable(self, t):
+        if self.emptyTable(t):
+            return []
+        
         self.table_nesting += 1
         elements = []
         elements.extend(self.renderCaption(t))
