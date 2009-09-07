@@ -458,7 +458,7 @@ class RlWriter(object):
             raise
         except Exception, err:
             traceback.print_exc()
-            log.error('RENDERING FAILED: %s' % err)
+            log.error('RENDERING FAILED: %r' % err)
             if self.fail_safe_rendering:
                 log.error('GIVING UP')
                 shutil.rmtree(self.tmpdir, ignore_errors=True)
@@ -571,7 +571,8 @@ class RlWriter(object):
         return elements
 
     def _getPageTemplate(self, title):
-        title = self.renderText(title)
+        #title = self.renderText(title)
+        print 'page template:', title
         page_template = WikiPage(title)
         self.doc.addPageTemplates(page_template)
         return NextPageTemplate(title.encode('utf-8'))
