@@ -1853,7 +1853,7 @@ class RlWriter(object):
         
         self.table_nesting += 1
         elements = []
-        if len(t.children) >= pdfstyles.min_rows_for_break:
+        if len(t.children) >= pdfstyles.min_rows_for_break and self.table_nesting == 1:
             elements.append(CondPageBreak(pdfstyles.min_table_space))
         elements.extend(self.renderCaption(t))
         rltables.checkSpans(t)
