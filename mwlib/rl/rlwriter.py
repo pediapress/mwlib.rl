@@ -1853,6 +1853,8 @@ class RlWriter(object):
         
         self.table_nesting += 1
         elements = []
+        if len(t.children) >= pdfstyles.min_rows_for_break:
+            elements.append(CondPageBreak(pdfstyles.min_table_space))
         elements.extend(self.renderCaption(t))
         rltables.checkSpans(t)
         t.num_cols = t.numcols
@@ -1877,7 +1879,7 @@ class RlWriter(object):
             
         table = Table(table_data, colWidths=t.colwidths, splitByRow=1)
         table.setStyle(rltables.getStyles(t))
-        
+
         if table_style.get('spaceBefore', 0) > 0:
             elements.append(Spacer(0, table_style['spaceBefore']))
         elements.append(table)

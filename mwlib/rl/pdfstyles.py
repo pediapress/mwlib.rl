@@ -38,17 +38,11 @@ default_font = 'FreeSerif'
 from reportlab import rl_config
 rl_config.canvas_basefontname = default_font
 
-
-### TABLE CONFIG
-
-tableOverflowTolerance = 20  # max width overflow for tables    unit: pt 
-cell_padding = 3
-
 #### TITLE PAGE
 
 # if enabled a table of contents is printed at the beginning of the pdf
 # note that no TOC is generated if only one article is rendered
-render_toc = True 
+render_toc = True
 
 ######### PAGE CONFIGURATION
 
@@ -88,6 +82,14 @@ article_start_min_space_infobox = 0.9*print_height # as above. but if the articl
 pagefooter = u''
 titlepagefooter = _(u'PDF generated using the open source mwlib toolkit. See http://code.pediapress.com/ for more information.')
 show_creation_date = True
+
+### TABLE CONFIG
+
+tableOverflowTolerance = 20  # max width overflow for tables    unit: pt 
+cell_padding = 3
+min_table_space = print_height / 4 # if less space is available, a page break will be inserted before the table
+min_rows_for_break = 3 # page breaks before tables are only forced if more than n rows are present
+
 
 ######### IMAGE CONFIGURATION
 
