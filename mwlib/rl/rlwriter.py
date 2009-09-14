@@ -1526,7 +1526,10 @@ class RlWriter(object):
 
 
     def writeCode(self, n):
-        return self.writeTeletyped(n)
+        self.formatter.teletype_style += 1
+        elements = self.renderMixed(n)
+        self.formatter.teletype_style -= 1
+        return elements
 
     writeVar = writeCode
 
