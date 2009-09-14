@@ -1370,14 +1370,17 @@ class RlWriter(object):
 
     def writeGallery(self,obj):
         self.gallery_mode = True
-        perrow = obj.attributes.get('perrow', None)
+        try:
+            perrow = int(obj.attributes.get('perrow', None))
+        except ValueError:
+            perrow = None
         num_images = len(obj.getChildNodesByClass(advtree.ImageLink))
         if num_images == 0:
             return []
         if not perrow:            
             perrow = min(4, num_images) # 4 is the default for the number of images per gallery row
         else:
-            perrow = min(6, int(perrow), num_images)
+            perrow = min(6, perrow, num_images)
         perrow = max(1, perrow)
         data = []
         row = []
