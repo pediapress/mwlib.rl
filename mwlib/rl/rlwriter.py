@@ -1374,7 +1374,7 @@ class RlWriter(object):
     def writeGallery(self,obj):
         self.gallery_mode = True
         try:
-            perrow = int(obj.attributes.get('perrow', None))
+            perrow = int(obj.attributes.get('perrow', ''))
         except ValueError:
             perrow = None
         num_images = len(obj.getChildNodesByClass(advtree.ImageLink))
