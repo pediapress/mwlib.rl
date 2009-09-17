@@ -343,13 +343,13 @@ class RlWriter(object):
 
         advtree.buildAdvancedTree(art)
         if self.debug:
-            parser.show(sys.stdout, art)
+            #parser.show(sys.stdout, art)
             pass
         self.tc.tree = art
         self.tc.cleanAll()
         self.cnt.transformCSS(art)
         if self.debug:
-            #parser.show(sys.stdout, art)
+            parser.show(sys.stdout, art)
             print "\n".join([repr(r) for r in self.tc.getReports()])
 
         return art
@@ -948,7 +948,10 @@ class RlWriter(object):
 
     def renderText(self, txt, **kwargs):
         if useFriBidi:
-            txt = pyfribidi.log2vis(txt, base_direction=pyfribidi.LTR)
+            try:
+                txt = pyfribidi.log2vis(txt, base_direction=pyfribidi.LTR)
+            except UnicodeDecodeError:
+                txt = unicode(pyfribidi.log2vis(txt.encode('utf-8'), base_direction=pyfribidi.LTR, encoding='utf-8'), 'utf-8')
         return self.formatter.styleText(txt, kwargs)
 
     def writeText(self, obj):
@@ -1648,8 +1651,8 @@ class RlWriter(object):
         leaf = item.getFirstLeaf() # strip leading spaces from list items
         if leaf and hasattr(leaf, 'caption'):
             leaf.caption = leaf.caption.lstrip()
-            
         items =  self.renderMixed(item, para_style=para_style, textPrefix=itemPrefix)
+
         return items
         
 
