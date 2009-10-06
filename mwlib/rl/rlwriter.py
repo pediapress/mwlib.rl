@@ -951,7 +951,11 @@ class RlWriter(object):
             try:
                 txt = pyfribidi.log2vis(txt, base_direction=pyfribidi.LTR)
             except UnicodeDecodeError:
-                txt = unicode(pyfribidi.log2vis(txt.encode('utf-8'), base_direction=pyfribidi.LTR, encoding='utf-8'), 'utf-8')
+                # FIXME: is the following really necessary?
+                try:
+                    txt = unicode(pyfribidi.log2vis(txt.encode('utf-8'), base_direction=pyfribidi.LTR, encoding='utf-8'), 'utf-8')
+                except UnicodeDecodeError:
+                    pass
         return self.formatter.styleText(txt, kwargs)
 
     def writeText(self, obj):
@@ -1374,7 +1378,7 @@ class RlWriter(object):
     def writeGallery(self,obj):
         self.gallery_mode = True
         try:
-            perrow = int(obj.attributes.get('perrow', None))
+            perrow = int(obj.attributes.get('perrow', ''))
         except ValueError:
             perrow = None
         num_images = len(obj.getChildNodesByClass(advtree.ImageLink))
