@@ -1925,6 +1925,8 @@ class RlWriter(object):
         source = re.compile(u'\n+').sub(u'\n', node.caption.strip()) # remove multiple newlines, as this could break the mathRenderer
         if not len(source):
             return []
+        if source.endswith('\\'):
+            source += ' '
         imgpath = None
         if self.math_cache_dir:            
             _md5 = md5()
@@ -1955,8 +1957,7 @@ class RlWriter(object):
             
         density = 120 # resolution in dpi in which math images are rendered by latex
         # the vertical image placement is calculated below:
-        # the "normal" height of a single-line formula is 32px. UPDATE: is now 17 
-        #imgAlign = '%fin' % (- (h - 32) / (2 * density))
+        # the "normal" height of a single-line formula is 17px
         imgAlign = '%fin' % (- (h - 15) / (2 * density))
         #the non-breaking-space is needed to force whitespace after the formula
         return '<img src="%(path)s" width="%(width)fin" height="%(height)fin" valign="%(valign)s" />' % {
