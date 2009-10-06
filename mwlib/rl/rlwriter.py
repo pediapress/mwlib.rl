@@ -1527,18 +1527,12 @@ class RlWriter(object):
                 return res
         return self.writePreFormatted(n)
 
-
-    def writeCode(self, n):
-        self.formatter.teletype_style += 1
-        elements = self.renderMixed(n)
-        self.formatter.teletype_style -= 1
-        return elements
-
-    writeVar = writeCode
-
     def writeTeletyped(self, n):
         txt = self.renderInlineStyle(n, 'teletype_style')
         return txt    
+
+    writeCode = writeTeletyped
+    writeVar = writeTeletyped
     
     def writeBreakingReturn(self, n):
         return ['<br />']
