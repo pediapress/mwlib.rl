@@ -1577,6 +1577,7 @@ class RlWriter(object):
             self.reference_list_rendered = True
             return refList
         else:
+            self.reference_list_rendered = True
             return []
 
     def writeCenter(self, n):
