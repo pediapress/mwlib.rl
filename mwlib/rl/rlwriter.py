@@ -1927,23 +1927,30 @@ class RlWriter(object):
             return []
         if source.endswith('\\'):
             source += ' '
+            
+        try:
+            density = int(os.environ.get("MATH_RESOLUTION", "120"))
+        except ValueError:
+            density = 120 # resolution in dpi in which math images are rendered by texvc
+
         imgpath = None
+
         if self.math_cache_dir:            
             _md5 = md5()
             _md5.update(source.encode('utf-8'))
             math_id = _md5.hexdigest()
-            imgpath = os.path.join(self.math_cache_dir, '%s.png' % math_id)
-            if not os.path.exists(imgpath):
-                imgpath = None
+            cached_path = os.path.join(self.math_cache_dir, '%s-%s.png' % (math_id, density))
+            if os.path.exists(cached_path):
+                imgpath = cached_path
+
 
         if not imgpath:
-            imgpath = writerbase.renderMath(source, output_path=self.tmpdir, output_mode='png', render_engine='texvc')
+            imgpath = writerbase.renderMath(source, output_path=self.tmpdir, output_mode='png', render_engine='texvc', resolution_in_dpi=density)
             if not imgpath:
                 return []
             if self.math_cache_dir:
-                new_path = os.path.join(self.math_cache_dir, '%s.png' % math_id)
-                shutil.move(imgpath, new_path)
-                imgpath = new_path
+                shutil.move(imgpath, cached_path)
+                imgpath = cached_path
                 
         img = PilImage.open(imgpath)
         if self.debug:
@@ -1955,7 +1962,6 @@ class RlWriter(object):
             w = w * pdfstyles.small_font_size/pdfstyles.font_size
             h = h * pdfstyles.small_font_size/pdfstyles.font_size
             
-        density = 120 # resolution in dpi in which math images are rendered by latex
         # the vertical image placement is calculated below:
         # the "normal" height of a single-line formula is 17px
         imgAlign = '%fin' % (- (h - 15) / (2 * density))
