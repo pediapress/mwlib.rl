@@ -83,7 +83,7 @@ class WikiPage(PageTemplate):
         canvas.setFont(serif_font,8)
         canvas.line(footer_margin_hor, footer_margin_vert, page_width - footer_margin_hor, footer_margin_vert )
         if pdfstyles.show_page_footer:
-            p = Paragraph(formatter.cleanText(pagefooter), text_style())
+            p = Paragraph(formatter.cleanText(pagefooter, escape=False), text_style())
             p.canv = canvas
             w,h = p.wrap(page_width - header_margin_hor*2.5, page_height)
             p.drawOn(canvas, footer_margin_hor, footer_margin_vert - 10 - h)
