@@ -109,7 +109,7 @@ class TitlePage(PageTemplate):
             footertext = [_(titlepagefooter)]
             if pdfstyles.show_creation_date:
                 footertext.append('PDF generated at: %s' % strftime("%a, %d %b %Y %H:%M:%S %Z", gmtime()))
-            p = Paragraph('<br/>'.join([formatter.cleanText(line) for line in footertext]),
+            p = Paragraph('<br/>'.join([formatter.cleanText(line, escape=False) for line in footertext]),
                           text_style(mode='footer'))
             w,h = p.wrap(print_width, print_height)
             canvas.translate( (page_width-w)/2.0, 0.2*cm)
