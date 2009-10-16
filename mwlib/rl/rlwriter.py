@@ -195,7 +195,7 @@ class RlWriter(object):
         self.font_switcher.registerReportlabFonts(fontconfig.fonts)
 
         self.tc = TreeCleaner([], save_reports=self.debug)
-        self.tc.skipMethods = ['fixPreFormatted', 'removeEmptyReferenceLists']
+        self.tc.skipMethods = pdfstyles.treecleaner_skip_methods
 
         self.cnt = CustomNodeTransformer()
         self.formatter = RLFormatter(font_switcher=self.font_switcher)

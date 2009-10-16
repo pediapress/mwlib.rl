@@ -90,7 +90,7 @@ cell_padding = 3
 min_table_space = print_height / 4 # if less space is available, a page break will be inserted before the table
 min_rows_for_break = 3 # page breaks before tables are only forced if more than n rows are present
 
-
+treecleaner_skip_methods = ['fixPreFormatted', 'removeEmptyReferenceLists']
 ######### IMAGE CONFIGURATION
 
 # margins for floated images - margins like in html/css: (top, right, bottom, left)
