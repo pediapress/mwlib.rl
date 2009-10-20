@@ -90,6 +90,26 @@ The current development version can also be found there.
 
 ChangeLog
 ======================================================================
+2009-10-20 release 0.12.4
+-------------------------
+
+- no escaping in titlepage footer
+- no escaping for pagefooter
+- define treecleaner skip methods in pdfstyles to allow customization.
+- allow higher resolution math images by setting environment variable MATH_RESOLUTION
+- localize license title
+- fix for #696
+- fix for #699
+- the code tag is now correctly handled as an inline element
+- fix unicode decode error when using fribidi
+- fix problem with pyfribidi
+- fix for invalid values of the gallery perrow attribute
+- no pagebreaks in nested tables
+- ensure pagebreaks before tables if space is sparse
+- use FreeSerif for Cyrillic and Greek
+- fix for sections inside tables. add cjk handling to zh languages
+- switch from DejaVu to FreeFont
+- fix span checking for tables
 
 2009-08-25 release 0.12.3
 -------------------------
