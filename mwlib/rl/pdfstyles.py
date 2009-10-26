@@ -81,6 +81,7 @@ article_start_min_space_infobox = 0.9*print_height # as above. but if the articl
 # e.g. the use of inline images is not included in the official documenation of reportlab
 pagefooter = u''
 titlepagefooter = _(u'PDF generated using the open source mwlib toolkit. See http://code.pediapress.com/ for more information.')
+titlepageimage = '' # path of an image that is to be displayed on the title page
 show_creation_date = True
 
 ### TABLE CONFIG
