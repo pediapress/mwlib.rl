@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-06-02 11:04+0000\n"
-"PO-Revision-Date: 2009-06-02 11:02:55+0000\n"
+"PO-Revision-Date: 2009-10-26 15:52+0100\n"
 "Language-Team: Italian\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -26,12 +26,11 @@ msgstr ""
 
 #: mwlib/rl/pdfmessages.py:12
 msgid "Source:"
-msgstr ""
+msgstr "Fonte:"
 
 #: mwlib/rl/pdfmessages.py:14
-#, fuzzy
 msgid "License:"
-msgstr "Licenze della voce"
+msgstr "Licenza:"
 
 #: mwlib/rl/pdfmessages.py:16
 msgid "Contributors:"
@@ -89,13 +88,11 @@ msgstr "Voci non convertite."
 msgid ""
 "Please note:  This is only a preview intended to give an idea how the book "
 "is typeset."
-msgstr ""
-"Nota: Questa è solo un'anteprima per dare un'idea dell'aspetto tipografico "
-"del libro."
+msgstr "Nota: Questa è solo un'anteprima per dare un'idea dell'aspetto tipografico del libro."
 
 #: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:685
 msgid "References"
-msgstr "Riferimenti"
+msgstr "Note"
 
 #: mwlib/rl/pdfmessages.py:46
 msgid ""
@@ -103,15 +100,11 @@ msgid ""
 "this book. Those sources provide more detailed licensing information "
 "including the copyright status, the copyright owner, and the license "
 "conditions."
-msgstr ""
-"I paragrafi seguenti elencano le fonti relative a tutte le voci e immagini "
-"utilizzate in questo libro. Tali fonti contengono informazioni più "
-"dettagliate sulla licenza d'uso, compreso lo stato dei diritti d'autore, i "
-"titolari degli stessi e le condizioni di licenza."
+msgstr "I paragrafi seguenti elencano le fonti relative a tutte le voci e le immagini utilizzate in questo libro. Tali fonti contengono informazioni più dettagliate sulla licenza d'uso, compreso lo stato dei diritti d'autore, i titolari degli stessi e le condizioni di licenza."
 
 #: mwlib/rl/pdfmessages.py:48 mwlib/rl/rlwriter.py:588
 msgid "Article Sources and Contributors"
-msgstr "Fonti e autori del articolo"
+msgstr "Fonti e autori delle voci"
 
 #: mwlib/rl/pdfmessages.py:50 mwlib/rl/rlwriter.py:605
 msgid "Image Sources, Licenses and Contributors"
@@ -123,17 +116,17 @@ msgstr "Immagine"
 
 #: mwlib/rl/pdfmessages.py:54 mwlib/rl/rlwriter.py:580
 msgid "anonymous edits"
-msgstr ""
+msgstr "Modifiche anonime"
 
 #: mwlib/rl/pdfmessages.py:56
 msgid "Figure"
-msgstr ""
+msgstr "Immagine"
 
 #: mwlib/rl/pdfstyles.py:77
 msgid ""
 "PDF generated using the open source mwlib toolkit. See http://code."
 "pediapress.com/ for more information."
-msgstr ""
+msgstr "PDF generato attraverso il toolkit opensource ''mwlib''. Per maggiori informazioni, vedi [[http://code.pediapress.com/ http://code.pediapress.com/]]."
 
 #: mwlib/rl/rlwriter.py:291
 msgid "layouting"
@@ -159,29 +152,23 @@ msgstr "conversione"
 
 #: mwlib/rl/rlwriter.py:593 mwlib/rl/rlwriter.py:615
 msgid "Source"
-msgstr ""
+msgstr "Fonte"
 
 #: mwlib/rl/rlwriter.py:595 mwlib/rl/rlwriter.py:618
-#, fuzzy
 msgid "Contributors"
 msgstr "Autori:"
 
 #: mwlib/rl/rlwriter.py:609
 msgid "unknown"
-msgstr ""
+msgstr "sconosciuto"
 
 #: mwlib/rl/rlwriter.py:610
-#, fuzzy
 msgid "License"
-msgstr "Licenze della voce"
+msgstr "Licenza"
 
 #: mwlib/rl/rlwriter.py:676
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
 "software (b) problematic Mediawiki markup (c) table is too wide"
-msgstr ""
-"<strong>ATTENZIONE: il ''rendering'' dell'articolo non può essere effettuato "
-"- è mostrato come testo semplice.</strong><br/>Le possibili cause del "
-"problema sono (a) un bug nel software che crea il file PDF (b) un errore nel "
-"markup MediaWiki (c) una tabella troppo grande"
+msgstr "<strong>ATTENZIONE: il ''rendering'' dell'articolo non può essere effettuato - è mostrato come testo semplice.</strong><br/>Le possibili cause del problema sono (a) un bug nel software che crea il file PDF (b) un errore nel markup MediaWiki (c) una tabella troppo grande"
