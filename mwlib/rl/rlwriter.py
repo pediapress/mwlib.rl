@@ -1242,10 +1242,10 @@ class RlWriter(object):
         cmds = []
         base_cmd = [
             'convert',
-            '-limit',' memory', '32mb',
-            '-limit',' map', '64mb',
-            '-limit', 'disk', '64mb',
-            '-limit', 'area', '64mb',
+            '-limit',' memory', '32000000',
+            '-limit',' map', '64000000',
+            '-limit', 'disk', '64000000',
+            '-limit', 'area', '64000000',
             ]
         if img.info.get('interlace', 0) == 1:
             cmds.append(base_cmd + [img_path, '-interlace', 'none', img_path])
