@@ -1141,7 +1141,7 @@ class RlWriter(object):
             else:
                 t = '<link href="%s">%s</link>' % (xmlescape(href), t.strip())
         else:
-            t = u'<link href="#%s">\u2192 %s</link>' % (article_id, t.strip())
+            t = u'<link href="#%s">%s</link>' % (article_id, t.strip())
 
         return [t]
 
