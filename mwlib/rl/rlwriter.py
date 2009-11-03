@@ -1660,14 +1660,15 @@ class RlWriter(object):
         items = []
         if not style=='referencelist':
             if numbered or lst.numbered:
-                st = lst.style.get('list-style-type')
-                if st == 'lower-alpha':
+                list_style = lst.style.get('list-style-type')
+                list_type = lst.vlist.get('type')
+                if list_style == 'lower-alpha' or list_type == 'a':
                     style = 'enumerateLettera'
-                elif st == 'upper-alpha':
+                elif list_style == 'upper-alpha' or list_type == 'A':
                     style = 'enumerateLetterA'
-                elif st == 'lower-roman':
+                elif list_style == 'lower-roman' or list_type == 'i':
                     style = 'enumerateLetteri'
-                elif st == 'upper-roman':
+                elif list_style == 'upper-roman' or list_type == 'I':
                     style = 'enumerateLetterI'
                 else:
                     style = "enumerate"
