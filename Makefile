@@ -1,3 +1,5 @@
+GITVERSIONFILE = mwlib/rl/_gitversion.py
+
 all:: messages README.html MANIFEST.in
 
 messages::
@@ -13,11 +15,16 @@ develop:: all
 	python setup.py develop
 
 sdist:: all
-	python setup.py -q build sdist
+	echo gitversion=\"$(shell git describe --tags)\" >$(GITVERSIONFILE)
+	echo gitid=\"$(shell git rev-parse HEAD)\" >>$(GITVERSIONFILE)
+	python setup.py build sdist
+	rm -f $(GITVERSIONFILE)*
 
-sdist-upload:: all
-	python setup.py build sdist upload
+clean::
+	git clean -xfd
 
-egg:: all
-	python setup.py bdist_egg
+easy-install:: clean sdist
+	easy_install dist/*
 
+pip-install:: clean sdist
+	pip install dist/*
