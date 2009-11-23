@@ -530,7 +530,10 @@ class RlWriter(object):
             title = item.title
             
             source = item.wiki.getSource(item.title, item.revision)
-            wikiurl = source.url
+            if source:
+                wikiurl = source.url
+            else:
+                wikiurl = item.title
             article_id = self.buildArticleID(wikiurl, title)
             self.articleids.append(article_id)
 
