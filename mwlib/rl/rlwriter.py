@@ -446,7 +446,6 @@ class RlWriter(object):
                 art_elements = self.writeArticle(art)
                 del art
                 elements.extend(self.groupElements(art_elements))
-                
         try:
             
             self.renderBook(elements, output, coverimage=coverimage)
@@ -1039,18 +1038,12 @@ class RlWriter(object):
         for c in n:
             items.extend(self.write(c))
         return items
-
-    def renderInlineStyle(self, node, style):
-        setattr(self.formatter, style, getattr(self.formatter, style) + 1)
-        txt = self.renderInline(node)
-        setattr(self.formatter, style, getattr(self.formatter, style) - 1)
-        return txt
         
     def writeEmphasized(self, n):
-        return self.renderInlineStyle(n, 'emphasized_style')
-
+        return self.renderInline(n)
+    
     def writeStrong(self, n):
-        return self.renderInlineStyle(n, 'strong_style')
+        return self.renderInline(n)
 
     def writeDefinitionList(self, n):
         return self.renderChildren(n)        
@@ -1079,21 +1072,21 @@ class RlWriter(object):
         return self.renderInline(n)
 
     def writeUnderline(self, n):
-        return self.renderInlineStyle(n, 'underline_style')
+        return self.renderInline(n)
 
     writeInserted = writeUnderline
 
     def writeSub(self, n):
-        return self.renderInlineStyle(n, 'sub_style')
+        return self.renderInline(n)
 
     def writeSup(self, n):
-        return self.renderInlineStyle(n, 'sup_style')
+        return self.renderInline(n)
         
     def writeSmall(self, n):
-        return self.renderInlineStyle(n, 'small_style')
+        return self.renderInline(n)
 
     def writeBig(self, n):
-        return self.renderInlineStyle(n, 'big_style')
+        return self.renderInline(n)
         
     def writeCite(self, n):
         return self.writeEmphasized(n)
@@ -1535,7 +1528,7 @@ class RlWriter(object):
         return self.writePreFormatted(n)
 
     def writeTeletyped(self, n):
-        txt = self.renderInlineStyle(n, 'teletype_style')
+        return self.renderInline(n)
         return txt    
 
     writeCode = writeTeletyped
@@ -1606,7 +1599,7 @@ class RlWriter(object):
         return self.renderInline(n)
 
     def writeStrike(self, n):
-        return self.renderInlineStyle(n, 'strike_style')
+        return self.renderInline(n)
 
     writeS = writeStrike
     writeDeleted = writeStrike
