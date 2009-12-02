@@ -1611,6 +1611,8 @@ class RlWriter(object):
             return []
     
     def writeTagNode(self,t):
+        if getattr(t, 'caption', None) in ['hiero']:
+            return []
         return self.renderChildren(t) # FIXME
 
     
