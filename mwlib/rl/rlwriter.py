@@ -343,13 +343,13 @@ class RlWriter(object):
 
         advtree.buildAdvancedTree(art)
         if self.debug:
-            #parser.show(sys.stdout, art)
+            parser.show(sys.stdout, art)
             pass
         self.tc.tree = art
         self.tc.cleanAll()
         self.cnt.transformCSS(art)
         if self.debug:
-            parser.show(sys.stdout, art)
+            #parser.show(sys.stdout, art)
             print "\n".join([repr(r) for r in self.tc.getReports()])
 
         return art
@@ -1319,7 +1319,7 @@ class RlWriter(object):
             align = 'center'
             
         txt = []
-        if (getattr(img_node, 'thumb') or getattr(img_node, 'frame', '') == 'frame') or self.gallery_mode:
+        if img_node.render_caption:
             txt = self.renderInline(img_node)
 
         is_inline = img_node.isInline()        
@@ -1838,21 +1838,20 @@ class RlWriter(object):
         return min_widths, max_widths
 
     def getTableSize(self, t):
-        if not getattr(t, 'min_widths', None) and not getattr(t, 'max_widths', None):
+        t.min_widths, t.max_widths = self._getTableSize(t)
+        table_width = sum(t.min_widths)
+        if (table_width > self.getAvailWidth() and self.table_nesting > 1) \
+                            or (table_width > (pdfstyles.page_width - \
+                            (pdfstyles.page_margin_left + pdfstyles.page_margin_right)/4) \
+                            and self.table_nesting == 1):
+            pdfstyles.cell_padding = 2
+            total_padding = t.num_cols * pdfstyles.cell_padding
+            scale = (pdfstyles.print_width - total_padding) / (sum(t.min_widths) - total_padding)
+            log.info('scaling down text in wide table by factor of %.2f' % scale)
+            t.rel_font_size = self.formatter.rel_font_size
+            self.formatter.setRelativeFontSize(scale)
+            t.small_table = True
             t.min_widths, t.max_widths = self._getTableSize(t)
-            table_width = sum(t.min_widths)
-            if (table_width > self.getAvailWidth() and self.table_nesting > 1) \
-                                or (table_width > (pdfstyles.page_width - \
-                                (pdfstyles.page_margin_left + pdfstyles.page_margin_right)/4) \
-                                and self.table_nesting == 1):
-                pdfstyles.cell_padding = 2
-                total_padding = t.num_cols * pdfstyles.cell_padding
-                scale = (pdfstyles.print_width - total_padding) / (sum(t.min_widths) - total_padding)
-                log.info('scaling down text in wide table by factor of %.2f' % scale)
-                t.rel_font_size = self.formatter.rel_font_size
-                self.formatter.setRelativeFontSize(scale)
-                t.small_table = True
-                t.min_widths, t.max_widths = self._getTableSize(t)
 
     def emptyTable(self, t):
         for row in t.children:
@@ -1874,7 +1873,8 @@ class RlWriter(object):
         t.num_cols = t.numcols
 
         self.table_size_calc += 1
-        self.getTableSize(t)
+        if not getattr(t, 'min_widths', None) and not getattr(t, 'max_widths', None):
+            self.getTableSize(t)
         self.table_size_calc -= 1
 
         if self.table_size_calc > 0:
