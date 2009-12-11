@@ -1315,6 +1315,8 @@ class RlWriter(object):
         w, h = self.image_utils.getImageSize(img_node, img_path, max_print_width=max_width, max_print_height=max_height)
         
         align = img_node.align
+        if align in [None, 'none']:
+            align = styleutils.getTextAlign(img_node)
         if advtree.Center in [ p.__class__ for p in img_node.getParents()]:
             align = 'center'
             
@@ -1358,7 +1360,7 @@ class RlWriter(object):
                 'linkend': linkend,
                 }
             return [txt]
-        captionTxt = ''.join(txt)        
+        captionTxt = ''.join(txt)
         figure = Figure(img_path,
                         captionTxt=captionTxt,
                         captionStyle=text_style('figure', in_table=self.table_nesting),
@@ -1724,7 +1726,8 @@ class RlWriter(object):
 
     def renderCell(self, cell):
         align = styleutils.getTextAlign(cell)
-        if not align and getattr(cell, 'is_header', False):
+        if not align and getattr(cell, 'is_header', False) \
+               or all([item.__class__ == advtree.ImageLink for item in cell.children]):
             align = 'center'
         elements = []
         if self._extraCellPadding(cell):
