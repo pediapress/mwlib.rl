@@ -168,9 +168,8 @@ include mwlib/rl/rltables.py
 include mwlib/rl/rlwriter.py
 include mwlib/rl/toc.py
 include mwlib/rl/wikipedia_logo.png
-include mwlib/tests/__init__.py
-include mwlib/tests/renderhelper.py
-include mwlib/tests/test_advanced.py
-include mwlib/tests/test_basicnodes.py
-include mwlib/tests/test_snippets.py
 include setup.py
+include tests/renderhelper.py
+include tests/test_advanced.py
+include tests/test_basicnodes.py
+include tests/test_snippets.py
