@@ -7,13 +7,12 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-02 11:04+0000\n"
-"PO-Revision-Date: 2009-06-02 11:02:55+0000\n"
+"POT-Creation-Date: 2009-12-18 09:01+0000\n"
+"PO-Revision-Date: 2009-12-18 08:42:59+0000\n"
 "Language-Team: Hebrew\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.16alpha(r51296); Translate extension (12bb:2009-05-"
-"28)\n"
+"X-Generator: MediaWiki 1.16alpha (r60201); Translate extension (2009-12-06)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: he\n"
 "X-Message-Group: out-mwlibrl\n"
@@ -30,7 +29,7 @@ msgstr "רשיון:"
 msgid "Contributors:"
 msgstr "תורמים:"
 
-#: mwlib/rl/pdfmessages.py:18
+#: mwlib/rl/pdfmessages.py:18 mwlib/rl/rlwriter.py:514
 msgid "Article Licenses"
 msgstr "רשיונות הערך"
 
@@ -50,11 +49,11 @@ msgstr "עורך:"
 msgid "Created on:"
 msgstr "נוצר בתאריך:"
 
-#: mwlib/rl/pdfmessages.py:28
+#: mwlib/rl/pdfmessages.py:28 mwlib/rl/toc.py:46
 msgid "Contents"
 msgstr "תכנים"
 
-#: mwlib/rl/pdfmessages.py:30
+#: mwlib/rl/pdfmessages.py:30 mwlib/rl/rlwriter.py:424
 msgid "Articles"
 msgstr "ערכים"
 
@@ -84,7 +83,8 @@ msgid ""
 "is typeset."
 msgstr "שימו לב:  זוהי תצוגה מקדימה בלבד שנועדה לתת לכם מושג על הספר המוגמר."
 
-#: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:685
+#: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:473
+#: mwlib/rl/rlwriter.py:763
 msgid "References"
 msgstr "הפניות"
 
@@ -99,12 +99,13 @@ msgstr ""
 "בספר זה. מקורות אלו מספקים מידע מפורט יותר אודות הרישוי כולל מצב זכויות "
 "היוצרים, בעלי זכויות היוצרים ותנאי הרשיון."
 
-#: mwlib/rl/pdfmessages.py:48 mwlib/rl/rlwriter.py:588
-#, fuzzy
+#: mwlib/rl/pdfmessages.py:48 mwlib/rl/rlwriter.py:474
+#: mwlib/rl/rlwriter.py:659
 msgid "Article Sources and Contributors"
-msgstr "מקורות, רשיונות והתורמים לתמונה"
+msgstr "מקורות והתורמים לערך"
 
-#: mwlib/rl/pdfmessages.py:50 mwlib/rl/rlwriter.py:605
+#: mwlib/rl/pdfmessages.py:50 mwlib/rl/rlwriter.py:477
+#: mwlib/rl/rlwriter.py:678
 msgid "Image Sources, Licenses and Contributors"
 msgstr "מקורות, רשיונות והתורמים לתמונה"
 
@@ -112,30 +113,28 @@ msgstr "מקורות, רשיונות והתורמים לתמונה"
 msgid "Image"
 msgstr "תמונה"
 
-#: mwlib/rl/pdfmessages.py:54 mwlib/rl/rlwriter.py:580
+#: mwlib/rl/pdfmessages.py:54 mwlib/rl/rlwriter.py:651
 msgid "anonymous edits"
 msgstr "עריכות אנונימיות"
 
 #: mwlib/rl/pdfmessages.py:56
 msgid "Figure"
-msgstr ""
+msgstr "צורה"
 
-#: mwlib/rl/pdfstyles.py:77
+#: mwlib/rl/pdfstyles.py:83
 msgid ""
 "PDF generated using the open source mwlib toolkit. See http://code."
 "pediapress.com/ for more information."
 msgstr ""
+"ה־PDF נוצר באמצעות ערכת הכלים בקוד פתוח mwlib. עיינו בכתובת http://code."
+"pediapress.com/ למידע נוסף."
 
-#: mwlib/rl/rlwriter.py:291
-msgid "layouting"
-msgstr "פריסה"
-
-#: mwlib/rl/rlwriter.py:353
+#: mwlib/rl/rlwriter.py:308
 #, python-format
 msgid "mwlib.ext version: %(version)s"
 msgstr "גרסת mwlib.ext: %(version)s"
 
-#: mwlib/rl/rlwriter.py:359
+#: mwlib/rl/rlwriter.py:314
 #, python-format
 msgid ""
 "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
@@ -144,30 +143,28 @@ msgstr ""
 "גרסת mwlib: %(mwlibversion)s, גרסת mwlib.rl: %(mwlibrlversion)s, %"
 "(mwlibextversion)s"
 
-#: mwlib/rl/rlwriter.py:431
-msgid "rendering"
-msgstr "עיבוד"
-
-#: mwlib/rl/rlwriter.py:593 mwlib/rl/rlwriter.py:615
+#: mwlib/rl/rlwriter.py:517
 #, fuzzy
+msgid "title"
+msgstr "שם"
+
+#: mwlib/rl/rlwriter.py:666 mwlib/rl/rlwriter.py:691
 msgid "Source"
-msgstr "מקור:"
+msgstr "מקור"
 
-#: mwlib/rl/rlwriter.py:595 mwlib/rl/rlwriter.py:618
-#, fuzzy
+#: mwlib/rl/rlwriter.py:668 mwlib/rl/rlwriter.py:694
 msgid "Contributors"
-msgstr "תורמים:"
+msgstr "תורמים"
 
-#: mwlib/rl/rlwriter.py:609
+#: mwlib/rl/rlwriter.py:684
 msgid "unknown"
-msgstr ""
+msgstr "לא ידוע"
 
-#: mwlib/rl/rlwriter.py:610
-#, fuzzy
+#: mwlib/rl/rlwriter.py:686
 msgid "License"
-msgstr "רשיון:"
+msgstr "רישיון"
 
-#: mwlib/rl/rlwriter.py:676
+#: mwlib/rl/rlwriter.py:754
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
@@ -176,3 +173,9 @@ msgstr ""
 "<strong>אזהרה: לא ניתן לעבד את הערך - יתבצע ייצוא כטקסט רגיל.</strong><br/"
 ">הגורמים האפשריים לתקלה הינם: (א) תקלה בתוכנת ה־pdf-writer (ב) תחביר ויקי "
 "בעייתי (ג) טבלה רחבה מדי"
+
+#~ msgid "layouting"
+#~ msgstr "פריסה"
+
+#~ msgid "rendering"
+#~ msgstr "עיבוד"
