@@ -1,20 +1,18 @@
 # Translation of Mwlib.rl to Ukrainian
 #
-# Author@Betawiki: Ahonc
-# Author@Betawiki: Aleksandrit
+# Author@translatewiki.net: Ahonc
 # --
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-02 11:04+0000\n"
-"PO-Revision-Date: 2009-01-24 18:25:15+0000\n"
+"POT-Creation-Date: 2009-12-18 09:01+0000\n"
+"PO-Revision-Date: 2009-12-18 08:43:05+0000\n"
 "Language-Team: Ukrainian\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.15alpha (r46144); Translate extension (9 (2009-01-"
-"11))\n"
-"X-Translation-Project: Betawiki at http://translatewiki.net\n"
+"X-Generator: MediaWiki 1.16alpha (r60201); Translate extension (2009-12-06)\n"
+"X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: uk\n"
 "X-Message-Group: out-mwlibrl\n"
 
@@ -30,7 +28,7 @@ msgstr ""
 msgid "Contributors:"
 msgstr ""
 
-#: mwlib/rl/pdfmessages.py:18
+#: mwlib/rl/pdfmessages.py:18 mwlib/rl/rlwriter.py:514
 msgid "Article Licenses"
 msgstr ""
 
@@ -50,11 +48,11 @@ msgstr ""
 msgid "Created on:"
 msgstr ""
 
-#: mwlib/rl/pdfmessages.py:28
+#: mwlib/rl/pdfmessages.py:28 mwlib/rl/toc.py:46
 msgid "Contents"
 msgstr ""
 
-#: mwlib/rl/pdfmessages.py:30
+#: mwlib/rl/pdfmessages.py:30 mwlib/rl/rlwriter.py:424
 msgid "Articles"
 msgstr ""
 
@@ -84,7 +82,8 @@ msgid ""
 "is typeset."
 msgstr ""
 
-#: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:685
+#: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:473
+#: mwlib/rl/rlwriter.py:763
 msgid "References"
 msgstr ""
 
@@ -96,11 +95,13 @@ msgid ""
 "conditions."
 msgstr ""
 
-#: mwlib/rl/pdfmessages.py:48 mwlib/rl/rlwriter.py:588
+#: mwlib/rl/pdfmessages.py:48 mwlib/rl/rlwriter.py:474
+#: mwlib/rl/rlwriter.py:659
 msgid "Article Sources and Contributors"
 msgstr ""
 
-#: mwlib/rl/pdfmessages.py:50 mwlib/rl/rlwriter.py:605
+#: mwlib/rl/pdfmessages.py:50 mwlib/rl/rlwriter.py:477
+#: mwlib/rl/rlwriter.py:678
 msgid "Image Sources, Licenses and Contributors"
 msgstr ""
 
@@ -108,7 +109,7 @@ msgstr ""
 msgid "Image"
 msgstr ""
 
-#: mwlib/rl/pdfmessages.py:54 mwlib/rl/rlwriter.py:580
+#: mwlib/rl/pdfmessages.py:54 mwlib/rl/rlwriter.py:651
 msgid "anonymous edits"
 msgstr ""
 
@@ -116,54 +117,53 @@ msgstr ""
 msgid "Figure"
 msgstr ""
 
-#: mwlib/rl/pdfstyles.py:77
+#: mwlib/rl/pdfstyles.py:83
 msgid ""
 "PDF generated using the open source mwlib toolkit. See http://code."
 "pediapress.com/ for more information."
 msgstr ""
 
-#: mwlib/rl/rlwriter.py:291
-msgid "layouting"
-msgstr "макетування"
-
-#: mwlib/rl/rlwriter.py:353
+#: mwlib/rl/rlwriter.py:308
 #, python-format
 msgid "mwlib.ext version: %(version)s"
 msgstr ""
 
-#: mwlib/rl/rlwriter.py:359
+#: mwlib/rl/rlwriter.py:314
 #, python-format
 msgid ""
 "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
 "(mwlibextversion)s"
 msgstr ""
 
-#: mwlib/rl/rlwriter.py:431
-msgid "rendering"
-msgstr "подання"
+#: mwlib/rl/rlwriter.py:517
+msgid "title"
+msgstr ""
 
-#: mwlib/rl/rlwriter.py:593 mwlib/rl/rlwriter.py:615
+#: mwlib/rl/rlwriter.py:666 mwlib/rl/rlwriter.py:691
 msgid "Source"
 msgstr ""
 
-#: mwlib/rl/rlwriter.py:595 mwlib/rl/rlwriter.py:618
+#: mwlib/rl/rlwriter.py:668 mwlib/rl/rlwriter.py:694
 msgid "Contributors"
 msgstr ""
 
-#: mwlib/rl/rlwriter.py:609
+#: mwlib/rl/rlwriter.py:684
 msgid "unknown"
 msgstr ""
 
-#: mwlib/rl/rlwriter.py:610
+#: mwlib/rl/rlwriter.py:686
 msgid "License"
 msgstr ""
 
-#: mwlib/rl/rlwriter.py:676
+#: mwlib/rl/rlwriter.py:754
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
 "software (b) problematic Mediawiki markup (c) table is too wide"
 msgstr ""
 
-#~ msgid "<b>External links</b>"
-#~ msgstr "<b>Зовнішні посилання</b>"
+#~ msgid "layouting"
+#~ msgstr "макетування"
+
+#~ msgid "rendering"
+#~ msgstr "подання"

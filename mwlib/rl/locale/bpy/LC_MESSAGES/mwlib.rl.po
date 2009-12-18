@@ -1,0 +1,178 @@
+# Translation of Mwlib.rl to Bishnupria Manipuri
+#
+# Author@translatewiki.net: Usingha
+# --
+msgid ""
+msgstr ""
+"Project-Id-Version: Mwlib.rl\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-12-18 09:01+0000\n"
+"PO-Revision-Date: 2009-12-18 08:42:54+0000\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: MediaWiki 1.16alpha (r60201); Translate extension (2009-12-06)\n"
+"X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
+"X-Language-Code: bpy\n"
+"X-Message-Group: out-mwlibrl\n"
+
+#: mwlib/rl/pdfmessages.py:12
+msgid "Source:"
+msgstr "উৎস:"
+
+#: mwlib/rl/pdfmessages.py:14
+msgid "License:"
+msgstr "লাইসেন্স:"
+
+#: mwlib/rl/pdfmessages.py:16
+msgid "Contributors:"
+msgstr "অবদানকারিগী:"
+
+#: mwlib/rl/pdfmessages.py:18 mwlib/rl/rlwriter.py:514
+msgid "Article Licenses"
+msgstr "নিবন্ধর লাইসেন্সহানি"
+
+#: mwlib/rl/pdfmessages.py:20
+msgid "Title"
+msgstr "চিংনাং"
+
+#: mwlib/rl/pdfmessages.py:22
+msgid "Subtitle:"
+msgstr "উপচিংনাং:"
+
+#: mwlib/rl/pdfmessages.py:24
+msgid "Editor:"
+msgstr "পতাকুরা:"
+
+#: mwlib/rl/pdfmessages.py:26
+msgid "Created on:"
+msgstr "হঙিসেতা:"
+
+#: mwlib/rl/pdfmessages.py:28 mwlib/rl/toc.py:46
+msgid "Contents"
+msgstr "গারিগ"
+
+#: mwlib/rl/pdfmessages.py:30 mwlib/rl/rlwriter.py:424
+msgid "Articles"
+msgstr "নিবন্ধহানি"
+
+#: mwlib/rl/pdfmessages.py:32
+msgid "Produced by:"
+msgstr "হঙকরলতা:"
+
+#: mwlib/rl/pdfmessages.py:34
+msgid "pdf writer version:"
+msgstr "পিডিএফ হঙকরেকুরার ভার্সন:"
+
+#: mwlib/rl/pdfmessages.py:36
+msgid "mwlib version:"
+msgstr "mwlib ভার্সন:"
+
+#: mwlib/rl/pdfmessages.py:38
+msgid "Table of Contents"
+msgstr "সুচীহানি"
+
+#: mwlib/rl/pdfmessages.py:40
+msgid "Skipping Articles!"
+msgstr "নিবন্ধহানি এরাদিলাং!"
+
+#: mwlib/rl/pdfmessages.py:42
+msgid ""
+"Please note:  This is only a preview intended to give an idea how the book "
+"is typeset."
+msgstr "খিয়াল থইস: এহান আগচাহান হুদ্দা লেরিকহানর নমুনা আহান দেখাদেনারকা।"
+
+#: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:473
+#: mwlib/rl/rlwriter.py:763
+msgid "References"
+msgstr "রেফারেন্সহানি"
+
+#: mwlib/rl/pdfmessages.py:46
+msgid ""
+"The following sections list the sources for all articles and images used in "
+"this book. Those sources provide more detailed licensing information "
+"including the copyright status, the copyright owner, and the license "
+"conditions."
+msgstr ""
+"এ লেরিক এহাত বরাসি নিবন্ধ বারো ছবির উৎস তলে দেনা অইল। উৎসহানির লাইসেন্স, "
+"কপিরাইটর অঙতা, কপিরাইটর মাকক বারো লাইসেন্সর শর্তহানি হবাকরে বাখান করতই।"
+
+#: mwlib/rl/pdfmessages.py:48 mwlib/rl/rlwriter.py:474
+#: mwlib/rl/rlwriter.py:659
+msgid "Article Sources and Contributors"
+msgstr "নিবন্ধহানর উৎস বারো অবদানকারীগি"
+
+#: mwlib/rl/pdfmessages.py:50 mwlib/rl/rlwriter.py:477
+#: mwlib/rl/rlwriter.py:678
+msgid "Image Sources, Licenses and Contributors"
+msgstr "ছবির উৎস, লাইসেন্স বারো অবদানকারীগি"
+
+#: mwlib/rl/pdfmessages.py:52
+msgid "Image"
+msgstr "ছবি"
+
+#: mwlib/rl/pdfmessages.py:54 mwlib/rl/rlwriter.py:651
+msgid "anonymous edits"
+msgstr "বেনাঙর পতা"
+
+#: mwlib/rl/pdfmessages.py:56
+msgid "Figure"
+msgstr "ফিগার"
+
+#: mwlib/rl/pdfstyles.py:83
+msgid ""
+"PDF generated using the open source mwlib toolkit. See http://code."
+"pediapress.com/ for more information."
+msgstr ""
+"পিডিএফ হঙরানি আইলতা অপেন সোর্স mwlibর আতিয়ারল। আরাকউ হারপানিরকা চা http://"
+"code.pediapress.com/"
+
+#: mwlib/rl/rlwriter.py:308
+#, python-format
+msgid "mwlib.ext version: %(version)s"
+msgstr "mwlib.extর ভার্সনহান: %(version)হানি"
+
+#: mwlib/rl/rlwriter.py:314
+#, python-format
+msgid ""
+"mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
+"(mwlibextversion)s"
+msgstr ""
+"mwlib ভার্সন: %(mwlibversion)হানি, mwlib.rl ভার্সন: %(mwlibrlversion)হানি, %"
+"(mwlibextversion)হানি"
+
+#: mwlib/rl/rlwriter.py:517
+#, fuzzy
+msgid "title"
+msgstr "চিংনাং"
+
+#: mwlib/rl/rlwriter.py:666 mwlib/rl/rlwriter.py:691
+msgid "Source"
+msgstr "উৎস"
+
+#: mwlib/rl/rlwriter.py:668 mwlib/rl/rlwriter.py:694
+msgid "Contributors"
+msgstr "অবদানকারীগি"
+
+#: mwlib/rl/rlwriter.py:684
+msgid "unknown"
+msgstr "হারনাপাসি"
+
+#: mwlib/rl/rlwriter.py:686
+msgid "License"
+msgstr "লাইসেন্স"
+
+#: mwlib/rl/rlwriter.py:754
+msgid ""
+"<strong>WARNING: Article could not be rendered - ouputting plain text.</"
+"strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
+"software (b) problematic Mediawiki markup (c) table is too wide"
+msgstr ""
+"<strong>সিঙুইস: নিবন্ধহান রেন্ডারিং করে নুৱারলু - চুমসেত মেয়কল ছাপিলাং।</"
+"strong><br/> এরে বিষয়হানিত লালথাইব: (ক) পিডিএফ-হঙকরেকুরা সফটৱ্যারর মা লাল "
+"থাথাইব (খ) মিডিয়াউইকি মার্কাপর মা লাল থাইব (গ) টেবিলহান জবর চেপ্টা ইয়া থা থাইব"
+
+#~ msgid "layouting"
+#~ msgstr "হাজারাং"
+
+#~ msgid "rendering"
+#~ msgstr "রেন্ডারিং"
