@@ -343,13 +343,13 @@ class RlWriter(object):
 
         advtree.buildAdvancedTree(art)
         if self.debug:
-            parser.show(sys.stdout, art)
+            #parser.show(sys.stdout, art)
             pass
         self.tc.tree = art
         self.tc.cleanAll()
         self.cnt.transformCSS(art)
         if self.debug:
-            #parser.show(sys.stdout, art)
+            parser.show(sys.stdout, art)
             print "\n".join([repr(r) for r in self.tc.getReports()])
 
         return art
@@ -1413,6 +1413,25 @@ class RlWriter(object):
             while len(row) < perrow:
                 row.append('')
             data.append(row)
+
+        row_heights = []
+        aspect_ratios = []
+        for row in data:
+            min_height = 999999
+            for cell in row:
+                if cell:
+                    figure = cell[0]
+                    min_height = min(min_height, figure.imgHeight)
+                    aspect_ratios.append(figure.imgHeight/figure.imgWidth)
+            row_heights.append(min_height)
+
+        for (row_idx, row) in enumerate(data):
+            for cell in row:
+                if cell:
+                    figure = cell[0]
+                    figure.i.drawWidth = row_heights[row_idx] / aspect_ratios.pop(0)
+                    figure.i.drawHeight = row_heights[row_idx]
+
         table = Table(data, colWidths=colwidths)
         table.setStyle([('VALIGN',(0,0),(-1,-1),'TOP')])
         self.gallery_mode = False
