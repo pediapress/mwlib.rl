@@ -16,10 +16,10 @@ develop:: all
 	python setup.py develop
 
 sdist:: all
-	echo gitversion=\"$(shell git describe --tags)\" >$(GITVERSIONFILE)
-	echo gitid=\"$(shell git rev-parse HEAD)\" >>$(GITVERSIONFILE)
-	python setup.py build sdist
-	rm -f $(GITVERSIONFILE)*
+	@echo gitversion=\"$(shell git describe --tags)\" >$(GITVERSIONFILE)
+	@echo gitid=\"$(shell git rev-parse HEAD)\" >>$(GITVERSIONFILE)
+	@python setup.py -q build sdist 
+	@rm -f $(GITVERSIONFILE)*
 
 clean::
 	git clean -xfd
