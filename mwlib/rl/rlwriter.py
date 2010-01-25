@@ -351,7 +351,6 @@ class RlWriter(object):
         if self.debug:
             parser.show(sys.stdout, art)
             print "\n".join([repr(r) for r in self.tc.getReports()])
-
         return art
 
     
@@ -1634,6 +1633,11 @@ class RlWriter(object):
     def writeTagNode(self,t):
         if getattr(t, 'caption', None) in ['hiero']:
             return []
+        if getattr(t, 'caption', None) in ['abbr']:
+            self.formatter.underline_style += 1
+            res = self.writeUnderline(t)
+            self.formatter.underline_style -= 1
+            return res
         return self.renderChildren(t) # FIXME
 
     
