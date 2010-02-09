@@ -270,8 +270,6 @@ def checkSpans(t):
             if cell.colspan > 1:
                 emptycell = getEmptyCell(None, cell.colspan-1, cell.rowspan)
                 emptycell.moveto(cell) # move behind orignal cell
-                if cell.rowspan == 1 and not getattr(cell, 'colspanned', False):
-                    styles.append( ('SPAN',(col_idx,row_idx), (col_idx+cell.colspan-1,row_idx)) ) 
                 emptycell.colspanned = True
             if row_idx + cell.rowspan > num_rows: # fix broken rowspans
                 cell.attributes['rowspan'] = num_rows - row_idx
@@ -292,6 +290,8 @@ def checkSpans(t):
                 emptycell.rowspanned = True
                 if cell.colspan > 1:
                     emptycell.colspanned = True
+            elif cell.colspan > 1:
+                styles.append( ('SPAN', (col_idx, row_idx), (col_idx + cell.colspan-1, row_idx) ) )
             col_idx += 1
 
     numcols = max(len(row.children) for row in t.children)
@@ -301,7 +301,6 @@ def checkSpans(t):
 
     t.checked_spans = True
     t.span_styles = styles
-
 
 def getStyles(table):
     styles = []
