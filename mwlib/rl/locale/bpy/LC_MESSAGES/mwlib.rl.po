@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-12-18 09:01+0000\n"
-"PO-Revision-Date: 2009-12-18 08:42:54+0000\n"
+"PO-Revision-Date: 2010-02-10 12:20+0100\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: MediaWiki 1.16alpha (r60201); Translate extension (2009-12-06)\n"
@@ -129,7 +129,7 @@ msgstr ""
 #: mwlib/rl/rlwriter.py:308
 #, python-format
 msgid "mwlib.ext version: %(version)s"
-msgstr "mwlib.extর ভার্সনহান: %(version)হানি"
+msgstr "mwlib.extর ভার্সনহান: %(version)sহানি"
 
 #: mwlib/rl/rlwriter.py:314
 #, python-format
@@ -137,8 +137,8 @@ msgid ""
 "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
 "(mwlibextversion)s"
 msgstr ""
-"mwlib ভার্সন: %(mwlibversion)হানি, mwlib.rl ভার্সন: %(mwlibrlversion)হানি, %"
-"(mwlibextversion)হানি"
+"mwlib ভার্সন: %(mwlibversion)sহানি, mwlib.rl ভার্সন: %(mwlibrlversion)sহানি, %"
+"(mwlibextversion)sহানি"
 
 #: mwlib/rl/rlwriter.py:517
 #, fuzzy
