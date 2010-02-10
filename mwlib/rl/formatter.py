@@ -26,6 +26,7 @@ class RLFormatter(Formatter):
                 ('underline_style', '<u>', '</u>', None),
                 ('overline_style', '', '', None),
                 ('fontsize_style', '<font size="%.2f">', '</font>', 'abs_font_size'),
+                ('color_style', '<font color="%s">', '</font>', 'color_str'),
                 ]
         
     def escapeText(self, txt):
@@ -37,3 +38,8 @@ class RLFormatter(Formatter):
     @property
     def abs_font_size(self):
         return pdfstyles.font_size * self.rel_font_size
+
+    @property
+    def color_str(self):
+        return '#' + ''.join(['%2.2x' % int(c*255) for c in self.color_style])
+
