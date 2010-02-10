@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-12-18 09:01+0000\n"
-"PO-Revision-Date: 2009-12-18 08:43:00+0000\n"
+"PO-Revision-Date: 2010-02-10 12:16+0100\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: MediaWiki 1.16alpha (r60201); Translate extension (2009-12-06)\n"
@@ -135,7 +135,7 @@ msgstr ""
 #: mwlib/rl/rlwriter.py:308
 #, python-format
 msgid "mwlib.ext version: %(version)s"
-msgstr "versi mwlib.ext: %(version)"
+msgstr "versi mwlib.ext: %(version)s"
 
 #: mwlib/rl/rlwriter.py:314
 #, python-format
@@ -144,7 +144,7 @@ msgid ""
 "(mwlibextversion)s"
 msgstr ""
 "versi mwlib: %(mwlibversion), versi mwlib.rl: %(mwlibrlversion), %"
-"(mwlibextversion)"
+"(mwlibextversion)s"
 
 #: mwlib/rl/rlwriter.py:517
 #, fuzzy
