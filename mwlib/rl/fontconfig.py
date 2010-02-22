@@ -6,6 +6,7 @@
 
 
 import os
+import re
 import mwlib.fonts
 from mwlib.fontswitcher import FontSwitcher
 from reportlab.lib.fonts import addMapping
@@ -109,6 +110,7 @@ class RLFontSwitcher(FontSwitcher):
         FontSwitcher.__init__(self)
         self.font_paths = []
         self.force_font = None
+        self.hypenation_pattern = re.compile('(/|\.|\+|-|_|\?)(\S)')
         
     def registerFontDefinitionList(self, font_list):
         for font in font_list:
@@ -117,12 +119,10 @@ class RLFontSwitcher(FontSwitcher):
             self.registerFont(font['name'], code_points=font.get('code_points'))
                      
     def fakeHyphenate(self, font_list):
-        breakChars = ['/', '.', '+', '-', '_', '?']
         zws = '<font fontSize="1"> </font>'        
         res = []
         for txt, font in font_list:
-            for breakChar in breakChars:
-                txt = txt.replace(breakChar, breakChar + zws)
+            txt = re.sub(self.hypenation_pattern, '\g<1>%s\g<2>' %  zws, txt)
             res.append((txt, font))
         return res
     
