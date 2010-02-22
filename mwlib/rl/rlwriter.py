@@ -404,7 +404,7 @@ class RlWriter(object):
         
         if status_callback:
             self.layout_status = status_callback.getSubRange(1, 75)
-            self.layout_status(status='layouting')
+            self.layout_status(status='laying out')
             self.render_status = status_callback.getSubRange(76, 100)
         else:
             self.layout_status = None
@@ -492,7 +492,7 @@ class RlWriter(object):
         try:
             gc.collect()
             if linuxmem:
-                log.info('memory usage after layouting:', linuxmem.memory())
+                log.info('memory usage after laying out:', linuxmem.memory())
             self.doc.build(elements)
             if pdfstyles.render_toc and self.numarticles > 1:
                 err = self.toc_renderer.build(output, self.toc_entries, has_title_page=bool(self.book.title))
