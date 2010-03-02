@@ -308,6 +308,7 @@ def getStyles(table):
     styles.extend(base_styles(table))
     styles.extend(border_styles(table))
     styles.extend(background_styles(table))
+    styles.extend(valign_styles(table))
     return styles
 
 def base_styles(table):
@@ -322,7 +323,16 @@ def base_styles(table):
                 styles.append(('TOPPADDING', (col_idx, row_idx), (col_idx, row_idx), 2))
                 styles.append(('BOTTOMPADDING', (col_idx, row_idx), (col_idx, row_idx), 0))
     return styles
-                
+
+def valign_styles(table):
+    styles = []
+    for row_idx, row in enumerate(table):
+        for col_idx, cell in enumerate(row):
+            valign = styleutils.getVerticalAlign(cell)
+            if valign in ['middle', 'bottom']:
+                styles.append(('VALIGN', (col_idx, row_idx), (col_idx, row_idx), valign.upper()))
+    return styles
+    
 def border_styles(table):
     styles = []
 
