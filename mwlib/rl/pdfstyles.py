@@ -53,9 +53,6 @@ page_margin_right = 2 * cm
 page_margin_top = 2 * cm
 page_margin_bottom = 2 * cm
 
-print_width = page_width - page_margin_left - page_margin_right
-print_height = page_height - page_margin_top - page_margin_bottom
-
 header_margin_hor = 1.5 * cm
 header_margin_vert= 1.5 * cm
 
@@ -69,9 +66,6 @@ show_page_footer = True
 page_break_after_article = False
 
 show_article_attribution = True   # Show/Hide article source and contributors
-
-article_start_min_space = 0.5*print_height # if less space is available on the current page a page break is inserted
-article_start_min_space_infobox = 0.9*print_height # as above. but if the article starts with an infobox the required space should be higher
 
 # NOTE: strings can contain reportlab styling tags the text needs to be xml excaped.
 # more information is available in the reportlab user documentation (http://www.reportlab.com/docs/userguide.pdf)
@@ -88,7 +82,6 @@ show_creation_date = True
 
 tableOverflowTolerance = 20  # max width overflow for tables    unit: pt 
 cell_padding = 3
-min_table_space = print_height / 4 # if less space is available, a page break will be inserted before the table
 min_rows_for_break = 3 # page breaks before tables are only forced if more than n rows are present
 
 treecleaner_skip_methods = ['fixPreFormatted', 'removeEmptyReferenceLists']
@@ -348,3 +341,10 @@ except ImportError:
     pass
 
 
+print_width = page_width - page_margin_left - page_margin_right
+print_height = page_height - page_margin_top - page_margin_bottom
+
+article_start_min_space = 0.5*print_height # if less space is available on the current page a page break is inserted
+article_start_min_space_infobox = 0.9*print_height # as above. but if the article starts with an infobox the required space should be higher
+
+min_table_space = print_height / 4 # if less space is available, a page break will be inserted before the table

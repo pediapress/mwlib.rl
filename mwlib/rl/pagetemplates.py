@@ -43,7 +43,7 @@ class SimplePage(PageTemplate):
         #frames = Frame(0, 0, pageSize[0], pageSize[1])
         pw = pageSize[0]
         ph = pageSize[1]
-        frames = Frame(page_margin_left, page_margin_top, pw-page_margin_left-page_margin_right, ph-page_margin_top-page_margin_bottom)
+        frames = Frame(page_margin_left, page_margin_bottom, pw-page_margin_left-page_margin_right, ph-page_margin_top-page_margin_bottom)
 
         PageTemplate.__init__(self, id=id, frames=frames, pagesize=pageSize)
         
@@ -55,7 +55,7 @@ class WikiPage(PageTemplate):
         """
         
         id = title.encode('utf-8')
-        frames = Frame(page_margin_left,page_margin_top, print_width, print_height)
+        frames = Frame(page_margin_left,page_margin_bottom, print_width, print_height)
         
         PageTemplate.__init__(self,id=id, frames=frames,onPage=onPage,onPageEnd=onPageEnd,pagesize=pagesize)
 
@@ -97,7 +97,7 @@ class TitlePage(PageTemplate):
         onPage=_doNothing, onPageEnd=_doNothing, pagesize=(page_width, page_height)):
 
         id = 'TitlePage'
-        frames = Frame(page_margin_left, page_margin_top, print_width, print_height)
+        frames = Frame(page_margin_left, page_margin_bottom, print_width, print_height)
         PageTemplate.__init__(self,id=id, frames=frames,onPage=onPage,onPageEnd=onPageEnd,pagesize=pagesize)
         self.cover = cover
     
