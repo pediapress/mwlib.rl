@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-12-18 09:01+0000\n"
-"PO-Revision-Date: 2009-12-18 08:42:59+0000\n"
+"PO-Revision-Date: 2010-03-18 16:31+0100\n"
 "Language-Team: Hungarian\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -56,9 +56,8 @@ msgid "Created on:"
 msgstr "Létrehozva:"
 
 #: mwlib/rl/pdfmessages.py:28 mwlib/rl/toc.py:46
-#, fuzzy
 msgid "Contents"
-msgstr "Fő szerzők:"
+msgstr "Tartalomjegyzék"
 
 #: mwlib/rl/pdfmessages.py:30 mwlib/rl/rlwriter.py:424
 msgid "Articles"

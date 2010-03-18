@@ -172,4 +172,5 @@ include setup.py
 include tests/renderhelper.py
 include tests/test_advanced.py
 include tests/test_basicnodes.py
+include tests/test_misc.py
 include tests/test_snippets.py
