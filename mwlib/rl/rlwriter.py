@@ -512,7 +512,7 @@ class RlWriter(object):
             elements.append(TocEntry(txt=_('Article Licenses'), lvl='group'))
 
         for license in self.env.getLicenses():
-            license_node = uparser.parseString(title=_(license['title']), raw=license['wikitext'], wikidb=license._wiki)
+            license_node = uparser.parseString(title=_(license.title), raw=license.wikitext, wikidb=license._wiki)
             advtree.buildAdvancedTree(license_node)
             self.tc.tree = license_node
             self.tc.cleanAll()
