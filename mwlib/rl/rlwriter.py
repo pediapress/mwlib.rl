@@ -905,7 +905,7 @@ class RlWriter(object):
             else:
                 if len(figures)>1:
                     figures = scaleImages(figures)
-                    data = [  [figures[i],figures[i+1]]  for i in range(int(len(figures)/2))]
+                    data = [  [figures[2*i],figures[2*i+1]]  for i in range(int(len(figures)/2))]
                     if len(figures) % 2 != 0:
                         data.append( [figures[-1],''] )                   
                     table = Table(data)
@@ -918,7 +918,7 @@ class RlWriter(object):
                     finalNodes.append(n)
         if len(figures)>1:
             figures = scaleImages(figures)
-            data = [  [figures[i],figures[i+1]]  for i in range(int(len(figures)/2))]
+            data = [  [figures[2*i],figures[2*i+1]]  for i in range(int(len(figures)/2))]
             if len(figures) % 2 != 0:
                 data.append( [figures[-1],''] )                   
             table = Table(data)
