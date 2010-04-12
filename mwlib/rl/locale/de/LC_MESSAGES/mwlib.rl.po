@@ -111,12 +111,12 @@ msgstr ""
 #: mwlib/rl/pdfmessages.py:48 mwlib/rl/rlwriter.py:474
 #: mwlib/rl/rlwriter.py:659
 msgid "Article Sources and Contributors"
-msgstr "Quelle(n) und Bearbeiter des/der Artikel(s)"
+msgstr "Quellen und Bearbeiter der Artikel"
 
 #: mwlib/rl/pdfmessages.py:50 mwlib/rl/rlwriter.py:477
 #: mwlib/rl/rlwriter.py:678
 msgid "Image Sources, Licenses and Contributors"
-msgstr "Quelle(n), Lizenz(en) und Autor(en) des Bildes"
+msgstr "Quellen, Lizenzen und Autoren der Bilder"
 
 #: mwlib/rl/pdfmessages.py:52
 msgid "Image"
