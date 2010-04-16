@@ -234,9 +234,15 @@ def removeContainerTable(containertable):
 
 #############################################
 
-def optimizeWidths(min_widths, max_widths, avail_width):
+def optimizeWidths(min_widths, max_widths, avail_width, stretch=False):
     remaining_space = avail_width - sum(min_widths)
-    total_delta = sum([ max_widths[i] - min_widths[i] for i in range(len(min_widths))])
+
+    if stretch and sum(max_widths) < avail_width:
+        total_current = sum(max_widths)
+        remaining = avail_width - total_current
+        return [ w+w/total_current*remaining for w in max_widths]
+    else:
+        total_delta = sum([ max_widths[i] - min_widths[i] for i in range(len(min_widths))])
     
     # prevent remaining_space to get negative. -5 compensates for table margins
     remaining_space = max(-5, remaining_space)
