@@ -1323,7 +1323,7 @@ class RlWriter(object):
         if img_node.render_caption:
             txt = self.renderInline(img_node)
 
-        is_inline = img_node.isInline()        
+        is_inline = img_node.isInline() or img_node.align == 'none'
 
         url = self.imgDB.getDescriptionURL(img_node.target) or self.imgDB.getURL(img_node.target)
         if url:
