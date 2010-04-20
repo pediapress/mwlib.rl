@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-18 09:01+0000\n"
+"POT-Creation-Date: 2010-04-20 11:19+0200\n"
 "PO-Revision-Date: 2009-12-18 08:43:02+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -27,7 +27,7 @@ msgstr "Lisens:"
 msgid "Contributors:"
 msgstr "Bidragsytere:"
 
-#: mwlib/rl/pdfmessages.py:18 mwlib/rl/rlwriter.py:514
+#: mwlib/rl/pdfmessages.py:18 mwlib/rl/rlwriter.py:512
 msgid "Article Licenses"
 msgstr "Artikkellisenser"
 
@@ -51,7 +51,7 @@ msgstr "Opprettet på:"
 msgid "Contents"
 msgstr "Innhold"
 
-#: mwlib/rl/pdfmessages.py:30 mwlib/rl/rlwriter.py:424
+#: mwlib/rl/pdfmessages.py:30 mwlib/rl/rlwriter.py:423
 msgid "Articles"
 msgstr "Artikler"
 
@@ -83,12 +83,16 @@ msgstr ""
 "Vennligst merk deg: Dette er bare en forhåndsvisning for å gi en idé om "
 "hvordan boka vil se ut."
 
-#: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:473
-#: mwlib/rl/rlwriter.py:763
+#: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:471
+#: mwlib/rl/rlwriter.py:764
 msgid "References"
 msgstr "Referanser"
 
 #: mwlib/rl/pdfmessages.py:46
+msgid "Appendix"
+msgstr ""
+
+#: mwlib/rl/pdfmessages.py:48
 msgid ""
 "The following sections list the sources for all articles and images used in "
 "this book. Those sources provide more detailed licensing information "
@@ -99,29 +103,51 @@ msgstr ""
 "i denne boken. Kildene gir mer detaljert informasjon om lisensiering "
 "inkludert opphavsrettstatusen, opphavsretteieren og lisensens vilkår."
 
-#: mwlib/rl/pdfmessages.py:48 mwlib/rl/rlwriter.py:474
-#: mwlib/rl/rlwriter.py:659
+#: mwlib/rl/pdfmessages.py:50
+#, fuzzy
+msgid ""
+"The sources listed for each article provide more detailed licensing "
+"information including the copyright status, the copyright owner, and the "
+"license conditions."
+msgstr ""
+"Den følgende seksjonen lister opp kildene for alle artikler og bilder brukt "
+"i denne boken. Kildene gir mer detaljert informasjon om lisensiering "
+"inkludert opphavsrettstatusen, opphavsretteieren og lisensens vilkår."
+
+#: mwlib/rl/pdfmessages.py:52
+#, fuzzy
+msgid ""
+"The sources listed for each image provide more detailed licensing "
+"information including the copyright status, the copyright owner, and the "
+"license conditions."
+msgstr ""
+"Den følgende seksjonen lister opp kildene for alle artikler og bilder brukt "
+"i denne boken. Kildene gir mer detaljert informasjon om lisensiering "
+"inkludert opphavsrettstatusen, opphavsretteieren og lisensens vilkår."
+
+#: mwlib/rl/pdfmessages.py:54 mwlib/rl/rlwriter.py:472
+#: mwlib/rl/rlwriter.py:660
 msgid "Article Sources and Contributors"
 msgstr "Artikkelkilder og Bidragsytere"
 
-#: mwlib/rl/pdfmessages.py:50 mwlib/rl/rlwriter.py:477
-#: mwlib/rl/rlwriter.py:678
+#: mwlib/rl/pdfmessages.py:56 mwlib/rl/rlwriter.py:475
+#: mwlib/rl/rlwriter.py:679
 msgid "Image Sources, Licenses and Contributors"
 msgstr "Bildekilder, Lisenser og Bidragsytere"
 
-#: mwlib/rl/pdfmessages.py:52
+#: mwlib/rl/pdfmessages.py:58
 msgid "Image"
 msgstr "Bilde"
 
-#: mwlib/rl/pdfmessages.py:54 mwlib/rl/rlwriter.py:651
+#: mwlib/rl/pdfmessages.py:60 mwlib/rl/rlwriter.py:652
 msgid "anonymous edits"
 msgstr "anonyme endringer"
 
-#: mwlib/rl/pdfmessages.py:56
+#: mwlib/rl/pdfmessages.py:62
 msgid "Figure"
 msgstr "Figur"
 
-#: mwlib/rl/pdfstyles.py:83
+#: mwlib/rl/pdfstyles.py:77
 msgid ""
 "PDF generated using the open source mwlib toolkit. See http://code."
 "pediapress.com/ for more information."
@@ -143,28 +169,23 @@ msgstr ""
 "mwlib-versjon: %(mwlibversion)s, mwlib.rl-versjon: %(mwlibrlversion)s, %"
 "(mwlibextversion)s"
 
-#: mwlib/rl/rlwriter.py:517
-#, fuzzy
-msgid "title"
-msgstr "Tittel"
-
-#: mwlib/rl/rlwriter.py:666 mwlib/rl/rlwriter.py:691
+#: mwlib/rl/rlwriter.py:667 mwlib/rl/rlwriter.py:692
 msgid "Source"
 msgstr "Kilde"
 
-#: mwlib/rl/rlwriter.py:668 mwlib/rl/rlwriter.py:694
+#: mwlib/rl/rlwriter.py:669 mwlib/rl/rlwriter.py:695
 msgid "Contributors"
 msgstr "Bidragsytere"
 
-#: mwlib/rl/rlwriter.py:684
+#: mwlib/rl/rlwriter.py:685
 msgid "unknown"
 msgstr "ukjent"
 
-#: mwlib/rl/rlwriter.py:686
+#: mwlib/rl/rlwriter.py:687
 msgid "License"
 msgstr "Lisens"
 
-#: mwlib/rl/rlwriter.py:754
+#: mwlib/rl/rlwriter.py:755
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
@@ -174,6 +195,10 @@ msgstr ""
 "strong><br />Potensielle årsaker for problemet er: (a) en feil i PDF-"
 "skriverprogramvaren (b) problematisk MediaWiki-oppsett (c) tabellen er for "
 "bred"
+
+#, fuzzy
+#~ msgid "title"
+#~ msgstr "Tittel"
 
 #~ msgid "layouting"
 #~ msgstr "utforming"

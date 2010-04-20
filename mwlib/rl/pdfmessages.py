@@ -43,7 +43,13 @@ _('Please note:  This is only a preview intended to give an idea how the book is
 
 _('References')
 
+_('Appendix')
+
 _('The following sections list the sources for all articles and images used in this book. Those sources provide more detailed licensing information including the copyright status, the copyright owner, and the license conditions.')
+
+_('The sources listed for each article provide more detailed licensing information including the copyright status, the copyright owner, and the license conditions.')
+
+_('The sources listed for each image provide more detailed licensing information including the copyright status, the copyright owner, and the license conditions.')
 
 _('Article Sources and Contributors')
 

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-18 09:01+0000\n"
+"POT-Creation-Date: 2010-04-20 11:19+0200\n"
 "PO-Revision-Date: 2009-12-18 08:42:55+0000\n"
 "Language-Team: Breton\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -28,7 +28,7 @@ msgstr "Aotre implijout :"
 msgid "Contributors:"
 msgstr "Aozerien :"
 
-#: mwlib/rl/pdfmessages.py:18 mwlib/rl/rlwriter.py:514
+#: mwlib/rl/pdfmessages.py:18 mwlib/rl/rlwriter.py:512
 msgid "Article Licenses"
 msgstr "Aotre ar pennadoù"
 
@@ -52,7 +52,7 @@ msgstr "Savet d'an :"
 msgid "Contents"
 msgstr "Endalc'had"
 
-#: mwlib/rl/pdfmessages.py:30 mwlib/rl/rlwriter.py:424
+#: mwlib/rl/pdfmessages.py:30 mwlib/rl/rlwriter.py:423
 msgid "Articles"
 msgstr "Pennadoù"
 
@@ -84,12 +84,16 @@ msgstr ""
 "Notenn : n'eo an dra-mañ nemet ur rakweladenn zo he fal reiñ deoc'h un "
 "alberzh eus ar mod ma vo savet al levr."
 
-#: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:473
-#: mwlib/rl/rlwriter.py:763
+#: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:471
+#: mwlib/rl/rlwriter.py:764
 msgid "References"
 msgstr "Daveennoù"
 
 #: mwlib/rl/pdfmessages.py:46
+msgid "Appendix"
+msgstr ""
+
+#: mwlib/rl/pdfmessages.py:48
 msgid ""
 "The following sections list the sources for all articles and images used in "
 "this book. Those sources provide more detailed licensing information "
@@ -101,29 +105,53 @@ msgstr ""
 "aotre implij, statud ar gwirioù aozer, perc'henn ar gwirioù aozer ha doareoù "
 "implij an aotre."
 
-#: mwlib/rl/pdfmessages.py:48 mwlib/rl/rlwriter.py:474
-#: mwlib/rl/rlwriter.py:659
+#: mwlib/rl/pdfmessages.py:50
+#, fuzzy
+msgid ""
+"The sources listed for each article provide more detailed licensing "
+"information including the copyright status, the copyright owner, and the "
+"license conditions."
+msgstr ""
+"Rollañ a ra ar rannoù da-heul mammennoù an holl bennadoù ha skeudennoù "
+"implijet el levr-mañ. Reiñ a ra ar mammennoù-se titouroù resisoc'h a-fet "
+"aotre implij, statud ar gwirioù aozer, perc'henn ar gwirioù aozer ha doareoù "
+"implij an aotre."
+
+#: mwlib/rl/pdfmessages.py:52
+#, fuzzy
+msgid ""
+"The sources listed for each image provide more detailed licensing "
+"information including the copyright status, the copyright owner, and the "
+"license conditions."
+msgstr ""
+"Rollañ a ra ar rannoù da-heul mammennoù an holl bennadoù ha skeudennoù "
+"implijet el levr-mañ. Reiñ a ra ar mammennoù-se titouroù resisoc'h a-fet "
+"aotre implij, statud ar gwirioù aozer, perc'henn ar gwirioù aozer ha doareoù "
+"implij an aotre."
+
+#: mwlib/rl/pdfmessages.py:54 mwlib/rl/rlwriter.py:472
+#: mwlib/rl/rlwriter.py:660
 msgid "Article Sources and Contributors"
 msgstr "Mammennoù hag aozerien ar pennad"
 
-#: mwlib/rl/pdfmessages.py:50 mwlib/rl/rlwriter.py:477
-#: mwlib/rl/rlwriter.py:678
+#: mwlib/rl/pdfmessages.py:56 mwlib/rl/rlwriter.py:475
+#: mwlib/rl/rlwriter.py:679
 msgid "Image Sources, Licenses and Contributors"
 msgstr "Mammenn ar skeudennoù, atotreoù ha perzhidi"
 
-#: mwlib/rl/pdfmessages.py:52
+#: mwlib/rl/pdfmessages.py:58
 msgid "Image"
 msgstr "Skeudenn"
 
-#: mwlib/rl/pdfmessages.py:54 mwlib/rl/rlwriter.py:651
+#: mwlib/rl/pdfmessages.py:60 mwlib/rl/rlwriter.py:652
 msgid "anonymous edits"
 msgstr "kemmoù dizanv"
 
-#: mwlib/rl/pdfmessages.py:56
+#: mwlib/rl/pdfmessages.py:62
 msgid "Figure"
 msgstr "Grafik"
 
-#: mwlib/rl/pdfstyles.py:83
+#: mwlib/rl/pdfstyles.py:77
 msgid ""
 "PDF generated using the open source mwlib toolkit. See http://code."
 "pediapress.com/ for more information."
@@ -145,28 +173,23 @@ msgstr ""
 "stummoù mwlib : %(mwlibversion)s, versione mwlib.rl: %(mwlibrlversion)s, %"
 "(mwlibextversion)s"
 
-#: mwlib/rl/rlwriter.py:517
-#, fuzzy
-msgid "title"
-msgstr "Titl"
-
-#: mwlib/rl/rlwriter.py:666 mwlib/rl/rlwriter.py:691
+#: mwlib/rl/rlwriter.py:667 mwlib/rl/rlwriter.py:692
 msgid "Source"
 msgstr "Mammenn"
 
-#: mwlib/rl/rlwriter.py:668 mwlib/rl/rlwriter.py:694
+#: mwlib/rl/rlwriter.py:669 mwlib/rl/rlwriter.py:695
 msgid "Contributors"
 msgstr "Aozerien"
 
-#: mwlib/rl/rlwriter.py:684
+#: mwlib/rl/rlwriter.py:685
 msgid "unknown"
 msgstr "dianav"
 
-#: mwlib/rl/rlwriter.py:686
+#: mwlib/rl/rlwriter.py:687
 msgid "License"
 msgstr "Aotre implijout"
 
-#: mwlib/rl/rlwriter.py:754
+#: mwlib/rl/rlwriter.py:755
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
@@ -175,6 +198,10 @@ msgstr ""
 "<strong>DIWALLIT : n'haller ket eiladuriñ ar pennad en e bezh - aozadur e "
 "testenn blaen.</strong><br/>Abeg ar gudenn zo pe (a) un draen er meziant "
 "PDF, pe (b) ur fazi e markup MediaWiki, pe (c) un daolenn re ledan."
+
+#, fuzzy
+#~ msgid "title"
+#~ msgstr "Titl"
 
 #~ msgid "layouting"
 #~ msgstr "Pajennaozañ"

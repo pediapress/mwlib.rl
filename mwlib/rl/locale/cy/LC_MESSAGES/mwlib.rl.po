@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-18 09:01+0000\n"
+"POT-Creation-Date: 2010-04-20 11:20+0200\n"
 "PO-Revision-Date: 2009-12-18 08:42:56+0000\n"
 "Language-Team: Welsh\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -28,7 +28,7 @@ msgstr "Trwydded:"
 msgid "Contributors:"
 msgstr "Cyfranwyr:"
 
-#: mwlib/rl/pdfmessages.py:18 mwlib/rl/rlwriter.py:514
+#: mwlib/rl/pdfmessages.py:18 mwlib/rl/rlwriter.py:512
 msgid "Article Licenses"
 msgstr "Trwyddedi'r Erthygl"
 
@@ -52,7 +52,7 @@ msgstr "Dechreuwyd ar:"
 msgid "Contents"
 msgstr "Cynnwys"
 
-#: mwlib/rl/pdfmessages.py:30 mwlib/rl/rlwriter.py:424
+#: mwlib/rl/pdfmessages.py:30 mwlib/rl/rlwriter.py:423
 msgid "Articles"
 msgstr "Erthyglau"
 
@@ -84,12 +84,16 @@ msgstr ""
 "Dalier sylw: Rhagolwg yn unig yw hwn, yn cynnig golwg ar ymddangosiad y "
 "llyfr."
 
-#: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:473
-#: mwlib/rl/rlwriter.py:763
+#: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:471
+#: mwlib/rl/rlwriter.py:764
 msgid "References"
 msgstr "Cyfeiriadau"
 
 #: mwlib/rl/pdfmessages.py:46
+msgid "Appendix"
+msgstr ""
+
+#: mwlib/rl/pdfmessages.py:48
 msgid ""
 "The following sections list the sources for all articles and images used in "
 "this book. Those sources provide more detailed licensing information "
@@ -101,29 +105,53 @@ msgstr ""
 "am eu trwyddedau, gan gynnwys statws hawlfraint, perchennog yr hawlfraint ac "
 "amodau'r drwydded."
 
-#: mwlib/rl/pdfmessages.py:48 mwlib/rl/rlwriter.py:474
-#: mwlib/rl/rlwriter.py:659
+#: mwlib/rl/pdfmessages.py:50
+#, fuzzy
+msgid ""
+"The sources listed for each article provide more detailed licensing "
+"information including the copyright status, the copyright owner, and the "
+"license conditions."
+msgstr ""
+"Mae ffynonellau'r lluniau a'r wybodaeth yn yr holl erthyglau a geir yn y "
+"llyfr hwn wedi eu rhestri isod. Ceir manylion pellach yn y ffynonellau hynny "
+"am eu trwyddedau, gan gynnwys statws hawlfraint, perchennog yr hawlfraint ac "
+"amodau'r drwydded."
+
+#: mwlib/rl/pdfmessages.py:52
+#, fuzzy
+msgid ""
+"The sources listed for each image provide more detailed licensing "
+"information including the copyright status, the copyright owner, and the "
+"license conditions."
+msgstr ""
+"Mae ffynonellau'r lluniau a'r wybodaeth yn yr holl erthyglau a geir yn y "
+"llyfr hwn wedi eu rhestri isod. Ceir manylion pellach yn y ffynonellau hynny "
+"am eu trwyddedau, gan gynnwys statws hawlfraint, perchennog yr hawlfraint ac "
+"amodau'r drwydded."
+
+#: mwlib/rl/pdfmessages.py:54 mwlib/rl/rlwriter.py:472
+#: mwlib/rl/rlwriter.py:660
 msgid "Article Sources and Contributors"
 msgstr "Ffynonellau'r Erthygl a'i Chyfranwyr"
 
-#: mwlib/rl/pdfmessages.py:50 mwlib/rl/rlwriter.py:477
-#: mwlib/rl/rlwriter.py:678
+#: mwlib/rl/pdfmessages.py:56 mwlib/rl/rlwriter.py:475
+#: mwlib/rl/rlwriter.py:679
 msgid "Image Sources, Licenses and Contributors"
 msgstr "Ffynonellau'r Ddelwedd, ei Thrwyddedi a'i Chyfranwyr"
 
-#: mwlib/rl/pdfmessages.py:52
+#: mwlib/rl/pdfmessages.py:58
 msgid "Image"
 msgstr "Delwedd"
 
-#: mwlib/rl/pdfmessages.py:54 mwlib/rl/rlwriter.py:651
+#: mwlib/rl/pdfmessages.py:60 mwlib/rl/rlwriter.py:652
 msgid "anonymous edits"
 msgstr "golygiadau dienw"
 
-#: mwlib/rl/pdfmessages.py:56
+#: mwlib/rl/pdfmessages.py:62
 msgid "Figure"
 msgstr "Ffigur"
 
-#: mwlib/rl/pdfstyles.py:83
+#: mwlib/rl/pdfstyles.py:77
 msgid ""
 "PDF generated using the open source mwlib toolkit. See http://code."
 "pediapress.com/ for more information."
@@ -145,28 +173,23 @@ msgstr ""
 "fersiwn mwlib:  %(mwlibversion)s, fersiwn mwlib.rl: %(mwlibrlversion)s, %"
 "(mwlibextversion)s"
 
-#: mwlib/rl/rlwriter.py:517
-#, fuzzy
-msgid "title"
-msgstr "Teitl"
-
-#: mwlib/rl/rlwriter.py:666 mwlib/rl/rlwriter.py:691
+#: mwlib/rl/rlwriter.py:667 mwlib/rl/rlwriter.py:692
 msgid "Source"
 msgstr "Ffynhonnell"
 
-#: mwlib/rl/rlwriter.py:668 mwlib/rl/rlwriter.py:694
+#: mwlib/rl/rlwriter.py:669 mwlib/rl/rlwriter.py:695
 msgid "Contributors"
 msgstr "Cyfranwyr"
 
-#: mwlib/rl/rlwriter.py:684
+#: mwlib/rl/rlwriter.py:685
 msgid "unknown"
 msgstr "anhysbys"
 
-#: mwlib/rl/rlwriter.py:686
+#: mwlib/rl/rlwriter.py:687
 msgid "License"
 msgstr "Trwydded"
 
-#: mwlib/rl/rlwriter.py:754
+#: mwlib/rl/rlwriter.py:755
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
@@ -175,6 +198,10 @@ msgstr ""
 "<strong>RHYBUDD: Ni ellid llunio'r erthygl - gosodir y cynnyrch mewn testun "
 "plaen.<strong><br/>Dyma achosion posib y broblem: (a) byg ym meddalwedd yr "
 "ysgrifennwr pdf (b) cystrawen Mediawici amheus (c) y tabl yn rhy lydan"
+
+#, fuzzy
+#~ msgid "title"
+#~ msgstr "Teitl"
 
 #~ msgid "layouting"
 #~ msgstr "wrthi'n gosod"
