@@ -29,3 +29,7 @@ easy-install:: clean sdist
 
 pip-install:: clean sdist
 	pip install dist/*
+
+update::
+	git pull
+	make easy-install
