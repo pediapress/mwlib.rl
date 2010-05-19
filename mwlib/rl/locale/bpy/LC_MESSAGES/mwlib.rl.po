@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-20 11:19+0200\n"
+"POT-Creation-Date: 2010-05-19 12:50+0200\n"
 "PO-Revision-Date: 2010-02-10 12:20+0100\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -15,82 +15,86 @@ msgstr ""
 "X-Language-Code: bpy\n"
 "X-Message-Group: out-mwlibrl\n"
 
-#: mwlib/rl/pdfmessages.py:12
+#: mwlib/rl/pdfmessages.py:11
+msgid "Index"
+msgstr ""
+
+#: mwlib/rl/pdfmessages.py:13
 msgid "Source:"
 msgstr "উৎস:"
 
-#: mwlib/rl/pdfmessages.py:14
+#: mwlib/rl/pdfmessages.py:15
 msgid "License:"
 msgstr "লাইসেন্স:"
 
-#: mwlib/rl/pdfmessages.py:16
+#: mwlib/rl/pdfmessages.py:17
 msgid "Contributors:"
 msgstr "অবদানকারিগী:"
 
-#: mwlib/rl/pdfmessages.py:18 mwlib/rl/rlwriter.py:512
+#: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:512
 msgid "Article Licenses"
 msgstr "নিবন্ধর লাইসেন্সহানি"
 
-#: mwlib/rl/pdfmessages.py:20
+#: mwlib/rl/pdfmessages.py:21
 msgid "Title"
 msgstr "চিংনাং"
 
-#: mwlib/rl/pdfmessages.py:22
+#: mwlib/rl/pdfmessages.py:23
 msgid "Subtitle:"
 msgstr "উপচিংনাং:"
 
-#: mwlib/rl/pdfmessages.py:24
+#: mwlib/rl/pdfmessages.py:25
 msgid "Editor:"
 msgstr "পতাকুরা:"
 
-#: mwlib/rl/pdfmessages.py:26
+#: mwlib/rl/pdfmessages.py:27
 msgid "Created on:"
 msgstr "হঙিসেতা:"
 
-#: mwlib/rl/pdfmessages.py:28 mwlib/rl/toc.py:46
+#: mwlib/rl/pdfmessages.py:29 mwlib/rl/toc.py:46
 msgid "Contents"
 msgstr "গারিগ"
 
-#: mwlib/rl/pdfmessages.py:30 mwlib/rl/rlwriter.py:423
+#: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:423
 msgid "Articles"
 msgstr "নিবন্ধহানি"
 
-#: mwlib/rl/pdfmessages.py:32
+#: mwlib/rl/pdfmessages.py:33
 msgid "Produced by:"
 msgstr "হঙকরলতা:"
 
-#: mwlib/rl/pdfmessages.py:34
+#: mwlib/rl/pdfmessages.py:35
 msgid "pdf writer version:"
 msgstr "পিডিএফ হঙকরেকুরার ভার্সন:"
 
-#: mwlib/rl/pdfmessages.py:36
+#: mwlib/rl/pdfmessages.py:37
 msgid "mwlib version:"
 msgstr "mwlib ভার্সন:"
 
-#: mwlib/rl/pdfmessages.py:38
+#: mwlib/rl/pdfmessages.py:39
 msgid "Table of Contents"
 msgstr "সুচীহানি"
 
-#: mwlib/rl/pdfmessages.py:40
+#: mwlib/rl/pdfmessages.py:41
 msgid "Skipping Articles!"
 msgstr "নিবন্ধহানি এরাদিলাং!"
 
-#: mwlib/rl/pdfmessages.py:42
+#: mwlib/rl/pdfmessages.py:43
 msgid ""
 "Please note:  This is only a preview intended to give an idea how the book "
 "is typeset."
 msgstr "খিয়াল থইস: এহান আগচাহান হুদ্দা লেরিকহানর নমুনা আহান দেখাদেনারকা।"
 
-#: mwlib/rl/pdfmessages.py:44 mwlib/rl/rlwriter.py:471
+#: mwlib/rl/pdfmessages.py:45 mwlib/rl/rlwriter.py:471
 #: mwlib/rl/rlwriter.py:764
 msgid "References"
 msgstr "রেফারেন্সহানি"
 
-#: mwlib/rl/pdfmessages.py:46
+#: mwlib/rl/pdfmessages.py:47
 msgid "Appendix"
 msgstr ""
 
-#: mwlib/rl/pdfmessages.py:48
+#: mwlib/rl/pdfmessages.py:49
 msgid ""
 "The following sections list the sources for all articles and images used in "
 "this book. Those sources provide more detailed licensing information "
@@ -100,7 +104,7 @@ msgstr ""
 "এ লেরিক এহাত বরাসি নিবন্ধ বারো ছবির উৎস তলে দেনা অইল। উৎসহানির লাইসেন্স, "
 "কপিরাইটর অঙতা, কপিরাইটর মাকক বারো লাইসেন্সর শর্তহানি হবাকরে বাখান করতই।"
 
-#: mwlib/rl/pdfmessages.py:50
+#: mwlib/rl/pdfmessages.py:51
 #, fuzzy
 msgid ""
 "The sources listed for each article provide more detailed licensing "
@@ -110,7 +114,7 @@ msgstr ""
 "এ লেরিক এহাত বরাসি নিবন্ধ বারো ছবির উৎস তলে দেনা অইল। উৎসহানির লাইসেন্স, "
 "কপিরাইটর অঙতা, কপিরাইটর মাকক বারো লাইসেন্সর শর্তহানি হবাকরে বাখান করতই।"
 
-#: mwlib/rl/pdfmessages.py:52
+#: mwlib/rl/pdfmessages.py:53
 #, fuzzy
 msgid ""
 "The sources listed for each image provide more detailed licensing "
@@ -120,25 +124,25 @@ msgstr ""
 "এ লেরিক এহাত বরাসি নিবন্ধ বারো ছবির উৎস তলে দেনা অইল। উৎসহানির লাইসেন্স, "
 "কপিরাইটর অঙতা, কপিরাইটর মাকক বারো লাইসেন্সর শর্তহানি হবাকরে বাখান করতই।"
 
-#: mwlib/rl/pdfmessages.py:54 mwlib/rl/rlwriter.py:472
+#: mwlib/rl/pdfmessages.py:55 mwlib/rl/rlwriter.py:472
 #: mwlib/rl/rlwriter.py:660
 msgid "Article Sources and Contributors"
 msgstr "নিবন্ধহানর উৎস বারো অবদানকারীগি"
 
-#: mwlib/rl/pdfmessages.py:56 mwlib/rl/rlwriter.py:475
+#: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:475
 #: mwlib/rl/rlwriter.py:679
 msgid "Image Sources, Licenses and Contributors"
 msgstr "ছবির উৎস, লাইসেন্স বারো অবদানকারীগি"
 
-#: mwlib/rl/pdfmessages.py:58
+#: mwlib/rl/pdfmessages.py:59
 msgid "Image"
 msgstr "ছবি"
 
-#: mwlib/rl/pdfmessages.py:60 mwlib/rl/rlwriter.py:652
+#: mwlib/rl/pdfmessages.py:61 mwlib/rl/rlwriter.py:652
 msgid "anonymous edits"
 msgstr "বেনাঙর পতা"
 
-#: mwlib/rl/pdfmessages.py:62
+#: mwlib/rl/pdfmessages.py:63
 msgid "Figure"
 msgstr "ফিগার"
 
