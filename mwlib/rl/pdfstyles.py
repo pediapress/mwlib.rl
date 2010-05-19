@@ -125,6 +125,8 @@ no_float_math_len = 15
 #set to CJK if a PDF is rendered mainly using chinese, japanese or korean glyphs
 word_wrap=None
 
+min_preformatted_size = 5
+
 class BaseStyle(ParagraphStyle):
 
     def __init__(self, name, parent=None, **kw):

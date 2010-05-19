@@ -937,11 +937,20 @@ class RlWriter(object):
         if not len(t):
             return []
         
-        maxCharOnLine = max( [ len(line) for line in t.split("\n")])
-        char_limit = max(1, int(pdfstyles.source_max_line_len / (max(1, 0.75*self.currentColCount))))
-        if maxCharOnLine > char_limit:
-            t = self.breakLongLines(t, char_limit)
-        pre = XPreformatted(t, text_style(mode='preformatted', in_table=self.table_nesting))
+
+        avail_width = self.getAvailWidth()
+        width = None
+        style = text_style(mode='preformatted', in_table=self.table_nesting)
+        while not width or width > avail_width:
+            pre = XPreformatted(t, style)
+            width, height = pre.wrap(avail_width, pdfstyles.page_height)
+            style.fontSize -= .5
+            if style.fontSize < pdfstyles.min_preformatted_size:
+                style = text_style(mode='preformatted', in_table=self.table_nesting)
+                char_limit = max(1, int(pdfstyles.source_max_line_len / (max(1, 0.75*self.currentColCount))))
+                t = self.breakLongLines(t, char_limit)
+                pre = XPreformatted(t, style)
+                break
         return [pre]
         
     def writeNode(self,obj):
