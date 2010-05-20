@@ -165,6 +165,8 @@ def text_style(mode='p', indent_lvl=0, in_table=0, relsize='normal', text_align=
 
     if word_wrap == 'CJK' and mode not in ['preformatted', 'source']:
         style.wordWrap = 'CJK'
+    if word_wrap == 'RTL' and mode not in ['preformatted', 'source']:
+        style.wordWrap = 'RTL'
 
     if in_table > 0:
         style.alignment = table_text_align
@@ -293,6 +295,9 @@ class BaseHeadingStyle(ParagraphStyle):
 def heading_style(mode='chapter', lvl=1, text_align=None):
 
     style = BaseHeadingStyle(name='heading_style_%s_%d' % (mode, lvl))
+
+    if word_wrap == 'RTL':
+        style.wordWrap = 'RTL'
 
     if mode == 'chapter':
         style.fontSize = 26

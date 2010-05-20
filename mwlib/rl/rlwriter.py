@@ -91,8 +91,9 @@ from mwlib.rl.formatter import RLFormatter
 log = log.Log('rlwriter')
 
 try:
-    import pyfribidi
+    #import pyfribidi
     useFriBidi = True
+    useFriBidi = False
 except ImportError:
     #log.warning('pyfribidi not installed - rigth-to-left text not typeset correctly')
     useFriBidi = False
@@ -170,6 +171,8 @@ class RlWriter(object):
 
         if lang in ['ja', 'ch', 'ko', 'zh']:
             pdfstyles.word_wrap = 'CJK'
+        if lang in ['he']:
+            pdfstyles.word_wrap = 'RTL'
 
         self.env = env
         if self.env is not None:
