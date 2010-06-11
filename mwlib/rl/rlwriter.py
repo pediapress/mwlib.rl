@@ -1765,6 +1765,9 @@ class RlWriter(object):
         if self._extraCellPadding(cell):
             elements.append(Spacer(0, 1))
         elements.extend(self.renderMixed(cell, text_style(in_table=self.table_nesting, text_align=align)))
+        for i, e in enumerate(elements):
+            if isinstance(e, basestring):
+                elements[i] = buildPara([e])[0]
         return elements
         
 
