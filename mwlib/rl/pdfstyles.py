@@ -149,7 +149,7 @@ class BaseStyle(ParagraphStyle):
         self.wordWrap = None
         self.textTransform = None
         
-def text_style(mode='p', indent_lvl=0, in_table=0, relsize='normal', text_align='left'):
+def text_style(mode='p', indent_lvl=0, in_table=0, relsize='normal', text_align=None):
     """
     mode: p (normal paragraph), blockquote, center (centered paragraph), footer, figure (figure caption text),
           preformatted, list, license, licenselist, box, references, articlefoot
@@ -160,6 +160,10 @@ def text_style(mode='p', indent_lvl=0, in_table=0, relsize='normal', text_align=
     text_align: left, center, right, justify
     """
 
+    if not text_align:
+        text_align = 'right' if word_wrap == 'RTL' else 'left'
+
+
     style = BaseStyle(name='text_style_%s_indent_%d_table_%d_size_%s' % (mode, indent_lvl, in_table, relsize))
     style.flowable = True # needed for "flowing" paragraphs around figures
 
@@ -167,6 +171,8 @@ def text_style(mode='p', indent_lvl=0, in_table=0, relsize='normal', text_align=
         style.wordWrap = 'CJK'
     if word_wrap == 'RTL' and mode not in ['preformatted', 'source']:
         style.wordWrap = 'RTL'
+        if not text_align:
+            style.alignment = TA_RIGHT
 
     if in_table > 0:
         style.alignment = table_text_align
@@ -298,6 +304,8 @@ def heading_style(mode='chapter', lvl=1, text_align=None):
 
     if word_wrap == 'RTL':
         style.wordWrap = 'RTL'
+        if not text_align:
+            style.alignment = TA_RIGHT
 
     if mode == 'chapter':
         style.fontSize = 26
