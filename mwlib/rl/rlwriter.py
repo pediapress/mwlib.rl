@@ -17,7 +17,6 @@ import shutil
 import subprocess
 import copy
 import gc
-import math
 
 try:
     from hashlib import md5
@@ -59,30 +58,26 @@ from pagetemplates import PPDocTemplate
 
 from reportlab.platypus.doctemplate import NextPageTemplate, NotAtTopPageBreak
 from reportlab.platypus.tables import Table
-from reportlab.platypus.flowables import Spacer, HRFlowable, PageBreak, Image, CondPageBreak
+from reportlab.platypus.flowables import Spacer, HRFlowable, PageBreak, CondPageBreak
 from reportlab.platypus.xpreformatted import XPreformatted
 from reportlab.lib.units import cm
 from reportlab.lib import colors
-from reportlab.platypus.doctemplate import LayoutError
-from reportlab.lib.pagesizes import A4
-from reportlab.lib.enums import TA_LEFT, TA_CENTER, TA_JUSTIFY, TA_RIGHT
+from reportlab.lib.enums import TA_CENTER, TA_JUSTIFY, TA_RIGHT
 
 from mwlib.rl.customflowables import Figure, FiguresAndParagraphs, SmartKeepTogether, TocEntry, DummyTable
 
 from pdfstyles import text_style, heading_style, table_style
 
-from pdfstyles import serif_font, mono_font
 from pdfstyles import print_width, print_height
-from pdfstyles import tableOverflowTolerance
 import pdfstyles
 
 from mwlib.writer.imageutils import ImageUtils
 from mwlib.writer import miscutils, styleutils
 
 import rltables
-from pagetemplates import WikiPage, TitlePage, SimplePage
+from pagetemplates import WikiPage, TitlePage
 
-from mwlib import parser, log, uparser, metabook, timeline
+from mwlib import parser, log, uparser,  timeline
 from mwlib.writer.licensechecker import LicenseChecker
 from mwlib.rl import fontconfig
 from mwlib.rl.customnodetransformer import CustomNodeTransformer
@@ -97,7 +92,6 @@ except ImportError:
     #log.warning('pyfribidi not installed - rigth-to-left text not typeset correctly')
     useFriBidi = False
 
-from mwlib.rl import debughelper
 from mwlib.rl.toc import TocRenderer
 from mwlib.rl._version import version as rlwriterversion
 from mwlib._version import version as  mwlibversion
