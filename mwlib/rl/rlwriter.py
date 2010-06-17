@@ -618,7 +618,7 @@ class RlWriter(object):
             self.bookmarks.append((obj.children[0].getAllDisplayText(), 'heading%s' % lvl))
         else:
             anchor = ''
-        elements = [Paragraph('<font name="%s"><b>%s</b></font>%s' % (serif_font, heading_txt, anchor), headingStyle)]
+        elements = [Paragraph('<font name="%s"><b>%s</b></font>%s' % (headingStyle.fontName, heading_txt, anchor), headingStyle)]
 
         if self.table_size_calc == 0:
             obj.removeChild(obj.children[0])
