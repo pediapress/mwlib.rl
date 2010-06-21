@@ -1652,7 +1652,7 @@ class RlWriter(object):
             seqReset = ''
 
         if style=='itemize':
-            itemPrefix = u'<bullet>\u2022</bullet>' 
+            itemPrefix = u'<bullet>%s</bullet>' % pdfstyles.list_item_style
         elif style == 'referencelist':
             itemPrefix = '<bullet>%s[<seq id="liCounter%d" />]</bullet>' % (seqReset,counterID)
         elif style== 'enumerate':

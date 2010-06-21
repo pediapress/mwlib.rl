@@ -127,6 +127,11 @@ word_wrap=None
 
 min_preformatted_size = 5
 
+# misc options
+
+list_item_style = u'\u2022'
+
+
 class BaseStyle(ParagraphStyle):
 
     def __init__(self, name, parent=None, **kw):
