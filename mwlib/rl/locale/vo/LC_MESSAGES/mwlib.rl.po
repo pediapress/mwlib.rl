@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-19 12:50+0200\n"
+"POT-Creation-Date: 2010-06-21 14:55+0200\n"
 "PO-Revision-Date: 2009-12-18 08:43:06+0000\n"
 "Language-Team: Volapük\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -34,7 +34,7 @@ msgstr ""
 msgid "Contributors:"
 msgstr "Lautans cifik:"
 
-#: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:512
+#: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:506
 msgid "Article Licenses"
 msgstr ""
 
@@ -59,7 +59,7 @@ msgstr ""
 msgid "Contents"
 msgstr "Lautans cifik:"
 
-#: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:423
+#: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:417
 msgid "Articles"
 msgstr ""
 
@@ -91,16 +91,24 @@ msgid ""
 "is typeset."
 msgstr ""
 
-#: mwlib/rl/pdfmessages.py:45 mwlib/rl/rlwriter.py:471
-#: mwlib/rl/rlwriter.py:764
+#: mwlib/rl/pdfmessages.py:45
+msgid ""
+"Please note: This is only a preview of your book, intended to give an idea "
+"how your book looks. Only the first few articles, as well as the first pages "
+"of the index, of your book are shown in this preview. All articles, even "
+"those left out of the preview, will be included in the final printed book."
+msgstr ""
+
+#: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:465
+#: mwlib/rl/rlwriter.py:758
 msgid "References"
 msgstr ""
 
-#: mwlib/rl/pdfmessages.py:47
+#: mwlib/rl/pdfmessages.py:49
 msgid "Appendix"
 msgstr ""
 
-#: mwlib/rl/pdfmessages.py:49
+#: mwlib/rl/pdfmessages.py:51
 msgid ""
 "The following sections list the sources for all articles and images used in "
 "this book. Those sources provide more detailed licensing information "
@@ -108,39 +116,39 @@ msgid ""
 "conditions."
 msgstr ""
 
-#: mwlib/rl/pdfmessages.py:51
+#: mwlib/rl/pdfmessages.py:53
 msgid ""
 "The sources listed for each article provide more detailed licensing "
 "information including the copyright status, the copyright owner, and the "
 "license conditions."
 msgstr ""
 
-#: mwlib/rl/pdfmessages.py:53
+#: mwlib/rl/pdfmessages.py:55
 msgid ""
 "The sources listed for each image provide more detailed licensing "
 "information including the copyright status, the copyright owner, and the "
 "license conditions."
 msgstr ""
 
-#: mwlib/rl/pdfmessages.py:55 mwlib/rl/rlwriter.py:472
-#: mwlib/rl/rlwriter.py:660
+#: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:466
+#: mwlib/rl/rlwriter.py:654
 msgid "Article Sources and Contributors"
 msgstr ""
 
-#: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:475
-#: mwlib/rl/rlwriter.py:679
+#: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:469
+#: mwlib/rl/rlwriter.py:673
 msgid "Image Sources, Licenses and Contributors"
 msgstr ""
 
-#: mwlib/rl/pdfmessages.py:59
+#: mwlib/rl/pdfmessages.py:61
 msgid "Image"
 msgstr ""
 
-#: mwlib/rl/pdfmessages.py:61 mwlib/rl/rlwriter.py:652
+#: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:646
 msgid "anonymous edits"
 msgstr ""
 
-#: mwlib/rl/pdfmessages.py:63
+#: mwlib/rl/pdfmessages.py:65
 msgid "Figure"
 msgstr ""
 
@@ -150,12 +158,12 @@ msgid ""
 "pediapress.com/ for more information."
 msgstr ""
 
-#: mwlib/rl/rlwriter.py:308
+#: mwlib/rl/rlwriter.py:302
 #, python-format
 msgid "mwlib.ext version: %(version)s"
 msgstr "fomam ela mwlib.ext: %(version)s"
 
-#: mwlib/rl/rlwriter.py:314
+#: mwlib/rl/rlwriter.py:308
 #, python-format
 msgid ""
 "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
@@ -164,24 +172,24 @@ msgstr ""
 "fomam ela mwlib: %(mwlibversion)s, fomam ela mwlib.rl: %(mwlibrlversion)s, %"
 "(mwlibextversion)s"
 
-#: mwlib/rl/rlwriter.py:667 mwlib/rl/rlwriter.py:692
+#: mwlib/rl/rlwriter.py:661 mwlib/rl/rlwriter.py:686
 msgid "Source"
 msgstr ""
 
-#: mwlib/rl/rlwriter.py:669 mwlib/rl/rlwriter.py:695
+#: mwlib/rl/rlwriter.py:663 mwlib/rl/rlwriter.py:689
 #, fuzzy
 msgid "Contributors"
 msgstr "Lautans cifik:"
 
-#: mwlib/rl/rlwriter.py:685
+#: mwlib/rl/rlwriter.py:679
 msgid "unknown"
 msgstr ""
 
-#: mwlib/rl/rlwriter.py:687
+#: mwlib/rl/rlwriter.py:681
 msgid "License"
 msgstr ""
 
-#: mwlib/rl/rlwriter.py:755
+#: mwlib/rl/rlwriter.py:749
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "

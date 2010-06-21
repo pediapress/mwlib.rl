@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-19 12:50+0200\n"
+"POT-Creation-Date: 2010-06-21 14:55+0200\n"
 "PO-Revision-Date: 2010-02-10 12:20+0100\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -31,7 +31,7 @@ msgstr "লাইসেন্স:"
 msgid "Contributors:"
 msgstr "অবদানকারিগী:"
 
-#: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:512
+#: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:506
 msgid "Article Licenses"
 msgstr "নিবন্ধর লাইসেন্সহানি"
 
@@ -55,7 +55,7 @@ msgstr "হঙিসেতা:"
 msgid "Contents"
 msgstr "গারিগ"
 
-#: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:423
+#: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:417
 msgid "Articles"
 msgstr "নিবন্ধহানি"
 
@@ -85,16 +85,24 @@ msgid ""
 "is typeset."
 msgstr "খিয়াল থইস: এহান আগচাহান হুদ্দা লেরিকহানর নমুনা আহান দেখাদেনারকা।"
 
-#: mwlib/rl/pdfmessages.py:45 mwlib/rl/rlwriter.py:471
-#: mwlib/rl/rlwriter.py:764
+#: mwlib/rl/pdfmessages.py:45
+msgid ""
+"Please note: This is only a preview of your book, intended to give an idea "
+"how your book looks. Only the first few articles, as well as the first pages "
+"of the index, of your book are shown in this preview. All articles, even "
+"those left out of the preview, will be included in the final printed book."
+msgstr ""
+
+#: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:465
+#: mwlib/rl/rlwriter.py:758
 msgid "References"
 msgstr "রেফারেন্সহানি"
 
-#: mwlib/rl/pdfmessages.py:47
+#: mwlib/rl/pdfmessages.py:49
 msgid "Appendix"
 msgstr ""
 
-#: mwlib/rl/pdfmessages.py:49
+#: mwlib/rl/pdfmessages.py:51
 msgid ""
 "The following sections list the sources for all articles and images used in "
 "this book. Those sources provide more detailed licensing information "
@@ -104,7 +112,7 @@ msgstr ""
 "এ লেরিক এহাত বরাসি নিবন্ধ বারো ছবির উৎস তলে দেনা অইল। উৎসহানির লাইসেন্স, "
 "কপিরাইটর অঙতা, কপিরাইটর মাকক বারো লাইসেন্সর শর্তহানি হবাকরে বাখান করতই।"
 
-#: mwlib/rl/pdfmessages.py:51
+#: mwlib/rl/pdfmessages.py:53
 #, fuzzy
 msgid ""
 "The sources listed for each article provide more detailed licensing "
@@ -114,7 +122,7 @@ msgstr ""
 "এ লেরিক এহাত বরাসি নিবন্ধ বারো ছবির উৎস তলে দেনা অইল। উৎসহানির লাইসেন্স, "
 "কপিরাইটর অঙতা, কপিরাইটর মাকক বারো লাইসেন্সর শর্তহানি হবাকরে বাখান করতই।"
 
-#: mwlib/rl/pdfmessages.py:53
+#: mwlib/rl/pdfmessages.py:55
 #, fuzzy
 msgid ""
 "The sources listed for each image provide more detailed licensing "
@@ -124,25 +132,25 @@ msgstr ""
 "এ লেরিক এহাত বরাসি নিবন্ধ বারো ছবির উৎস তলে দেনা অইল। উৎসহানির লাইসেন্স, "
 "কপিরাইটর অঙতা, কপিরাইটর মাকক বারো লাইসেন্সর শর্তহানি হবাকরে বাখান করতই।"
 
-#: mwlib/rl/pdfmessages.py:55 mwlib/rl/rlwriter.py:472
-#: mwlib/rl/rlwriter.py:660
+#: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:466
+#: mwlib/rl/rlwriter.py:654
 msgid "Article Sources and Contributors"
 msgstr "নিবন্ধহানর উৎস বারো অবদানকারীগি"
 
-#: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:475
-#: mwlib/rl/rlwriter.py:679
+#: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:469
+#: mwlib/rl/rlwriter.py:673
 msgid "Image Sources, Licenses and Contributors"
 msgstr "ছবির উৎস, লাইসেন্স বারো অবদানকারীগি"
 
-#: mwlib/rl/pdfmessages.py:59
+#: mwlib/rl/pdfmessages.py:61
 msgid "Image"
 msgstr "ছবি"
 
-#: mwlib/rl/pdfmessages.py:61 mwlib/rl/rlwriter.py:652
+#: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:646
 msgid "anonymous edits"
 msgstr "বেনাঙর পতা"
 
-#: mwlib/rl/pdfmessages.py:63
+#: mwlib/rl/pdfmessages.py:65
 msgid "Figure"
 msgstr "ফিগার"
 
@@ -154,12 +162,12 @@ msgstr ""
 "পিডিএফ হঙরানি আইলতা অপেন সোর্স mwlibর আতিয়ারল। আরাকউ হারপানিরকা চা http://"
 "code.pediapress.com/"
 
-#: mwlib/rl/rlwriter.py:308
+#: mwlib/rl/rlwriter.py:302
 #, python-format
 msgid "mwlib.ext version: %(version)s"
 msgstr "mwlib.extর ভার্সনহান: %(version)sহানি"
 
-#: mwlib/rl/rlwriter.py:314
+#: mwlib/rl/rlwriter.py:308
 #, python-format
 msgid ""
 "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
@@ -168,23 +176,23 @@ msgstr ""
 "mwlib ভার্সন: %(mwlibversion)sহানি, mwlib.rl ভার্সন: %(mwlibrlversion)sহানি, %"
 "(mwlibextversion)sহানি"
 
-#: mwlib/rl/rlwriter.py:667 mwlib/rl/rlwriter.py:692
+#: mwlib/rl/rlwriter.py:661 mwlib/rl/rlwriter.py:686
 msgid "Source"
 msgstr "উৎস"
 
-#: mwlib/rl/rlwriter.py:669 mwlib/rl/rlwriter.py:695
+#: mwlib/rl/rlwriter.py:663 mwlib/rl/rlwriter.py:689
 msgid "Contributors"
 msgstr "অবদানকারীগি"
 
-#: mwlib/rl/rlwriter.py:685
+#: mwlib/rl/rlwriter.py:679
 msgid "unknown"
 msgstr "হারনাপাসি"
 
-#: mwlib/rl/rlwriter.py:687
+#: mwlib/rl/rlwriter.py:681
 msgid "License"
 msgstr "লাইসেন্স"
 
-#: mwlib/rl/rlwriter.py:755
+#: mwlib/rl/rlwriter.py:749
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
