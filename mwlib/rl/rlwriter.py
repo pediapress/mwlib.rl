@@ -78,6 +78,7 @@ import rltables
 from pagetemplates import WikiPage, TitlePage
 
 from mwlib import parser, log, uparser,  timeline
+from mwlib.dummydb import DummyDB
 from mwlib.writer.licensechecker import LicenseChecker
 from mwlib.rl import fontconfig
 from mwlib.rl.customnodetransformer import CustomNodeTransformer
@@ -227,7 +228,6 @@ class RlWriter(object):
 
         self.sourceCount = 0
         self.currentColCount = 0
-        self.currentArticle = None
         self.math_cache_dir = mathcache or os.environ.get('MWLIBRL_MATHCACHE')
         self.tmpdir = tempfile.mkdtemp()
         self.bookmarks = []
@@ -692,13 +692,33 @@ class RlWriter(object):
             elements.append(Paragraph(txt, text_style('img_attribution')))
         return elements
 
+    def cleanTitle(self, node):
+        if node.__class__ not in [advtree.Emphasized,
+                                  advtree.Strong,
+                                  advtree.Text,
+                                  advtree.Sup,
+                                  advtree.Sub,
+                                  advtree.Node]:
+            node.parent.removeChild(node)
+        else:
+            for c in node.children:
+                self.cleanTitle(c)
 
+    def renderArticleTitle(self, node):
+        dummydb = DummyDB()
+        title_node = uparser.parseString(title='', raw=node.caption, wikidb=dummydb)
+        advtree.buildAdvancedTree(title_node)
+        title_node.__class__ = advtree.Node
+        self.cleanTitle(title_node)
+        res = self.renderInline(title_node)
+        return ''.join(res)
     
     def writeArticle(self, article):
         if self.license_mode and self.debug:
             return []
         self.references = [] 
-        title = self.renderText(article.caption, break_long=True)
+        title = self.renderArticleTitle(article)
+
         log.info('rendering: %r' % (article.url or article.caption))
         if self.layout_status:
             self.layout_status(article=article.caption)
@@ -720,8 +740,6 @@ class RlWriter(object):
                     elements.append(CondPageBreak(pdfstyles.article_start_min_space_infobox))
                 else:
                     elements.append(CondPageBreak(pdfstyles.article_start_min_space))
-
-        self.currentArticle = repr(title)
 
         if self.inline_mode == 0 and self.table_nesting==0:
             heading_anchor = '<a name="%d"/>' % len(self.bookmarks)
