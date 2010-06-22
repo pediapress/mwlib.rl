@@ -53,6 +53,10 @@ You will also need:
   package which is used to render timelines 
   http://ploticus.sourceforge.net/doc/welcome.html (debian package: ploticus)
 
+*gettext*
+  package which is used for translations of build-in strings
+  http://www.gnu.org/software/gettext/ (debian package: gettext)
+
 *pdftk*
   this is optional and used for generating the Table of Contents.
   http://www.accesspdf.com/pdftk/ (debian package: pdftk)
