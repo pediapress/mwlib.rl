@@ -761,7 +761,10 @@ class RlWriter(object):
         elements.append(heading_para)
         elements.append(TocEntry(txt=title, lvl='article'))
 
-        elements.append(HRFlowable(width='100%', hAlign='LEFT', thickness=1, spaceBefore=0, spaceAfter=10, color=colors.black))
+        if pdfstyles.show_article_hr:
+            elements.append(HRFlowable(width='100%', hAlign='LEFT', thickness=1, spaceBefore=0, spaceAfter=10, color=colors.black))
+        else:
+            elements.append(Spacer(0,10))
         
         if not hasattr(article, 'renderFailed'): # if rendering of the whole book failed, failed articles are flagged
             elements.extend(self.renderMixed(article))
