@@ -698,7 +698,9 @@ class RlWriter(object):
                                   advtree.Text,
                                   advtree.Sup,
                                   advtree.Sub,
-                                  advtree.Node]:
+                                  advtree.Node,
+                                  advtree.Strike,
+                                  ]:
             node.parent.removeChild(node)
         else:
             for c in node.children:
