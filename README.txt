@@ -98,6 +98,47 @@ The current development version can also be found there.
 
 ChangeLog
 ======================================================================
+2010-7-16  release 0.12.5
+-------------------------
+- Localisation updates from Translatewiki.net
+- make horizontal rule below article title configurable
+- add gettext requirement to README. thanks to Daniel Weuthen
+- fix for 704
+- allow custom list item symbol
+- add translateable strings
+- use correct font for sections
+- fix for tables
+- add translatable string "Index"
+- scale down preformatted nodes if they exceed the page width
+- added Greek l10n for "Appendix", corrected the one for "Skipping Articles!"
+- add update target
+- stretch tables with: width=100%
+- fix img alignment
+- updates for fontconfig
+- fix for #809
+- translate Contents in hu
+- fix flipped page_margins. fix for custom pagesizes
+- use vertical alignment of table cells
+- add test for fake hypenation
+- fix fake hyphenation (#781)
+- fix wording
+- more L10N fixes
+- fix po file for language id
+- use text color
+- fix handling of colspan
+- handle abbr tag
+- fix for galleries: #270
+- move tests into top-level directory. py.test 1.1 is otherwise confused
+- improve image alignment
+- use render_caption property. small refactoring of getTableSize
+- ignore hiero tags
+- use refactored style handling
+- support html attrs for list styles
+- support roman and alpha ordered list styles
+- remove inter-pdf link arrows
+- make compatible with old imagemagick versions.
+- allow custom title page images
+
 2009-10-20 release 0.12.4
 -------------------------
 
