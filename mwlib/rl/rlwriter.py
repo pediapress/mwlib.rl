@@ -1526,8 +1526,8 @@ class RlWriter(object):
        return '\n'.join(broken_source)
         
 
-    def _writeSourceInSourceMode(self, n, src_lang, lexer):        
-        sourceFormatter = ReportlabFormatter(font_size=pdfstyles.font_size, font_name='FreeMono', background_color='#eeeeee', line_numbers=False)
+    def _writeSourceInSourceMode(self, n, src_lang, lexer, font_size):
+        sourceFormatter = ReportlabFormatter(font_size=font_size, font_name='FreeMono', background_color='#eeeeee', line_numbers=False)
         sourceFormatter.encoding = 'utf-8'
         self.formatter.source_mode += 1
         source = ''.join(self.renderInline(n))
@@ -1545,11 +1545,11 @@ class RlWriter(object):
             if n.vlist.get('enclose', False) == 'none':
                 txt = re.sub('<para.*?>', '', txt).replace('</para>', '')
                 return txt
-            return [XPreformatted(txt, text_style(mode='source', in_table=self.table_nesting))]            
+            return XPreformatted(txt, text_style(mode='source', in_table=self.table_nesting))
         except:
             traceback.print_exc()
             log.error('unsuitable lexer for source code language: %s - Lexer: %s' % (repr(src_lang), lexer.__class__.__name__))
-            return []
+            return None
 
     def writeSource(self, n):
         langMap = {'lisp': lexers.CommonLispLexer()} #custom Mapping between mw-markup source attrs to pygement lexers if get_lexer_by_name fails
@@ -1568,9 +1568,17 @@ class RlWriter(object):
         src_lang = n.vlist.get('lang', '').lower()
         lexer = getLexer(src_lang)
         if lexer:
-            res = self._writeSourceInSourceMode(n, src_lang, lexer)
+            width = None
+            avail_width = self.getAvailWidth()
+            font_size = pdfstyles.font_size
+            while not width or width > avail_width:
+                res = self._writeSourceInSourceMode(n, src_lang, lexer, font_size)
+                if res.__class__ != XPreformatted:
+                    break
+                width, height = res.wrap(avail_width, pdfstyles.page_height)
+                font_size -= .5
             if res:
-                return res
+                return [res]
         return self.writePreFormatted(n)
 
     def writeTeletyped(self, n):
