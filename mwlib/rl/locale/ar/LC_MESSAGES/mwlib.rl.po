@@ -116,26 +116,18 @@ msgstr ""
 "حقوق النسخ، وشروط الرخصة."
 
 #: mwlib/rl/pdfmessages.py:53
-#, fuzzy
 msgid ""
 "The sources listed for each article provide more detailed licensing "
 "information including the copyright status, the copyright owner, and the "
 "license conditions."
-msgstr ""
-"الأقسام التالية تعرض المصادر لكل المقالات والصور المستخدمة في هذا الكتاب. "
-"هذه المصادر توفر معلومات ترخيص أكثر تفصيلا ويشمل ذلك حالة حقوق النسخ، مالك "
-"حقوق النسخ، وشروط الرخصة."
+msgstr "المصادر المذكورة لكل مقالةٍ توفر معلومات أكثر تفصيلا بمايتعلق في حقوق التأليف والنشر ،من يملك هذه الحقوق وشروط الترخيص"
 
 #: mwlib/rl/pdfmessages.py:55
-#, fuzzy
 msgid ""
 "The sources listed for each image provide more detailed licensing "
 "information including the copyright status, the copyright owner, and the "
 "license conditions."
-msgstr ""
-"الأقسام التالية تعرض المصادر لكل المقالات والصور المستخدمة في هذا الكتاب. "
-"هذه المصادر توفر معلومات ترخيص أكثر تفصيلا ويشمل ذلك حالة حقوق النسخ، مالك "
-"حقوق النسخ، وشروط الرخصة."
+msgstr "المصادر المذكورة لكل صورةٍ توفر معلومات أكثر تفصيلا بمايتعلق في حقوق التأليف والنشر ،من يملك هذه الحقوق وشروط الترخيص"
 
 #: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:466
 #: mwlib/rl/rlwriter.py:654
