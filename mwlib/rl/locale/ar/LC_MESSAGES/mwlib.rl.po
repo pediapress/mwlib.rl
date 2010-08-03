@@ -19,7 +19,7 @@ msgstr ""
 
 #: mwlib/rl/pdfmessages.py:11
 msgid "Index"
-msgstr ""
+msgstr "فهرس المحتويات"
 
 #: mwlib/rl/pdfmessages.py:13
 msgid "Source:"
@@ -102,7 +102,7 @@ msgstr "مراجع"
 
 #: mwlib/rl/pdfmessages.py:49
 msgid "Appendix"
-msgstr ""
+msgstr "ملحق"
 
 #: mwlib/rl/pdfmessages.py:51
 msgid ""
