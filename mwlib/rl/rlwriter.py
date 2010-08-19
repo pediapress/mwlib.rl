@@ -797,7 +797,11 @@ class RlWriter(object):
         first_leaf = obj.getFirstLeaf()
         if hasattr(first_leaf, 'caption'):
             first_leaf.caption = first_leaf.caption.lstrip()
-        return self.renderMixed(obj)
+        if getattr(obj, 'is_header', False):
+            style = text_style(mode='center', in_table=self.table_nesting)
+        else:
+            style = None
+        return self.renderMixed(obj, style)
 
     def floatImages(self, nodes):
         """Floating images are combined with paragraphs.
@@ -1042,8 +1046,6 @@ class RlWriter(object):
                 'start': ['<b>'],
                 'end': ['</b>'],
                 }
-
- 
         for c in node:             
             res = self.write(c)
             if isInline(res):
@@ -1789,10 +1791,19 @@ class RlWriter(object):
         elements = []
         if self._extraCellPadding(cell):
             elements.append(Spacer(0, 1))
+        if getattr(cell, 'is_header', False):
+            self.formatter.strong_style += 1
+            for c in cell.children:
+                c.is_header = True
         elements.extend(self.renderMixed(cell, text_style(in_table=self.table_nesting, text_align=align)))
+
         for i, e in enumerate(elements):
             if isinstance(e, basestring):
                 elements[i] = buildPara([e])[0]
+
+        if getattr(cell, 'is_header', False):
+            self.formatter.strong_style -= 1
+
         return elements
         
 
