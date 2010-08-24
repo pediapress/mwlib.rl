@@ -414,7 +414,8 @@ class RlWriter(object):
             elements.append(self.addDummyPage())
         got_chapter = False
         item_list = self.env.metabook.walk()
-        elements.append(TocEntry(txt=_('Articles'), lvl='group'))
+        if not self.fail_safe_rendering:
+            elements.append(TocEntry(txt=_('Articles'), lvl='group'))
         for (i, item) in enumerate(item_list):
             if item.type == 'chapter':
                 chapter = parser.Chapter(item.title.strip())
@@ -516,6 +517,7 @@ class RlWriter(object):
         
 
     def getArticleIDs(self):
+        self.articleids=[]
         for item in self.env.metabook.walk():
             if item.type != 'article':
                 continue
@@ -759,7 +761,8 @@ class RlWriter(object):
             
         heading_para = Paragraph('<b>%s</b>%s' % (title, heading_anchor), heading_style("article"))            
         elements.append(heading_para)
-        elements.append(TocEntry(txt=title, lvl='article'))
+        if not self.fail_safe_rendering:
+            elements.append(TocEntry(txt=title, lvl='article'))
 
         if pdfstyles.show_article_hr:
             elements.append(HRFlowable(width='100%', hAlign='LEFT', thickness=1, spaceBefore=0, spaceAfter=10, color=colors.black))
