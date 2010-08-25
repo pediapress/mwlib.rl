@@ -7,19 +7,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-21 14:55+0200\n"
-"PO-Revision-Date: 2009-12-18 08:43:02+0000\n"
+"POT-Creation-Date: 2010-08-25 08:43+0000\n"
+"PO-Revision-Date: 2010-08-25 08:42:06+0000\n"
 "Language-Team: Dutch\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.16alpha (r60201); Translate extension (2009-12-06)\n"
+"X-Generator: MediaWiki 1.17alpha (r71602); Translate extension (2010-08-20)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: nl\n"
 "X-Message-Group: out-mwlibrl\n"
 
 #: mwlib/rl/pdfmessages.py:11
 msgid "Index"
-msgstr ""
+msgstr "Index"
 
 #: mwlib/rl/pdfmessages.py:13
 msgid "Source:"
@@ -96,15 +96,21 @@ msgid ""
 "of the index, of your book are shown in this preview. All articles, even "
 "those left out of the preview, will be included in the final printed book."
 msgstr ""
+"Let op: dit is alleen een voorvertoning van uw boek. Het is de bedoeling dat "
+"u hierdoor een idee krijgt van hoe uw boek eruit gaat zien. Slechts een "
+"aantal pagina's en de eerste pagina's van de index van uw boek worden in "
+"deze voorvertoning weergegeven. Uiteraard worden alle pagina's, ook de "
+"pagina's de niet in deze voorvertoning zijn opgenomen, in het uiteindelijke "
+"boek opgenomen."
 
 #: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:465
-#: mwlib/rl/rlwriter.py:758
+#: mwlib/rl/rlwriter.py:781
 msgid "References"
 msgstr "Referenties"
 
 #: mwlib/rl/pdfmessages.py:49
 msgid "Appendix"
-msgstr ""
+msgstr "Appendix"
 
 #: mwlib/rl/pdfmessages.py:51
 msgid ""
@@ -119,28 +125,24 @@ msgstr ""
 "auteursrechtenstatus, de rechthebbende en de licentievoorwaarden."
 
 #: mwlib/rl/pdfmessages.py:53
-#, fuzzy
 msgid ""
 "The sources listed for each article provide more detailed licensing "
 "information including the copyright status, the copyright owner, and the "
 "license conditions."
 msgstr ""
-"In de volgende paragrafen worden de bronnen voor alle artikelen en "
-"afbeeldingen die gebruikt zijn in dit boek weergegeven. Deze bronnen geven "
-"gedetailleerdere licentie-informatie met onder andere de "
-"auteursrechtenstatus, de rechthebbende en de licentievoorwaarden."
+"In de bronvermelding voor ieder artikel is meer gedetailleerde informatie te "
+"vinden over de auteursrechtenstatus, de rechthebbende en de "
+"licentievoorwaarden."
 
 #: mwlib/rl/pdfmessages.py:55
-#, fuzzy
 msgid ""
 "The sources listed for each image provide more detailed licensing "
 "information including the copyright status, the copyright owner, and the "
 "license conditions."
 msgstr ""
-"In de volgende paragrafen worden de bronnen voor alle artikelen en "
-"afbeeldingen die gebruikt zijn in dit boek weergegeven. Deze bronnen geven "
-"gedetailleerdere licentie-informatie met onder andere de "
-"auteursrechtenstatus, de rechthebbende en de licentievoorwaarden."
+"In de bronvermelding voor ieder artikel is meer gedetailleerde informatie te "
+"vinden over de auteursrechtenstatus, de rechthebbende en de "
+"licentievoorwaarden."
 
 #: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:466
 #: mwlib/rl/rlwriter.py:654
@@ -164,7 +166,7 @@ msgstr "anonieme bewerkingen"
 msgid "Figure"
 msgstr "Figuur"
 
-#: mwlib/rl/pdfstyles.py:77
+#: mwlib/rl/pdfstyles.py:78
 msgid ""
 "PDF generated using the open source mwlib toolkit. See http://code."
 "pediapress.com/ for more information."
@@ -202,23 +204,13 @@ msgstr "onbekend"
 msgid "License"
 msgstr "Licentie"
 
-#: mwlib/rl/rlwriter.py:749
+#: mwlib/rl/rlwriter.py:772
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
 "software (b) problematic Mediawiki markup (c) table is too wide"
 msgstr ""
-"<strong>De pagina kon niet verwerkt worden. De uitvoer wordt opgemaakt als "
-"platte tekst.</strong>Mogelijke oorzaken voor het probleem zijn: (a) een "
-"fout in de software om de PDF te maken (b) niet te verwerken wikicode (c) te "
-"brede tabellen"
-
-#, fuzzy
-#~ msgid "title"
-#~ msgstr "Titel"
-
-#~ msgid "layouting"
-#~ msgstr "vormgeving"
-
-#~ msgid "rendering"
-#~ msgstr "bezig met verwerken"
+"<strong>Waarschuwing: De pagina kon niet verwerkt worden. De uitvoer wordt "
+"opgemaakt als platte tekst.</strong><br />Mogelijke oorzaken voor het "
+"probleem zijn: (a) een fout in de software om de PDF te maken, (b) niet te "
+"verwerken wikicode in MediaWiki of (c) een te brede tabel."

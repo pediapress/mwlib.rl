@@ -1,6 +1,6 @@
 # Translation of Mwlib.rl to Polish
 #
-# Author@translatewiki.net: Derbeth
+# Author@translatewiki.net: Marcin Łukasz Kiejzik
 # Author@translatewiki.net: Matma Rex
 # Author@translatewiki.net: Sp5uhe
 # --
@@ -14,19 +14,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-21 14:55+0200\n"
-"PO-Revision-Date: 2009-12-18 08:43:03+0000\n"
+"POT-Creation-Date: 2010-08-25 08:43+0000\n"
+"PO-Revision-Date: 2010-08-25 08:42:06+0000\n"
 "Language-Team: Polish\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.16alpha (r60201); Translate extension (2009-12-06)\n"
+"X-Generator: MediaWiki 1.17alpha (r71602); Translate extension (2010-08-20)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: pl\n"
 "X-Message-Group: out-mwlibrl\n"
 
 #: mwlib/rl/pdfmessages.py:11
 msgid "Index"
-msgstr ""
+msgstr "Indeks"
 
 #: mwlib/rl/pdfmessages.py:13
 msgid "Source:"
@@ -103,15 +103,19 @@ msgid ""
 "of the index, of your book are shown in this preview. All articles, even "
 "those left out of the preview, will be included in the final printed book."
 msgstr ""
+"To jest tylko podgląd, pomagający uzmysłowić sobie jak będzie wyglądała "
+"książka. Przedstawiono tutaj wyłącznie kilka pierwszych artykułów oraz stron "
+"indeksu. Wszystkie artykuły, nawet te na lewo od podglądu, zostaną "
+"uwzględnione w ostatecznej drukowanej wersji książki."
 
 #: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:465
-#: mwlib/rl/rlwriter.py:758
+#: mwlib/rl/rlwriter.py:781
 msgid "References"
 msgstr "Przypisy"
 
 #: mwlib/rl/pdfmessages.py:49
 msgid "Appendix"
-msgstr ""
+msgstr "Dodatek"
 
 #: mwlib/rl/pdfmessages.py:51
 msgid ""
@@ -171,7 +175,7 @@ msgstr "anonimowych edycji"
 msgid "Figure"
 msgstr "Rysunek"
 
-#: mwlib/rl/pdfstyles.py:77
+#: mwlib/rl/pdfstyles.py:78
 msgid ""
 "PDF generated using the open source mwlib toolkit. See http://code."
 "pediapress.com/ for more information."
@@ -209,7 +213,7 @@ msgstr "nieznany"
 msgid "License"
 msgstr "Licencja"
 
-#: mwlib/rl/rlwriter.py:749
+#: mwlib/rl/rlwriter.py:772
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
@@ -218,13 +222,3 @@ msgstr ""
 "<strong>UWAGA: Nie udało się wyrenderować artykułu - zostanie wyprodukowany "
 "czysty tekst.</strong><br/>Potencjalne przyczyny problemów: (a) błąd w "
 "programie pdf-writer (b) problematyczny kod MediaWiki (c) zbyt szeroka tabela"
-
-#, fuzzy
-#~ msgid "title"
-#~ msgstr "Tytuł"
-
-#~ msgid "layouting"
-#~ msgstr "tworzenie układu"
-
-#~ msgid "rendering"
-#~ msgstr "renderowanie"

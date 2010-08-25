@@ -1,4 +1,4 @@
-# Translation of Mwlib.rl to Ripoarisch
+# Translation of Mwlib.rl to Colognian
 #
 # Author@translatewiki.net: Purodha
 # --
@@ -6,12 +6,12 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-21 14:55+0200\n"
-"PO-Revision-Date: 2009-12-18 08:43:01+0000\n"
+"POT-Creation-Date: 2010-08-25 08:43+0000\n"
+"PO-Revision-Date: 2010-08-25 08:42:05+0000\n"
 "Language-Team: Ripoarisch\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.16alpha (r60201); Translate extension (2009-12-06)\n"
+"X-Generator: MediaWiki 1.17alpha (r71602); Translate extension (2010-08-20)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: ksh\n"
 "X-Message-Group: out-mwlibrl\n"
@@ -97,7 +97,7 @@ msgid ""
 msgstr ""
 
 #: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:465
-#: mwlib/rl/rlwriter.py:758
+#: mwlib/rl/rlwriter.py:781
 msgid "References"
 msgstr "Verwiise"
 
@@ -160,7 +160,7 @@ msgstr "Änderunge vun Namelose"
 msgid "Figure"
 msgstr "Beld"
 
-#: mwlib/rl/pdfstyles.py:77
+#: mwlib/rl/pdfstyles.py:78
 msgid ""
 "PDF generated using the open source mwlib toolkit. See http://code."
 "pediapress.com/ for more information."
@@ -199,7 +199,7 @@ msgstr "unbekannt"
 msgid "License"
 msgstr "Lizänzbeshtemmunge"
 
-#: mwlib/rl/rlwriter.py:749
+#: mwlib/rl/rlwriter.py:772
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
@@ -207,15 +207,5 @@ msgid ""
 msgstr ""
 "<strong>Opjepaß: Dä Atikel kunnt nit jewandelt wääde, dröm jevve mer dä em "
 "Wikitex uß.</strong><br />Müjjelesche Jrönd för dat Probleem: (a) ene "
-"unbikannte Fähler en de ßofwäer <i lang=\"en\">PDF-Writer</i> (b) "
+"unbikannte Fähler en däm Projramm <i lang=\"en\">PDF-Writer</i> (b) "
 "problematische Ußzeichnunge em Wikikood (c) en Tabäll es zo breed jeroode."
-
-#, fuzzy
-#~ msgid "title"
-#~ msgstr "Tittel"
-
-#~ msgid "layouting"
-#~ msgstr "Ben et Sigge-Fomaat am Fenge"
-
-#~ msgid "rendering"
-#~ msgstr "Ben de Datei am ußjävve"

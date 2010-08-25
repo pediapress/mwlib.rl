@@ -6,19 +6,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-21 14:55+0200\n"
-"PO-Revision-Date: 2009-12-18 08:42:59+0000\n"
+"POT-Creation-Date: 2010-08-25 08:43+0000\n"
+"PO-Revision-Date: 2010-08-25 08:42:05+0000\n"
 "Language-Team: Upper Sorbian\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.16alpha (r60201); Translate extension (2009-12-06)\n"
+"X-Generator: MediaWiki 1.17alpha (r71602); Translate extension (2010-08-20)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: hsb\n"
 "X-Message-Group: out-mwlibrl\n"
 
 #: mwlib/rl/pdfmessages.py:11
 msgid "Index"
-msgstr ""
+msgstr "Indeks"
 
 #: mwlib/rl/pdfmessages.py:13
 msgid "Source:"
@@ -95,15 +95,19 @@ msgid ""
 "of the index, of your book are shown in this preview. All articles, even "
 "those left out of the preview, will be included in the final printed book."
 msgstr ""
+"Kedźbu: To je jenož přehlad twojeho knihi, zo by ći pokazało, kaž twoja "
+"kniha wupada. Jenož prěnje nastawki kaž tež prěnje strony indeksa twojeje "
+"kniho pokazaja so w tutym přehledźe. Wšě nastawki, tež te, kotrež so w "
+"přehledźe njepokazuja, budu so do kónčneje wućišćaneje knihi zapřijimać."
 
 #: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:465
-#: mwlib/rl/rlwriter.py:758
+#: mwlib/rl/rlwriter.py:781
 msgid "References"
 msgstr "Referency"
 
 #: mwlib/rl/pdfmessages.py:49
 msgid "Appendix"
-msgstr ""
+msgstr "Přiwěšk"
 
 #: mwlib/rl/pdfmessages.py:51
 msgid ""
@@ -118,28 +122,22 @@ msgstr ""
 "wuměnjenjow."
 
 #: mwlib/rl/pdfmessages.py:53
-#, fuzzy
 msgid ""
 "The sources listed for each article provide more detailed licensing "
 "information including the copyright status, the copyright owner, and the "
 "license conditions."
 msgstr ""
-"Slědowace wotrězki nalistuja žórła za wšě nastawki a wobrazy, kotrež so w "
-"tutej knize wužiwaja. Te žórła dodawaja nadrobniše licencne informacije "
-"inkluziwnje statusa awtorskeho prawa, mějićela awtorskeho prawa a licencnych "
-"wuměnjenjow."
+"Źórła nalistowane za kóždy nastawk dodawaja podrobniše licencne informacije "
+"inkluziwnje status awtorskeho prawa, awtora a licencne wuměnjenja."
 
 #: mwlib/rl/pdfmessages.py:55
-#, fuzzy
 msgid ""
 "The sources listed for each image provide more detailed licensing "
 "information including the copyright status, the copyright owner, and the "
 "license conditions."
 msgstr ""
-"Slědowace wotrězki nalistuja žórła za wšě nastawki a wobrazy, kotrež so w "
-"tutej knize wužiwaja. Te žórła dodawaja nadrobniše licencne informacije "
-"inkluziwnje statusa awtorskeho prawa, mějićela awtorskeho prawa a licencnych "
-"wuměnjenjow."
+"Źórła nalistowane za kóždy wobraz dodawaja podrobniše licencne informacije "
+"inkluziwnje status awtorskeho prawa, awtora a licencne wuměnjenja."
 
 #: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:466
 #: mwlib/rl/rlwriter.py:654
@@ -163,7 +161,7 @@ msgstr "anonymne změny"
 msgid "Figure"
 msgstr "Zwobraznjenje"
 
-#: mwlib/rl/pdfstyles.py:77
+#: mwlib/rl/pdfstyles.py:78
 msgid ""
 "PDF generated using the open source mwlib toolkit. See http://code."
 "pediapress.com/ for more information."
@@ -201,7 +199,7 @@ msgstr "njeznaty"
 msgid "License"
 msgstr "Licenca"
 
-#: mwlib/rl/rlwriter.py:749
+#: mwlib/rl/rlwriter.py:772
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
@@ -211,13 +209,3 @@ msgstr ""
 "strong><br/>Potencielne winy problemy su: (a) programowy zmylk w softwarje "
 "pdf-writer (b) problematiski woznamjenski tekst MediaWiki (c) tabela je "
 "přešěroka"
-
-#, fuzzy
-#~ msgid "title"
-#~ msgstr "Titul"
-
-#~ msgid "layouting"
-#~ msgstr "wuhotowanje"
-
-#~ msgid "rendering"
-#~ msgstr "přenjesenje"

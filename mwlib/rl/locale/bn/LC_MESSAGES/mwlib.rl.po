@@ -1,92 +1,92 @@
-# Translation of Mwlib.rl to Sundanese
+# Translation of Mwlib.rl to Bengali
 #
-# Author@translatewiki.net: Kandar
+# Author@translatewiki.net: Bellayet
+# Author@translatewiki.net: Nasir8891
 # --
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-08-25 08:43+0000\n"
-"PO-Revision-Date: 2009-12-18 08:43:04+0000\n"
-"Language-Team: Sundanese\n"
+"PO-Revision-Date: 2010-08-25 08:42:04+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.16alpha (r60201); Translate extension (2009-12-06)\n"
+"X-Generator: MediaWiki 1.17alpha (r71602); Translate extension (2010-08-20)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
-"X-Language-Code: su\n"
+"X-Language-Code: bn\n"
 "X-Message-Group: out-mwlibrl\n"
 
 #: mwlib/rl/pdfmessages.py:11
 msgid "Index"
-msgstr ""
+msgstr "নির্ঘন্ট"
 
 #: mwlib/rl/pdfmessages.py:13
 msgid "Source:"
-msgstr ""
+msgstr "উৎস:"
 
 #: mwlib/rl/pdfmessages.py:15
-#, fuzzy
 msgid "License:"
-msgstr "Lisénsi Tulisan"
+msgstr "লাইসেন্স:"
 
 #: mwlib/rl/pdfmessages.py:17
-#, fuzzy
 msgid "Contributors:"
-msgstr "Eusi"
+msgstr "অনুবাদক:"
 
 #: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:506
 msgid "Article Licenses"
-msgstr "Lisénsi Tulisan"
+msgstr "নিবন্ধের লাইসেন্স"
 
 #: mwlib/rl/pdfmessages.py:21
 msgid "Title"
-msgstr "Judul"
+msgstr "শিরোনাম"
 
 #: mwlib/rl/pdfmessages.py:23
 msgid "Subtitle:"
-msgstr "Subjudul:"
+msgstr "সাবটাইটেল:"
 
 #: mwlib/rl/pdfmessages.py:25
 msgid "Editor:"
-msgstr "Éditor:"
+msgstr "সম্পাদক:"
 
 #: mwlib/rl/pdfmessages.py:27
 msgid "Created on:"
-msgstr "Titimangsa dijieun:"
+msgstr "তৈরী হয়েছে:"
 
 #: mwlib/rl/pdfmessages.py:29 mwlib/rl/toc.py:46
 msgid "Contents"
-msgstr "Eusi"
+msgstr "বিষয়বস্তু"
 
 #: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:417
 msgid "Articles"
-msgstr "Tulisan"
+msgstr "নিবন্ধ"
 
 #: mwlib/rl/pdfmessages.py:33
 msgid "Produced by:"
-msgstr "Dijieun ku:"
+msgstr "প্রস্তুতকারক:"
 
 #: mwlib/rl/pdfmessages.py:35
 msgid "pdf writer version:"
-msgstr "vérsi panulis pdf:"
+msgstr "পিডিএফ লেখক সংস্করণ:"
 
 #: mwlib/rl/pdfmessages.py:37
 msgid "mwlib version:"
-msgstr "vérsi mwlib:"
+msgstr "mwlib সংস্করণ:"
 
 #: mwlib/rl/pdfmessages.py:39
 msgid "Table of Contents"
-msgstr "Daptar Eusi"
+msgstr "বিষয়বস্তুর সূচী"
 
 #: mwlib/rl/pdfmessages.py:41
 msgid "Skipping Articles!"
-msgstr "Nyingsalkeun Tulisan!"
+msgstr "নিবন্ধ উপেক্ষা!"
 
 #: mwlib/rl/pdfmessages.py:43
 msgid ""
 "Please note:  This is only a preview intended to give an idea how the book "
 "is typeset."
 msgstr ""
+"লক্ষ্য করুন: এটি একটি প্রাকদর্শন দেখনো হচ্ছে যেন বইটি তৈরী হওয়ার পর কেমন দেখাবে "
+"তার ধারণা পাওয়া যায়।"
 
 #: mwlib/rl/pdfmessages.py:45
 msgid ""
@@ -95,15 +95,19 @@ msgid ""
 "of the index, of your book are shown in this preview. All articles, even "
 "those left out of the preview, will be included in the final printed book."
 msgstr ""
+"লক্ষ্য করুন: বইটি তৈরী হওয়ার পর কেমন দেখাবে সে সম্পর্কে এখানে আপনাকে কেবলমাত্র "
+"একটি ধারণা দেয়া হচ্ছে। শুধুমাত্র প্রথম দিকের কিছু নিবন্ধ, সূচীপত্রের প্রথম পাতা ইত্যাদি "
+"দেখানো হচ্ছে। সকল নিবন্ধ যা নির্বাচন করা হয়েছে কিন্তু প্রাকদর্শনে দেখা যাচ্ছে না, তা "
+"বইটির চূড়ান্ত মুদ্রিত সংস্করণে থাকবে।"
 
 #: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:465
 #: mwlib/rl/rlwriter.py:781
 msgid "References"
-msgstr "Rujukan"
+msgstr "তথ্যসূত্র"
 
 #: mwlib/rl/pdfmessages.py:49
 msgid "Appendix"
-msgstr ""
+msgstr "পরিশিষ্ট"
 
 #: mwlib/rl/pdfmessages.py:51
 msgid ""
@@ -129,37 +133,38 @@ msgstr ""
 
 #: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:466
 #: mwlib/rl/rlwriter.py:654
-#, fuzzy
 msgid "Article Sources and Contributors"
-msgstr "Sumber, Lisénsi, jeung Panyumbang Tulisan"
+msgstr "নিবন্ধের উৎস এবং অবদানকারী"
 
 #: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:469
 #: mwlib/rl/rlwriter.py:673
 msgid "Image Sources, Licenses and Contributors"
-msgstr "Sumber, Lisénsi, jeung Panyumbang Gambar"
+msgstr "ছবির উৎস, লাইসেন্স এবং অবদানকারী"
 
 #: mwlib/rl/pdfmessages.py:61
 msgid "Image"
-msgstr "Gambar"
+msgstr "চিত্র"
 
 #: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:646
 msgid "anonymous edits"
-msgstr ""
+msgstr "বেনামী সম্পাদনা"
 
 #: mwlib/rl/pdfmessages.py:65
 msgid "Figure"
-msgstr ""
+msgstr "চিত্র"
 
 #: mwlib/rl/pdfstyles.py:78
 msgid ""
 "PDF generated using the open source mwlib toolkit. See http://code."
 "pediapress.com/ for more information."
 msgstr ""
+"পিডিএফ ফাইলটি তৈরী করা হয়েছে ওপেন সোর্স টুলকিট mwlib ব্যবহার করে। আরও তথ্যের জন্য "
+"http://code.pediapress.com/ দেখুন।"
 
 #: mwlib/rl/rlwriter.py:302
 #, python-format
 msgid "mwlib.ext version: %(version)s"
-msgstr "vérsi mwlib.ext: %(version)s"
+msgstr "mwlib.ext সংস্করণ: %(version)s"
 
 #: mwlib/rl/rlwriter.py:308
 #, python-format
@@ -167,26 +172,24 @@ msgid ""
 "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
 "(mwlibextversion)s"
 msgstr ""
-"vérsi mwlib: %(mwlibversion)s, vérsi mwlib.rl: %(mwlibrlversion)s, %"
+"mwlib সংস্করণ: %(mwlibversion)s, mwlib.rl সংস্করণ: %(mwlibrlversion)s, %"
 "(mwlibextversion)s"
 
 #: mwlib/rl/rlwriter.py:661 mwlib/rl/rlwriter.py:686
 msgid "Source"
-msgstr ""
+msgstr "উৎস"
 
 #: mwlib/rl/rlwriter.py:663 mwlib/rl/rlwriter.py:689
-#, fuzzy
 msgid "Contributors"
-msgstr "Eusi"
+msgstr "অবদানকারী"
 
 #: mwlib/rl/rlwriter.py:679
 msgid "unknown"
-msgstr ""
+msgstr "অজানা"
 
 #: mwlib/rl/rlwriter.py:681
-#, fuzzy
 msgid "License"
-msgstr "Lisénsi Tulisan"
+msgstr "লাইসেন্স"
 
 #: mwlib/rl/rlwriter.py:772
 msgid ""
@@ -194,7 +197,3 @@ msgid ""
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
 "software (b) problematic Mediawiki markup (c) table is too wide"
 msgstr ""
-
-#, fuzzy
-#~ msgid "title"
-#~ msgstr "Judul"

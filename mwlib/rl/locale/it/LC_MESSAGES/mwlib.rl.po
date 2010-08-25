@@ -1,6 +1,8 @@
 # Translation of Mwlib.rl to Italian
 #
+# Author@translatewiki.net: Annayram
 # Author@translatewiki.net: BrokenArrow
+# Author@translatewiki.net: Civvì
 # Author@translatewiki.net: Cyllenius
 # Author@translatewiki.net: Marco 27
 # --
@@ -14,19 +16,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-21 14:55+0200\n"
-"PO-Revision-Date: 2009-12-18 08:43:00+0000\n"
+"POT-Creation-Date: 2010-08-25 08:43+0000\n"
+"PO-Revision-Date: 2010-08-25 08:42:05+0000\n"
 "Language-Team: Italian\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.16alpha (r60201); Translate extension (2009-12-06)\n"
+"X-Generator: MediaWiki 1.17alpha (r71602); Translate extension (2010-08-20)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: it\n"
 "X-Message-Group: out-mwlibrl\n"
 
 #: mwlib/rl/pdfmessages.py:11
 msgid "Index"
-msgstr ""
+msgstr "Indice"
 
 #: mwlib/rl/pdfmessages.py:13
 msgid "Source:"
@@ -103,15 +105,20 @@ msgid ""
 "of the index, of your book are shown in this preview. All articles, even "
 "those left out of the preview, will be included in the final printed book."
 msgstr ""
+"Nota: Questa è solo un'anteprima del libro, destinato a dare un'idea di come "
+"appare il tuo libro. Solo i primi articoli, come pure le prime pagine "
+"dell'indice, del tuo libro sono mostrati in questa anteprima. Tutti gli "
+"articoli, anche quelli lasciati fuori l'anteprima, sarà inclusa nel libro "
+"finale stampato."
 
 #: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:465
-#: mwlib/rl/rlwriter.py:758
+#: mwlib/rl/rlwriter.py:781
 msgid "References"
 msgstr "Note"
 
 #: mwlib/rl/pdfmessages.py:49
 msgid "Appendix"
-msgstr ""
+msgstr "Appendice"
 
 #: mwlib/rl/pdfmessages.py:51
 msgid ""
@@ -171,7 +178,7 @@ msgstr "Modifiche anonime"
 msgid "Figure"
 msgstr "Immagine"
 
-#: mwlib/rl/pdfstyles.py:77
+#: mwlib/rl/pdfstyles.py:78
 msgid ""
 "PDF generated using the open source mwlib toolkit. See http://code."
 "pediapress.com/ for more information."
@@ -210,7 +217,7 @@ msgstr "sconosciuto"
 msgid "License"
 msgstr "Licenza"
 
-#: mwlib/rl/rlwriter.py:749
+#: mwlib/rl/rlwriter.py:772
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
@@ -220,13 +227,3 @@ msgstr ""
 "- è mostrato come testo semplice.</strong><br/>Le possibili cause del "
 "problema sono (a) un bug nel software che crea il file PDF (b) un errore nel "
 "markup MediaWiki (c) una tabella troppo grande"
-
-#, fuzzy
-#~ msgid "title"
-#~ msgstr "Titolo"
-
-#~ msgid "layouting"
-#~ msgstr "creazione del layout"
-
-#~ msgid "rendering"
-#~ msgstr "conversione"

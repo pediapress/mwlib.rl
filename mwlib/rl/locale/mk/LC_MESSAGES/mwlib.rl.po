@@ -6,18 +6,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-21 14:55+0200\n"
-"PO-Revision-Date: 2009-12-18 08:43:02+0000\n"
+"POT-Creation-Date: 2010-08-25 08:43+0000\n"
+"PO-Revision-Date: 2010-08-25 08:42:06+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.16alpha (r60201); Translate extension (2009-12-06)\n"
+"X-Generator: MediaWiki 1.17alpha (r71602); Translate extension (2010-08-20)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: mk\n"
 "X-Message-Group: out-mwlibrl\n"
 
 #: mwlib/rl/pdfmessages.py:11
 msgid "Index"
-msgstr ""
+msgstr "Индекс"
 
 #: mwlib/rl/pdfmessages.py:13
 msgid "Source:"
@@ -94,15 +94,19 @@ msgid ""
 "of the index, of your book are shown in this preview. All articles, even "
 "those left out of the preview, will be included in the final printed book."
 msgstr ""
+"Напомена: Ова е само преглед на вашата книга, за да ви даде претстава како "
+"изгледа книгата. Тука се прикажани само првите статии и првите страници од "
+"инексот. Во конечниот печатен облик ќе се содржат сите статии, заклучно со "
+"сите оние изоставени во прегледот."
 
 #: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:465
-#: mwlib/rl/rlwriter.py:758
+#: mwlib/rl/rlwriter.py:781
 msgid "References"
 msgstr "Наводи"
 
 #: mwlib/rl/pdfmessages.py:49
 msgid "Appendix"
-msgstr ""
+msgstr "Прилог"
 
 #: mwlib/rl/pdfmessages.py:51
 msgid ""
@@ -162,7 +166,7 @@ msgstr "анонимни уредувања"
 msgid "Figure"
 msgstr "Отцртано"
 
-#: mwlib/rl/pdfstyles.py:77
+#: mwlib/rl/pdfstyles.py:78
 msgid ""
 "PDF generated using the open source mwlib toolkit. See http://code."
 "pediapress.com/ for more information."
@@ -200,7 +204,7 @@ msgstr "непознато"
 msgid "License"
 msgstr "Лиценца"
 
-#: mwlib/rl/rlwriter.py:749
+#: mwlib/rl/rlwriter.py:772
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
@@ -208,15 +212,5 @@ msgid ""
 msgstr ""
 "<strong>ПРЕДУПРЕДУВАЊЕ: Статијата не можеше да се обработи - ќе се прикаже "
 "прост текст.</strong><br/>Потенцијални причинители на проблемот: (а) a "
-"грешка во записната pdf програма (б) проблематични ознаки од Mediawiki (в) "
+"грешка во записниот PDF-програм (б) проблематични ознаки од МедијаВики (в) "
 "табелата е преширока"
-
-#, fuzzy
-#~ msgid "title"
-#~ msgstr "Наслов"
-
-#~ msgid "layouting"
-#~ msgstr "распоредување"
-
-#~ msgid "rendering"
-#~ msgstr "обработка"

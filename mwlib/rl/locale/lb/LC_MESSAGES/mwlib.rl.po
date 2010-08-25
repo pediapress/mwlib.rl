@@ -6,19 +6,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-21 14:55+0200\n"
-"PO-Revision-Date: 2009-12-18 08:43:02+0000\n"
+"POT-Creation-Date: 2010-08-25 08:43+0000\n"
+"PO-Revision-Date: 2010-08-25 08:42:05+0000\n"
 "Language-Team: Luxembourgish\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.16alpha (r60201); Translate extension (2009-12-06)\n"
+"X-Generator: MediaWiki 1.17alpha (r71602); Translate extension (2010-08-20)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: lb\n"
 "X-Message-Group: out-mwlibrl\n"
 
 #: mwlib/rl/pdfmessages.py:11
 msgid "Index"
-msgstr ""
+msgstr "Index"
 
 #: mwlib/rl/pdfmessages.py:13
 msgid "Source:"
@@ -97,13 +97,13 @@ msgid ""
 msgstr ""
 
 #: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:465
-#: mwlib/rl/rlwriter.py:758
+#: mwlib/rl/rlwriter.py:781
 msgid "References"
 msgstr "Referenzen"
 
 #: mwlib/rl/pdfmessages.py:49
 msgid "Appendix"
-msgstr ""
+msgstr "Annex"
 
 #: mwlib/rl/pdfmessages.py:51
 msgid ""
@@ -130,12 +130,12 @@ msgstr ""
 #: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:466
 #: mwlib/rl/rlwriter.py:654
 msgid "Article Sources and Contributors"
-msgstr ""
+msgstr "Quellen a Mataarbechter vum Artikel"
 
 #: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:469
 #: mwlib/rl/rlwriter.py:673
 msgid "Image Sources, Licenses and Contributors"
-msgstr ""
+msgstr "Quelle vun de Biller, Lizenzen a Leit déi matgeschafft hun"
 
 #: mwlib/rl/pdfmessages.py:61
 msgid "Image"
@@ -149,7 +149,7 @@ msgstr "anonym Ännerungen"
 msgid "Figure"
 msgstr "Duerstellung"
 
-#: mwlib/rl/pdfstyles.py:77
+#: mwlib/rl/pdfstyles.py:78
 msgid ""
 "PDF generated using the open source mwlib toolkit. See http://code."
 "pediapress.com/ for more information."
@@ -166,6 +166,8 @@ msgid ""
 "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
 "(mwlibextversion)s"
 msgstr ""
+"mwlib Versioun: %(mwlibversion)s, mwlib.rl Versioun: %(mwlibrlversion)s, %"
+"(mwlibextversion)s"
 
 #: mwlib/rl/rlwriter.py:661 mwlib/rl/rlwriter.py:686
 msgid "Source"
@@ -183,16 +185,9 @@ msgstr "onbekannt"
 msgid "License"
 msgstr "Lizenz"
 
-#: mwlib/rl/rlwriter.py:749
+#: mwlib/rl/rlwriter.py:772
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
 "software (b) problematic Mediawiki markup (c) table is too wide"
 msgstr ""
-
-#, fuzzy
-#~ msgid "title"
-#~ msgstr "Titel"
-
-#~ msgid "layouting"
-#~ msgstr "Layout gëtt gemaach"

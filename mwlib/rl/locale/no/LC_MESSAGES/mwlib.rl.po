@@ -1,23 +1,24 @@
 # Translation of Mwlib.rl to Norwegian (bokmål)‬
 #
 # Author@translatewiki.net: Audun
+# Author@translatewiki.net: Nghtwlkr
 # --
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-21 14:55+0200\n"
-"PO-Revision-Date: 2009-12-18 08:43:02+0000\n"
+"POT-Creation-Date: 2010-08-25 08:43+0000\n"
+"PO-Revision-Date: 2010-08-25 08:42:06+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.16alpha (r60201); Translate extension (2009-12-06)\n"
+"X-Generator: MediaWiki 1.17alpha (r71602); Translate extension (2010-08-20)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: no\n"
 "X-Message-Group: out-mwlibrl\n"
 
 #: mwlib/rl/pdfmessages.py:11
 msgid "Index"
-msgstr ""
+msgstr "Indeks"
 
 #: mwlib/rl/pdfmessages.py:13
 msgid "Source:"
@@ -94,15 +95,20 @@ msgid ""
 "of the index, of your book are shown in this preview. All articles, even "
 "those left out of the preview, will be included in the final printed book."
 msgstr ""
+"Merk: Dette er kun en forhåndsvisning av boken din, ment å gi deg en idé om "
+"hvordan boken din ser ut. Kun de første få artiklene, samt de første sidene "
+"av innholdsfortegnelsen, av boken din vises i denne forhåndsvisningen. Alle "
+"artiklene, også de som ikke er tatt med i forhåndsvisningen, vil bli "
+"inkludert i den ferdige trykte boken."
 
 #: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:465
-#: mwlib/rl/rlwriter.py:758
+#: mwlib/rl/rlwriter.py:781
 msgid "References"
 msgstr "Referanser"
 
 #: mwlib/rl/pdfmessages.py:49
 msgid "Appendix"
-msgstr ""
+msgstr "Vedlegg"
 
 #: mwlib/rl/pdfmessages.py:51
 msgid ""
@@ -159,7 +165,7 @@ msgstr "anonyme endringer"
 msgid "Figure"
 msgstr "Figur"
 
-#: mwlib/rl/pdfstyles.py:77
+#: mwlib/rl/pdfstyles.py:78
 msgid ""
 "PDF generated using the open source mwlib toolkit. See http://code."
 "pediapress.com/ for more information."
@@ -197,7 +203,7 @@ msgstr "ukjent"
 msgid "License"
 msgstr "Lisens"
 
-#: mwlib/rl/rlwriter.py:749
+#: mwlib/rl/rlwriter.py:772
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
@@ -207,13 +213,3 @@ msgstr ""
 "strong><br />Potensielle årsaker for problemet er: (a) en feil i PDF-"
 "skriverprogramvaren (b) problematisk MediaWiki-oppsett (c) tabellen er for "
 "bred"
-
-#, fuzzy
-#~ msgid "title"
-#~ msgstr "Tittel"
-
-#~ msgid "layouting"
-#~ msgstr "utforming"
-
-#~ msgid "rendering"
-#~ msgstr "tegning"

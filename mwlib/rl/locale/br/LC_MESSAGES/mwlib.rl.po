@@ -1,24 +1,25 @@
 # Translation of Mwlib.rl to Breton
 #
 # Author@translatewiki.net: Fulup
+# Author@translatewiki.net: Y-M D
 # --
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-21 14:55+0200\n"
-"PO-Revision-Date: 2009-12-18 08:42:55+0000\n"
+"POT-Creation-Date: 2010-08-25 08:43+0000\n"
+"PO-Revision-Date: 2010-08-25 08:42:04+0000\n"
 "Language-Team: Breton\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.16alpha (r60201); Translate extension (2009-12-06)\n"
+"X-Generator: MediaWiki 1.17alpha (r71602); Translate extension (2010-08-20)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: br\n"
 "X-Message-Group: out-mwlibrl\n"
 
 #: mwlib/rl/pdfmessages.py:11
 msgid "Index"
-msgstr ""
+msgstr "Meneger"
 
 #: mwlib/rl/pdfmessages.py:13
 msgid "Source:"
@@ -95,15 +96,19 @@ msgid ""
 "of the index, of your book are shown in this preview. All articles, even "
 "those left out of the preview, will be included in the final printed book."
 msgstr ""
+"Notenn : n'eo hemañ nemet ur rakweled eus ho levr. E bal eo reiñ deoc'h ur "
+"soñj eus ar mod ma vo ho levr. Ne ziskouezer amañ nemet un nebeud pennadoù "
+"kentañ gant pajennoù kentañ ar meneger. El levr moullet echu e vo kavet an "
+"holl bennadoù, zoken ar re n'emaint ket diskouezet amañ er rakweled."
 
 #: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:465
-#: mwlib/rl/rlwriter.py:758
+#: mwlib/rl/rlwriter.py:781
 msgid "References"
 msgstr "Daveennoù"
 
 #: mwlib/rl/pdfmessages.py:49
 msgid "Appendix"
-msgstr ""
+msgstr "Stagadenn"
 
 #: mwlib/rl/pdfmessages.py:51
 msgid ""
@@ -163,7 +168,7 @@ msgstr "kemmoù dizanv"
 msgid "Figure"
 msgstr "Grafik"
 
-#: mwlib/rl/pdfstyles.py:77
+#: mwlib/rl/pdfstyles.py:78
 msgid ""
 "PDF generated using the open source mwlib toolkit. See http://code."
 "pediapress.com/ for more information."
@@ -201,7 +206,7 @@ msgstr "dianav"
 msgid "License"
 msgstr "Aotre implijout"
 
-#: mwlib/rl/rlwriter.py:749
+#: mwlib/rl/rlwriter.py:772
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
@@ -210,13 +215,3 @@ msgstr ""
 "<strong>DIWALLIT : n'haller ket eiladuriñ ar pennad en e bezh - aozadur e "
 "testenn blaen.</strong><br/>Abeg ar gudenn zo pe (a) un draen er meziant "
 "PDF, pe (b) ur fazi e markup MediaWiki, pe (c) un daolenn re ledan."
-
-#, fuzzy
-#~ msgid "title"
-#~ msgstr "Titl"
-
-#~ msgid "layouting"
-#~ msgstr "Pajennaozañ"
-
-#~ msgid "rendering"
-#~ msgstr "neuz"

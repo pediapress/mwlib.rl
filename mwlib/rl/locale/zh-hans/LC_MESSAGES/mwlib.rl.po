@@ -1,53 +1,53 @@
 # Translation of Mwlib.rl to Simplified Chinese
 #
 # Author@translatewiki.net: Gaoxuewei
+# Author@translatewiki.net: Shizhao
 # --
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-21 14:55+0200\n"
-"PO-Revision-Date: 2009-12-18 08:43:06+0000\n"
+"POT-Creation-Date: 2010-08-25 08:43+0000\n"
+"PO-Revision-Date: 2010-08-25 08:42:06+0000\n"
 "Language-Team: Simplified Chinese\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.16alpha (r60201); Translate extension (2009-12-06)\n"
+"X-Generator: MediaWiki 1.17alpha (r71602); Translate extension (2010-08-20)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: zh-hans\n"
 "X-Message-Group: out-mwlibrl\n"
 
 #: mwlib/rl/pdfmessages.py:11
 msgid "Index"
-msgstr ""
+msgstr "目录"
 
 #: mwlib/rl/pdfmessages.py:13
 msgid "Source:"
-msgstr ""
+msgstr "来源："
 
 #: mwlib/rl/pdfmessages.py:15
 msgid "License:"
-msgstr ""
+msgstr "许可："
 
 #: mwlib/rl/pdfmessages.py:17
-#, fuzzy
 msgid "Contributors:"
-msgstr "主要作者："
+msgstr "作者："
 
 #: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:506
 msgid "Article Licenses"
-msgstr ""
+msgstr "文章许可"
 
 #: mwlib/rl/pdfmessages.py:21
 msgid "Title"
-msgstr ""
+msgstr "标题"
 
 #: mwlib/rl/pdfmessages.py:23
 msgid "Subtitle:"
-msgstr ""
+msgstr "子标题"
 
 #: mwlib/rl/pdfmessages.py:25
 msgid "Editor:"
-msgstr ""
+msgstr "编辑："
 
 #: mwlib/rl/pdfmessages.py:27
 msgid "Created on:"
@@ -59,8 +59,9 @@ msgid "Contents"
 msgstr "主要作者："
 
 #: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:417
+#, fuzzy
 msgid "Articles"
-msgstr ""
+msgstr "文章许可"
 
 #: mwlib/rl/pdfmessages.py:33
 msgid "Produced by:"
@@ -99,13 +100,13 @@ msgid ""
 msgstr ""
 
 #: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:465
-#: mwlib/rl/rlwriter.py:758
+#: mwlib/rl/rlwriter.py:781
 msgid "References"
-msgstr ""
+msgstr "参考文献"
 
 #: mwlib/rl/pdfmessages.py:49
 msgid "Appendix"
-msgstr ""
+msgstr "附录"
 
 #: mwlib/rl/pdfmessages.py:51
 msgid ""
@@ -151,7 +152,7 @@ msgstr ""
 msgid "Figure"
 msgstr ""
 
-#: mwlib/rl/pdfstyles.py:77
+#: mwlib/rl/pdfstyles.py:78
 msgid ""
 "PDF generated using the open source mwlib toolkit. See http://code."
 "pediapress.com/ for more information."
@@ -172,23 +173,24 @@ msgstr ""
 "(mwlibextversion)s"
 
 #: mwlib/rl/rlwriter.py:661 mwlib/rl/rlwriter.py:686
+#, fuzzy
 msgid "Source"
-msgstr ""
+msgstr "来源："
 
 #: mwlib/rl/rlwriter.py:663 mwlib/rl/rlwriter.py:689
-#, fuzzy
 msgid "Contributors"
-msgstr "主要作者："
+msgstr "贡献者"
 
 #: mwlib/rl/rlwriter.py:679
 msgid "unknown"
 msgstr ""
 
 #: mwlib/rl/rlwriter.py:681
+#, fuzzy
 msgid "License"
-msgstr ""
+msgstr "许可："
 
-#: mwlib/rl/rlwriter.py:749
+#: mwlib/rl/rlwriter.py:772
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
@@ -196,9 +198,3 @@ msgid ""
 msgstr ""
 "<strong>警告：文章无法被处理 —— 输出为纯文本。</strong><br/>可能的原因：(a) "
 "pdf生成软件存在问题 (b) Mediawiki的标记存在问题 (c) 表格过宽"
-
-#~ msgid "layouting"
-#~ msgstr "页面设置"
-
-#~ msgid "rendering"
-#~ msgstr "处理"

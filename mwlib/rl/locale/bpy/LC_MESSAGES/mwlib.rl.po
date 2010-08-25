@@ -6,18 +6,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-21 14:55+0200\n"
-"PO-Revision-Date: 2010-02-10 12:20+0100\n"
+"POT-Creation-Date: 2010-08-25 08:43+0000\n"
+"PO-Revision-Date: 2010-08-25 08:42:04+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.16alpha (r60201); Translate extension (2009-12-06)\n"
+"X-Generator: MediaWiki 1.17alpha (r71602); Translate extension (2010-08-20)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: bpy\n"
 "X-Message-Group: out-mwlibrl\n"
 
 #: mwlib/rl/pdfmessages.py:11
 msgid "Index"
-msgstr ""
+msgstr "মাতুঙ মেথেল"
 
 #: mwlib/rl/pdfmessages.py:13
 msgid "Source:"
@@ -92,15 +92,19 @@ msgid ""
 "of the index, of your book are shown in this preview. All articles, even "
 "those left out of the preview, will be included in the final printed book."
 msgstr ""
+"খিয়াল কর: লেরিকহান হঙকরানির থাঙনাত চেইতে কিসারে ইতই অহানর বারে হুদ্দা ধারনা "
+"আহান দেরাঙতা। হুদ্দা পয়লাকার অহানদে নিবন্ধ কতহান, সূচীপত্রর পয়লা পাতা আদি দেখানি "
+"অর। হাব্বি নিবন্ধ যেতা বাসানি অসে কিন্তু আগচাত না দেখরাঙ, অহান রেরিকহানর চূড়ান্ত "
+"মুদ্রিত সংস্করণহাত থাইতই।"
 
 #: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:465
-#: mwlib/rl/rlwriter.py:758
+#: mwlib/rl/rlwriter.py:781
 msgid "References"
 msgstr "রেফারেন্সহানি"
 
 #: mwlib/rl/pdfmessages.py:49
 msgid "Appendix"
-msgstr ""
+msgstr "পরিশিষ্ট"
 
 #: mwlib/rl/pdfmessages.py:51
 msgid ""
@@ -154,7 +158,7 @@ msgstr "বেনাঙর পতা"
 msgid "Figure"
 msgstr "ফিগার"
 
-#: mwlib/rl/pdfstyles.py:77
+#: mwlib/rl/pdfstyles.py:78
 msgid ""
 "PDF generated using the open source mwlib toolkit. See http://code."
 "pediapress.com/ for more information."
@@ -165,7 +169,7 @@ msgstr ""
 #: mwlib/rl/rlwriter.py:302
 #, python-format
 msgid "mwlib.ext version: %(version)s"
-msgstr "mwlib.extর ভার্সনহান: %(version)sহানি"
+msgstr "mwlib.extর ভার্সনহান: %(version)হানি"
 
 #: mwlib/rl/rlwriter.py:308
 #, python-format
@@ -173,8 +177,8 @@ msgid ""
 "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
 "(mwlibextversion)s"
 msgstr ""
-"mwlib ভার্সন: %(mwlibversion)sহানি, mwlib.rl ভার্সন: %(mwlibrlversion)sহানি, %"
-"(mwlibextversion)sহানি"
+"mwlib ভার্সন: %(mwlibversion)হানি, mwlib.rl ভার্সন: %(mwlibrlversion)হানি, %"
+"(mwlibextversion)হানি"
 
 #: mwlib/rl/rlwriter.py:661 mwlib/rl/rlwriter.py:686
 msgid "Source"
@@ -192,7 +196,7 @@ msgstr "হারনাপাসি"
 msgid "License"
 msgstr "লাইসেন্স"
 
-#: mwlib/rl/rlwriter.py:749
+#: mwlib/rl/rlwriter.py:772
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
@@ -201,13 +205,3 @@ msgstr ""
 "<strong>সিঙুইস: নিবন্ধহান রেন্ডারিং করে নুৱারলু - চুমসেত মেয়কল ছাপিলাং।</"
 "strong><br/> এরে বিষয়হানিত লালথাইব: (ক) পিডিএফ-হঙকরেকুরা সফটৱ্যারর মা লাল "
 "থাথাইব (খ) মিডিয়াউইকি মার্কাপর মা লাল থাইব (গ) টেবিলহান জবর চেপ্টা ইয়া থা থাইব"
-
-#, fuzzy
-#~ msgid "title"
-#~ msgstr "চিংনাং"
-
-#~ msgid "layouting"
-#~ msgstr "হাজারাং"
-
-#~ msgid "rendering"
-#~ msgstr "রেন্ডারিং"
