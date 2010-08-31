@@ -1,24 +1,25 @@
 # Translation of Mwlib.rl to Swiss German
 #
 # Author@translatewiki.net: Als-Holder
+# Author@translatewiki.net: Strommops
 # --
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-03 15:32+0200\n"
-"PO-Revision-Date: 2009-12-18 08:42:59+0000\n"
+"POT-Creation-Date: 2010-08-25 08:43+0000\n"
+"PO-Revision-Date: 2010-08-25 08:42:05+0000\n"
 "Language-Team: Swiss German\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.16alpha (r60201); Translate extension (2009-12-06)\n"
+"X-Generator: MediaWiki 1.17alpha (r71602); Translate extension (2010-08-20)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: gsw\n"
 "X-Message-Group: out-mwlibrl\n"
 
 #: mwlib/rl/pdfmessages.py:11
 msgid "Index"
-msgstr ""
+msgstr "Verzeichnis"
 
 #: mwlib/rl/pdfmessages.py:13
 msgid "Source:"
@@ -95,15 +96,19 @@ msgid ""
 "of the index, of your book are shown in this preview. All articles, even "
 "those left out of the preview, will be included in the final printed book."
 msgstr ""
+"Obacht: Des isch nume ne Vorschau vu Dyym Buech, wu Dir soll zeige, wie s "
+"Buech chennt uussäh. In däre Vorschau vu Dyym Buech het s nume di erschte "
+"Artikel un di erschte Syte im Verzeichnis. Im fertig druckte Buech het s "
+"derno natyrli alli Artikel din, au die, wu in däre Vorschau ewäggloo sin."
 
 #: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:465
 #: mwlib/rl/rlwriter.py:781
 msgid "References"
-msgstr "Quälle"
+msgstr "Quälle un Füeßnote"
 
 #: mwlib/rl/pdfmessages.py:49
 msgid "Appendix"
-msgstr ""
+msgstr "Aahang"
 
 #: mwlib/rl/pdfmessages.py:51
 msgid ""
@@ -117,15 +122,14 @@ msgstr ""
 "Urheberrächtsstatus, dr Inhaber vum Urheberrächt und Lizenzbedingige."
 
 #: mwlib/rl/pdfmessages.py:53
-#, fuzzy
 msgid ""
 "The sources listed for each article provide more detailed licensing "
 "information including the copyright status, the copyright owner, and the "
 "license conditions."
 msgstr ""
-"Dää Abschnitt lischtet d Quälle fir alli Artikel un Bild uf, wu in däm Buech "
-"bruucht wäre. Die Quälle gän uusfierligeri Informatione iber d Lizänz, dr "
-"Urheberrächtsstatus, dr Inhaber vum Urheberrächt und Lizenzbedingige."
+"Dää Abschnitt lischtet d Quälle fir alli Artikel un Bild uf. Die Quälle gän "
+"uusfierligeri Informatione iber d Lizänz, dr Urheberrächtsstatus, dr Inhaber "
+"vum Urheberrächt und Lizenzbedingige."
 
 #: mwlib/rl/pdfmessages.py:55
 #, fuzzy
@@ -141,12 +145,12 @@ msgstr ""
 #: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:466
 #: mwlib/rl/rlwriter.py:654
 msgid "Article Sources and Contributors"
-msgstr "Artikelquälle un Autore"
+msgstr "Internetadrässe un Autore"
 
 #: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:469
 #: mwlib/rl/rlwriter.py:673
 msgid "Image Sources, Licenses and Contributors"
-msgstr "Bildquälle, Lizänze un Autore"
+msgstr "Internetadräss, Lizänze un Autore vu de Bilder"
 
 #: mwlib/rl/pdfmessages.py:61
 msgid "Image"
@@ -207,13 +211,3 @@ msgstr ""
 "<strong>WARNIG: Artikel chenne nit grenderet wäre – s wird nume Täkscht "
 "uusgeen.</strong><br />Megligi Ursache vum Probläm sin: (a) E Bug in dr PDF-"
 "Writer-Software (b) problematisch MediaWiki-Markup (c) e z breiti Tabälle"
-
-#, fuzzy
-#~ msgid "title"
-#~ msgstr "Titel"
-
-#~ msgid "layouting"
-#~ msgstr "am Aalege vum Layout"
-
-#~ msgid "rendering"
-#~ msgstr "am Rendere"

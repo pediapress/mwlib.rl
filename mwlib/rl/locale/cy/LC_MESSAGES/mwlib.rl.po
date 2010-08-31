@@ -1,24 +1,25 @@
 # Translation of Mwlib.rl to Welsh
 #
 # Author@translatewiki.net: Lloffiwr
+# Author@translatewiki.net: Xxglennxx
 # --
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-03 15:32+0200\n"
-"PO-Revision-Date: 2009-12-18 08:42:56+0000\n"
+"POT-Creation-Date: 2010-08-25 08:43+0000\n"
+"PO-Revision-Date: 2010-08-25 08:42:04+0000\n"
 "Language-Team: Welsh\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.16alpha (r60201); Translate extension (2009-12-06)\n"
+"X-Generator: MediaWiki 1.17alpha (r71602); Translate extension (2010-08-20)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: cy\n"
 "X-Message-Group: out-mwlibrl\n"
 
 #: mwlib/rl/pdfmessages.py:11
 msgid "Index"
-msgstr ""
+msgstr "Mynegai"
 
 #: mwlib/rl/pdfmessages.py:13
 msgid "Source:"
@@ -95,6 +96,11 @@ msgid ""
 "of the index, of your book are shown in this preview. All articles, even "
 "those left out of the preview, will be included in the final printed book."
 msgstr ""
+"Sylwer: Rhagolwg yn unig o'ch llyfr yw hwn, a fwriadwyd i roi syniad o olwg "
+"eich llyfr. Dim ond ychydig o'r erthyglau cyntaf, a rhai o dudalennau cyntaf "
+"y mynegai, a ddangosir yn y rhagolwg. Bydd yr holl erthyglau, gan gynnwys y "
+"rhai na chynhwyswyd yn y rhagolwg, yn cael eu cynnwys yn y llyfr argraffedig "
+"terfynol."
 
 #: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:465
 #: mwlib/rl/rlwriter.py:781
@@ -103,7 +109,7 @@ msgstr "Cyfeiriadau"
 
 #: mwlib/rl/pdfmessages.py:49
 msgid "Appendix"
-msgstr ""
+msgstr "Atodiad"
 
 #: mwlib/rl/pdfmessages.py:51
 msgid ""
@@ -210,13 +216,3 @@ msgstr ""
 "<strong>RHYBUDD: Ni ellid llunio'r erthygl - gosodir y cynnyrch mewn testun "
 "plaen.<strong><br/>Dyma achosion posib y broblem: (a) byg ym meddalwedd yr "
 "ysgrifennwr pdf (b) cystrawen Mediawici amheus (c) y tabl yn rhy lydan"
-
-#, fuzzy
-#~ msgid "title"
-#~ msgstr "Teitl"
-
-#~ msgid "layouting"
-#~ msgstr "wrthi'n gosod"
-
-#~ msgid "rendering"
-#~ msgstr "wrthi'n llunio"

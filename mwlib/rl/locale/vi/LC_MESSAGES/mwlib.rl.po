@@ -7,19 +7,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-03 15:32+0200\n"
-"PO-Revision-Date: 2009-12-18 08:43:05+0000\n"
+"POT-Creation-Date: 2010-08-25 08:43+0000\n"
+"PO-Revision-Date: 2010-08-25 08:42:06+0000\n"
 "Language-Team: Vietnamese\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.16alpha (r60201); Translate extension (2009-12-06)\n"
+"X-Generator: MediaWiki 1.17alpha (r71602); Translate extension (2010-08-20)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: vi\n"
 "X-Message-Group: out-mwlibrl\n"
 
 #: mwlib/rl/pdfmessages.py:11
 msgid "Index"
-msgstr ""
+msgstr "Chỉ mục"
 
 #: mwlib/rl/pdfmessages.py:13
 msgid "Source:"
@@ -104,7 +104,7 @@ msgstr "Chú thích"
 
 #: mwlib/rl/pdfmessages.py:49
 msgid "Appendix"
-msgstr ""
+msgstr "Phụ lục"
 
 #: mwlib/rl/pdfmessages.py:51
 msgid ""
@@ -119,26 +119,22 @@ msgstr ""
 "của giấy phép."
 
 #: mwlib/rl/pdfmessages.py:53
-#, fuzzy
 msgid ""
 "The sources listed for each article provide more detailed licensing "
 "information including the copyright status, the copyright owner, and the "
 "license conditions."
 msgstr ""
-"Các mục sau liệt kê nguồn của tất cả bài viết và hình ảnh sử dụng trong "
-"quyển sách này. Tại những nguồn đó sẽ có thêm các thông tin cấp phép chi "
-"tiết hơn gồm có tình trạng bản quyền, chủ sở hữu bản quyền, và các điều kiện "
-"của giấy phép."
+"Các nguồn được liệt kê cho các bài có thêm các thông tin cấp phép chi tiết "
+"hơn gồm có tình trạng bản quyền, chủ sở hữu bản quyền, và các điều kiện của "
+"giấy phép."
 
 #: mwlib/rl/pdfmessages.py:55
-#, fuzzy
 msgid ""
 "The sources listed for each image provide more detailed licensing "
 "information including the copyright status, the copyright owner, and the "
 "license conditions."
 msgstr ""
-"Các mục sau liệt kê nguồn của tất cả bài viết và hình ảnh sử dụng trong "
-"quyển sách này. Tại những nguồn đó sẽ có thêm các thông tin cấp phép chi "
+"Các nguồn được liệt kê cho các hình ảnh có thêm các thông tin cấp phép chi "
 "tiết hơn gồm có tình trạng bản quyền, chủ sở hữu bản quyền, và các điều kiện "
 "của giấy phép."
 
@@ -211,13 +207,3 @@ msgstr ""
 "<strong>CẢNH BÁO: Không thể kết xuất bài viết - đang xuất ký tự thuần.</"
 "strong><br/>Có thể là những nguyên nhân sau: (a) có lỗi trong phần mềm ghi "
 "pdf (b) mã MediaWiki có vấn đề (c) bảng biểu quá rộng"
-
-#, fuzzy
-#~ msgid "title"
-#~ msgstr "Tựa đề"
-
-#~ msgid "layouting"
-#~ msgstr "đang dàn trang"
-
-#~ msgid "rendering"
-#~ msgstr "đang kết xuất"

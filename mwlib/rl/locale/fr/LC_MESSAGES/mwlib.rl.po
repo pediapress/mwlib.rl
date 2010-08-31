@@ -3,6 +3,7 @@
 # Author@translatewiki.net: Crochet.david
 # Author@translatewiki.net: IAlex
 # Author@translatewiki.net: McDutchie
+# Author@translatewiki.net: Peter17
 # --
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
@@ -14,19 +15,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-03 15:32+0200\n"
-"PO-Revision-Date: 2009-12-18 08:42:58+0000\n"
+"POT-Creation-Date: 2010-08-25 08:43+0000\n"
+"PO-Revision-Date: 2010-08-25 08:42:05+0000\n"
 "Language-Team: French\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.16alpha (r60201); Translate extension (2009-12-06)\n"
+"X-Generator: MediaWiki 1.17alpha (r71602); Translate extension (2010-08-20)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: fr\n"
 "X-Message-Group: out-mwlibrl\n"
 
 #: mwlib/rl/pdfmessages.py:11
 msgid "Index"
-msgstr ""
+msgstr "Index"
 
 #: mwlib/rl/pdfmessages.py:13
 msgid "Source:"
@@ -115,7 +116,7 @@ msgstr "Références"
 
 #: mwlib/rl/pdfmessages.py:49
 msgid "Appendix"
-msgstr ""
+msgstr "Appendice"
 
 #: mwlib/rl/pdfmessages.py:51
 msgid ""
@@ -223,13 +224,3 @@ msgstr ""
 "- édition en texte simple.</strong><br/>Le problème est éventuellement causé "
 "par (a) un bogue dans le logiciel du PDF (b) une erreur dans le markup du "
 "MediaWiki (c) un tableau trop large."
-
-#, fuzzy
-#~ msgid "title"
-#~ msgstr "Titre"
-
-#~ msgid "layouting"
-#~ msgstr "Mise en page"
-
-#~ msgid "rendering"
-#~ msgstr "rendu"

@@ -7,18 +7,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-03 15:32+0200\n"
-"PO-Revision-Date: 2009-12-18 08:43:03+0000\n"
+"POT-Creation-Date: 2010-08-25 08:43+0000\n"
+"PO-Revision-Date: 2010-08-25 08:42:06+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.16alpha (r60201); Translate extension (2009-12-06)\n"
+"X-Generator: MediaWiki 1.17alpha (r71602); Translate extension (2010-08-20)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: pms\n"
 "X-Message-Group: out-mwlibrl\n"
 
 #: mwlib/rl/pdfmessages.py:11
 msgid "Index"
-msgstr ""
+msgstr "Tàula"
 
 #: mwlib/rl/pdfmessages.py:13
 msgid "Source:"
@@ -66,11 +66,11 @@ msgstr "Prodovù da:"
 
 #: mwlib/rl/pdfmessages.py:35
 msgid "pdf writer version:"
-msgstr "Vërsion dël writer pdf:"
+msgstr "Version dlë scritor pdf:"
 
 #: mwlib/rl/pdfmessages.py:37
 msgid "mwlib version:"
-msgstr "mwlib vërsion:"
+msgstr "version ëd mwlib:"
 
 #: mwlib/rl/pdfmessages.py:39
 msgid "Table of Contents"
@@ -85,8 +85,8 @@ msgid ""
 "Please note:  This is only a preview intended to give an idea how the book "
 "is typeset."
 msgstr ""
-"Për piasì nòta: Sòn-sì a l'é mach na previsualisassion për dé n'ideja ëd com "
-"ël lìber a l'é stampà."
+"Për piasì nòta: Sòn a l'é mach na previsualisassion për dé n'idèja ëd com ël "
+"lìber a l'é stampà."
 
 #: mwlib/rl/pdfmessages.py:45
 msgid ""
@@ -95,6 +95,10 @@ msgid ""
 "of the index, of your book are shown in this preview. All articles, even "
 "those left out of the preview, will be included in the final printed book."
 msgstr ""
+"Për piasì, ch'a nòta: Sòn a l'é mach na preuva ëd sò lìber, për dé n'ideja "
+"ëd com sò lìber a sarà. Mach ij prim pòchi artìcoj, com le prime pàgine dla "
+"tàula, ëd sò lìber a son mostrà an costa preuva. Tùit j'artìcoj, ëdcò coj "
+"lassà fòra da la preuva, a saran anserì ant la stampa final dël lìber."
 
 #: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:465
 #: mwlib/rl/rlwriter.py:781
@@ -103,7 +107,7 @@ msgstr "Arferiment"
 
 #: mwlib/rl/pdfmessages.py:49
 msgid "Appendix"
-msgstr ""
+msgstr "Gionta"
 
 #: mwlib/rl/pdfmessages.py:51
 msgid ""
@@ -112,9 +116,10 @@ msgid ""
 "including the copyright status, the copyright owner, and the license "
 "conditions."
 msgstr ""
-"Le sessin sota a listo le sorziss për tùit j'artìcoj e figure dovrà an sto "
-"lìber-sì. Ste sorziss a dan anformassion pi detajà an sle license con lë "
-"stat dël copyright, ël padron dël copyright, e le condissin ëd licensa."
+"Le session sota a listo le sorgiss për tùit j'artìcoj e figure dovrà an sto "
+"lìber-sì. Ste sorgiss a dan anformassion pi detajà an sle license con lë "
+"stat dij drit d'autor, ël padron dij drit d'autor, e le condission ëd "
+"licensa."
 
 #: mwlib/rl/pdfmessages.py:53
 #, fuzzy
@@ -141,12 +146,12 @@ msgstr ""
 #: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:466
 #: mwlib/rl/rlwriter.py:654
 msgid "Article Sources and Contributors"
-msgstr "Sorziss e Contribudor ëd j'artìcoj"
+msgstr "Sorgiss e Contributor ëd j'artìcoj"
 
 #: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:469
 #: mwlib/rl/rlwriter.py:673
 msgid "Image Sources, Licenses and Contributors"
-msgstr "Sorziss, License e Contribudor ëd le figure"
+msgstr "Sorgiss, License e Contributor ëd le figure"
 
 #: mwlib/rl/pdfmessages.py:61
 msgid "Image"
@@ -165,13 +170,13 @@ msgid ""
 "PDF generated using the open source mwlib toolkit. See http://code."
 "pediapress.com/ for more information."
 msgstr ""
-"PDG generà an dovrand l'utiss a sorziss libra mwlib. Varda http://code."
+"PDG generà an dovrand j'utiss a sorgiss lìbera mwlib. Varda http://code."
 "pediapress.com/ për savèjne ëd pi."
 
 #: mwlib/rl/rlwriter.py:302
 #, python-format
 msgid "mwlib.ext version: %(version)s"
-msgstr "vërsion mwlib.ext: %(version)s"
+msgstr "version mwlib.ext: %(version)s"
 
 #: mwlib/rl/rlwriter.py:308
 #, python-format
@@ -179,16 +184,16 @@ msgid ""
 "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
 "(mwlibextversion)s"
 msgstr ""
-"mwlib vërsion: %(mwlibversion)s, mwlib.rl vërsion: %(mwlibrlversion)s, %"
+"version mwlib: %(mwlibversion)s, version mwlib.rl: %(mwlibrlversion)s, %"
 "(mwlibextversion)s"
 
 #: mwlib/rl/rlwriter.py:661 mwlib/rl/rlwriter.py:686
 msgid "Source"
-msgstr "Sorziss"
+msgstr "Sorgiss"
 
 #: mwlib/rl/rlwriter.py:663 mwlib/rl/rlwriter.py:689
 msgid "Contributors"
-msgstr "Contribudor"
+msgstr "Contributor"
 
 #: mwlib/rl/rlwriter.py:679
 msgid "unknown"
@@ -204,16 +209,7 @@ msgid ""
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
 "software (b) problematic Mediawiki markup (c) table is too wide"
 msgstr ""
-"<strong>ATENSION: L'artìcol a peul pa esse rapresentà - stampà test pian.</"
-"strong><br/>Le possìbij càuse dël problem a son: (a) n'eror ant ël software "
-"pdf-writer (b) tag Mediawiki problemàtich (c) la tàula a l'é tròp gròssa"
-
-#, fuzzy
-#~ msgid "title"
-#~ msgstr "Tìtol"
-
-#~ msgid "layouting"
-#~ msgstr "visualisassion"
-
-#~ msgid "rendering"
-#~ msgstr "rapresentassion"
+"<strong>ATENSION: L'artìcol a peul pa esse rapresentà - stampà coma test "
+"sempi.</strong><br/>Le possìbij càuse dël problema a son: (a) n'eror ant ël "
+"programa scritor pdf (b) tichëtta Mediawiki problemàtica (c) la tàula a l'é "
+"tròp gròssa"

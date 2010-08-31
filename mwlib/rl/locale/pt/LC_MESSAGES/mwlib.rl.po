@@ -1,8 +1,8 @@
 # Translation of Mwlib.rl to Portuguese
 #
 # Author@translatewiki.net: Crazymadlover
+# Author@translatewiki.net: Hamilton Abreu
 # Author@translatewiki.net: Heldergeovane
-# Author@translatewiki.net: Malafaya
 # Author@translatewiki.net: Waldir
 # Author@translatewiki.net: 555
 # --
@@ -16,19 +16,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-03 15:32+0200\n"
-"PO-Revision-Date: 2009-12-18 08:43:03+0000\n"
+"POT-Creation-Date: 2010-08-25 08:43+0000\n"
+"PO-Revision-Date: 2010-08-25 08:42:06+0000\n"
 "Language-Team: Portuguese\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.16alpha (r60201); Translate extension (2009-12-06)\n"
+"X-Generator: MediaWiki 1.17alpha (r71602); Translate extension (2010-08-20)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: pt\n"
 "X-Message-Group: out-mwlibrl\n"
 
 #: mwlib/rl/pdfmessages.py:11
 msgid "Index"
-msgstr ""
+msgstr "Índice"
 
 #: mwlib/rl/pdfmessages.py:13
 msgid "Source:"
@@ -76,11 +76,11 @@ msgstr "Produzido por:"
 
 #: mwlib/rl/pdfmessages.py:35
 msgid "pdf writer version:"
-msgstr "Versão do gerador de pdf:"
+msgstr "Versão do gerador de PDF:"
 
 #: mwlib/rl/pdfmessages.py:37
 msgid "mwlib version:"
-msgstr "versão do mwlib:"
+msgstr "Versão do mwlib:"
 
 #: mwlib/rl/pdfmessages.py:39
 msgid "Table of Contents"
@@ -88,14 +88,14 @@ msgstr "Índice"
 
 #: mwlib/rl/pdfmessages.py:41
 msgid "Skipping Articles!"
-msgstr "Ignorando páginas!"
+msgstr "A Saltar Páginas!"
 
 #: mwlib/rl/pdfmessages.py:43
 msgid ""
 "Please note:  This is only a preview intended to give an idea how the book "
 "is typeset."
 msgstr ""
-"Nota: Esta é apenas uma previsão destinada a dar uma ideia do aspecto final "
+"Nota: Esta é apenas uma antevisão destinada a dar uma ideia do aspecto final "
 "do livro."
 
 #: mwlib/rl/pdfmessages.py:45
@@ -105,6 +105,10 @@ msgid ""
 "of the index, of your book are shown in this preview. All articles, even "
 "those left out of the preview, will be included in the final printed book."
 msgstr ""
+"Nota: Esta é apenas uma antevisão destinada a dar uma ideia do aspecto final "
+"do livro. Na antevisão são apresentadas somente algumas páginas e as "
+"primeiras páginas do índice. Na versão final impressa serão apresentadas "
+"todas as páginas, incluindo aquelas que não são apresentadas na antevisão."
 
 #: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:465
 #: mwlib/rl/rlwriter.py:781
@@ -113,7 +117,7 @@ msgstr "Referências"
 
 #: mwlib/rl/pdfmessages.py:49
 msgid "Appendix"
-msgstr ""
+msgstr "Apêndice"
 
 #: mwlib/rl/pdfmessages.py:51
 msgid ""
@@ -124,31 +128,27 @@ msgid ""
 msgstr ""
 "As seguintes secções listam as fontes de todas as páginas e imagens usados "
 "neste livro. Tais fontes fornecem informação mais detalhada sobre a licença, "
-"incluindo o estado dos direitos de autor, o detentor dos mesmos, e as "
-"condições da licença."
+"incluindo os direitos de autor, o titular dos mesmos e as condições da "
+"licença."
 
 #: mwlib/rl/pdfmessages.py:53
-#, fuzzy
 msgid ""
 "The sources listed for each article provide more detailed licensing "
 "information including the copyright status, the copyright owner, and the "
 "license conditions."
 msgstr ""
-"As seguintes secções listam as fontes de todas as páginas e imagens usados "
-"neste livro. Tais fontes fornecem informação mais detalhada sobre a licença, "
-"incluindo o estado dos direitos de autor, o detentor dos mesmos, e as "
+"As fontes listadas para cada artigo fornecem informação mais detalhada sobre "
+"a licença, incluindo os direitos de autor, o titular dos mesmos e as "
 "condições da licença."
 
 #: mwlib/rl/pdfmessages.py:55
-#, fuzzy
 msgid ""
 "The sources listed for each image provide more detailed licensing "
 "information including the copyright status, the copyright owner, and the "
 "license conditions."
 msgstr ""
-"As seguintes secções listam as fontes de todas as páginas e imagens usados "
-"neste livro. Tais fontes fornecem informação mais detalhada sobre a licença, "
-"incluindo o estado dos direitos de autor, o detentor dos mesmos, e as "
+"As fontes listadas para cada imagem fornecem informação mais detalhada sobre "
+"a licença, incluindo os direitos de autor, o titular dos mesmos e as "
 "condições da licença."
 
 #: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:466
@@ -159,7 +159,7 @@ msgstr "Fontes e Editores da Página"
 #: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:469
 #: mwlib/rl/rlwriter.py:673
 msgid "Image Sources, Licenses and Contributors"
-msgstr "Fontes, licenças e editores da imagem"
+msgstr "Fontes, Licenças e Editores da Imagem"
 
 #: mwlib/rl/pdfmessages.py:61
 msgid "Image"
@@ -178,8 +178,8 @@ msgid ""
 "PDF generated using the open source mwlib toolkit. See http://code."
 "pediapress.com/ for more information."
 msgstr ""
-"PDF gerado usando o pacote de ferramentas em código livre mwlib. Veja http://"
-"code.pediapress.com/ para mais informação."
+"PDF gerado usando o pacote de ferramentas em código aberto mwlib. Veja "
+"http://code.pediapress.com/ para mais informações."
 
 #: mwlib/rl/rlwriter.py:302
 #, python-format
@@ -217,17 +217,7 @@ msgid ""
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
 "software (b) problematic Mediawiki markup (c) table is too wide"
 msgstr ""
-"<strong>AVISO: a página não pode ser gerada – produzindo texto simples.</"
-"strong><br/>Potenciais causas para o problema são: (a) um erro do programa "
-"responsável pelo PDF (b) sintaxe problemática do MediaWiki (c) uma tabela "
-"muito larga"
-
-#, fuzzy
-#~ msgid "title"
-#~ msgstr "Título"
-
-#~ msgid "layouting"
-#~ msgstr "formatando"
-
-#~ msgid "rendering"
-#~ msgstr "criando"
+"<strong>AVISO: Não foi possível gerar a página – será produzido texto "
+"simples.</strong><br/>As causas potenciais do problema são: (a) um erro do "
+"programa responsável pelo PDF (b) sintaxe problemática do MediaWiki (c) uma "
+"tabela demasiado larga"

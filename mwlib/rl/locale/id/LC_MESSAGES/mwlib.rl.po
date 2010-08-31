@@ -1,6 +1,7 @@
 # Translation of Mwlib.rl to Indonesian
 #
 # Author@translatewiki.net: Bennylin
+# Author@translatewiki.net: Farras
 # Author@translatewiki.net: Irwangatot
 # Author@translatewiki.net: IvanLanin
 # --
@@ -8,18 +9,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-03 15:32+0200\n"
-"PO-Revision-Date: 2010-02-10 12:18+0100\n"
+"POT-Creation-Date: 2010-08-25 08:43+0000\n"
+"PO-Revision-Date: 2010-08-25 08:42:05+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.16alpha (r60201); Translate extension (2009-12-06)\n"
+"X-Generator: MediaWiki 1.17alpha (r71602); Translate extension (2010-08-20)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: id\n"
 "X-Message-Group: out-mwlibrl\n"
 
 #: mwlib/rl/pdfmessages.py:11
 msgid "Index"
-msgstr ""
+msgstr "Indeks"
 
 #: mwlib/rl/pdfmessages.py:13
 msgid "Source:"
@@ -96,6 +97,11 @@ msgid ""
 "of the index, of your book are shown in this preview. All articles, even "
 "those left out of the preview, will be included in the final printed book."
 msgstr ""
+"Ingat: Ini hanyalah pratayang dari buku Anda yang memberikan gambaran "
+"tampilan buku Anda. Hanya artikel-artikel pertama, juga halaman-halaman "
+"indeks pertama dari buku Anda yang diperlihatkan pada pratayang ini. Semua "
+"artikel, bahkan yang tidak ada di pratayang, akan dimasukkan ke dalam buku "
+"cetakan terakhir."
 
 #: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:465
 #: mwlib/rl/rlwriter.py:781
@@ -104,7 +110,7 @@ msgstr "Referensi"
 
 #: mwlib/rl/pdfmessages.py:49
 msgid "Appendix"
-msgstr ""
+msgstr "Lampiran"
 
 #: mwlib/rl/pdfmessages.py:51
 msgid ""
@@ -119,28 +125,22 @@ msgstr ""
 "kondisi lisensi."
 
 #: mwlib/rl/pdfmessages.py:53
-#, fuzzy
 msgid ""
 "The sources listed for each article provide more detailed licensing "
 "information including the copyright status, the copyright owner, and the "
 "license conditions."
 msgstr ""
-"Bagian berikut memberikan daftar sumberuntuk semua artikel dan gambar yang "
-"digunakan dalam buku ini. Sumber-sumber tersebut memberikan informasi "
-"lisensi yang lebih rinci termasuk status hak cipta, pemilik hak cipta, dan "
-"kondisi lisensi."
+"Daftar sumber untuk setiap artikel menyediakan informasi lisensi lebih rinci "
+"termasuk status hak cipta, pemilik hak cipta, dan kondisi lisensi."
 
 #: mwlib/rl/pdfmessages.py:55
-#, fuzzy
 msgid ""
 "The sources listed for each image provide more detailed licensing "
 "information including the copyright status, the copyright owner, and the "
 "license conditions."
 msgstr ""
-"Bagian berikut memberikan daftar sumberuntuk semua artikel dan gambar yang "
-"digunakan dalam buku ini. Sumber-sumber tersebut memberikan informasi "
-"lisensi yang lebih rinci termasuk status hak cipta, pemilik hak cipta, dan "
-"kondisi lisensi."
+"Daftar sumber untuk setiap gambar menyediakan informasi lisensi lebih rinci "
+"termasuk status hak cipta, pemilik hak cipta, dan kondisi lisensi."
 
 #: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:466
 #: mwlib/rl/rlwriter.py:654
@@ -175,7 +175,7 @@ msgstr ""
 #: mwlib/rl/rlwriter.py:302
 #, python-format
 msgid "mwlib.ext version: %(version)s"
-msgstr "versi mwlib.ext: %(version)s"
+msgstr "versi mwlib.ext: %(version)"
 
 #: mwlib/rl/rlwriter.py:308
 #, python-format
@@ -183,8 +183,8 @@ msgid ""
 "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
 "(mwlibextversion)s"
 msgstr ""
-"versi mwlib: %(mwlibversion)s, versi mwlib.rl: %(mwlibrlversion)s, %"
-"(mwlibextversion)s"
+"versi mwlib: %(mwlibversion), versi mwlib.rl: %(mwlibrlversion), %"
+"(mwlibextversion)"
 
 #: mwlib/rl/rlwriter.py:661 mwlib/rl/rlwriter.py:686
 msgid "Source"
@@ -212,13 +212,3 @@ msgstr ""
 "</strong><br/>Kemungkinan penyebab masalah adalah: (a) suatu bug dalam "
 "perangkat lunak penulis pdf, (b) markah Mediawiki bermasalah, (c) tabel "
 "terlalu lebar"
-
-#, fuzzy
-#~ msgid "title"
-#~ msgstr "Judul"
-
-#~ msgid "layouting"
-#~ msgstr "menata letak"
-
-#~ msgid "rendering"
-#~ msgstr "menggambar"

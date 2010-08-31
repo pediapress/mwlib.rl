@@ -6,19 +6,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-03 15:32+0200\n"
-"PO-Revision-Date: 2009-12-18 08:42:58+0000\n"
+"POT-Creation-Date: 2010-08-25 08:43+0000\n"
+"PO-Revision-Date: 2010-08-25 08:42:05+0000\n"
 "Language-Team: Galician\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.16alpha (r60201); Translate extension (2009-12-06)\n"
+"X-Generator: MediaWiki 1.17alpha (r71602); Translate extension (2010-08-20)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: gl\n"
 "X-Message-Group: out-mwlibrl\n"
 
 #: mwlib/rl/pdfmessages.py:11
 msgid "Index"
-msgstr ""
+msgstr "Índice"
 
 #: mwlib/rl/pdfmessages.py:13
 msgid "Source:"
@@ -86,7 +86,7 @@ msgid ""
 "is typeset."
 msgstr ""
 "Nota: esta é só unha vista previa que pretende dar unha idea do aspecto "
-"final do libro"
+"final do libro."
 
 #: mwlib/rl/pdfmessages.py:45
 msgid ""
@@ -95,6 +95,10 @@ msgid ""
 "of the index, of your book are shown in this preview. All articles, even "
 "those left out of the preview, will be included in the final printed book."
 msgstr ""
+"Nota: esta é só unha vista previa que pretende dar unha idea do aspecto "
+"final do libro. Tan só se mostran os primeiros artigos así como as primeiras "
+"páxinas do índice. Todos os artigos, mesmo aqueles que se excluíron da vista "
+"previa, estarán incluídos na versión impresa do libro."
 
 #: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:465
 #: mwlib/rl/rlwriter.py:781
@@ -103,7 +107,7 @@ msgstr "Referencias"
 
 #: mwlib/rl/pdfmessages.py:49
 msgid "Appendix"
-msgstr ""
+msgstr "Apéndice"
 
 #: mwlib/rl/pdfmessages.py:51
 msgid ""
@@ -118,38 +122,34 @@ msgstr ""
 "condicións da licenza."
 
 #: mwlib/rl/pdfmessages.py:53
-#, fuzzy
 msgid ""
 "The sources listed for each article provide more detailed licensing "
 "information including the copyright status, the copyright owner, and the "
 "license conditions."
 msgstr ""
-"As seguintes seccións listan as fontes de todos os artigos e imaxes usados "
-"neste libro. Estas fontes proporcionan información máis detallada sobre a "
-"licenza, incluíndo o estado dos dereitos de autor, o dono destes e as "
-"condicións da licenza."
+"As fontes listadas para cada artigo proporcionan información máis detallada "
+"sobre o estado dos dereitos de autor, o dono destes e as condicións da "
+"licenza."
 
 #: mwlib/rl/pdfmessages.py:55
-#, fuzzy
 msgid ""
 "The sources listed for each image provide more detailed licensing "
 "information including the copyright status, the copyright owner, and the "
 "license conditions."
 msgstr ""
-"As seguintes seccións listan as fontes de todos os artigos e imaxes usados "
-"neste libro. Estas fontes proporcionan información máis detallada sobre a "
-"licenza, incluíndo o estado dos dereitos de autor, o dono destes e as "
-"condicións da licenza."
+"As fontes listadas para cada imaxe proporcionan información máis detallada "
+"sobre o estado dos dereitos de autor, o dono destes e as condicións da "
+"licenza."
 
 #: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:466
 #: mwlib/rl/rlwriter.py:654
 msgid "Article Sources and Contributors"
-msgstr "Fonte dos artigos e contribuíntes"
+msgstr "Fonte dos artigos e colaboradores"
 
 #: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:469
 #: mwlib/rl/rlwriter.py:673
 msgid "Image Sources, Licenses and Contributors"
-msgstr "Fontes das imaxes, licenzas e contribuíntes"
+msgstr "Fontes das imaxes, licenzas e colaboradores"
 
 #: mwlib/rl/pdfmessages.py:61
 msgid "Image"
@@ -191,7 +191,7 @@ msgstr "Fonte"
 
 #: mwlib/rl/rlwriter.py:663 mwlib/rl/rlwriter.py:689
 msgid "Contributors"
-msgstr "Contribuíntes"
+msgstr "Colaboradores"
 
 #: mwlib/rl/rlwriter.py:679
 msgid "unknown"
@@ -210,13 +210,3 @@ msgstr ""
 "<strong>AVISO: o artigo non pode ser renderizado; texto de saída sinxelo.</"
 "strong><br/>As causas potenciais do problema son: (a) un erro no software "
 "editor de pdf (b) marcado de Mediawiki problemático (c) a táboa é moi ancha"
-
-#, fuzzy
-#~ msgid "title"
-#~ msgstr "Título"
-
-#~ msgid "layouting"
-#~ msgstr "distribuíndo"
-
-#~ msgid "rendering"
-#~ msgstr "renderizando"

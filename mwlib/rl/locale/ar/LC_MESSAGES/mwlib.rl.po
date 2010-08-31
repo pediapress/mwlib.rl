@@ -2,17 +2,18 @@
 #
 # Author@translatewiki.net: Meno25
 # Author@translatewiki.net: OsamaK
+# Author@translatewiki.net: Samer
 # --
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-03 15:32+0200\n"
-"PO-Revision-Date: 2009-12-18 08:42:54+0000\n"
+"POT-Creation-Date: 2010-08-25 08:43+0000\n"
+"PO-Revision-Date: 2010-08-25 08:42:04+0000\n"
 "Language-Team: Arabic\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.16alpha (r60201); Translate extension (2009-12-06)\n"
+"X-Generator: MediaWiki 1.17alpha (r71602); Translate extension (2010-08-20)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: ar\n"
 "X-Message-Group: out-mwlibrl\n"
@@ -51,7 +52,7 @@ msgstr "المحرر:"
 
 #: mwlib/rl/pdfmessages.py:27
 msgid "Created on:"
-msgstr "تم إنشاؤها في:"
+msgstr "أنشئت في:"
 
 #: mwlib/rl/pdfmessages.py:29 mwlib/rl/toc.py:46
 msgid "Contents"
@@ -63,7 +64,7 @@ msgstr "مقالات"
 
 #: mwlib/rl/pdfmessages.py:33
 msgid "Produced by:"
-msgstr "تم إنتاجها بواسطة:"
+msgstr "أنتجها:"
 
 #: mwlib/rl/pdfmessages.py:35
 msgid "pdf writer version:"
@@ -85,7 +86,7 @@ msgstr "تجاوز المقالات!"
 msgid ""
 "Please note:  This is only a preview intended to give an idea how the book "
 "is typeset."
-msgstr "من فضلك لاحظ: هذا فقط عرض مسبق لإعطاء فكرة حول كيفية طباعة الكتاب."
+msgstr "من فضلك لاحظ: هذا فقط عرض مسبق لإعطاء فكرة عن كيفية طباعة الكتاب."
 
 #: mwlib/rl/pdfmessages.py:45
 msgid ""
@@ -94,6 +95,10 @@ msgid ""
 "of the index, of your book are shown in this preview. All articles, even "
 "those left out of the preview, will be included in the final printed book."
 msgstr ""
+"رجاءً لاحظ أن هذه ما هي إلا معاينة لكتابك، يُرَادُ بها إعطاؤك فكرة عن مظهر "
+"كتابك. أولى المقالات فقط، وأولى صفحات فهرس كتابك معروضة في هذه المعاينة. "
+"جميع المقالات حتى تلك التي لا تظهر في المعاينة؛ ستُضَمّنُ في الكتاب النهائي "
+"المطبوع."
 
 #: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:465
 #: mwlib/rl/rlwriter.py:781
@@ -202,13 +207,3 @@ msgstr ""
 "<strong>تحذير: المقالة لم يمكن عرضها - عرض نص فقط.</strong><br/>الأسباب "
 "المحتملة للمشكلة هي: (a) علة في برنامج pdf-writer (b) صيغة ميدياويكي معيوبة "
 "(c) الجدول عريض جدا"
-
-#, fuzzy
-#~ msgid "title"
-#~ msgstr "العنوان"
-
-#~ msgid "layouting"
-#~ msgstr "تنسيق"
-
-#~ msgid "rendering"
-#~ msgstr "عرض"

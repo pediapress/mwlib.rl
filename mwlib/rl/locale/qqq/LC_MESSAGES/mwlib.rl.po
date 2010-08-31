@@ -1,27 +1,28 @@
 # Translation of Mwlib.rl to Message documentation
 #
+# Author@translatewiki.net: EugeneZelenko
 # Author@translatewiki.net: Fryed-peach
-# Author@translatewiki.net: Lloffiwr
 # Author@translatewiki.net: Raymond
 # Author@translatewiki.net: Siebrand
+# Author@translatewiki.net: Tgr
 # --
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-03 15:32+0200\n"
-"PO-Revision-Date: 2009-12-18 08:43:03+0000\n"
+"POT-Creation-Date: 2010-08-25 08:43+0000\n"
+"PO-Revision-Date: 2010-08-25 08:42:06+0000\n"
 "Language-Team: Message documentation\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.16alpha (r60201); Translate extension (2009-12-06)\n"
+"X-Generator: MediaWiki 1.17alpha (r71602); Translate extension (2010-08-20)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: qqq\n"
 "X-Message-Group: out-mwlibrl\n"
 
 #: mwlib/rl/pdfmessages.py:11
 msgid "Index"
-msgstr ""
+msgstr "{{Identical|Index}}"
 
 #: mwlib/rl/pdfmessages.py:13
 msgid "Source:"
@@ -61,8 +62,9 @@ msgid "Contents"
 msgstr "{{Identical|Contents}}"
 
 #: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:417
+#, fuzzy
 msgid "Articles"
-msgstr ""
+msgstr "{{Identical|License}}"
 
 #: mwlib/rl/pdfmessages.py:33
 msgid "Produced by:"
@@ -147,6 +149,8 @@ msgstr "{{Identical|Image}}"
 #: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:646
 msgid "anonymous edits"
 msgstr ""
+"This will be shown in the \"article sources and contributors\" section, like "
+"this: \"Foo, Bar and 3 anonymous edits\""
 
 #: mwlib/rl/pdfmessages.py:65
 msgid "Figure"
@@ -194,13 +198,3 @@ msgid ""
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
 "software (b) problematic Mediawiki markup (c) table is too wide"
 msgstr ""
-
-#, fuzzy
-#~ msgid "title"
-#~ msgstr "{{Identical|Title}}"
-
-#~ msgid "layouting"
-#~ msgstr "Part of the message {{msg-mw|Coll-rendering_status}}"
-
-#~ msgid "rendering"
-#~ msgstr "Part of the message {{msg-mw|Coll-rendering_status}}"

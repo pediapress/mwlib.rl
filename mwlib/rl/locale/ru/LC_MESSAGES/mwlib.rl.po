@@ -1,6 +1,7 @@
 # Translation of Mwlib.rl to Russian
 #
 # Author@translatewiki.net: Kaganer
+# Author@translatewiki.net: Lockal
 # Author@translatewiki.net: Osd
 # Author@translatewiki.net: Александр Сигачёв
 # --
@@ -8,28 +9,27 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-03 15:32+0200\n"
-"PO-Revision-Date: 2009-12-18 08:43:04+0000\n"
+"POT-Creation-Date: 2010-08-25 08:43+0000\n"
+"PO-Revision-Date: 2010-08-25 08:42:06+0000\n"
 "Language-Team: Russian\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.16alpha (r60201); Translate extension (2009-12-06)\n"
+"X-Generator: MediaWiki 1.17alpha (r71602); Translate extension (2010-08-20)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: ru\n"
 "X-Message-Group: out-mwlibrl\n"
 
 #: mwlib/rl/pdfmessages.py:11
 msgid "Index"
-msgstr ""
+msgstr "Индекс"
 
 #: mwlib/rl/pdfmessages.py:13
 msgid "Source:"
 msgstr "Источник:"
 
 #: mwlib/rl/pdfmessages.py:15
-#, fuzzy
 msgid "License:"
-msgstr "Лицензии статей."
+msgstr "Лицензия:"
 
 #: mwlib/rl/pdfmessages.py:17
 msgid "Contributors:"
@@ -37,7 +37,7 @@ msgstr "Основные авторы:"
 
 #: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:506
 msgid "Article Licenses"
-msgstr "Лицензии статей."
+msgstr "Лицензии статей"
 
 #: mwlib/rl/pdfmessages.py:21
 msgid "Title"
@@ -57,7 +57,7 @@ msgstr "Создано в:"
 
 #: mwlib/rl/pdfmessages.py:29 mwlib/rl/toc.py:46
 msgid "Contents"
-msgstr "Содержимое"
+msgstr "Содержание"
 
 #: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:417
 msgid "Articles"
@@ -77,7 +77,7 @@ msgstr "версия mwlib.ext:"
 
 #: mwlib/rl/pdfmessages.py:39
 msgid "Table of Contents"
-msgstr "Таблица Содержимого"
+msgstr "Оглавление"
 
 #: mwlib/rl/pdfmessages.py:41
 msgid "Skipping Articles!"
@@ -98,15 +98,20 @@ msgid ""
 "of the index, of your book are shown in this preview. All articles, even "
 "those left out of the preview, will be included in the final printed book."
 msgstr ""
+"Пожалуйста, обратите внимание. Это только предварительный просмотр вашей "
+"книги, предназначенный для получения представление о том, как будет "
+"выглядеть ваша книга. В этом предпросмотре показаны только несколько первых "
+"статей и страниц оглавления. Все статьи, в том числе отсутствующие в этом "
+"предпросмотре, будут включены в окончательную версию печатной книги."
 
 #: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:465
 #: mwlib/rl/rlwriter.py:781
 msgid "References"
-msgstr "Сноски"
+msgstr "Примечания"
 
 #: mwlib/rl/pdfmessages.py:49
 msgid "Appendix"
-msgstr ""
+msgstr "Приложение"
 
 #: mwlib/rl/pdfmessages.py:51
 msgid ""
@@ -149,7 +154,7 @@ msgstr "Источники и основные авторы"
 #: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:469
 #: mwlib/rl/rlwriter.py:673
 msgid "Image Sources, Licenses and Contributors"
-msgstr "Источники, Лицензии и Владельцы(?) изображения."
+msgstr "Источники, лицензии и редакторы изображений"
 
 #: mwlib/rl/pdfmessages.py:61
 msgid "Image"
@@ -191,7 +196,7 @@ msgstr "Источник"
 
 #: mwlib/rl/rlwriter.py:663 mwlib/rl/rlwriter.py:689
 msgid "Contributors"
-msgstr "Основные авторы"
+msgstr "Редакторы"
 
 #: mwlib/rl/rlwriter.py:679
 msgid "unknown"
@@ -211,13 +216,3 @@ msgstr ""
 "в виде простого текста.</strong><br/>Возможные причины: (a) ошибка в коде "
 "программы записи pdf-файла (b) проблемная разметка Mediawiki (c) слишком "
 "широкая таблица"
-
-#, fuzzy
-#~ msgid "title"
-#~ msgstr "Название"
-
-#~ msgid "layouting"
-#~ msgstr "разметка"
-
-#~ msgid "rendering"
-#~ msgstr "обработка"
