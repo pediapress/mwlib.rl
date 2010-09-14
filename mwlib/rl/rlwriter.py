@@ -1006,6 +1006,12 @@ class RlWriter(object):
                 log.warning(node.__class__.__name__, ' contained block element: ', child.__class__.__name__)
                 txt.append(self.renderText(child.getAllDisplayText()))
         self.inline_mode -= 1
+
+        text_color = styleutils.rgbColorFromNode(node)
+        if text_color:
+            hex_col = ''.join(hex(int(c*255))[2:] for c in text_color)
+            txt.insert(0, '<font color="#%s">' % hex_col)
+            txt.append('</font>')
         return txt
 
     def renderMixed(self, node, para_style=None, textPrefix=None):        
