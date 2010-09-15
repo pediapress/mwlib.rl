@@ -2048,6 +2048,9 @@ class RlWriter(object):
         w,h = img.size
         del img
 
+        if w > 1000 or h > 1000:
+            log.info('skipping math formula, png to big:' % repr(source))
+            return ''
         if self.table_nesting: # scale down math-formulas in tables
             w = w * pdfstyles.small_font_size/pdfstyles.font_size
             h = h * pdfstyles.small_font_size/pdfstyles.font_size
