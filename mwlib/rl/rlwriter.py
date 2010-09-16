@@ -406,7 +406,7 @@ class RlWriter(object):
         self.initReportlabDoc(output)
 
         elements = []
-
+        self.toc_entries = []
         if pdfstyles.show_title_page:
             elements.extend(self.writeTitlePage(coverimage=coverimage or pdfstyles.titlepageimage))
 
@@ -761,8 +761,7 @@ class RlWriter(object):
             
         heading_para = Paragraph('<b>%s</b>%s' % (title, heading_anchor), heading_style("article"))            
         elements.append(heading_para)
-        if not self.fail_safe_rendering:
-            elements.append(TocEntry(txt=title, lvl='article'))
+        elements.append(TocEntry(txt=title, lvl='article'))
 
         if pdfstyles.show_article_hr:
             elements.append(HRFlowable(width='100%', hAlign='LEFT', thickness=1, spaceBefore=0, spaceAfter=10, color=colors.black))
