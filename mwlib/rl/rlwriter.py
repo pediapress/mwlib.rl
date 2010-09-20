@@ -191,6 +191,7 @@ class RlWriter(object):
 
         self.tc = TreeCleaner([], save_reports=self.debug)
         self.tc.skipMethods = pdfstyles.treecleaner_skip_methods
+        self.tc.contentWithoutTextClasses.append(advtree.ReferenceList)
 
         self.cnt = CustomNodeTransformer()
         self.formatter = RLFormatter(font_switcher=self.font_switcher)
