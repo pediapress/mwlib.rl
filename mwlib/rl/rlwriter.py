@@ -1404,6 +1404,7 @@ class RlWriter(object):
                         imgHeight=h,
                         margin=(0.2*cm, 0.2*cm, 0.2*cm, 0.2*cm),
                         padding=(0.2*cm, 0.2*cm, 0.2*cm, 0.2*cm),
+                        borderColor=pdfstyles.img_border_color,
                         align=align,
                         url=url)
         return [figure]

@@ -100,6 +100,8 @@ img_min_res = 75
 img_inline_scale_factor = 0.7 # factor by which inline images are scaled.
 print_width_px = 540 # 540px are assumed to be the equivalent for a full print width
 
+img_border_color=(0.75, 0.75, 0.75)
+
 ######### TEXT CONFIGURATION
 font_size = 10
 leading = 15
