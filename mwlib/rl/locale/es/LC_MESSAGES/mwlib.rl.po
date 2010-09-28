@@ -126,28 +126,20 @@ msgstr ""
 "del derecho de autor, y las condiciones de la licencia."
 
 #: mwlib/rl/pdfmessages.py:53
-#, fuzzy
 msgid ""
 "The sources listed for each article provide more detailed licensing "
 "information including the copyright status, the copyright owner, and the "
 "license conditions."
 msgstr ""
-"Las siguientes secciones listan las fuentes para todos los artículos e "
-"imágenes usadas en este libro. Esas fuentes proveen más información de "
-"licencia detallada incluyendo el status de derechos de autor, el propietario "
-"del derecho de autor, y las condiciones de la licencia."
+"Las fuentes listadas para cada artículo ofrecen información mas detallada sobre su licencia, incluyendo quien tiene sus derechos de autor, la vigencia de la licencia y sus condiciones."
 
 #: mwlib/rl/pdfmessages.py:55
-#, fuzzy
 msgid ""
 "The sources listed for each image provide more detailed licensing "
 "information including the copyright status, the copyright owner, and the "
 "license conditions."
 msgstr ""
-"Las siguientes secciones listan las fuentes para todos los artículos e "
-"imágenes usadas en este libro. Esas fuentes proveen más información de "
-"licencia detallada incluyendo el status de derechos de autor, el propietario "
-"del derecho de autor, y las condiciones de la licencia."
+"Las fuentes listadas para cada imagen ofrecen información más detallada sobre su licencia, incluyendo quien tiene sus derechos de autor, la vigencia de la licencia y sus condiciones."
 
 #: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:466
 #: mwlib/rl/rlwriter.py:654
