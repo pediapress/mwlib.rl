@@ -1,21 +1,23 @@
-# Translation of Mwlib.rl to Swedish
+# Translation of Mwlib.rl to Swedish (Svenska)
+# Expored from translatewiki.net
 #
-# Author@translatewiki.net: Hannibal
-# Author@translatewiki.net: Poxnar
-# --
+# Author: Hannibal
+# Author: Poxnar
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-25 08:43+0000\n"
-"PO-Revision-Date: 2009-12-18 08:43:04+0000\n"
-"Language-Team: Swedish\n"
+"POT-Creation-Date: 2010-09-30 18:10+0000\n"
+"PO-Revision-Date: 2010-09-30 18:10:16+0000\n"
+"Language-Team: Swedish <http://translatewiki.net/wik/Portal:sv>\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.16alpha (r60201); Translate extension (2009-12-06)\n"
+"X-Generator: MediaWiki 1.17alpha (r74024); Translate extension (2010-09-17)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: sv\n"
-"X-Message-Group: out-mwlibrl\n"
+"X-Message-Group: #out-mwlibrl\n"
+"X-POT-Import-Date: 2010-09-16 16:47:47+0000\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: mwlib/rl/pdfmessages.py:11
 msgid "Index"
@@ -33,7 +35,7 @@ msgstr "Licens:"
 msgid "Contributors:"
 msgstr "Bidragsgivare:"
 
-#: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:506
+#: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:508
 msgid "Article Licenses"
 msgstr "Artikellicenser"
 
@@ -57,7 +59,7 @@ msgstr "Skapad den:"
 msgid "Contents"
 msgstr "Innehåll"
 
-#: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:417
+#: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:419
 msgid "Articles"
 msgstr "Artiklar"
 
@@ -97,8 +99,8 @@ msgid ""
 "those left out of the preview, will be included in the final printed book."
 msgstr ""
 
-#: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:465
-#: mwlib/rl/rlwriter.py:781
+#: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:467
+#: mwlib/rl/rlwriter.py:784
 msgid "References"
 msgstr "Referenser"
 
@@ -139,13 +141,13 @@ msgstr ""
 "boken. De källorna ger ytterligare licensinformation, såsom "
 "upphovsrättsstatus, upphovsrättsinnehavare, och licensens villkor."
 
-#: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:466
-#: mwlib/rl/rlwriter.py:654
+#: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:468
+#: mwlib/rl/rlwriter.py:657
 msgid "Article Sources and Contributors"
 msgstr "Artikelkällor och författare"
 
-#: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:469
-#: mwlib/rl/rlwriter.py:673
+#: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:471
+#: mwlib/rl/rlwriter.py:676
 msgid "Image Sources, Licenses and Contributors"
 msgstr "Bildkällor, -licenser och -bidragsgivare"
 
@@ -153,7 +155,7 @@ msgstr "Bildkällor, -licenser och -bidragsgivare"
 msgid "Image"
 msgstr "Bild"
 
-#: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:646
+#: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:649
 msgid "anonymous edits"
 msgstr "anonyma redigeringar"
 
@@ -169,12 +171,12 @@ msgstr ""
 "PDF skapad med hjälp av det öppna källkod-verktyget mwlib. Se http://code."
 "pediapress.com/ för mer information."
 
-#: mwlib/rl/rlwriter.py:302
+#: mwlib/rl/rlwriter.py:303
 #, python-format
 msgid "mwlib.ext version: %(version)s"
 msgstr "mwlib.ext-version: %(version)s"
 
-#: mwlib/rl/rlwriter.py:308
+#: mwlib/rl/rlwriter.py:309
 #, python-format
 msgid ""
 "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
@@ -183,23 +185,23 @@ msgstr ""
 "mwlib-version: %(mwlibversion)s, mwlib.rl-version: %(mwlibrlversion)s, %"
 "(mwlibextversion)s"
 
-#: mwlib/rl/rlwriter.py:661 mwlib/rl/rlwriter.py:686
+#: mwlib/rl/rlwriter.py:664 mwlib/rl/rlwriter.py:689
 msgid "Source"
 msgstr "Källa"
 
-#: mwlib/rl/rlwriter.py:663 mwlib/rl/rlwriter.py:689
+#: mwlib/rl/rlwriter.py:666 mwlib/rl/rlwriter.py:692
 msgid "Contributors"
 msgstr "Bidragsgivare"
 
-#: mwlib/rl/rlwriter.py:679
+#: mwlib/rl/rlwriter.py:682
 msgid "unknown"
 msgstr "okänd"
 
-#: mwlib/rl/rlwriter.py:681
+#: mwlib/rl/rlwriter.py:684
 msgid "License"
 msgstr "Licens"
 
-#: mwlib/rl/rlwriter.py:772
+#: mwlib/rl/rlwriter.py:775
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
@@ -208,13 +210,3 @@ msgstr ""
 "<strong>VARNING: Artikeln kunde inte renderas - istället visas ren text.</"
 "strong><br/>Tänkbara orsaker kan vara: (a) en bug i programvaran som skapar "
 "PDF:n (b) problematisk Mediawiki-märktext (c) för bred(a) tabell(er)"
-
-#, fuzzy
-#~ msgid "title"
-#~ msgstr "Titel"
-
-#~ msgid "layouting"
-#~ msgstr "utformar"
-
-#~ msgid "rendering"
-#~ msgstr "renderar"
