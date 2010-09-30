@@ -5,9 +5,10 @@
 # See README.txt for additional licensing information.
 
 import string 
+import re
 
 from reportlab.platypus.flowables import Flowable, Image, HRFlowable, Preformatted, PageBreak, _listWrapOn, _ContainerSpace, _flowableSublist
-from reportlab.platypus.paragraph import Paragraph, deepcopy
+from reportlab.platypus.paragraph import Paragraph, deepcopy, cleanBlockQuotedText
 
 from reportlab.lib.colors import Color
 from mwlib.rl import pdfstyles
@@ -91,6 +92,22 @@ class FiguresAndParagraphs(Flowable):
             if hasattr(p, 'style') and hasattr(p.style, 'spaceBefore'):
                 return p.style.spaceBefore
         return 0
+
+    def resizeInlineImage(self, p, floatWidth):
+        img_dims = re.findall('<img.*?width="([0-9.]+)pt".*?height="([0-9.]+)pt".*?/>', p.text)
+        if img_dims:
+            txt = p.text
+            changed = False
+            for w, h in img_dims:
+                if float(w) < floatWidth:
+                    continue
+                changed = True
+                new_h = float(h) * floatWidth/float(w)
+                new_w = floatWidth
+                txt = txt.replace('width="%spt"' % w, 'width="%.2fpt"' % new_w)
+                txt = txt.replace('height="%spt"' % h, 'height="%.2fpt"' % new_h)
+            if changed:
+                p._setup(txt, p.style, p.bulletText, None, cleanBlockQuotedText)
     
     def wrap(self, availWidth, availHeight):
         maxWf = 0
@@ -117,6 +134,7 @@ class FiguresAndParagraphs(Flowable):
                 continue
             fullWidth = availWidth - p.style.leftIndent - p.style.rightIndent
             floatWidth = fullWidth - maxWf
+            self.resizeInlineImage(p, floatWidth)
             nfloatLines = max(0, int((totalHf - (sum(self.paraHeights)))/p.style.leading)) 
             p.width = 0
             if hasattr(p, 'blPara'):
