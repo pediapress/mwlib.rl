@@ -353,17 +353,17 @@ def border_styles(table):
 
 def background_styles(table):
     styles = []
-    table_bg = styleutils.rgbBgColorFromNode(table)
+    table_bg = styleutils.rgbBgColorFromNode(table, follow=False)
     if table_bg:
         styles.append(('BACKGROUND', (0, 0), (-1, -1), colors.Color(table_bg[0], table_bg[1], table_bg[2])))
     for (row_idx, row) in enumerate(table.children):
-        rgb = styleutils.rgbBgColorFromNode(row)
+        rgb = styleutils.rgbBgColorFromNode(row, follow=False)
         if rgb:
             styles.append(('BACKGROUND', (0,row_idx), (-1,row_idx), colors.Color(rgb[0], rgb[1], rgb[2])))
         for (col_idx, cell) in enumerate(row.children):
             if cell.__class__ != Cell:
                 continue            
-            rgb = styleutils.rgbBgColorFromNode(cell)
+            rgb = styleutils.rgbBgColorFromNode(cell, follow=False)
             if rgb:
                 styles.append(('BACKGROUND',
                                (col_idx,row_idx),
