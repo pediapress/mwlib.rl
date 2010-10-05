@@ -246,8 +246,8 @@ def optimizeWidths(min_widths, max_widths, avail_width, stretch=False):
     
     # prevent remaining_space to get negative. -5 compensates for table margins
     remaining_space = max(-5, remaining_space)
-    
     if total_delta < 0.1 or sum(max_widths) < avail_width:
+        max_widths = [w + 0.01 for w in max_widths]
         return max_widths
     col_widths = []
     for i in range(len(min_widths)):
