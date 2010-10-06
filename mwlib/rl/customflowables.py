@@ -94,6 +94,8 @@ class FiguresAndParagraphs(Flowable):
         return 0
 
     def resizeInlineImage(self, p, floatWidth):
+        if p.text is None:
+            return
         img_dims = re.findall('<img.*?width="([0-9.]+)pt".*?height="([0-9.]+)pt".*?/>', p.text)
         if img_dims:
             txt = p.text
