@@ -1,24 +1,27 @@
-# Translation of Mwlib.rl to Message documentation
+# Translation of Mwlib.rl to Message documentation (Message documentation)
+# Expored from translatewiki.net
 #
-# Author@translatewiki.net: EugeneZelenko
-# Author@translatewiki.net: Fryed-peach
-# Author@translatewiki.net: Raymond
-# Author@translatewiki.net: Siebrand
-# Author@translatewiki.net: Tgr
-# --
+# Author: EugeneZelenko
+# Author: Fryed-peach
+# Author: Raymond
+# Author: Siebrand
+# Author: Tgr
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-30 18:10+0000\n"
-"PO-Revision-Date: 2010-08-25 08:42:06+0000\n"
-"Language-Team: Message documentation\n"
+"POT-Creation-Date: 2010-10-06 13:58+0000\n"
+"PO-Revision-Date: 2010-10-06 13:58:03+0000\n"
+"Language-Team: Message documentation <http://translatewiki.net/wiki/Portal:"
+"qqq>\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.17alpha (r71602); Translate extension (2010-08-20)\n"
+"X-Generator: MediaWiki 1.17alpha (r74353); Translate extension (2010-09-17)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: qqq\n"
-"X-Message-Group: out-mwlibrl\n"
+"X-Message-Group: #out-mwlibrl\n"
+"X-POT-Import-Date: 2010-10-06 13:50:23+0000\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: mwlib/rl/pdfmessages.py:11
 msgid "Index"
@@ -62,9 +65,8 @@ msgid "Contents"
 msgstr "{{Identical|Contents}}"
 
 #: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:419
-#, fuzzy
 msgid "Articles"
-msgstr "{{Identical|License}}"
+msgstr ""
 
 #: mwlib/rl/pdfmessages.py:33
 msgid "Produced by:"

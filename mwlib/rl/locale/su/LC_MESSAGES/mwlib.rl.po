@@ -1,20 +1,22 @@
-# Translation of Mwlib.rl to Sundanese
+# Translation of Mwlib.rl to Sundanese (Basa Sunda)
+# Expored from translatewiki.net
 #
-# Author@translatewiki.net: Kandar
-# --
+# Author: Kandar
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-30 18:10+0000\n"
-"PO-Revision-Date: 2009-12-18 08:43:04+0000\n"
-"Language-Team: Sundanese\n"
+"POT-Creation-Date: 2010-10-06 13:58+0000\n"
+"PO-Revision-Date: 2010-10-06 13:58:03+0000\n"
+"Language-Team: Sundanese <http://translatewiki.net/wiki/Portal:su>\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.16alpha (r60201); Translate extension (2009-12-06)\n"
+"X-Generator: MediaWiki 1.17alpha (r74353); Translate extension (2010-09-17)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: su\n"
-"X-Message-Group: out-mwlibrl\n"
+"X-Message-Group: #out-mwlibrl\n"
+"X-POT-Import-Date: 2010-10-06 13:50:23+0000\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 #: mwlib/rl/pdfmessages.py:11
 msgid "Index"
@@ -194,7 +196,3 @@ msgid ""
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
 "software (b) problematic Mediawiki markup (c) table is too wide"
 msgstr ""
-
-#, fuzzy
-#~ msgid "title"
-#~ msgstr "Judul"

@@ -1,21 +1,23 @@
-# Translation of Mwlib.rl to Telugu
+# Translation of Mwlib.rl to Telugu (తెలుగు)
+# Expored from translatewiki.net
 #
-# Author@translatewiki.net: Kiranmayee
-# Author@translatewiki.net: Veeven
-# --
+# Author: Kiranmayee
+# Author: Veeven
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-30 18:10+0000\n"
-"PO-Revision-Date: 2009-12-18 08:43:04+0000\n"
-"Language-Team: Telugu\n"
+"POT-Creation-Date: 2010-10-06 13:58+0000\n"
+"PO-Revision-Date: 2010-10-06 13:58:03+0000\n"
+"Language-Team: Telugu <http://translatewiki.net/wiki/Portal:te>\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.16alpha (r60201); Translate extension (2009-12-06)\n"
+"X-Generator: MediaWiki 1.17alpha (r74353); Translate extension (2010-09-17)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: te\n"
-"X-Message-Group: out-mwlibrl\n"
+"X-Message-Group: #out-mwlibrl\n"
+"X-POT-Import-Date: 2010-10-06 13:50:23+0000\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: mwlib/rl/pdfmessages.py:11
 msgid "Index"
@@ -23,16 +25,15 @@ msgstr ""
 
 #: mwlib/rl/pdfmessages.py:13
 msgid "Source:"
-msgstr ""
+msgstr "మూలం:"
 
 #: mwlib/rl/pdfmessages.py:15
 msgid "License:"
-msgstr ""
+msgstr "లైసెన్సు:"
 
 #: mwlib/rl/pdfmessages.py:17
-#, fuzzy
 msgid "Contributors:"
-msgstr "విషయ సూచిక"
+msgstr "విషయదాతలు:"
 
 #: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:508
 msgid "Article Licenses"
@@ -60,7 +61,7 @@ msgstr "సూచిక"
 
 #: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:419
 msgid "Articles"
-msgstr ""
+msgstr "వ్యాసాలు"
 
 #: mwlib/rl/pdfmessages.py:33
 msgid "Produced by:"
@@ -143,7 +144,7 @@ msgstr ""
 
 #: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:649
 msgid "anonymous edits"
-msgstr ""
+msgstr "అనామక మార్పులు"
 
 #: mwlib/rl/pdfmessages.py:65
 msgid "Figure"
@@ -169,12 +170,11 @@ msgstr ""
 
 #: mwlib/rl/rlwriter.py:664 mwlib/rl/rlwriter.py:689
 msgid "Source"
-msgstr ""
+msgstr "మూలం"
 
 #: mwlib/rl/rlwriter.py:666 mwlib/rl/rlwriter.py:692
-#, fuzzy
 msgid "Contributors"
-msgstr "విషయ సూచిక"
+msgstr "విషయదాతలు"
 
 #: mwlib/rl/rlwriter.py:682
 msgid "unknown"
@@ -182,7 +182,7 @@ msgstr "అజ్ఞాతం"
 
 #: mwlib/rl/rlwriter.py:684
 msgid "License"
-msgstr ""
+msgstr "లైసెన్సు"
 
 #: mwlib/rl/rlwriter.py:775
 msgid ""
@@ -190,7 +190,3 @@ msgid ""
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
 "software (b) problematic Mediawiki markup (c) table is too wide"
 msgstr ""
-
-#, fuzzy
-#~ msgid "title"
-#~ msgstr "శీర్షిక"

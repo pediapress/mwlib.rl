@@ -1,19 +1,22 @@
-# Translation of Mwlib.rl to Pashto
+# Translation of Mwlib.rl to Pashto (پښتو)
+# Expored from translatewiki.net
 #
-# Author@translatewiki.net: Ahmed-Najib-Biabani-Ibrahimkhel
-# --
+# Author: Ahmed-Najib-Biabani-Ibrahimkhel
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-30 18:10+0000\n"
-"PO-Revision-Date: 2010-08-25 08:42:06+0000\n"
+"POT-Creation-Date: 2010-10-06 13:58+0000\n"
+"PO-Revision-Date: 2010-10-06 13:58:03+0000\n"
+"Language-Team: Pashto <http://translatewiki.net/wiki/Portal:ps>\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.17alpha (r71602); Translate extension (2010-08-20)\n"
+"X-Generator: MediaWiki 1.17alpha (r74353); Translate extension (2010-09-17)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: ps\n"
-"X-Message-Group: out-mwlibrl\n"
+"X-Message-Group: #out-mwlibrl\n"
+"X-POT-Import-Date: 2010-10-06 13:50:23+0000\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: mwlib/rl/pdfmessages.py:11
 msgid "Index"
@@ -32,9 +35,8 @@ msgid "Contributors:"
 msgstr "ونډه والان:"
 
 #: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:508
-#, fuzzy
 msgid "Article Licenses"
-msgstr "ليکنې"
+msgstr "د ليکنې منښتليکونه"
 
 #: mwlib/rl/pdfmessages.py:21
 msgid "Title"
@@ -46,11 +48,11 @@ msgstr "وړوکی سرليک:"
 
 #: mwlib/rl/pdfmessages.py:25
 msgid "Editor:"
-msgstr ""
+msgstr "سمونګر:"
 
 #: mwlib/rl/pdfmessages.py:27
 msgid "Created on:"
-msgstr ""
+msgstr "جوړ شوی په:"
 
 #: mwlib/rl/pdfmessages.py:29 mwlib/rl/toc.py:46
 msgid "Contents"
@@ -66,26 +68,27 @@ msgstr ""
 
 #: mwlib/rl/pdfmessages.py:35
 msgid "pdf writer version:"
-msgstr ""
+msgstr "د pdf ليکونکي بڼه:"
 
 #: mwlib/rl/pdfmessages.py:37
 msgid "mwlib version:"
-msgstr ""
+msgstr "د mwlib بڼه:"
 
 #: mwlib/rl/pdfmessages.py:39
 msgid "Table of Contents"
 msgstr "نيوليک"
 
 #: mwlib/rl/pdfmessages.py:41
-#, fuzzy
 msgid "Skipping Articles!"
-msgstr "ليکنې"
+msgstr "له ليکنو تېرېدنه!"
 
 #: mwlib/rl/pdfmessages.py:43
 msgid ""
 "Please note:  This is only a preview intended to give an idea how the book "
 "is typeset."
 msgstr ""
+"لطفاُ په ياد ولرۍ: دا يوازې يوه مخليدنه ده چې تاسې ته د کتاب د سمبالښت او "
+"جوړېدو په موخه ورکړل شوې."
 
 #: mwlib/rl/pdfmessages.py:45
 msgid ""
@@ -102,7 +105,7 @@ msgstr "سرچينې"
 
 #: mwlib/rl/pdfmessages.py:49
 msgid "Appendix"
-msgstr ""
+msgstr "پايمل"
 
 #: mwlib/rl/pdfmessages.py:51
 msgid ""
@@ -129,12 +132,12 @@ msgstr ""
 #: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:468
 #: mwlib/rl/rlwriter.py:657
 msgid "Article Sources and Contributors"
-msgstr ""
+msgstr "د ليکنې سرچينې او ونډه وال"
 
 #: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:471
 #: mwlib/rl/rlwriter.py:676
 msgid "Image Sources, Licenses and Contributors"
-msgstr ""
+msgstr "د انځور سرچينې، منښتليکونه او ونډه وال"
 
 #: mwlib/rl/pdfmessages.py:61
 msgid "Image"
