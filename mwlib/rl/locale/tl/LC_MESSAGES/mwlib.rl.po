@@ -1,40 +1,40 @@
-# Translation of Mwlib.rl to Tagalog
+# Translation of Mwlib.rl to Tagalog (Tagalog)
+# Expored from translatewiki.net
 #
-# Author@translatewiki.net: AnakngAraw
-# --
+# Author: AnakngAraw
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-25 08:43+0000\n"
-"PO-Revision-Date: 2009-12-18 08:43:04+0000\n"
-"Language-Team: Tagalog\n"
+"POT-Creation-Date: 2010-10-06 13:58+0000\n"
+"PO-Revision-Date: 2010-10-06 13:58:03+0000\n"
+"Language-Team: Tagalog <http://translatewiki.net/wiki/Portal:tl>\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.16alpha (r60201); Translate extension (2009-12-06)\n"
+"X-Generator: MediaWiki 1.17alpha (r74353); Translate extension (2010-09-17)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: tl\n"
-"X-Message-Group: out-mwlibrl\n"
+"X-Message-Group: #out-mwlibrl\n"
+"X-POT-Import-Date: 2010-10-06 13:50:23+0000\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: mwlib/rl/pdfmessages.py:11
 msgid "Index"
-msgstr ""
+msgstr "Talatuntunan"
 
 #: mwlib/rl/pdfmessages.py:13
 msgid "Source:"
-msgstr ""
+msgstr "Pinagmulan:"
 
 #: mwlib/rl/pdfmessages.py:15
-#, fuzzy
 msgid "License:"
-msgstr "Mga Lisensya ng mga Lathalain/Artikulo"
+msgstr "Lisensya:"
 
 #: mwlib/rl/pdfmessages.py:17
-#, fuzzy
 msgid "Contributors:"
-msgstr "Pangunahing mga May-akda:"
+msgstr "Mga umambag:"
 
-#: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:506
+#: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:508
 msgid "Article Licenses"
 msgstr "Mga Lisensya ng mga Lathalain/Artikulo"
 
@@ -58,7 +58,7 @@ msgstr "Nilikha noong:"
 msgid "Contents"
 msgstr "Mga nilalaman"
 
-#: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:417
+#: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:419
 msgid "Articles"
 msgstr "Mga lathalain/artikulo"
 
@@ -97,15 +97,21 @@ msgid ""
 "of the index, of your book are shown in this preview. All articles, even "
 "those left out of the preview, will be included in the final printed book."
 msgstr ""
+"Pakitandaan: Isa lamang itong paunang tingin ng aklat mo, na nilalayong "
+"magbigay ng isang ideya kung paano ang hitsura ng iyong aklat.  Tanging ang "
+"unang mangilan-ngilang mga artikulo, pati na ang unang mga pahina ng "
+"talatuntunan, ng aklat mo ang ipinakikita sa paunang tinging ito.  Lahat ng "
+"mga artikulo, pati na yung hindi isinama sa paunang patingin, ay makakasama "
+"sa talagang nalimbag na aklat."
 
-#: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:465
-#: mwlib/rl/rlwriter.py:781
+#: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:467
+#: mwlib/rl/rlwriter.py:784
 msgid "References"
 msgstr "Mga sanggunian"
 
 #: mwlib/rl/pdfmessages.py:49
 msgid "Appendix"
-msgstr ""
+msgstr "Karugtong"
 
 #: mwlib/rl/pdfmessages.py:51
 msgid ""
@@ -146,14 +152,13 @@ msgstr ""
 "kabilang ang kalagayan ng karapatang-ari, ang may-ari ng karapatang-ari, at "
 "mga kalakaran ng lisensiya."
 
-#: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:466
-#: mwlib/rl/rlwriter.py:654
-#, fuzzy
+#: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:468
+#: mwlib/rl/rlwriter.py:657
 msgid "Article Sources and Contributors"
-msgstr "Mga Pinagmulan, Mga Lisensiya, at Mga Tagapag-ambag ng Larawan"
+msgstr "Mga Pinagmulan at Mga Umambag ng Artikulo"
 
-#: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:469
-#: mwlib/rl/rlwriter.py:673
+#: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:471
+#: mwlib/rl/rlwriter.py:676
 msgid "Image Sources, Licenses and Contributors"
 msgstr "Mga Pinagmulan, Mga Lisensiya, at Mga Tagapag-ambag ng Larawan"
 
@@ -161,26 +166,29 @@ msgstr "Mga Pinagmulan, Mga Lisensiya, at Mga Tagapag-ambag ng Larawan"
 msgid "Image"
 msgstr "Larawan"
 
-#: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:646
+#: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:649
 msgid "anonymous edits"
-msgstr ""
+msgstr "mga pagbabagong gawa ng mga hindi nagpapakilala"
 
 #: mwlib/rl/pdfmessages.py:65
 msgid "Figure"
-msgstr ""
+msgstr "Banghay"
 
 #: mwlib/rl/pdfstyles.py:78
 msgid ""
 "PDF generated using the open source mwlib toolkit. See http://code."
 "pediapress.com/ for more information."
 msgstr ""
+"Nilikha ng PDF na ginagamitan ng bukas na pinagmulang lalagyan ng "
+"kasangkapan ng mwlib .  Tingnan ang http://code.pediapress.com/ para sa mas "
+"marami pang kabatiran."
 
-#: mwlib/rl/rlwriter.py:302
+#: mwlib/rl/rlwriter.py:303
 #, python-format
 msgid "mwlib.ext version: %(version)s"
 msgstr "bersyong mwlib.ext: %(version)s"
 
-#: mwlib/rl/rlwriter.py:308
+#: mwlib/rl/rlwriter.py:309
 #, python-format
 msgid ""
 "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
@@ -189,25 +197,23 @@ msgstr ""
 "bersyong mwlib: %(mwlibversion)s, bersyong mwlib.rl: %(mwlibrlversion)s, %"
 "(mwlibextversion)s"
 
-#: mwlib/rl/rlwriter.py:661 mwlib/rl/rlwriter.py:686
+#: mwlib/rl/rlwriter.py:664 mwlib/rl/rlwriter.py:689
 msgid "Source"
-msgstr ""
+msgstr "Pinagmulan"
 
-#: mwlib/rl/rlwriter.py:663 mwlib/rl/rlwriter.py:689
-#, fuzzy
+#: mwlib/rl/rlwriter.py:666 mwlib/rl/rlwriter.py:692
 msgid "Contributors"
-msgstr "Pangunahing mga May-akda:"
+msgstr "Mga umambag"
 
-#: mwlib/rl/rlwriter.py:679
+#: mwlib/rl/rlwriter.py:682
 msgid "unknown"
-msgstr ""
+msgstr "hindi nalalaman"
 
-#: mwlib/rl/rlwriter.py:681
-#, fuzzy
+#: mwlib/rl/rlwriter.py:684
 msgid "License"
-msgstr "Mga Lisensya ng mga Lathalain/Artikulo"
+msgstr "Lisensya"
 
-#: mwlib/rl/rlwriter.py:772
+#: mwlib/rl/rlwriter.py:775
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
@@ -217,13 +223,3 @@ msgstr ""
 "maaaring sanhi ng suliranin ay: (a) isang depekto (''bug'') sa sopwer na "
 "panulat ng pdf (b) may suliraning pangpaglalarawan at pagpapaliwanag ng "
 "kayarian (''markup'') (c) napakaluwang ng tabla"
-
-#, fuzzy
-#~ msgid "title"
-#~ msgstr "Pamagat"
-
-#~ msgid "layouting"
-#~ msgstr "inaayos ang anyo ng paglalatag"
-
-#~ msgid "rendering"
-#~ msgstr "naghahain"

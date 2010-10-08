@@ -1,28 +1,25 @@
-# Translation of Mwlib.rl to Polish
+# Translation of Mwlib.rl to Polish (Polski)
+# Expored from translatewiki.net
 #
-# Author@translatewiki.net: Marcin Łukasz Kiejzik
-# Author@translatewiki.net: Matma Rex
-# Author@translatewiki.net: Sp5uhe
-# --
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
+# Author: Marcin Łukasz Kiejzik
+# Author: Matma Rex
+# Author: Sp5uhe
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-25 08:43+0000\n"
-"PO-Revision-Date: 2010-08-25 08:42:06+0000\n"
-"Language-Team: Polish\n"
+"POT-Creation-Date: 2010-10-06 13:58+0000\n"
+"PO-Revision-Date: 2010-10-06 13:58:03+0000\n"
+"Language-Team: Polish <http://translatewiki.net/wiki/Portal:pl>\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.17alpha (r71602); Translate extension (2010-08-20)\n"
+"X-Generator: MediaWiki 1.17alpha (r74353); Translate extension (2010-09-17)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: pl\n"
-"X-Message-Group: out-mwlibrl\n"
+"X-Message-Group: #out-mwlibrl\n"
+"X-POT-Import-Date: 2010-10-06 13:50:23+0000\n"
+"Plural-Forms: nplurals=3; plural=(n == 1) ? 0 : ( (n%10 >= 2 && n%10 <= 4 && "
+"(n%100 < 10 || n%100 >= 20)) ? 1 : 2 );\n"
 
 #: mwlib/rl/pdfmessages.py:11
 msgid "Index"
@@ -40,7 +37,7 @@ msgstr "Licencja"
 msgid "Contributors:"
 msgstr "Autorzy:"
 
-#: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:506
+#: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:508
 msgid "Article Licenses"
 msgstr "Licencje artykułu"
 
@@ -64,7 +61,7 @@ msgstr "Utworzone:"
 msgid "Contents"
 msgstr "Treść"
 
-#: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:417
+#: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:419
 msgid "Articles"
 msgstr "Artykuły"
 
@@ -108,8 +105,8 @@ msgstr ""
 "indeksu. Wszystkie artykuły, nawet te na lewo od podglądu, zostaną "
 "uwzględnione w ostatecznej drukowanej wersji książki."
 
-#: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:465
-#: mwlib/rl/rlwriter.py:781
+#: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:467
+#: mwlib/rl/rlwriter.py:784
 msgid "References"
 msgstr "Przypisy"
 
@@ -153,13 +150,13 @@ msgstr ""
 "licencjonowaniu zawierającej informację o prawach autorskich, właścicielu "
 "praw autorskich i warunkach licencji."
 
-#: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:466
-#: mwlib/rl/rlwriter.py:654
+#: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:468
+#: mwlib/rl/rlwriter.py:657
 msgid "Article Sources and Contributors"
 msgstr "Źródła i autorzy artykułu"
 
-#: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:469
-#: mwlib/rl/rlwriter.py:673
+#: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:471
+#: mwlib/rl/rlwriter.py:676
 msgid "Image Sources, Licenses and Contributors"
 msgstr "Źródła, licencje i autorzy grafik"
 
@@ -167,7 +164,7 @@ msgstr "Źródła, licencje i autorzy grafik"
 msgid "Image"
 msgstr "Grafika"
 
-#: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:646
+#: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:649
 msgid "anonymous edits"
 msgstr "anonimowych edycji"
 
@@ -183,12 +180,12 @@ msgstr ""
 "PDF wygenerowany przy użyciu narzędzi open source mwlib. Zobacz http://code."
 "pediapress.com/ aby uzyskać więcej informacji."
 
-#: mwlib/rl/rlwriter.py:302
+#: mwlib/rl/rlwriter.py:303
 #, python-format
 msgid "mwlib.ext version: %(version)s"
 msgstr "wersja mwlib.ext: %(version)s"
 
-#: mwlib/rl/rlwriter.py:308
+#: mwlib/rl/rlwriter.py:309
 #, python-format
 msgid ""
 "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
@@ -197,23 +194,23 @@ msgstr ""
 "wersja mwlib: %(mwlibversion)s, wersja mwlib.rl: %(mwlibrlversion)s, %"
 "(mwlibextversion)s"
 
-#: mwlib/rl/rlwriter.py:661 mwlib/rl/rlwriter.py:686
+#: mwlib/rl/rlwriter.py:664 mwlib/rl/rlwriter.py:689
 msgid "Source"
 msgstr "Źródło"
 
-#: mwlib/rl/rlwriter.py:663 mwlib/rl/rlwriter.py:689
+#: mwlib/rl/rlwriter.py:666 mwlib/rl/rlwriter.py:692
 msgid "Contributors"
 msgstr "Autorzy"
 
-#: mwlib/rl/rlwriter.py:679
+#: mwlib/rl/rlwriter.py:682
 msgid "unknown"
 msgstr "nieznany"
 
-#: mwlib/rl/rlwriter.py:681
+#: mwlib/rl/rlwriter.py:684
 msgid "License"
 msgstr "Licencja"
 
-#: mwlib/rl/rlwriter.py:772
+#: mwlib/rl/rlwriter.py:775
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "

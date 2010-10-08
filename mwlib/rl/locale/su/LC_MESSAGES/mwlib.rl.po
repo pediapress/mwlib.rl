@@ -1,20 +1,22 @@
-# Translation of Mwlib.rl to Sundanese
+# Translation of Mwlib.rl to Sundanese (Basa Sunda)
+# Expored from translatewiki.net
 #
-# Author@translatewiki.net: Kandar
-# --
+# Author: Kandar
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-25 08:43+0000\n"
-"PO-Revision-Date: 2009-12-18 08:43:04+0000\n"
-"Language-Team: Sundanese\n"
+"POT-Creation-Date: 2010-10-06 13:58+0000\n"
+"PO-Revision-Date: 2010-10-06 13:58:03+0000\n"
+"Language-Team: Sundanese <http://translatewiki.net/wiki/Portal:su>\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.16alpha (r60201); Translate extension (2009-12-06)\n"
+"X-Generator: MediaWiki 1.17alpha (r74353); Translate extension (2010-09-17)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: su\n"
-"X-Message-Group: out-mwlibrl\n"
+"X-Message-Group: #out-mwlibrl\n"
+"X-POT-Import-Date: 2010-10-06 13:50:23+0000\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 #: mwlib/rl/pdfmessages.py:11
 msgid "Index"
@@ -34,7 +36,7 @@ msgstr "Lisénsi Tulisan"
 msgid "Contributors:"
 msgstr "Eusi"
 
-#: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:506
+#: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:508
 msgid "Article Licenses"
 msgstr "Lisénsi Tulisan"
 
@@ -58,7 +60,7 @@ msgstr "Titimangsa dijieun:"
 msgid "Contents"
 msgstr "Eusi"
 
-#: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:417
+#: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:419
 msgid "Articles"
 msgstr "Tulisan"
 
@@ -96,8 +98,8 @@ msgid ""
 "those left out of the preview, will be included in the final printed book."
 msgstr ""
 
-#: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:465
-#: mwlib/rl/rlwriter.py:781
+#: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:467
+#: mwlib/rl/rlwriter.py:784
 msgid "References"
 msgstr "Rujukan"
 
@@ -127,14 +129,14 @@ msgid ""
 "license conditions."
 msgstr ""
 
-#: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:466
-#: mwlib/rl/rlwriter.py:654
+#: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:468
+#: mwlib/rl/rlwriter.py:657
 #, fuzzy
 msgid "Article Sources and Contributors"
 msgstr "Sumber, Lisénsi, jeung Panyumbang Tulisan"
 
-#: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:469
-#: mwlib/rl/rlwriter.py:673
+#: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:471
+#: mwlib/rl/rlwriter.py:676
 msgid "Image Sources, Licenses and Contributors"
 msgstr "Sumber, Lisénsi, jeung Panyumbang Gambar"
 
@@ -142,7 +144,7 @@ msgstr "Sumber, Lisénsi, jeung Panyumbang Gambar"
 msgid "Image"
 msgstr "Gambar"
 
-#: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:646
+#: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:649
 msgid "anonymous edits"
 msgstr ""
 
@@ -156,12 +158,12 @@ msgid ""
 "pediapress.com/ for more information."
 msgstr ""
 
-#: mwlib/rl/rlwriter.py:302
+#: mwlib/rl/rlwriter.py:303
 #, python-format
 msgid "mwlib.ext version: %(version)s"
 msgstr "vérsi mwlib.ext: %(version)s"
 
-#: mwlib/rl/rlwriter.py:308
+#: mwlib/rl/rlwriter.py:309
 #, python-format
 msgid ""
 "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
@@ -170,31 +172,27 @@ msgstr ""
 "vérsi mwlib: %(mwlibversion)s, vérsi mwlib.rl: %(mwlibrlversion)s, %"
 "(mwlibextversion)s"
 
-#: mwlib/rl/rlwriter.py:661 mwlib/rl/rlwriter.py:686
+#: mwlib/rl/rlwriter.py:664 mwlib/rl/rlwriter.py:689
 msgid "Source"
 msgstr ""
 
-#: mwlib/rl/rlwriter.py:663 mwlib/rl/rlwriter.py:689
+#: mwlib/rl/rlwriter.py:666 mwlib/rl/rlwriter.py:692
 #, fuzzy
 msgid "Contributors"
 msgstr "Eusi"
 
-#: mwlib/rl/rlwriter.py:679
+#: mwlib/rl/rlwriter.py:682
 msgid "unknown"
 msgstr ""
 
-#: mwlib/rl/rlwriter.py:681
+#: mwlib/rl/rlwriter.py:684
 #, fuzzy
 msgid "License"
 msgstr "Lisénsi Tulisan"
 
-#: mwlib/rl/rlwriter.py:772
+#: mwlib/rl/rlwriter.py:775
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
 "software (b) problematic Mediawiki markup (c) table is too wide"
 msgstr ""
-
-#, fuzzy
-#~ msgid "title"
-#~ msgstr "Judul"

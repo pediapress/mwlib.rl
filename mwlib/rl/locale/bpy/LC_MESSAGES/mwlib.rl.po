@@ -1,19 +1,23 @@
-# Translation of Mwlib.rl to Bishnupria Manipuri
+# Translation of Mwlib.rl to Bishnupria Manipuri (ইমার ঠার/বিষ্ণুপ্রিয়া মণিপুরী)
+# Expored from translatewiki.net
 #
-# Author@translatewiki.net: Usingha
-# --
+# Author: Usingha
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-25 08:43+0000\n"
-"PO-Revision-Date: 2010-08-25 08:42:04+0000\n"
+"POT-Creation-Date: 2010-10-06 13:58+0000\n"
+"PO-Revision-Date: 2010-10-06 13:57:57+0000\n"
+"Language-Team: Bishnupria Manipuri <http://translatewiki.net/wiki/Portal:"
+"bpy>\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.17alpha (r71602); Translate extension (2010-08-20)\n"
+"X-Generator: MediaWiki 1.17alpha (r74353); Translate extension (2010-09-17)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: bpy\n"
-"X-Message-Group: out-mwlibrl\n"
+"X-Message-Group: #out-mwlibrl\n"
+"X-POT-Import-Date: 2010-10-06 13:50:23+0000\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: mwlib/rl/pdfmessages.py:11
 msgid "Index"
@@ -31,7 +35,7 @@ msgstr "লাইসেন্স:"
 msgid "Contributors:"
 msgstr "অবদানকারিগী:"
 
-#: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:506
+#: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:508
 msgid "Article Licenses"
 msgstr "নিবন্ধর লাইসেন্সহানি"
 
@@ -55,7 +59,7 @@ msgstr "হঙিসেতা:"
 msgid "Contents"
 msgstr "গারিগ"
 
-#: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:417
+#: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:419
 msgid "Articles"
 msgstr "নিবন্ধহানি"
 
@@ -97,8 +101,8 @@ msgstr ""
 "অর। হাব্বি নিবন্ধ যেতা বাসানি অসে কিন্তু আগচাত না দেখরাঙ, অহান রেরিকহানর চূড়ান্ত "
 "মুদ্রিত সংস্করণহাত থাইতই।"
 
-#: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:465
-#: mwlib/rl/rlwriter.py:781
+#: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:467
+#: mwlib/rl/rlwriter.py:784
 msgid "References"
 msgstr "রেফারেন্সহানি"
 
@@ -136,13 +140,13 @@ msgstr ""
 "এ লেরিক এহাত বরাসি নিবন্ধ বারো ছবির উৎস তলে দেনা অইল। উৎসহানির লাইসেন্স, "
 "কপিরাইটর অঙতা, কপিরাইটর মাকক বারো লাইসেন্সর শর্তহানি হবাকরে বাখান করতই।"
 
-#: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:466
-#: mwlib/rl/rlwriter.py:654
+#: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:468
+#: mwlib/rl/rlwriter.py:657
 msgid "Article Sources and Contributors"
 msgstr "নিবন্ধহানর উৎস বারো অবদানকারীগি"
 
-#: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:469
-#: mwlib/rl/rlwriter.py:673
+#: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:471
+#: mwlib/rl/rlwriter.py:676
 msgid "Image Sources, Licenses and Contributors"
 msgstr "ছবির উৎস, লাইসেন্স বারো অবদানকারীগি"
 
@@ -150,7 +154,7 @@ msgstr "ছবির উৎস, লাইসেন্স বারো অবদ�
 msgid "Image"
 msgstr "ছবি"
 
-#: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:646
+#: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:649
 msgid "anonymous edits"
 msgstr "বেনাঙর পতা"
 
@@ -166,12 +170,12 @@ msgstr ""
 "পিডিএফ হঙরানি আইলতা অপেন সোর্স mwlibর আতিয়ারল। আরাকউ হারপানিরকা চা http://"
 "code.pediapress.com/"
 
-#: mwlib/rl/rlwriter.py:302
+#: mwlib/rl/rlwriter.py:303
 #, python-format
 msgid "mwlib.ext version: %(version)s"
 msgstr "mwlib.extর ভার্সনহান: %(version)হানি"
 
-#: mwlib/rl/rlwriter.py:308
+#: mwlib/rl/rlwriter.py:309
 #, python-format
 msgid ""
 "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
@@ -180,23 +184,23 @@ msgstr ""
 "mwlib ভার্সন: %(mwlibversion)হানি, mwlib.rl ভার্সন: %(mwlibrlversion)হানি, %"
 "(mwlibextversion)হানি"
 
-#: mwlib/rl/rlwriter.py:661 mwlib/rl/rlwriter.py:686
+#: mwlib/rl/rlwriter.py:664 mwlib/rl/rlwriter.py:689
 msgid "Source"
 msgstr "উৎস"
 
-#: mwlib/rl/rlwriter.py:663 mwlib/rl/rlwriter.py:689
+#: mwlib/rl/rlwriter.py:666 mwlib/rl/rlwriter.py:692
 msgid "Contributors"
 msgstr "অবদানকারীগি"
 
-#: mwlib/rl/rlwriter.py:679
+#: mwlib/rl/rlwriter.py:682
 msgid "unknown"
 msgstr "হারনাপাসি"
 
-#: mwlib/rl/rlwriter.py:681
+#: mwlib/rl/rlwriter.py:684
 msgid "License"
 msgstr "লাইসেন্স"
 
-#: mwlib/rl/rlwriter.py:772
+#: mwlib/rl/rlwriter.py:775
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
