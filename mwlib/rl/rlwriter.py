@@ -847,7 +847,7 @@ class RlWriter(object):
         
         for n in nodes: # FIXME: somebody should clean up this mess
             if isinstance(lastNode, Figure) and isinstance(n, Figure):
-                if n.align != 'center':
+                if getattr(n, 'float_figure', False):
                     figures.append(n)
                 else:
                     combinedNodes.extend(figures)
@@ -855,7 +855,7 @@ class RlWriter(object):
                     figures = []
             else :
                 if not figures:
-                    if isinstance(n, Figure) and n.align!='center' : # fixme: only float images that are not centered
+                    if getattr(n, 'float_figure', False):
                         figures.append(n)
                     else:
                         combinedNodes.append(n)
@@ -873,7 +873,7 @@ class RlWriter(object):
                                 combinedNodes.extend(figures)
                                 figures = []
                                 combinedNodes.append(noFloatNode)
-                                if isinstance(n,Figure) and n.align!='center': 
+                                if getattr(n, 'float_figure', False):
                                     figures.append(n)
                                 else:
                                     combinedNodes.append(n)
@@ -885,10 +885,10 @@ class RlWriter(object):
                                 combinedNodes.append(noFloatNode)
                             figures = []
                             floatingNodes = []
-                            if isinstance(n, Figure) and n.align!='center':
+                            if getattr(n, 'float_figure', False):
                                 figures.append(n)
                             else:
-                                combinedNodes.append(n)                                                       
+                                combinedNodes.append(n)
                         else:
                             combinedNodes.extend(figures)
                             combinedNodes.append(n)
@@ -1355,12 +1355,11 @@ class RlWriter(object):
             align = styleutils.getTextAlign(img_node)
         if advtree.Center in [ p.__class__ for p in img_node.getParents()]:
             align = 'center'
-            
         txt = []
         if img_node.render_caption:
             txt = self.renderInline(img_node)
 
-        is_inline = img_node.isInline() or img_node.align == 'none'
+        is_inline = img_node.isInline()
 
         url = self.imgDB.getDescriptionURL(img_node.target) or self.imgDB.getURL(img_node.target)
         if url:
@@ -1407,6 +1406,7 @@ class RlWriter(object):
                         borderColor=pdfstyles.img_border_color,
                         align=align,
                         url=url)
+        figure.float_figure = not img_node.align in ['center', 'none']
         return [figure]
        
 
