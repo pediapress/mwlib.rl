@@ -163,7 +163,7 @@ msgstr "névtelen szerkesztés"
 
 #: mwlib/rl/pdfmessages.py:65
 msgid "Figure"
-msgstr "Ábra"
+msgstr "ábra"
 
 #: mwlib/rl/pdfstyles.py:78
 msgid ""
