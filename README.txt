@@ -98,6 +98,32 @@ The current development version can also be found there.
 
 ChangeLog
 ======================================================================
+
+2010-10-11 release 0.12.6
+-------------------------
+- fix for image positioning: align=none -> non-inline
+- change hungarian localisation string
+- customflowables: fix resizeInlineImage method.
+- Localisation updates from translatewiki.net
+- fix for table cell dims (#842)
+- fix for #850
+- dont inherit color for table/row/cell
+- add spanish translations
+- make figure border color customizable
+- fix for reference handling
+- fix for TOC
+- fix typo
+- formulas resulting in huge image are skipped. avoid problems with old latex installs
+- use text color for inline nodes
+- fix for #844: dont float source code and preformatted nodes.
+- switch to ez_setup.py from setuptools-0.6c11
+- fix for #861
+- fix for table header cell content is now correctly aligned and bold
+- scale Source nodes
+- added more translations thanks to John West
+- add arabic translation thanks to John West
+
+
 2010-7-16  release 0.12.5
 -------------------------
 - Localisation updates from Translatewiki.net
