@@ -1216,6 +1216,8 @@ class RlWriter(object):
                 self.url_map[href] = len(self.references)
         else: # we are writing a reference section. we therefore directly print URLs
             txt = self.renderInline(obj)
+            if any([href.startswith(url) for url in pdfstyles.url_blacklist]):
+                return [''.join(txt)]
             txt.append(' <link href="%s">(%s)</link>' % (xmlescape(href), self.renderURL(urllib.unquote(href))))
             return [''.join(txt)]           
             

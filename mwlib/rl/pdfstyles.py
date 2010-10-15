@@ -134,6 +134,8 @@ min_preformatted_size = 5
 
 list_item_style = u'\u2022'
 
+url_blacklist = ['http://toolserver.org']
+
 
 class BaseStyle(ParagraphStyle):
 
