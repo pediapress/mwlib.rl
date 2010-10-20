@@ -1160,20 +1160,18 @@ class RlWriter(object):
                 href = href[:quote_idx]        
         if obj.children:
             txt = self.renderInline(obj)
-            t = ''.join(txt).strip()
+            t = ''.join(txt)
             if not href:
                 return [t]
         else:
             txt = unicode(urllib.unquote(obj.target.encode('utf-8')), 'utf-8', 'replace')
-            t = self.formatter.styleText(txt.strip())
+            t = self.formatter.styleText(txt)
 
         if not internallink:
-            if obj.target.startswith('#'): # intrapage links are filtered
-                t = t.strip()
-            else:
-                t = '<link href="%s">%s</link>' % (xmlescape(href), t.strip())
+            if not obj.target.startswith('#'): # intrapage links are filtered
+                t = '<link href="%s">%s</link>' % (xmlescape(href), t)
         else:
-            t = u'<link href="#%s">%s</link>' % (article_id, t.strip())
+            t = u'<link href="#%s">%s</link>' % (article_id, t)
 
         return [t]
 
