@@ -8,7 +8,7 @@
 import os
 import re
 import mwlib.fonts
-from mwlib.fontswitcher import FontSwitcher
+from mwlib.writer.fontswitcher import FontSwitcher
 from reportlab.lib.fonts import addMapping
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
