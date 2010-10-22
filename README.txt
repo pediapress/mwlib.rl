@@ -53,6 +53,10 @@ You will also need:
   package which is used to render timelines 
   http://ploticus.sourceforge.net/doc/welcome.html (debian package: ploticus)
 
+*gettext*
+  package which is used for translations of build-in strings
+  http://www.gnu.org/software/gettext/ (debian package: gettext)
+
 *pdftk*
   this is optional and used for generating the Table of Contents.
   http://www.accesspdf.com/pdftk/ (debian package: pdftk)
@@ -94,6 +98,73 @@ The current development version can also be found there.
 
 ChangeLog
 ======================================================================
+
+2010-10-11 release 0.12.6
+-------------------------
+- fix for image positioning: align=none -> non-inline
+- change hungarian localisation string
+- customflowables: fix resizeInlineImage method.
+- Localisation updates from translatewiki.net
+- fix for table cell dims (#842)
+- fix for #850
+- dont inherit color for table/row/cell
+- add spanish translations
+- make figure border color customizable
+- fix for reference handling
+- fix for TOC
+- fix typo
+- formulas resulting in huge image are skipped. avoid problems with old latex installs
+- use text color for inline nodes
+- fix for #844: dont float source code and preformatted nodes.
+- switch to ez_setup.py from setuptools-0.6c11
+- fix for #861
+- fix for table header cell content is now correctly aligned and bold
+- scale Source nodes
+- added more translations thanks to John West
+- add arabic translation thanks to John West
+
+
+2010-7-16  release 0.12.5
+-------------------------
+- Localisation updates from Translatewiki.net
+- make horizontal rule below article title configurable
+- add gettext requirement to README. thanks to Daniel Weuthen
+- fix for 704
+- allow custom list item symbol
+- add translateable strings
+- use correct font for sections
+- fix for tables
+- add translatable string "Index"
+- scale down preformatted nodes if they exceed the page width
+- added Greek l10n for "Appendix", corrected the one for "Skipping Articles!"
+- add update target
+- stretch tables with: width=100%
+- fix img alignment
+- updates for fontconfig
+- fix for #809
+- translate Contents in hu
+- fix flipped page_margins. fix for custom pagesizes
+- use vertical alignment of table cells
+- add test for fake hypenation
+- fix fake hyphenation (#781)
+- fix wording
+- more L10N fixes
+- fix po file for language id
+- use text color
+- fix handling of colspan
+- handle abbr tag
+- fix for galleries: #270
+- move tests into top-level directory. py.test 1.1 is otherwise confused
+- improve image alignment
+- use render_caption property. small refactoring of getTableSize
+- ignore hiero tags
+- use refactored style handling
+- support html attrs for list styles
+- support roman and alpha ordered list styles
+- remove inter-pdf link arrows
+- make compatible with old imagemagick versions.
+- allow custom title page images
+
 2009-10-20 release 0.12.4
 -------------------------
 

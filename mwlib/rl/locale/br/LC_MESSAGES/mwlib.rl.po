@@ -1,24 +1,27 @@
-# Translation of Mwlib.rl to Breton
+# Translation of Mwlib.rl to Breton (Brezhoneg)
+# Expored from translatewiki.net
 #
-# Author@translatewiki.net: Fulup
-# --
+# Author: Fulup
+# Author: Y-M D
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-19 12:50+0200\n"
-"PO-Revision-Date: 2009-12-18 08:42:55+0000\n"
-"Language-Team: Breton\n"
+"POT-Creation-Date: 2010-10-06 13:58+0000\n"
+"PO-Revision-Date: 2010-10-06 13:57:57+0000\n"
+"Language-Team: Breton <http://translatewiki.net/wiki/Portal:br>\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.16alpha (r60201); Translate extension (2009-12-06)\n"
+"X-Generator: MediaWiki 1.17alpha (r74353); Translate extension (2010-09-17)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: br\n"
-"X-Message-Group: out-mwlibrl\n"
+"X-Message-Group: #out-mwlibrl\n"
+"X-POT-Import-Date: 2010-10-06 13:50:23+0000\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: mwlib/rl/pdfmessages.py:11
 msgid "Index"
-msgstr ""
+msgstr "Meneger"
 
 #: mwlib/rl/pdfmessages.py:13
 msgid "Source:"
@@ -32,7 +35,7 @@ msgstr "Aotre implijout :"
 msgid "Contributors:"
 msgstr "Aozerien :"
 
-#: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:512
+#: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:508
 msgid "Article Licenses"
 msgstr "Aotre ar pennadoù"
 
@@ -56,7 +59,7 @@ msgstr "Savet d'an :"
 msgid "Contents"
 msgstr "Endalc'had"
 
-#: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:423
+#: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:419
 msgid "Articles"
 msgstr "Pennadoù"
 
@@ -88,16 +91,28 @@ msgstr ""
 "Notenn : n'eo an dra-mañ nemet ur rakweladenn zo he fal reiñ deoc'h un "
 "alberzh eus ar mod ma vo savet al levr."
 
-#: mwlib/rl/pdfmessages.py:45 mwlib/rl/rlwriter.py:471
-#: mwlib/rl/rlwriter.py:764
+#: mwlib/rl/pdfmessages.py:45
+msgid ""
+"Please note: This is only a preview of your book, intended to give an idea "
+"how your book looks. Only the first few articles, as well as the first pages "
+"of the index, of your book are shown in this preview. All articles, even "
+"those left out of the preview, will be included in the final printed book."
+msgstr ""
+"Notenn : n'eo hemañ nemet ur rakweled eus ho levr. E bal eo reiñ deoc'h ur "
+"soñj eus ar mod ma vo ho levr. Ne ziskouezer amañ nemet un nebeud pennadoù "
+"kentañ gant pajennoù kentañ ar meneger. El levr moullet echu e vo kavet an "
+"holl bennadoù, zoken ar re n'emaint ket diskouezet amañ er rakweled."
+
+#: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:467
+#: mwlib/rl/rlwriter.py:784
 msgid "References"
 msgstr "Daveennoù"
 
-#: mwlib/rl/pdfmessages.py:47
-msgid "Appendix"
-msgstr ""
-
 #: mwlib/rl/pdfmessages.py:49
+msgid "Appendix"
+msgstr "Stagadenn"
+
+#: mwlib/rl/pdfmessages.py:51
 msgid ""
 "The following sections list the sources for all articles and images used in "
 "this book. Those sources provide more detailed licensing information "
@@ -109,7 +124,7 @@ msgstr ""
 "aotre implij, statud ar gwirioù aozer, perc'henn ar gwirioù aozer ha doareoù "
 "implij an aotre."
 
-#: mwlib/rl/pdfmessages.py:51
+#: mwlib/rl/pdfmessages.py:53
 #, fuzzy
 msgid ""
 "The sources listed for each article provide more detailed licensing "
@@ -121,7 +136,7 @@ msgstr ""
 "aotre implij, statud ar gwirioù aozer, perc'henn ar gwirioù aozer ha doareoù "
 "implij an aotre."
 
-#: mwlib/rl/pdfmessages.py:53
+#: mwlib/rl/pdfmessages.py:55
 #, fuzzy
 msgid ""
 "The sources listed for each image provide more detailed licensing "
@@ -133,29 +148,29 @@ msgstr ""
 "aotre implij, statud ar gwirioù aozer, perc'henn ar gwirioù aozer ha doareoù "
 "implij an aotre."
 
-#: mwlib/rl/pdfmessages.py:55 mwlib/rl/rlwriter.py:472
-#: mwlib/rl/rlwriter.py:660
+#: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:468
+#: mwlib/rl/rlwriter.py:657
 msgid "Article Sources and Contributors"
 msgstr "Mammennoù hag aozerien ar pennad"
 
-#: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:475
-#: mwlib/rl/rlwriter.py:679
+#: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:471
+#: mwlib/rl/rlwriter.py:676
 msgid "Image Sources, Licenses and Contributors"
 msgstr "Mammenn ar skeudennoù, atotreoù ha perzhidi"
 
-#: mwlib/rl/pdfmessages.py:59
+#: mwlib/rl/pdfmessages.py:61
 msgid "Image"
 msgstr "Skeudenn"
 
-#: mwlib/rl/pdfmessages.py:61 mwlib/rl/rlwriter.py:652
+#: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:649
 msgid "anonymous edits"
 msgstr "kemmoù dizanv"
 
-#: mwlib/rl/pdfmessages.py:63
+#: mwlib/rl/pdfmessages.py:65
 msgid "Figure"
 msgstr "Grafik"
 
-#: mwlib/rl/pdfstyles.py:77
+#: mwlib/rl/pdfstyles.py:78
 msgid ""
 "PDF generated using the open source mwlib toolkit. See http://code."
 "pediapress.com/ for more information."
@@ -163,12 +178,12 @@ msgstr ""
 "Savet eo bet ar restr PDF-mañ war-bouez an toolkit Open Source mwlib.Evit "
 "gouzout hiroc'h sellit ouzh http://code.pediapress.com."
 
-#: mwlib/rl/rlwriter.py:308
+#: mwlib/rl/rlwriter.py:303
 #, python-format
 msgid "mwlib.ext version: %(version)s"
 msgstr "mwlib.ext-version : %(version)s"
 
-#: mwlib/rl/rlwriter.py:314
+#: mwlib/rl/rlwriter.py:309
 #, python-format
 msgid ""
 "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
@@ -177,23 +192,23 @@ msgstr ""
 "stummoù mwlib : %(mwlibversion)s, versione mwlib.rl: %(mwlibrlversion)s, %"
 "(mwlibextversion)s"
 
-#: mwlib/rl/rlwriter.py:667 mwlib/rl/rlwriter.py:692
+#: mwlib/rl/rlwriter.py:664 mwlib/rl/rlwriter.py:689
 msgid "Source"
 msgstr "Mammenn"
 
-#: mwlib/rl/rlwriter.py:669 mwlib/rl/rlwriter.py:695
+#: mwlib/rl/rlwriter.py:666 mwlib/rl/rlwriter.py:692
 msgid "Contributors"
 msgstr "Aozerien"
 
-#: mwlib/rl/rlwriter.py:685
+#: mwlib/rl/rlwriter.py:682
 msgid "unknown"
 msgstr "dianav"
 
-#: mwlib/rl/rlwriter.py:687
+#: mwlib/rl/rlwriter.py:684
 msgid "License"
 msgstr "Aotre implijout"
 
-#: mwlib/rl/rlwriter.py:755
+#: mwlib/rl/rlwriter.py:775
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
@@ -202,13 +217,3 @@ msgstr ""
 "<strong>DIWALLIT : n'haller ket eiladuriñ ar pennad en e bezh - aozadur e "
 "testenn blaen.</strong><br/>Abeg ar gudenn zo pe (a) un draen er meziant "
 "PDF, pe (b) ur fazi e markup MediaWiki, pe (c) un daolenn re ledan."
-
-#, fuzzy
-#~ msgid "title"
-#~ msgstr "Titl"
-
-#~ msgid "layouting"
-#~ msgstr "Pajennaozañ"
-
-#~ msgid "rendering"
-#~ msgstr "neuz"

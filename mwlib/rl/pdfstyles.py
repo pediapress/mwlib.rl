@@ -66,6 +66,7 @@ show_page_footer = True
 page_break_after_article = False
 
 show_article_attribution = True   # Show/Hide article source and contributors
+show_article_hr = True           # Underline each article header by a horizontal rule
 
 # NOTE: strings can contain reportlab styling tags the text needs to be xml excaped.
 # more information is available in the reportlab user documentation (http://www.reportlab.com/docs/userguide.pdf)
@@ -99,6 +100,8 @@ img_min_res = 75
 img_inline_scale_factor = 0.7 # factor by which inline images are scaled.
 print_width_px = 540 # 540px are assumed to be the equivalent for a full print width
 
+img_border_color=(0.75, 0.75, 0.75)
+
 ######### TEXT CONFIGURATION
 font_size = 10
 leading = 15
@@ -126,6 +129,13 @@ no_float_math_len = 15
 word_wrap=None
 
 min_preformatted_size = 5
+
+# misc options
+
+list_item_style = u'\u2022'
+
+url_blacklist = ['http://toolserver.org']
+
 
 class BaseStyle(ParagraphStyle):
 
@@ -216,6 +226,7 @@ def text_style(mode='p', indent_lvl=0, in_table=0, relsize='normal', text_align=
     
     if mode == 'source' or mode == 'preformatted':
         style.fontName = mono_font   
+        style.flowable = False
         
     if mode == 'list' or mode == 'references':
         style.spaceBefore = 0

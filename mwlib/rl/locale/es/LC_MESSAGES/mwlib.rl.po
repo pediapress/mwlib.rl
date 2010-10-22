@@ -1,26 +1,29 @@
-# Translation of Mwlib.rl to Spanish
+# Translation of Mwlib.rl to Spanish (Español)
+# Expored from translatewiki.net
 #
-# Author@translatewiki.net: Crazymadlover
-# Author@translatewiki.net: Locos epraix
-# Author@translatewiki.net: McDutchie
-# --
+# Author: Crazymadlover
+# Author: Diego Grez
+# Author: Locos epraix
+# Author: McDutchie
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-19 12:50+0200\n"
-"PO-Revision-Date: 2009-12-18 08:42:57+0000\n"
-"Language-Team: Spanish\n"
+"POT-Creation-Date: 2010-10-06 13:58+0000\n"
+"PO-Revision-Date: 2010-10-06 13:57:58+0000\n"
+"Language-Team: Spanish <http://translatewiki.net/wiki/Portal:es>\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.16alpha (r60201); Translate extension (2009-12-06)\n"
+"X-Generator: MediaWiki 1.17alpha (r74353); Translate extension (2010-09-17)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: es\n"
-"X-Message-Group: out-mwlibrl\n"
+"X-Message-Group: #out-mwlibrl\n"
+"X-POT-Import-Date: 2010-10-06 13:50:23+0000\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: mwlib/rl/pdfmessages.py:11
 msgid "Index"
-msgstr ""
+msgstr "Índice"
 
 #: mwlib/rl/pdfmessages.py:13
 msgid "Source:"
@@ -34,7 +37,7 @@ msgstr "Licencia:"
 msgid "Contributors:"
 msgstr "Coagentes:"
 
-#: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:512
+#: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:508
 msgid "Article Licenses"
 msgstr "Licencias de artículos"
 
@@ -58,7 +61,7 @@ msgstr "Creado en:"
 msgid "Contents"
 msgstr "Contenidos"
 
-#: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:423
+#: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:419
 msgid "Articles"
 msgstr "Artículos"
 
@@ -90,16 +93,29 @@ msgstr ""
 "Por favor observe: Esta solamente es una previsualización que intenta dar "
 "una idea como el libro está compuesto."
 
-#: mwlib/rl/pdfmessages.py:45 mwlib/rl/rlwriter.py:471
-#: mwlib/rl/rlwriter.py:764
+#: mwlib/rl/pdfmessages.py:45
+msgid ""
+"Please note: This is only a preview of your book, intended to give an idea "
+"how your book looks. Only the first few articles, as well as the first pages "
+"of the index, of your book are shown in this preview. All articles, even "
+"those left out of the preview, will be included in the final printed book."
+msgstr ""
+"Nota: Está es sólo una previsualización de tu libro, que trata de dar una "
+"idea de cómo tus libros se ven. Solamente los primeros artículos, así como "
+"las primeras páginas del índice, de tu libro son mostradas en esta vista "
+"previa. Todos los artículos, aún los que han quedado fuera de la vista "
+"preliminar, serán incluídos en el libro final impreso."
+
+#: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:467
+#: mwlib/rl/rlwriter.py:784
 msgid "References"
 msgstr "Referencias"
 
-#: mwlib/rl/pdfmessages.py:47
-msgid "Appendix"
-msgstr ""
-
 #: mwlib/rl/pdfmessages.py:49
+msgid "Appendix"
+msgstr "Apéndice"
+
+#: mwlib/rl/pdfmessages.py:51
 msgid ""
 "The following sections list the sources for all articles and images used in "
 "this book. Those sources provide more detailed licensing information "
@@ -111,7 +127,7 @@ msgstr ""
 "licencia detallada incluyendo el status de derechos de autor, el propietario "
 "del derecho de autor, y las condiciones de la licencia."
 
-#: mwlib/rl/pdfmessages.py:51
+#: mwlib/rl/pdfmessages.py:53
 #, fuzzy
 msgid ""
 "The sources listed for each article provide more detailed licensing "
@@ -123,7 +139,7 @@ msgstr ""
 "licencia detallada incluyendo el status de derechos de autor, el propietario "
 "del derecho de autor, y las condiciones de la licencia."
 
-#: mwlib/rl/pdfmessages.py:53
+#: mwlib/rl/pdfmessages.py:55
 #, fuzzy
 msgid ""
 "The sources listed for each image provide more detailed licensing "
@@ -135,29 +151,29 @@ msgstr ""
 "licencia detallada incluyendo el status de derechos de autor, el propietario "
 "del derecho de autor, y las condiciones de la licencia."
 
-#: mwlib/rl/pdfmessages.py:55 mwlib/rl/rlwriter.py:472
-#: mwlib/rl/rlwriter.py:660
+#: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:468
+#: mwlib/rl/rlwriter.py:657
 msgid "Article Sources and Contributors"
 msgstr "Fuentes y contribuyentes del artículo"
 
-#: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:475
-#: mwlib/rl/rlwriter.py:679
+#: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:471
+#: mwlib/rl/rlwriter.py:676
 msgid "Image Sources, Licenses and Contributors"
 msgstr "Fuentes de imagen, Licencias y contribuyentes"
 
-#: mwlib/rl/pdfmessages.py:59
+#: mwlib/rl/pdfmessages.py:61
 msgid "Image"
 msgstr "Imagen"
 
-#: mwlib/rl/pdfmessages.py:61 mwlib/rl/rlwriter.py:652
+#: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:649
 msgid "anonymous edits"
 msgstr "ediciones anónimas"
 
-#: mwlib/rl/pdfmessages.py:63
+#: mwlib/rl/pdfmessages.py:65
 msgid "Figure"
 msgstr "Figura"
 
-#: mwlib/rl/pdfstyles.py:77
+#: mwlib/rl/pdfstyles.py:78
 msgid ""
 "PDF generated using the open source mwlib toolkit. See http://code."
 "pediapress.com/ for more information."
@@ -165,12 +181,12 @@ msgstr ""
 "PDF generado usando el kit de herramientas de fuente abierta mwlib. Ver "
 "http://code.pediapress.com/ para mayor información."
 
-#: mwlib/rl/rlwriter.py:308
+#: mwlib/rl/rlwriter.py:303
 #, python-format
 msgid "mwlib.ext version: %(version)s"
 msgstr "mwlib.ext version: %(version)s"
 
-#: mwlib/rl/rlwriter.py:314
+#: mwlib/rl/rlwriter.py:309
 #, python-format
 msgid ""
 "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
@@ -179,23 +195,23 @@ msgstr ""
 "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
 "(mwlibextversion)s"
 
-#: mwlib/rl/rlwriter.py:667 mwlib/rl/rlwriter.py:692
+#: mwlib/rl/rlwriter.py:664 mwlib/rl/rlwriter.py:689
 msgid "Source"
 msgstr "Fuente"
 
-#: mwlib/rl/rlwriter.py:669 mwlib/rl/rlwriter.py:695
+#: mwlib/rl/rlwriter.py:666 mwlib/rl/rlwriter.py:692
 msgid "Contributors"
 msgstr "Contribuyentes"
 
-#: mwlib/rl/rlwriter.py:685
+#: mwlib/rl/rlwriter.py:682
 msgid "unknown"
 msgstr "desconocido"
 
-#: mwlib/rl/rlwriter.py:687
+#: mwlib/rl/rlwriter.py:684
 msgid "License"
 msgstr "Licencia"
 
-#: mwlib/rl/rlwriter.py:755
+#: mwlib/rl/rlwriter.py:775
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
@@ -205,13 +221,3 @@ msgstr ""
 "sencillo.</strong><br/>Causas potenciales del problema son: (a) una falla en "
 "el software pdf-writer (b) margen problemático Mediawiki (c) la tabla es muy "
 "ancha"
-
-#, fuzzy
-#~ msgid "title"
-#~ msgstr "Título"
-
-#~ msgid "layouting"
-#~ msgstr "Trazando"
-
-#~ msgid "rendering"
-#~ msgstr "renderizando"

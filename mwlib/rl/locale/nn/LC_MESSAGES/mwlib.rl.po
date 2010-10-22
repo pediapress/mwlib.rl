@@ -1,20 +1,22 @@
-# Translation of Mwlib.rl to Norwegian Nynorsk
+# Translation of Mwlib.rl to Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+# Expored from translatewiki.net
 #
-# Author@translatewiki.net: Harald Khan
-# --
+# Author: Harald Khan
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-19 12:50+0200\n"
-"PO-Revision-Date: 2009-12-18 08:43:02+0000\n"
-"Language-Team: Norwegian Nynorsk\n"
+"POT-Creation-Date: 2010-10-06 13:58+0000\n"
+"PO-Revision-Date: 2010-10-06 13:58:03+0000\n"
+"Language-Team: Norwegian Nynorsk <http://translatewiki.net/wiki/Portal:nn>\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.16alpha (r60201); Translate extension (2009-12-06)\n"
+"X-Generator: MediaWiki 1.17alpha (r74353); Translate extension (2010-09-17)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: nn\n"
-"X-Message-Group: out-mwlibrl\n"
+"X-Message-Group: #out-mwlibrl\n"
+"X-POT-Import-Date: 2010-10-06 13:50:23+0000\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: mwlib/rl/pdfmessages.py:11
 msgid "Index"
@@ -32,7 +34,7 @@ msgstr "Lisens"
 msgid "Contributors:"
 msgstr "Forfattarar:"
 
-#: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:512
+#: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:508
 msgid "Article Licenses"
 msgstr "Artikkellisensar"
 
@@ -56,7 +58,7 @@ msgstr "Oppretta den:"
 msgid "Contents"
 msgstr "Innhald"
 
-#: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:423
+#: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:419
 msgid "Articles"
 msgstr "Artiklar"
 
@@ -88,16 +90,24 @@ msgstr ""
 "Merk: Dette er berre ei førehandsvising oppretta for å gje deg ein idé om "
 "korleis boka vert sjåande ut."
 
-#: mwlib/rl/pdfmessages.py:45 mwlib/rl/rlwriter.py:471
-#: mwlib/rl/rlwriter.py:764
+#: mwlib/rl/pdfmessages.py:45
+msgid ""
+"Please note: This is only a preview of your book, intended to give an idea "
+"how your book looks. Only the first few articles, as well as the first pages "
+"of the index, of your book are shown in this preview. All articles, even "
+"those left out of the preview, will be included in the final printed book."
+msgstr ""
+
+#: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:467
+#: mwlib/rl/rlwriter.py:784
 msgid "References"
 msgstr "Referansar"
 
-#: mwlib/rl/pdfmessages.py:47
+#: mwlib/rl/pdfmessages.py:49
 msgid "Appendix"
 msgstr ""
 
-#: mwlib/rl/pdfmessages.py:49
+#: mwlib/rl/pdfmessages.py:51
 msgid ""
 "The following sections list the sources for all articles and images used in "
 "this book. Those sources provide more detailed licensing information "
@@ -108,7 +118,7 @@ msgstr ""
 "i denne boka. Kjeldene gjev meir detaljert lisensinformasjon, slik som "
 "opphavsrettsstoda, eigaren av opphavsretten og lisenshøve."
 
-#: mwlib/rl/pdfmessages.py:51
+#: mwlib/rl/pdfmessages.py:53
 #, fuzzy
 msgid ""
 "The sources listed for each article provide more detailed licensing "
@@ -119,7 +129,7 @@ msgstr ""
 "i denne boka. Kjeldene gjev meir detaljert lisensinformasjon, slik som "
 "opphavsrettsstoda, eigaren av opphavsretten og lisenshøve."
 
-#: mwlib/rl/pdfmessages.py:53
+#: mwlib/rl/pdfmessages.py:55
 #, fuzzy
 msgid ""
 "The sources listed for each image provide more detailed licensing "
@@ -130,41 +140,41 @@ msgstr ""
 "i denne boka. Kjeldene gjev meir detaljert lisensinformasjon, slik som "
 "opphavsrettsstoda, eigaren av opphavsretten og lisenshøve."
 
-#: mwlib/rl/pdfmessages.py:55 mwlib/rl/rlwriter.py:472
-#: mwlib/rl/rlwriter.py:660
+#: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:468
+#: mwlib/rl/rlwriter.py:657
 #, fuzzy
 msgid "Article Sources and Contributors"
 msgstr "Biletkjelder, -lisensar og -bidragsytarar"
 
-#: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:475
-#: mwlib/rl/rlwriter.py:679
+#: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:471
+#: mwlib/rl/rlwriter.py:676
 msgid "Image Sources, Licenses and Contributors"
 msgstr "Biletkjelder, -lisensar og -bidragsytarar"
 
-#: mwlib/rl/pdfmessages.py:59
+#: mwlib/rl/pdfmessages.py:61
 msgid "Image"
 msgstr "Bilete"
 
-#: mwlib/rl/pdfmessages.py:61 mwlib/rl/rlwriter.py:652
+#: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:649
 msgid "anonymous edits"
 msgstr "anonyme endringar"
 
-#: mwlib/rl/pdfmessages.py:63
+#: mwlib/rl/pdfmessages.py:65
 msgid "Figure"
 msgstr "Figur"
 
-#: mwlib/rl/pdfstyles.py:77
+#: mwlib/rl/pdfstyles.py:78
 msgid ""
 "PDF generated using the open source mwlib toolkit. See http://code."
 "pediapress.com/ for more information."
 msgstr ""
 
-#: mwlib/rl/rlwriter.py:308
+#: mwlib/rl/rlwriter.py:303
 #, python-format
 msgid "mwlib.ext version: %(version)s"
 msgstr "mwlib.ext-versjon: %(version)s"
 
-#: mwlib/rl/rlwriter.py:314
+#: mwlib/rl/rlwriter.py:309
 #, python-format
 msgid ""
 "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
@@ -173,26 +183,26 @@ msgstr ""
 "mwlib-versjon: %(mwlibversion)s, mwlib.rl-versjon: %(mwlibrlversion)s, %"
 "(mwlibextversion)s"
 
-#: mwlib/rl/rlwriter.py:667 mwlib/rl/rlwriter.py:692
+#: mwlib/rl/rlwriter.py:664 mwlib/rl/rlwriter.py:689
 #, fuzzy
 msgid "Source"
 msgstr "Kjelda:"
 
-#: mwlib/rl/rlwriter.py:669 mwlib/rl/rlwriter.py:695
+#: mwlib/rl/rlwriter.py:666 mwlib/rl/rlwriter.py:692
 #, fuzzy
 msgid "Contributors"
 msgstr "Forfattarar:"
 
-#: mwlib/rl/rlwriter.py:685
+#: mwlib/rl/rlwriter.py:682
 msgid "unknown"
 msgstr ""
 
-#: mwlib/rl/rlwriter.py:687
+#: mwlib/rl/rlwriter.py:684
 #, fuzzy
 msgid "License"
 msgstr "Lisens"
 
-#: mwlib/rl/rlwriter.py:755
+#: mwlib/rl/rlwriter.py:775
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
@@ -202,13 +212,3 @@ msgstr ""
 "staden.</strong><br/>Moglege årsaker for problemet er: (a) ein feil i PDF-"
 "skrivarprogramvara (b) problematisk MediaWiki-oppsett (c) tabellen er for "
 "brei"
-
-#, fuzzy
-#~ msgid "title"
-#~ msgstr "Tittel"
-
-#~ msgid "layouting"
-#~ msgstr "utformar"
-
-#~ msgid "rendering"
-#~ msgstr "teikning"

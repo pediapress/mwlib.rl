@@ -1,24 +1,26 @@
-# Translation of Mwlib.rl to Lower Sorbian
+# Translation of Mwlib.rl to Lower Sorbian (Dolnoserbski)
+# Expored from translatewiki.net
 #
-# Author@translatewiki.net: Michawiki
-# --
+# Author: Michawiki
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-19 12:50+0200\n"
-"PO-Revision-Date: 2009-12-18 08:42:57+0000\n"
-"Language-Team: Lower Sorbian\n"
+"POT-Creation-Date: 2010-10-06 13:58+0000\n"
+"PO-Revision-Date: 2010-10-06 13:57:58+0000\n"
+"Language-Team: Lower Sorbian <http://translatewiki.net/wiki/Portal:dsb>\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.16alpha (r60201); Translate extension (2009-12-06)\n"
+"X-Generator: MediaWiki 1.17alpha (r74353); Translate extension (2010-09-17)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: dsb\n"
-"X-Message-Group: out-mwlibrl\n"
+"X-Message-Group: #out-mwlibrl\n"
+"X-POT-Import-Date: 2010-10-06 13:50:23+0000\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: mwlib/rl/pdfmessages.py:11
 msgid "Index"
-msgstr ""
+msgstr "Indeks"
 
 #: mwlib/rl/pdfmessages.py:13
 msgid "Source:"
@@ -32,7 +34,7 @@ msgstr "Licenca:"
 msgid "Contributors:"
 msgstr "Sobuźěłaśerje:"
 
-#: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:512
+#: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:508
 msgid "Article Licenses"
 msgstr "Nastawkowe licence"
 
@@ -56,7 +58,7 @@ msgstr "Napórany:"
 msgid "Contents"
 msgstr "Wopśimjeśe"
 
-#: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:423
+#: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:419
 msgid "Articles"
 msgstr "Nastawki"
 
@@ -87,16 +89,28 @@ msgid ""
 msgstr ""
 "Pšosym glědaj: To jo jano pśeglěd, aby dał zaśišć, kak knigły budu se stajaś."
 
-#: mwlib/rl/pdfmessages.py:45 mwlib/rl/rlwriter.py:471
-#: mwlib/rl/rlwriter.py:764
+#: mwlib/rl/pdfmessages.py:45
+msgid ""
+"Please note: This is only a preview of your book, intended to give an idea "
+"how your book looks. Only the first few articles, as well as the first pages "
+"of the index, of your book are shown in this preview. All articles, even "
+"those left out of the preview, will be included in the final printed book."
+msgstr ""
+"Pšosym glědaj: To jo jano pśeglěd twójich knigłow, kótaryž ma śi pokazał, "
+"kak twóje knigły wuglědaju. Jano prědne nastawki a prědne boki indeksa "
+"twójich knigłow pokazuju se w toś tom pśeglěźe. Wšykne nastawki, samo te, "
+"kótarež njepokazuju se w pśeglěźe, budu źěl wuśišćanych knigłow byś."
+
+#: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:467
+#: mwlib/rl/rlwriter.py:784
 msgid "References"
 msgstr "Reference"
 
-#: mwlib/rl/pdfmessages.py:47
-msgid "Appendix"
-msgstr ""
-
 #: mwlib/rl/pdfmessages.py:49
+msgid "Appendix"
+msgstr "Pśidank"
+
+#: mwlib/rl/pdfmessages.py:51
 msgid ""
 "The following sections list the sources for all articles and images used in "
 "this book. Those sources provide more detailed licensing information "
@@ -108,53 +122,49 @@ msgstr ""
 "informacije inkluziwnje statusa stwóriśelskego pšawa, mějucego "
 "stwóriśelskego pšawa a licencnych wuměnjenjow."
 
-#: mwlib/rl/pdfmessages.py:51
-#, fuzzy
+#: mwlib/rl/pdfmessages.py:53
 msgid ""
 "The sources listed for each article provide more detailed licensing "
 "information including the copyright status, the copyright owner, and the "
 "license conditions."
 msgstr ""
-"Slědujuce wótrězki nalicyju žrědła za wše nastawki a wobraze, kótarež "
-"wužywaju se w toś tych knigłach. Te žrědła libruju nadrobnjejše licencne "
-"informacije inkluziwnje statusa stwóriśelskego pšawa, mějucego "
-"stwóriśelskego pšawa a licencnych wuměnjenjow."
+"Žrědła nalistowane za kuždy nastawk pódawaju nadrobnjejše licencne "
+"informacije inkluziwnje status awtorskego pšawa, awtora a licencne "
+"wuměnjenja."
 
-#: mwlib/rl/pdfmessages.py:53
-#, fuzzy
+#: mwlib/rl/pdfmessages.py:55
 msgid ""
 "The sources listed for each image provide more detailed licensing "
 "information including the copyright status, the copyright owner, and the "
 "license conditions."
 msgstr ""
-"Slědujuce wótrězki nalicyju žrědła za wše nastawki a wobraze, kótarež "
-"wužywaju se w toś tych knigłach. Te žrědła libruju nadrobnjejše licencne "
-"informacije inkluziwnje statusa stwóriśelskego pšawa, mějucego "
-"stwóriśelskego pšawa a licencnych wuměnjenjow."
+"Žrědła nalistowane za kuždy wobraz pódawaju nadrobnjejše licencne "
+"informacije inkluziwnje status awtorskego pšawa, awtora a licencne "
+"wuměnjenja."
 
-#: mwlib/rl/pdfmessages.py:55 mwlib/rl/rlwriter.py:472
-#: mwlib/rl/rlwriter.py:660
+#: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:468
+#: mwlib/rl/rlwriter.py:657
 msgid "Article Sources and Contributors"
 msgstr "Žrědła a pśinosujuce nastawkow"
 
-#: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:475
-#: mwlib/rl/rlwriter.py:679
+#: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:471
+#: mwlib/rl/rlwriter.py:676
 msgid "Image Sources, Licenses and Contributors"
 msgstr "Žrědła wobrazow, licence a pśinosujuce"
 
-#: mwlib/rl/pdfmessages.py:59
+#: mwlib/rl/pdfmessages.py:61
 msgid "Image"
 msgstr "Wobraz"
 
-#: mwlib/rl/pdfmessages.py:61 mwlib/rl/rlwriter.py:652
+#: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:649
 msgid "anonymous edits"
 msgstr "anonymne změny"
 
-#: mwlib/rl/pdfmessages.py:63
+#: mwlib/rl/pdfmessages.py:65
 msgid "Figure"
 msgstr "Wobraz"
 
-#: mwlib/rl/pdfstyles.py:77
+#: mwlib/rl/pdfstyles.py:78
 msgid ""
 "PDF generated using the open source mwlib toolkit. See http://code."
 "pediapress.com/ for more information."
@@ -162,12 +172,12 @@ msgstr ""
 "PDF napórany z pomocu toolkita ze zjawnym žrědłowym kodom. Glědaj http://"
 "code.pediapress.com/ za dalšne informacije."
 
-#: mwlib/rl/rlwriter.py:308
+#: mwlib/rl/rlwriter.py:303
 #, python-format
 msgid "mwlib.ext version: %(version)s"
 msgstr "Wersija mwlib.ext: %(version)s"
 
-#: mwlib/rl/rlwriter.py:314
+#: mwlib/rl/rlwriter.py:309
 #, python-format
 msgid ""
 "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
@@ -176,23 +186,23 @@ msgstr ""
 "Wersija mwlib: %(mwlibversion)s, wersija mwlib.rl: %(mwlibrlversion)s, %"
 "(mwlibextversion)s"
 
-#: mwlib/rl/rlwriter.py:667 mwlib/rl/rlwriter.py:692
+#: mwlib/rl/rlwriter.py:664 mwlib/rl/rlwriter.py:689
 msgid "Source"
 msgstr "Žrědło"
 
-#: mwlib/rl/rlwriter.py:669 mwlib/rl/rlwriter.py:695
+#: mwlib/rl/rlwriter.py:666 mwlib/rl/rlwriter.py:692
 msgid "Contributors"
 msgstr "Pśinosujuce"
 
-#: mwlib/rl/rlwriter.py:685
+#: mwlib/rl/rlwriter.py:682
 msgid "unknown"
 msgstr "njeznaty"
 
-#: mwlib/rl/rlwriter.py:687
+#: mwlib/rl/rlwriter.py:684
 msgid "License"
 msgstr "Licenca"
 
-#: mwlib/rl/rlwriter.py:755
+#: mwlib/rl/rlwriter.py:775
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
@@ -202,13 +212,3 @@ msgstr ""
 "strong><br/>Potencielne zawiny problema su: (a) programowa zmólka w "
 "softwarje pdf-writer (b) problematiski wobznamjeński tekst MediaWiki (c) "
 "tabela jo pśešyroka"
-
-#, fuzzy
-#~ msgid "title"
-#~ msgstr "Titel"
-
-#~ msgid "layouting"
-#~ msgstr "wugótowanje"
-
-#~ msgid "rendering"
-#~ msgstr "pśenjasenje"

@@ -42,6 +42,8 @@ _('Skipping Articles!')
 
 _('Please note:  This is only a preview intended to give an idea how the book is typeset.')
 
+_('Please note: This is only a preview of your book, intended to give an idea how your book looks. Only the first few articles, as well as the first pages of the index, of your book are shown in this preview. All articles, even those left out of the preview, will be included in the final printed book.')
+
 _('References')
 
 _('Appendix')
