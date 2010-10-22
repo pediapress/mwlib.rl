@@ -161,18 +161,13 @@ def text_style(mode='p', indent_lvl=0, in_table=0, relsize='normal', text_align=
     """
 
     if not text_align:
-        #text_align = 'right' if word_wrap == 'RTL' else 'left'
         text_align = 'left'
 
     style = BaseStyle(name='text_style_%s_indent_%d_table_%d_size_%s' % (mode, indent_lvl, in_table, relsize))
     style.flowable = True # needed for "flowing" paragraphs around figures
 
-    if word_wrap == 'CJK' and mode not in ['preformatted', 'source']:
-        style.wordWrap = 'CJK'
-    if word_wrap == 'RTL' and mode not in ['preformatted', 'source']:
-        style.wordWrap = 'RTL'
-        # if not text_align:
-        #     style.alignment = TA_RIGHT
+    if word_wrap in ['CJK', 'RTL'] and mode not in ['preformatted', 'source']:
+        style.wordWrap = word_wrap
 
     if in_table > 0:
         style.alignment = table_text_align
@@ -244,12 +239,12 @@ def text_style(mode='p', indent_lvl=0, in_table=0, relsize='normal', text_align=
 
     if word_wrap == 'RTL':
         # switch all alignment, indentations for rtl languages
-        if style.alignment == TA_LEFT:
+        if style.alignment in [TA_LEFT, TA_JUSTIFY]:
             style.alignment = TA_RIGHT
         elif style.alignment == TA_RIGHT:
             style.alignment = TA_LEFT
 
-        
+        style.leftIndent, style.rightIndent = style.rightIndent, style.leftIndent
 
     if mode == 'license':
         style.fontSize = 5
