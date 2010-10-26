@@ -63,3 +63,5 @@ _('Image')
 _('anonymous edits')
 
 _('Figure')
+
+_('See also')
