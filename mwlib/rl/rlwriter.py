@@ -1293,7 +1293,16 @@ class RlWriter(object):
                     new_data.append(pixel)                        
             cleaned.putdata(new_data)
             cleaned.save(img_path)
-            img = PilImage.open(img_path)    
+            img = PilImage.open(img_path)
+        if img.mode == 'RGBA':
+            # ticket 901, image: http://en.wikipedia.org/wiki/File:WiMAXArchitecture.svg
+            #correct preserving alpha:
+            #convert broken.png white1000.png -compose Multiply -composite +matte final.png
+            cmds.append(base_cmd+['-background', 'white',
+                                  '-alpha', 'Background',
+                                  '-alpha', 'off',
+                                  img_path,
+                                  img_path])
 
         for cmd in cmds:
             try:
