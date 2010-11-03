@@ -125,6 +125,8 @@ source_max_line_len = 72 # if printing a source node, the maximum number of char
 
 no_float_math_len = 15
 
+max_math_width = 2500
+max_math_height = 2500
 #set to CJK if a PDF is rendered mainly using chinese, japanese or korean glyphs
 word_wrap=None
 
