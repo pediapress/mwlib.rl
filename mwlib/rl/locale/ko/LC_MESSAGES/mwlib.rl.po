@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-06 13:58+0000\n"
+"POT-Creation-Date: 2010-11-04 14:22+0000\n"
 "PO-Revision-Date: 2010-08-25 08:42:05+0000\n"
 "Language-Team: Korean\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -148,6 +148,10 @@ msgstr ""
 
 #: mwlib/rl/pdfmessages.py:65
 msgid "Figure"
+msgstr ""
+
+#: mwlib/rl/pdfmessages.py:67
+msgid "See also"
 msgstr ""
 
 #: mwlib/rl/pdfstyles.py:78

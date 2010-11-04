@@ -1,27 +1,28 @@
 # Translation of Mwlib.rl to Danish (Dansk)
 # Expored from translatewiki.net
 #
+# Author: Emilkris33
 # Author: Hylle
 # Author: Thomas81
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-06 13:58+0000\n"
-"PO-Revision-Date: 2010-10-06 13:57:58+0000\n"
+"POT-Creation-Date: 2010-11-04 14:22+0000\n"
+"PO-Revision-Date: 2010-11-04 14:22:23+0000\n"
 "Language-Team: Danish <http://translatewiki.net/wiki/Portal:da>\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.17alpha (r74353); Translate extension (2010-09-17)\n"
+"X-Generator: MediaWiki 1.17alpha (r76004); Translate extension (2010-09-17)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: da\n"
 "X-Message-Group: #out-mwlibrl\n"
-"X-POT-Import-Date: 2010-10-06 13:50:23+0000\n"
+"X-POT-Import-Date: 2010-10-24 17:44:05+0000\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: mwlib/rl/pdfmessages.py:11
 msgid "Index"
-msgstr ""
+msgstr "Indeks"
 
 #: mwlib/rl/pdfmessages.py:13
 msgid "Source:"
@@ -98,6 +99,11 @@ msgid ""
 "of the index, of your book are shown in this preview. All articles, even "
 "those left out of the preview, will be included in the final printed book."
 msgstr ""
+"Bemærk venligst: Dette er kun en forhåndsvisning af din bog, den har til "
+"formål at give en idé om, hvordan din bog ser ud. Kun de første par "
+"artikler, samt de første sider af indekset, i din bog er vist i denne "
+"forhåndsvisning. Alle artikler, selv dem der ikke er med i "
+"forhåndsvisningen, vil indgå i den endelige trykte bog."
 
 #: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:467
 #: mwlib/rl/rlwriter.py:784
@@ -161,6 +167,10 @@ msgstr "anonyme redigeringer"
 #: mwlib/rl/pdfmessages.py:65
 msgid "Figure"
 msgstr "Figur"
+
+#: mwlib/rl/pdfmessages.py:67
+msgid "See also"
+msgstr ""
 
 #: mwlib/rl/pdfstyles.py:78
 msgid ""

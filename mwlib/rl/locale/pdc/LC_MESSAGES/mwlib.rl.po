@@ -1,19 +1,22 @@
-# Translation of Mwlib.rl to Deitsch
+# Translation of Mwlib.rl to Deitsch (Deitsch)
+# Expored from translatewiki.net
 #
-# Author@translatewiki.net: Xqt
-# --
+# Author: Xqt
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-06 13:58+0000\n"
-"PO-Revision-Date: 2010-08-25 08:42:06+0000\n"
+"POT-Creation-Date: 2010-11-04 14:22+0000\n"
+"PO-Revision-Date: 2010-11-04 14:22:25+0000\n"
+"Language-Team: Deitsch <http://translatewiki.net/wiki/Portal:pdc>\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.17alpha (r71602); Translate extension (2010-08-20)\n"
+"X-Generator: MediaWiki 1.17alpha (r76004); Translate extension (2010-09-17)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: pdc\n"
-"X-Message-Group: out-mwlibrl\n"
+"X-Message-Group: #out-mwlibrl\n"
+"X-POT-Import-Date: 2010-10-24 17:44:05+0000\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: mwlib/rl/pdfmessages.py:11
 msgid "Index"
@@ -32,9 +35,8 @@ msgid "Contributors:"
 msgstr ""
 
 #: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:508
-#, fuzzy
 msgid "Article Licenses"
-msgstr "Ardickele"
+msgstr "Lizenz fer d' Ardickele"
 
 #: mwlib/rl/pdfmessages.py:21
 msgid "Title"
@@ -65,9 +67,8 @@ msgid "Produced by:"
 msgstr ""
 
 #: mwlib/rl/pdfmessages.py:35
-#, fuzzy
 msgid "pdf writer version:"
-msgstr "mwlib-Version:"
+msgstr "PDF-Version zum Schreiwe:"
 
 #: mwlib/rl/pdfmessages.py:37
 msgid "mwlib version:"
@@ -78,9 +79,8 @@ msgid "Table of Contents"
 msgstr ""
 
 #: mwlib/rl/pdfmessages.py:41
-#, fuzzy
 msgid "Skipping Articles!"
-msgstr "Ardickele"
+msgstr "Ardickele iwwerschpringe"
 
 #: mwlib/rl/pdfmessages.py:43
 msgid ""
@@ -149,6 +149,10 @@ msgstr ""
 msgid "Figure"
 msgstr ""
 
+#: mwlib/rl/pdfmessages.py:67
+msgid "See also"
+msgstr ""
+
 #: mwlib/rl/pdfstyles.py:78
 msgid ""
 "PDF generated using the open source mwlib toolkit. See http://code."
@@ -180,9 +184,8 @@ msgid "unknown"
 msgstr ""
 
 #: mwlib/rl/rlwriter.py:684
-#, fuzzy
 msgid "License"
-msgstr "Ardickele"
+msgstr ""
 
 #: mwlib/rl/rlwriter.py:775
 msgid ""
