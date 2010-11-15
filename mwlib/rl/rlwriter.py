@@ -1112,6 +1112,12 @@ class RlWriter(object):
 
     writeInserted = writeUnderline
 
+    def writeAbbreviation(self, n):
+        self.formatter.underline_style += 1
+        res = self.renderInline(n)
+        self.formatter.underline_style -= 1
+        return res
+
     def writeSub(self, n):
         return self.renderInline(n)
 
@@ -1688,11 +1694,6 @@ class RlWriter(object):
     def writeTagNode(self,t):
         if getattr(t, 'caption', None) in ['hiero']:
             return []
-        if getattr(t, 'caption', None) in ['abbr']:
-            self.formatter.underline_style += 1
-            res = self.writeUnderline(t)
-            self.formatter.underline_style -= 1
-            return res
         return self.renderChildren(t) # FIXME
 
     
