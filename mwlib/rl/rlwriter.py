@@ -1205,7 +1205,8 @@ class RlWriter(object):
                 href = href[:quote_idx]
         display_text = self.renderURL(href)
         href = xmlescape(href)
-        if (self.table_nesting and len(href) > 30) and not self.ref_mode:
+        if (self.table_nesting and len(href) > pdfstyles.url_ref_len and pdfstyles.url_ref_in_table) \
+               and not self.ref_mode:
             return self.writeNamedURL(obj)
         txt = '<link href="%s">%s</link>' % (href, display_text)
         return [txt]
