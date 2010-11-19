@@ -1611,7 +1611,6 @@ class RlWriter(object):
 
     def writeTeletyped(self, n):
         return self.renderInline(n)
-        return txt    
 
     writeCode = writeTeletyped
     writeVar = writeTeletyped
