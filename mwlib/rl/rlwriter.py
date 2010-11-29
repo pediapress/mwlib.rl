@@ -319,7 +319,11 @@ class RlWriter(object):
                                              revision=item.revision)
         if not art:
             return # FIXME
-        
+        try:
+            ns = item.wiki.normalize_and_get_page(item.title,0).ns
+        except AttributeError:
+            ns = 0
+        art.ns = ns
         art.url = mywiki.getURL(item.title, item.revision)
         art.authors = mywiki.getAuthors(item.title, revision=item.revision)
         if item.displaytitle is not None:
