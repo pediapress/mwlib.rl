@@ -183,7 +183,7 @@ msgstr ""
 #: mwlib/rl/rlwriter.py:303
 #, python-format
 msgid "mwlib.ext version: %(version)s"
-msgstr "versi mwlib.ext: %(version)"
+msgstr "versi mwlib.ext: %(version)s"
 
 #: mwlib/rl/rlwriter.py:309
 #, python-format
@@ -191,8 +191,8 @@ msgid ""
 "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, "
 "%(mwlibextversion)s"
 msgstr ""
-"versi mwlib: %(mwlibversion), versi mwlib.rl: %(mwlibrlversion), "
-"%(mwlibextversion)"
+"versi mwlib: %(mwlibversion)s, versi mwlib.rl: %(mwlibrlversion)s, "
+"%(mwlibextversion)s"
 
 #: mwlib/rl/rlwriter.py:668 mwlib/rl/rlwriter.py:693
 msgid "Source"
