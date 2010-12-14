@@ -65,7 +65,7 @@ PDF Customization
 ======================================================================
 
 Customizing the resulting PDFs is possible by adding a custom configuration file. 
-The file needs to named customconfig.py and should reside next to the pdfstyles.py file. 
+The file needs to be named customconfig.py and should be located in your PYTHONPATH.
 Basically you can override anything in the pdfstyles.py file with your custom configuration. 
 Any changes need to be done with care in order not to break things!
 Check the pdfstyles.py file for more information.
