@@ -1285,8 +1285,8 @@ class RlWriter(object):
         cmds = []
         base_cmd = [
             'convert',
-            '-limit',' memory', '32000000',
-            '-limit',' map', '64000000',
+            '-limit', 'memory', '32000000',
+            '-limit', 'map', '64000000',
             '-limit', 'disk', '64000000',
             '-limit', 'area', '64000000',
             ]
