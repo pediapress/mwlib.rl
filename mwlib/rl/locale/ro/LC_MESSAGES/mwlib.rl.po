@@ -9,16 +9,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-04 14:22+0000\n"
-"PO-Revision-Date: 2010-11-04 14:22:26+0000\n"
+"POT-Creation-Date: 2010-10-06 13:58+0000\n"
+"PO-Revision-Date: 2010-10-06 13:58:03+0000\n"
 "Language-Team: Romanian <http://translatewiki.net/wiki/Portal:ro>\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.17alpha (r76004); Translate extension (2010-09-17)\n"
+"X-Generator: MediaWiki 1.17alpha (r74353); Translate extension (2010-09-17)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: ro\n"
 "X-Message-Group: #out-mwlibrl\n"
-"X-POT-Import-Date: 2010-10-24 17:44:05+0000\n"
+"X-POT-Import-Date: 2010-10-06 13:50:23+0000\n"
 "Plural-Forms: nplurals=3; plural=(n == 1) ? 0 : ( (n == 0 || (n%100 > 0 && n%"
 "100 < 20)) ? 1 : 2 );\n"
 
@@ -40,7 +40,7 @@ msgstr "Contribuitori:"
 
 #: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:508
 msgid "Article Licenses"
-msgstr "Licențele articolului"
+msgstr "Licențele articolelor"
 
 #: mwlib/rl/pdfmessages.py:21
 msgid "Title"
@@ -72,7 +72,7 @@ msgstr "Produs de:"
 
 #: mwlib/rl/pdfmessages.py:35
 msgid "pdf writer version:"
-msgstr "versiunea aplicației de generare pdf:"
+msgstr "versiunea aplicației de scriere pdf:"
 
 #: mwlib/rl/pdfmessages.py:37
 msgid "mwlib version:"
@@ -91,7 +91,7 @@ msgid ""
 "Please note:  This is only a preview intended to give an idea how the book "
 "is typeset."
 msgstr ""
-"Vă rugăm să rețineți: Aceasta este doar o previzualizare pentru a vă forma o "
+"Vă rugăm să rețineți: Aceasta este doar o previzualizare pentru a vă da o "
 "idee despre cum arată cartea."
 
 #: mwlib/rl/pdfmessages.py:45
@@ -102,10 +102,10 @@ msgid ""
 "those left out of the preview, will be included in the final printed book."
 msgstr ""
 "Vă rugăm să rețineți că aceasta este doar o previzualizare a cărții "
-"dumneavoastră pentru a vă forma o idee despre cum aceasta arată. Doar "
-"primele câteva articole, precum și primele pagini din indexul cărții sunt "
-"afișate în această previzualizare. Toate articolele, chiar și cele care nu "
-"pot fi văzute, vor fi incluse în varianta finală tipărită."
+"dumneavoastră pentru a vă oferi o idee despre cum arată. Doar primele câteva "
+"articole, precum și primele pagini din indexul cărții sunt afișate în "
+"această previzualizare. Toate articolele, chiar și cele care nu pot fi "
+"văzute, vor fi incluse în varianta finală tipărită."
 
 #: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:467
 #: mwlib/rl/rlwriter.py:784
@@ -123,10 +123,6 @@ msgid ""
 "including the copyright status, the copyright owner, and the license "
 "conditions."
 msgstr ""
-"Următoarele secțiuni afișează sursele pentru toate articolele și imaginile "
-"utilizate în această carte. Aceste surse furnizează mai multe detalii despre "
-"licențe, inclusiv statutul drepturilor de autor, deținătorul acestora și "
-"condițiile și termenii licențelor."
 
 #: mwlib/rl/pdfmessages.py:53
 msgid ""
@@ -134,9 +130,6 @@ msgid ""
 "information including the copyright status, the copyright owner, and the "
 "license conditions."
 msgstr ""
-"Sursele afișate pentru fiecare articol în parte furnizează mai multe "
-"informații despre licențe, inclusiv statutul drepturilor de autor, "
-"deținătorul acestora și condițiile și termenii licențelor."
 
 #: mwlib/rl/pdfmessages.py:55
 msgid ""
@@ -144,14 +137,11 @@ msgid ""
 "information including the copyright status, the copyright owner, and the "
 "license conditions."
 msgstr ""
-"Sursele afișate pentru fiecare imagine în parte furnizează mai multe "
-"informații despre licențe, inclusiv statutul drepturilor de autor, "
-"deținătorul acestora și condițiile și termenii licențelor."
 
 #: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:468
 #: mwlib/rl/rlwriter.py:657
 msgid "Article Sources and Contributors"
-msgstr "Sursele și contribuitorii articolului"
+msgstr "Sursele și contribuitorii articolelor"
 
 #: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:471
 #: mwlib/rl/rlwriter.py:676
@@ -169,10 +159,6 @@ msgstr "modificări anonime"
 #: mwlib/rl/pdfmessages.py:65
 msgid "Figure"
 msgstr "Figură"
-
-#: mwlib/rl/pdfmessages.py:67
-msgid "See also"
-msgstr ""
 
 #: mwlib/rl/pdfstyles.py:78
 msgid ""
