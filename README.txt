@@ -98,6 +98,15 @@ The current development version can also be found there.
 
 ChangeLog
 ======================================================================
+2010-10-29 release 0.12.7
+-------------------------
+- setup.py: require mwlib 0.12.14.
+- add localisation needed to fix #905
+- fix for 901 / transparent image bug in adobe reader
+- manually fetch hu translations from translatewiki
+- fix for #903
+- correct fontswitchter import
+- add url blacklist
 
 2010-10-11 release 0.12.6
 -------------------------

@@ -319,7 +319,11 @@ class RlWriter(object):
                                              revision=item.revision)
         if not art:
             return # FIXME
-        
+        try:
+            ns = item.wiki.normalize_and_get_page(item.title,0).ns
+        except AttributeError:
+            ns = 0
+        art.ns = ns
         art.url = mywiki.getURL(item.title, item.revision)
         art.authors = mywiki.getAuthors(item.title, revision=item.revision)
         if item.displaytitle is not None:
@@ -1112,6 +1116,12 @@ class RlWriter(object):
 
     writeInserted = writeUnderline
 
+    def writeAbbreviation(self, n):
+        self.formatter.underline_style += 1
+        res = self.renderInline(n)
+        self.formatter.underline_style -= 1
+        return res
+
     def writeSub(self, n):
         return self.renderInline(n)
 
@@ -1199,7 +1209,8 @@ class RlWriter(object):
                 href = href[:quote_idx]
         display_text = self.renderURL(href)
         href = xmlescape(href)
-        if (self.table_nesting and len(href) > 30) and not self.ref_mode:
+        if (self.table_nesting and len(href) > pdfstyles.url_ref_len and pdfstyles.url_ref_in_table) \
+               and not self.ref_mode:
             return self.writeNamedURL(obj)
         txt = '<link href="%s">%s</link>' % (href, display_text)
         return [txt]
@@ -1604,7 +1615,6 @@ class RlWriter(object):
 
     def writeTeletyped(self, n):
         return self.renderInline(n)
-        return txt    
 
     writeCode = writeTeletyped
     writeVar = writeTeletyped
@@ -1688,11 +1698,6 @@ class RlWriter(object):
     def writeTagNode(self,t):
         if getattr(t, 'caption', None) in ['hiero']:
             return []
-        if getattr(t, 'caption', None) in ['abbr']:
-            self.formatter.underline_style += 1
-            res = self.writeUnderline(t)
-            self.formatter.underline_style -= 1
-            return res
         return self.renderChildren(t) # FIXME
 
     
@@ -2058,8 +2063,8 @@ class RlWriter(object):
         w,h = img.size
         del img
 
-        if w > 1000 or h > 1000:
-            log.info('skipping math formula, png to big: %s' % repr(source))
+        if w > pdfstyles.max_math_width or h > pdfstyles.max_math_height:
+            log.info('skipping math formula, png to big: %r, w:%d, h:%d' % (source, w, h))
             return ''
         if self.table_nesting: # scale down math-formulas in tables
             w = w * pdfstyles.small_font_size/pdfstyles.font_size
