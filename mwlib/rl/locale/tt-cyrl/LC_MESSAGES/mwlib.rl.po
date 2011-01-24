@@ -6,18 +6,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-02 11:52+0100\n"
-"PO-Revision-Date: 2010-10-06 13:58:03+0000\n"
+"POT-Creation-Date: 2011-01-24 12:47+0000\n"
+"PO-Revision-Date: 2011-01-24 12:47:14+0000\n"
 "Language-Team: Tatar (Cyrillic) <http://translatewiki.net/wiki/Portal:tt-"
 "cyrl>\n"
-"Language: \n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.17alpha (r74353); Translate extension (2010-09-17)\n"
+"Language: \n"
+"X-Generator: MediaWiki 1.18alpha (r80810); Translate extension (2010-09-17)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: tt-cyrl\n"
 "X-Message-Group: #out-mwlibrl\n"
-"X-POT-Import-Date: 2010-10-06 13:50:23+0000\n"
+"X-POT-Import-Date: 2011-01-10 18:24:06+0000\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: mwlib/rl/pdfmessages.py:11
@@ -70,25 +70,27 @@ msgstr "Чыгаручы:"
 
 #: mwlib/rl/pdfmessages.py:35
 msgid "pdf writer version:"
-msgstr ""
+msgstr "pdf ясаучының юрамасы:"
 
 #: mwlib/rl/pdfmessages.py:37
 msgid "mwlib version:"
-msgstr ""
+msgstr "mwlib.ext юрамасы:"
 
 #: mwlib/rl/pdfmessages.py:39
 msgid "Table of Contents"
-msgstr ""
+msgstr "Башлык"
 
 #: mwlib/rl/pdfmessages.py:41
 msgid "Skipping Articles!"
-msgstr ""
+msgstr "Төшеп калган мәкаләләр!"
 
 #: mwlib/rl/pdfmessages.py:43
 msgid ""
 "Please note:  This is only a preview intended to give an idea how the book "
 "is typeset."
 msgstr ""
+"Истә тотыгыз! Бу бары тик алдан кару гына, ул бары сезнең китабыгызның ничек "
+"булуын гына сүрәтли."
 
 #: mwlib/rl/pdfmessages.py:45
 msgid ""
@@ -169,8 +171,8 @@ msgstr ""
 #: mwlib/rl/rlwriter.py:309
 #, python-format
 msgid ""
-"mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, "
-"%(mwlibextversion)s"
+"mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
+"(mwlibextversion)s"
 msgstr ""
 
 #: mwlib/rl/rlwriter.py:668 mwlib/rl/rlwriter.py:693

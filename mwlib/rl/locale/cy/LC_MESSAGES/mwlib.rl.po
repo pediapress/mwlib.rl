@@ -7,17 +7,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-02 11:52+0100\n"
-"PO-Revision-Date: 2010-10-06 13:57:58+0000\n"
+"POT-Creation-Date: 2011-01-24 12:47+0000\n"
+"PO-Revision-Date: 2011-01-24 12:47:11+0000\n"
 "Language-Team: Welsh <http://translatewiki.net/wiki/Portal:cy>\n"
-"Language: cy\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.17alpha (r74353); Translate extension (2010-09-17)\n"
+"Language: cy\n"
+"X-Generator: MediaWiki 1.18alpha (r80810); Translate extension (2010-09-17)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: cy\n"
 "X-Message-Group: #out-mwlibrl\n"
-"X-POT-Import-Date: 2010-10-06 13:50:23+0000\n"
+"X-POT-Import-Date: 2011-01-10 18:24:06+0000\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ( (n == 2) ? 1 : ( (n != 8 "
 "&& n != 11) ? 2 : 3 ) );\n"
 
@@ -128,28 +128,24 @@ msgstr ""
 "amodau'r drwydded."
 
 #: mwlib/rl/pdfmessages.py:53
-#, fuzzy
 msgid ""
 "The sources listed for each article provide more detailed licensing "
 "information including the copyright status, the copyright owner, and the "
 "license conditions."
 msgstr ""
-"Mae ffynonellau'r lluniau a'r wybodaeth yn yr holl erthyglau a geir yn y "
-"llyfr hwn wedi eu rhestri isod. Ceir manylion pellach yn y ffynonellau hynny "
-"am eu trwyddedau, gan gynnwys statws hawlfraint, perchennog yr hawlfraint ac "
-"amodau'r drwydded."
+"Mae ffynonellau'r deunydd ym mhob erthygl wedi eu rhestru. Ceir manylion "
+"pellach yn y ffynonellau hynny am eu trwyddedau, gan gynnwys statws yr "
+"hawlfraint, ei pherchennog ac amodau'r drwydded."
 
 #: mwlib/rl/pdfmessages.py:55
-#, fuzzy
 msgid ""
 "The sources listed for each image provide more detailed licensing "
 "information including the copyright status, the copyright owner, and the "
 "license conditions."
 msgstr ""
-"Mae ffynonellau'r lluniau a'r wybodaeth yn yr holl erthyglau a geir yn y "
-"llyfr hwn wedi eu rhestri isod. Ceir manylion pellach yn y ffynonellau hynny "
-"am eu trwyddedau, gan gynnwys statws hawlfraint, perchennog yr hawlfraint ac "
-"amodau'r drwydded."
+"Mae'r ffynonellau i bob llun wedi eu rhestru. Ceir manylion pellach yn y "
+"ffynonellau hynny am eu trwyddedau, gan gynnwys statws yr hawlfraint, ei "
+"pherchennog ac amodau'r drwydded."
 
 #: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:472
 #: mwlib/rl/rlwriter.py:661
@@ -175,7 +171,7 @@ msgstr "Ffigur"
 
 #: mwlib/rl/pdfmessages.py:67
 msgid "See also"
-msgstr ""
+msgstr "Gweler hefyd"
 
 #: mwlib/rl/pdfstyles.py:78
 msgid ""
@@ -193,11 +189,11 @@ msgstr "y fersiwn mwlib.ext: %(version)s"
 #: mwlib/rl/rlwriter.py:309
 #, python-format
 msgid ""
-"mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, "
-"%(mwlibextversion)s"
+"mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
+"(mwlibextversion)s"
 msgstr ""
-"fersiwn mwlib:  %(mwlibversion)s, fersiwn mwlib.rl: %(mwlibrlversion)s, "
-"%(mwlibextversion)s"
+"fersiwn mwlib:  %(mwlibversion)s, fersiwn mwlib.rl: %(mwlibrlversion)s, %"
+"(mwlibextversion)s"
 
 #: mwlib/rl/rlwriter.py:668 mwlib/rl/rlwriter.py:693
 msgid "Source"

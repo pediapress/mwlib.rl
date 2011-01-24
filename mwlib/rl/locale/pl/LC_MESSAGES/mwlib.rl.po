@@ -8,17 +8,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-02 11:52+0100\n"
-"PO-Revision-Date: 2010-10-06 13:58:03+0000\n"
+"POT-Creation-Date: 2011-01-24 12:47+0000\n"
+"PO-Revision-Date: 2011-01-24 12:47:13+0000\n"
 "Language-Team: Polish <http://translatewiki.net/wiki/Portal:pl>\n"
-"Language: pl\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.17alpha (r74353); Translate extension (2010-09-17)\n"
+"Language: pl\n"
+"X-Generator: MediaWiki 1.18alpha (r80810); Translate extension (2010-09-17)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: pl\n"
 "X-Message-Group: #out-mwlibrl\n"
-"X-POT-Import-Date: 2010-10-06 13:50:23+0000\n"
+"X-POT-Import-Date: 2011-01-10 18:24:06+0000\n"
 "Plural-Forms: nplurals=3; plural=(n == 1) ? 0 : ( (n%10 >= 2 && n%10 <= 4 && "
 "(n%100 < 10 || n%100 >= 20)) ? 1 : 2 );\n"
 
@@ -128,28 +128,24 @@ msgstr ""
 "praw autorskich i warunkach licencji."
 
 #: mwlib/rl/pdfmessages.py:53
-#, fuzzy
 msgid ""
 "The sources listed for each article provide more detailed licensing "
 "information including the copyright status, the copyright owner, and the "
 "license conditions."
 msgstr ""
-"Poniżej znajduje się lista źródeł dla wszystkich artykułów i grafik użytych "
-"w tej książce. Źródła dostarczą bardziej szczegółowej informacji o "
-"licencjonowaniu zawierającej informację o prawach autorskich, właścicielu "
-"praw autorskich i warunkach licencji."
+"Dla każdego artykułu wyświetlono listę źródeł, które dostarczą bardziej "
+"szczegółowych informacji o licencjonowaniu uwzględniając informację o "
+"prawach autorskich, ich właścicielu i warunkach licencji."
 
 #: mwlib/rl/pdfmessages.py:55
-#, fuzzy
 msgid ""
 "The sources listed for each image provide more detailed licensing "
 "information including the copyright status, the copyright owner, and the "
 "license conditions."
 msgstr ""
-"Poniżej znajduje się lista źródeł dla wszystkich artykułów i grafik użytych "
-"w tej książce. Źródła dostarczą bardziej szczegółowej informacji o "
-"licencjonowaniu zawierającej informację o prawach autorskich, właścicielu "
-"praw autorskich i warunkach licencji."
+"Dla każdej grafiki wyświetlono listę źródeł, które dostarczą bardziej "
+"szczegółowych informacji o licencjonowaniu uwzględniając informację o "
+"prawach autorskich, ich właścicielu i warunkach licencji."
 
 #: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:472
 #: mwlib/rl/rlwriter.py:661
@@ -175,7 +171,7 @@ msgstr "Rysunek"
 
 #: mwlib/rl/pdfmessages.py:67
 msgid "See also"
-msgstr ""
+msgstr "Zobacz też"
 
 #: mwlib/rl/pdfstyles.py:78
 msgid ""
@@ -193,11 +189,11 @@ msgstr "wersja mwlib.ext: %(version)s"
 #: mwlib/rl/rlwriter.py:309
 #, python-format
 msgid ""
-"mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, "
-"%(mwlibextversion)s"
+"mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
+"(mwlibextversion)s"
 msgstr ""
-"wersja mwlib: %(mwlibversion)s, wersja mwlib.rl: %(mwlibrlversion)s, "
-"%(mwlibextversion)s"
+"wersja mwlib: %(mwlibversion)s, wersja mwlib.rl: %(mwlibrlversion)s, %"
+"(mwlibextversion)s"
 
 #: mwlib/rl/rlwriter.py:668 mwlib/rl/rlwriter.py:693
 msgid "Source"

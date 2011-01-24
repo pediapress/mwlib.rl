@@ -6,17 +6,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-02 11:52+0100\n"
-"PO-Revision-Date: 2010-10-06 13:58:03+0000\n"
+"POT-Creation-Date: 2011-01-24 12:47+0000\n"
+"PO-Revision-Date: 2011-01-24 12:47:13+0000\n"
 "Language-Team: Pashto <http://translatewiki.net/wiki/Portal:ps>\n"
-"Language: ps\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.17alpha (r74353); Translate extension (2010-09-17)\n"
+"Language: ps\n"
+"X-Generator: MediaWiki 1.18alpha (r80810); Translate extension (2010-09-17)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: ps\n"
 "X-Message-Group: #out-mwlibrl\n"
-"X-POT-Import-Date: 2010-10-06 13:50:23+0000\n"
+"X-POT-Import-Date: 2011-01-10 18:24:06+0000\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: mwlib/rl/pdfmessages.py:11
@@ -29,7 +29,7 @@ msgstr "سرچينه:"
 
 #: mwlib/rl/pdfmessages.py:15
 msgid "License:"
-msgstr "اجازتليک:"
+msgstr "منښتليک:"
 
 #: mwlib/rl/pdfmessages.py:17
 msgid "Contributors:"
@@ -170,8 +170,8 @@ msgstr ""
 #: mwlib/rl/rlwriter.py:309
 #, python-format
 msgid ""
-"mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, "
-"%(mwlibextversion)s"
+"mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
+"(mwlibextversion)s"
 msgstr ""
 
 #: mwlib/rl/rlwriter.py:668 mwlib/rl/rlwriter.py:693
@@ -188,7 +188,7 @@ msgstr "ناجوت"
 
 #: mwlib/rl/rlwriter.py:688
 msgid "License"
-msgstr "اجازتليک"
+msgstr "منښتليک"
 
 #: mwlib/rl/rlwriter.py:779
 msgid ""

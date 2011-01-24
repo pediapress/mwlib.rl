@@ -3,23 +3,24 @@
 #
 # Author: Eduardo.mps
 # Author: Giro720
+# Author: Helder.wiki
 # Author: Heldergeovane
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-02 11:52+0100\n"
-"PO-Revision-Date: 2010-10-06 13:58:03+0000\n"
+"POT-Creation-Date: 2011-01-24 12:47+0000\n"
+"PO-Revision-Date: 2011-01-24 12:47:13+0000\n"
 "Language-Team: Brazilian Portuguese <http://translatewiki.net/wiki/Portal:pt-"
 "br>\n"
-"Language: pt_BR\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.17alpha (r74353); Translate extension (2010-09-17)\n"
+"Language: pt_BR\n"
+"X-Generator: MediaWiki 1.18alpha (r80810); Translate extension (2010-09-17)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: pt-br\n"
 "X-Message-Group: #out-mwlibrl\n"
-"X-POT-Import-Date: 2010-10-06 13:50:23+0000\n"
+"X-POT-Import-Date: 2011-01-10 18:24:06+0000\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: mwlib/rl/pdfmessages.py:11
@@ -128,27 +129,23 @@ msgstr ""
 "condições da licença."
 
 #: mwlib/rl/pdfmessages.py:53
-#, fuzzy
 msgid ""
 "The sources listed for each article provide more detailed licensing "
 "information including the copyright status, the copyright owner, and the "
 "license conditions."
 msgstr ""
-"As seguintes seções listam as fontes de todas as páginas e imagens usadas "
-"neste livro. Tais fontes fornecem informação mais detalhada sobre a licença, "
-"incluindo o estado dos direitos autorais, o detentor dos mesmos, e as "
+"As fontes listadas para cada artigo fornecem informação mais detalhada sobre "
+"a licença, incluindo os direitos autorais, o titular dos mesmos e as "
 "condições da licença."
 
 #: mwlib/rl/pdfmessages.py:55
-#, fuzzy
 msgid ""
 "The sources listed for each image provide more detailed licensing "
 "information including the copyright status, the copyright owner, and the "
 "license conditions."
 msgstr ""
-"As seguintes seções listam as fontes de todas as páginas e imagens usadas "
-"neste livro. Tais fontes fornecem informação mais detalhada sobre a licença, "
-"incluindo o estado dos direitos autorais, o detentor dos mesmos, e as "
+"As fontes listadas para cada imagem fornecem informação mais detalhada sobre "
+"a licença, incluindo os direitos autorais, o titular dos mesmos e as "
 "condições da licença."
 
 #: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:472
@@ -175,7 +172,7 @@ msgstr "Figura"
 
 #: mwlib/rl/pdfmessages.py:67
 msgid "See also"
-msgstr ""
+msgstr "Ver também"
 
 #: mwlib/rl/pdfstyles.py:78
 msgid ""
@@ -193,11 +190,11 @@ msgstr "Versão do mwlib.ext: %(version)s"
 #: mwlib/rl/rlwriter.py:309
 #, python-format
 msgid ""
-"mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, "
-"%(mwlibextversion)s"
+"mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
+"(mwlibextversion)s"
 msgstr ""
-"versão do mwlib: %(mwlibversion)s, versão do mwlib.rl: %(mwlibrlversion)s, "
-"%(mwlibextversion)s"
+"versão do mwlib: %(mwlibversion)s, versão do mwlib.rl: %(mwlibrlversion)s, %"
+"(mwlibextversion)s"
 
 #: mwlib/rl/rlwriter.py:668 mwlib/rl/rlwriter.py:693
 msgid "Source"

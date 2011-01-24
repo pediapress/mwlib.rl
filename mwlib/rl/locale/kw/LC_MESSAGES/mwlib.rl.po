@@ -1,19 +1,24 @@
-# Translation of Mwlib.rl to Cornish
+# Translation of Mwlib.rl to Cornish (Kernowek)
+# Expored from translatewiki.net
 #
-# Author@translatewiki.net: Kernoweger
-# --
+# Author: Kernoweger
+# Author: Kw-Moon
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-02 11:52+0100\n"
-"PO-Revision-Date: 2009-12-18 08:43:01+0000\n"
+"POT-Creation-Date: 2011-01-24 12:47+0000\n"
+"PO-Revision-Date: 2011-01-24 12:47:12+0000\n"
+"Language-Team: Cornish <http://translatewiki.net/wiki/Portal:kw>\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.16alpha (r60201); Translate extension (2009-12-06)\n"
+"X-Generator: MediaWiki 1.18alpha (r80810); Translate extension (2010-09-17)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: kw\n"
-"X-Message-Group: out-mwlibrl\n"
+"X-Message-Group: #out-mwlibrl\n"
+"X-POT-Import-Date: 2011-01-10 18:24:06+0000\n"
+"Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ( (n == 2) ? 1 : ( (n == "
+"3) ? 2 : 3 ) );\n"
 
 #: mwlib/rl/pdfmessages.py:11
 msgid "Index"
@@ -164,8 +169,8 @@ msgstr ""
 #: mwlib/rl/rlwriter.py:309
 #, python-format
 msgid ""
-"mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, "
-"%(mwlibextversion)s"
+"mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
+"(mwlibextversion)s"
 msgstr ""
 
 #: mwlib/rl/rlwriter.py:668 mwlib/rl/rlwriter.py:693
@@ -178,7 +183,7 @@ msgstr ""
 
 #: mwlib/rl/rlwriter.py:686
 msgid "unknown"
-msgstr "anwodhvos"
+msgstr "ankoth"
 
 #: mwlib/rl/rlwriter.py:688
 msgid "License"
@@ -190,7 +195,3 @@ msgid ""
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
 "software (b) problematic Mediawiki markup (c) table is too wide"
 msgstr ""
-
-#, fuzzy
-#~ msgid "title"
-#~ msgstr "Titel"

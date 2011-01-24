@@ -1,6 +1,7 @@
 # Translation of Mwlib.rl to Russian (Русский)
 # Expored from translatewiki.net
 #
+# Author: DCamer
 # Author: Kaganer
 # Author: Lockal
 # Author: Osd
@@ -9,17 +10,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-02 11:52+0100\n"
-"PO-Revision-Date: 2010-10-06 13:58:03+0000\n"
+"POT-Creation-Date: 2011-01-24 12:47+0000\n"
+"PO-Revision-Date: 2011-01-24 12:47:14+0000\n"
 "Language-Team: Russian <http://translatewiki.net/wiki/Portal:ru>\n"
-"Language: ru\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.17alpha (r74353); Translate extension (2010-09-17)\n"
+"Language: ru\n"
+"X-Generator: MediaWiki 1.18alpha (r80810); Translate extension (2010-09-17)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: ru\n"
 "X-Message-Group: #out-mwlibrl\n"
-"X-POT-Import-Date: 2010-10-06 13:50:23+0000\n"
+"X-POT-Import-Date: 2011-01-10 18:24:06+0000\n"
 "Plural-Forms: nplurals=3; plural=(n%10 == 1 && n%100 != 11) ? 0 : ( (n%10 >= "
 "2 && n%10 <= 4 && (n%100 < 10 || n%100 >= 20)) ? 1 : 2 );\n"
 
@@ -129,26 +130,23 @@ msgstr ""
 "авторских прав, лицензиях и условиях распространения."
 
 #: mwlib/rl/pdfmessages.py:53
-#, fuzzy
 msgid ""
 "The sources listed for each article provide more detailed licensing "
 "information including the copyright status, the copyright owner, and the "
 "license conditions."
 msgstr ""
-"В следующих разделах перечислены источников по всем статьям и используемые в "
-"книге изображения. В источниках указана подробная информация о владельцах "
-"авторских прав, лицензиях и условиях распространения."
+"Более подробная информация о статусе и владельцах авторских прав, а также "
+"условиях лицензии представлена в источниках, указанных для каждой статьи."
 
 #: mwlib/rl/pdfmessages.py:55
-#, fuzzy
 msgid ""
 "The sources listed for each image provide more detailed licensing "
 "information including the copyright status, the copyright owner, and the "
 "license conditions."
 msgstr ""
-"В следующих разделах перечислены источников по всем статьям и используемые в "
-"книге изображения. В источниках указана подробная информация о владельцах "
-"авторских прав, лицензиях и условиях распространения."
+"Более подробная информация о статусе и владельцах авторских прав, а также "
+"условиях лицензии представлена в источниках, указанных для каждого "
+"изображения."
 
 #: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:472
 #: mwlib/rl/rlwriter.py:661
@@ -174,7 +172,7 @@ msgstr "Рисунок"
 
 #: mwlib/rl/pdfmessages.py:67
 msgid "See also"
-msgstr ""
+msgstr "См. также"
 
 #: mwlib/rl/pdfstyles.py:78
 msgid ""
@@ -192,11 +190,11 @@ msgstr "версия mwlib.ext: %(version)s"
 #: mwlib/rl/rlwriter.py:309
 #, python-format
 msgid ""
-"mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, "
-"%(mwlibextversion)s"
+"mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
+"(mwlibextversion)s"
 msgstr ""
-"версия mwlib: %(mwlibversion)s, версия mwlib.rl: %(mwlibrlversion)s, "
-"%(mwlibextversion)s"
+"версия mwlib: %(mwlibversion)s, версия mwlib.rl: %(mwlibrlversion)s, %"
+"(mwlibextversion)s"
 
 #: mwlib/rl/rlwriter.py:668 mwlib/rl/rlwriter.py:693
 msgid "Source"
