@@ -6,17 +6,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-02 11:52+0100\n"
-"PO-Revision-Date: 2010-10-06 13:58:02+0000\n"
+"POT-Creation-Date: 2011-01-24 12:47+0000\n"
+"PO-Revision-Date: 2011-01-24 12:47:12+0000\n"
 "Language-Team: Interlingua <http://translatewiki.net/wiki/Portal:ia>\n"
-"Language: ia\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.17alpha (r74353); Translate extension (2010-09-17)\n"
+"Language: ia\n"
+"X-Generator: MediaWiki 1.18alpha (r80810); Translate extension (2010-09-17)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: ia\n"
 "X-Message-Group: #out-mwlibrl\n"
-"X-POT-Import-Date: 2010-10-06 13:50:23+0000\n"
+"X-POT-Import-Date: 2011-01-10 18:24:06+0000\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: mwlib/rl/pdfmessages.py:11
@@ -126,28 +126,24 @@ msgstr ""
 "illos, e le conditiones del licentia."
 
 #: mwlib/rl/pdfmessages.py:53
-#, fuzzy
 msgid ""
 "The sources listed for each article provide more detailed licensing "
 "information including the copyright status, the copyright owner, and the "
 "license conditions."
 msgstr ""
-"Le sequente sectiones lista le origines de tote le articulos e imagines "
-"usate in iste libro. Iste origines forni informationes plus detaliate super "
-"le licentia, como le stato del derectos de autor (copyright), le detentor de "
-"illos, e le conditiones del licentia."
+"Le origines listate pro cata articulo forni informationes plus detaliate "
+"super le licentia, como le stato del derectos de autor (copyright), le "
+"detentor de illos, e le conditiones del licentia."
 
 #: mwlib/rl/pdfmessages.py:55
-#, fuzzy
 msgid ""
 "The sources listed for each image provide more detailed licensing "
 "information including the copyright status, the copyright owner, and the "
 "license conditions."
 msgstr ""
-"Le sequente sectiones lista le origines de tote le articulos e imagines "
-"usate in iste libro. Iste origines forni informationes plus detaliate super "
-"le licentia, como le stato del derectos de autor (copyright), le detentor de "
-"illos, e le conditiones del licentia."
+"Le origines listate pro cata imagine forni informationes plus detaliate "
+"super le licentia, como le stato del derectos de autor (copyright), le "
+"detentor de illos, e le conditiones del licentia."
 
 #: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:472
 #: mwlib/rl/rlwriter.py:661
@@ -173,7 +169,7 @@ msgstr "Figura"
 
 #: mwlib/rl/pdfmessages.py:67
 msgid "See also"
-msgstr ""
+msgstr "Vide etiam"
 
 #: mwlib/rl/pdfstyles.py:78
 msgid ""
@@ -191,8 +187,8 @@ msgstr "version de mwlib.ext: %(version)s"
 #: mwlib/rl/rlwriter.py:309
 #, python-format
 msgid ""
-"mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, "
-"%(mwlibextversion)s"
+"mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
+"(mwlibextversion)s"
 msgstr ""
 "version de mwlib: %(mwlibversion)s, version de mwlib.rl: %(mwlibrlversion)s, "
 "%(mwlibextversion)s"

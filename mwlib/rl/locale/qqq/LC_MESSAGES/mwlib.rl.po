@@ -10,18 +10,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-02 11:52+0100\n"
-"PO-Revision-Date: 2010-10-06 13:58:03+0000\n"
+"POT-Creation-Date: 2011-01-24 12:47+0000\n"
+"PO-Revision-Date: 2011-01-24 12:47:14+0000\n"
 "Language-Team: Message documentation <http://translatewiki.net/wiki/Portal:"
 "qqq>\n"
-"Language: \n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.17alpha (r74353); Translate extension (2010-09-17)\n"
+"Language: \n"
+"X-Generator: MediaWiki 1.18alpha (r80810); Translate extension (2010-09-17)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: qqq\n"
 "X-Message-Group: #out-mwlibrl\n"
-"X-POT-Import-Date: 2010-10-06 13:50:23+0000\n"
+"X-POT-Import-Date: 2011-01-10 18:24:06+0000\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: mwlib/rl/pdfmessages.py:11
@@ -66,8 +66,9 @@ msgid "Contents"
 msgstr "{{Identical|Contents}}"
 
 #: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:423
+#, fuzzy
 msgid "Articles"
-msgstr ""
+msgstr "{{Identical|License}}"
 
 #: mwlib/rl/pdfmessages.py:33
 msgid "Produced by:"
@@ -177,11 +178,11 @@ msgstr "{{doc-important|Do not translate <code>%(version)s</code>.}}"
 #: mwlib/rl/rlwriter.py:309
 #, python-format
 msgid ""
-"mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, "
-"%(mwlibextversion)s"
+"mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
+"(mwlibextversion)s"
 msgstr ""
-"{{doc-important|Do not translate <code>%(mwlibversion)s</code> and <code>"
-"%(mwlibrlversion)s, %(mwlibextversion)s</code>}}"
+"{{doc-important|Do not translate <code>%(mwlibversion)s</code> and <code>%"
+"(mwlibrlversion)s, %(mwlibextversion)s</code>}}"
 
 #: mwlib/rl/rlwriter.py:668 mwlib/rl/rlwriter.py:693
 msgid "Source"

@@ -2,22 +2,24 @@
 # Expored from translatewiki.net
 #
 # Author: ArnoLagrange
+# Author: Mihxil
+# Author: Petrus Adamus
 # Author: Yekrats
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-02 11:52+0100\n"
-"PO-Revision-Date: 2010-10-06 13:57:58+0000\n"
+"POT-Creation-Date: 2011-01-24 12:47+0000\n"
+"PO-Revision-Date: 2011-01-24 12:47:12+0000\n"
 "Language-Team: Esperanto <http://translatewiki.net/wiki/Portal:eo>\n"
-"Language: eo\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.17alpha (r74353); Translate extension (2010-09-17)\n"
+"Language: eo\n"
+"X-Generator: MediaWiki 1.18alpha (r80810); Translate extension (2010-09-17)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: eo\n"
 "X-Message-Group: #out-mwlibrl\n"
-"X-POT-Import-Date: 2010-10-06 13:50:23+0000\n"
+"X-POT-Import-Date: 2011-01-10 18:24:06+0000\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: mwlib/rl/pdfmessages.py:11
@@ -30,7 +32,7 @@ msgstr "Fonto"
 
 #: mwlib/rl/pdfmessages.py:15
 msgid "License:"
-msgstr "Licenco:"
+msgstr "Permesilo:"
 
 #: mwlib/rl/pdfmessages.py:17
 msgid "Contributors:"
@@ -122,9 +124,9 @@ msgid ""
 "conditions."
 msgstr ""
 "La sekvantaj sekcioj enlistigas la fontojn por ĉiuj artikoloj kaj bildoj "
-"uzitaj en ĉi tiu libro. Tiuj fontoj provizas pli detalan licencadoinformon "
-"inkluzivante la kopirajtan statuson, la kopirajtan posedanton kaj la "
-"licencajn kondiĉojn."
+"uzitaj en ĉi tiu libro. Tiuj fontoj provizas pli detalan permesilan informon "
+"inkluzivante la aŭtorrajtan statuson, la aŭtorrajtan posedanton kaj la "
+"permesilajn kondiĉojn."
 
 #: mwlib/rl/pdfmessages.py:53
 msgid ""
@@ -132,9 +134,9 @@ msgid ""
 "information including the copyright status, the copyright owner, and the "
 "license conditions."
 msgstr ""
-"La fontoj enlistigitaj por ĉiu artikolo provizas pli detalan "
-"licencadoinformo inkluzivante la kopirajtan statuson, la kopirajtan "
-"posedanton kaj la licencajn kondiĉojn."
+"La fontoj enlistigitaj por ĉiu artikolo provizas pli detalan informon pri "
+"permesiloj, inkluzivante la aŭtorrajtan statuson, la aŭtorrajtan posedanton "
+"kaj la permesilajn kondiĉojn."
 
 #: mwlib/rl/pdfmessages.py:55
 msgid ""
@@ -142,9 +144,9 @@ msgid ""
 "information including the copyright status, the copyright owner, and the "
 "license conditions."
 msgstr ""
-"La fontoj enlistigitaj por ĉiu artikolo provizas pli detalan "
-"licencadoinformo inkluzivante la kopirajtan statuson, la kopirajtan "
-"posedanton kaj la licencajn kondiĉojn."
+"La fontoj enlistigitaj por ĉiu artikolo provizas pli detalan informon pri "
+"permesiloj, inkluzivante la aŭtorrajtan statuson, la aŭtorrajtan posedanton "
+"kaj la permesilajn kondiĉojn."
 
 #: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:472
 #: mwlib/rl/rlwriter.py:661
@@ -170,7 +172,7 @@ msgstr "Figuro"
 
 #: mwlib/rl/pdfmessages.py:67
 msgid "See also"
-msgstr ""
+msgstr "Ankaŭ vidu"
 
 #: mwlib/rl/pdfstyles.py:78
 msgid ""
@@ -183,14 +185,16 @@ msgstr ""
 #: mwlib/rl/rlwriter.py:303
 #, python-format
 msgid "mwlib.ext version: %(version)s"
-msgstr ""
+msgstr "versio de mwlib.ext: %(version)s"
 
 #: mwlib/rl/rlwriter.py:309
 #, python-format
 msgid ""
-"mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, "
-"%(mwlibextversion)s"
+"mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
+"(mwlibextversion)s"
 msgstr ""
+"versio de mwlib: %(mwlibversion)s, versio de mwlib.rl: %(mwlibrlversion)s, %"
+"(mwlibextversion)s"
 
 #: mwlib/rl/rlwriter.py:668 mwlib/rl/rlwriter.py:693
 msgid "Source"
@@ -206,7 +210,7 @@ msgstr "nekonata"
 
 #: mwlib/rl/rlwriter.py:688
 msgid "License"
-msgstr "Licenco"
+msgstr "Permesilo"
 
 #: mwlib/rl/rlwriter.py:779
 msgid ""

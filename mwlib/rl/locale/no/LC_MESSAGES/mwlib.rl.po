@@ -2,22 +2,23 @@
 # Expored from translatewiki.net
 #
 # Author: Audun
+# Author: Event
 # Author: Nghtwlkr
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-02 11:52+0100\n"
-"PO-Revision-Date: 2010-10-06 13:58:03+0000\n"
+"POT-Creation-Date: 2011-01-24 12:47+0000\n"
+"PO-Revision-Date: 2011-01-24 12:47:12+0000\n"
 "Language-Team: Norwegian (bokmål)‬ <http://translatewiki.net/wiki/Portal:no>\n"
-"Language: \n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.17alpha (r74353); Translate extension (2010-09-17)\n"
+"Language: \n"
+"X-Generator: MediaWiki 1.18alpha (r80810); Translate extension (2010-09-17)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: no\n"
 "X-Message-Group: #out-mwlibrl\n"
-"X-POT-Import-Date: 2010-10-06 13:50:23+0000\n"
+"X-POT-Import-Date: 2011-01-10 18:24:06+0000\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: mwlib/rl/pdfmessages.py:11
@@ -126,26 +127,24 @@ msgstr ""
 "inkludert opphavsrettstatusen, opphavsretteieren og lisensens vilkår."
 
 #: mwlib/rl/pdfmessages.py:53
-#, fuzzy
 msgid ""
 "The sources listed for each article provide more detailed licensing "
 "information including the copyright status, the copyright owner, and the "
 "license conditions."
 msgstr ""
-"Den følgende seksjonen lister opp kildene for alle artikler og bilder brukt "
-"i denne boken. Kildene gir mer detaljert informasjon om lisensiering "
-"inkludert opphavsrettstatusen, opphavsretteieren og lisensens vilkår."
+"Kildereferansene knyttet til hver artikkel gir mer detaljert informasjon om "
+"lisensiering, herunder opphavsrettstatus, opphavsretteierskap og "
+"lisensensbetingelser."
 
 #: mwlib/rl/pdfmessages.py:55
-#, fuzzy
 msgid ""
 "The sources listed for each image provide more detailed licensing "
 "information including the copyright status, the copyright owner, and the "
 "license conditions."
 msgstr ""
-"Den følgende seksjonen lister opp kildene for alle artikler og bilder brukt "
-"i denne boken. Kildene gir mer detaljert informasjon om lisensiering "
-"inkludert opphavsrettstatusen, opphavsretteieren og lisensens vilkår."
+"Kildereferansene knyttet til hvert bilde gir mer detaljert informasjon om "
+"lisensiering, herunder opphavsrettstatus, opphavsretteierskap og "
+"lisensensbetingelser."
 
 #: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:472
 #: mwlib/rl/rlwriter.py:661
@@ -171,7 +170,7 @@ msgstr "Figur"
 
 #: mwlib/rl/pdfmessages.py:67
 msgid "See also"
-msgstr ""
+msgstr "↓ Se også"
 
 #: mwlib/rl/pdfstyles.py:78
 msgid ""
@@ -189,11 +188,11 @@ msgstr "mwlib.ext versjon: %(version)s"
 #: mwlib/rl/rlwriter.py:309
 #, python-format
 msgid ""
-"mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, "
-"%(mwlibextversion)s"
+"mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
+"(mwlibextversion)s"
 msgstr ""
-"mwlib-versjon: %(mwlibversion)s, mwlib.rl-versjon: %(mwlibrlversion)s, "
-"%(mwlibextversion)s"
+"mwlib-versjon: %(mwlibversion)s, mwlib.rl-versjon: %(mwlibrlversion)s, %"
+"(mwlibextversion)s"
 
 #: mwlib/rl/rlwriter.py:668 mwlib/rl/rlwriter.py:693
 msgid "Source"

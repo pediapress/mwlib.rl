@@ -3,23 +3,24 @@
 #
 # Author: Consta
 # Author: Crazymadlover
+# Author: Evropi
 # Author: Geraki
 # Author: Omnipaedista
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-02 11:52+0100\n"
-"PO-Revision-Date: 2010-10-06 13:57:58+0000\n"
+"POT-Creation-Date: 2011-01-24 12:47+0000\n"
+"PO-Revision-Date: 2011-01-24 12:47:12+0000\n"
 "Language-Team: Greek <http://translatewiki.net/wiki/Portal:el>\n"
-"Language: el\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.17alpha (r74353); Translate extension (2010-09-17)\n"
+"Language: el\n"
+"X-Generator: MediaWiki 1.18alpha (r80810); Translate extension (2010-09-17)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: el\n"
 "X-Message-Group: #out-mwlibrl\n"
-"X-POT-Import-Date: 2010-10-06 13:50:23+0000\n"
+"X-POT-Import-Date: 2011-01-10 18:24:06+0000\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: mwlib/rl/pdfmessages.py:11
@@ -101,6 +102,11 @@ msgid ""
 "of the index, of your book are shown in this preview. All articles, even "
 "those left out of the preview, will be included in the final printed book."
 msgstr ""
+"Σημείωση: Αυτή είναι μόνο μια προεπισκόπηση του βιβλίου σας, που προορίζεται "
+"να δώσει μια ιδέα για το πώς θα δείχνει το βιβλίο σας. Μόνο τα πρώτα άρθρα, "
+"καθώς και οι πρώτες σελίδες του ευτρετήριου του βιβλίου σας εμφανίζονται σε "
+"αυτή την προεπισκόπηση. Όλα τα άρθρα, ακόμα και αυτά που έμειναν εκτός της "
+"προεπισκόπησης, θα περιλαμβάνονται στο τελικό έντυπο βιβλίο."
 
 #: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:471
 #: mwlib/rl/rlwriter.py:788
@@ -124,28 +130,24 @@ msgstr ""
 "ιδιοκτησίας, τον κάτοχο των πνευματικών δικαιωμάτων, και όρους άδειας χρήσης."
 
 #: mwlib/rl/pdfmessages.py:53
-#, fuzzy
 msgid ""
 "The sources listed for each article provide more detailed licensing "
 "information including the copyright status, the copyright owner, and the "
 "license conditions."
 msgstr ""
-"Οι ακόλουθες ενότητες έχουν κατάλογο των πηγών για όλα τα άρθρα και τις "
-"εικόνες που χρησιμοποιούνται σε αυτό το βιβλίο. Αυτές οι πηγές περιέχουν "
-"περισσότερο λεπτομερείς πληροφορίες σχετικά με το καθεστώς πνευματικής "
-"ιδιοκτησίας, τον κάτοχο των πνευματικών δικαιωμάτων, και όρους άδειας χρήσης."
+"Αυτές οι πηγές παρακάτω για κάθε άρθρο περιέχουν περισσότερο λεπτομερείς "
+"πληροφορίες σχετικά με το καθεστώς πνευματικής ιδιοκτησίας, τον κάτοχο των "
+"πνευματικών δικαιωμάτων, και όρους άδειας χρήσης."
 
 #: mwlib/rl/pdfmessages.py:55
-#, fuzzy
 msgid ""
 "The sources listed for each image provide more detailed licensing "
 "information including the copyright status, the copyright owner, and the "
 "license conditions."
 msgstr ""
-"Οι ακόλουθες ενότητες έχουν κατάλογο των πηγών για όλα τα άρθρα και τις "
-"εικόνες που χρησιμοποιούνται σε αυτό το βιβλίο. Αυτές οι πηγές περιέχουν "
-"περισσότερο λεπτομερείς πληροφορίες σχετικά με το καθεστώς πνευματικής "
-"ιδιοκτησίας, τον κάτοχο των πνευματικών δικαιωμάτων, και όρους άδειας χρήσης."
+"Αυτές οι πηγές παρακάτω για κάθε εικόνα περιέχουν περισσότερο λεπτομερείς "
+"πληροφορίες σχετικά με το καθεστώς πνευματικής ιδιοκτησίας, τον κάτοχο των "
+"πνευματικών δικαιωμάτων, και όρους άδειας χρήσης."
 
 #: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:472
 #: mwlib/rl/rlwriter.py:661
@@ -171,7 +173,7 @@ msgstr "Εικόνα"
 
 #: mwlib/rl/pdfmessages.py:67
 msgid "See also"
-msgstr ""
+msgstr "Δείτε επίσης"
 
 #: mwlib/rl/pdfstyles.py:78
 msgid ""
@@ -189,11 +191,11 @@ msgstr "έκδοση mwlib.ext: %(version)s"
 #: mwlib/rl/rlwriter.py:309
 #, python-format
 msgid ""
-"mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, "
-"%(mwlibextversion)s"
+"mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
+"(mwlibextversion)s"
 msgstr ""
-"έκδοση mwlib: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, "
-"%(mwlibextversion)s"
+"έκδοση mwlib: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
+"(mwlibextversion)s"
 
 #: mwlib/rl/rlwriter.py:668 mwlib/rl/rlwriter.py:693
 msgid "Source"

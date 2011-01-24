@@ -6,17 +6,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-02 11:52+0100\n"
-"PO-Revision-Date: 2010-10-06 13:58:03+0000\n"
+"POT-Creation-Date: 2011-01-24 12:47+0000\n"
+"PO-Revision-Date: 2011-01-24 12:47:12+0000\n"
 "Language-Team: Macedonian <http://translatewiki.net/wiki/Portal:mk>\n"
-"Language: mk\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.17alpha (r74353); Translate extension (2010-09-17)\n"
+"Language: mk\n"
+"X-Generator: MediaWiki 1.18alpha (r80810); Translate extension (2010-09-17)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: mk\n"
 "X-Message-Group: #out-mwlibrl\n"
-"X-POT-Import-Date: 2010-10-06 13:50:23+0000\n"
+"X-POT-Import-Date: 2011-01-10 18:24:06+0000\n"
 "Plural-Forms: nplurals=2; plural=(n == 1 || n%10 == 1) ? 0 : 1;\n"
 
 #: mwlib/rl/pdfmessages.py:11
@@ -125,28 +125,24 @@ msgstr ""
 "условите на лиценцата."
 
 #: mwlib/rl/pdfmessages.py:53
-#, fuzzy
 msgid ""
 "The sources listed for each article provide more detailed licensing "
 "information including the copyright status, the copyright owner, and the "
 "license conditions."
 msgstr ""
-"Следниве делови ги наведуваат изворите на сите статии и слики искористени во "
-"оваа книга. Тие извори наведуваат поподробни информации за лиценцирањето, "
-"вклучувајќи го авторскиот правен статус, имателот на правата, како и "
-"условите на лиценцата."
+"Изворите наведени за секоја статија даваат поподробни информации за "
+"лиценцирањето, вклучувајќи го авторскиот правен статус, имателот на правата, "
+"како и условите на лиценцата."
 
 #: mwlib/rl/pdfmessages.py:55
-#, fuzzy
 msgid ""
 "The sources listed for each image provide more detailed licensing "
 "information including the copyright status, the copyright owner, and the "
 "license conditions."
 msgstr ""
-"Следниве делови ги наведуваат изворите на сите статии и слики искористени во "
-"оваа книга. Тие извори наведуваат поподробни информации за лиценцирањето, "
-"вклучувајќи го авторскиот правен статус, имателот на правата, како и "
-"условите на лиценцата."
+"Изворите наведени за секоја слика даваат поподробни информации за "
+"лиценцирањето, вклучувајќи го авторскиот правен статус, имателот на правата, "
+"како и условите на лиценцата."
 
 #: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:472
 #: mwlib/rl/rlwriter.py:661
@@ -172,7 +168,7 @@ msgstr "Отцртано"
 
 #: mwlib/rl/pdfmessages.py:67
 msgid "See also"
-msgstr ""
+msgstr "Поврзано"
 
 #: mwlib/rl/pdfstyles.py:78
 msgid ""
@@ -190,11 +186,11 @@ msgstr "mwlib.ext верзија: %(version)s"
 #: mwlib/rl/rlwriter.py:309
 #, python-format
 msgid ""
-"mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, "
-"%(mwlibextversion)s"
+"mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
+"(mwlibextversion)s"
 msgstr ""
-"mwlib верзија: %(mwlibversion)s, mwlib.rl верзија: %(mwlibrlversion)s, "
-"%(mwlibextversion)s"
+"mwlib верзија: %(mwlibversion)s, mwlib.rl верзија: %(mwlibrlversion)s, %"
+"(mwlibextversion)s"
 
 #: mwlib/rl/rlwriter.py:668 mwlib/rl/rlwriter.py:693
 msgid "Source"

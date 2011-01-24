@@ -1,22 +1,24 @@
-# Translation of Mwlib.rl to Korean
+# Translation of Mwlib.rl to Korean (한국어)
+# Expored from translatewiki.net
 #
-# Author@translatewiki.net: Kwj2772
-# Author@translatewiki.net: Yknok29
-# --
+# Author: Kwj2772
+# Author: Yknok29
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-02 11:52+0100\n"
-"PO-Revision-Date: 2010-08-25 08:42:05+0000\n"
-"Language-Team: Korean\n"
-"Language: \n"
+"POT-Creation-Date: 2011-01-24 12:47+0000\n"
+"PO-Revision-Date: 2011-01-24 12:47:12+0000\n"
+"Language-Team: Korean <http://translatewiki.net/wiki/Portal:ko>\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.17alpha (r71602); Translate extension (2010-08-20)\n"
+"Language: \n"
+"X-Generator: MediaWiki 1.18alpha (r80810); Translate extension (2010-09-17)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: ko\n"
-"X-Message-Group: out-mwlibrl\n"
+"X-Message-Group: #out-mwlibrl\n"
+"X-POT-Import-Date: 2011-01-10 18:24:06+0000\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 #: mwlib/rl/pdfmessages.py:11
 msgid "Index"
@@ -169,8 +171,8 @@ msgstr ""
 #: mwlib/rl/rlwriter.py:309
 #, python-format
 msgid ""
-"mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, "
-"%(mwlibextversion)s"
+"mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
+"(mwlibextversion)s"
 msgstr ""
 
 #: mwlib/rl/rlwriter.py:668 mwlib/rl/rlwriter.py:693

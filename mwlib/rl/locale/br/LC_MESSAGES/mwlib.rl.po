@@ -7,17 +7,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-02 11:52+0100\n"
-"PO-Revision-Date: 2010-10-06 13:57:57+0000\n"
+"POT-Creation-Date: 2011-01-24 12:47+0000\n"
+"PO-Revision-Date: 2011-01-24 12:47:11+0000\n"
 "Language-Team: Breton <http://translatewiki.net/wiki/Portal:br>\n"
-"Language: br\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.17alpha (r74353); Translate extension (2010-09-17)\n"
+"Language: br\n"
+"X-Generator: MediaWiki 1.18alpha (r80810); Translate extension (2010-09-17)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: br\n"
 "X-Message-Group: #out-mwlibrl\n"
-"X-POT-Import-Date: 2010-10-06 13:50:23+0000\n"
+"X-POT-Import-Date: 2011-01-10 18:24:06+0000\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: mwlib/rl/pdfmessages.py:11
@@ -126,28 +126,24 @@ msgstr ""
 "implij an aotre."
 
 #: mwlib/rl/pdfmessages.py:53
-#, fuzzy
 msgid ""
 "The sources listed for each article provide more detailed licensing "
 "information including the copyright status, the copyright owner, and the "
 "license conditions."
 msgstr ""
-"Rollañ a ra ar rannoù da-heul mammennoù an holl bennadoù ha skeudennoù "
-"implijet el levr-mañ. Reiñ a ra ar mammennoù-se titouroù resisoc'h a-fet "
-"aotre implij, statud ar gwirioù aozer, perc'henn ar gwirioù aozer ha doareoù "
-"implij an aotre."
+"Pourchas a ra ar mammennoù rollet evit pep pennad titouroù resisoc'h diwar-"
+"benn an aotre-implijout, en o zouez ar statud a-fet gwirioù eilañ, gwirioù "
+"aozer, ha doareoù implij an aotre."
 
 #: mwlib/rl/pdfmessages.py:55
-#, fuzzy
 msgid ""
 "The sources listed for each image provide more detailed licensing "
 "information including the copyright status, the copyright owner, and the "
 "license conditions."
 msgstr ""
-"Rollañ a ra ar rannoù da-heul mammennoù an holl bennadoù ha skeudennoù "
-"implijet el levr-mañ. Reiñ a ra ar mammennoù-se titouroù resisoc'h a-fet "
-"aotre implij, statud ar gwirioù aozer, perc'henn ar gwirioù aozer ha doareoù "
-"implij an aotre."
+"Pourchas a ra ar mammennoù rollet evit pep skeudenn titouroù resisoc'h diwar-"
+"benn an aotre-implijout, en o zouez ar statud a-fet gwirioù eilañ, gwirioù "
+"aozer, ha doareoù implij an aotre.."
 
 #: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:472
 #: mwlib/rl/rlwriter.py:661
@@ -173,7 +169,7 @@ msgstr "Grafik"
 
 #: mwlib/rl/pdfmessages.py:67
 msgid "See also"
-msgstr ""
+msgstr "Gwelet ivez"
 
 #: mwlib/rl/pdfstyles.py:78
 msgid ""
@@ -191,11 +187,11 @@ msgstr "mwlib.ext-version : %(version)s"
 #: mwlib/rl/rlwriter.py:309
 #, python-format
 msgid ""
-"mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, "
-"%(mwlibextversion)s"
+"mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
+"(mwlibextversion)s"
 msgstr ""
-"stummoù mwlib : %(mwlibversion)s, versione mwlib.rl: %(mwlibrlversion)s, "
-"%(mwlibextversion)s"
+"stummoù mwlib : %(mwlibversion)s, versione mwlib.rl: %(mwlibrlversion)s, %"
+"(mwlibextversion)s"
 
 #: mwlib/rl/rlwriter.py:668 mwlib/rl/rlwriter.py:693
 msgid "Source"
