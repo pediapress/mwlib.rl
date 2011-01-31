@@ -1773,9 +1773,8 @@ class RlWriter(object):
         if self.table_nesting > 1 and self.colwidth:
             availwidth = self.colwidth - 2 * pdfstyles.cell_padding
         else:
-            availwidth = pdfstyles.print_width
+            availwidth = pdfstyles.print_width - self.paraIndentLevel*pdfstyles.para_left_indent
         return availwidth
-
            
     def writeCaption(self, node):
         txt = []
@@ -2048,7 +2047,6 @@ class RlWriter(object):
             if os.path.exists(cached_path):
                 imgpath = cached_path
 
-
         if not imgpath:
             imgpath = writerbase.renderMath(source, output_path=self.tmpdir, output_mode='png', render_engine='texvc', resolution_in_dpi=density)
             if not imgpath:
@@ -2069,6 +2067,11 @@ class RlWriter(object):
         if self.table_nesting: # scale down math-formulas in tables
             w = w * pdfstyles.small_font_size/pdfstyles.font_size
             h = h * pdfstyles.small_font_size/pdfstyles.font_size
+
+        scale = (self.getAvailWidth())/(w/density*72)
+        if  scale < 1 :
+            w *= scale
+            h *= scale
             
         # the vertical image placement is calculated below:
         # the "normal" height of a single-line formula is 17px
