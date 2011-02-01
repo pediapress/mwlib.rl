@@ -547,25 +547,19 @@ class RlWriter(object):
 
         if not title:
             return []
-        first_article=None
         first_article_title = None
         for item in self.book.walk():
             if item.type == 'chapter': # dont set page header if pdf starts with a chapter
                 break
             if item.type == 'article':
-                first_article = item.title
-                if first_article:
-                    first_article = xmlescape(item.title)
-                first_article_title = item.displaytitle or item.title
-                if first_article_title:                    
-                    first_article_title = xmlescape(first_article_title)
+                first_article_title = self.renderArticleTitle(item.displaytitle or item.title)
                 break
         self.doc.addPageTemplates(TitlePage(cover=coverimage))
         elements = []
         elements.append(Paragraph(self.formatter.cleanText(title), text_style(mode='booktitle')))
         if subtitle:
             elements.append(Paragraph(self.formatter.cleanText(subtitle), text_style(mode='booksubtitle')))
-        if not first_article:
+        if not first_article_title:
             return elements
         self.doc.addPageTemplates(WikiPage(first_article_title))
         elements.append(NextPageTemplate(first_article_title.encode('utf-8')))
@@ -573,8 +567,7 @@ class RlWriter(object):
         return elements
 
     def _getPageTemplate(self, title):
-        #title = self.renderText(title)
-        page_template = WikiPage(title)
+        page_template = WikiPage(self.renderArticleTitle(title))
         self.doc.addPageTemplates(page_template)
         return NextPageTemplate(title.encode('utf-8'))
         
@@ -713,9 +706,9 @@ class RlWriter(object):
             for c in node.children:
                 self.cleanTitle(c)
 
-    def renderArticleTitle(self, node):
+    def renderArticleTitle(self, raw):
         dummydb = DummyDB()
-        title_node = uparser.parseString(title='', raw=node.caption, wikidb=dummydb)
+        title_node = uparser.parseString(title='', raw=raw, wikidb=dummydb)
         advtree.buildAdvancedTree(title_node)
         title_node.__class__ = advtree.Node
         self.cleanTitle(title_node)
@@ -726,17 +719,18 @@ class RlWriter(object):
         if self.license_mode and self.debug:
             return []
         self.references = [] 
-        title = self.renderArticleTitle(article)
+        title = self.renderArticleTitle(article.caption)
 
         log.info('rendering: %r' % (article.url or article.caption))
         if self.layout_status:
             self.layout_status(article=article.caption)
             self.articlecount += 1
         elements = []
-        pt = WikiPage(article.caption)
+        template_title = title
+        pt = WikiPage(template_title)
         if hasattr(self, 'doc'): # doc is not present if tests are run
             self.doc.addPageTemplates(pt)
-            elements.append(NextPageTemplate(article.caption.encode('utf-8'))) # pagetemplate.id cant handle unicode
+            elements.append(NextPageTemplate(template_title.encode('utf-8')))
             # FIXME remove the getPrevious below
             if self.license_mode:
                 if self.numarticles > 1:
