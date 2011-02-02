@@ -567,9 +567,10 @@ class RlWriter(object):
         return elements
 
     def _getPageTemplate(self, title):
-        page_template = WikiPage(self.renderArticleTitle(title))
+        template_title =self.renderArticleTitle(title)
+        page_template = WikiPage(template_title)
         self.doc.addPageTemplates(page_template)
-        return NextPageTemplate(title.encode('utf-8'))
+        return NextPageTemplate(template_title.encode('utf-8'))
         
     def writeChapter(self, chapter):
         hr = HRFlowable(width="80%", spaceBefore=6, spaceAfter=0, color=colors.black, thickness=0.5)
