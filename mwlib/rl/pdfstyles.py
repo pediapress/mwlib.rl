@@ -132,6 +132,8 @@ word_wrap=None
 
 min_preformatted_size = 5
 
+
+chapter_rule_color = colors.black
 # misc options
 
 list_item_style = u'\u2022'
