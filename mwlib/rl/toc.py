@@ -41,7 +41,7 @@ class TocRenderer(object):
         return [pdfstyles.print_width - w - 30, w]
     
     def renderToc(self, tocpath, toc_entries):
-        doc = SimpleDocTemplate(tocpath)
+        doc = SimpleDocTemplate(tocpath, pagesize=(pdfstyles.page_width, pdfstyles.page_height))
         elements = []
         elements.append(Paragraph(_('Contents'), pdfstyles.heading_style(mode='chapter', text_align='left')))
         toc_table =[]
