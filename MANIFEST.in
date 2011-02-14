@@ -40,6 +40,8 @@ include mwlib/rl/locale/ar/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/ar/LC_MESSAGES/mwlib.rl.po
 include mwlib/rl/locale/arz/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/arz/LC_MESSAGES/mwlib.rl.po
+include mwlib/rl/locale/az/LC_MESSAGES/mwlib.rl.mo
+include mwlib/rl/locale/az/LC_MESSAGES/mwlib.rl.po
 include mwlib/rl/locale/bar/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/bar/LC_MESSAGES/mwlib.rl.po
 include mwlib/rl/locale/be-tarask/LC_MESSAGES/mwlib.rl.mo
@@ -56,6 +58,8 @@ include mwlib/rl/locale/bs/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/bs/LC_MESSAGES/mwlib.rl.po
 include mwlib/rl/locale/ca/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/ca/LC_MESSAGES/mwlib.rl.po
+include mwlib/rl/locale/ckb/LC_MESSAGES/mwlib.rl.mo
+include mwlib/rl/locale/ckb/LC_MESSAGES/mwlib.rl.po
 include mwlib/rl/locale/cs/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/cs/LC_MESSAGES/mwlib.rl.po
 include mwlib/rl/locale/cy/LC_MESSAGES/mwlib.rl.mo
@@ -78,6 +82,8 @@ include mwlib/rl/locale/et/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/et/LC_MESSAGES/mwlib.rl.po
 include mwlib/rl/locale/eu/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/eu/LC_MESSAGES/mwlib.rl.po
+include mwlib/rl/locale/fa/LC_MESSAGES/mwlib.rl.mo
+include mwlib/rl/locale/fa/LC_MESSAGES/mwlib.rl.po
 include mwlib/rl/locale/fi/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/fi/LC_MESSAGES/mwlib.rl.po
 include mwlib/rl/locale/fr/LC_MESSAGES/mwlib.rl.mo
@@ -88,6 +94,8 @@ include mwlib/rl/locale/grc/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/grc/LC_MESSAGES/mwlib.rl.po
 include mwlib/rl/locale/gsw/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/gsw/LC_MESSAGES/mwlib.rl.po
+include mwlib/rl/locale/haw/LC_MESSAGES/mwlib.rl.mo
+include mwlib/rl/locale/haw/LC_MESSAGES/mwlib.rl.po
 include mwlib/rl/locale/he/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/he/LC_MESSAGES/mwlib.rl.po
 include mwlib/rl/locale/hsb/LC_MESSAGES/mwlib.rl.mo
@@ -112,6 +120,8 @@ include mwlib/rl/locale/ko/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/ko/LC_MESSAGES/mwlib.rl.po
 include mwlib/rl/locale/ksh/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/ksh/LC_MESSAGES/mwlib.rl.po
+include mwlib/rl/locale/ku-latn/LC_MESSAGES/mwlib.rl.mo
+include mwlib/rl/locale/ku-latn/LC_MESSAGES/mwlib.rl.po
 include mwlib/rl/locale/kw/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/kw/LC_MESSAGES/mwlib.rl.po
 include mwlib/rl/locale/lb/LC_MESSAGES/mwlib.rl.mo
@@ -140,6 +150,8 @@ include mwlib/rl/locale/pt_BR/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/pt_BR/LC_MESSAGES/mwlib.rl.po
 include mwlib/rl/locale/qqq/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/qqq/LC_MESSAGES/mwlib.rl.po
+include mwlib/rl/locale/rm/LC_MESSAGES/mwlib.rl.mo
+include mwlib/rl/locale/rm/LC_MESSAGES/mwlib.rl.po
 include mwlib/rl/locale/ro/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/ro/LC_MESSAGES/mwlib.rl.po
 include mwlib/rl/locale/ru/LC_MESSAGES/mwlib.rl.mo
@@ -150,10 +162,14 @@ include mwlib/rl/locale/sl/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/sl/LC_MESSAGES/mwlib.rl.po
 include mwlib/rl/locale/sr-ec/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/sr-ec/LC_MESSAGES/mwlib.rl.po
+include mwlib/rl/locale/sr-el/LC_MESSAGES/mwlib.rl.mo
+include mwlib/rl/locale/sr-el/LC_MESSAGES/mwlib.rl.po
 include mwlib/rl/locale/su/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/su/LC_MESSAGES/mwlib.rl.po
 include mwlib/rl/locale/sv/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/sv/LC_MESSAGES/mwlib.rl.po
+include mwlib/rl/locale/ta/LC_MESSAGES/mwlib.rl.mo
+include mwlib/rl/locale/ta/LC_MESSAGES/mwlib.rl.po
 include mwlib/rl/locale/te/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/te/LC_MESSAGES/mwlib.rl.po
 include mwlib/rl/locale/tl/LC_MESSAGES/mwlib.rl.mo
@@ -164,12 +180,16 @@ include mwlib/rl/locale/tt-cyrl/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/tt-cyrl/LC_MESSAGES/mwlib.rl.po
 include mwlib/rl/locale/ug-arab/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/ug-arab/LC_MESSAGES/mwlib.rl.po
+include mwlib/rl/locale/uk/LC_MESSAGES/mwlib.rl.mo
+include mwlib/rl/locale/uk/LC_MESSAGES/mwlib.rl.po
 include mwlib/rl/locale/vi/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/vi/LC_MESSAGES/mwlib.rl.po
 include mwlib/rl/locale/vo/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/vo/LC_MESSAGES/mwlib.rl.po
 include mwlib/rl/locale/yi/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/yi/LC_MESSAGES/mwlib.rl.po
+include mwlib/rl/locale/yo/LC_MESSAGES/mwlib.rl.mo
+include mwlib/rl/locale/yo/LC_MESSAGES/mwlib.rl.po
 include mwlib/rl/locale/zh-hans/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/zh-hans/LC_MESSAGES/mwlib.rl.po
 include mwlib/rl/pagetemplates.py
