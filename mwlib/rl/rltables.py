@@ -265,7 +265,7 @@ def getEmptyCell(color, colspan=1, rowspan=1):
 
 
 
-def checkSpans(t):
+def checkSpans(t, rtl=False):
     if getattr(t, 'checked_spans', False):
         return
     styles = []
@@ -305,6 +305,15 @@ def checkSpans(t):
         while len(row.children) < numcols:
             row.appendChild(getEmptyCell(None, colspan=1, rowspan=1))
 
+    if rtl and styles:
+        flipped_styles = []
+        for style in styles:
+            flag, start, end = style
+            flipped_styles.append((flag,
+                                   (numcols - start[0], start[1]),
+                                   (numcols - end[0], end[1]),
+                                   ))
+        styles = flipped_styles
     t.checked_spans = True
     t.span_styles = styles
 

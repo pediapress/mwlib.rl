@@ -163,11 +163,12 @@ class RlWriter(object):
             except IOError, exc:
                 log.warn(str(exc))
         translation.install(unicode=True)
-
+        self.rtl = False
         if lang in ['ja', 'ch', 'ko', 'zh']:
             pdfstyles.word_wrap = 'CJK'
-        if lang in ['he']:
+        if lang in ['he', 'ar']:
             pdfstyles.word_wrap = 'RTL'
+            self.rtl = True
 
         self.env = env
         if self.env is not None:
@@ -1956,7 +1957,7 @@ class RlWriter(object):
         if len(t.children) >= pdfstyles.min_rows_for_break and self.table_nesting == 1:
             elements.append(CondPageBreak(pdfstyles.min_table_space))
         elements.extend(self.renderCaption(t))
-        rltables.checkSpans(t)
+        rltables.checkSpans(t, rtl=self.rtl)
         t.num_cols = t.numcols
 
         self.table_size_calc += 1
@@ -1972,9 +1973,10 @@ class RlWriter(object):
         stretch=self.table_nesting == 1 and t.attributes.get('width', '') == u'100%'
         t.colwidths = rltables.optimizeWidths(t.min_widths, t.max_widths, avail_width, stretch=stretch)
         table_data =[]
+        f = lambda x: reversed(x) if self.rtl and self.table_nesting==1 else x
         for row in t.children:
             row_data = []
-            for col_idx, cell in enumerate(row.children):
+            for col_idx, cell in enumerate(f(row.children)):
                 self.colwidth = self.getCurrentColWidth(t, cell, col_idx)
                 row_data.append(self.write(cell))
             table_data.append(row_data)
