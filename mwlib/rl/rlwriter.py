@@ -1784,7 +1784,7 @@ class RlWriter(object):
 
     def renderCaption(self, table):
         res = []
-        for row in table.children:
+        for row in table.children[:]:
             if row.__class__ == advtree.Caption:
                 res = self.writeCaption(row)
                 table.removeChild(row) # this is slight a hack. we do this in order not to simplify cell-coloring code
