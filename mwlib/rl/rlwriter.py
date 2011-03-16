@@ -1377,7 +1377,11 @@ class RlWriter(object):
 
         is_inline = img_node.isInline()
 
-        url = self.imgDB.getDescriptionURL(img_node.target) or self.imgDB.getURL(img_node.target)
+        if pdfstyles.link_images:
+            url = self.imgDB.getDescriptionURL(img_node.target) or self.imgDB.getURL(img_node.target)
+        else:
+            url = None
+
         if url:
             linkstart = '<link href="%s"> ' % (xmlescape(url)) # spaces are needed, otherwise link is not present. probably b/c of a inline image bug of reportlab
             linkend = ' </link>'
@@ -1389,7 +1393,7 @@ class RlWriter(object):
         if not self.img_meta_info.get(img_name):
             self.img_count += 1
             url = self.imgDB.getDescriptionURL(img_name) or self.imgDB.getURL(img_name)
-            if url:
+            if url and pdfstyles.link_images:
                 url = unicode(urllib.unquote(url.encode('utf-8')), 'utf-8')
             else:
                 url = ''

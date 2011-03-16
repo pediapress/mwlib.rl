@@ -102,6 +102,8 @@ print_width_px = 540 # 540px are assumed to be the equivalent for a full print w
 
 img_border_color=(0.75, 0.75, 0.75)
 
+link_images = True
+
 ######### TEXT CONFIGURATION
 font_size = 10
 leading = 15
