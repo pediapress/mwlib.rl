@@ -177,7 +177,14 @@ class RlWriter(object):
         self.debug = debug
         self.test_mode = test_mode
 
-        self.license_checker = LicenseChecker(image_db=self.imgDB, filter_type='blacklist')
+        try:
+            strict_server = self.env.wiki.siteinfo['general']['server'] in [u'http://de.wikipedia.org']
+        except:
+            strict_server = False
+        if strict_server:
+            self.license_checker = LicenseChecker(image_db=self.imgDB, filter_type='whitelist')
+        else:
+            self.license_checker = LicenseChecker(image_db=self.imgDB, filter_type='blacklist')
         self.license_checker.readLicensesCSV()
 
         self.img_meta_info = {}
@@ -504,6 +511,12 @@ class RlWriter(object):
             traceback.print_exc()
             log.info('rendering failed - trying safe rendering')
             raise
+
+        license_stats_dir = os.environ.get('MWLIBLICENSESTATS')
+        if license_stats_dir:
+            self.license_checker.dumpUnknownLicenses(license_stats_dir)
+            if self.debug:
+                print self.license_checker.dumpStats()
 
     def renderLicense(self):
         self.license_mode = True
@@ -1272,6 +1285,10 @@ class RlWriter(object):
             if imgPath:
                 imgPath = imgPath.encode('utf-8')
                 self.tmpImages.add(imgPath)
+            if not self.license_checker.displayImage(target):
+                if self.debug:
+                    print 'filtering image', target, self.license_checker.getLicenseDisplayName(target)
+                return None
         else:
             imgPath = ''
         return imgPath
