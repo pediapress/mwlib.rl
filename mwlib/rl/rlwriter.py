@@ -332,10 +332,9 @@ class RlWriter(object):
             ns = 0
         art.ns = ns
         art.url = mywiki.getURL(item.title, item.revision)
-        art.authors = mywiki.getAuthors(item.title, revision=item.revision)
         if item.displaytitle is not None:
             art.caption = item.displaytitle
-        url = mywiki.getURL(item.title, item.revision)                
+        url = mywiki.getURL(item.title, item.revision)
         if url:
             art.url = url
         else:
@@ -346,7 +345,6 @@ class RlWriter(object):
         else:
             art.wikiurl = None
         art.authors = mywiki.getAuthors(item.title, revision=item.revision)
-
         advtree.buildAdvancedTree(art)
         if self.debug:
             #parser.show(sys.stdout, art)
@@ -1306,7 +1304,7 @@ class RlWriter(object):
         if img.info.get('interlace', 0) == 1:
             cmds.append(base_cmd + [img_path, '-interlace', 'none', img_path])
         if img.mode == 'P': # ticket 324
-            cmds.append(base_cmd + [img_path, img_path]) # we esentially do nothing...but this seems to fix the problems           
+            cmds.append(base_cmd + [img_path, img_path]) # we esentially do nothing...but this seems to fix the problems
         if img.mode == 'LA': # ticket 429
             cleaned = PilImage.new('LA', img.size)
             new_data = []
@@ -1336,7 +1334,7 @@ class RlWriter(object):
                     return ret
             except OSError:
                 log.warning("converting broken image failed (OSError): %r" % img_path)
-                raise 
+                raise
         try:
             del img
             img = PilImage.open(img_path)
@@ -1973,11 +1971,10 @@ class RlWriter(object):
                 for cell in row.children:
                     return False
         return True
-                
+
     def writeTable(self, t):
         if self.emptyTable(t):
             return []
-        
         self.table_nesting += 1
         elements = []
         if len(t.children) >= pdfstyles.min_rows_for_break and self.table_nesting == 1:
@@ -1985,16 +1982,13 @@ class RlWriter(object):
         elements.extend(self.renderCaption(t))
         rltables.checkSpans(t)
         t.num_cols = t.numcols
-
         self.table_size_calc += 1
         if not getattr(t, 'min_widths', None) and not getattr(t, 'max_widths', None):
             self.getTableSize(t)
         self.table_size_calc -= 1
-
         if self.table_size_calc > 0:
             self.table_nesting -= 1
             return [DummyTable(t.min_widths, t.max_widths)]
-
         avail_width = self.getAvailWidth()
         stretch=self.table_nesting == 1 and t.attributes.get('width', '') == u'100%'
         t.colwidths = rltables.optimizeWidths(t.min_widths, t.max_widths, avail_width, stretch=stretch)
@@ -2005,7 +1999,6 @@ class RlWriter(object):
                 self.colwidth = self.getCurrentColWidth(t, cell, col_idx)
                 row_data.append(self.write(cell))
             table_data.append(row_data)
-            
         table = Table(table_data, colWidths=t.colwidths, splitByRow=1)
         table.setStyle(rltables.getStyles(t))
 
@@ -2013,8 +2006,7 @@ class RlWriter(object):
             elements.append(Spacer(0, table_style['spaceBefore']))
         elements.append(table)
         if table_style.get('spaceAfter', 0) > 0:
-            elements.append(Spacer(0, table_style['spaceAfter']))        
-
+            elements.append(Spacer(0, table_style['spaceAfter']))
         self.table_nesting -= 1
         if self.table_nesting == 0:
             self.colwidth = 0
@@ -2117,6 +2109,7 @@ class RlWriter(object):
     writeVar = writeEmphasized
 
 
+
 def writer(env, output,
     status_callback=None,
     coverimage=None,
@@ -2124,12 +2117,20 @@ def writer(env, output,
     debug=False,
     mathcache=None,
     lang=None,
+    profile=None,
 ):
+
+
     r = RlWriter(env, strict=strict, debug=debug, mathcache=mathcache, lang=lang)
     if coverimage is None and env.configparser.has_section('pdf'):
         coverimage = env.configparser.get('pdf', 'coverimage', None)
 
-    r.writeBook(output=output, coverimage=coverimage, status_callback=status_callback)
+    if profile:
+        import cProfile
+        cProfile.runctx('r.writeBook(output=output, coverimage=coverimage, status_callback=status_callback)',globals(), locals(), os.path.expanduser(profile))
+    else:
+        r.writeBook(output=output, coverimage=coverimage, status_callback=status_callback)
+
 
 
 
@@ -2139,10 +2140,10 @@ writer.file_extension = 'pdf'
 writer.options = {
     'coverimage': {
         'param': 'FILENAME',
-        'help': 'filename of an image for the cover page',       
+        'help': 'filename of an image for the cover page',
     },
     'strict': {
-        'help':'raise exception if errors occur', 
+        'help':'raise exception if errors occur',
     },
     'debug': {
         'help':'debugging mode is more verbose',
@@ -2154,5 +2155,9 @@ writer.options = {
     'lang': {
         'param': 'LANGUAGE',
         'help': 'use translated strings in given language (defaults to "en" for English)',
+    },
+    'profile': {
+        'param': 'PROFILEFN',
+        'help': 'profile run time. ONLY for debugging purposes',
     },
 }
