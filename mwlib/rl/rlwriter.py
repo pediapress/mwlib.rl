@@ -248,6 +248,8 @@ class RlWriter(object):
         self.reference_list_rendered = False
         self.article_meta_info = []
         self.url_map = {}
+        self.fixed_images = {}
+
 
     def ignore(self, obj):
         return []
@@ -1292,6 +1294,10 @@ class RlWriter(object):
         return imgPath
 
     def _fixBrokenImages(self, img_node, img_path):
+        if img_path in self.fixed_images:
+            return 0
+        else:
+            self.fixed_images[img_path]=True
         img = PilImage.open(img_path)
         cmds = []
         base_cmd = [
@@ -1312,7 +1318,7 @@ class RlWriter(object):
                 if pixel[1] == 0:
                     new_data.append((255,0))
                 else:
-                    new_data.append(pixel)                        
+                    new_data.append(pixel)
             cleaned.putdata(new_data)
             cleaned.save(img_path)
             img = PilImage.open(img_path)
@@ -1343,7 +1349,7 @@ class RlWriter(object):
             log.warning('image can not be opened by PIL: %r' % img_path)
             raise
         return 0
-        
+
     def writeImageLink(self, img_node):        
         if img_node.colon == True:
             items = []
