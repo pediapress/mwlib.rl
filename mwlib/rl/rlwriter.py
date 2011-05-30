@@ -452,13 +452,13 @@ class RlWriter(object):
                 art_elements = self.writeArticle(art)
                 del art
                 elements.extend(self.groupElements(art_elements))
+
         try:
-            
             self.renderBook(elements, output, coverimage=coverimage)
             log.info('RENDERING OK')
             shutil.rmtree(self.tmpdir, ignore_errors=True)
             return
-        except MemoryError:            
+        except MemoryError:
             shutil.rmtree(self.tmpdir, ignore_errors=True)
             raise
         except Exception, err:
@@ -513,7 +513,7 @@ class RlWriter(object):
             raise
 
         license_stats_dir = os.environ.get('MWLIBLICENSESTATS')
-        if license_stats_dir:
+        if license_stats_dir and self.license_checker.filter_type != 'nofilter':
             self.license_checker.dumpUnknownLicenses(license_stats_dir)
             if self.debug:
                 print self.license_checker.dumpStats()
@@ -1047,10 +1047,10 @@ class RlWriter(object):
         if textPrefix:
             txt.append(textPrefix)
         items = []
-        
+
         if isinstance(node, advtree.Node): #set node styles like text/bg colors, alignment
             text_color = styleutils.rgbColorFromNode(node)
-            background_color = styleutils.rgbBgColorFromNode(node)           
+            background_color = styleutils.rgbBgColorFromNode(node)
             if text_color:
                 para_style.textColor = text_color
             if background_color:
@@ -1068,19 +1068,19 @@ class RlWriter(object):
                 'start': ['<b>'],
                 'end': ['</b>'],
                 }
-        for c in node:             
+        for c in node:
             res = self.write(c)
             if isInline(res):
-                txt.extend(res)                
+                txt.extend(res)
             else:
-                items.extend(buildPara(txt, para_style, txt_style=txt_style)) 
+                items.extend(buildPara(txt, para_style, txt_style=txt_style))
                 items.extend(res)
                 txt = []
         if not len(items):
             return buildPara(txt, para_style, txt_style=txt_style)
         else:
-            items.extend(buildPara(txt, para_style, txt_style=txt_style)) 
-            return items      
+            items.extend(buildPara(txt, para_style, txt_style=txt_style))
+            return items
 
     def renderChildren(self, n):
         items = []
