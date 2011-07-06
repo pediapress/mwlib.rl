@@ -6,6 +6,8 @@
 
 import string 
 import re
+import urllib
+import urlparse
 
 from reportlab.platypus.flowables import Flowable, Image, HRFlowable, Preformatted, PageBreak, _listWrapOn, _ContainerSpace, _flowableSublist
 from reportlab.platypus.paragraph import Paragraph, deepcopy, cleanBlockQuotedText
@@ -52,7 +54,14 @@ class Figure(Flowable):
         self.i.canv = canv
         self.i.draw()
         if self.url:
-            canv.linkURL(self.url, (0,0, self.imgWidth, self.imgHeight), relative=1, thickness=0)
+            frags = urlparse.urlsplit(self.url.encode('utf-8'))
+            clean_url = urlparse.urlunsplit((frags.scheme,
+                                 frags.netloc,
+                                 urllib.quote(frags.path, safe='/'),
+                                 urllib.quote(frags.query, safe='=&'),
+                                 frags.fragment,
+                                 )).decode('utf-8')
+            canv.linkURL(clean_url, (0,0, self.imgWidth, self.imgHeight), relative=1, thickness=0)
         
     def wrap(self, availWidth, availHeight):
         self.availWidth = availWidth
