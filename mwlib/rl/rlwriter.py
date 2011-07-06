@@ -167,9 +167,8 @@ class RlWriter(object):
         if lang in ['ja', 'ch', 'ko', 'zh']:
             pdfstyles.word_wrap = 'CJK'
         if lang in ['he', 'ar']:
-            pdfstyles.word_wrap = 'RTL'
-            self.rtl = True
-
+            self.set_rtl(True)
+            
         self.env = env
         if self.env is not None:
             self.book = self.env.metabook
@@ -289,6 +288,27 @@ class RlWriter(object):
 
         return groupedElements
 
+    def check_direction(self, node):
+        original = self.rtl
+        try:
+            direction = node.vlist['style']['direction']
+        except (KeyError, AttributeError):
+            pass
+        else:
+            direction = direction.lower().strip()
+            if direction == 'ltr':
+                self.set_rtl(False)
+            elif direction == 'rtl':
+                self.set_rtl(True)
+        return original
+
+    def set_rtl(self, rtl):
+        self.rtl = rtl
+        if rtl == True:
+            pdfstyles.word_wrap = 'RTL'
+        else:
+            pdfstyles.word_wrap = None
+
     def write(self, obj):
         m = "write" + obj.__class__.__name__
         if not hasattr(self, m):
@@ -298,7 +318,9 @@ class RlWriter(object):
             return []
         m=getattr(self, m)
         styles = self.formatter.setStyle(obj)
+        original = self.check_direction(obj)
         res = m(obj)
+        self.set_rtl(original)
         self.formatter.resetStyle(styles)
         return res
 
