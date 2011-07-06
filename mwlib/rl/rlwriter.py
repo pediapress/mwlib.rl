@@ -884,7 +884,7 @@ class RlWriter(object):
                                 lastNode=n
                                 continue
                             fm = getMargins(figures[0].align or 'right')
-                            combinedNodes.append(FiguresAndParagraphs(figures,floatingNodes, figure_margin=fm ))
+                            combinedNodes.append(FiguresAndParagraphs(figures,floatingNodes, figure_margin=fm, rtl=self.rtl ))
                             if noFloatNode:
                                 combinedNodes.append(noFloatNode)
                             figures = []
@@ -901,7 +901,7 @@ class RlWriter(object):
 
         if figures and floatingNodes:
             fm = getMargins(figures[0].align or 'right')
-            combinedNodes.append(FiguresAndParagraphs(figures,floatingNodes, figure_margin=fm ))
+            combinedNodes.append(FiguresAndParagraphs(figures,floatingNodes, figure_margin=fm, rtl=self.rtl ))
         else:
             combinedNodes.extend(figures + floatingNodes)
                                  

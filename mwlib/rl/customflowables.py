@@ -74,7 +74,7 @@ class FiguresAndParagraphs(Flowable):
      * all figures are floated on the same side as the first image
      * the biggest figure-width is used as the text-margin
     """
-    def __init__(self, figures, paragraphs, figure_margin=(0,0,0,0)):
+    def __init__(self, figures, paragraphs, figure_margin=(0,0,0,0), rtl=False):
         self.fs = figures
         self.figure_margin = figure_margin
         self.ps = paragraphs
@@ -86,7 +86,8 @@ class FiguresAndParagraphs(Flowable):
                 f.margin = pdfstyles.img_margins_float_right
         self.wfs = [] #width of figures
         self.hfs = [] # height of figures
-
+        self.rtl = rtl # Flag that indicates if document is set right-to-left
+        
     def _getVOffset(self):
         for p in self.ps:
             if hasattr(p, 'style') and hasattr(p.style, 'spaceBefore'):
@@ -185,7 +186,10 @@ class FiguresAndParagraphs(Flowable):
             if self.figAlign == 'left':
                 p._offsets = self._offsets[count]
                 if hasattr(p, 'style') and hasattr(p.style, 'bulletIndent'):
-                    p.style.bulletIndent += p._offsets[0]
+                    if not self.rtl:
+                        p.style.bulletIndent += p._offsets[0]
+                    else:
+                        p.style.bulletIndent -= self.ps[0]._offsets[0] - 34
             if isinstance(p, HRFlowable):
                 p.canv = canv
                 widthOffset = self.horizontalRuleOffsets.pop(0)
