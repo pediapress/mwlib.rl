@@ -1191,6 +1191,8 @@ class RlWriter(object):
     
     def renderURL(self, url):
         url = xmlescape(url)
+        if self.rtl:
+            return url
         zws = '<font fontSize="1"> </font>'
         url = url.replace("/",u'/%s' % zws).replace('&amp;', u'&amp;%s' % zws).replace('.','.%s' % zws).replace('+', '+%s' % zws)
         return url
