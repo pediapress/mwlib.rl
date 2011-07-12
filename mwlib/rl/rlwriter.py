@@ -1249,7 +1249,10 @@ class RlWriter(object):
         if (self.table_nesting and len(href) > pdfstyles.url_ref_len and pdfstyles.url_ref_in_table) \
                and not self.ref_mode:
             return self.writeNamedURL(obj)
-        txt = '<link href="%s">%s</link>' % (href, display_text)
+        if self.rtl:
+            txt = u'<link href="%s">\u202a%s\u202c</link>' % (href, display_text)
+        else:
+            txt = '<link href="%s">%s</link>' % (href, display_text)
         return [txt]
     
     def writeNamedURL(self,obj):
