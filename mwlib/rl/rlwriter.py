@@ -600,14 +600,14 @@ class RlWriter(object):
             elements.append(Paragraph(self.formatter.cleanText(subtitle), text_style(mode='booksubtitle')))
         if not first_article_title:
             return elements
-        self.doc.addPageTemplates(WikiPage(first_article_title))
+        self.doc.addPageTemplates(WikiPage(first_article_title, rtl=self.rtl))
         elements.append(NextPageTemplate(first_article_title.encode('utf-8')))
         elements.append(PageBreak())
         return elements
 
     def _getPageTemplate(self, title):
         template_title =self.renderArticleTitle(title)
-        page_template = WikiPage(template_title)
+        page_template = WikiPage(template_title, rtl=self.rtl)
         self.doc.addPageTemplates(page_template)
         return NextPageTemplate(template_title.encode('utf-8'))
         
@@ -768,7 +768,7 @@ class RlWriter(object):
             self.articlecount += 1
         elements = []
         template_title = title
-        pt = WikiPage(template_title)
+        pt = WikiPage(template_title, rtl=self.rtl)
         if hasattr(self, 'doc'): # doc is not present if tests are run
             self.doc.addPageTemplates(pt)
             elements.append(NextPageTemplate(template_title.encode('utf-8')))

@@ -49,7 +49,14 @@ class SimplePage(PageTemplate):
         
 class WikiPage(PageTemplate):
 
-    def __init__(self,title=None, id=None, onPage=_doNothing, onPageEnd=_doNothing, pagesize=(page_width, page_height)):
+    def __init__(self,
+                 title=None,
+                 id=None,
+                 onPage=_doNothing,
+                 onPageEnd=_doNothing,
+                 pagesize=(page_width, page_height),
+                 rtl=False,
+                 ):
         """
         @type title: unicode
         """
@@ -60,6 +67,7 @@ class WikiPage(PageTemplate):
         PageTemplate.__init__(self,id=id, frames=frames,onPage=onPage,onPageEnd=onPageEnd,pagesize=pagesize)
 
         self.title = title
+        self.rtl = rtl
     
     def beforeDrawPage(self,canvas,doc):
         canvas.setFont(serif_font,10)      
@@ -69,14 +77,24 @@ class WikiPage(PageTemplate):
         if pdfstyles.show_page_header:
             canvas.saveState()
             canvas.resetTransforms()
-            canvas.translate(header_margin_hor, page_height - header_margin_vert - 0.1*cm)
+            if not self.rtl:
+                h_offset = header_margin_hor
+            else:
+                h_offset = 1.5*header_margin_hor
+            canvas.translate(h_offset, page_height - header_margin_vert - 0.1*cm)
             p = Paragraph(self.title, text_style())
             p.canv = canvas
             p.wrap(page_width - header_margin_hor*2.5, page_height) # add an extra 0.5 margin to have enough space for page number
             p.drawPara()
             canvas.restoreState()
-            
-        canvas.drawRightString(page_width - header_margin_hor, page_height - header_margin_vert + 0.1 * cm, "%d" % doc.page)
+
+        if not self.rtl:
+            h_pos =  page_width - header_margin_hor
+            d = canvas.drawRightString
+        else:
+            h_pos = header_margin_hor
+            d = canvas.drawString
+        d(h_pos, page_height - header_margin_vert + 0.1 * cm, "%d" % doc.page)
 
         #Footer
         canvas.saveState()
