@@ -70,7 +70,7 @@ class WikiPage(PageTemplate):
             canvas.saveState()
             canvas.resetTransforms()
             canvas.translate(header_margin_hor, page_height - header_margin_vert - 0.1*cm)
-            p = Paragraph(formatter.cleanText(self.title), text_style())
+            p = Paragraph(self.title, text_style())
             p.canv = canvas
             p.wrap(page_width - header_margin_hor*2.5, page_height) # add an extra 0.5 margin to have enough space for page number
             p.drawPara()

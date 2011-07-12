@@ -102,6 +102,8 @@ print_width_px = 540 # 540px are assumed to be the equivalent for a full print w
 
 img_border_color=(0.75, 0.75, 0.75)
 
+link_images = True
+
 ######### TEXT CONFIGURATION
 font_size = 10
 leading = 15
@@ -125,17 +127,25 @@ source_max_line_len = 72 # if printing a source node, the maximum number of char
 
 no_float_math_len = 15
 
+max_math_width = 2500
+max_math_height = 2500
 #set to CJK if a PDF is rendered mainly using chinese, japanese or korean glyphs
 word_wrap=None
 
 min_preformatted_size = 5
 
+
+chapter_rule_color = colors.black
 # misc options
 
 list_item_style = u'\u2022'
 
 url_blacklist = ['http://toolserver.org']
 
+# URLs in tables are put in the reference section if
+# url_ref_in_table = True and url is longer than url_ref_len
+url_ref_in_table = True
+url_ref_len = 30
 
 class BaseStyle(ParagraphStyle):
 

@@ -1,28 +1,30 @@
-# Translation of Mwlib.rl to Serbian Cyrillic ekavian (Српски (ћирилица))
+# Translation of Mwlib.rl to Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
 # Expored from translatewiki.net
 #
 # Author: BraneJ
 # Author: Charmed94
+# Author: Rancher
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-06 13:58+0000\n"
-"PO-Revision-Date: 2010-10-06 13:58:03+0000\n"
+"POT-Creation-Date: 2011-01-24 12:47+0000\n"
+"PO-Revision-Date: 2011-01-24 12:47:14+0000\n"
 "Language-Team: Serbian Cyrillic ekavian <http://translatewiki.net/wiki/"
 "Portal:sr-ec>\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.17alpha (r74353); Translate extension (2010-09-17)\n"
+"Language: \n"
+"X-Generator: MediaWiki 1.18alpha (r80810); Translate extension (2010-09-17)\n"
 "X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
 "X-Language-Code: sr-ec\n"
 "X-Message-Group: #out-mwlibrl\n"
-"X-POT-Import-Date: 2010-10-06 13:50:23+0000\n"
+"X-POT-Import-Date: 2011-01-10 18:24:06+0000\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: mwlib/rl/pdfmessages.py:11
 msgid "Index"
-msgstr "Индекс"
+msgstr "Попис"
 
 #: mwlib/rl/pdfmessages.py:13
 msgid "Source:"
@@ -36,7 +38,7 @@ msgstr "Лиценца:"
 msgid "Contributors:"
 msgstr "Сарадници:"
 
-#: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:508
+#: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:512
 msgid "Article Licenses"
 msgstr "Лиценце чланка"
 
@@ -50,7 +52,7 @@ msgstr "Поднаслов:"
 
 #: mwlib/rl/pdfmessages.py:25
 msgid "Editor:"
-msgstr "Уредник:"
+msgstr "Уређивач:"
 
 #: mwlib/rl/pdfmessages.py:27
 msgid "Created on:"
@@ -60,7 +62,7 @@ msgstr "Направљено:"
 msgid "Contents"
 msgstr "Садржај"
 
-#: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:419
+#: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:423
 msgid "Articles"
 msgstr "Чланци"
 
@@ -70,11 +72,11 @@ msgstr "Начињено са:"
 
 #: mwlib/rl/pdfmessages.py:35
 msgid "pdf writer version:"
-msgstr "издање PDF писца:"
+msgstr "Издање PDF писца:"
 
 #: mwlib/rl/pdfmessages.py:37
 msgid "mwlib version:"
-msgstr "издање mwlib-а:"
+msgstr "Издање mwlib-а:"
 
 #: mwlib/rl/pdfmessages.py:39
 msgid "Table of Contents"
@@ -89,7 +91,7 @@ msgid ""
 "Please note:  This is only a preview intended to give an idea how the book "
 "is typeset."
 msgstr ""
-"Напомена: ово је само претпреглед да бисте имали представу о прелому књиге."
+"Напомена: ово је само претпреглед који вам даје представу о прелому књиге."
 
 #: mwlib/rl/pdfmessages.py:45
 msgid ""
@@ -98,9 +100,12 @@ msgid ""
 "of the index, of your book are shown in this preview. All articles, even "
 "those left out of the preview, will be included in the final printed book."
 msgstr ""
+"Напомена: ово је само претпреглед који вам даје представу о томе како књига "
+"изгледа. Само неколико првих чланака, као и страница пописа књиге су "
+"приказани. Сви чланци биће укључени у штампаном издању књиге."
 
-#: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:467
-#: mwlib/rl/rlwriter.py:784
+#: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:471
+#: mwlib/rl/rlwriter.py:788
 msgid "References"
 msgstr "Референце"
 
@@ -139,13 +144,13 @@ msgstr ""
 "Ти извори пружају детаљније податке о лиценцирању, укључујући и статус "
 "ауторског права, носиоца права и услове лиценцирања."
 
-#: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:468
-#: mwlib/rl/rlwriter.py:657
+#: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:472
+#: mwlib/rl/rlwriter.py:661
 msgid "Article Sources and Contributors"
 msgstr "Извори и доприносиоци чланака"
 
-#: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:471
-#: mwlib/rl/rlwriter.py:676
+#: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:475
+#: mwlib/rl/rlwriter.py:680
 msgid "Image Sources, Licenses and Contributors"
 msgstr "Извори, лиценце и доприносиоци слика"
 
@@ -153,13 +158,17 @@ msgstr "Извори, лиценце и доприносиоци слика"
 msgid "Image"
 msgstr "Слика"
 
-#: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:649
+#: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:653
 msgid "anonymous edits"
 msgstr "анонимне измене"
 
 #: mwlib/rl/pdfmessages.py:65
 msgid "Figure"
 msgstr "Фигура"
+
+#: mwlib/rl/pdfmessages.py:67
+msgid "See also"
+msgstr "Погледајте"
 
 #: mwlib/rl/pdfstyles.py:78
 msgid ""
@@ -183,28 +192,28 @@ msgstr ""
 "mwlib издање: %(mwlibversion)s, mwlib.rl издање: %(mwlibrlversion)s, %"
 "(mwlibextversion)s"
 
-#: mwlib/rl/rlwriter.py:664 mwlib/rl/rlwriter.py:689
+#: mwlib/rl/rlwriter.py:668 mwlib/rl/rlwriter.py:693
 msgid "Source"
 msgstr "Извор"
 
-#: mwlib/rl/rlwriter.py:666 mwlib/rl/rlwriter.py:692
+#: mwlib/rl/rlwriter.py:670 mwlib/rl/rlwriter.py:696
 msgid "Contributors"
 msgstr "Доприносиоци"
 
-#: mwlib/rl/rlwriter.py:682
+#: mwlib/rl/rlwriter.py:686
 msgid "unknown"
 msgstr "непознато"
 
-#: mwlib/rl/rlwriter.py:684
+#: mwlib/rl/rlwriter.py:688
 msgid "License"
 msgstr "Лиценца"
 
-#: mwlib/rl/rlwriter.py:775
+#: mwlib/rl/rlwriter.py:779
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
 "software (b) problematic Mediawiki markup (c) table is too wide"
 msgstr ""
-"<strong>УПОЗОРЕЊЕ: Чланак се не може превести — чување чистог текста.</"
-"strong><br/>Потенцијални узроци овог проблема су: (а) грешка у PDF писцу (б) "
-"проблематично Медијавики обележавање (в) табела је преширока"
+"<strong>Упозорење: чланак се не може превести – чување чистог текста.</"
+"strong><br/>Могући узроци овог проблема су: грешка у PDF писцу, "
+"проблематично Медијавики обележавање или је табела преширока"

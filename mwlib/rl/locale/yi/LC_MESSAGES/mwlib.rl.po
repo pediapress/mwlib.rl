@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-06 13:58+0000\n"
+"POT-Creation-Date: 2011-01-24 12:47+0000\n"
 "PO-Revision-Date: 2009-12-18 08:43:06+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -31,7 +31,7 @@ msgstr ""
 msgid "Contributors:"
 msgstr ""
 
-#: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:508
+#: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:512
 msgid "Article Licenses"
 msgstr ""
 
@@ -55,7 +55,7 @@ msgstr ""
 msgid "Contents"
 msgstr ""
 
-#: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:419
+#: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:423
 msgid "Articles"
 msgstr ""
 
@@ -93,8 +93,8 @@ msgid ""
 "those left out of the preview, will be included in the final printed book."
 msgstr ""
 
-#: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:467
-#: mwlib/rl/rlwriter.py:784
+#: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:471
+#: mwlib/rl/rlwriter.py:788
 msgid "References"
 msgstr ""
 
@@ -124,13 +124,13 @@ msgid ""
 "license conditions."
 msgstr ""
 
-#: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:468
-#: mwlib/rl/rlwriter.py:657
+#: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:472
+#: mwlib/rl/rlwriter.py:661
 msgid "Article Sources and Contributors"
 msgstr ""
 
-#: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:471
-#: mwlib/rl/rlwriter.py:676
+#: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:475
+#: mwlib/rl/rlwriter.py:680
 msgid "Image Sources, Licenses and Contributors"
 msgstr ""
 
@@ -138,12 +138,16 @@ msgstr ""
 msgid "Image"
 msgstr ""
 
-#: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:649
+#: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:653
 msgid "anonymous edits"
 msgstr ""
 
 #: mwlib/rl/pdfmessages.py:65
 msgid "Figure"
+msgstr ""
+
+#: mwlib/rl/pdfmessages.py:67
+msgid "See also"
 msgstr ""
 
 #: mwlib/rl/pdfstyles.py:78
@@ -164,23 +168,23 @@ msgid ""
 "(mwlibextversion)s"
 msgstr ""
 
-#: mwlib/rl/rlwriter.py:664 mwlib/rl/rlwriter.py:689
+#: mwlib/rl/rlwriter.py:668 mwlib/rl/rlwriter.py:693
 msgid "Source"
 msgstr ""
 
-#: mwlib/rl/rlwriter.py:666 mwlib/rl/rlwriter.py:692
+#: mwlib/rl/rlwriter.py:670 mwlib/rl/rlwriter.py:696
 msgid "Contributors"
 msgstr ""
 
-#: mwlib/rl/rlwriter.py:682
+#: mwlib/rl/rlwriter.py:686
 msgid "unknown"
 msgstr "אומבאַוואוסט"
 
-#: mwlib/rl/rlwriter.py:684
+#: mwlib/rl/rlwriter.py:688
 msgid "License"
 msgstr ""
 
-#: mwlib/rl/rlwriter.py:775
+#: mwlib/rl/rlwriter.py:779
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "

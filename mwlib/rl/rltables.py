@@ -7,6 +7,7 @@
 from __future__ import division
 
 import re
+import math
 
 from mwlib.utils import all
 from mwlib import log
@@ -103,7 +104,6 @@ def getColWidths(data, table=None, recursionDepth=0, nestingLevel=1):
 
 def splitCellContent(data):
     # FIXME: this is a hotfix for tables which contain extremly large cells which cant be handeled by reportlab
-    import math
     n_data = []
     splitCellCount = 14 # some arbitrary constant...: if more than 14 items are present in a cell, the cell is split into two cells in two rows
     for row in data:
@@ -281,10 +281,10 @@ def checkSpans(t, rtl=False):
                 cell.attributes['rowspan'] = num_rows - row_idx
             col_idx += 1
 
-    for row_idx, row in enumerate(t.children):        
+    for row_idx, row in enumerate(t.children):
         col_idx = 0
         for cell in row.children:
-            if cell.rowspan > 1:        
+            if cell.rowspan > 1:
                 emptycell = getEmptyCell(None, cell.colspan, cell.rowspan-1)
                 last_col_idx = len(t.children[row_idx+1].children) - 1
                 if col_idx > last_col_idx:
@@ -292,7 +292,18 @@ def checkSpans(t, rtl=False):
                 else:
                     emptycell.moveto(t.children[row_idx+1].children[col_idx], prefix=True)
                 if not getattr(cell, 'rowspanned', False):
-                    styles.append(('SPAN',(col_idx,row_idx),(col_idx + cell.colspan-1,row_idx+cell.rowspan-1)))
+                    max_row_span = 15 # allow splitting of cells if rowspan exceeds this value
+                    if cell.rowspan <= max_row_span:
+                        styles.append(('SPAN',(col_idx,row_idx),(col_idx + cell.colspan-1,row_idx+cell.rowspan-1)))
+                    else:
+                        num_splits = int(math.ceil(cell.rowspan/max_row_span))
+                        span_range = int(math.floor(cell.rowspan/num_splits))
+                        for n in range(num_splits-1):
+                            styles.append(('SPAN',(col_idx,row_idx+span_range*n),(col_idx + cell.colspan-1,row_idx+(n+1)*span_range-1)))
+                            styles.append(('LINEBELOW', (col_idx,row_idx+(n+1)*span_range-1), (col_idx + cell.colspan-1,row_idx+(n+1)*span_range-1), 0.25, colors.white))
+                        styles.append(('SPAN',(col_idx,row_idx+span_range*(num_splits-1)),(col_idx + cell.colspan-1,row_idx+cell.rowspan-1)))
+
+
                 emptycell.rowspanned = True
                 if cell.colspan > 1:
                     emptycell.colspanned = True
@@ -319,11 +330,11 @@ def checkSpans(t, rtl=False):
 
 def getStyles(table):
     styles = []
-    styles.extend(table.span_styles)
     styles.extend(base_styles(table))
     styles.extend(border_styles(table))
     styles.extend(background_styles(table))
     styles.extend(valign_styles(table))
+    styles.extend(table.span_styles)
     return styles
 
 def base_styles(table):
