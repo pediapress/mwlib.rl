@@ -375,13 +375,13 @@ class RlWriter(object):
         art.authors = mywiki.getAuthors(item.title, revision=item.revision)
         advtree.buildAdvancedTree(art)
         if self.debug:
-            #parser.show(sys.stdout, art)
+            parser.show(sys.stdout, art)
             pass
         self.tc.tree = art
         self.tc.cleanAll()
         self.cnt.transformCSS(art)
         if self.debug:
-            parser.show(sys.stdout, art)
+            #parser.show(sys.stdout, art)
             print "\n".join([repr(r) for r in self.tc.getReports()])
         return art
 
@@ -2017,7 +2017,8 @@ class RlWriter(object):
         if len(t.children) >= pdfstyles.min_rows_for_break and self.table_nesting == 1:
             elements.append(CondPageBreak(pdfstyles.min_table_space))
         elements.extend(self.renderCaption(t))
-        rltables.checkSpans(t, rtl=self.rtl)
+        rltables.flip_dir(t, rtl=self.rtl)
+        rltables.checkSpans(t)
         t.num_cols = t.numcols
         self.table_size_calc += 1
         if not getattr(t, 'min_widths', None) and not getattr(t, 'max_widths', None):
@@ -2030,10 +2031,9 @@ class RlWriter(object):
         stretch=self.table_nesting == 1 and t.attributes.get('width', '') == u'100%'
         t.colwidths = rltables.optimizeWidths(t.min_widths, t.max_widths, avail_width, stretch=stretch)
         table_data =[]
-        f = lambda x: reversed(x) if self.rtl and self.table_nesting==1 else x
         for row in t.children:
             row_data = []
-            for col_idx, cell in enumerate(f(row.children)):
+            for col_idx, cell in enumerate(row.children):
                 self.colwidth = self.getCurrentColWidth(t, cell, col_idx)
                 row_data.append(self.write(cell))
             table_data.append(row_data)
