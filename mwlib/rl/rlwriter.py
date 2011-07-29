@@ -588,7 +588,7 @@ class RlWriter(object):
     def writeChapter(self, chapter):
         hr = HRFlowable(width="80%", spaceBefore=6, spaceAfter=0, color=pdfstyles.chapter_rule_color, thickness=0.5)
 
-        title = self.renderText(chapter.caption)
+        title = self.renderArticleTitle(chapter.caption)
         if self.inline_mode == 0 and self.table_nesting==0:
             chapter_anchor = '<a name="%s" />' % len(self.bookmarks)
             self.bookmarks.append((title, 'chapter'))
