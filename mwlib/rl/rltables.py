@@ -383,7 +383,8 @@ def background_styles(table):
     return styles
 
 def flip_dir(t, rtl=False):
-    if not rtl:
+    if not rtl or getattr(t, 'flipped', False):
         return
     for row in t.children:
         row.children.reverse()
+    t.flipped = True
