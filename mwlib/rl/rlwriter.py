@@ -520,7 +520,7 @@ class RlWriter(object):
                 log.info('memory usage after laying out:', linuxmem.memory())
             self.doc.build(elements)
             if pdfstyles.render_toc and self.numarticles > 1:
-                err = self.toc_renderer.build(output, self.toc_entries, has_title_page=bool(self.book.title))
+                err = self.toc_renderer.build(output, self.toc_entries, has_title_page=bool(self.book.title), rtl=self.rtl)
                 if err:
                     log.warning('TOC not rendered. Probably pdftk is not properly installed. returncode: %r' % err)
             if linuxmem:

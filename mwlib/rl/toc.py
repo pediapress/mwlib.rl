@@ -27,11 +27,11 @@ class TocRenderer(object):
         font_switcher.registerReportlabFonts(fontconfig.fonts)
 
         
-    def build(self, pdfpath, toc_entries, has_title_page=False):
+    def build(self, pdfpath, toc_entries, has_title_page=False, rtl=False):
         outpath = os.path.dirname(pdfpath)
         tocpath = os.path.join(outpath, 'toc.pdf')
         finalpath = os.path.join(outpath, 'final.pdf')
-        self.renderToc(tocpath, toc_entries)
+        self.renderToc(tocpath, toc_entries, rtl=rtl)
         return self.combinePdfs(pdfpath, tocpath, finalpath, has_title_page)
 
     def _getColWidths(self):
@@ -40,10 +40,10 @@ class TocRenderer(object):
         # subtracting 30pt below is *probably* necessary b/c of the table margins
         return [pdfstyles.print_width - w - 30, w]
     
-    def renderToc(self, tocpath, toc_entries):
+    def renderToc(self, tocpath, toc_entries, rtl):
         doc = SimpleDocTemplate(tocpath, pagesize=(pdfstyles.page_width, pdfstyles.page_height))
         elements = []
-        elements.append(Paragraph(_('Contents'), pdfstyles.heading_style(mode='chapter', text_align='left')))
+        elements.append(Paragraph(_('Contents'), pdfstyles.heading_style(mode='chapter', text_align='left' if not rtl else 'right')))
         toc_table =[]
         styles = []
         col_widths = self._getColWidths()
