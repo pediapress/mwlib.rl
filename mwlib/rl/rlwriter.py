@@ -984,7 +984,9 @@ class RlWriter(object):
 
     def writePreFormatted(self, obj):
         self.formatter.pre_mode = True
+        rtl, self.rtl = self.rtl, False
         txt = self.renderInline(obj)
+        self.rtl = rtl
         t = ''.join(txt)
         t = re.sub( u'<br */>', u'\n', t)
         t = t.replace('\t', ' '*pdfstyles.tabsize)
@@ -1631,10 +1633,10 @@ class RlWriter(object):
                     traceback.print_exc()
                     log.error('unknown source code language: %s' % repr(name))
                     return None
-                
         src_lang = n.vlist.get('lang', '').lower()
         lexer = getLexer(src_lang)
         if lexer:
+            rtl, self.rtl = self.rtl, False
             width = None
             avail_width = self.getAvailWidth()
             font_size = pdfstyles.font_size
@@ -1644,6 +1646,7 @@ class RlWriter(object):
                     break
                 width, height = res.wrap(avail_width, pdfstyles.page_height)
                 font_size -= .5
+            self.rtl = rtl
             if res:
                 return [res]
         return self.writePreFormatted(n)
