@@ -2072,7 +2072,9 @@ class RlWriter(object):
 
         imgpath = None
 
-        if self.math_cache_dir and os.path.isdir(self.math_cache_dir):
+        has_cache = lambda: self.math_cache_dir and os.path.isdir(self.math_cache_dir)
+
+        if has_cache():
             _md5 = md5()
             _md5.update(source.encode('utf-8'))
             math_id = _md5.hexdigest()
@@ -2084,7 +2086,7 @@ class RlWriter(object):
             imgpath = writerbase.renderMath(source, output_path=self.tmpdir, output_mode='png', render_engine='texvc', resolution_in_dpi=density)
             if not imgpath:
                 return []
-            if self.math_cache_dir:
+            if has_cache():
                 if not os.path.isdir(os.path.dirname(cached_path)):
                     os.makedirs(os.path.dirname(cached_path))
                 shutil.move(imgpath, cached_path)
