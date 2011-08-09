@@ -2054,11 +2054,11 @@ class RlWriter(object):
 
         imgpath = None
 
-        if self.math_cache_dir:            
+        if self.math_cache_dir and os.path.isdir(self.math_cache_dir):
             _md5 = md5()
             _md5.update(source.encode('utf-8'))
             math_id = _md5.hexdigest()
-            cached_path = os.path.join(self.math_cache_dir, '%s-%s.png' % (math_id, density))
+            cached_path = os.path.join(self.math_cache_dir, '%s/%s/%s-%s.png' % (math_id[0], math_id[1], math_id, density))
             if os.path.exists(cached_path):
                 imgpath = cached_path
 
@@ -2067,6 +2067,8 @@ class RlWriter(object):
             if not imgpath:
                 return []
             if self.math_cache_dir:
+                if not os.path.isdir(os.path.dirname(cached_path)):
+                    os.makedirs(os.path.dirname(cached_path))
                 shutil.move(imgpath, cached_path)
                 imgpath = cached_path
                 
