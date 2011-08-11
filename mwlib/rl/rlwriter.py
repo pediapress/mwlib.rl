@@ -158,7 +158,7 @@ class RlWriter(object):
         self.rtl = False
         if lang in ['ja', 'ch', 'ko', 'zh']:
             pdfstyles.word_wrap = 'CJK'
-        if lang in ['he', 'ar']:
+        if lang in ['he', 'ar', 'fa']:
             self.set_rtl(True)
             
         self.env = env
