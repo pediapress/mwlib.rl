@@ -158,8 +158,11 @@ class RlWriter(object):
         self.rtl = False
         if lang in ['ja', 'ch', 'ko', 'zh']:
             pdfstyles.word_wrap = 'CJK'
-        if lang in ['he', 'ar', 'fa']:
+        if lang in ['he', 'ar', 'fa', 'mzn', 'glk', 'ckb','ur', 'pnb', 'arz', 'dv', 'ps', 'sd', 'ks', 'yi',]:
             self.set_rtl(True)
+            # setting Nazli as default shifts the text a little to the top
+            pdfstyles.default_font = 'Nazli'
+            pdfstyles.serif_font = 'Nazli'
             
         self.env = env
         if self.env is not None:
