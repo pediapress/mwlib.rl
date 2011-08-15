@@ -51,6 +51,8 @@ _check_reportlab()
 #import reportlab
 #reportlab.rl_config.platypus_link_underline = 1
 
+from reportlab import rl_config
+
 from reportlab.platypus.paragraph import Paragraph
 from reportlab.platypus.doctemplate import BaseDocTemplate
 
@@ -163,6 +165,7 @@ class RlWriter(object):
             # setting Nazli as default shifts the text a little to the top
             pdfstyles.default_font = 'Nazli'
             pdfstyles.serif_font = 'Nazli'
+            rl_config.rtl = True
             
         self.env = env
         if self.env is not None:
