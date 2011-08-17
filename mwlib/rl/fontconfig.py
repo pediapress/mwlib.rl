@@ -51,7 +51,7 @@ fonts = [
      },   
     {'name': 'Nazli',
      'code_points': ['Arabic Presentation Forms-A', 'Arabic', 'Arabic Presentation Forms-B', 'Arabic Supplement'] ,
-     'file_names': ['ttf-farsiweb/nazli.ttf'],
+     'file_names': ['ttf-farsiweb/nazli.ttf', 'ttf-farsiweb/nazlib.ttf'],
      },
     {'name': 'UnBatang',
      'code_points': ['Hangul Syllables', 'Hangul Jamo', 'Hangul Compatibility Jamo'] ,
