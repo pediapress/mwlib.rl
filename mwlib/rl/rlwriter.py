@@ -158,6 +158,7 @@ class RlWriter(object):
                 log.warn(str(exc))
         translation.install(unicode=True)
         self.rtl = False
+        pdfstyles.default_latin_font = pdfstyles.default_font
         if lang in ['ja', 'ch', 'ko', 'zh']:
             pdfstyles.word_wrap = 'CJK'
         if lang in ['am', 'ar', 'arc', 'arz', 'bcc', 'bqi', 'ckb', 'dv', 'dz', 'fa', 'glk', 'ha', 'he', 'ks', 'ku', 'mzn', 'pnb', 'ps', 'sd', 'ug', 'ur', 'yi']:
@@ -1605,6 +1606,7 @@ class RlWriter(object):
         sourceFormatter = ReportlabFormatter(font_size=font_size, font_name='FreeMono', background_color='#eeeeee', line_numbers=False)
         sourceFormatter.encoding = 'utf-8'
         self.formatter.source_mode += 1
+
         source = ''.join(self.renderInline(n))
         self.formatter.source_mode -= 1
         source = source.replace('\t', ' '*pdfstyles.tabsize)
@@ -1616,7 +1618,9 @@ class RlWriter(object):
         txt = ''
         try:
             txt = unicode(highlight(source, lexer, sourceFormatter), 'utf-8')
+            self.font_switcher.registerDefaultFont(pdfstyles.default_latin_font)
             txt = self.font_switcher.fontifyText(txt)
+            self.font_switcher.registerDefaultFont(pdfstyles.default_font)
             if n.vlist.get('enclose', False) == 'none':
                 txt = re.sub('<para.*?>', '', txt).replace('</para>', '')
                 return txt
