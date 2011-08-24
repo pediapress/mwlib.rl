@@ -413,7 +413,7 @@ class RlWriter(object):
                                       bottomMargin=pdfstyles.page_margin_bottom,
                                       title='',
                                       )
-            testdoc.addPageTemplates(WikiPage(title=node.caption))
+            testdoc.addPageTemplates(WikiPage(title=self.renderArticleTitle(node.caption)))
             testdoc.build(elements)
             return True
         except Exception, err:
@@ -766,11 +766,8 @@ class RlWriter(object):
             self.layout_status(article=article.caption)
             self.articlecount += 1
         elements = []
-        template_title = title
-        pt = WikiPage(template_title, rtl=self.rtl)
         if hasattr(self, 'doc'): # doc is not present if tests are run
-            self.doc.addPageTemplates(pt)
-            elements.append(NextPageTemplate(template_title.encode('utf-8')))
+            elements.append(self._getPageTemplate(title))
             # FIXME remove the getPrevious below
             if self.license_mode:
                 if self.numarticles > 1:
