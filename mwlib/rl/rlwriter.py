@@ -1372,6 +1372,15 @@ class RlWriter(object):
             raise
         return 0
 
+    def set_svg_default_size(self, img_node):
+        image_info = self.imgDB.imageinfo.get(img_node.full_target)
+        if image_info.get('url').endswith('.svg'):
+            w = image_info.get('width')
+            h = image_info.get('height')
+            if w and h and img_node.width == None and img_node.height == None and img_node.isInline():
+                img_node.width = w
+                img_node.height = h
+
     def writeImageLink(self, img_node):        
         if img_node.colon == True:
             items = []
@@ -1407,6 +1416,9 @@ class RlWriter(object):
             max_height = print_height/4 # fixme this needs to be read from config
         if self.gallery_mode:
             max_height = print_height/3 # same as above
+
+        self.set_svg_default_size(img_node)
+
         w, h = self.image_utils.getImageSize(img_node, img_path, max_print_width=max_width, max_print_height=max_height)
         
         align = img_node.align
