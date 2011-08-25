@@ -233,7 +233,6 @@ class RlWriter(object):
 
         self.linkList = []
         self.disable_group_elements = False
-        self.failSaveRendering = False #FIXME remove
         self.fail_safe_rendering = False
 
         self.sourceCount = 0
@@ -404,22 +403,25 @@ class RlWriter(object):
 
 
     def articleRenderingOK(self, node, output):
+        testdoc = BaseDocTemplate(output,
+                                  topMargin=pdfstyles.page_margin_top,
+                                  leftMargin=pdfstyles.page_margin_left,
+                                  rightMargin=pdfstyles.page_margin_right,
+                                  bottomMargin=pdfstyles.page_margin_bottom,
+                                  title='',
+                                  )
+        # PageTemplates are registered to self.doc in writeArticle
+        doc_bak, self.doc = self.doc, testdoc
         elements = self.writeArticle(node)
         try:
-            testdoc = BaseDocTemplate(output,
-                                      topMargin=pdfstyles.page_margin_top,
-                                      leftMargin=pdfstyles.page_margin_left,
-                                      rightMargin=pdfstyles.page_margin_right,
-                                      bottomMargin=pdfstyles.page_margin_bottom,
-                                      title='',
-                                      )
-            testdoc.addPageTemplates(WikiPage(title=self.renderArticleTitle(node.caption)))
             testdoc.build(elements)
+            self.doc = doc_bak
             return True
-        except Exception, err:
+        except:
             log.error('article failed:' , repr(node.caption))
             tr = traceback.format_exc()
             log.error(tr)
+            self.doc = doc_bak
             return False
 
     def addDummyPage(self):
@@ -514,7 +516,7 @@ class RlWriter(object):
 
         self.render_status(status='rendering', article='')
                    
-        if not self.failSaveRendering:
+        if not self.fail_safe_rendering:
             self.doc.bookmarks = self.bookmarks
 
         #debughelper.dumpElements(elements)
