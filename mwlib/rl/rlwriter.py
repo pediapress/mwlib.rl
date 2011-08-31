@@ -298,7 +298,7 @@ class RlWriter(object):
     def check_direction(self, node):
         original = self.rtl
         try:
-            direction = node.vlist['style']['direction']
+            direction = node.vlist['dir'] or node.vlist['style']['direction']
         except (KeyError, AttributeError):
             pass
         else:
