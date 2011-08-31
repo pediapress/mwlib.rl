@@ -2,7 +2,6 @@ include MANIFEST.in
 include README.html
 include README.txt
 include compile_messages.py
-include conftest.py
 include example-mwlib.config
 include ez_setup.py
 include make_messages.py
@@ -206,3 +205,4 @@ include tests/test_advanced.py
 include tests/test_basicnodes.py
 include tests/test_misc.py
 include tests/test_snippets.py
+include tox.ini

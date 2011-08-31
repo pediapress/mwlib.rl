@@ -12,3 +12,4 @@ mwlib/rl/test
 mwlib.rl.egg-info/
 dist/*
 README.html
+.tox/
