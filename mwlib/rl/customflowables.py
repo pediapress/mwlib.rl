@@ -88,6 +88,8 @@ class FiguresAndParagraphs(Flowable):
         self.figure_margin = figure_margin
         self.ps = paragraphs
         self.figAlign = figures[0].align # fixme: all figures will be aligned like the first figure
+        if not self.figAlign:
+            self.figAlign = 'left' if rtl else 'right'
         for f in self.fs:
             if self.figAlign == 'left':
                 f.margin = pdfstyles.img_margins_float_left
