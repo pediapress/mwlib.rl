@@ -97,6 +97,7 @@ fonts = [
 
 
 class RLFontSwitcher(FontSwitcher):
+    warn_on_missing_fonts = True
 
     def __init__(self):
         FontSwitcher.__init__(self)
@@ -105,11 +106,18 @@ class RLFontSwitcher(FontSwitcher):
         self.hypenation_pattern = re.compile('(/|\.|\+|-|_|\?)(\S)')
         
     def registerFontDefinitionList(self, font_list):
+        missing_fonts = []
         for font in font_list:
-            if not font['name'] or not self.fontInstalled(font):
-                continue            
+            if not font['name']:
+                continue
+            if not self.fontInstalled(font):
+                missing_fonts.append(repr(font['name']))
+                continue
             self.registerFont(font['name'], code_points=font.get('code_points'))
-                     
+        if RLFontSwitcher.warn_on_missing_fonts and missing_fonts:
+            print 'MISSING FONTS:', ','.join(missing_fonts)
+            RLFontSwitcher.warn_on_missing_fonts = False
+
     def fakeHyphenate(self, font_list):
         zws = '<font fontSize="1"> </font>'        
         res = []
@@ -140,7 +148,6 @@ class RLFontSwitcher(FontSwitcher):
             return True
         for file_name in font_def.get('file_names'):
             if not self.getAbsFontPath(file_name):
-                print "font not found:", file_name
                 return False
         return True
         
