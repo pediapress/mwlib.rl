@@ -1,20 +1,20 @@
-# Translation of Mwlib.rl to Kurdish (Latin) (Kurdî (Latin))
-# Expored from translatewiki.net
+# Translation of Mwlib.rl to Kurdish (Latin script) (‪Kurdî (latînî)‬)
+# Exported from translatewiki.net
 #
 # Author: George Animal
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-24 12:47+0000\n"
-"PO-Revision-Date: 2011-01-24 12:47:12+0000\n"
-"Language-Team: Kurdish (Latin) <http://translatewiki.net/wiki/Portal:ku-"
-"latn>\n"
+"POT-Creation-Date: 2011-08-31 13:48+0000\n"
+"PO-Revision-Date: 2011-08-31 13:48:48+0000\n"
+"Language-Team: Kurdish (Latin script) <https://translatewiki.net/wiki/Portal:"
+"ku-latn>\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-POT-Import-Date: 2011-01-10 18:24:06+0000\n"
-"X-Generator: MediaWiki 1.18alpha (r80810); Translate extension (2010-09-17)\n"
-"X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
+"X-POT-Import-Date: 2011-01-25 12:42:37+0000\n"
+"X-Generator: MediaWiki 1.19alpha (r95865); Translate extension (2011-08-30)\n"
+"X-Translation-Project: translatewiki.net at https://translatewiki.net\n"
 "X-Language-Code: ku-latn\n"
 "X-Message-Group: #out-mwlibrl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -35,7 +35,7 @@ msgstr "Destûr"
 msgid "Contributors:"
 msgstr ""
 
-#: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:512
+#: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:525
 msgid "Article Licenses"
 msgstr ""
 
@@ -59,9 +59,9 @@ msgstr ""
 msgid "Contents"
 msgstr "Naverrokan"
 
-#: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:423
+#: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:430
 msgid "Articles"
-msgstr ""
+msgstr "Gotar"
 
 #: mwlib/rl/pdfmessages.py:33
 msgid "Produced by:"
@@ -77,7 +77,7 @@ msgstr ""
 
 #: mwlib/rl/pdfmessages.py:39
 msgid "Table of Contents"
-msgstr ""
+msgstr "Tabloya naverrokan"
 
 #: mwlib/rl/pdfmessages.py:41
 msgid "Skipping Articles!"
@@ -97,14 +97,14 @@ msgid ""
 "those left out of the preview, will be included in the final printed book."
 msgstr ""
 
-#: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:471
-#: mwlib/rl/rlwriter.py:788
+#: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:478
+#: mwlib/rl/rlwriter.py:797
 msgid "References"
 msgstr ""
 
 #: mwlib/rl/pdfmessages.py:49
 msgid "Appendix"
-msgstr ""
+msgstr "Îzafe"
 
 #: mwlib/rl/pdfmessages.py:51
 msgid ""
@@ -128,13 +128,13 @@ msgid ""
 "license conditions."
 msgstr ""
 
-#: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:472
-#: mwlib/rl/rlwriter.py:661
+#: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:479
+#: mwlib/rl/rlwriter.py:669
 msgid "Article Sources and Contributors"
 msgstr ""
 
-#: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:475
-#: mwlib/rl/rlwriter.py:680
+#: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:482
+#: mwlib/rl/rlwriter.py:688
 msgid "Image Sources, Licenses and Contributors"
 msgstr ""
 
@@ -142,7 +142,7 @@ msgstr ""
 msgid "Image"
 msgstr "Wêne"
 
-#: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:653
+#: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:661
 msgid "anonymous edits"
 msgstr ""
 
@@ -152,7 +152,7 @@ msgstr ""
 
 #: mwlib/rl/pdfmessages.py:67
 msgid "See also"
-msgstr ""
+msgstr "Binêre herwiha"
 
 #: mwlib/rl/pdfstyles.py:78
 msgid ""
@@ -160,35 +160,35 @@ msgid ""
 "pediapress.com/ for more information."
 msgstr ""
 
-#: mwlib/rl/rlwriter.py:303
+#: mwlib/rl/rlwriter.py:312
 #, python-format
 msgid "mwlib.ext version: %(version)s"
 msgstr ""
 
-#: mwlib/rl/rlwriter.py:309
+#: mwlib/rl/rlwriter.py:318
 #, python-format
 msgid ""
 "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
 "(mwlibextversion)s"
 msgstr ""
 
-#: mwlib/rl/rlwriter.py:668 mwlib/rl/rlwriter.py:693
+#: mwlib/rl/rlwriter.py:676 mwlib/rl/rlwriter.py:701
 msgid "Source"
-msgstr ""
+msgstr "Çavkanî"
 
-#: mwlib/rl/rlwriter.py:670 mwlib/rl/rlwriter.py:696
+#: mwlib/rl/rlwriter.py:678 mwlib/rl/rlwriter.py:704
 msgid "Contributors"
 msgstr ""
 
-#: mwlib/rl/rlwriter.py:686
+#: mwlib/rl/rlwriter.py:694
 msgid "unknown"
-msgstr ""
+msgstr "nenas"
 
-#: mwlib/rl/rlwriter.py:688
+#: mwlib/rl/rlwriter.py:696
 msgid "License"
 msgstr "Lîsans"
 
-#: mwlib/rl/rlwriter.py:779
+#: mwlib/rl/rlwriter.py:788
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "

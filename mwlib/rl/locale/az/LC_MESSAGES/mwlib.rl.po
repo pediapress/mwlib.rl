@@ -1,26 +1,28 @@
 # Translation of Mwlib.rl to Azerbaijani (Azərbaycanca)
-# Expored from translatewiki.net
+# Exported from translatewiki.net
 #
+# Author: Cekli829
 # Author: PPerviz
+# Author: Vago
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-24 12:47+0000\n"
-"PO-Revision-Date: 2011-01-24 12:47:11+0000\n"
-"Language-Team: Azerbaijani <http://translatewiki.net/wiki/Portal:az>\n"
+"POT-Creation-Date: 2011-08-31 13:48+0000\n"
+"PO-Revision-Date: 2011-08-31 13:48:47+0000\n"
+"Language-Team: Azerbaijani <https://translatewiki.net/wiki/Portal:az>\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-POT-Import-Date: 2011-01-10 18:24:06+0000\n"
-"X-Generator: MediaWiki 1.18alpha (r80810); Translate extension (2010-09-17)\n"
-"X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
+"X-POT-Import-Date: 2011-01-25 12:42:37+0000\n"
+"X-Generator: MediaWiki 1.19alpha (r95865); Translate extension (2011-08-30)\n"
+"X-Translation-Project: translatewiki.net at https://translatewiki.net\n"
 "X-Language-Code: az\n"
 "X-Message-Group: #out-mwlibrl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: mwlib/rl/pdfmessages.py:11
 msgid "Index"
-msgstr ""
+msgstr "İndeks"
 
 #: mwlib/rl/pdfmessages.py:13
 msgid "Source:"
@@ -32,23 +34,23 @@ msgstr "Lisenziya:"
 
 #: mwlib/rl/pdfmessages.py:17
 msgid "Contributors:"
-msgstr ""
+msgstr "Həmmüəlliflər:"
 
-#: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:512
+#: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:525
 msgid "Article Licenses"
-msgstr ""
+msgstr "Məqalə lisenziyaları"
 
 #: mwlib/rl/pdfmessages.py:21
 msgid "Title"
-msgstr ""
+msgstr "Başlıq"
 
 #: mwlib/rl/pdfmessages.py:23
 msgid "Subtitle:"
-msgstr ""
+msgstr "Altbaşlıq:"
 
 #: mwlib/rl/pdfmessages.py:25
 msgid "Editor:"
-msgstr ""
+msgstr "Redaktor:"
 
 #: mwlib/rl/pdfmessages.py:27
 msgid "Created on:"
@@ -56,19 +58,19 @@ msgstr "Yaradılmışdır:"
 
 #: mwlib/rl/pdfmessages.py:29 mwlib/rl/toc.py:46
 msgid "Contents"
-msgstr ""
+msgstr "Məzmun"
 
-#: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:423
+#: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:430
 msgid "Articles"
 msgstr "Məqalələr"
 
 #: mwlib/rl/pdfmessages.py:33
 msgid "Produced by:"
-msgstr ""
+msgstr "Hazırlayan:"
 
 #: mwlib/rl/pdfmessages.py:35
 msgid "pdf writer version:"
-msgstr ""
+msgstr "pdf yazı versiyası:"
 
 #: mwlib/rl/pdfmessages.py:37
 msgid "mwlib version:"
@@ -76,17 +78,19 @@ msgstr "mwlib versiyası:"
 
 #: mwlib/rl/pdfmessages.py:39
 msgid "Table of Contents"
-msgstr ""
+msgstr "Mündəricat"
 
 #: mwlib/rl/pdfmessages.py:41
 msgid "Skipping Articles!"
-msgstr ""
+msgstr "Məqalələr atılır"
 
 #: mwlib/rl/pdfmessages.py:43
 msgid ""
 "Please note:  This is only a preview intended to give an idea how the book "
 "is typeset."
 msgstr ""
+"Diqqət yetirin. Bu, yalnız kitabın necə görünməsini təsvir edən ilkin "
+"baxışdır."
 
 #: mwlib/rl/pdfmessages.py:45
 msgid ""
@@ -95,15 +99,19 @@ msgid ""
 "of the index, of your book are shown in this preview. All articles, even "
 "those left out of the preview, will be included in the final printed book."
 msgstr ""
+"Xahiş edirik diqqət yetirin. Bu, yalnız kitabınızın necə görünməsini təsvir "
+"edən ilkin baxışdır.Burada yalnız bir neçə mqalə və mündəricat "
+"göstərilmişdir. Hazırda görünənlər də daxil olmaqla bütün məqalələr çap "
+"olunmuş kitaba əlavə olunacaq olacaq."
 
-#: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:471
-#: mwlib/rl/rlwriter.py:788
+#: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:478
+#: mwlib/rl/rlwriter.py:797
 msgid "References"
 msgstr "İstinadlar"
 
 #: mwlib/rl/pdfmessages.py:49
 msgid "Appendix"
-msgstr ""
+msgstr "Əlavə"
 
 #: mwlib/rl/pdfmessages.py:51
 msgid ""
@@ -112,6 +120,9 @@ msgid ""
 "including the copyright status, the copyright owner, and the license "
 "conditions."
 msgstr ""
+"Növbəti bölmədə bütün məqalə və şəkillər kitabında istifadə olunan mənbələr "
+"sadalanıb. Mənbələrdə müəlliflik hüququna sahib olanlar, lisenziyalar və "
+"yayım şərtləri haqqında  ətraflı məlumat göstərilib."
 
 #: mwlib/rl/pdfmessages.py:53
 msgid ""
@@ -119,6 +130,9 @@ msgid ""
 "information including the copyright status, the copyright owner, and the "
 "license conditions."
 msgstr ""
+"Status və müəlliflik hüququna malik olanlar, eləcə də lisenziya şərtləri "
+"haqqında daha ətraflı məlumat hər məqalə üçün göstərilmiş mənbələrdə əksini "
+"tapmışdır."
 
 #: mwlib/rl/pdfmessages.py:55
 msgid ""
@@ -126,28 +140,31 @@ msgid ""
 "information including the copyright status, the copyright owner, and the "
 "license conditions."
 msgstr ""
+"Status və müəlliflik hüququna malik olanlar, eləcə də lisenziya şərtləri "
+"haqqında daha ətraflı məlumat hər məqalə üçün göstərilmiş mənbələrdə əksini "
+"tapmışdır."
 
-#: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:472
-#: mwlib/rl/rlwriter.py:661
+#: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:479
+#: mwlib/rl/rlwriter.py:669
 msgid "Article Sources and Contributors"
-msgstr ""
+msgstr "Mənbə və əsas müəlliflər"
 
-#: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:475
-#: mwlib/rl/rlwriter.py:680
+#: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:482
+#: mwlib/rl/rlwriter.py:688
 msgid "Image Sources, Licenses and Contributors"
-msgstr ""
+msgstr "Şəklin mənbələri, lisenziyaları və müəllifləri"
 
 #: mwlib/rl/pdfmessages.py:61
 msgid "Image"
 msgstr "Şəkil"
 
-#: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:653
+#: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:661
 msgid "anonymous edits"
 msgstr "anonim redaktələr"
 
 #: mwlib/rl/pdfmessages.py:65
 msgid "Figure"
-msgstr ""
+msgstr "Şəkil"
 
 #: mwlib/rl/pdfmessages.py:67
 msgid "See also"
@@ -158,38 +175,45 @@ msgid ""
 "PDF generated using the open source mwlib toolkit. See http://code."
 "pediapress.com/ for more information."
 msgstr ""
+"PDF hazırki mwlib açıq kodu ilə işləyən alətlərlə yaradılmışdır. http://code."
+"pediapress.com/ daha çox məlumat əldə etmək üçün bax"
 
-#: mwlib/rl/rlwriter.py:303
+#: mwlib/rl/rlwriter.py:312
 #, python-format
 msgid "mwlib.ext version: %(version)s"
-msgstr ""
+msgstr "mwlib.ext versiyası: %(version)s"
 
-#: mwlib/rl/rlwriter.py:309
+#: mwlib/rl/rlwriter.py:318
 #, python-format
 msgid ""
 "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
 "(mwlibextversion)s"
 msgstr ""
+"mwlib versiyası: %(mwlibversion)s, mwlib.rl versiyası: %(mwlibrlversion)s, %"
+"(mwlibextversion)s"
 
-#: mwlib/rl/rlwriter.py:668 mwlib/rl/rlwriter.py:693
+#: mwlib/rl/rlwriter.py:676 mwlib/rl/rlwriter.py:701
 msgid "Source"
 msgstr "Mənbə"
 
-#: mwlib/rl/rlwriter.py:670 mwlib/rl/rlwriter.py:696
+#: mwlib/rl/rlwriter.py:678 mwlib/rl/rlwriter.py:704
 msgid "Contributors"
-msgstr ""
+msgstr "Həmmüəlliflər"
 
-#: mwlib/rl/rlwriter.py:686
+#: mwlib/rl/rlwriter.py:694
 msgid "unknown"
-msgstr ""
+msgstr "naməlum"
 
-#: mwlib/rl/rlwriter.py:688
+#: mwlib/rl/rlwriter.py:696
 msgid "License"
-msgstr ""
+msgstr "Lisenziya"
 
-#: mwlib/rl/rlwriter.py:779
+#: mwlib/rl/rlwriter.py:788
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
 "software (b) problematic Mediawiki markup (c) table is too wide"
 msgstr ""
+"<strong>Diqqət: Məqalə hazır şəklə salına bilinmir — nəticə sadə mətn "
+"şəklində çıxarılacaq</strong><br/>mümkün səbəblər: (a) pdf-faylın proqram "
+"kodunda xəta (b) Mediawiki yayımında problem (c) eni çox böyük olan cədvəl"
