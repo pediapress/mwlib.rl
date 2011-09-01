@@ -7,7 +7,9 @@
 try:
     from customconfig import css_map
 except ImportError:
-    css_map = {}
+    css_map = {'rtl': 'direction:rtl;',
+               'ltr': 'direction:ltr;',
+               }
     
 
 # The *css_map* is used to map node class to node styles
