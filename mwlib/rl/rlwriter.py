@@ -198,7 +198,7 @@ class RlWriter(object):
         self.font_switcher.registerFontDefinitionList(fontconfig.fonts)
         self.font_switcher.registerReportlabFonts(fontconfig.fonts)
 
-        self.tc = TreeCleaner([], save_reports=self.debug)
+        self.tc = TreeCleaner([], save_reports=self.debug, rtl=self.rtl)
         self.tc.skipMethods = pdfstyles.treecleaner_skip_methods
         self.tc.contentWithoutTextClasses.append(advtree.ReferenceList)
 
@@ -2078,7 +2078,7 @@ class RlWriter(object):
         c = table._cellvalues[0][0]
         if c:
             c.pop()
-    
+
     def writeMath(self, node):
         source = re.compile(u'\n+').sub(u'\n', node.caption.strip()) # remove multiple newlines, as this could break the mathRenderer
         if not len(source):
