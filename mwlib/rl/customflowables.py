@@ -6,6 +6,8 @@
 
 import string 
 import re
+import urllib
+import urlparse
 
 from reportlab.platypus.flowables import Flowable, Image, HRFlowable, Preformatted, PageBreak, _listWrapOn, _ContainerSpace, _flowableSublist
 from reportlab.platypus.paragraph import Paragraph, deepcopy, cleanBlockQuotedText
@@ -52,7 +54,14 @@ class Figure(Flowable):
         self.i.canv = canv
         self.i.draw()
         if self.url:
-            canv.linkURL(self.url, (0,0, self.imgWidth, self.imgHeight), relative=1, thickness=0)
+            frags = urlparse.urlsplit(self.url.encode('utf-8'))
+            clean_url = urlparse.urlunsplit((frags.scheme,
+                                 frags.netloc,
+                                 urllib.quote(frags.path, safe='/'),
+                                 urllib.quote(frags.query, safe='=&'),
+                                 frags.fragment,
+                                 )).decode('utf-8')
+            canv.linkURL(clean_url, (0,0, self.imgWidth, self.imgHeight), relative=1, thickness=0)
         
     def wrap(self, availWidth, availHeight):
         self.availWidth = availWidth
@@ -74,11 +83,13 @@ class FiguresAndParagraphs(Flowable):
      * all figures are floated on the same side as the first image
      * the biggest figure-width is used as the text-margin
     """
-    def __init__(self, figures, paragraphs, figure_margin=(0,0,0,0)):
+    def __init__(self, figures, paragraphs, figure_margin=(0,0,0,0), rtl=False):
         self.fs = figures
         self.figure_margin = figure_margin
         self.ps = paragraphs
         self.figAlign = figures[0].align # fixme: all figures will be aligned like the first figure
+        if not self.figAlign:
+            self.figAlign = 'left' if rtl else 'right'
         for f in self.fs:
             if self.figAlign == 'left':
                 f.margin = pdfstyles.img_margins_float_left
@@ -86,7 +97,8 @@ class FiguresAndParagraphs(Flowable):
                 f.margin = pdfstyles.img_margins_float_right
         self.wfs = [] #width of figures
         self.hfs = [] # height of figures
-
+        self.rtl = rtl # Flag that indicates if document is set right-to-left
+        
     def _getVOffset(self):
         for p in self.ps:
             if hasattr(p, 'style') and hasattr(p.style, 'spaceBefore'):
@@ -185,7 +197,10 @@ class FiguresAndParagraphs(Flowable):
             if self.figAlign == 'left':
                 p._offsets = self._offsets[count]
                 if hasattr(p, 'style') and hasattr(p.style, 'bulletIndent'):
-                    p.style.bulletIndent += p._offsets[0]
+                    if not self.rtl:
+                        p.style.bulletIndent += p._offsets[0]
+                    else:
+                        p.style.bulletIndent -= self.ps[0]._offsets[0] - 34
             if isinstance(p, HRFlowable):
                 p.canv = canv
                 widthOffset = self.horizontalRuleOffsets.pop(0)

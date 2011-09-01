@@ -381,3 +381,10 @@ def background_styles(table):
                                (col_idx + cell.colspan - 1,row_idx + cell.rowspan - 1),
                                colors.Color(rgb[0], rgb[1], rgb[2])))
     return styles
+
+def flip_dir(t, rtl=False):
+    if not rtl or getattr(t, 'flipped', False):
+        return
+    for row in t.children:
+        row.children.reverse()
+    t.flipped = True

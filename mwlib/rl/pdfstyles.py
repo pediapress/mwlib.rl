@@ -169,7 +169,7 @@ class BaseStyle(ParagraphStyle):
         self.wordWrap = None
         self.textTransform = None
         
-def text_style(mode='p', indent_lvl=0, in_table=0, relsize='normal', text_align='left'):
+def text_style(mode='p', indent_lvl=0, in_table=0, relsize='normal', text_align=None):
     """
     mode: p (normal paragraph), blockquote, center (centered paragraph), footer, figure (figure caption text),
           preformatted, list, license, licenselist, box, references, articlefoot
@@ -180,11 +180,14 @@ def text_style(mode='p', indent_lvl=0, in_table=0, relsize='normal', text_align=
     text_align: left, center, right, justify
     """
 
+    if not text_align:
+        text_align = 'left'
+
     style = BaseStyle(name='text_style_%s_indent_%d_table_%d_size_%s' % (mode, indent_lvl, in_table, relsize))
     style.flowable = True # needed for "flowing" paragraphs around figures
 
-    if word_wrap == 'CJK' and mode not in ['preformatted', 'source']:
-        style.wordWrap = 'CJK'
+    if word_wrap in ['CJK', 'RTL'] and mode not in ['preformatted', 'source']:
+        style.wordWrap = word_wrap
 
     if in_table > 0:
         style.alignment = table_text_align
@@ -255,6 +258,15 @@ def text_style(mode='p', indent_lvl=0, in_table=0, relsize='normal', text_align=
         style.fontName= sans_font
         style.alignment = TA_LEFT
 
+    if word_wrap == 'RTL':
+        # switch all alignment, indentations for rtl languages
+        if style.alignment in [TA_LEFT, TA_JUSTIFY]:
+            style.alignment = TA_RIGHT
+        elif style.alignment == TA_RIGHT:
+            style.alignment = TA_LEFT
+
+        style.leftIndent, style.rightIndent = style.rightIndent, style.leftIndent
+
     if mode == 'license':
         style.fontSize = 5
         style.leading = 1
@@ -314,6 +326,11 @@ class BaseHeadingStyle(ParagraphStyle):
 def heading_style(mode='chapter', lvl=1, text_align=None):
 
     style = BaseHeadingStyle(name='heading_style_%s_%d' % (mode, lvl))
+
+    if word_wrap == 'RTL':
+        style.wordWrap = 'RTL'
+        if not text_align:
+            style.alignment = TA_RIGHT
 
     if mode == 'chapter':
         style.fontSize = 26
