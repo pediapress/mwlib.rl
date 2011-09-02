@@ -93,6 +93,10 @@ fonts = [
      'code_points': ['Tamil'] ,
      'file_names': ['ttf-indic-fonts-core/lohit_ta.ttf'],
      },
+    {'name': 'Khmer',
+     'code_points': ['Khmer', 'Khmer Symbols'],
+     'file_names': ['ttf-khmeros-core/KhmerOS.ttf'],
+     },
     ]
 
 
