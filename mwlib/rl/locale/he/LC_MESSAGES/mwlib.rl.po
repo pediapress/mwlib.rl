@@ -174,7 +174,7 @@ msgid ""
 "pediapress.com/ for more information."
 msgstr ""
 "ה־PDF נוצר באמצעות ערכת הכלים בקוד פתוח mwlib. עיינו בכתובת http://code."
-"pediapress.com/ למידע נוסף."
+"pediapress.com/\xe2\x80\x8e למידע נוסף."
 
 #: mwlib/rl/rlwriter.py:303
 #, python-format

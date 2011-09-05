@@ -51,6 +51,8 @@ _check_reportlab()
 #import reportlab
 #reportlab.rl_config.platypus_link_underline = 1
 
+from reportlab import rl_config
+
 from reportlab.platypus.paragraph import Paragraph
 from reportlab.platypus.doctemplate import BaseDocTemplate
 
@@ -156,10 +158,15 @@ class RlWriter(object):
                 log.warn(str(exc))
         translation.install(unicode=True)
         self.rtl = False
+        pdfstyles.default_latin_font = pdfstyles.default_font
         if lang in ['ja', 'ch', 'ko', 'zh']:
             pdfstyles.word_wrap = 'CJK'
-        if lang in ['he', 'ar']:
+        if lang in ['am', 'ar', 'arc', 'arz', 'bcc', 'bqi', 'ckb', 'dv', 'dz', 'fa', 'glk', 'ha', 'he', 'ks', 'ku', 'mzn', 'pnb', 'ps', 'sd', 'ug', 'ur', 'yi']:
             self.set_rtl(True)
+            # setting Nazli as default shifts the text a little to the top
+            pdfstyles.default_font = 'Nazli'
+            pdfstyles.serif_font = 'Nazli'
+            rl_config.rtl = True
             
         self.env = env
         if self.env is not None:
@@ -226,7 +233,6 @@ class RlWriter(object):
 
         self.linkList = []
         self.disable_group_elements = False
-        self.failSaveRendering = False #FIXME remove
         self.fail_safe_rendering = False
 
         self.sourceCount = 0
@@ -292,7 +298,7 @@ class RlWriter(object):
     def check_direction(self, node):
         original = self.rtl
         try:
-            direction = node.vlist['style']['direction']
+            direction = node.vlist['dir'] or node.vlist['style']['direction']
         except (KeyError, AttributeError):
             pass
         else:
@@ -397,22 +403,25 @@ class RlWriter(object):
 
 
     def articleRenderingOK(self, node, output):
+        testdoc = BaseDocTemplate(output,
+                                  topMargin=pdfstyles.page_margin_top,
+                                  leftMargin=pdfstyles.page_margin_left,
+                                  rightMargin=pdfstyles.page_margin_right,
+                                  bottomMargin=pdfstyles.page_margin_bottom,
+                                  title='',
+                                  )
+        # PageTemplates are registered to self.doc in writeArticle
+        doc_bak, self.doc = self.doc, testdoc
         elements = self.writeArticle(node)
         try:
-            testdoc = BaseDocTemplate(output,
-                                      topMargin=pdfstyles.page_margin_top,
-                                      leftMargin=pdfstyles.page_margin_left,
-                                      rightMargin=pdfstyles.page_margin_right,
-                                      bottomMargin=pdfstyles.page_margin_bottom,
-                                      title='',
-                                      )
-            testdoc.addPageTemplates(WikiPage(title=node.caption))
             testdoc.build(elements)
+            self.doc = doc_bak
             return True
-        except Exception, err:
+        except:
             log.error('article failed:' , repr(node.caption))
             tr = traceback.format_exc()
             log.error(tr)
+            self.doc = doc_bak
             return False
 
     def addDummyPage(self):
@@ -507,7 +516,7 @@ class RlWriter(object):
 
         self.render_status(status='rendering', article='')
                    
-        if not self.failSaveRendering:
+        if not self.fail_safe_rendering:
             self.doc.bookmarks = self.bookmarks
 
         #debughelper.dumpElements(elements)
@@ -759,11 +768,8 @@ class RlWriter(object):
             self.layout_status(article=article.caption)
             self.articlecount += 1
         elements = []
-        template_title = title
-        pt = WikiPage(template_title, rtl=self.rtl)
         if hasattr(self, 'doc'): # doc is not present if tests are run
-            self.doc.addPageTemplates(pt)
-            elements.append(NextPageTemplate(template_title.encode('utf-8')))
+            elements.append(self._getPageTemplate(title))
             # FIXME remove the getPrevious below
             if self.license_mode:
                 if self.numarticles > 1:
@@ -1366,6 +1372,15 @@ class RlWriter(object):
             raise
         return 0
 
+    def set_svg_default_size(self, img_node):
+        image_info = self.imgDB.imageinfo.get(img_node.full_target)
+        if image_info.get('url').endswith('.svg'):
+            w = image_info.get('width')
+            h = image_info.get('height')
+            if w and h and img_node.width == None and img_node.height == None and img_node.isInline():
+                img_node.width = w
+                img_node.height = h
+
     def writeImageLink(self, img_node):        
         if img_node.colon == True:
             items = []
@@ -1401,6 +1416,9 @@ class RlWriter(object):
             max_height = print_height/4 # fixme this needs to be read from config
         if self.gallery_mode:
             max_height = print_height/3 # same as above
+
+        self.set_svg_default_size(img_node)
+
         w, h = self.image_utils.getImageSize(img_node, img_path, max_print_width=max_width, max_print_height=max_height)
         
         align = img_node.align
@@ -1599,6 +1617,7 @@ class RlWriter(object):
         sourceFormatter = ReportlabFormatter(font_size=font_size, font_name='FreeMono', background_color='#eeeeee', line_numbers=False)
         sourceFormatter.encoding = 'utf-8'
         self.formatter.source_mode += 1
+
         source = ''.join(self.renderInline(n))
         self.formatter.source_mode -= 1
         source = source.replace('\t', ' '*pdfstyles.tabsize)
@@ -1610,7 +1629,9 @@ class RlWriter(object):
         txt = ''
         try:
             txt = unicode(highlight(source, lexer, sourceFormatter), 'utf-8')
+            self.font_switcher.registerDefaultFont(pdfstyles.default_latin_font)
             txt = self.font_switcher.fontifyText(txt)
+            self.font_switcher.registerDefaultFont(pdfstyles.default_font)
             if n.vlist.get('enclose', False) == 'none':
                 txt = re.sub('<para.*?>', '', txt).replace('</para>', '')
                 return txt
@@ -2072,11 +2093,13 @@ class RlWriter(object):
 
         imgpath = None
 
-        if self.math_cache_dir:            
+        has_cache = lambda: self.math_cache_dir and os.path.isdir(self.math_cache_dir)
+
+        if has_cache():
             _md5 = md5()
             _md5.update(source.encode('utf-8'))
             math_id = _md5.hexdigest()
-            cached_path = os.path.join(self.math_cache_dir, '%s-%s.png' % (math_id, density))
+            cached_path = os.path.join(self.math_cache_dir, '%s/%s/%s-%s.png' % (math_id[0], math_id[1], math_id, density))
             if os.path.exists(cached_path):
                 imgpath = cached_path
 
@@ -2084,7 +2107,9 @@ class RlWriter(object):
             imgpath = writerbase.renderMath(source, output_path=self.tmpdir, output_mode='png', render_engine='texvc', resolution_in_dpi=density)
             if not imgpath:
                 return []
-            if self.math_cache_dir:
+            if has_cache():
+                if not os.path.isdir(os.path.dirname(cached_path)):
+                    os.makedirs(os.path.dirname(cached_path))
                 shutil.move(imgpath, cached_path)
                 imgpath = cached_path
                 
@@ -2110,12 +2135,12 @@ class RlWriter(object):
         # the "normal" height of a single-line formula is 17px
         imgAlign = '%fin' % (- (h - 15) / (2 * density))
         #the non-breaking-space is needed to force whitespace after the formula
-        return '<img src="%(path)s" width="%(width)fin" height="%(height)fin" valign="%(valign)s" />' % {
+        return ['<img src="%(path)s" width="%(width)fin" height="%(height)fin" valign="%(valign)s" />' % {
             'path': imgpath.encode(sys.getfilesystemencoding()),
             'width': w/density,
             'height': h/density,
             'valign': imgAlign, }
-
+                ]
     
     def writeTimeline(self, node):
         img_path = timeline.drawTimeline(node.timeline, self.tmpdir)
