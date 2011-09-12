@@ -4,19 +4,20 @@
 # Author: Crt
 # Author: Nike
 # Author: Silvonen
+# Author: Veikk0.ma
 # Author: Zache
 # Author: ZeiP
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-08-31 13:48+0000\n"
-"PO-Revision-Date: 2011-08-31 13:48:48+0000\n"
+"POT-Creation-Date: 2011-09-12 15:05+0000\n"
+"PO-Revision-Date: 2011-09-12 15:05:40+0000\n"
 "Language-Team: Finnish <https://translatewiki.net/wiki/Portal:fi>\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fi\n"
-"X-Generator: MediaWiki 1.19alpha (r95865); Translate extension (2011-08-30)\n"
+"X-Generator: MediaWiki 1.19alpha (r96836); Translate extension (2011-08-30)\n"
 "X-Translation-Project: translatewiki.net at https://translatewiki.net\n"
 "X-Language-Code: fi\n"
 "X-Message-Group: #out-mwlibrl\n"
@@ -25,7 +26,7 @@ msgstr ""
 
 #: mwlib/rl/pdfmessages.py:11
 msgid "Index"
-msgstr ""
+msgstr "Hakemisto"
 
 #: mwlib/rl/pdfmessages.py:13
 msgid "Source:"
@@ -134,6 +135,9 @@ msgid ""
 "information including the copyright status, the copyright owner, and the "
 "license conditions."
 msgstr ""
+"Kullekin artikkelille listatut lähteet sisältävät tarkkoja "
+"lisensointitietoja mukaan lukien tekijänoikeuden tilan, tekijänoikeuden "
+"omistajan ja lisenssiehdot."
 
 #: mwlib/rl/pdfmessages.py:55
 msgid ""
@@ -141,6 +145,9 @@ msgid ""
 "information including the copyright status, the copyright owner, and the "
 "license conditions."
 msgstr ""
+"Kullekin kuvalle listatut lähteet sisältävät tarkkoja lisensointitietoja "
+"mukaan lukien tekijänoikeuden tilan, tekijänoikeuden omistajan ja "
+"lisenssiehdot."
 
 #: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:479
 #: mwlib/rl/rlwriter.py:669
