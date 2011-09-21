@@ -84,4 +84,6 @@ class TocRenderer(object):
             retcode = 1
         if retcode == 0:
             shutil.move(finalpath, pdfpath)
+        if os.path.exists(tocpath):
+            os.unlink(tocpath)
         return retcode
