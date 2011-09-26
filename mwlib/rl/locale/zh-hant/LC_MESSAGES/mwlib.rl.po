@@ -1,20 +1,21 @@
 # Translation of Mwlib.rl to Traditional Chinese (‪中文(繁體)‬)
 # Exported from translatewiki.net
 #
+# Author: Anakmalaysia
 # Author: Hzy980512
 # Author: Lauhenry
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-08-31 13:49+0000\n"
-"PO-Revision-Date: 2011-08-31 13:48:49+0000\n"
+"POT-Creation-Date: 2011-09-26 14:13+0000\n"
+"PO-Revision-Date: 2011-09-26 14:13:00+0000\n"
 "Language-Team: Traditional Chinese <https://translatewiki.net/wiki/Portal:zh-"
 "hant>\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-POT-Import-Date: 2011-01-25 12:42:37+0000\n"
-"X-Generator: MediaWiki 1.19alpha (r95865); Translate extension (2011-08-30)\n"
+"X-Generator: MediaWiki 1.19alpha (r98114); Translate extension (2011-09-22)\n"
 "X-Translation-Project: translatewiki.net at https://translatewiki.net\n"
 "X-Language-Code: zh-hant\n"
 "X-Message-Group: #out-mwlibrl\n"
@@ -88,7 +89,7 @@ msgstr "跳過文章！"
 msgid ""
 "Please note:  This is only a preview intended to give an idea how the book "
 "is typeset."
-msgstr ""
+msgstr "請注意： 這是只是為了讓這本書被排版如何知道的預覽。"
 
 #: mwlib/rl/pdfmessages.py:45
 msgid ""
@@ -116,6 +117,8 @@ msgid ""
 "including the copyright status, the copyright owner, and the license "
 "conditions."
 msgstr ""
+"以下各節列出所有文章和在這本書中使用的圖像的源。這些來源提供更詳細的發牌的信"
+"息，包括版權狀態、 版權的所有者和許可證的條件。"
 
 #: mwlib/rl/pdfmessages.py:53
 msgid ""
@@ -123,6 +126,8 @@ msgid ""
 "information including the copyright status, the copyright owner, and the "
 "license conditions."
 msgstr ""
+"列出的每個項目的來源提供更詳細的發牌的信息，包括版權狀態、 版權的所有者和許可"
+"證的條件。"
 
 #: mwlib/rl/pdfmessages.py:55
 msgid ""
@@ -130,6 +135,8 @@ msgid ""
 "information including the copyright status, the copyright owner, and the "
 "license conditions."
 msgstr ""
+"列出的每個圖像的來源提供更詳細的發牌的信息，包括版權狀態、 版權的所有者和許可"
+"證的條件。"
 
 #: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:479
 #: mwlib/rl/rlwriter.py:669
@@ -200,3 +207,5 @@ msgid ""
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
 "software (b) problematic Mediawiki markup (c) table is too wide"
 msgstr ""
+"<strong>警告：文章無法被處理—— 輸出為純文本。 </strong><br/>可能的原因：(a) "
+"pdf生成軟件存在問題(b) Mediawiki的標記存在問題(c) 表格過寬"
