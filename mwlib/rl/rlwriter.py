@@ -1373,8 +1373,8 @@ class RlWriter(object):
         return 0
 
     def set_svg_default_size(self, img_node):
-        image_info = self.imgDB.imageinfo.get(img_node.full_target)
-        if image_info.get('url').endswith('.svg'):
+        image_info = self.imgDB.imageinfo.get(img_node.full_target, {})
+        if image_info.get('url', '').endswith('.svg'):
             w = image_info.get('width')
             h = image_info.get('height')
             if w and h and img_node.width == None and img_node.height == None and img_node.isInline():
