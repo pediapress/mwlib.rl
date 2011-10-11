@@ -1,5 +1,5 @@
-# Translation of Mwlib.rl to Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
-# Expored from translatewiki.net
+# Translation of Mwlib.rl to Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
+# Exported from translatewiki.net
 #
 # Author: BraneJ
 # Author: Charmed94
@@ -8,18 +8,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-24 12:47+0000\n"
-"PO-Revision-Date: 2011-01-24 12:47:14+0000\n"
-"Language-Team: Serbian Cyrillic ekavian <http://translatewiki.net/wiki/"
+"POT-Creation-Date: 2011-09-26 14:13+0000\n"
+"PO-Revision-Date: 2011-09-26 14:13:00+0000\n"
+"Language-Team: Serbian (Cyrillic script) <https://translatewiki.net/wiki/"
 "Portal:sr-ec>\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: \n"
-"X-Generator: MediaWiki 1.18alpha (r80810); Translate extension (2010-09-17)\n"
-"X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
+"X-Generator: MediaWiki 1.19alpha (r98114); Translate extension (2011-09-22)\n"
+"X-Translation-Project: translatewiki.net at https://translatewiki.net\n"
 "X-Language-Code: sr-ec\n"
 "X-Message-Group: #out-mwlibrl\n"
-"X-POT-Import-Date: 2011-01-10 18:24:06+0000\n"
+"X-POT-Import-Date: 2011-01-25 12:42:37+0000\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: mwlib/rl/pdfmessages.py:11
@@ -38,7 +38,7 @@ msgstr "Лиценца:"
 msgid "Contributors:"
 msgstr "Сарадници:"
 
-#: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:512
+#: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:525
 msgid "Article Licenses"
 msgstr "Лиценце чланка"
 
@@ -62,7 +62,7 @@ msgstr "Направљено:"
 msgid "Contents"
 msgstr "Садржај"
 
-#: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:423
+#: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:430
 msgid "Articles"
 msgstr "Чланци"
 
@@ -104,8 +104,8 @@ msgstr ""
 "изгледа. Само неколико првих чланака, као и страница пописа књиге су "
 "приказани. Сви чланци биће укључени у штампаном издању књиге."
 
-#: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:471
-#: mwlib/rl/rlwriter.py:788
+#: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:478
+#: mwlib/rl/rlwriter.py:797
 msgid "References"
 msgstr "Референце"
 
@@ -144,13 +144,13 @@ msgstr ""
 "Ти извори пружају детаљније податке о лиценцирању, укључујући и статус "
 "ауторског права, носиоца права и услове лиценцирања."
 
-#: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:472
-#: mwlib/rl/rlwriter.py:661
+#: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:479
+#: mwlib/rl/rlwriter.py:669
 msgid "Article Sources and Contributors"
 msgstr "Извори и доприносиоци чланака"
 
-#: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:475
-#: mwlib/rl/rlwriter.py:680
+#: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:482
+#: mwlib/rl/rlwriter.py:688
 msgid "Image Sources, Licenses and Contributors"
 msgstr "Извори, лиценце и доприносиоци слика"
 
@@ -158,7 +158,7 @@ msgstr "Извори, лиценце и доприносиоци слика"
 msgid "Image"
 msgstr "Слика"
 
-#: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:653
+#: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:661
 msgid "anonymous edits"
 msgstr "анонимне измене"
 
@@ -178,12 +178,12 @@ msgstr ""
 "PDF је направљен уз помоћ mwlib-а, алата отвореног кôда. Погледајте http://"
 "code.pediapress.com за више информација."
 
-#: mwlib/rl/rlwriter.py:303
+#: mwlib/rl/rlwriter.py:312
 #, python-format
 msgid "mwlib.ext version: %(version)s"
 msgstr "mwlib.ext издање: %(version)s"
 
-#: mwlib/rl/rlwriter.py:309
+#: mwlib/rl/rlwriter.py:318
 #, python-format
 msgid ""
 "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
@@ -192,23 +192,23 @@ msgstr ""
 "mwlib издање: %(mwlibversion)s, mwlib.rl издање: %(mwlibrlversion)s, %"
 "(mwlibextversion)s"
 
-#: mwlib/rl/rlwriter.py:668 mwlib/rl/rlwriter.py:693
+#: mwlib/rl/rlwriter.py:676 mwlib/rl/rlwriter.py:701
 msgid "Source"
 msgstr "Извор"
 
-#: mwlib/rl/rlwriter.py:670 mwlib/rl/rlwriter.py:696
+#: mwlib/rl/rlwriter.py:678 mwlib/rl/rlwriter.py:704
 msgid "Contributors"
 msgstr "Доприносиоци"
 
-#: mwlib/rl/rlwriter.py:686
+#: mwlib/rl/rlwriter.py:694
 msgid "unknown"
 msgstr "непознато"
 
-#: mwlib/rl/rlwriter.py:688
+#: mwlib/rl/rlwriter.py:696
 msgid "License"
 msgstr "Лиценца"
 
-#: mwlib/rl/rlwriter.py:779
+#: mwlib/rl/rlwriter.py:788
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "

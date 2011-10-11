@@ -1,27 +1,28 @@
 # Translation of Mwlib.rl to Bavarian (Boarisch)
-# Expored from translatewiki.net
+# Exported from translatewiki.net
 #
 # Author: Man77
+# Author: Mucalexx
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-24 12:47+0000\n"
-"PO-Revision-Date: 2011-01-24 12:47:11+0000\n"
-"Language-Team: Bavarian <http://translatewiki.net/wiki/Portal:bar>\n"
+"POT-Creation-Date: 2011-09-26 14:13+0000\n"
+"PO-Revision-Date: 2011-09-26 14:12:56+0000\n"
+"Language-Team: Bavarian <https://translatewiki.net/wiki/Portal:bar>\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: \n"
-"X-Generator: MediaWiki 1.18alpha (r80810); Translate extension (2010-09-17)\n"
-"X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
+"X-Generator: MediaWiki 1.19alpha (r98114); Translate extension (2011-09-22)\n"
+"X-Translation-Project: translatewiki.net at https://translatewiki.net\n"
 "X-Language-Code: bar\n"
 "X-Message-Group: #out-mwlibrl\n"
-"X-POT-Import-Date: 2011-01-10 18:24:06+0000\n"
+"X-POT-Import-Date: 2011-01-25 12:42:37+0000\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: mwlib/rl/pdfmessages.py:11
 msgid "Index"
-msgstr ""
+msgstr "Index"
 
 #: mwlib/rl/pdfmessages.py:13
 msgid "Source:"
@@ -32,18 +33,16 @@ msgid "License:"
 msgstr "Lizenz:"
 
 #: mwlib/rl/pdfmessages.py:17
-#, fuzzy
 msgid "Contributors:"
-msgstr "Inhåitsvazeichnis"
+msgstr "Beorweiter"
 
-#: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:512
-#, fuzzy
+#: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:525
 msgid "Article Licenses"
-msgstr "Lizenz:"
+msgstr "Artikélizenzen"
 
 #: mwlib/rl/pdfmessages.py:21
 msgid "Title"
-msgstr ""
+msgstr "Titel"
 
 #: mwlib/rl/pdfmessages.py:23
 msgid "Subtitle:"
@@ -51,47 +50,47 @@ msgstr "Untatitl:"
 
 #: mwlib/rl/pdfmessages.py:25
 msgid "Editor:"
-msgstr ""
+msgstr "Editor:"
 
 #: mwlib/rl/pdfmessages.py:27
 msgid "Created on:"
-msgstr ""
+msgstr "Erstöd am:"
 
 #: mwlib/rl/pdfmessages.py:29 mwlib/rl/toc.py:46
 msgid "Contents"
 msgstr "Inhåit"
 
-#: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:423
-#, fuzzy
+#: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:430
 msgid "Articles"
-msgstr "Lizenz:"
+msgstr "Artiké"
 
 #: mwlib/rl/pdfmessages.py:33
 msgid "Produced by:"
-msgstr ""
+msgstr "Produzierd voh:"
 
 #: mwlib/rl/pdfmessages.py:35
 msgid "pdf writer version:"
-msgstr ""
+msgstr "PDF-Schreib-Versión:"
 
 #: mwlib/rl/pdfmessages.py:37
 msgid "mwlib version:"
-msgstr ""
+msgstr "mwlib-Versión:"
 
 #: mwlib/rl/pdfmessages.py:39
 msgid "Table of Contents"
 msgstr "Inhåitsvazeichnis"
 
 #: mwlib/rl/pdfmessages.py:41
-#, fuzzy
 msgid "Skipping Articles!"
-msgstr "Lizenz:"
+msgstr "Ywerspring Artiké!"
 
 #: mwlib/rl/pdfmessages.py:43
 msgid ""
 "Please note:  This is only a preview intended to give an idea how the book "
 "is typeset."
 msgstr ""
+"Bittscheh beochten: Dés do is netter a Vurschau, dé an Eihblick ywers "
+"Ausschaung vom Buach geem sói."
 
 #: mwlib/rl/pdfmessages.py:45
 msgid ""
@@ -101,8 +100,8 @@ msgid ""
 "those left out of the preview, will be included in the final printed book."
 msgstr ""
 
-#: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:471
-#: mwlib/rl/rlwriter.py:788
+#: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:478
+#: mwlib/rl/rlwriter.py:797
 msgid "References"
 msgstr ""
 
@@ -132,13 +131,13 @@ msgid ""
 "license conditions."
 msgstr ""
 
-#: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:472
-#: mwlib/rl/rlwriter.py:661
+#: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:479
+#: mwlib/rl/rlwriter.py:669
 msgid "Article Sources and Contributors"
 msgstr ""
 
-#: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:475
-#: mwlib/rl/rlwriter.py:680
+#: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:482
+#: mwlib/rl/rlwriter.py:688
 msgid "Image Sources, Licenses and Contributors"
 msgstr ""
 
@@ -146,7 +145,7 @@ msgstr ""
 msgid "Image"
 msgstr "Büidl"
 
-#: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:653
+#: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:661
 msgid "anonymous edits"
 msgstr ""
 
@@ -164,38 +163,35 @@ msgid ""
 "pediapress.com/ for more information."
 msgstr ""
 
-#: mwlib/rl/rlwriter.py:303
+#: mwlib/rl/rlwriter.py:312
 #, python-format
 msgid "mwlib.ext version: %(version)s"
 msgstr ""
 
-#: mwlib/rl/rlwriter.py:309
+#: mwlib/rl/rlwriter.py:318
 #, python-format
 msgid ""
 "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
 "(mwlibextversion)s"
 msgstr ""
 
-#: mwlib/rl/rlwriter.py:668 mwlib/rl/rlwriter.py:693
-#, fuzzy
+#: mwlib/rl/rlwriter.py:676 mwlib/rl/rlwriter.py:701
 msgid "Source"
 msgstr "Quön:"
 
-#: mwlib/rl/rlwriter.py:670 mwlib/rl/rlwriter.py:696
-#, fuzzy
+#: mwlib/rl/rlwriter.py:678 mwlib/rl/rlwriter.py:704
 msgid "Contributors"
-msgstr "Inhåitsvazeichnis"
+msgstr "Beorweiter:"
 
-#: mwlib/rl/rlwriter.py:686
+#: mwlib/rl/rlwriter.py:694
 msgid "unknown"
-msgstr ""
+msgstr "néd bekånnt"
 
-#: mwlib/rl/rlwriter.py:688
-#, fuzzy
+#: mwlib/rl/rlwriter.py:696
 msgid "License"
-msgstr "Lizenz:"
+msgstr "Lizenz"
 
-#: mwlib/rl/rlwriter.py:779
+#: mwlib/rl/rlwriter.py:788
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
