@@ -157,6 +157,10 @@ class RlWriter(object):
             except IOError, exc:
                 log.warn(str(exc))
         translation.install(unicode=True)
+
+
+        self.font_switcher = fontconfig.RLFontSwitcher()
+
         self.rtl = False
         pdfstyles.default_latin_font = pdfstyles.default_font
         if lang in ['ja', 'ch', 'ko', 'zh']:
@@ -164,10 +168,12 @@ class RlWriter(object):
         if lang in ['am', 'ar', 'arc', 'arz', 'bcc', 'bqi', 'ckb', 'dv', 'dz', 'fa', 'glk', 'ha', 'he', 'ks', 'ku', 'mzn', 'pnb', 'ps', 'sd', 'ug', 'ur', 'yi']:
             self.set_rtl(True)
             # setting Nazli as default shifts the text a little to the top
-            pdfstyles.default_font = 'Nazli'
-            pdfstyles.serif_font = 'Nazli'
+            arabic_font = self.font_switcher.getfont_for_script('arabic')
+            if arabic_font:
+                pdfstyles.default_font = arabic_font
+                pdfstyles.serif_font = arabic_font
             rl_config.rtl = True
-            
+
         self.env = env
         if self.env is not None:
             self.book = self.env.metabook
@@ -192,7 +198,6 @@ class RlWriter(object):
         self.img_meta_info = {}
         self.img_count = 0
 
-        self.font_switcher = fontconfig.RLFontSwitcher()
         self.font_switcher.font_paths = fontconfig.font_paths
         self.font_switcher.registerDefaultFont(pdfstyles.default_font)
         self.font_switcher.registerFontDefinitionList(fontconfig.fonts)

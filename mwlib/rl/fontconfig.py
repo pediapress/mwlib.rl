@@ -36,7 +36,7 @@ fonts = [
      'code_points': ['Box Drawing'] , # also used for code/source/etc.
      'xl_scripts': [],
      'file_names': ['freefont/FreeMono.ttf', 'freefont/FreeMonoBold.ttf', 'freefont/FreeMonoOblique.ttf', 'freefont/FreeMonoBoldOblique.ttf'],
-     },    
+     },
     {'name': 'STSong-Light', # built in Adobe font - only used if AR PL UMing HK is not found
      'code_points': ['Bopomofo', 'CJK Radicals Supplement', 'Bopomofo Extended', 'CJK Unified Ideographs Extension A', 'CJK Unified Ideographs', 'Small Form Variants'],
      'type': 'cid',
@@ -48,7 +48,7 @@ fonts = [
     {'name': 'AR PL UMing HK',
      'code_points': ['CJK Unified Ideographs', 'CJK Strokes', 'CJK Unified Ideographs Extension A', 'Halfwidth and Fullwidth Forms', 'CJK Compatibility Ideographs', 'Small Form Variants', 'Low Surrogates', 'CJK Radicals Supplement', 'Hiragana', 'Katakana', 'Bopomofo', 'Bopomofo Extended', 'CJK Symbols and Punctuation'] ,
      'file_names': ['arphic/uming.ttc'],
-     },   
+     },
     {'name': 'Nazli',
      'code_points': ['Arabic Presentation Forms-A', 'Arabic', 'Arabic Presentation Forms-B', 'Arabic Supplement'] ,
      'file_names': ['customnazli/nazli.ttf', 'customnazli/nazlib.ttf', 'customnazli/nazli-italic.ttf', 'customnazli/nazlib-italic.ttf'],
@@ -57,7 +57,7 @@ fonts = [
      'code_points': ['Hangul Syllables', 'Hangul Jamo', 'Hangul Compatibility Jamo'] ,
      'file_names': ['unfonts/UnBatang.ttf'],
      },
-    {'name': 'Arundina Serif', 
+    {'name': 'Arundina Serif',
     'code_points': ['Thai'] ,
      'file_names': ['ttf-thai-arundina/ArundinaSans.ttf', 'ttf-thai-arundina/ArundinaSans-Bold.ttf', 'ttf-thai-arundina/ArundinaSans-Oblique.ttf', 'ttf-thai-arundina/ArundinaSans-BoldOblique.ttf' ],
     },
@@ -105,10 +105,10 @@ class RLFontSwitcher(FontSwitcher):
 
     def __init__(self):
         FontSwitcher.__init__(self)
-        self.font_paths = []
+        self.font_paths = font_paths
         self.force_font = None
         self.hypenation_pattern = re.compile('(/|\.|\+|-|_|\?)(\S)')
-        
+
     def registerFontDefinitionList(self, font_list):
         missing_fonts = []
         for font in font_list:
@@ -123,13 +123,13 @@ class RLFontSwitcher(FontSwitcher):
             RLFontSwitcher.warn_on_missing_fonts = False
 
     def fakeHyphenate(self, font_list):
-        zws = '<font fontSize="1"> </font>'        
+        zws = '<font fontSize="1"> </font>'
         res = []
         for txt, font in font_list:
             txt = re.sub(self.hypenation_pattern, '\g<1>%s\g<2>' %  zws, txt)
             res.append((txt, font))
         return res
-    
+
     def fontifyText(self, txt, break_long=False):
         if self.force_font:
             return '<font name="%s">%s</font>' % (self.force_font, txt)
@@ -145,7 +145,13 @@ class RLFontSwitcher(FontSwitcher):
                 res.append(txt)
 
         return ''.join(res)
-        
+
+    def getfont_for_script(self, script):
+        for font_def in fonts:
+            if script in (s.lower() for s in font_def['code_points'] if isinstance(s, basestring)):
+                if self.fontInstalled(font_def):
+                    return font_def['name']
+        return None
 
     def fontInstalled(self, font_def):
         if font_def.get('type') == 'cid':
@@ -154,7 +160,7 @@ class RLFontSwitcher(FontSwitcher):
             if not self.getAbsFontPath(file_name):
                 return False
         return True
-        
+
 
     def getAbsFontPath(self, file_name):
         for base_dir in self.font_paths:
