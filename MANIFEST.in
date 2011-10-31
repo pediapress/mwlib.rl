@@ -199,6 +199,8 @@ include mwlib/rl/locale/th/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/th/LC_MESSAGES/mwlib.rl.po
 include mwlib/rl/locale/tl/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/tl/LC_MESSAGES/mwlib.rl.po
+include mwlib/rl/locale/tly/LC_MESSAGES/mwlib.rl.mo
+include mwlib/rl/locale/tly/LC_MESSAGES/mwlib.rl.po
 include mwlib/rl/locale/tr/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/tr/LC_MESSAGES/mwlib.rl.po
 include mwlib/rl/locale/tt-cyrl/LC_MESSAGES/mwlib.rl.mo
