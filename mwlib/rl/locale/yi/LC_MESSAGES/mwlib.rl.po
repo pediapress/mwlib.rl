@@ -6,17 +6,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-26 15:33+0000\n"
-"PO-Revision-Date: 2011-10-26 15:33:29+0000\n"
+"POT-Creation-Date: 2011-11-08 13:26+0000\n"
+"PO-Revision-Date: 2011-11-08 13:26:27+0000\n"
 "Language-Team: Yiddish <https://translatewiki.net/wiki/Portal:yi>\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.19alpha (r100796); Translate extension (2011-10-"
-"07)\n"
+"X-Generator: MediaWiki 1.19alpha (r102381); Translate extension (2011-10-"
+"30)\n"
 "X-Translation-Project: translatewiki.net at https://translatewiki.net\n"
 "X-Language-Code: yi\n"
 "X-Message-Group: #out-mwlibrl\n"
-"X-POT-Import-Date: 2011-10-13 08:56:54+0000\n"
+"X-POT-Import-Date: 2011-10-27 12:00:42+0000\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: mwlib/rl/pdfmessages.py:11
@@ -35,7 +35,7 @@ msgstr "ליצענץ:"
 msgid "Contributors:"
 msgstr "בײַשטײַערער:"
 
-#: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:552
+#: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:557
 msgid "Article Licenses"
 msgstr "אַרטיקל ליצענצן"
 
@@ -59,7 +59,7 @@ msgstr "געשאַפֿן אום:"
 msgid "Contents"
 msgstr "אינהאַלט"
 
-#: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:457
+#: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:462
 msgid "Articles"
 msgstr "אַרטיקלען"
 
@@ -97,8 +97,8 @@ msgid ""
 "those left out of the preview, will be included in the final printed book."
 msgstr ""
 
-#: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:505
-#: mwlib/rl/rlwriter.py:821
+#: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:510
+#: mwlib/rl/rlwriter.py:826
 msgid "References"
 msgstr "רעפֿערענצן"
 
@@ -128,13 +128,13 @@ msgid ""
 "license conditions."
 msgstr ""
 
-#: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:506
-#: mwlib/rl/rlwriter.py:696
+#: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:511
+#: mwlib/rl/rlwriter.py:701
 msgid "Article Sources and Contributors"
 msgstr ""
 
-#: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:509
-#: mwlib/rl/rlwriter.py:715
+#: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:514
+#: mwlib/rl/rlwriter.py:720
 msgid "Image Sources, Licenses and Contributors"
 msgstr ""
 
@@ -142,7 +142,7 @@ msgstr ""
 msgid "Image"
 msgstr "בילד"
 
-#: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:688
+#: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:693
 msgid "anonymous edits"
 msgstr ""
 
@@ -160,35 +160,35 @@ msgid ""
 "pediapress.com/ for more information."
 msgstr ""
 
-#: mwlib/rl/rlwriter.py:336
+#: mwlib/rl/rlwriter.py:341
 #, python-format
 msgid "mwlib.ext version: %(version)s"
 msgstr ""
 
-#: mwlib/rl/rlwriter.py:342
+#: mwlib/rl/rlwriter.py:347
 #, python-format
 msgid ""
 "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
 "(mwlibextversion)s"
 msgstr ""
 
-#: mwlib/rl/rlwriter.py:703 mwlib/rl/rlwriter.py:728
+#: mwlib/rl/rlwriter.py:708 mwlib/rl/rlwriter.py:733
 msgid "Source"
 msgstr "מקור"
 
-#: mwlib/rl/rlwriter.py:705 mwlib/rl/rlwriter.py:731
+#: mwlib/rl/rlwriter.py:710 mwlib/rl/rlwriter.py:736
 msgid "Contributors"
 msgstr ""
 
-#: mwlib/rl/rlwriter.py:721
+#: mwlib/rl/rlwriter.py:726
 msgid "unknown"
 msgstr "אומבאַוואוסט"
 
-#: mwlib/rl/rlwriter.py:723
+#: mwlib/rl/rlwriter.py:728
 msgid "License"
 msgstr "ליצענץ"
 
-#: mwlib/rl/rlwriter.py:812
+#: mwlib/rl/rlwriter.py:817
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
