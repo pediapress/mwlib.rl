@@ -172,6 +172,7 @@ class RlWriter(object):
             if arabic_font:
                 pdfstyles.default_font = arabic_font
                 pdfstyles.serif_font = arabic_font
+                pdfstyles.sans_font = arabic_font
             rl_config.rtl = True
 
         self.env = env
