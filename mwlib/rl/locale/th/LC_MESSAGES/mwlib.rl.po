@@ -6,14 +6,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-26 15:33+0000\n"
-"PO-Revision-Date: 2011-10-26 15:33:28+0000\n"
+"POT-Creation-Date: 2011-11-08 13:26+0000\n"
+"PO-Revision-Date: 2011-11-08 13:26:26+0000\n"
 "Language-Team: Thai <https://translatewiki.net/wiki/Portal:th>\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-POT-Import-Date: 2011-10-13 08:56:54+0000\n"
-"X-Generator: MediaWiki 1.19alpha (r100796); Translate extension (2011-10-"
-"07)\n"
+"X-POT-Import-Date: 2011-10-27 12:00:42+0000\n"
+"X-Generator: MediaWiki 1.19alpha (r102381); Translate extension (2011-10-"
+"30)\n"
 "X-Translation-Project: translatewiki.net at https://translatewiki.net\n"
 "X-Language-Code: th\n"
 "X-Message-Group: #out-mwlibrl\n"
@@ -35,7 +35,7 @@ msgstr "สัญญาอนุญาต:"
 msgid "Contributors:"
 msgstr "ผู้ร่วมเขียน:"
 
-#: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:552
+#: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:557
 msgid "Article Licenses"
 msgstr "สัญญาอนุญาตของบทความ"
 
@@ -59,7 +59,7 @@ msgstr "สร้างเมื่อ:"
 msgid "Contents"
 msgstr "เนื้อหา"
 
-#: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:457
+#: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:462
 msgid "Articles"
 msgstr "บทความ"
 
@@ -97,8 +97,8 @@ msgid ""
 "those left out of the preview, will be included in the final printed book."
 msgstr ""
 
-#: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:505
-#: mwlib/rl/rlwriter.py:821
+#: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:510
+#: mwlib/rl/rlwriter.py:826
 msgid "References"
 msgstr "เอกสารอ้างอิง"
 
@@ -128,13 +128,13 @@ msgid ""
 "license conditions."
 msgstr ""
 
-#: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:506
-#: mwlib/rl/rlwriter.py:696
+#: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:511
+#: mwlib/rl/rlwriter.py:701
 msgid "Article Sources and Contributors"
 msgstr "แหล่งที่มาและผู้ร่วมเขียนบทความ"
 
-#: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:509
-#: mwlib/rl/rlwriter.py:715
+#: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:514
+#: mwlib/rl/rlwriter.py:720
 msgid "Image Sources, Licenses and Contributors"
 msgstr "แหล่งที่มา สัญญาอนุญาต และผู้ร่วมเขียนรูปภาพ"
 
@@ -142,7 +142,7 @@ msgstr "แหล่งที่มา สัญญาอนุญาต แล�
 msgid "Image"
 msgstr "รูปภาพ"
 
-#: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:688
+#: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:693
 msgid "anonymous edits"
 msgstr "การแก้ไขนิรนาม"
 
@@ -162,12 +162,12 @@ msgstr ""
 "PDF สร้างโดยใช้ชุดเครื่องมือโอเพนซอร์ซ mwlib สำหรับข้อมูลเพิ่มเติมดูที่ http://code."
 "pediapress.com/"
 
-#: mwlib/rl/rlwriter.py:336
+#: mwlib/rl/rlwriter.py:341
 #, python-format
 msgid "mwlib.ext version: %(version)s"
 msgstr "รุ่น mwlib.ext: %(version)s"
 
-#: mwlib/rl/rlwriter.py:342
+#: mwlib/rl/rlwriter.py:347
 #, python-format
 msgid ""
 "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
@@ -176,23 +176,23 @@ msgstr ""
 "รุ่น mwlib: %(mwlibversion)s, รุ่น mwlib.rl: %(mwlibrlversion)s, %"
 "(mwlibextversion)s"
 
-#: mwlib/rl/rlwriter.py:703 mwlib/rl/rlwriter.py:728
+#: mwlib/rl/rlwriter.py:708 mwlib/rl/rlwriter.py:733
 msgid "Source"
 msgstr "แหล่งที่มา"
 
-#: mwlib/rl/rlwriter.py:705 mwlib/rl/rlwriter.py:731
+#: mwlib/rl/rlwriter.py:710 mwlib/rl/rlwriter.py:736
 msgid "Contributors"
 msgstr "ผู้ร่วมเขียน"
 
-#: mwlib/rl/rlwriter.py:721
+#: mwlib/rl/rlwriter.py:726
 msgid "unknown"
 msgstr "ไม่ทราบ"
 
-#: mwlib/rl/rlwriter.py:723
+#: mwlib/rl/rlwriter.py:728
 msgid "License"
 msgstr "สัญญาอนุญาต"
 
-#: mwlib/rl/rlwriter.py:812
+#: mwlib/rl/rlwriter.py:817
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
