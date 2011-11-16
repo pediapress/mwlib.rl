@@ -4,7 +4,7 @@ RST2HTML ?= rst2html.py
 all:: messages README.html MANIFEST.in
 
 messages::
-	./compile_messages.py
+	./compile_messages.py all
 
 MANIFEST.in::
 	./make_manifest.py
