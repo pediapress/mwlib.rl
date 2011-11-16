@@ -6,14 +6,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-08 13:26+0000\n"
+"POT-Creation-Date: 2011-11-16 11:47+0100\n"
 "PO-Revision-Date: 2011-11-08 13:26:24+0000\n"
 "Language-Team: Luxembourgish <https://translatewiki.net/wiki/Portal:lb>\n"
+"Language: \n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
-"X-Generator: MediaWiki 1.19alpha (r102381); Translate extension (2011-10-"
-"30)\n"
+"X-Generator: MediaWiki 1.19alpha (r102381); Translate extension "
+"(2011-10-30)\n"
 "X-Translation-Project: translatewiki.net at https://translatewiki.net\n"
 "X-Language-Code: lb\n"
 "X-Message-Group: #out-mwlibrl\n"
@@ -36,7 +36,7 @@ msgstr "Lizenz:"
 msgid "Contributors:"
 msgstr "Auteuren:"
 
-#: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:557
+#: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:556
 msgid "Article Licenses"
 msgstr "Artikel-Lizenzen"
 
@@ -60,7 +60,7 @@ msgstr "Ugeluecht den:"
 msgid "Contents"
 msgstr "Inhalter"
 
-#: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:462
+#: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:461
 msgid "Articles"
 msgstr "Artikelen"
 
@@ -104,8 +104,8 @@ msgstr ""
 "Index vun Ärem Buch sinn an dëser Vue dran. Alle Artikelen, och déi déi an "
 "dëser Vue feelen, wäerte an Ärem Buch selbstverständlech ganz dra sinn."
 
-#: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:510
-#: mwlib/rl/rlwriter.py:826
+#: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:509
+#: mwlib/rl/rlwriter.py:825
 msgid "References"
 msgstr "Referenzen"
 
@@ -145,13 +145,13 @@ msgstr ""
 "ënner anerem dem Copyright-Statut, dem Besëtzer vun de Copyright-Rechter an "
 "de Bedingunge vun der Lizenz."
 
-#: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:511
-#: mwlib/rl/rlwriter.py:701
+#: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:510
+#: mwlib/rl/rlwriter.py:700
 msgid "Article Sources and Contributors"
 msgstr "Quellen a Mataarbechter vum Artikel"
 
-#: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:514
-#: mwlib/rl/rlwriter.py:720
+#: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:513
+#: mwlib/rl/rlwriter.py:719
 msgid "Image Sources, Licenses and Contributors"
 msgstr "Quelle vun de Biller, Lizenzen a Leit déi matgeschafft hun"
 
@@ -159,7 +159,7 @@ msgstr "Quelle vun de Biller, Lizenzen a Leit déi matgeschafft hun"
 msgid "Image"
 msgstr "Bild"
 
-#: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:693
+#: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:692
 msgid "anonymous edits"
 msgstr "anonym Ännerungen"
 
@@ -179,37 +179,37 @@ msgstr ""
 "PDF dee mam OpenSource-Tool \"mwlib\" gemaach gouf. Kuckt http://code."
 "pediapress.com/ fir méi Informatiounen."
 
-#: mwlib/rl/rlwriter.py:341
+#: mwlib/rl/rlwriter.py:340
 #, python-format
 msgid "mwlib.ext version: %(version)s"
 msgstr "mwlib.ext-Versioun:  %(version)s"
 
-#: mwlib/rl/rlwriter.py:347
+#: mwlib/rl/rlwriter.py:346
 #, python-format
 msgid ""
-"mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
-"(mwlibextversion)s"
+"mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, "
+"%(mwlibextversion)s"
 msgstr ""
-"mwlib Versioun: %(mwlibversion)s, mwlib.rl Versioun: %(mwlibrlversion)s, %"
-"(mwlibextversion)s"
+"mwlib Versioun: %(mwlibversion)s, mwlib.rl Versioun: %(mwlibrlversion)s, "
+"%(mwlibextversion)s"
 
-#: mwlib/rl/rlwriter.py:708 mwlib/rl/rlwriter.py:733
+#: mwlib/rl/rlwriter.py:707 mwlib/rl/rlwriter.py:732
 msgid "Source"
 msgstr "Quell"
 
-#: mwlib/rl/rlwriter.py:710 mwlib/rl/rlwriter.py:736
+#: mwlib/rl/rlwriter.py:709 mwlib/rl/rlwriter.py:735
 msgid "Contributors"
 msgstr "Auteuren"
 
-#: mwlib/rl/rlwriter.py:726
+#: mwlib/rl/rlwriter.py:725
 msgid "unknown"
 msgstr "onbekannt"
 
-#: mwlib/rl/rlwriter.py:728
+#: mwlib/rl/rlwriter.py:727
 msgid "License"
 msgstr "Lizenz"
 
-#: mwlib/rl/rlwriter.py:817
+#: mwlib/rl/rlwriter.py:816
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
