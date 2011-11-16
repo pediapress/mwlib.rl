@@ -14,6 +14,7 @@ def main():
     remove("make_manifest.py")
     remove(".gitignore")
     remove("Makefile")
+    remove("make-release")
 
     files += [x[:-3]+".mo" for x in files if x.endswith(".po")]
     
