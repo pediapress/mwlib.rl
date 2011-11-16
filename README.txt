@@ -98,6 +98,27 @@ The current development version can also be found there.
 
 ChangeLog
 ======================================================================
+2011-11-16 release 0.12.9
+----------------------------
+- add rtl support
+- fix for https://bugzilla.wikimedia.org/show_bug.cgi?id=30548
+- fix for https://bugzilla.wikimedia.org/show_bug.cgi?id=30515
+- fix fail_safe_rendering for complex article titles (https://bugzilla.wikimedia.org/show_bug.cgi?id=30515)
+
+2011-03-16 release 0.12.8
+---------------------------
+- fix for multiple table captions
+- use lvl 1 headings in PDF bookmarks
+- fix: use correct pagesize for TOC
+- make chapter rule color configurable
+- fix: use correct page template
+- fix page header (#704)
+- scale oversized math formulas
+- fix translations
+- add config option to suppress URL->reference section in tables
+- handle Abbreviation node
+- make math formula size limits configurable
+
 2010-10-29 release 0.12.7
 -------------------------
 - setup.py: require mwlib 0.12.14.
