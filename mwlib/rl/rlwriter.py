@@ -544,7 +544,7 @@ class RlWriter(object):
             raise
 
         license_stats_dir = os.environ.get('MWLIBLICENSESTATS')
-        if license_stats_dir:
+        if license_stats_dir and os.path.exists(license_stats_dir):
             self.license_checker.dumpUnknownLicenses(license_stats_dir)
             if self.debug:
                 print self.license_checker.dumpStats()
