@@ -9,7 +9,6 @@ from __future__ import division
 import re
 import math
 
-from mwlib.utils import all
 from mwlib import log
 from mwlib.advtree import Text, ItemList, Table, Row, Cell
 from mwlib.writer import styleutils

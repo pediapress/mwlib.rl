@@ -30,8 +30,6 @@ from pygments import highlight
 from pygments  import lexers
 from rlsourceformatter import ReportlabFormatter
 
-from mwlib.utils import all
-
 try:
     from mwlib import linuxmem
 except ImportError:
