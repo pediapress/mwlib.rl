@@ -233,6 +233,7 @@ include mwlib/rl/rltables.py
 include mwlib/rl/rlwriter.py
 include mwlib/rl/toc.py
 include mwlib/rl/wikipedia_logo.png
+include setup.cfg
 include setup.py
 include tests/renderhelper.py
 include tests/test_advanced.py
