@@ -191,7 +191,7 @@ class RlWriter(object):
         if strict_server:
             self.license_checker = LicenseChecker(image_db=self.imgDB, filter_type='whitelist')
         else:
-            self.license_checker = LicenseChecker(image_db=self.imgDB, filter_type='nofilter')
+            self.license_checker = LicenseChecker(image_db=self.imgDB, filter_type='blacklist')
         self.license_checker.readLicensesCSV()
 
         self.img_meta_info = {}
