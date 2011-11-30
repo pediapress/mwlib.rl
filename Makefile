@@ -24,12 +24,9 @@ sdist:: all
 clean::
 	git clean -xfd
 
-easy-install:: clean sdist
-	easy_install dist/*
-
 pip-install:: clean sdist
 	pip install dist/*
 
 update::
 	git pull
-	make easy-install
+	make pip-install
