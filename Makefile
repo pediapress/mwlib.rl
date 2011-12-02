@@ -25,6 +25,7 @@ clean::
 	git clean -xfd
 
 pip-install:: clean sdist
+	pip uninstall -y mwlib.rl || true
 	pip install dist/*
 
 update::
