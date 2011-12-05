@@ -361,14 +361,9 @@ class RlWriter(object):
         except AttributeError:
             ns = 0
         art.ns = ns
-        art.url = mywiki.getURL(item.title, item.revision)
+        art.url = mywiki.getURL(item.title, item.revision) or None
         if item.displaytitle is not None:
             art.caption = item.displaytitle
-        url = mywiki.getURL(item.title, item.revision)
-        if url:
-            art.url = url
-        else:
-            art.url = None
         source = mywiki.getSource(item.title, item.revision)
         if source:
             art.wikiurl = source.url or ""
