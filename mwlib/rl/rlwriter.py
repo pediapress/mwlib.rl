@@ -565,7 +565,7 @@ class RlWriter(object):
         for item in self.env.metabook.walk():
             if item.type != 'article':
                 continue
-            title = item.title
+            title = item.displaytitle or item.title
 
             source = item.wiki.getSource(item.title, item.revision)
             if source:
