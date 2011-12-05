@@ -28,11 +28,11 @@ from mwlib.rl import fontconfig
 from mwlib.rl.formatter import RLFormatter
 font_switcher = fontconfig.RLFontSwitcher()
 font_switcher.font_paths = fontconfig.font_paths
-font_switcher.registerDefaultFont(pdfstyles.default_font)        
+font_switcher.registerDefaultFont(pdfstyles.default_font)
 font_switcher.registerFontDefinitionList(fontconfig.fonts)
 
 formatter = RLFormatter(font_switcher=font_switcher)
-        
+
 def _doNothing(canvas, doc):
     "Dummy callback for onPage"
     pass
@@ -46,7 +46,7 @@ class SimplePage(PageTemplate):
         frames = Frame(page_margin_left, page_margin_bottom, pw-page_margin_left-page_margin_right, ph-page_margin_top-page_margin_bottom)
 
         PageTemplate.__init__(self, id=id, frames=frames, pagesize=pageSize)
-        
+
 class WikiPage(PageTemplate):
 
     def __init__(self,
@@ -60,17 +60,17 @@ class WikiPage(PageTemplate):
         """
         @type title: unicode
         """
-        
+
         id = title.encode('utf-8')
         frames = Frame(page_margin_left,page_margin_bottom, print_width, print_height)
-        
+
         PageTemplate.__init__(self,id=id, frames=frames,onPage=onPage,onPageEnd=onPageEnd,pagesize=pagesize)
 
         self.title = title
         self.rtl = rtl
-    
+
     def beforeDrawPage(self,canvas,doc):
-        canvas.setFont(serif_font,10)      
+        canvas.setFont(serif_font,10)
         canvas.setLineWidth(0)
         #header
         canvas.line(header_margin_hor, page_height - header_margin_vert, page_width - header_margin_hor, page_height - header_margin_vert )
@@ -106,7 +106,7 @@ class WikiPage(PageTemplate):
             w,h = p.wrap(page_width - header_margin_hor*2.5, page_height)
             p.drawOn(canvas, footer_margin_hor, footer_margin_vert - 10 - h)
         canvas.restoreState()
-    
+
 
 
 class TitlePage(PageTemplate):
@@ -118,7 +118,7 @@ class TitlePage(PageTemplate):
         frames = Frame(page_margin_left, page_margin_bottom, print_width, print_height)
         PageTemplate.__init__(self,id=id, frames=frames,onPage=onPage,onPageEnd=onPageEnd,pagesize=pagesize)
         self.cover = cover
-    
+
     def beforeDrawPage(self,canvas,doc):
         canvas.setFont(serif_font,8)
         canvas.saveState()
@@ -138,7 +138,7 @@ class TitlePage(PageTemplate):
             width = 12 * cm
             img = Image.open(self.cover)
             w,h = img.size
-            height = width/w*h 
+            height = width/w*h
             x = (page_width - width) / 2.0
             y = (page_height - height) / 2.0
             canvas.drawImage(self.cover, x, y, width , height)
@@ -158,7 +158,7 @@ class PPDocTemplate(BaseDocTemplate):
             self.status_callback = status_callback
         self.tocCallback=tocCallback
         self.title = kwargs['title']
-        
+
     def progressCB(self, typ, value):
         if typ == 'SIZE_EST':
             self.estimatedDuration = int(value)
@@ -170,7 +170,7 @@ class PPDocTemplate(BaseDocTemplate):
     def beforeDocument(self):
         if self.title:
             self.page = -1
-        
+
     def _startBuild(self, filename=None, canvasmaker=canvas.Canvas):
         BaseDocTemplate._startBuild(self, filename=filename, canvasmaker=canvasmaker)
 
@@ -182,7 +182,7 @@ class PPDocTemplate(BaseDocTemplate):
                     }
         got_chapter = False
         last_lvl =  0
-        for (bm_id, (bm_title, bm_type)) in enumerate(self.bookmarks):            
+        for (bm_id, (bm_title, bm_type)) in enumerate(self.bookmarks):
             lvl = type2lvl[bm_type]
             if bm_type== 'chapter':
                 got_chapter = True
@@ -201,4 +201,4 @@ class PPDocTemplate(BaseDocTemplate):
             return
         if flowable.__class__ == TocEntry:
             self.tocCallback((flowable.lvl, flowable.txt, self.page))
-                
+
