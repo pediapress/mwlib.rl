@@ -125,7 +125,7 @@ tabsize = 6
 
 source_max_line_len = 72 # if printing a source node, the maximum number of chars in one line
 
-no_float_math_len = 15
+no_float_math_len = 150
 
 max_math_width = 2500
 max_math_height = 2500
