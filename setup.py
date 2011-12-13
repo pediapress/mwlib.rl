@@ -40,7 +40,7 @@ def main():
         include_package_data=True,
         url="http://code.pediapress.com/",
         description="generate pdfs from mediawiki markup",
-        long_description=open("README.txt").read(),
+        long_description=open("README.rst").read(),
         license="BSD License",
         maintainer="pediapress.com",
         maintainer_email="info@pediapress.com")

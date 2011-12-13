@@ -1,6 +1,6 @@
 include MANIFEST.in
 include README.html
-include README.txt
+include README.rst
 include compile_messages.py
 include example-mwlib.config
 include ez_setup.py

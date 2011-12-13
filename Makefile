@@ -9,8 +9,8 @@ messages::
 MANIFEST.in::
 	./make_manifest.py
 
-README.html: README.txt
-	$(RST2HTML) README.txt >README.html
+README.html: README.rst
+	$(RST2HTML) README.rst >README.html
 
 develop:: all
 	python setup.py develop
