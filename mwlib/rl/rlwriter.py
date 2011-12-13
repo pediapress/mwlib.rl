@@ -2133,10 +2133,10 @@ class RlWriter(object):
         # the "normal" height of a single-line formula is 17px
         imgAlign = '%fin' % (- (h - 15) / (2 * density))
         #the non-breaking-space is needed to force whitespace after the formula
-        return ['<img src="%(path)s" width="%(width)fin" height="%(height)fin" valign="%(valign)s" />' % {
+        return ['<img src="%(path)s" width="%(width)fpt" height="%(height)fpt" valign="%(valign)s" />' % {
             'path': imgpath.encode(sys.getfilesystemencoding()),
-            'width': w/density,
-            'height': h/density,
+            'width': w/density*72,
+            'height': h/density*72,
             'valign': imgAlign, }
                 ]
 
