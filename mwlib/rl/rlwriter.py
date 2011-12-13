@@ -1704,7 +1704,7 @@ class RlWriter(object):
         if isLink:
             return ['[%s]' % len(self.references)]
         else:
-            return ['<super><font size="10">[%s]</font></super> ' % n.ref_num]
+            return ['<super><font size="10">[%s]</font></super>' % n.ref_num]
 
     def writeReferenceList(self, n=None):
         if self.references:
