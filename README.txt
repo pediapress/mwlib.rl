@@ -13,53 +13,8 @@ articles which were parsed by the mwlib library.
 
 Installation
 ======================================================================
-You need to have setuptools/easy_install installed. Installation
-should be as easy as typing::
-  
-  $ easy_install mwlib.rl
-
-If you don't have setuptools installed, download the source package, 
-unpack it and run::
-
-  $ python setup.py install
-
-(this will also install setuptools)
-
-*texvc*
- You have to make sure that *texvc* is in your system PATH. *texvc* 
- is supplied by the mediawiki installation. It should be located in
- the following directory: mediawiki_install_path/math
-
- texvc also requires:
- * LaTeX
- * dvipng
- * AMS* packages for LaTeX (maybe included in LaTex distribution)
-
-You will also need:
-
-*mwlib*
-  mwlib parses mediawiki articles
-
-*pygments*
-  for source code formatting
-  http://pygments.org/ (debian packet:  python-pygments)
-
-*fribidi*
-  package for handling bidirectional (right-to-left / left-to-right) text. gnu freebidi and the python bindings are needed
-  http://fribidi.freedesktop.org/wiki/  (debian packages: libfribidi0 and libfribidi-dev)
-  http://pyfribidi.sourceforge.net/index.html (debian packages: python-pyfribidi)
-  
-*ploticus*
-  package which is used to render timelines 
-  http://ploticus.sourceforge.net/doc/welcome.html (debian package: ploticus)
-
-*gettext*
-  package which is used for translations of build-in strings
-  http://www.gnu.org/software/gettext/ (debian package: gettext)
-
-*pdftk*
-  this is optional and used for generating the Table of Contents.
-  http://www.accesspdf.com/pdftk/ (debian package: pdftk)
+Please read http://mwlib.readthedocs.org/en/latest/installation.html
+for installation instructions.
 
 PDF Customization
 ======================================================================
@@ -98,6 +53,14 @@ The current development version can also be found there.
 
 ChangeLog
 ======================================================================
+2011-12-13 release 0.12.10
+--------------------------
+- allow scaling of floating math formulas
+- allow floating of longer math formulas
+- remove space after reference
+- correct article ID: fixes printing problems on adobe reader
+- use image blacklisting for non-strict servers instead of "nofilter"
+
 2011-11-16 release 0.12.9
 ----------------------------
 - add rtl support
