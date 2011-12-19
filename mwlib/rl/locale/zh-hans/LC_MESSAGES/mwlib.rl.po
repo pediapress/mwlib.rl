@@ -10,19 +10,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-16 11:47+0100\n"
-"PO-Revision-Date: 2011-11-08 13:26:27+0000\n"
+"POT-Creation-Date: 2011-12-19 10:33+0000\n"
+"PO-Revision-Date: 2011-12-19 10:32:48+0000\n"
 "Language-Team: Simplified Chinese <https://translatewiki.net/wiki/Portal:zh-"
 "hans>\n"
-"Language: \n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.19alpha (r102381); Translate extension "
-"(2011-10-30)\n"
+"Language: \n"
+"X-Generator: MediaWiki 1.19alpha (r106635); Translate extension (2011-10-"
+"30)\n"
 "X-Translation-Project: translatewiki.net at https://translatewiki.net\n"
 "X-Language-Code: zh-hans\n"
 "X-Message-Group: #out-mwlibrl\n"
-"X-POT-Import-Date: 2011-10-27 12:00:42+0000\n"
+"X-POT-Import-Date: 2011-12-03 14:54:22+0000\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: mwlib/rl/pdfmessages.py:11
@@ -41,7 +41,7 @@ msgstr "许可："
 msgid "Contributors:"
 msgstr "作者："
 
-#: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:556
+#: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:551
 msgid "Article Licenses"
 msgstr "文章许可"
 
@@ -65,7 +65,7 @@ msgstr "创建日期："
 msgid "Contents"
 msgstr "目录"
 
-#: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:461
+#: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:456
 msgid "Articles"
 msgstr "文章"
 
@@ -106,8 +106,8 @@ msgstr ""
 "第一的几篇文章，以及你的书的索引的第一页。甚至那些离开的的预览出的所有文章将"
 "都列入最后的印刷书籍。"
 
-#: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:509
-#: mwlib/rl/rlwriter.py:825
+#: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:504
+#: mwlib/rl/rlwriter.py:820
 msgid "References"
 msgstr "参考"
 
@@ -143,13 +143,13 @@ msgstr ""
 "列出的每个图像的来源提供更详细的发牌的信息，包括版权状态、 版权的所有者和许可"
 "证的条件。"
 
-#: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:510
-#: mwlib/rl/rlwriter.py:700
+#: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:505
+#: mwlib/rl/rlwriter.py:695
 msgid "Article Sources and Contributors"
 msgstr "文章来源和贡献者"
 
-#: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:513
-#: mwlib/rl/rlwriter.py:719
+#: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:508
+#: mwlib/rl/rlwriter.py:714
 msgid "Image Sources, Licenses and Contributors"
 msgstr "图像源、 许可证和贡献者"
 
@@ -157,7 +157,7 @@ msgstr "图像源、 许可证和贡献者"
 msgid "Image"
 msgstr "图像"
 
-#: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:692
+#: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:687
 msgid "anonymous edits"
 msgstr "匿名编辑"
 
@@ -185,29 +185,29 @@ msgstr "mwlib.ext 版本： %(version)s"
 #: mwlib/rl/rlwriter.py:346
 #, python-format
 msgid ""
-"mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, "
-"%(mwlibextversion)s"
+"mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
+"(mwlibextversion)s"
 msgstr ""
-"mwlib版本：%(mwlibversion)s、mwlib.rl 版本："
-"%(mwlibrlversion)s、%(mwlibextversion)s"
+"mwlib版本：%(mwlibversion)s、mwlib.rl 版本：%(mwlibrlversion)s、%"
+"(mwlibextversion)s"
 
-#: mwlib/rl/rlwriter.py:707 mwlib/rl/rlwriter.py:732
+#: mwlib/rl/rlwriter.py:702 mwlib/rl/rlwriter.py:727
 msgid "Source"
 msgstr "来源"
 
-#: mwlib/rl/rlwriter.py:709 mwlib/rl/rlwriter.py:735
+#: mwlib/rl/rlwriter.py:704 mwlib/rl/rlwriter.py:730
 msgid "Contributors"
 msgstr "贡献者"
 
-#: mwlib/rl/rlwriter.py:725
+#: mwlib/rl/rlwriter.py:720
 msgid "unknown"
 msgstr "未知"
 
-#: mwlib/rl/rlwriter.py:727
+#: mwlib/rl/rlwriter.py:722
 msgid "License"
 msgstr "授权"
 
-#: mwlib/rl/rlwriter.py:816
+#: mwlib/rl/rlwriter.py:811
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
