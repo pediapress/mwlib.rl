@@ -163,6 +163,8 @@ class RlWriter(object):
         pdfstyles.default_latin_font = pdfstyles.default_font
         if lang in ['ja', 'ch', 'ko', 'zh']:
             pdfstyles.word_wrap = 'CJK'
+        else:
+            self.font_switcher.space_cjk = True
         if lang in ['am', 'ar', 'arc', 'arz', 'bcc', 'bqi', 'ckb', 'dv', 'dz', 'fa', 'glk', 'ha', 'he', 'ks', 'ku', 'mzn', 'pnb', 'ps', 'sd', 'ug', 'ur', 'yi']:
             self.set_rtl(True)
             # setting Nazli as default shifts the text a little to the top

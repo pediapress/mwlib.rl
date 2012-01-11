@@ -40,14 +40,17 @@ fonts = [
     {'name': 'STSong-Light', # built in Adobe font - only used if AR PL UMing HK is not found
      'code_points': ['Bopomofo', 'CJK Radicals Supplement', 'Bopomofo Extended', 'CJK Unified Ideographs Extension A', 'CJK Unified Ideographs', 'Small Form Variants'],
      'type': 'cid',
+     'cjk': True,
      },
     {'name': 'HYSMyeongJo-Medium', # built in Adobe font - only used if AR PL UMing HK is not found
      'code_points': ['CJK Compatibility Ideographs', 'Hangul Compatibility Jamo', 'Hangul Syllables'],
      'type': 'cid',
+     'cjk': True,
      },
     {'name': 'AR PL UMing HK',
      'code_points': ['CJK Unified Ideographs', 'CJK Strokes', 'CJK Unified Ideographs Extension A', 'Halfwidth and Fullwidth Forms', 'CJK Compatibility Ideographs', 'Small Form Variants', 'Low Surrogates', 'CJK Radicals Supplement', 'Hiragana', 'Katakana', 'Bopomofo', 'Bopomofo Extended', 'CJK Symbols and Punctuation'] ,
      'file_names': ['arphic/uming.ttc'],
+     'cjk': True,
      },
     {'name': 'Nazli',
      'code_points': ['Arabic Presentation Forms-A', 'Arabic', 'Arabic Presentation Forms-B', 'Arabic Supplement'] ,
@@ -118,6 +121,8 @@ class RLFontSwitcher(FontSwitcher):
                 missing_fonts.append(repr(font['name']))
                 continue
             self.registerFont(font['name'], code_points=font.get('code_points'))
+            if font.get('cjk', False):
+                self.cjk_fonts.append(font['name'])
         if RLFontSwitcher.warn_on_missing_fonts and missing_fonts:
             print 'MISSING FONTS:', ','.join(missing_fonts)
             RLFontSwitcher.warn_on_missing_fonts = False
@@ -130,10 +135,25 @@ class RLFontSwitcher(FontSwitcher):
             res.append((txt, font))
         return res
 
+    def insertZWS(self, font_list):
+        zws = '<font fontSize="1"> </font>'
+        lst = []
+        for txt, font in font_list:
+            if font in self.cjk_fonts:
+                new_txt = zws.join(c for c in txt)
+            else:
+                new_txt = txt
+            lst.append((new_txt, font))
+        return lst
+
     def fontifyText(self, txt, break_long=False):
         if self.force_font:
             return '<font name="%s">%s</font>' % (self.force_font, txt)
         font_list = self.getFontList(txt)
+        if self.space_cjk:
+            font_list, cjk = font_list
+            if cjk:
+                font_list = self.insertZWS(font_list)
         if break_long:
             font_list = self.fakeHyphenate(font_list)
 
