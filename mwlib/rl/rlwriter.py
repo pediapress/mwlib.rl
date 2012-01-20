@@ -1317,10 +1317,14 @@ class RlWriter(object):
 
     def _fixBrokenImages(self, img_node, img_path):
         if img_path in self.fixed_images:
-            return 0
-        else:
-            self.fixed_images[img_path]=True
-        img = PilImage.open(img_path)
+            return self.fixed_images[img_path]
+        self.fixed_images[img_path]=-1
+
+        try:
+            img = PilImage.open(img_path)
+        except IOError:
+            log.warning('image can not be opened by PIL: %r' % img_path)
+            return -1
         cmds = []
         base_cmd = [
             'convert',
@@ -1370,6 +1374,7 @@ class RlWriter(object):
         except:
             log.warning('image can not be opened by PIL: %r' % img_path)
             raise
+        self.fixed_images[img_path]=0
         return 0
 
     def set_svg_default_size(self, img_node):
