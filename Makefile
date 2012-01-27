@@ -22,7 +22,8 @@ sdist:: all
 	@rm -f $(GITVERSIONFILE)*
 
 clean::
-	git clean -xfd
+	git clean -xfd mwlib
+	rm -rf build dist README.html
 
 pip-install:: clean sdist
 	pip uninstall -y mwlib.rl || true
