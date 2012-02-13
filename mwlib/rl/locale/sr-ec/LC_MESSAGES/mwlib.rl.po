@@ -8,19 +8,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-12-19 10:33+0000\n"
-"PO-Revision-Date: 2011-12-19 10:32:47+0000\n"
+"POT-Creation-Date: 2012-02-13 09:41+0000\n"
+"PO-Revision-Date: 2012-02-13 09:41:34+0000\n"
 "Language-Team: Serbian (Cyrillic script) <https://translatewiki.net/wiki/"
 "Portal:sr-ec>\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: \n"
-"X-Generator: MediaWiki 1.19alpha (r106635); Translate extension (2011-10-"
-"30)\n"
+"X-Generator: MediaWiki 1.20alpha (r111323); Translate extension (2012-01-"
+"31)\n"
 "X-Translation-Project: translatewiki.net at https://translatewiki.net\n"
 "X-Language-Code: sr-ec\n"
 "X-Message-Group: #out-mwlibrl\n"
-"X-POT-Import-Date: 2011-12-03 14:54:22+0000\n"
+"X-POT-Import-Date: 2011-12-25 18:00:28+0000\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: mwlib/rl/pdfmessages.py:11
@@ -39,7 +39,7 @@ msgstr "Лиценца:"
 msgid "Contributors:"
 msgstr "Доприносиоци:"
 
-#: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:551
+#: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:553
 msgid "Article Licenses"
 msgstr "Лиценце чланка"
 
@@ -63,7 +63,7 @@ msgstr "Направљено:"
 msgid "Contents"
 msgstr "Садржај"
 
-#: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:456
+#: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:458
 msgid "Articles"
 msgstr "Чланци"
 
@@ -105,8 +105,8 @@ msgstr ""
 "изгледа. Само неколико првих чланака, као и страница пописа књиге су "
 "приказани. Сви чланци биће укључени у штампаном издању књиге."
 
-#: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:504
-#: mwlib/rl/rlwriter.py:820
+#: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:506
+#: mwlib/rl/rlwriter.py:822
 msgid "References"
 msgstr "Наводи"
 
@@ -145,13 +145,13 @@ msgstr ""
 "Ти извори пружају детаљније податке о лиценцирању, укључујући и статус "
 "ауторског права, носиоца права и услове лиценцирања."
 
-#: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:505
-#: mwlib/rl/rlwriter.py:695
+#: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:507
+#: mwlib/rl/rlwriter.py:697
 msgid "Article Sources and Contributors"
 msgstr "Извори и доприносиоци чланака"
 
-#: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:508
-#: mwlib/rl/rlwriter.py:714
+#: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:510
+#: mwlib/rl/rlwriter.py:716
 msgid "Image Sources, Licenses and Contributors"
 msgstr "Извори, лиценце и доприносиоци слика"
 
@@ -159,7 +159,7 @@ msgstr "Извори, лиценце и доприносиоци слика"
 msgid "Image"
 msgstr "Слика"
 
-#: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:687
+#: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:689
 msgid "anonymous edits"
 msgstr "анонимне измене"
 
@@ -179,12 +179,12 @@ msgstr ""
 "PDF је направљен уз помоћ mwlib-а, алата отвореног кôда. Погледајте http://"
 "code.pediapress.com за више информација."
 
-#: mwlib/rl/rlwriter.py:340
+#: mwlib/rl/rlwriter.py:342
 #, python-format
 msgid "mwlib.ext version: %(version)s"
 msgstr "mwlib.ext издање: %(version)s"
 
-#: mwlib/rl/rlwriter.py:346
+#: mwlib/rl/rlwriter.py:348
 #, python-format
 msgid ""
 "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
@@ -193,23 +193,23 @@ msgstr ""
 "mwlib издање: %(mwlibversion)s, mwlib.rl издање: %(mwlibrlversion)s, %"
 "(mwlibextversion)s"
 
-#: mwlib/rl/rlwriter.py:702 mwlib/rl/rlwriter.py:727
+#: mwlib/rl/rlwriter.py:704 mwlib/rl/rlwriter.py:729
 msgid "Source"
 msgstr "Извор"
 
-#: mwlib/rl/rlwriter.py:704 mwlib/rl/rlwriter.py:730
+#: mwlib/rl/rlwriter.py:706 mwlib/rl/rlwriter.py:732
 msgid "Contributors"
 msgstr "Доприносиоци"
 
-#: mwlib/rl/rlwriter.py:720
+#: mwlib/rl/rlwriter.py:722
 msgid "unknown"
 msgstr "непознато"
 
-#: mwlib/rl/rlwriter.py:722
+#: mwlib/rl/rlwriter.py:724
 msgid "License"
 msgstr "Лиценца"
 
-#: mwlib/rl/rlwriter.py:811
+#: mwlib/rl/rlwriter.py:813
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "

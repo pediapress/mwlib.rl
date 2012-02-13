@@ -6,18 +6,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-12-19 10:33+0000\n"
-"PO-Revision-Date: 2011-12-19 10:32:47+0000\n"
+"POT-Creation-Date: 2012-02-13 09:41+0000\n"
+"PO-Revision-Date: 2012-02-13 09:41:34+0000\n"
 "Language-Team: Tagalog <https://translatewiki.net/wiki/Portal:tl>\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: tl\n"
-"X-Generator: MediaWiki 1.19alpha (r106635); Translate extension (2011-10-"
-"30)\n"
+"X-Generator: MediaWiki 1.20alpha (r111323); Translate extension (2012-01-"
+"31)\n"
 "X-Translation-Project: translatewiki.net at https://translatewiki.net\n"
 "X-Language-Code: tl\n"
 "X-Message-Group: #out-mwlibrl\n"
-"X-POT-Import-Date: 2011-12-03 14:54:22+0000\n"
+"X-POT-Import-Date: 2011-12-25 18:00:28+0000\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: mwlib/rl/pdfmessages.py:11
@@ -36,7 +36,7 @@ msgstr "Lisensya:"
 msgid "Contributors:"
 msgstr "Mga umambag:"
 
-#: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:551
+#: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:553
 msgid "Article Licenses"
 msgstr "Mga Lisensya ng mga Lathalain/Artikulo"
 
@@ -60,7 +60,7 @@ msgstr "Nilikha noong:"
 msgid "Contents"
 msgstr "Mga nilalaman"
 
-#: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:456
+#: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:458
 msgid "Articles"
 msgstr "Mga lathalain/artikulo"
 
@@ -106,8 +106,8 @@ msgstr ""
 "mga artikulo, pati na yung hindi isinama sa paunang patingin, ay makakasama "
 "sa talagang nalimbag na aklat."
 
-#: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:504
-#: mwlib/rl/rlwriter.py:820
+#: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:506
+#: mwlib/rl/rlwriter.py:822
 msgid "References"
 msgstr "Mga sanggunian"
 
@@ -148,13 +148,13 @@ msgstr ""
 "detalyadong mga kabatiran na kasama ang kalagayan ng karapatang-ari, ang may-"
 "ari ng karapatang-ari, at mga kalakaran ng lisensiya."
 
-#: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:505
-#: mwlib/rl/rlwriter.py:695
+#: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:507
+#: mwlib/rl/rlwriter.py:697
 msgid "Article Sources and Contributors"
 msgstr "Mga Pinagmulan at Mga Umambag ng Artikulo"
 
-#: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:508
-#: mwlib/rl/rlwriter.py:714
+#: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:510
+#: mwlib/rl/rlwriter.py:716
 msgid "Image Sources, Licenses and Contributors"
 msgstr "Mga Pinagmulan, Mga Lisensiya, at Mga Tagapag-ambag ng Larawan"
 
@@ -162,7 +162,7 @@ msgstr "Mga Pinagmulan, Mga Lisensiya, at Mga Tagapag-ambag ng Larawan"
 msgid "Image"
 msgstr "Larawan"
 
-#: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:687
+#: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:689
 msgid "anonymous edits"
 msgstr "mga pagbabagong gawa ng mga hindi nagpapakilala"
 
@@ -183,12 +183,12 @@ msgstr ""
 "kasangkapan ng mwlib .  Tingnan ang http://code.pediapress.com/ para sa mas "
 "marami pang kabatiran."
 
-#: mwlib/rl/rlwriter.py:340
+#: mwlib/rl/rlwriter.py:342
 #, python-format
 msgid "mwlib.ext version: %(version)s"
 msgstr "bersyong mwlib.ext: %(version)s"
 
-#: mwlib/rl/rlwriter.py:346
+#: mwlib/rl/rlwriter.py:348
 #, python-format
 msgid ""
 "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
@@ -197,23 +197,23 @@ msgstr ""
 "bersyong mwlib: %(mwlibversion)s, bersyong mwlib.rl: %(mwlibrlversion)s, %"
 "(mwlibextversion)s"
 
-#: mwlib/rl/rlwriter.py:702 mwlib/rl/rlwriter.py:727
+#: mwlib/rl/rlwriter.py:704 mwlib/rl/rlwriter.py:729
 msgid "Source"
 msgstr "Pinagmulan"
 
-#: mwlib/rl/rlwriter.py:704 mwlib/rl/rlwriter.py:730
+#: mwlib/rl/rlwriter.py:706 mwlib/rl/rlwriter.py:732
 msgid "Contributors"
 msgstr "Mga umambag"
 
-#: mwlib/rl/rlwriter.py:720
+#: mwlib/rl/rlwriter.py:722
 msgid "unknown"
 msgstr "hindi nalalaman"
 
-#: mwlib/rl/rlwriter.py:722
+#: mwlib/rl/rlwriter.py:724
 msgid "License"
 msgstr "Lisensya"
 
-#: mwlib/rl/rlwriter.py:811
+#: mwlib/rl/rlwriter.py:813
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
