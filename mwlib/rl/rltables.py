@@ -295,7 +295,7 @@ def checkSpans(t):
                 if not getattr(cell, 'rowspanned', False):
                     # allow splitting of cells if rowspan exceeds this value
                     # max_row_span = 15 for 4 cols, and 6 for 10 cols - empiric value
-                    max_row_span = 60/_approx_cols
+                    max_row_span = 50/_approx_cols
                     if cell.rowspan <= max_row_span:
                         styles.append(('SPAN',(col_idx,row_idx),(col_idx + cell.colspan-1,row_idx+cell.rowspan-1)))
                     else:
