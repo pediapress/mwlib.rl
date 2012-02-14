@@ -269,8 +269,10 @@ def checkSpans(t):
         return
     styles = []
     num_rows = len(t.children)
+    _approx_cols = 1
     for row_idx, row in enumerate(t.children):
         col_idx = 0
+        _approx_cols = max(_approx_cols, len(row.children))
         for cell in row.children:
             if cell.colspan > 1:
                 emptycell = getEmptyCell(None, cell.colspan-1, cell.rowspan)
@@ -291,7 +293,9 @@ def checkSpans(t):
                 else:
                     emptycell.moveto(t.children[row_idx+1].children[col_idx], prefix=True)
                 if not getattr(cell, 'rowspanned', False):
-                    max_row_span = 15 # allow splitting of cells if rowspan exceeds this value
+                    # allow splitting of cells if rowspan exceeds this value
+                    # max_row_span = 15 for 4 cols, and 6 for 10 cols - empiric value
+                    max_row_span = 60/_approx_cols
                     if cell.rowspan <= max_row_span:
                         styles.append(('SPAN',(col_idx,row_idx),(col_idx + cell.colspan-1,row_idx+cell.rowspan-1)))
                     else:
