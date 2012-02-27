@@ -1,87 +1,83 @@
-# Translation of Mwlib.rl to Sinhala (සිංහල)
+# Translation of Mwlib.rl to Bashkir (Башҡортса)
 # Exported from translatewiki.net
 #
-# Author: පසිඳු කාවින්ද
+# Author: Roustammr
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-02-27 09:08+0000\n"
-"PO-Revision-Date: 2012-02-27 09:08:41+0000\n"
-"Language-Team: Sinhala <https://translatewiki.net/wiki/Portal:si>\n"
+"PO-Revision-Date: 2012-02-27 09:08:32+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: si\n"
 "X-POT-Import-Date: 2012-02-13 11:01:21+0000\n"
-"X-Generator: MediaWiki 1.20alpha (r112473); Translate 2012-02-26\n"
 "X-Translation-Project: translatewiki.net <https://translatewiki.net>\n"
-"X-Language-Code: si\n"
-"X-Message-Group: #out-mwlibrl\n"
+"X-Generator: MediaWiki 1.20alpha (r112473); Translate 2012-02-26\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: mwlib/rl/pdfmessages.py:11
 msgid "Index"
-msgstr "සුචිය"
+msgstr ""
 
 #: mwlib/rl/pdfmessages.py:13
 msgid "Source:"
-msgstr "මූලාශ්‍රය:"
+msgstr "Сығанаҡ:"
 
 #: mwlib/rl/pdfmessages.py:15
 msgid "License:"
-msgstr "බලපත්‍රය:"
+msgstr "Лицензия:"
 
 #: mwlib/rl/pdfmessages.py:17
 msgid "Contributors:"
-msgstr "දායකයින්:"
+msgstr "Төп авторҙар:"
 
 #: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:553
 msgid "Article Licenses"
-msgstr "ලිපි බලපත්‍ර"
+msgstr "Мәҡәлә лицензиялары"
 
 #: mwlib/rl/pdfmessages.py:21
 msgid "Title"
-msgstr "මාතෘකාව"
+msgstr ""
 
 #: mwlib/rl/pdfmessages.py:23
 msgid "Subtitle:"
-msgstr "උප ශීර්ෂය:"
+msgstr ""
 
 #: mwlib/rl/pdfmessages.py:25
 msgid "Editor:"
-msgstr "සංස්කාරක:"
+msgstr "Мөхәррир:"
 
 #: mwlib/rl/pdfmessages.py:27
 msgid "Created on:"
-msgstr "නිර්මාණය කලේ:"
+msgstr ""
 
 #: mwlib/rl/pdfmessages.py:29 mwlib/rl/toc.py:46
 msgid "Contents"
-msgstr "අන්තර්ගතය"
+msgstr ""
 
 #: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:458
 msgid "Articles"
-msgstr "ලිපි"
+msgstr "Мәҡәләләр"
 
 #: mwlib/rl/pdfmessages.py:33
 msgid "Produced by:"
-msgstr "නිෂ්පාදනය කලේ:"
+msgstr ""
 
 #: mwlib/rl/pdfmessages.py:35
 msgid "pdf writer version:"
-msgstr ""
+msgstr "pdf төҙөгөс версияһы:"
 
 #: mwlib/rl/pdfmessages.py:37
 msgid "mwlib version:"
-msgstr ""
+msgstr "mwlib версияһы:"
 
 #: mwlib/rl/pdfmessages.py:39
 msgid "Table of Contents"
-msgstr "පටුන"
+msgstr ""
 
 #: mwlib/rl/pdfmessages.py:41
 msgid "Skipping Articles!"
-msgstr "මඟහැරීමේ ලිපි!"
+msgstr ""
 
 #: mwlib/rl/pdfmessages.py:43
 msgid ""
@@ -100,7 +96,7 @@ msgstr ""
 #: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:506
 #: mwlib/rl/rlwriter.py:822
 msgid "References"
-msgstr "යොමුවන්"
+msgstr ""
 
 #: mwlib/rl/pdfmessages.py:49
 msgid "Appendix"
@@ -140,11 +136,11 @@ msgstr ""
 
 #: mwlib/rl/pdfmessages.py:61
 msgid "Image"
-msgstr "පිංතූරය"
+msgstr "Рәсем"
 
 #: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:689
 msgid "anonymous edits"
-msgstr "නිර්නාමික සංස්කරණ"
+msgstr ""
 
 #: mwlib/rl/pdfmessages.py:65
 msgid "Figure"
@@ -152,7 +148,7 @@ msgstr ""
 
 #: mwlib/rl/pdfmessages.py:67
 msgid "See also"
-msgstr "මෙයද බලන්න"
+msgstr "Шулай уҡ ҡарағыҙ"
 
 #: mwlib/rl/pdfstyles.py:78
 msgid ""
@@ -163,7 +159,7 @@ msgstr ""
 #: mwlib/rl/rlwriter.py:342
 #, python-format
 msgid "mwlib.ext version: %(version)s"
-msgstr ""
+msgstr "mwlib.ext версияһы: %(version)s"
 
 #: mwlib/rl/rlwriter.py:348
 #, python-format
@@ -171,22 +167,24 @@ msgid ""
 "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
 "(mwlibextversion)s"
 msgstr ""
+"mwlib версияһы: %(mwlibversion)s, mwlib.rl версия: %(mwlibrlversion)s, %"
+"(mwlibextversion)s"
 
 #: mwlib/rl/rlwriter.py:704 mwlib/rl/rlwriter.py:729
 msgid "Source"
-msgstr " මූලාශ්‍රය"
+msgstr "Сығанаҡ"
 
 #: mwlib/rl/rlwriter.py:706 mwlib/rl/rlwriter.py:732
 msgid "Contributors"
-msgstr "දායකයින්"
+msgstr ""
 
 #: mwlib/rl/rlwriter.py:722
 msgid "unknown"
-msgstr "අඥාත"
+msgstr "билдәһеҙ"
 
 #: mwlib/rl/rlwriter.py:724
 msgid "License"
-msgstr "බලපත්‍රය"
+msgstr "Лицензия"
 
 #: mwlib/rl/rlwriter.py:813
 msgid ""
