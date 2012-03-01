@@ -238,6 +238,8 @@ def optimizeWidths(min_widths, max_widths, avail_width, stretch=False):
 
     if stretch and sum(max_widths) < avail_width:
         total_current = sum(max_widths)
+        if total_current == 0:
+            return max_widths
         remaining = avail_width - total_current
         return [ w+w/total_current*remaining for w in max_widths]
     else:
