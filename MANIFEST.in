@@ -46,6 +46,8 @@ include mwlib/rl/locale/ast/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/ast/LC_MESSAGES/mwlib.rl.po
 include mwlib/rl/locale/az/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/az/LC_MESSAGES/mwlib.rl.po
+include mwlib/rl/locale/ba/LC_MESSAGES/mwlib.rl.mo
+include mwlib/rl/locale/ba/LC_MESSAGES/mwlib.rl.po
 include mwlib/rl/locale/bar/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/bar/LC_MESSAGES/mwlib.rl.po
 include mwlib/rl/locale/be-tarask/LC_MESSAGES/mwlib.rl.mo
