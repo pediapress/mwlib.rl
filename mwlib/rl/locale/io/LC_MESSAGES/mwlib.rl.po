@@ -1,19 +1,21 @@
-# Translation of Mwlib.rl to Ido
+# Translation of Mwlib.rl to Ido (Ido)
+# Exported from translatewiki.net
 #
-# Author@translatewiki.net: Malafaya
-# --
+# Author: Malafaya
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-02-27 09:08+0000\n"
-"PO-Revision-Date: 2010-08-25 08:42:05+0000\n"
+"PO-Revision-Date: 2012-03-11 22:06:59+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.17alpha (r71602); Translate extension (2010-08-20)\n"
-"X-Translation-Project: translatewiki.net at http://translatewiki.net\n"
+"X-Generator: MediaWiki 1.20alpha (r113583); Translate 2012-03-02\n"
+"X-Translation-Project: translatewiki.net <https://translatewiki.net>\n"
 "X-Language-Code: io\n"
 "X-Message-Group: out-mwlibrl\n"
+"X-POT-Import-Date: 2012-03-11 21:38:07+0000\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: mwlib/rl/pdfmessages.py:11
 msgid "Index"

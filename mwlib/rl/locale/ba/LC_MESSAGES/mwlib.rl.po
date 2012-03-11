@@ -7,17 +7,17 @@ msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-02-27 09:08+0000\n"
-"PO-Revision-Date: 2012-02-27 09:08:32+0000\n"
+"PO-Revision-Date: 2012-03-11 22:15:42+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-POT-Import-Date: 2012-02-13 11:01:21+0000\n"
+"X-POT-Import-Date: 2012-03-11 21:38:07+0000\n"
 "X-Translation-Project: translatewiki.net <https://translatewiki.net>\n"
-"X-Generator: MediaWiki 1.20alpha (r112473); Translate 2012-02-26\n"
+"X-Generator: MediaWiki 1.20alpha (r113583); Translate 2012-03-02\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: mwlib/rl/pdfmessages.py:11
 msgid "Index"
-msgstr ""
+msgstr "Индекс"
 
 #: mwlib/rl/pdfmessages.py:13
 msgid "Source:"
@@ -61,7 +61,7 @@ msgstr "Мәҡәләләр"
 
 #: mwlib/rl/pdfmessages.py:33
 msgid "Produced by:"
-msgstr ""
+msgstr "Эшләп сығарыусы:"
 
 #: mwlib/rl/pdfmessages.py:35
 msgid "pdf writer version:"
@@ -77,7 +77,7 @@ msgstr ""
 
 #: mwlib/rl/pdfmessages.py:41
 msgid "Skipping Articles!"
-msgstr ""
+msgstr "Төшөп ҡалған мәҡәләләр!"
 
 #: mwlib/rl/pdfmessages.py:43
 msgid ""
@@ -96,11 +96,11 @@ msgstr ""
 #: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:506
 #: mwlib/rl/rlwriter.py:822
 msgid "References"
-msgstr ""
+msgstr "Һылтанмалар"
 
 #: mwlib/rl/pdfmessages.py:49
 msgid "Appendix"
-msgstr ""
+msgstr "Ҡушымта"
 
 #: mwlib/rl/pdfmessages.py:51
 msgid ""
@@ -140,11 +140,11 @@ msgstr "Рәсем"
 
 #: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:689
 msgid "anonymous edits"
-msgstr ""
+msgstr "аноним үҙгәртеүҙәр"
 
 #: mwlib/rl/pdfmessages.py:65
 msgid "Figure"
-msgstr ""
+msgstr "Һүрәт"
 
 #: mwlib/rl/pdfmessages.py:67
 msgid "See also"

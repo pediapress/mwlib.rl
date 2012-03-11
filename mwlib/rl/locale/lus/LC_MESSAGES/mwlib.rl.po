@@ -1,97 +1,91 @@
-# Translation of Mwlib.rl to Welsh (Cymraeg)
+# Translation of Mwlib.rl to Lushai (Mizo ţawng)
 # Exported from translatewiki.net
 #
-# Author: Lloffiwr
-# Author: Xxglennxx
+# Author: RMizo
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-02-27 09:08+0000\n"
-"PO-Revision-Date: 2012-03-11 22:15:43+0000\n"
-"Language-Team: Welsh <https://translatewiki.net/wiki/Portal:cy>\n"
+"PO-Revision-Date: 2012-03-11 22:15:45+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: cy\n"
-"X-Generator: MediaWiki 1.20alpha (r113583); Translate 2012-03-02\n"
-"X-Translation-Project: translatewiki.net <https://translatewiki.net>\n"
-"X-Language-Code: cy\n"
-"X-Message-Group: #out-mwlibrl\n"
 "X-POT-Import-Date: 2012-03-11 21:38:07+0000\n"
-"Plural-Forms: nplurals=6; plural=(n == 0) ? 0 : ( (n == 1) ? 1 : ( (n == "
-"2) ? 2 : ( (n == 3) ? 3 : ( (n == 6) ? 4 : 5 ) ) ) );\n"
+"X-Translation-Project: translatewiki.net <https://translatewiki.net>\n"
+"X-Generator: MediaWiki 1.20alpha (r113583); Translate 2012-03-02\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: mwlib/rl/pdfmessages.py:11
 msgid "Index"
-msgstr "Mynegai"
+msgstr "Zawnawlna"
 
 #: mwlib/rl/pdfmessages.py:13
 msgid "Source:"
-msgstr "Ffynhonnell:"
+msgstr "Hnar:"
 
 #: mwlib/rl/pdfmessages.py:15
 msgid "License:"
-msgstr "Trwydded:"
+msgstr "Phalna:"
 
 #: mwlib/rl/pdfmessages.py:17
 msgid "Contributors:"
-msgstr "Cyfranwyr:"
+msgstr "Thawhtute:"
 
 #: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:553
 msgid "Article Licenses"
-msgstr "Trwyddedi'r Erthygl"
+msgstr "Thu vohna"
 
 #: mwlib/rl/pdfmessages.py:21
 msgid "Title"
-msgstr "Teitl"
+msgstr "Thupui"
 
 #: mwlib/rl/pdfmessages.py:23
 msgid "Subtitle:"
-msgstr "Isdeitl:"
+msgstr "Thupui chhäwng:"
 
 #: mwlib/rl/pdfmessages.py:25
 msgid "Editor:"
-msgstr "Golygydd:"
+msgstr "Siamţhatu:"
 
 #: mwlib/rl/pdfmessages.py:27
 msgid "Created on:"
-msgstr "Dechreuwyd ar:"
+msgstr "Siam ni:"
 
 #: mwlib/rl/pdfmessages.py:29 mwlib/rl/toc.py:46
 msgid "Contents"
-msgstr "Cynnwys"
+msgstr "A Chhung Thute"
 
 #: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:458
 msgid "Articles"
-msgstr "Erthyglau"
+msgstr "Thu awmte"
 
 #: mwlib/rl/pdfmessages.py:33
 msgid "Produced by:"
-msgstr "Cynhyrchwyd gan:"
+msgstr "Siamtu:"
 
 #: mwlib/rl/pdfmessages.py:35
 msgid "pdf writer version:"
-msgstr "fersiwn y rhaglen ysgrifennu pdf:"
+msgstr "pdf-a siamtu:"
 
 #: mwlib/rl/pdfmessages.py:37
 msgid "mwlib version:"
-msgstr "y fersiwn mwlib:"
+msgstr "mwlib-in:"
 
 #: mwlib/rl/pdfmessages.py:39
 msgid "Table of Contents"
-msgstr "Cynnwys"
+msgstr "A chhunga thu awmte"
 
 #: mwlib/rl/pdfmessages.py:41
 msgid "Skipping Articles!"
-msgstr "Erthyglau i'w hepgor!"
+msgstr "Thu ţhenkhat kalkan a ni!"
 
 #: mwlib/rl/pdfmessages.py:43
 msgid ""
 "Please note:  This is only a preview intended to give an idea how the book "
 "is typeset."
 msgstr ""
-"Dalier sylw: Rhagolwg yn unig yw hwn, yn cynnig golwg ar ymddangosiad y "
-"llyfr."
+"Hriat tùr: Hei hi lehkhabuah engtiangin nge a inchhuah dawn tih en chhinna "
+"mai a ni."
 
 #: mwlib/rl/pdfmessages.py:45
 msgid ""
@@ -100,20 +94,19 @@ msgid ""
 "of the index, of your book are shown in this preview. All articles, even "
 "those left out of the preview, will be included in the final printed book."
 msgstr ""
-"Sylwer: Rhagolwg yn unig o'ch llyfr yw hwn, a fwriadwyd i roi syniad o olwg "
-"eich llyfr. Dim ond ychydig o'r erthyglau cyntaf, a rhai o dudalennau cyntaf "
-"y mynegai, a ddangosir yn y rhagolwg. Bydd yr holl erthyglau, gan gynnwys y "
-"rhai na chynhwyswyd yn y rhagolwg, yn cael eu cynnwys yn y llyfr argraffedig "
-"terfynol."
+"Hriat tùr: Hei hi lehkhabuah engtiangin nge a inchhuah dawn tih enchhinna "
+"mai a ni. I lehkhabua a tir lam thu tlém te leh a zawnawlna hmasa lam chauh "
+"he enchhinnaah hian tihlan a ni. A lehkhabu chhutchhuah hunah chuan a chhung "
+"thu zawng zawng hi telh vek a ni thung ang, enchhinnaa hmaihte pawh."
 
 #: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:506
 #: mwlib/rl/rlwriter.py:822
 msgid "References"
-msgstr "Cyfeiriadau"
+msgstr "Ràwnte"
 
 #: mwlib/rl/pdfmessages.py:49
 msgid "Appendix"
-msgstr "Atodiad"
+msgstr "Thubelh"
 
 #: mwlib/rl/pdfmessages.py:51
 msgid ""
@@ -122,10 +115,9 @@ msgid ""
 "including the copyright status, the copyright owner, and the license "
 "conditions."
 msgstr ""
-"Mae ffynonellau'r lluniau a'r wybodaeth yn yr holl erthyglau a geir yn y "
-"llyfr hwn wedi eu rhestri isod. Ceir manylion pellach yn y ffynonellau hynny "
-"am eu trwyddedau, gan gynnwys statws hawlfraint, perchennog yr hawlfraint ac "
-"amodau'r drwydded."
+"A hnuai hlawmah khuan he lehkhabu-a thu leh thlalâk kan lakna hnar zawng "
+"zawng kan dah vek a. Khung a hnarahte khuan lakchhawn phalna dinhmun leh "
+"neitu te leh phalna dang dang chiang zawkin a lang."
 
 #: mwlib/rl/pdfmessages.py:53
 msgid ""
@@ -133,9 +125,8 @@ msgid ""
 "information including the copyright status, the copyright owner, and the "
 "license conditions."
 msgstr ""
-"Mae ffynonellau'r deunydd ym mhob erthygl wedi eu rhestru. Ceir manylion "
-"pellach yn y ffynonellau hynny am eu trwyddedau, gan gynnwys statws yr "
-"hawlfraint, ei pherchennog ac amodau'r drwydded."
+"Lakchhawn phalna dinhmun leh neitu te chu thu lakna hnar ziahah te khuan "
+"kimchang zawkin a en theih ang."
 
 #: mwlib/rl/pdfmessages.py:55
 msgid ""
@@ -143,48 +134,46 @@ msgid ""
 "information including the copyright status, the copyright owner, and the "
 "license conditions."
 msgstr ""
-"Mae'r ffynonellau i bob llun wedi eu rhestru. Ceir manylion pellach yn y "
-"ffynonellau hynny am eu trwyddedau, gan gynnwys statws yr hawlfraint, ei "
-"pherchennog ac amodau'r drwydded."
+"Lakchhawn theihna dinhmun leh neitu leh phalna dang chu thlalâk lakna hnarah "
+"khuan chiang zawka pek a ni."
 
 #: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:507
 #: mwlib/rl/rlwriter.py:697
 msgid "Article Sources and Contributors"
-msgstr "Ffynonellau'r Erthygl a'i Chyfranwyr"
+msgstr "Thu hnarte leh thawhtute"
 
 #: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:510
 #: mwlib/rl/rlwriter.py:716
 msgid "Image Sources, Licenses and Contributors"
-msgstr "Ffynonellau'r Ddelwedd, ei Thrwyddedi a'i Chyfranwyr"
+msgstr "Thlalâk hnar, phalna leh thawhtute"
 
 #: mwlib/rl/pdfmessages.py:61
 msgid "Image"
-msgstr "Delwedd"
+msgstr "Thlalâk"
 
 #: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:689
 msgid "anonymous edits"
-msgstr "golygiadau dienw"
+msgstr "hriat loh siamţhat"
 
 #: mwlib/rl/pdfmessages.py:65
 msgid "Figure"
-msgstr "Ffigur"
+msgstr "Lem"
 
 #: mwlib/rl/pdfmessages.py:67
 msgid "See also"
-msgstr "Gweler hefyd"
+msgstr "Hengte hi en bawk la"
 
 #: mwlib/rl/pdfstyles.py:78
 msgid ""
 "PDF generated using the open source mwlib toolkit. See http://code."
 "pediapress.com/ for more information."
 msgstr ""
-"Cynhyrchwyd y ddogfen PDF trwy ddefnyddio'r teclyn cod agored mwlib. Gweler "
-"http://code.pediapress.com/ am ragor o wybodaeth."
+"Hnar zalen (open source) mwlib hmanrelh (toolkit) hmanga her chhuah pdf."
 
 #: mwlib/rl/rlwriter.py:342
 #, python-format
 msgid "mwlib.ext version: %(version)s"
-msgstr "y fersiwn mwlib.ext: %(version)s"
+msgstr "mwlib.ext chhuah: %(version)s"
 
 #: mwlib/rl/rlwriter.py:348
 #, python-format
@@ -192,24 +181,24 @@ msgid ""
 "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
 "(mwlibextversion)s"
 msgstr ""
-"fersiwn mwlib:  %(mwlibversion)s, fersiwn mwlib.rl: %(mwlibrlversion)s, %"
+"mwlib chhuah: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
 "(mwlibextversion)s"
 
 #: mwlib/rl/rlwriter.py:704 mwlib/rl/rlwriter.py:729
 msgid "Source"
-msgstr "Ffynhonnell"
+msgstr "Hnar"
 
 #: mwlib/rl/rlwriter.py:706 mwlib/rl/rlwriter.py:732
 msgid "Contributors"
-msgstr "Cyfranwyr"
+msgstr "Thawhtute"
 
 #: mwlib/rl/rlwriter.py:722
 msgid "unknown"
-msgstr "anhysbys"
+msgstr "hriat loh"
 
 #: mwlib/rl/rlwriter.py:724
 msgid "License"
-msgstr "Trwydded"
+msgstr "Phalna"
 
 #: mwlib/rl/rlwriter.py:813
 msgid ""
@@ -217,6 +206,7 @@ msgid ""
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
 "software (b) problematic Mediawiki markup (c) table is too wide"
 msgstr ""
-"<strong>RHYBUDD: Ni ellid llunio'r erthygl - gosodir y cynnyrch mewn testun "
-"plaen.<strong><br/>Dyma achosion posib y broblem: (a) byg ym meddalwedd yr "
-"ysgrifennwr pdf (b) cystrawen Mediawici amheus (c) y tabl yn rhy lydan"
+"<strong> Vaukhanna: Thuziak a pumin a chhuahchhawn theih loh - thu mawlmang "
+"tawpa ziah tùrin. </strong><br/>A chhan ni thei thenkhat te chu: (a) pdf-"
+"ziaktu khawlthluaka hrik (aw) MediaWiki chhuah-chhoh (markup) felhlel (ch) "
+"dawhkan zau leh lutuk"
