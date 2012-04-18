@@ -34,6 +34,8 @@ include mwlib/rl/customnodetransformer.py
 include mwlib/rl/debughelper.py
 include mwlib/rl/fontconfig.py
 include mwlib/rl/formatter.py
+include mwlib/rl/locale/aeb/LC_MESSAGES/mwlib.rl.mo
+include mwlib/rl/locale/aeb/LC_MESSAGES/mwlib.rl.po
 include mwlib/rl/locale/af/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/af/LC_MESSAGES/mwlib.rl.po
 include mwlib/rl/locale/ar/LC_MESSAGES/mwlib.rl.mo
@@ -132,6 +134,8 @@ include mwlib/rl/locale/ka/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/ka/LC_MESSAGES/mwlib.rl.po
 include mwlib/rl/locale/km/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/km/LC_MESSAGES/mwlib.rl.po
+include mwlib/rl/locale/kn/LC_MESSAGES/mwlib.rl.mo
+include mwlib/rl/locale/kn/LC_MESSAGES/mwlib.rl.po
 include mwlib/rl/locale/ko/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/ko/LC_MESSAGES/mwlib.rl.po
 include mwlib/rl/locale/ksh/LC_MESSAGES/mwlib.rl.mo
@@ -146,6 +150,8 @@ include mwlib/rl/locale/lez/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/lez/LC_MESSAGES/mwlib.rl.po
 include mwlib/rl/locale/lt/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/lt/LC_MESSAGES/mwlib.rl.po
+include mwlib/rl/locale/lus/LC_MESSAGES/mwlib.rl.mo
+include mwlib/rl/locale/lus/LC_MESSAGES/mwlib.rl.po
 include mwlib/rl/locale/mai/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/mai/LC_MESSAGES/mwlib.rl.po
 include mwlib/rl/locale/map-bms/LC_MESSAGES/mwlib.rl.mo
