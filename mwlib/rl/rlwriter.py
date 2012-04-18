@@ -1248,6 +1248,8 @@ class RlWriter(object):
 
     def writeNamedURL(self,obj):
         href = obj.caption.strip()
+        if href.startswith('//'):
+            href = 'http:' + href
         if not self.ref_mode and not self.reference_list_rendered:
             if not self.url_map.get(href):
                 i = parser.Item()
