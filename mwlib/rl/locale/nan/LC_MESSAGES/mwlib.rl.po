@@ -1,93 +1,89 @@
-# Translation of Mwlib.rl to Nepali (नेपाली)
+# Translation of Mwlib.rl to Min Nan Chinese (Bân-lâm-gú)
 # Exported from translatewiki.net
 #
-# Author: Bhawani Gautam
+# Author: Ianbu
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-04-21 10:21+0000\n"
-"PO-Revision-Date: 2012-04-04 18:57:14+0000\n"
-"Language-Team: Nepali <https://translatewiki.net/wiki/Portal:ne>\n"
+"PO-Revision-Date: 2012-04-21 10:21:39+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ne\n"
-"X-POT-Import-Date: 2012-03-11 22:23:36+0000\n"
-"X-Generator: MediaWiki 1.20alpha (f3f3e1b); Translate 2012-03-13\n"
+"X-POT-Import-Date: 2012-04-08 21:35:04+0000\n"
 "X-Translation-Project: translatewiki.net <https://translatewiki.net>\n"
-"X-Language-Code: ne\n"
-"X-Message-Group: #out-mwlibrl\n"
+"X-Generator: MediaWiki 1.20alpha (1f0a982); Translate 2012-04-11\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: mwlib/rl/pdfmessages.py:11
 msgid "Index"
-msgstr "सूची"
+msgstr "目錄"
 
 #: mwlib/rl/pdfmessages.py:13
 msgid "Source:"
-msgstr "स्रोत:"
+msgstr "來源："
 
 #: mwlib/rl/pdfmessages.py:15
 msgid "License:"
-msgstr "लाइसेंस:"
+msgstr "授權："
 
 #: mwlib/rl/pdfmessages.py:17
 msgid "Contributors:"
-msgstr "योगदानकर्ता:"
+msgstr "貢獻者："
 
 #: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:553
 msgid "Article Licenses"
-msgstr "लेख लाइसेंस"
+msgstr "文章的授權"
 
 #: mwlib/rl/pdfmessages.py:21
 msgid "Title"
-msgstr "शीर्षक"
+msgstr "標題"
 
 #: mwlib/rl/pdfmessages.py:23
 msgid "Subtitle:"
-msgstr "उपशीर्षक:"
+msgstr "副標題"
 
 #: mwlib/rl/pdfmessages.py:25
 msgid "Editor:"
-msgstr "सम्पादक:"
+msgstr "編輯者："
 
 #: mwlib/rl/pdfmessages.py:27
 msgid "Created on:"
-msgstr "सृजना गरिएको मिति:"
+msgstr "建立佇："
 
 #: mwlib/rl/pdfmessages.py:29 mwlib/rl/toc.py:46
 msgid "Contents"
-msgstr "सामग्री"
+msgstr "內容"
 
 #: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:458
 msgid "Articles"
-msgstr "लेखहरु"
+msgstr "文章"
 
 #: mwlib/rl/pdfmessages.py:33
 msgid "Produced by:"
-msgstr "निर्माता:"
+msgstr "製作："
 
 #: mwlib/rl/pdfmessages.py:35
 msgid "pdf writer version:"
-msgstr "पीडीएफ लेखक संस्करण:"
+msgstr "PDF寫作版本："
 
 #: mwlib/rl/pdfmessages.py:37
 msgid "mwlib version:"
-msgstr ""
+msgstr "mwlib版本："
 
 #: mwlib/rl/pdfmessages.py:39
 msgid "Table of Contents"
-msgstr "सामग्री तालिका"
+msgstr "目錄"
 
 #: mwlib/rl/pdfmessages.py:41
 msgid "Skipping Articles!"
-msgstr "लेखहरु नाँघ्दै"
+msgstr "閬過文章！"
 
 #: mwlib/rl/pdfmessages.py:43
 msgid ""
 "Please note:  This is only a preview intended to give an idea how the book "
 "is typeset."
-msgstr ""
+msgstr "請注意： 這只是先予你看覓，若這本書欲印出來會按怎排版。"
 
 #: mwlib/rl/pdfmessages.py:45
 msgid ""
@@ -96,15 +92,17 @@ msgid ""
 "of the index, of your book are shown in this preview. All articles, even "
 "those left out of the preview, will be included in the final printed book."
 msgstr ""
+"請注意：這只是先看覓你的冊，看看起來會按怎，嘛干焦頭幾篇，佮第一頁索引。所有"
+"文章，無佇先看覓內底的嘛會包括佇尾仔印出來的冊。"
 
 #: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:506
 #: mwlib/rl/rlwriter.py:822
 msgid "References"
-msgstr "सन्दर्भहरु"
+msgstr "參考文獻"
 
 #: mwlib/rl/pdfmessages.py:49
 msgid "Appendix"
-msgstr "परिशिष्ट"
+msgstr "附錄"
 
 #: mwlib/rl/pdfmessages.py:51
 msgid ""
@@ -113,6 +111,8 @@ msgid ""
 "including the copyright status, the copyright owner, and the license "
 "conditions."
 msgstr ""
+"下跤的段落是所有文章佮圖像的來源清單。遐的來源有較詳細的授權信息，包括版權狀"
+"況、 版權的所有者佮授權的條件。"
 
 #: mwlib/rl/pdfmessages.py:53
 msgid ""
@@ -120,6 +120,8 @@ msgid ""
 "information including the copyright status, the copyright owner, and the "
 "license conditions."
 msgstr ""
+"逐篇文章所列出的來源有較詳細的授權信息，包括版權狀況、 版權的所有者佮授權條"
+"件。"
 
 #: mwlib/rl/pdfmessages.py:55
 msgid ""
@@ -127,43 +129,46 @@ msgid ""
 "information including the copyright status, the copyright owner, and the "
 "license conditions."
 msgstr ""
+"逐張圖相所列出的來源有較詳細的授權信息，包括版權狀況、 版權的所有者佮授權條"
+"件。"
 
 #: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:507
 #: mwlib/rl/rlwriter.py:697
 msgid "Article Sources and Contributors"
-msgstr ""
+msgstr "文章來源佮貢獻者"
 
 #: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:510
 #: mwlib/rl/rlwriter.py:716
 msgid "Image Sources, Licenses and Contributors"
-msgstr ""
+msgstr "圖像來源、授權佮貢獻者"
 
 #: mwlib/rl/pdfmessages.py:61
 msgid "Image"
-msgstr "चित्र"
+msgstr "圖相"
 
 #: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:689
 msgid "anonymous edits"
-msgstr "अनाम संपादन"
+msgstr "無名氏的編輯"
 
 #: mwlib/rl/pdfmessages.py:65
 msgid "Figure"
-msgstr "आकृति"
+msgstr "圖"
 
 #: mwlib/rl/pdfmessages.py:67
 msgid "See also"
-msgstr "अझ हेर्ने"
+msgstr "閣看"
 
 #: mwlib/rl/pdfstyles.py:78
 msgid ""
 "PDF generated using the open source mwlib toolkit. See http://code."
 "pediapress.com/ for more information."
 msgstr ""
+"PDF是由公開源碼mwlib的工具包所建立的。請看 http://code.pediapress.com/ 詳情。"
 
 #: mwlib/rl/rlwriter.py:342
 #, python-format
 msgid "mwlib.ext version: %(version)s"
-msgstr ""
+msgstr "mwlib.ext 版本： %(version)s"
 
 #: mwlib/rl/rlwriter.py:348
 #, python-format
@@ -171,22 +176,24 @@ msgid ""
 "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
 "(mwlibextversion)s"
 msgstr ""
+"mwlib版本：%(mwlibversion)s、mwlib.rl 版本：%(mwlibrlversion)s、%"
+"(mwlibextversion)s"
 
 #: mwlib/rl/rlwriter.py:704 mwlib/rl/rlwriter.py:729
 msgid "Source"
-msgstr "स्रोत"
+msgstr "來源"
 
 #: mwlib/rl/rlwriter.py:706 mwlib/rl/rlwriter.py:732
 msgid "Contributors"
-msgstr "योगदानकर्ताहरु:"
+msgstr "貢獻者"
 
 #: mwlib/rl/rlwriter.py:722
 msgid "unknown"
-msgstr "अज्ञात"
+msgstr "無清楚"
 
 #: mwlib/rl/rlwriter.py:724
 msgid "License"
-msgstr ""
+msgstr "授權"
 
 #: mwlib/rl/rlwriter.py:813
 msgid ""
@@ -194,3 +201,5 @@ msgid ""
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
 "software (b) problematic Mediawiki markup (c) table is too wide"
 msgstr ""
+"<strong>警告：文章無法度共處理變做純文本。 </strong><br/>可能的原因：(a) pdf"
+"寫作軟體有問題(b) Mediawiki的標記有問題(c) 表格傷闊"
