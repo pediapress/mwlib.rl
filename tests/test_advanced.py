@@ -280,3 +280,29 @@ while True:
 </source>
 '''
     renderMW(txt, 'source_breaking')
+
+def test_source_pygments():
+    source = '''\
+
+while True:
+  print 'this is python'
+
+'''
+    from mwlib.rl.rlsourceformatter import ReportlabFormatter
+    from pygments import highlight, lexers
+
+    formatter = ReportlabFormatter(font_size=10,
+                                   font_name='FreeMono',
+                                   line_numbers=False,
+                                   background_color='#eeeeee',)
+    formatter.encoding = 'utf-8'
+    lexer = lexers.get_lexer_by_name('python')
+
+    out_expected = '''\
+<para backcolor="#eeeeee"><font name="FreeMono" size="10"><font color="#008000"><b>while</b></font> <font color="#008000">True</font>:
+  <font color="#008000"><b>print</b></font> <font color="#BA2121">'this is python'</font>
+</font></para>
+'''
+
+    out_pygments = highlight(source, lexer, formatter)
+    assert out_pygments == out_expected
