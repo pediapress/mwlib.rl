@@ -53,6 +53,19 @@ The current development version can also be found there.
 
 ChangeLog
 ======================================================================
+2012-05-08 release 0.12.11
+--------------------------
+- fix pypi url used by tox
+- workaround for protocol-less-urls that causes PDFs to refuse printing
+- Translation updates from translatewiki.net
+- make compile_mesages work when using pip -e
+- fix zero divison error
+- tweak param
+- improve rowspan-splitting by taking approx. table width into account
+- be a bit more conservative in make clean
+- fix: correctly skip multiple occurences of broken image
+- add fake zero-width-spaces for cjk text inside non-cjk wikis
+
 2011-12-13 release 0.12.10
 --------------------------
 - allow scaling of floating math formulas
