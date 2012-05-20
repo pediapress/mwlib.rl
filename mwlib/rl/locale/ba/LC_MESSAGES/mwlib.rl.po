@@ -3,17 +3,18 @@
 #
 # Author: Roustammr
 # Author: Рустам Нурыев
+# Author: ҒатаУлла
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-05-12 18:44+0000\n"
-"PO-Revision-Date: 2012-04-04 18:57:13+0000\n"
+"POT-Creation-Date: 2012-05-20 11:10+0000\n"
+"PO-Revision-Date: 2012-05-20 11:10:45+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-POT-Import-Date: 2012-03-11 22:23:36+0000\n"
+"X-POT-Import-Date: 2012-04-08 21:35:04+0000\n"
 "X-Translation-Project: translatewiki.net <https://translatewiki.net>\n"
-"X-Generator: MediaWiki 1.20alpha (f3f3e1b); Translate 2012-03-13\n"
+"X-Generator: MediaWiki 1.20alpha (f112f3a); Translate 2012-04-11\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: mwlib/rl/pdfmessages.py:11
@@ -54,7 +55,7 @@ msgstr ""
 
 #: mwlib/rl/pdfmessages.py:29 mwlib/rl/toc.py:46
 msgid "Contents"
-msgstr ""
+msgstr "Эстәлек"
 
 #: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:458
 msgid "Articles"
@@ -74,7 +75,7 @@ msgstr "mwlib версияһы:"
 
 #: mwlib/rl/pdfmessages.py:39
 msgid "Table of Contents"
-msgstr ""
+msgstr "Йөкмәтке"
 
 #: mwlib/rl/pdfmessages.py:41
 msgid "Skipping Articles!"
@@ -128,7 +129,7 @@ msgstr ""
 #: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:507
 #: mwlib/rl/rlwriter.py:697
 msgid "Article Sources and Contributors"
-msgstr ""
+msgstr "Сығанаҡтар һәм төп авторҙар"
 
 #: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:510
 #: mwlib/rl/rlwriter.py:716
@@ -177,7 +178,7 @@ msgstr "Сығанаҡ"
 
 #: mwlib/rl/rlwriter.py:706 mwlib/rl/rlwriter.py:732
 msgid "Contributors"
-msgstr ""
+msgstr "Мөхәрирҙәр"
 
 #: mwlib/rl/rlwriter.py:722
 msgid "unknown"
