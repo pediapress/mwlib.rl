@@ -234,6 +234,8 @@ include mwlib/rl/locale/ug-arab/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/ug-arab/LC_MESSAGES/mwlib.rl.po
 include mwlib/rl/locale/uk/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/uk/LC_MESSAGES/mwlib.rl.po
+include mwlib/rl/locale/vec/LC_MESSAGES/mwlib.rl.mo
+include mwlib/rl/locale/vec/LC_MESSAGES/mwlib.rl.po
 include mwlib/rl/locale/vi/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/vi/LC_MESSAGES/mwlib.rl.po
 include mwlib/rl/locale/vo/LC_MESSAGES/mwlib.rl.mo
