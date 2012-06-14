@@ -10,6 +10,9 @@ build
 trunk
 mwlib/rl/test
 mwlib.rl.egg-info/
-dist/*
+/dist
 README.html
 .tox/
+__pycache__/
+/MANIFEST
+.ropeproject/
