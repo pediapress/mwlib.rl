@@ -53,6 +53,11 @@ The current development version can also be found there.
 
 ChangeLog
 ======================================================================
+2012-06-14 release 0.12.12
+--------------------------
+- Translation updates from translatewiki.net
+- add back .mo files which had been missing in 0.12.11
+
 2012-05-08 release 0.12.11
 --------------------------
 - fix pypi url used by tox
