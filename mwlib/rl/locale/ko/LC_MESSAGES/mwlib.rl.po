@@ -3,21 +3,22 @@
 #
 # Author: Kwj2772
 # Author: Yknok29
+# Author: 아라
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-06-24 18:24+0000\n"
-"PO-Revision-Date: 2012-04-04 18:57:14+0000\n"
+"POT-Creation-Date: 2012-06-30 11:09+0000\n"
+"PO-Revision-Date: 2012-06-30 11:09:20+0000\n"
 "Language-Team: Korean <https://translatewiki.net/wiki/Portal:ko>\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: \n"
-"X-Generator: MediaWiki 1.20alpha (f3f3e1b); Translate 2012-03-13\n"
+"X-Generator: MediaWiki 1.20alpha (233fc08); Translate 2012-06-21\n"
 "X-Translation-Project: translatewiki.net <https://translatewiki.net>\n"
 "X-Language-Code: ko\n"
 "X-Message-Group: #out-mwlibrl\n"
-"X-POT-Import-Date: 2012-03-11 22:23:36+0000\n"
+"X-POT-Import-Date: 2012-04-08 21:35:04+0000\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: mwlib/rl/pdfmessages.py:11
@@ -185,7 +186,7 @@ msgstr "편집자"
 
 #: mwlib/rl/rlwriter.py:722
 msgid "unknown"
-msgstr ""
+msgstr "알 수 없음"
 
 #: mwlib/rl/rlwriter.py:724
 msgid "License"
