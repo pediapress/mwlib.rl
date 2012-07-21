@@ -5,16 +5,10 @@
 
 import os, sys
 
-try:
-    from setuptools import setup, Extension
-except ImportError:
-    import ez_setup
-    ez_setup.use_setuptools()
-    from setuptools import setup, Extension
-
+from setuptools import setup
 from distutils.command.sdist import sdist as _sdist
 
-install_requires = ["mwlib>=0.12.14, <0.14", "pygments>=1.0", "mwlib.ext>=0.9.3, <0.14"]
+install_requires = ["mwlib>=0.13.0", "pygments>=1.0", "mwlib.ext>=0.9.3"]
 
 
 class sdist(_sdist):
