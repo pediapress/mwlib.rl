@@ -1,9 +1,2 @@
-class _Version(tuple):
-    """internal version object, subclass of C{tuple},
-    but implements a fancier __str__ representation
-    """
-    def __str__(self):
-        return '.'.join([str(x) for x in self])
-
-version = _Version((0, 12, 12))
-del _Version
+version = __version__ = "0.14.0"
+__version_info__ = (0, 14, 0)
