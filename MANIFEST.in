@@ -4,6 +4,7 @@ include README.rst
 include compile_messages.py
 include conftest.py
 include example-mwlib.config
+include l10n.py
 include make_messages.py
 include mwlib/__init__.py
 include mwlib/fonts/__init__.py

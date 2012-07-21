@@ -2,7 +2,7 @@
 
 import sys
 
-from mwlib.l10n import make_messages
+from l10n import make_messages
 from mwlib.rl._version import version
 
 def main(argv):
