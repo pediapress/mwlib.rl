@@ -1,19 +1,20 @@
 # Translation of Mwlib.rl to толышә зывон (толышә зывон)
 # Exported from translatewiki.net
 #
+# Author: Erdemaslancan
 # Author: Гусейн
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-02 11:40+0000\n"
-"PO-Revision-Date: 2012-06-10 23:46:00+0000\n"
+"POT-Creation-Date: 2012-08-09 14:03+0000\n"
+"PO-Revision-Date: 2012-08-09 14:03:03+0000\n"
 "Language-Team: толышә зывон <https://translatewiki.net/wiki/Portal:tly>\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: \n"
 "X-POT-Import-Date: 2012-04-08 21:35:04+0000\n"
-"X-Generator: MediaWiki 1.20alpha (d974795); Translate 2012-06-03\n"
+"X-Generator: MediaWiki 1.20alpha (541d57a); Translate 2012-07-04\n"
 "X-Translation-Project: translatewiki.net <https://translatewiki.net>\n"
 "X-Language-Code: tly\n"
 "X-Message-Group: #out-mwlibrl\n"
@@ -104,7 +105,7 @@ msgstr ""
 
 #: mwlib/rl/pdfmessages.py:49
 msgid "Appendix"
-msgstr ""
+msgstr "Әловә"
 
 #: mwlib/rl/pdfmessages.py:51
 msgid ""
@@ -176,7 +177,7 @@ msgstr ""
 
 #: mwlib/rl/rlwriter.py:704 mwlib/rl/rlwriter.py:729
 msgid "Source"
-msgstr ""
+msgstr "Сәвон"
 
 #: mwlib/rl/rlwriter.py:706 mwlib/rl/rlwriter.py:732
 msgid "Contributors"

@@ -6,13 +6,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-02 11:39+0000\n"
-"PO-Revision-Date: 2012-06-10 23:46:00+0000\n"
+"POT-Creation-Date: 2012-08-09 14:03+0000\n"
+"PO-Revision-Date: 2012-08-09 14:03:03+0000\n"
 "Language-Team: Zazaki <https://translatewiki.net/wiki/Portal:diq>\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-POT-Import-Date: 2012-04-08 21:35:04+0000\n"
-"X-Generator: MediaWiki 1.20alpha (d974795); Translate 2012-06-03\n"
+"X-Generator: MediaWiki 1.20alpha (541d57a); Translate 2012-07-04\n"
 "X-Translation-Project: translatewiki.net <https://translatewiki.net>\n"
 "X-Language-Code: diq\n"
 "X-Message-Group: #out-mwlibrl\n"
@@ -48,7 +48,7 @@ msgstr "Bın name"
 
 #: mwlib/rl/pdfmessages.py:25
 msgid "Editor:"
-msgstr "Vurner:"
+msgstr "Editor:"
 
 #: mwlib/rl/pdfmessages.py:27
 msgid "Created on:"
@@ -96,6 +96,10 @@ msgid ""
 "of the index, of your book are shown in this preview. All articles, even "
 "those left out of the preview, will be included in the final printed book."
 msgstr ""
+"Şıma ra recay ma diqet bê: no verqayt ho ke kıtabê şıma seni aseno deye şıma "
+"rê fıkır dano. Na verqayt dı  tay pelanê sıftandê kıtab dê şıma mocnenê. "
+"Nara ke wesiqey bini  pesorekin da kıtabi de aseno tiyad teber dê verqayti "
+"dı tepêşiyayo."
 
 #: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:506
 #: mwlib/rl/rlwriter.py:822
@@ -113,6 +117,9 @@ msgid ""
 "including the copyright status, the copyright owner, and the license "
 "conditions."
 msgstr ""
+"Leteyê cêrêni de, wesiqan u resimanê na kıtaber dı çımi keno liste. Nê "
+"çımey, weziyetê telifi, wêrê telifi u şertê lisansi ra ata dehana "
+"teferruatın lisans kerdışi rê malumat dano."
 
 #: mwlib/rl/pdfmessages.py:53
 msgid ""
@@ -120,6 +127,8 @@ msgid ""
 "information including the copyright status, the copyright owner, and the "
 "license conditions."
 msgstr ""
+"Çımeyê ke qan dê wesiqan lise biyê, weziyetê telifi, wêrê telifi u şertê "
+"lisansi ra ata dehana teferruatın lisans kerdışi rê malumat dano."
 
 #: mwlib/rl/pdfmessages.py:55
 msgid ""
@@ -127,6 +136,8 @@ msgid ""
 "information including the copyright status, the copyright owner, and the "
 "license conditions."
 msgstr ""
+"Çımeyê ke qan dê wesiqan lise biyê, weziyetê telifi, wêrê telifi u şertê "
+"lisansi ra ata dehana teferruatın lisans kerdışi rê malumat dano."
 
 #: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:507
 #: mwlib/rl/rlwriter.py:697

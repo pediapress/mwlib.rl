@@ -6,18 +6,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-02 11:40+0000\n"
-"PO-Revision-Date: 2012-04-04 18:57:15+0000\n"
+"POT-Creation-Date: 2012-08-09 14:03+0000\n"
+"PO-Revision-Date: 2012-08-09 14:03:03+0000\n"
 "Language-Team: Uyghur (Arabic script) <https://translatewiki.net/wiki/Portal:"
 "ug-arab>\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: \n"
-"X-Generator: MediaWiki 1.20alpha (f3f3e1b); Translate 2012-03-13\n"
+"X-Generator: MediaWiki 1.20alpha (541d57a); Translate 2012-07-04\n"
 "X-Translation-Project: translatewiki.net <https://translatewiki.net>\n"
 "X-Language-Code: ug-arab\n"
 "X-Message-Group: #out-mwlibrl\n"
-"X-POT-Import-Date: 2012-03-11 22:23:36+0000\n"
+"X-POT-Import-Date: 2012-04-08 21:35:04+0000\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: mwlib/rl/pdfmessages.py:11
@@ -66,7 +66,7 @@ msgstr "ماقالىلەر"
 
 #: mwlib/rl/pdfmessages.py:33
 msgid "Produced by:"
-msgstr ""
+msgstr "ئىشلەپچىقارغۇچى:"
 
 #: mwlib/rl/pdfmessages.py:35
 msgid "pdf writer version:"
@@ -78,17 +78,19 @@ msgstr "mwlib نەشرى:"
 
 #: mwlib/rl/pdfmessages.py:39
 msgid "Table of Contents"
-msgstr ""
+msgstr "جەدۋەل مەزمۇنى"
 
 #: mwlib/rl/pdfmessages.py:41
 msgid "Skipping Articles!"
-msgstr ""
+msgstr "ماقالىلاردىن ئاتلاۋاتىدۇ!"
 
 #: mwlib/rl/pdfmessages.py:43
 msgid ""
 "Please note:  This is only a preview intended to give an idea how the book "
 "is typeset."
 msgstr ""
+"دىققەت: بۇ پەقەت كىتاب تىزىلىشىنىڭ قانداق بولغانلىقىنى بىلىش ئۈچۈن "
+"تەمىنلەنگەن ئالدىن كۆزىتىشتۇر."
 
 #: mwlib/rl/pdfmessages.py:45
 msgid ""
@@ -97,6 +99,10 @@ msgid ""
 "of the index, of your book are shown in this preview. All articles, even "
 "those left out of the preview, will be included in the final printed book."
 msgstr ""
+"دىققەت: بۇ كىتابىڭىزنىڭ سىزگە ياخشى تەسىرات قالدۇرۇشى ئۈچۈن بېرىلگەن ئالدىن "
+"كۆزىتىش بېتىدۇر. بۇ ئالدىن كۆزىتىشتە پەقەت مۇندەرىجىدىكى ئالدىنقى بىر قانچە "
+"ماقالىلارلا كۆرسىتىلدى. ئالدىن كۆزىتىشتە كۆرسىتىلمىگەن ماقالىلار كىتابنىڭ "
+"باسما نۇسخىسىدا بار."
 
 #: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:506
 #: mwlib/rl/rlwriter.py:822
@@ -114,6 +120,10 @@ msgid ""
 "including the copyright status, the copyright owner, and the license "
 "conditions."
 msgstr ""
+"تۆۋەندىكى بۆلەكتە كىتابتا ئىشلىتىلگەن ھەممە ماقالىلار ۋە سۈرەتلەرنىڭ مەنبەسى "
+"كۆرسىتىلدى. بۇ مەنبەلەر تېخىمۇ تەپسىلىي بولغان نەشر ھوقۇقى ھالىتى، نەشر "
+"ھوقۇقى ئۇچۇرى، نەشر ھوقۇقىنىڭ ئىگىسى ۋە ئىجازەت قاتارلىقلارنى ئۆز ئىچىگە "
+"ئالىدۇ،"
 
 #: mwlib/rl/pdfmessages.py:53
 msgid ""
@@ -121,6 +131,10 @@ msgid ""
 "information including the copyright status, the copyright owner, and the "
 "license conditions."
 msgstr ""
+"تۆۋەندىكى بۆلەكتە كىتابتا ئىشلىتىلگەن ھەممە ماقالىلار ۋە سۈرەتلەرنىڭ مەنبەسى "
+"كۆرسىتىلدى. بۇ مەنبەلەر تېخىمۇ تەپسىلىي بولغان نەشر ھوقۇقى ھالىتى، نەشر "
+"ھوقۇقى ئۇچۇرى، نەشر ھوقۇقىنىڭ ئىگىسى ۋە ئىجازەت قاتارلىقلارنى ئۆز ئىچىگە "
+"ئالىدۇ."
 
 #: mwlib/rl/pdfmessages.py:55
 msgid ""
@@ -128,6 +142,9 @@ msgid ""
 "information including the copyright status, the copyright owner, and the "
 "license conditions."
 msgstr ""
+"كۆرسىتىلگەن سۈرەتلەرنىڭ مەنبەسى تېخىمۇ تەپسىلىي بولغان نەشر ھوقۇقى ئۇچۇرى "
+"يەنى، نەشر ھوقۇقى ھالىتى، نەشر ھوقۇقىنىڭ ئىگىسى ۋە ئىجازەت شەرتى "
+"قاتارلىقلارنى ئۆز ئىچىگە ئالىدۇ."
 
 #: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:507
 #: mwlib/rl/rlwriter.py:697
@@ -149,17 +166,19 @@ msgstr "ئاتسىز تەھرىر"
 
 #: mwlib/rl/pdfmessages.py:65
 msgid "Figure"
-msgstr ""
+msgstr "شەكىل"
 
 #: mwlib/rl/pdfmessages.py:67
 msgid "See also"
-msgstr ""
+msgstr "پايدىلانمىلار"
 
 #: mwlib/rl/pdfstyles.py:78
 msgid ""
 "PDF generated using the open source mwlib toolkit. See http://code."
 "pediapress.com/ for more information."
 msgstr ""
+"كودى ئوچۇق mwlib قورالىنى ئىشلىتىپ ھالسى قىلىنغان PDF. تەپسىلاتىنى http://"
+"code.pediapress.com/ دىن كۆرۈڭ."
 
 #: mwlib/rl/rlwriter.py:342
 #, python-format
@@ -172,6 +191,8 @@ msgid ""
 "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
 "(mwlibextversion)s"
 msgstr ""
+"mwlib نەشرى: %(mwlibversion)s, mwlib.rl نەشرى: %(mwlibrlversion)s, %"
+"(mwlibextversion)s"
 
 #: mwlib/rl/rlwriter.py:704 mwlib/rl/rlwriter.py:729
 msgid "Source"
@@ -195,3 +216,7 @@ msgid ""
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
 "software (b) problematic Mediawiki markup (c) table is too wide"
 msgstr ""
+"<strong>ئاگاھلاندۇرۇش: ماقالىنى بىر تەرەپ قىلالمىدى - ساپ تېكىست ھالىتىدە "
+"چىقىرىدۇ.</strong><br/>مۇمكىن بولغان سەۋەبلەر: (a) بۇ pdf ھاسىل قىلىدىغان "
+"يۇمشاق دېتالدا مەسىلە بار (b) Mediawiki نىڭ بەلگىسىدە مەسىلە بار (c) جەدۋەل "
+"بەك كەڭ"

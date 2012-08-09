@@ -1,95 +1,90 @@
-# Translation of Mwlib.rl to Interlingue (Interlingue)
+# Translation of Mwlib.rl to Oriya (ଓଡ଼ିଆ)
 # Exported from translatewiki.net
 #
-# Author: Renan
+# Author: Jnanaranjan Sahu
+# Author: Psubhashish
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-08-09 14:03+0000\n"
-"PO-Revision-Date: 2012-04-04 18:57:14+0000\n"
-"Language-Team: Interlingue <https://translatewiki.net/wiki/Portal:ie>\n"
+"PO-Revision-Date: 2012-08-09 14:03:03+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ie\n"
-"X-POT-Import-Date: 2012-03-11 22:23:36+0000\n"
-"X-Generator: MediaWiki 1.20alpha (f3f3e1b); Translate 2012-03-13\n"
+"X-POT-Import-Date: 2012-04-08 21:35:04+0000\n"
 "X-Translation-Project: translatewiki.net <https://translatewiki.net>\n"
-"X-Language-Code: ie\n"
-"X-Message-Group: #out-mwlibrl\n"
+"X-Generator: MediaWiki 1.20alpha (541d57a); Translate 2012-07-04\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: mwlib/rl/pdfmessages.py:11
 msgid "Index"
-msgstr "Index"
+msgstr "ସୂଚୀ"
 
 #: mwlib/rl/pdfmessages.py:13
 msgid "Source:"
-msgstr "Fonte:"
+msgstr "ମୂଳାଧାର"
 
 #: mwlib/rl/pdfmessages.py:15
 msgid "License:"
-msgstr "Autorisation:"
+msgstr "ଲାଇସେନ୍ସ"
 
 #: mwlib/rl/pdfmessages.py:17
 msgid "Contributors:"
-msgstr "Contributores:"
+msgstr "ଅବଦାନକାରୀଗଣ"
 
 #: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:553
 msgid "Article Licenses"
-msgstr "Autorisationes de articul:"
+msgstr "ପ୍ରସଙ୍ଗ ଲାଇସେନ୍ସ"
 
 #: mwlib/rl/pdfmessages.py:21
 msgid "Title"
-msgstr "Titul:"
+msgstr "ଶିରୋନାମା"
 
 #: mwlib/rl/pdfmessages.py:23
 msgid "Subtitle:"
-msgstr "Subtitul:"
+msgstr "ଉପନାମ"
 
 #: mwlib/rl/pdfmessages.py:25
 msgid "Editor:"
-msgstr "Redactor:"
+msgstr "ସମ୍ପାଦକ:"
 
 #: mwlib/rl/pdfmessages.py:27
 msgid "Created on:"
-msgstr "Creat in:"
+msgstr "ତିଆରି ହୋଇଥିବା ଦିନ ହେଇଛି :"
 
 #: mwlib/rl/pdfmessages.py:29 mwlib/rl/toc.py:46
 msgid "Contents"
-msgstr "Contenetes"
+msgstr "ସୂଚୀପତ୍ର"
 
 #: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:458
 msgid "Articles"
-msgstr "Articules"
+msgstr "ପ୍ରସଙ୍ଗଗୁଡିକ"
 
 #: mwlib/rl/pdfmessages.py:33
 msgid "Produced by:"
-msgstr "Productet per:"
+msgstr "ଙ୍କ ଦ୍ଵାରା ପ୍ରଦତ୍ତ:"
 
 #: mwlib/rl/pdfmessages.py:35
 msgid "pdf writer version:"
-msgstr "Version de scritor pdf:"
+msgstr "ପିଡ଼ିଏଫ ଲେଖନୀ ସଂସ୍କରଣ"
 
 #: mwlib/rl/pdfmessages.py:37
 msgid "mwlib version:"
-msgstr "Version mwlib:"
+msgstr ""
 
 #: mwlib/rl/pdfmessages.py:39
 msgid "Table of Contents"
-msgstr "Tabelle de Contenetes"
+msgstr "ସୂଚୀପତ୍ର ସାରଣୀ"
 
 #: mwlib/rl/pdfmessages.py:41
 msgid "Skipping Articles!"
-msgstr "Saltettant Articules!"
+msgstr "ଛାଡି ଦେଇଥିବା ପ୍ରସଙ୍ଗଗୁଡିକ !"
 
 #: mwlib/rl/pdfmessages.py:43
 msgid ""
 "Please note:  This is only a preview intended to give an idea how the book "
 "is typeset."
-msgstr ""
-"Pleser note: Ti es solmen un prevision intentet por dar un idé qualmen li "
-"libre es fat."
+msgstr "ଦୟାକରି ଧ୍ୟାନ ଦିଅନ୍ତୁ : ବହିଟି କିପରି ଭାବେ ଲେଖା ଯାଇଛି ଏହା ତାର ଗୋଟେ ଦେଖଣା ।"
 
 #: mwlib/rl/pdfmessages.py:45
 msgid ""
@@ -98,20 +93,15 @@ msgid ""
 "of the index, of your book are shown in this preview. All articles, even "
 "those left out of the preview, will be included in the final printed book."
 msgstr ""
-"Pleser note: Ti es solmen un prevision de tui libre, intentet por dar un idé "
-"qualmen tui libre specta. Solmen li poc prim articules, quam san quam li "
-"prim págines de li index, de tui libre es monstrat in ti prevision. Omni li "
-"articules, mem tis levul for de ti prevision, va esser includet in li final "
-"de libre printat."
 
 #: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:506
 #: mwlib/rl/rlwriter.py:822
 msgid "References"
-msgstr "Referenties"
+msgstr "ଆଧାରଗୁଡିକ"
 
 #: mwlib/rl/pdfmessages.py:49
 msgid "Appendix"
-msgstr "Apéndice"
+msgstr ""
 
 #: mwlib/rl/pdfmessages.py:51
 msgid ""
@@ -120,10 +110,6 @@ msgid ""
 "including the copyright status, the copyright owner, and the license "
 "conditions."
 msgstr ""
-"Li proxim divisiones lista li fontes por omni li articules e figuras usat in "
-"ti libre. Tis fontes provide plu detalliat autorisant information includent "
-"li rang de jure editorial, li proprietario de jure editorial, e li "
-"conditiones de autorisation."
 
 #: mwlib/rl/pdfmessages.py:53
 msgid ""
@@ -131,9 +117,6 @@ msgid ""
 "information including the copyright status, the copyright owner, and the "
 "license conditions."
 msgstr ""
-"Li fontes listat por chascun articul provide plu detalliat autorisant "
-"information includent li rang de jure editorial, li proprietario de jure "
-"editorial, e li conditiones de autorisation."
 
 #: mwlib/rl/pdfmessages.py:55
 msgid ""
@@ -141,48 +124,43 @@ msgid ""
 "information including the copyright status, the copyright owner, and the "
 "license conditions."
 msgstr ""
-"Li fontes listat por chascun figura provide plu detalliat autorisant "
-"information includent li rang de jure editorial, li proprietario de jure "
-"editorial, e li conditiones de autorisation."
 
 #: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:507
 #: mwlib/rl/rlwriter.py:697
 msgid "Article Sources and Contributors"
-msgstr "Fontes de Articul e Contributores"
+msgstr "ପ୍ରସଙ୍ଗ ଅଧାରଗୁଡିକ ଏବଂ ଅବଦନକାରୀ"
 
 #: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:510
 #: mwlib/rl/rlwriter.py:716
 msgid "Image Sources, Licenses and Contributors"
-msgstr "Fontes de Figura, Autorisationes e Contributores"
+msgstr "ଛବିଗୁଡିକର ଆଧାର, ଲାଇସେନ୍ସ ଏବଂ ଅବଦନକାରୀମାନେ"
 
 #: mwlib/rl/pdfmessages.py:61
 msgid "Image"
-msgstr "Figura"
+msgstr "ଛବି"
 
 #: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:689
 msgid "anonymous edits"
-msgstr "Redactiones anonim"
+msgstr "ଯାହିତାହି ସମ୍ପାଦନା"
 
 #: mwlib/rl/pdfmessages.py:65
 msgid "Figure"
-msgstr "Figura"
+msgstr "ପ୍ରତିକୃତି"
 
 #: mwlib/rl/pdfmessages.py:67
 msgid "See also"
-msgstr "Vider anc"
+msgstr "ଆହୁରି ଦେଖିବେ"
 
 #: mwlib/rl/pdfstyles.py:78
 msgid ""
 "PDF generated using the open source mwlib toolkit. See http://code."
 "pediapress.com/ for more information."
 msgstr ""
-"PDF productet usa li possedallia de utensile mwlib de fonte líber. Vider "
-"http://code.pediapress.com/ por plu information."
 
 #: mwlib/rl/rlwriter.py:342
 #, python-format
 msgid "mwlib.ext version: %(version)s"
-msgstr "mwlib.ext version: %(version)s"
+msgstr ""
 
 #: mwlib/rl/rlwriter.py:348
 #, python-format
@@ -190,24 +168,22 @@ msgid ""
 "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
 "(mwlibextversion)s"
 msgstr ""
-"mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
-"(mwlibextversion)s"
 
 #: mwlib/rl/rlwriter.py:704 mwlib/rl/rlwriter.py:729
 msgid "Source"
-msgstr "Fonte"
+msgstr "ଆଧାର"
 
 #: mwlib/rl/rlwriter.py:706 mwlib/rl/rlwriter.py:732
 msgid "Contributors"
-msgstr "Contributores"
+msgstr "ଅବଦାନକାରୀଗଣ"
 
 #: mwlib/rl/rlwriter.py:722
 msgid "unknown"
-msgstr "disconosset"
+msgstr ""
 
 #: mwlib/rl/rlwriter.py:724
 msgid "License"
-msgstr "Autorisation"
+msgstr ""
 
 #: mwlib/rl/rlwriter.py:813
 msgid ""
@@ -215,7 +191,3 @@ msgid ""
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
 "software (b) problematic Mediawiki markup (c) table is too wide"
 msgstr ""
-"<strong>ADVERTIMENT: Articul posset ne es rendit - va esser monstrat textu "
-"simplic.</strong><br/>Potential causes de li problem es: (a) un bug in li "
-"software pdf-writer (b) marcation de Mediawiki problematic (c) tabelle es "
-"anc larg"
