@@ -1,22 +1,23 @@
-# Translation of Mwlib.rl to Estonian (Eesti)
+# Translation of Mwlib.rl to Estonian (eesti)
 # Exported from translatewiki.net
 #
+# Author: Avjoska
 # Author: Silvar
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-09 14:03+0000\n"
-"PO-Revision-Date: 2012-04-04 18:57:13+0000\n"
+"POT-Creation-Date: 2012-08-12 18:27+0000\n"
+"PO-Revision-Date: 2012-08-12 18:27:41+0000\n"
 "Language-Team: Estonian <https://translatewiki.net/wiki/Portal:et>\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: et\n"
-"X-Generator: MediaWiki 1.20alpha (f3f3e1b); Translate 2012-03-13\n"
+"X-Generator: MediaWiki 1.20alpha (cc549f1); Translate 2012-07-04\n"
 "X-Translation-Project: translatewiki.net <https://translatewiki.net>\n"
 "X-Language-Code: et\n"
 "X-Message-Group: #out-mwlibrl\n"
-"X-POT-Import-Date: 2012-03-11 22:23:36+0000\n"
+"X-POT-Import-Date: 2012-04-08 21:35:04+0000\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: mwlib/rl/pdfmessages.py:11
@@ -56,18 +57,16 @@ msgid "Created on:"
 msgstr ""
 
 #: mwlib/rl/pdfmessages.py:29 mwlib/rl/toc.py:46
-#, fuzzy
 msgid "Contents"
-msgstr "Kaastöö tegijad"
+msgstr "Sisukord"
 
 #: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:458
-#, fuzzy
 msgid "Articles"
-msgstr "Artikli litsentsid"
+msgstr "Artiklid"
 
 #: mwlib/rl/pdfmessages.py:33
 msgid "Produced by:"
-msgstr ""
+msgstr "Tootja:"
 
 #: mwlib/rl/pdfmessages.py:35
 #, fuzzy
@@ -157,7 +156,7 @@ msgstr ""
 
 #: mwlib/rl/pdfmessages.py:67
 msgid "See also"
-msgstr ""
+msgstr "Vaata ka"
 
 #: mwlib/rl/pdfstyles.py:78
 msgid ""
@@ -189,7 +188,7 @@ msgstr "Kaastöö tegijad"
 
 #: mwlib/rl/rlwriter.py:722
 msgid "unknown"
-msgstr ""
+msgstr "tundmatu"
 
 #: mwlib/rl/rlwriter.py:724
 msgid "License"

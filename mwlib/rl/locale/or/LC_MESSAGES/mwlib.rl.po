@@ -7,13 +7,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-09 14:03+0000\n"
-"PO-Revision-Date: 2012-08-09 14:03:03+0000\n"
+"POT-Creation-Date: 2012-08-12 18:27+0000\n"
+"PO-Revision-Date: 2012-08-12 18:27:41+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-POT-Import-Date: 2012-04-08 21:35:04+0000\n"
 "X-Translation-Project: translatewiki.net <https://translatewiki.net>\n"
-"X-Generator: MediaWiki 1.20alpha (541d57a); Translate 2012-07-04\n"
+"X-Generator: MediaWiki 1.20alpha (cc549f1); Translate 2012-07-04\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: mwlib/rl/pdfmessages.py:11
@@ -70,7 +70,7 @@ msgstr "ପିଡ଼ିଏଫ ଲେଖନୀ ସଂସ୍କରଣ"
 
 #: mwlib/rl/pdfmessages.py:37
 msgid "mwlib version:"
-msgstr ""
+msgstr "mwlib version:"
 
 #: mwlib/rl/pdfmessages.py:39
 msgid "Table of Contents"
@@ -93,6 +93,9 @@ msgid ""
 "of the index, of your book are shown in this preview. All articles, even "
 "those left out of the preview, will be included in the final printed book."
 msgstr ""
+"ଦୟାକରି ଧ୍ୟାନ ଦିଅନ୍ତୁ: ଏହା କେବଳ ଆପଣଙ୍କର ବହିର ଏକ ଦେଖଣା, ଯାହାକି ସୁଚେଇବ କି ଆପଣଙ୍କ ବହି କିପରି "
+"ଦେଖାଯାଏ ।ଏହି ଦେଖଣାରେ ଆପଣଙ୍କ ବହିର ପ୍ରଥମ କିଛି ପ୍ରସଙ୍ଗ ତାସହ ସୂଚୀପତ୍ରର ପ୍ରଥମ ପୃଷ୍ଠାଗୁଡିକ "
+"ଦେଖାଯାଇଥାଏ । ସମସ୍ତ ପ୍ରସଙ୍ଗ, ଏପରିକି ଯେଉଁଗୁଡିକ ଦେଖଣାରେ ନାହିଁ, ସବୁ ଛପାବହିରେ ରହିବ ।"
 
 #: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:506
 #: mwlib/rl/rlwriter.py:822
@@ -101,7 +104,7 @@ msgstr "ଆଧାରଗୁଡିକ"
 
 #: mwlib/rl/pdfmessages.py:49
 msgid "Appendix"
-msgstr ""
+msgstr "ସୂଚୀପତ୍ର"
 
 #: mwlib/rl/pdfmessages.py:51
 msgid ""
@@ -110,6 +113,9 @@ msgid ""
 "including the copyright status, the copyright owner, and the license "
 "conditions."
 msgstr ""
+"ଏହି ବହିରେ ବ୍ୟବହାର କରାଯାଇଥିବା ସମସ୍ତ ପ୍ରସଙ୍ଗ ଓ ଫାଇଲର ଆଧାରଗୁଡିକୁ ଏହି ବିଭାଗରେ ତାଲିକାଭୁକ୍ତ "
+"କରାଯାଇଛି । ସେହି ଅଧାରଗୁଡିକ ନକଲ ଅଧିକାର, ଲାଇସେନ୍ସ, ନକଲ ଅଧିକାରୀ ଏବଂ ଲାଇସେନ୍ସ ଉପଲବଧି ବିଷୟରେ "
+"ଅଧିକ ବିବରଣୀ ପ୍ରଦାନ କରେ ।"
 
 #: mwlib/rl/pdfmessages.py:53
 msgid ""
@@ -117,6 +123,8 @@ msgid ""
 "information including the copyright status, the copyright owner, and the "
 "license conditions."
 msgstr ""
+"ସମସ୍ତ ପ୍ରସଙ୍ଗ ପାଇଁ ତାଲିକାଭୁକ୍ତ ହୋଇଥିବା ଅଧାରଗୁଡିକ ନକଲ ଅଧିକାର, ଲାଇସେନ୍ସ, ନକଲ ଅଧିକାରୀ ଏବଂ "
+"ଲାଇସେନ୍ସ ଉପଲବଧି ବିଷୟରେ ଅଧିକ ବିବରଣୀ ପ୍ରଦାନ କରେ ।"
 
 #: mwlib/rl/pdfmessages.py:55
 msgid ""
@@ -124,6 +132,8 @@ msgid ""
 "information including the copyright status, the copyright owner, and the "
 "license conditions."
 msgstr ""
+"ସମସ୍ତ ଫାଇଲ ପାଇଁ ତାଲିକାଭୁକ୍ତ ହୋଇଥିବା ଅଧାରଗୁଡିକ ନକଲ ଅଧିକାର, ଲାଇସେନ୍ସ, ନକଲ ଅଧିକାରୀ ଏବଂ "
+"ଲାଇସେନ୍ସ ଉପଲବଧି ବିଷୟରେ ଅଧିକ ବିବରଣୀ ପ୍ରଦାନ କରେ ।"
 
 #: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:507
 #: mwlib/rl/rlwriter.py:697
@@ -156,11 +166,13 @@ msgid ""
 "PDF generated using the open source mwlib toolkit. See http://code."
 "pediapress.com/ for more information."
 msgstr ""
+"ପିଡ଼ିଏଫଟି mwlibନାମକ ଖୋଲା ଟୁଲ ଦ୍ଵାରା ବାହାର କରାଯାଇଛି । ଅଧିକ ବିବରଣୀ ପାଇଁ ଦେଖନ୍ତୁ http://"
+"code.pediapress.com/"
 
 #: mwlib/rl/rlwriter.py:342
 #, python-format
 msgid "mwlib.ext version: %(version)s"
-msgstr ""
+msgstr "mwlib.ext ସଂସ୍କରଣ: %(version)s"
 
 #: mwlib/rl/rlwriter.py:348
 #, python-format
@@ -168,6 +180,8 @@ msgid ""
 "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
 "(mwlibextversion)s"
 msgstr ""
+"mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
+"(mwlibextversion)s"
 
 #: mwlib/rl/rlwriter.py:704 mwlib/rl/rlwriter.py:729
 msgid "Source"
@@ -179,11 +193,11 @@ msgstr "ଅବଦାନକାରୀଗଣ"
 
 #: mwlib/rl/rlwriter.py:722
 msgid "unknown"
-msgstr ""
+msgstr "ଅଜଣା"
 
 #: mwlib/rl/rlwriter.py:724
 msgid "License"
-msgstr ""
+msgstr "ଲାଇସେନ୍ସ"
 
 #: mwlib/rl/rlwriter.py:813
 msgid ""
@@ -191,3 +205,6 @@ msgid ""
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
 "software (b) problematic Mediawiki markup (c) table is too wide"
 msgstr ""
+"<strong>ସାବଧାନ : ପ୍ରସଙ୍ଗଟି ଆଗକୁ ବଢି ପାରିବ ନାହିଁ - ଖାଲି ଲେଖାଗୁଡିକ ଫଳରୂପେ ବାହାରୁଛି ।</"
+"strong><br/> ଜଣାଶୁଣା ଅସୁବିଧା ଗୁଡିକ :(କ) ପିଡ଼ିଏଫ ଲେଖନୀ ସଫ୍ଟୱେରରେ ଅସୁବିଧା (ଖ) ମେଡିଆଉଇକି "
+"ମାର୍କଅପରେ ଅସୁବିଧା (ଗ) ସାରଣୀଟି ବହୁତ ଓସାରିଆ"

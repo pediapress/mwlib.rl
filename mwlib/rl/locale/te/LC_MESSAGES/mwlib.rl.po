@@ -7,13 +7,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-09 14:03+0000\n"
-"PO-Revision-Date: 2012-08-09 14:03:03+0000\n"
+"POT-Creation-Date: 2012-08-12 18:28+0000\n"
+"PO-Revision-Date: 2012-08-12 18:27:42+0000\n"
 "Language-Team: Telugu <https://translatewiki.net/wiki/Portal:te>\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: te\n"
-"X-Generator: MediaWiki 1.20alpha (541d57a); Translate 2012-07-04\n"
+"X-Generator: MediaWiki 1.20alpha (cc549f1); Translate 2012-07-04\n"
 "X-Translation-Project: translatewiki.net <https://translatewiki.net>\n"
 "X-Language-Code: te\n"
 "X-Message-Group: #out-mwlibrl\n"
@@ -38,7 +38,7 @@ msgstr "విషయదాతలు:"
 
 #: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:553
 msgid "Article Licenses"
-msgstr ""
+msgstr "వ్యాసపు లైసెన్సులు"
 
 #: mwlib/rl/pdfmessages.py:21
 msgid "Title"
@@ -88,7 +88,7 @@ msgstr ""
 msgid ""
 "Please note:  This is only a preview intended to give an idea how the book "
 "is typeset."
-msgstr ""
+msgstr "దయచేసి గమనించండి: ఇది పుస్తకం ఎలా ఉండబోతుందో తెలుసుకోడానికి కేవలం మునుజూపు మాత్రమే."
 
 #: mwlib/rl/pdfmessages.py:45
 msgid ""
@@ -132,7 +132,7 @@ msgstr ""
 #: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:507
 #: mwlib/rl/rlwriter.py:697
 msgid "Article Sources and Contributors"
-msgstr ""
+msgstr "వ్యాసాల మూలాలు మరియు రచయితలు"
 
 #: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:510
 #: mwlib/rl/rlwriter.py:716
