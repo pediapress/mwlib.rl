@@ -6,13 +6,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-12 18:27+0000\n"
-"PO-Revision-Date: 2012-08-12 18:27:41+0000\n"
+"POT-Creation-Date: 2012-08-19 16:17+0000\n"
+"PO-Revision-Date: 2012-08-19 16:17:21+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-POT-Import-Date: 2012-04-08 21:35:04+0000\n"
 "X-Translation-Project: translatewiki.net <https://translatewiki.net>\n"
-"X-Generator: MediaWiki 1.20alpha (cc549f1); Translate 2012-07-04\n"
+"X-Generator: MediaWiki 1.20alpha (ff4001d); Translate 2012-07-04\n"
 "Plural-Forms: nplurals=2; plural=(n != 0);\n"
 
 #: mwlib/rl/pdfmessages.py:11
@@ -94,6 +94,11 @@ msgid ""
 "of the index, of your book are shown in this preview. All articles, even "
 "those left out of the preview, will be included in the final printed book."
 msgstr ""
+"Éling: Iki namung pratayang saka buku Sampéyan kanggo ngawèhi Sampéyan "
+"sawangan ngenani wujud bukuné. Namung sebagéyan artikel wiwitan uga kaca-"
+"kaca wiwitan saka indèks nèng bukuné Sampéyan sing dituduhaké pratayang iki. "
+"Kabèh artikel, masiya ora ana nèng pratayang, tetep bakal kalebu nèng "
+"chitakan pungkasan bukuné."
 
 #: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:506
 #: mwlib/rl/rlwriter.py:822
@@ -111,6 +116,9 @@ msgid ""
 "including the copyright status, the copyright owner, and the license "
 "conditions."
 msgstr ""
+"Bagèyan iki ngadaptar sumber saka kabèh artikel lan gambar kanggo buku iki. "
+"Sumber kuwi mau nyadhiyakaké inpormasi lisensi sing luwih rinci kalebu "
+"status hak cipta, sing nduwé hak cipta, lan kondisi lisènsi."
 
 #: mwlib/rl/pdfmessages.py:53
 msgid ""

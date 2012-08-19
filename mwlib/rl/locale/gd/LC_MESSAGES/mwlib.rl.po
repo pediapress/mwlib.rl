@@ -6,13 +6,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-12 18:27+0000\n"
-"PO-Revision-Date: 2012-08-12 18:27:41+0000\n"
+"POT-Creation-Date: 2012-08-19 16:17+0000\n"
+"PO-Revision-Date: 2012-08-19 16:17:21+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-POT-Import-Date: 2012-04-08 21:35:04+0000\n"
 "X-Translation-Project: translatewiki.net <https://translatewiki.net>\n"
-"X-Generator: MediaWiki 1.20alpha (cc549f1); Translate 2012-07-04\n"
+"X-Generator: MediaWiki 1.20alpha (ff4001d); Translate 2012-07-04\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 || n == 11) ? 0 : (n == 2 || n == "
 "12) ? 1 : (n > 2 && n < 20) ? 2 : 3;\n"
 
@@ -95,15 +95,20 @@ msgid ""
 "of the index, of your book are shown in this preview. All articles, even "
 "those left out of the preview, will be included in the final printed book."
 msgstr ""
+"Thoir an aire nach eil ann ach dìreach ro-shealladh air an leabhar agad ach "
+"am faic thu cò ris a bhios e coltach. Chan fhaic thu ach feadhainn dhe na h-"
+"artaigealan aig an toiseach agus na duilleagan aig toiseach an ro-ràidh san "
+"ro-shealladh seo. Bidh gach artaigeal, fiù an fheadhainn nach fhaic thu san "
+"ro-shealladh, san leabhar chlò-bhuailte aig a' cheann thall."
 
 #: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:506
 #: mwlib/rl/rlwriter.py:822
 msgid "References"
-msgstr ""
+msgstr "Iomraidhean"
 
 #: mwlib/rl/pdfmessages.py:49
 msgid "Appendix"
-msgstr ""
+msgstr "Earr-ràdh"
 
 #: mwlib/rl/pdfmessages.py:51
 msgid ""
@@ -112,6 +117,10 @@ msgid ""
 "including the copyright status, the copyright owner, and the license "
 "conditions."
 msgstr ""
+"Tha na h-earrannan a leanas a' nochdadh tùsan nan artaigealan 's na dealbhan "
+"a tha 'gan cleachdadh sa leabhar seo. Tha na tùsan sin a' toirt dhut "
+"barrachd fiosrachaidh mu na ceadachasan, a' gabhail a-steach staid na còrach-"
+"lethbhreac, cò aig a tha e agus cumhaichean a' cheadachais."
 
 #: mwlib/rl/pdfmessages.py:53
 msgid ""
@@ -119,6 +128,9 @@ msgid ""
 "information including the copyright status, the copyright owner, and the "
 "license conditions."
 msgstr ""
+"Tha na tùsan airson gach artaigeal a' toirt dhut barrachd fiosrachaidh mu na "
+"ceadachasan, a' gabhail a-steach staid na còrach-lethbhreac, cò aig a tha e "
+"agus cumhaichean a' cheadachais."
 
 #: mwlib/rl/pdfmessages.py:55
 msgid ""
@@ -126,43 +138,48 @@ msgid ""
 "information including the copyright status, the copyright owner, and the "
 "license conditions."
 msgstr ""
+"Tha na tùsan airson gach dealbh a' toirt dhut barrachd fiosrachaidh mu na "
+"ceadachasan, a' gabhail a-steach staid na còrach-lethbhreac, cò aig a tha e "
+"agus cumhaichean a' cheadachais."
 
 #: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:507
 #: mwlib/rl/rlwriter.py:697
 msgid "Article Sources and Contributors"
-msgstr ""
+msgstr "Tùsan is com-pàirtichean nan artaigeal"
 
 #: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:510
 #: mwlib/rl/rlwriter.py:716
 msgid "Image Sources, Licenses and Contributors"
-msgstr ""
+msgstr "Tùsan, ceadachasan is com-pàirtichean nan dealbhan"
 
 #: mwlib/rl/pdfmessages.py:61
 msgid "Image"
-msgstr ""
+msgstr "Dealbh"
 
 #: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:689
 msgid "anonymous edits"
-msgstr ""
+msgstr "mùthaidhean gun urra"
 
 #: mwlib/rl/pdfmessages.py:65
 msgid "Figure"
-msgstr ""
+msgstr "Graf"
 
 #: mwlib/rl/pdfmessages.py:67
 msgid "See also"
-msgstr ""
+msgstr "Faic cuideachd"
 
 #: mwlib/rl/pdfstyles.py:78
 msgid ""
 "PDF generated using the open source mwlib toolkit. See http://code."
 "pediapress.com/ for more information."
 msgstr ""
+"Chaidh am PDF a chruthachadh leis an acainn le còd fosgailte mwlib. Faic "
+"http://code.pediapress.com/ airson barrachd fiosrachaidh."
 
 #: mwlib/rl/rlwriter.py:342
 #, python-format
 msgid "mwlib.ext version: %(version)s"
-msgstr ""
+msgstr "mwlib.ext tionndadh: %(version)s"
 
 #: mwlib/rl/rlwriter.py:348
 #, python-format
@@ -170,22 +187,24 @@ msgid ""
 "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
 "(mwlibextversion)s"
 msgstr ""
+"mwlib tionndadh: %(mwlibversion)s, mwlib.rl tionndadh: %(mwlibrlversion)s, %"
+"(mwlibextversion)s"
 
 #: mwlib/rl/rlwriter.py:704 mwlib/rl/rlwriter.py:729
 msgid "Source"
-msgstr ""
+msgstr "Tùs"
 
 #: mwlib/rl/rlwriter.py:706 mwlib/rl/rlwriter.py:732
 msgid "Contributors"
-msgstr ""
+msgstr "Com-pàirtichean"
 
 #: mwlib/rl/rlwriter.py:722
 msgid "unknown"
-msgstr ""
+msgstr "chan eil fios"
 
 #: mwlib/rl/rlwriter.py:724
 msgid "License"
-msgstr ""
+msgstr "Ceadachas"
 
 #: mwlib/rl/rlwriter.py:813
 msgid ""
@@ -193,3 +212,7 @@ msgid ""
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
 "software (b) problematic Mediawiki markup (c) table is too wide"
 msgstr ""
+"<strong>RABHADH: Cha b' urrainn dhuinn an t-artaigeal a reandaradh - 'ga "
+"chur a-mach mar theacsa lom.</strong><br/>Dh'fhaoidte gur e na leanas a "
+"dh'adhbharaich seo: (a) buga ann am bathar-bog an sgrìobhadair pdf (b) "
+"Mediawiki markup cugallach (c) clàr a tha ro leathann"
