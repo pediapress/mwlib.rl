@@ -8,17 +8,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-25 21:22+0000\n"
-"PO-Revision-Date: 2012-04-04 18:57:14+0000\n"
+"POT-Creation-Date: 2012-09-01 11:26+0000\n"
+"PO-Revision-Date: 2012-09-01 11:26:46+0000\n"
 "Language-Team: Khmer <https://translatewiki.net/wiki/Portal:km>\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: \n"
-"X-Generator: MediaWiki 1.20alpha (f3f3e1b); Translate 2012-03-13\n"
+"X-Generator: MediaWiki 1.20alpha (0dac57d); Translate 2012-07-04\n"
 "X-Translation-Project: translatewiki.net <https://translatewiki.net>\n"
 "X-Language-Code: km\n"
 "X-Message-Group: #out-mwlibrl\n"
-"X-POT-Import-Date: 2012-03-11 22:23:36+0000\n"
+"X-POT-Import-Date: 2012-04-08 21:35:04+0000\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: mwlib/rl/pdfmessages.py:11
@@ -43,11 +43,11 @@ msgstr "អាជ្ញាបណ្ឌរបស់អត្ថបទ"
 
 #: mwlib/rl/pdfmessages.py:21
 msgid "Title"
-msgstr "ចំនងជើង"
+msgstr "ចំណងជើង"
 
 #: mwlib/rl/pdfmessages.py:23
 msgid "Subtitle:"
-msgstr "ចំនងជើងរង៖"
+msgstr "ចំណងជើងរង៖"
 
 #: mwlib/rl/pdfmessages.py:25
 msgid "Editor:"
@@ -67,15 +67,15 @@ msgstr "អត្ថបទ"
 
 #: mwlib/rl/pdfmessages.py:33
 msgid "Produced by:"
-msgstr "បង្កើតដោយ៖"
+msgstr "ផលិតដោយ៖"
 
 #: mwlib/rl/pdfmessages.py:35
 msgid "pdf writer version:"
-msgstr "អ្នកសរសេរទំរង់pdf៖"
+msgstr "វើសិនកម្មវិធីសរសេរទំរង់pdf៖"
 
 #: mwlib/rl/pdfmessages.py:37
 msgid "mwlib version:"
-msgstr ""
+msgstr "វើសិន mwlib ៖"
 
 #: mwlib/rl/pdfmessages.py:39
 msgid "Table of Contents"
