@@ -3,19 +3,20 @@
 #
 # Author: Ebraminio
 # Author: Meno25
+# Author: Mutarjem horr
 # Author: OsamaK
 # Author: Samer
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-01 11:26+0000\n"
-"PO-Revision-Date: 2012-08-19 16:17:21+0000\n"
+"POT-Creation-Date: 2012-09-08 11:59+0000\n"
+"PO-Revision-Date: 2012-09-08 11:59:01+0000\n"
 "Language-Team: Arabic <https://translatewiki.net/wiki/Portal:ar>\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ar\n"
-"X-Generator: MediaWiki 1.20alpha (ff4001d); Translate 2012-07-04\n"
+"X-Generator: MediaWiki 1.20alpha (f53762a); Translate 2012-07-04\n"
 "X-Translation-Project: translatewiki.net <https://translatewiki.net>\n"
 "X-Language-Code: ar\n"
 "X-Message-Group: #out-mwlibrl\n"
@@ -26,7 +27,7 @@ msgstr ""
 
 #: mwlib/rl/pdfmessages.py:11
 msgid "Index"
-msgstr "فهرس المحتويات"
+msgstr "الفهرس"
 
 #: mwlib/rl/pdfmessages.py:13
 msgid "Source:"
@@ -62,7 +63,7 @@ msgstr "أنشئت في:"
 
 #: mwlib/rl/pdfmessages.py:29 mwlib/rl/toc.py:46
 msgid "Contents"
-msgstr "محتويات"
+msgstr "المحتويات"
 
 #: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:458
 msgid "Articles"
@@ -74,11 +75,11 @@ msgstr "أنتجها:"
 
 #: mwlib/rl/pdfmessages.py:35
 msgid "pdf writer version:"
-msgstr "نسخة كاتب pdf:"
+msgstr "إصدار كاتب pdf:"
 
 #: mwlib/rl/pdfmessages.py:37
 msgid "mwlib version:"
-msgstr "نسخة mwlib:"
+msgstr "إصدار mwlib:"
 
 #: mwlib/rl/pdfmessages.py:39
 msgid "Table of Contents"
@@ -86,7 +87,7 @@ msgstr "جدول المحتويات"
 
 #: mwlib/rl/pdfmessages.py:41
 msgid "Skipping Articles!"
-msgstr "تجاوز المقالات!"
+msgstr "تخطي المقالات!"
 
 #: mwlib/rl/pdfmessages.py:43
 msgid ""
@@ -109,11 +110,11 @@ msgstr ""
 #: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:506
 #: mwlib/rl/rlwriter.py:822
 msgid "References"
-msgstr "مراجع"
+msgstr "المراجع"
 
 #: mwlib/rl/pdfmessages.py:49
 msgid "Appendix"
-msgstr "ملحق"
+msgstr "الملحق"
 
 #: mwlib/rl/pdfmessages.py:51
 msgid ""
@@ -156,11 +157,11 @@ msgstr "مصادر، رخص ومساهمو الصور"
 
 #: mwlib/rl/pdfmessages.py:61
 msgid "Image"
-msgstr "صورة"
+msgstr "الصورة"
 
 #: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:689
 msgid "anonymous edits"
-msgstr "تعديلات مجهولة"
+msgstr "تحريرات مجهولة"
 
 #: mwlib/rl/pdfmessages.py:65
 msgid "Figure"
