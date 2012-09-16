@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-08 11:59+0000\n"
-"PO-Revision-Date: 2012-09-08 11:59:01+0000\n"
+"POT-Creation-Date: 2012-09-16 02:31+0000\n"
+"PO-Revision-Date: 2012-09-16 02:30:36+0000\n"
 "Language-Team: толышә зывон <https://translatewiki.net/wiki/Portal:tly>\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -22,7 +22,7 @@ msgstr ""
 
 #: mwlib/rl/pdfmessages.py:11
 msgid "Index"
-msgstr ""
+msgstr "Индекс"
 
 #: mwlib/rl/pdfmessages.py:13
 msgid "Source:"
@@ -132,7 +132,7 @@ msgstr ""
 #: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:507
 #: mwlib/rl/rlwriter.py:697
 msgid "Article Sources and Contributors"
-msgstr ""
+msgstr "Сәвонон ијән әсосә мыәллифон"
 
 #: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:510
 #: mwlib/rl/rlwriter.py:716
