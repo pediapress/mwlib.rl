@@ -53,6 +53,17 @@ The current development version can also be found there.
 
 ChangeLog
 ======================================================================
+2012-09-24 release 0.14.1
+--------------------------
+- Localisation updates
+
+2012-07-21 release 0.14.0
+--------------------------
+- copy mwlib.l10n.py in order to build sdist without mwlib
+- get rid of _Version class, up version to 0.14.0
+- do not use ez_setup, relax requirements a bit
+- Localisation updates
+
 2012-06-14 release 0.12.12
 --------------------------
 - Translation updates from translatewiki.net
