@@ -178,7 +178,7 @@ msgstr ""
 #: mwlib/rl/rlwriter.py:342
 #, python-format
 msgid "mwlib.ext version: %(version)s"
-msgstr "mwlib.extর ভার্সনহান: %(version)হানি"
+msgstr "mwlib.extর ভার্সনহান: %(version)sহানি"
 
 #: mwlib/rl/rlwriter.py:348
 #, python-format
@@ -186,8 +186,8 @@ msgid ""
 "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
 "(mwlibextversion)s"
 msgstr ""
-"mwlib ভার্সন: %(mwlibversion)হানি, mwlib.rl ভার্সন: %(mwlibrlversion)হানি, %"
-"(mwlibextversion)হানি"
+"mwlib ভার্সন: %(mwlibversion)sহানি, mwlib.rl ভার্সন: %(mwlibrlversion)sহানি, %"
+"(mwlibextversion)sহানি"
 
 #: mwlib/rl/rlwriter.py:704 mwlib/rl/rlwriter.py:729
 msgid "Source"
