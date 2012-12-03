@@ -1040,7 +1040,7 @@ class RlWriter(object):
 
         text_color = styleutils.rgbColorFromNode(node)
         if text_color:
-            hex_col = ''.join(hex(int(c*255))[2:] for c in text_color)
+            hex_col = ''.join('%02x' % int(c*255) for c in text_color)
             txt.insert(0, '<font color="#%s">' % hex_col)
             txt.append('</font>')
         return txt
