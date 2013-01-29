@@ -161,8 +161,10 @@ class RlWriter(object):
 
         self.rtl = False
         pdfstyles.default_latin_font = pdfstyles.default_font
+        self.word_wrap = None
         if lang in ['ja', 'ch', 'ko', 'zh']:
-            pdfstyles.word_wrap = 'CJK'
+            self.word_wrap = 'CJK'
+            pdfstyles.word_wrap = self.word_wrap
         else:
             self.font_switcher.space_cjk = True
         if lang in ['am', 'ar', 'arc', 'arz', 'bcc', 'bqi', 'ckb', 'dv', 'dz', 'fa', 'glk', 'ha', 'he', 'ks', 'ku', 'mzn', 'pnb', 'ps', 'sd', 'ug', 'ur', 'yi']:
@@ -320,7 +322,7 @@ class RlWriter(object):
         if rtl == True:
             pdfstyles.word_wrap = 'RTL'
         else:
-            pdfstyles.word_wrap = None
+            pdfstyles.word_wrap = self.word_wrap
 
     def write(self, obj):
         m = "write" + obj.__class__.__name__
@@ -1913,7 +1915,10 @@ class RlWriter(object):
 
 
     def getMinElementSize(self, element):
-        w_min, h_min = element.wrap(0, pdfstyles.page_height)
+        try:
+            w_min, h_min = element.wrap(0, pdfstyles.page_height)
+        except TypeError: # issue with certain cjk text
+            return 0, 0
         min_width = w_min + self._correctWidth(element)
         min_width += (2 * pdfstyles.cell_padding)
         return min_width, h_min
