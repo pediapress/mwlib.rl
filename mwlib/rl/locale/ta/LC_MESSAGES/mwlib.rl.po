@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-24 18:44+0000\n"
+"POT-Creation-Date: 2013-03-11 14:51+0000\n"
 "PO-Revision-Date: 2012-04-04 18:57:15+0000\n"
 "Language-Team: Tamil <https://translatewiki.net/wiki/Portal:ta>\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -36,7 +36,7 @@ msgstr "உரிமம்:"
 msgid "Contributors:"
 msgstr "பங்களிப்பாளர்கள்:"
 
-#: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:553
+#: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:555
 msgid "Article Licenses"
 msgstr "கட்டுரையின் உரிமங்கள்"
 
@@ -60,7 +60,7 @@ msgstr "உருவாக்கப்பட்டது:"
 msgid "Contents"
 msgstr "உள்ளடக்கம்"
 
-#: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:458
+#: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:460
 msgid "Articles"
 msgstr "கட்டுரைகள்"
 
@@ -101,8 +101,8 @@ msgstr ""
 "ஒரு யோசனையை உங்களுக்கு அளிக்கும். உங்கள் நூலின் சில பக்கங்கள் மட்டுமே காட்டப்படும். "
 "முன்தோற்றத்தில் காட்டப்படாத பக்கங்களும் உங்கள் அச்சான நூலில் இருக்கும் என்பதை மனதில் கொள்க."
 
-#: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:506
-#: mwlib/rl/rlwriter.py:822
+#: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:508
+#: mwlib/rl/rlwriter.py:824
 msgid "References"
 msgstr "மேற்கோள்கள்"
 
@@ -139,13 +139,13 @@ msgstr ""
 "ஒவ்வொரு படத்திற்கும் பட்டியலிடப்பட்டுள்ள தகவல் மூலங்கள் பதிப்புரிமை தகவல்களான பதிப்புரிமை "
 "நிலை, பதிப்பாளர், உரிமம் போன்றவற்றை வழங்கும்."
 
-#: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:507
-#: mwlib/rl/rlwriter.py:697
+#: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:509
+#: mwlib/rl/rlwriter.py:699
 msgid "Article Sources and Contributors"
 msgstr "கட்டுரை மூலங்களும் பங்களிப்பாளர்களும்"
 
-#: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:510
-#: mwlib/rl/rlwriter.py:716
+#: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:512
+#: mwlib/rl/rlwriter.py:718
 msgid "Image Sources, Licenses and Contributors"
 msgstr "பட மூலங்கள், உரிமங்களும் பங்களிப்பாளர்களும்"
 
@@ -153,7 +153,7 @@ msgstr "பட மூலங்கள், உரிமங்களும் ப�
 msgid "Image"
 msgstr "படம்"
 
-#: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:689
+#: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:691
 msgid "anonymous edits"
 msgstr "அறியாப்பயனர் திருத்தங்கள்"
 
@@ -173,12 +173,12 @@ msgstr ""
 "திறமூல mwlib கருவியைப் பயன்படுத்தி PDF உருவாக்கப்படுகிறது. மேலதிக விபரங்களுக்குப் "
 "பார்க்கவும் http://code.pediapress.com/"
 
-#: mwlib/rl/rlwriter.py:342
+#: mwlib/rl/rlwriter.py:344
 #, python-format
 msgid "mwlib.ext version: %(version)s"
 msgstr "mwlib.ext பதிப்பு: %(version)s"
 
-#: mwlib/rl/rlwriter.py:348
+#: mwlib/rl/rlwriter.py:350
 #, python-format
 msgid ""
 "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
@@ -187,23 +187,23 @@ msgstr ""
 "mwlib பதிப்பு: %(mwlibversion)s, mwlib.rl பதிப்பு: %(mwlibrlversion)s, %"
 "(mwlibextversion)s"
 
-#: mwlib/rl/rlwriter.py:704 mwlib/rl/rlwriter.py:729
+#: mwlib/rl/rlwriter.py:706 mwlib/rl/rlwriter.py:731
 msgid "Source"
 msgstr "மூலம்"
 
-#: mwlib/rl/rlwriter.py:706 mwlib/rl/rlwriter.py:732
+#: mwlib/rl/rlwriter.py:708 mwlib/rl/rlwriter.py:734
 msgid "Contributors"
 msgstr "பங்களிப்பாளர்கள்"
 
-#: mwlib/rl/rlwriter.py:722
+#: mwlib/rl/rlwriter.py:724
 msgid "unknown"
 msgstr "அறியப்படாதது"
 
-#: mwlib/rl/rlwriter.py:724
+#: mwlib/rl/rlwriter.py:726
 msgid "License"
 msgstr "உரிமம்"
 
-#: mwlib/rl/rlwriter.py:813
+#: mwlib/rl/rlwriter.py:815
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "

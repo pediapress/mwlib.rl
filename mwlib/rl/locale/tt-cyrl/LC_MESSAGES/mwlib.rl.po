@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-24 18:44+0000\n"
+"POT-Creation-Date: 2013-03-11 14:51+0000\n"
 "PO-Revision-Date: 2012-04-04 18:57:15+0000\n"
 "Language-Team: Tatar (Cyrillic script) <https://translatewiki.net/wiki/"
 "Portal:tt-cyrl>\n"
@@ -37,7 +37,7 @@ msgstr "Лицензиясе:"
 msgid "Contributors:"
 msgstr "Төп авторлары:"
 
-#: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:553
+#: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:555
 msgid "Article Licenses"
 msgstr "Мәкалә лицензияләре"
 
@@ -61,7 +61,7 @@ msgstr "Ясау урыны:"
 msgid "Contents"
 msgstr "Эчтәлек"
 
-#: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:458
+#: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:460
 msgid "Articles"
 msgstr "Мәкаләләр"
 
@@ -105,8 +105,8 @@ msgstr ""
 "берничә бите генә күрсәтелә. Бастыру юрамасында мәкаләнең әлеге алдан каруга "
 "кермәгән өлешләре дә керәчәк."
 
-#: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:506
-#: mwlib/rl/rlwriter.py:822
+#: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:508
+#: mwlib/rl/rlwriter.py:824
 msgid "References"
 msgstr "Искәрмәләр"
 
@@ -143,13 +143,13 @@ msgstr ""
 "Аның торышы һәм автор хокуклары иясе, шулак ук  лицензиясе турында тагында "
 "тулырак мәгълүмат һәрбер рәсем өчен күрсәтелә."
 
-#: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:507
-#: mwlib/rl/rlwriter.py:697
+#: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:509
+#: mwlib/rl/rlwriter.py:699
 msgid "Article Sources and Contributors"
 msgstr "Чыганаклар һәм төп авторлар"
 
-#: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:510
-#: mwlib/rl/rlwriter.py:716
+#: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:512
+#: mwlib/rl/rlwriter.py:718
 msgid "Image Sources, Licenses and Contributors"
 msgstr "Чыганаклар, лицензияләр һәм рәсемясагылар"
 
@@ -157,7 +157,7 @@ msgstr "Чыганаклар, лицензияләр һәм рәсемясагы
 msgid "Image"
 msgstr "Рәсем"
 
-#: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:689
+#: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:691
 msgid "anonymous edits"
 msgstr "аноним үзгәртүләр"
 
@@ -178,12 +178,12 @@ msgstr ""
 "ярдәмендә ясалды.  Тулырак белү өчен http://code.pediapress.com/ "
 "сәхифәсеннән карагыз."
 
-#: mwlib/rl/rlwriter.py:342
+#: mwlib/rl/rlwriter.py:344
 #, python-format
 msgid "mwlib.ext version: %(version)s"
 msgstr "mwlib.ext юрамасы: %(version)s"
 
-#: mwlib/rl/rlwriter.py:348
+#: mwlib/rl/rlwriter.py:350
 #, python-format
 msgid ""
 "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
@@ -192,23 +192,23 @@ msgstr ""
 "mwlib юрамасы: %(mwlibversion)s, mwlib.rl юрамасы: %(mwlibrlversion)s, %"
 "(mwlibextversion)s"
 
-#: mwlib/rl/rlwriter.py:704 mwlib/rl/rlwriter.py:729
+#: mwlib/rl/rlwriter.py:706 mwlib/rl/rlwriter.py:731
 msgid "Source"
 msgstr "Чыганак"
 
-#: mwlib/rl/rlwriter.py:706 mwlib/rl/rlwriter.py:732
+#: mwlib/rl/rlwriter.py:708 mwlib/rl/rlwriter.py:734
 msgid "Contributors"
 msgstr "Контент тәкъдим итүчеләр"
 
-#: mwlib/rl/rlwriter.py:722
+#: mwlib/rl/rlwriter.py:724
 msgid "unknown"
 msgstr "билгесез"
 
-#: mwlib/rl/rlwriter.py:724
+#: mwlib/rl/rlwriter.py:726
 msgid "License"
 msgstr "Лицензия"
 
-#: mwlib/rl/rlwriter.py:813
+#: mwlib/rl/rlwriter.py:815
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "

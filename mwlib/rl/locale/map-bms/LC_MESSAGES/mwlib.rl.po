@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-24 18:44+0000\n"
+"POT-Creation-Date: 2013-03-11 14:51+0000\n"
 "PO-Revision-Date: 2012-04-04 18:57:14+0000\n"
 "Language-Team: Basa Banyumasan <https://translatewiki.net/wiki/Portal:map-"
 "bms>\n"
@@ -35,7 +35,7 @@ msgstr "Lisensi:"
 msgid "Contributors:"
 msgstr "Kontibutor:"
 
-#: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:553
+#: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:555
 msgid "Article Licenses"
 msgstr "Lisensi Artikel"
 
@@ -59,7 +59,7 @@ msgstr "Digawe dong:"
 msgid "Contents"
 msgstr "Isi"
 
-#: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:458
+#: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:460
 msgid "Articles"
 msgstr "Artikel"
 
@@ -104,8 +104,8 @@ msgstr ""
 "sing ora ditidokna nang pratayang, bakal melu dilebokna nang buku sing "
 "dicethak."
 
-#: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:506
-#: mwlib/rl/rlwriter.py:822
+#: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:508
+#: mwlib/rl/rlwriter.py:824
 msgid "References"
 msgstr "Referensi"
 
@@ -143,13 +143,13 @@ msgstr ""
 "Daftar sumber kanggo saben gambar nyediakna informasi lisensi sing lewih "
 "rinci klebu status hak cipta, sing duwe hak cipta, lan kondisi lisensi."
 
-#: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:507
-#: mwlib/rl/rlwriter.py:697
+#: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:509
+#: mwlib/rl/rlwriter.py:699
 msgid "Article Sources and Contributors"
 msgstr "Sumber lan kontributor artikel"
 
-#: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:510
-#: mwlib/rl/rlwriter.py:716
+#: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:512
+#: mwlib/rl/rlwriter.py:718
 msgid "Image Sources, Licenses and Contributors"
 msgstr "Sumber gambar, Lisensi lan Kontributor"
 
@@ -157,7 +157,7 @@ msgstr "Sumber gambar, Lisensi lan Kontributor"
 msgid "Image"
 msgstr "Gambar"
 
-#: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:689
+#: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:691
 msgid "anonymous edits"
 msgstr "suntingan anonim"
 
@@ -177,12 +177,12 @@ msgstr ""
 "PDF dihasilkan nganggo toolkit open source mwlib. Deleng http://code."
 "pediapress.com/ nggo informasi lewih lanjut."
 
-#: mwlib/rl/rlwriter.py:342
+#: mwlib/rl/rlwriter.py:344
 #, python-format
 msgid "mwlib.ext version: %(version)s"
 msgstr "versi mwlib.ext: %(version)s"
 
-#: mwlib/rl/rlwriter.py:348
+#: mwlib/rl/rlwriter.py:350
 #, python-format
 msgid ""
 "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
@@ -191,23 +191,23 @@ msgstr ""
 "versi mwlib: %(mwlibversion)s, versi mwlib.rl: %(mwlibrlversion)s, %"
 "(mwlibextversion)s"
 
-#: mwlib/rl/rlwriter.py:704 mwlib/rl/rlwriter.py:729
+#: mwlib/rl/rlwriter.py:706 mwlib/rl/rlwriter.py:731
 msgid "Source"
 msgstr "Sumber"
 
-#: mwlib/rl/rlwriter.py:706 mwlib/rl/rlwriter.py:732
+#: mwlib/rl/rlwriter.py:708 mwlib/rl/rlwriter.py:734
 msgid "Contributors"
 msgstr "Kontributor"
 
-#: mwlib/rl/rlwriter.py:722
+#: mwlib/rl/rlwriter.py:724
 msgid "unknown"
 msgstr "ora konangan"
 
-#: mwlib/rl/rlwriter.py:724
+#: mwlib/rl/rlwriter.py:726
 msgid "License"
 msgstr "Lisensi"
 
-#: mwlib/rl/rlwriter.py:813
+#: mwlib/rl/rlwriter.py:815
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "

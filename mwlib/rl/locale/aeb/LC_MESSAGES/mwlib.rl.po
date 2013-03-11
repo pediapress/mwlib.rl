@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-24 18:44+0000\n"
+"POT-Creation-Date: 2013-03-11 14:50+0000\n"
 "PO-Revision-Date: 2012-04-04 18:57:12+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -31,7 +31,7 @@ msgstr "الرخصة:"
 msgid "Contributors:"
 msgstr "المساهمون:"
 
-#: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:553
+#: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:555
 msgid "Article Licenses"
 msgstr "رخص المقالة"
 
@@ -55,7 +55,7 @@ msgstr "أنشئت في:"
 msgid "Contents"
 msgstr "محتويات"
 
-#: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:458
+#: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:460
 msgid "Articles"
 msgstr "مقالات"
 
@@ -97,8 +97,8 @@ msgstr ""
 "جميع المقالات حتى تلك التي لا تظهر في المعاينة؛ ستُضَمّنُ في الكتاب النهائي "
 "المطبوع."
 
-#: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:506
-#: mwlib/rl/rlwriter.py:822
+#: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:508
+#: mwlib/rl/rlwriter.py:824
 msgid "References"
 msgstr " references مراجع"
 
@@ -135,13 +135,13 @@ msgstr ""
 "المصادر المذكورة لكل صورةٍ توفر معلومات أكثر تفصيلا بمايتعلق في حقوق التأليف "
 "والنشر ،من يملك هذه الحقوق وشروط الترخيص"
 
-#: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:507
-#: mwlib/rl/rlwriter.py:697
+#: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:509
+#: mwlib/rl/rlwriter.py:699
 msgid "Article Sources and Contributors"
 msgstr "مصادر المقالات والمساهمون"
 
-#: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:510
-#: mwlib/rl/rlwriter.py:716
+#: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:512
+#: mwlib/rl/rlwriter.py:718
 msgid "Image Sources, Licenses and Contributors"
 msgstr "مصادر، رخص ومساهمو الصور"
 
@@ -149,7 +149,7 @@ msgstr "مصادر، رخص ومساهمو الصور"
 msgid "Image"
 msgstr "صورة"
 
-#: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:689
+#: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:691
 msgid "anonymous edits"
 msgstr "تعديلات مجهولة"
 
@@ -169,12 +169,12 @@ msgstr ""
 "وُلّد PDF باستخدام عدة أدوات mwlib مفتوحة المصدر. راجع http://code.pediapress."
 "com/ لمزيد من المعلومات."
 
-#: mwlib/rl/rlwriter.py:342
+#: mwlib/rl/rlwriter.py:344
 #, python-format
 msgid "mwlib.ext version: %(version)s"
 msgstr "mwlib.ext نسخة: %(version)s"
 
-#: mwlib/rl/rlwriter.py:348
+#: mwlib/rl/rlwriter.py:350
 #, python-format
 msgid ""
 "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
@@ -183,23 +183,23 @@ msgstr ""
 "mwlib نسخة: %(mwlibversion)s, mwlib.rl نسخة: %(mwlibrlversion)s, %"
 "(mwlibextversion)s"
 
-#: mwlib/rl/rlwriter.py:704 mwlib/rl/rlwriter.py:729
+#: mwlib/rl/rlwriter.py:706 mwlib/rl/rlwriter.py:731
 msgid "Source"
 msgstr "المصدر:"
 
-#: mwlib/rl/rlwriter.py:706 mwlib/rl/rlwriter.py:732
+#: mwlib/rl/rlwriter.py:708 mwlib/rl/rlwriter.py:734
 msgid "Contributors"
 msgstr "المساهمون"
 
-#: mwlib/rl/rlwriter.py:722
+#: mwlib/rl/rlwriter.py:724
 msgid "unknown"
 msgstr "ghair ma3rouf"
 
-#: mwlib/rl/rlwriter.py:724
+#: mwlib/rl/rlwriter.py:726
 msgid "License"
 msgstr "الرخصة:"
 
-#: mwlib/rl/rlwriter.py:813
+#: mwlib/rl/rlwriter.py:815
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "

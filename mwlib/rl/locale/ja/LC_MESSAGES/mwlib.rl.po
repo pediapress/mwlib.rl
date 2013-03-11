@@ -7,13 +7,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-24 18:44+0000\n"
-"PO-Revision-Date: 2012-06-04 15:02:40+0000\n"
+"POT-Creation-Date: 2013-03-11 14:50+0000\n"
+"PO-Revision-Date: 2013-03-11 04:46:08+0000\n"
 "Language-Team: Japanese <https://translatewiki.net/wiki/Portal:ja>\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ja\n"
-"X-Generator: MediaWiki 1.20alpha (0d3db4f); Translate 2012-06-03\n"
+"X-Generator: MediaWiki 1.21alpha (8974933); Translate 2013-03-07\n"
 "X-Translation-Project: translatewiki.net <https://translatewiki.net>\n"
 "X-Language-Code: ja\n"
 "X-Message-Group: #out-mwlibrl\n"
@@ -36,7 +36,7 @@ msgstr "ライセンス:"
 msgid "Contributors:"
 msgstr "著者:"
 
-#: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:553
+#: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:555
 msgid "Article Licenses"
 msgstr "記事のライセンス"
 
@@ -60,7 +60,7 @@ msgstr "作成日:"
 msgid "Contents"
 msgstr "本文"
 
-#: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:458
+#: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:460
 msgid "Articles"
 msgstr "記事"
 
@@ -82,7 +82,7 @@ msgstr "目次"
 
 #: mwlib/rl/pdfmessages.py:41
 msgid "Skipping Articles!"
-msgstr "記事をスキップしています！"
+msgstr "記事をスキップしています!"
 
 #: mwlib/rl/pdfmessages.py:43
 msgid ""
@@ -103,8 +103,8 @@ msgstr ""
 "事のみがこのプレビューでは表示されています。完成品の印刷された本には、プレ"
 "ビューにはないものも、すべての記事が含まれます。"
 
-#: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:506
-#: mwlib/rl/rlwriter.py:822
+#: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:508
+#: mwlib/rl/rlwriter.py:824
 msgid "References"
 msgstr "参考資料"
 
@@ -141,13 +141,13 @@ msgstr ""
 "各画像の出典一覧には、著作権状態や著作権保持者、ライセンス条件など、より詳細"
 "なライセンス情報が含まれています。"
 
-#: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:507
-#: mwlib/rl/rlwriter.py:697
+#: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:509
+#: mwlib/rl/rlwriter.py:699
 msgid "Article Sources and Contributors"
 msgstr "記事の出典および著者"
 
-#: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:510
-#: mwlib/rl/rlwriter.py:716
+#: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:512
+#: mwlib/rl/rlwriter.py:718
 msgid "Image Sources, Licenses and Contributors"
 msgstr "画像の出典およびライセンス、著者"
 
@@ -155,7 +155,7 @@ msgstr "画像の出典およびライセンス、著者"
 msgid "Image"
 msgstr "画像"
 
-#: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:689
+#: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:691
 msgid "anonymous edits"
 msgstr "匿名の編集"
 
@@ -175,12 +175,12 @@ msgstr ""
 "オープンソースの mwlib ツールキットを使用して生成した PDF です。詳細情報は "
 "http://code.pediapress.com/ を参照してください。"
 
-#: mwlib/rl/rlwriter.py:342
+#: mwlib/rl/rlwriter.py:344
 #, python-format
 msgid "mwlib.ext version: %(version)s"
 msgstr "mwlib.ext のバージョン: %(version)s"
 
-#: mwlib/rl/rlwriter.py:348
+#: mwlib/rl/rlwriter.py:350
 #, python-format
 msgid ""
 "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
@@ -189,28 +189,28 @@ msgstr ""
 "mwlib のバージョン: %(mwlibversion)s、mwlib.rl のバージョン: %"
 "(mwlibrlversion)s, %(mwlibextversion)s"
 
-#: mwlib/rl/rlwriter.py:704 mwlib/rl/rlwriter.py:729
+#: mwlib/rl/rlwriter.py:706 mwlib/rl/rlwriter.py:731
 msgid "Source"
 msgstr "出典"
 
-#: mwlib/rl/rlwriter.py:706 mwlib/rl/rlwriter.py:732
+#: mwlib/rl/rlwriter.py:708 mwlib/rl/rlwriter.py:734
 msgid "Contributors"
 msgstr "著者"
 
-#: mwlib/rl/rlwriter.py:722
+#: mwlib/rl/rlwriter.py:724
 msgid "unknown"
 msgstr "不明"
 
-#: mwlib/rl/rlwriter.py:724
+#: mwlib/rl/rlwriter.py:726
 msgid "License"
 msgstr "ライセンス"
 
-#: mwlib/rl/rlwriter.py:813
+#: mwlib/rl/rlwriter.py:815
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
 "software (b) problematic Mediawiki markup (c) table is too wide"
 msgstr ""
-"<strong>警告: 記事をレンダリングできませんでした(プレインテキストの出力中)。"
+"<strong>警告: 記事をレンダリングできませんでした (プレーンテキストの出力中)。"
 "</strong><br/>この問題の潜在的原因: (a) pdf-writer ソフトウェアのバグ (b) "
 "MediaWiki マークアップの問題 (c) 表の幅が広すぎる"
