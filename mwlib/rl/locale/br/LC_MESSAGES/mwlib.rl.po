@@ -1,4 +1,4 @@
-# Translation of Mwlib.rl to Breton (Brezhoneg)
+# Translation of Mwlib.rl to Breton (brezhoneg)
 # Exported from translatewiki.net
 #
 # Author: Fulup
@@ -7,17 +7,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-11 14:50+0000\n"
-"PO-Revision-Date: 2012-04-04 18:57:13+0000\n"
+"POT-Creation-Date: 2013-03-18 00:41+0000\n"
+"PO-Revision-Date: 2013-03-18 00:41:03+0000\n"
 "Language-Team: Breton <https://translatewiki.net/wiki/Portal:br>\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: br\n"
-"X-Generator: MediaWiki 1.20alpha (f3f3e1b); Translate 2012-03-13\n"
+"X-Generator: MediaWiki 1.21alpha (64feadb); Translate 2013-03-07\n"
 "X-Translation-Project: translatewiki.net <https://translatewiki.net>\n"
 "X-Language-Code: br\n"
 "X-Message-Group: #out-mwlibrl\n"
-"X-POT-Import-Date: 2012-03-11 22:23:36+0000\n"
+"X-POT-Import-Date: 2012-04-08 21:35:04+0000\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: mwlib/rl/pdfmessages.py:11
@@ -207,7 +207,7 @@ msgstr "dianav"
 
 #: mwlib/rl/rlwriter.py:726
 msgid "License"
-msgstr "Aotre implijout"
+msgstr "Aotre-implijout"
 
 #: mwlib/rl/rlwriter.py:815
 msgid ""
