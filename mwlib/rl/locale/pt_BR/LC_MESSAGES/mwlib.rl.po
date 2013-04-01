@@ -1,26 +1,27 @@
-# Translation of Mwlib.rl to Brazilian Portuguese (Português do Brasil)
+# Translation of Mwlib.rl to Brazilian Portuguese (português do Brasil)
 # Exported from translatewiki.net
 #
 # Author: Eduardo.mps
 # Author: Giro720
 # Author: Helder.wiki
 # Author: Heldergeovane
+# Author: TheGabrielZaum
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-23 13:24+0000\n"
-"PO-Revision-Date: 2012-04-04 18:57:15+0000\n"
+"POT-Creation-Date: 2013-04-01 12:55+0000\n"
+"PO-Revision-Date: 2013-04-01 12:55:03+0000\n"
 "Language-Team: Brazilian Portuguese <https://translatewiki.net/wiki/Portal:"
 "pt-br>\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt_BR\n"
-"X-Generator: MediaWiki 1.20alpha (f3f3e1b); Translate 2012-03-13\n"
+"Language: pt_br\n"
+"X-Generator: MediaWiki 1.22alpha (855082a); Translate 2013-03-07\n"
 "X-Translation-Project: translatewiki.net <https://translatewiki.net>\n"
 "X-Language-Code: pt-br\n"
 "X-Message-Group: #out-mwlibrl\n"
-"X-POT-Import-Date: 2012-03-11 22:23:36+0000\n"
+"X-POT-Import-Date: 2012-04-08 21:35:04+0000\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: mwlib/rl/pdfmessages.py:11
@@ -221,4 +222,4 @@ msgstr ""
 "<strong>AVISO: A página não pode ser renderizada – produzindo texto simples."
 "</strong><br/>Potenciais causas para o problema são: (a) um erro do programa "
 "responsável pela produção do PDF (b) marcação problemática do MediaWiki (c) "
-"uma tabela muito larga"
+"tabela muito larga"
