@@ -4,14 +4,14 @@
 # Author: Chelin
 msgid ""
 msgstr ""
-"Project-Id-Version: Mwlib.rl\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-07 10:35+0000\n"
-"PO-Revision-Date: 2013-04-07 10:34:54+0000\n"
+""
+"PO-Revision-Date: 2013-04-07 10:36:22+0000\n"
+"X-POT-Import-Date: 2012-04-08 21:35:04+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-POT-Import-Date: 2012-04-08 21:35:04+0000\n"
 "Language: nap\n"
+"Project-Id-Version: Mwlib.rl\n"
+"Report-Msgid-Bugs-To: translatewiki.net\n"
 "X-Translation-Project: translatewiki.net <https://translatewiki.net>\n"
 "X-Generator: MediaWiki 1.22alpha (5c43bcc); Translate 2013-03-07\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -81,17 +81,11 @@ msgid "Skipping Articles!"
 msgstr "Vvoce nun cunvertite."
 
 #: mwlib/rl/pdfmessages.py:43
-msgid ""
-"Please note:  This is only a preview intended to give an idea how the book "
-"is typeset."
+msgid "Please note:  This is only a preview intended to give an idea how the book is typeset."
 msgstr ""
 
 #: mwlib/rl/pdfmessages.py:45
-msgid ""
-"Please note: This is only a preview of your book, intended to give an idea "
-"how your book looks. Only the first few articles, as well as the first pages "
-"of the index, of your book are shown in this preview. All articles, even "
-"those left out of the preview, will be included in the final printed book."
+msgid "Please note: This is only a preview of your book, intended to give an idea how your book looks. Only the first few articles, as well as the first pages of the index, of your book are shown in this preview. All articles, even those left out of the preview, will be included in the final printed book."
 msgstr ""
 
 #: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:508
@@ -104,25 +98,15 @@ msgid "Appendix"
 msgstr ""
 
 #: mwlib/rl/pdfmessages.py:51
-msgid ""
-"The following sections list the sources for all articles and images used in "
-"this book. Those sources provide more detailed licensing information "
-"including the copyright status, the copyright owner, and the license "
-"conditions."
+msgid "The following sections list the sources for all articles and images used in this book. Those sources provide more detailed licensing information including the copyright status, the copyright owner, and the license conditions."
 msgstr ""
 
 #: mwlib/rl/pdfmessages.py:53
-msgid ""
-"The sources listed for each article provide more detailed licensing "
-"information including the copyright status, the copyright owner, and the "
-"license conditions."
+msgid "The sources listed for each article provide more detailed licensing information including the copyright status, the copyright owner, and the license conditions."
 msgstr ""
 
 #: mwlib/rl/pdfmessages.py:55
-msgid ""
-"The sources listed for each image provide more detailed licensing "
-"information including the copyright status, the copyright owner, and the "
-"license conditions."
+msgid "The sources listed for each image provide more detailed licensing information including the copyright status, the copyright owner, and the license conditions."
 msgstr ""
 
 #: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:509
@@ -152,9 +136,7 @@ msgid "See also"
 msgstr "Vere anche"
 
 #: mwlib/rl/pdfstyles.py:78
-msgid ""
-"PDF generated using the open source mwlib toolkit. See http://code."
-"pediapress.com/ for more information."
+msgid "PDF generated using the open source mwlib toolkit. See http://code.pediapress.com/ for more information."
 msgstr ""
 
 #: mwlib/rl/rlwriter.py:344
@@ -164,9 +146,7 @@ msgstr ""
 
 #: mwlib/rl/rlwriter.py:350
 #, python-format
-msgid ""
-"mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
-"(mwlibextversion)s"
+msgid "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %(mwlibextversion)s"
 msgstr ""
 
 #: mwlib/rl/rlwriter.py:706 mwlib/rl/rlwriter.py:731
@@ -186,8 +166,6 @@ msgid "License"
 msgstr "Licenza"
 
 #: mwlib/rl/rlwriter.py:815
-msgid ""
-"<strong>WARNING: Article could not be rendered - ouputting plain text.</"
-"strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
-"software (b) problematic Mediawiki markup (c) table is too wide"
+msgid "<strong>WARNING: Article could not be rendered - ouputting plain text.</strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer software (b) problematic Mediawiki markup (c) table is too wide"
 msgstr ""
+
