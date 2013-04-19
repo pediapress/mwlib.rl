@@ -93,6 +93,8 @@ tableOverflowTolerance = 20  # max width overflow for tables    unit: pt
 cell_padding = 3
 min_rows_for_break = 3 # page breaks before tables are only forced if more than n rows are present
 
+table_widths_from_markup = False
+
 treecleaner_skip_methods = ['fixPreFormatted', 'removeEmptyReferenceLists']
 ######### IMAGE CONFIGURATION
 

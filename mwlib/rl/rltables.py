@@ -233,7 +233,31 @@ def removeContainerTable(containertable):
 
 #############################################
 
-def optimizeWidths(min_widths, max_widths, avail_width, stretch=False):
+def customCalcWidths(table, avail_width):
+    from mwlib.writer.styleutils import scaleLength
+    first_row = None
+    for c in table.children:
+        if isinstance(c, Row):
+            first_row = c
+            break
+    if not first_row:
+        return None
+    col_widths = []
+    for cell in first_row.children:
+        width = scaleLength(getattr(cell, 'vlist', {}).get('style', {}).get('width', ''))
+        col_widths.append(width)
+    if any(not isinstance(w, float) for w in col_widths):
+        return None
+    sum_col_widths = sum(col_widths)
+    total_needed_width = min(avail_width, sum_col_widths)
+    col_widths = [w*total_needed_width/sum_col_widths for w in col_widths]
+    return col_widths
+
+def optimizeWidths(min_widths, max_widths, avail_width, stretch=False, table=None):
+    if pdfstyles.table_widths_from_markup:
+        col_widths = customCalcWidths(table, avail_width)
+        if col_widths != None:
+            return col_widths
     remaining_space = avail_width - sum(min_widths)
 
     if stretch and sum(max_widths) < avail_width:

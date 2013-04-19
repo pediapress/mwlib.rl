@@ -2048,7 +2048,7 @@ class RlWriter(object):
             return [DummyTable(t.min_widths, t.max_widths)]
         avail_width = self.getAvailWidth()
         stretch=self.table_nesting == 1 and t.attributes.get('width', '') == u'100%'
-        t.colwidths = rltables.optimizeWidths(t.min_widths, t.max_widths, avail_width, stretch=stretch)
+        t.colwidths = rltables.optimizeWidths(t.min_widths, t.max_widths, avail_width, stretch=stretch, table=t)
         table_data =[]
         for row in t.children:
             row_data = []
