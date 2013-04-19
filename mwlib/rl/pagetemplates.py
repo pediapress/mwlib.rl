@@ -148,8 +148,14 @@ class TitlePage(PageTemplate):
         canvas.restoreState()
         if self.cover:
             width, height = self._scale_img(pdfstyles.title_page_image_size, self.cover)
-            x = (page_width - width) / 2.0
-            y = (page_height - height) / 2.0
+            if pdfstyles.title_page_image_pos[0] == None:
+                x = (page_width - width) / 2.0
+            else:
+                x = max(0, min(page_width-width, pdfstyles.title_page_image_pos[0]))
+            if pdfstyles.title_page_image_pos[1] == None:
+                y = (page_height - height) / 2.0
+            else:
+                y = max(0, min(page_height-height, pdfstyles.title_page_image_pos[1]))
             canvas.drawImage(self.cover, x, y, width , height)
 
 from reportlab.platypus.doctemplate import BaseDocTemplate
