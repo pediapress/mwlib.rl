@@ -76,7 +76,7 @@ show_article_hr = True           # Underline each article header by a horizontal
 # e.g. the use of inline images is not included in the official documenation of reportlab
 pagefooter = u''
 titlepagefooter = _(u'PDF generated using the open source mwlib toolkit. See http://code.pediapress.com/ for more information.')
-titlepageimage = '' # path of an image that is to be displayed on the title page
+title_page_image = '' # path of an image that is to be displayed on the title page
 show_creation_date = True
 
 ### TABLE CONFIG

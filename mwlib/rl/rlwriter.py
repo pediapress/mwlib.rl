@@ -450,7 +450,7 @@ class RlWriter(object):
         elements = []
         self.toc_entries = []
         if pdfstyles.show_title_page:
-            elements.extend(self.writeTitlePage(coverimage=coverimage or pdfstyles.titlepageimage))
+            elements.extend(self.writeTitlePage(coverimage=coverimage or pdfstyles.title_page_image))
 
         if self.numarticles == 0:
             elements.append(self.addDummyPage())
