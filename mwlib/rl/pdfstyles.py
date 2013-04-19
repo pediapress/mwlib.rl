@@ -74,6 +74,7 @@ pagefooter = u''
 #### TITLE PAGE
 
 title_page_image = '' # path of an image that is to be displayed on the title page
+title_page_image_size = (12*cm, 17*cm) # max. width, height of image, aspect ratio is kept
 
 titlepagefooter = _(u'PDF generated using the open source mwlib toolkit. See http://code.pediapress.com/ for more information.')
 show_creation_date = True

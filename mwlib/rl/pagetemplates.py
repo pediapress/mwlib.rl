@@ -119,6 +119,18 @@ class TitlePage(PageTemplate):
         PageTemplate.__init__(self,id=id, frames=frames,onPage=onPage,onPageEnd=onPageEnd,pagesize=pagesize)
         self.cover = cover
 
+    def _scale_img(self, img_area_size, img_fn):
+        img = Image.open(self.cover)
+        img_width, img_height = img.size
+        img_area_width = min(page_width,img_area_size[0])
+        img_area_height = min(page_height, img_area_size[1])
+        img_ar = img_width/img_height
+        img_area_ar = img_area_width/img_area_height
+        if img_ar >= img_area_ar:
+            return (img_area_width, img_area_width/img_ar)
+        else:
+            return (img_area_height*img_ar, img_area_height)
+
     def beforeDrawPage(self,canvas,doc):
         canvas.setFont(serif_font,8)
         canvas.saveState()
@@ -135,10 +147,7 @@ class TitlePage(PageTemplate):
             p.draw()
         canvas.restoreState()
         if self.cover:
-            width = 12 * cm
-            img = Image.open(self.cover)
-            w,h = img.size
-            height = width/w*h
+            width, height = self._scale_img(pdfstyles.title_page_image_size, self.cover)
             x = (page_width - width) / 2.0
             y = (page_height - height) / 2.0
             canvas.drawImage(self.cover, x, y, width , height)
