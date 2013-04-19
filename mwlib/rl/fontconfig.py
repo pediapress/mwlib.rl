@@ -106,6 +106,12 @@ fonts = [
      },
     ]
 
+try:
+    from customconfig import fonts
+    print 'using font definition from customconfig.py'.upper()
+except ImportError:
+    pass
+
 
 class RLFontSwitcher(FontSwitcher):
     warn_on_missing_fonts = True
