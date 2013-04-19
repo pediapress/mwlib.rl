@@ -62,7 +62,7 @@ from reportlab.platypus.flowables import Spacer, HRFlowable, PageBreak, CondPage
 from reportlab.platypus.xpreformatted import XPreformatted
 from reportlab.lib.units import cm
 from reportlab.lib import colors
-from reportlab.lib.enums import TA_CENTER, TA_JUSTIFY, TA_RIGHT
+from reportlab.lib.enums import TA_CENTER, TA_JUSTIFY, TA_RIGHT, TA_LEFT
 
 from mwlib.rl.customflowables import Figure, FiguresAndParagraphs, SmartKeepTogether, TocEntry, DummyTable
 
@@ -2058,7 +2058,7 @@ class RlWriter(object):
             table_data.append(row_data)
         table = Table(table_data, colWidths=t.colwidths, splitByRow=1)
         table.setStyle(rltables.getStyles(t))
-
+        table.hAlign = pdfstyles.table_align
         if table_style.get('spaceBefore', 0) > 0:
             elements.append(Spacer(0, table_style['spaceBefore']))
         elements.append(table)

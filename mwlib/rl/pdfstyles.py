@@ -95,7 +95,13 @@ min_rows_for_break = 3 # page breaks before tables are only forced if more than 
 
 table_widths_from_markup = False
 
+# alignment of tables: TA_LEFT | TA_CENTER | TA_RIGHT
+table_align = TA_CENTER
+
+######### TREECLEANER CONFIGURATION
+
 treecleaner_skip_methods = ['fixPreFormatted', 'removeEmptyReferenceLists']
+
 ######### IMAGE CONFIGURATION
 
 # margins for floated images - margins like in html/css: (top, right, bottom, left)
