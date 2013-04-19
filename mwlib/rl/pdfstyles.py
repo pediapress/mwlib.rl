@@ -93,6 +93,7 @@ tableOverflowTolerance = 20  # max width overflow for tables    unit: pt
 cell_padding = 3
 min_rows_for_break = 3 # page breaks before tables are only forced if more than n rows are present
 
+# if set to True column widths are extracted from wiki markup if possible
 table_widths_from_markup = False
 
 # alignment of tables: TA_LEFT | TA_CENTER | TA_RIGHT
