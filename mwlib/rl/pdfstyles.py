@@ -38,11 +38,6 @@ default_font = 'FreeSerif'
 from reportlab import rl_config
 rl_config.canvas_basefontname = default_font
 
-#### TITLE PAGE
-
-# if enabled a table of contents is printed at the beginning of the pdf
-# note that no TOC is generated if only one article is rendered
-render_toc = True
 
 ######### PAGE CONFIGURATION
 
@@ -75,9 +70,17 @@ show_article_hr = True           # Underline each article header by a horizontal
 # Paragraph class (reportlab/platypus/paragraph.py --> class Paragraph())
 # e.g. the use of inline images is not included in the official documenation of reportlab
 pagefooter = u''
-titlepagefooter = _(u'PDF generated using the open source mwlib toolkit. See http://code.pediapress.com/ for more information.')
+
+#### TITLE PAGE
+
 title_page_image = '' # path of an image that is to be displayed on the title page
+
+titlepagefooter = _(u'PDF generated using the open source mwlib toolkit. See http://code.pediapress.com/ for more information.')
 show_creation_date = True
+
+# if enabled a table of contents is printed at the beginning of the pdf
+# note that no TOC is generated if only one article is rendered
+render_toc = True
 
 ### TABLE CONFIG
 
