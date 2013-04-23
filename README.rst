@@ -53,6 +53,29 @@ The current development version can also be found there.
 
 ChangeLog
 ======================================================================
+2013-04-23 release 0.14.2
+--------------------------
+- add missing comment for table column sizing
+- make horizontal table alignent configurable
+- allow using table column widths from wiki markup
+- allow overriding font configuration
+- make title image position configurable through
+  pdfstyles.pdf/customconfig.py
+- make title image size configurable through
+  pdfstyles.pdf/customconfig.py
+- rearrange config "sections"
+- rename config parameter
+- Localisation updates from http://translatewiki.net.
+- fix word wrapping bug for cjk. fixes:
+  https://bugzilla.wikimedia.org/show_bug.cgi?id=44406
+- fix faulty int->hex color conversion. fixes
+  https://github.com/pediapress/mwlib/issues/23
+- fix format strings in some .po files for bpy, id
+- If available, use pdfsam-console to concatenate PDF and ToC - this
+  preserves the bookmarks! Change is based on Maxime Borins
+  suggestion: https://github.com/pediapress/mwlib.rl/pull/6
+- Localisation updates from http://translatewiki.net.
+
 2012-09-24 release 0.14.1
 --------------------------
 - Localisation updates
