@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-21 12:27+0000\n"
+"POT-Creation-Date: 2013-04-28 17:46+0000\n"
 "PO-Revision-Date: 2012-05-20 11:10:45+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -152,7 +152,7 @@ msgstr "Һүрәт"
 msgid "See also"
 msgstr "Шулай уҡ ҡарағыҙ"
 
-#: mwlib/rl/pdfstyles.py:78
+#: mwlib/rl/pdfstyles.py:83
 msgid ""
 "PDF generated using the open source mwlib toolkit. See http://code."
 "pediapress.com/ for more information."

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-21 12:27+0000\n"
+"POT-Creation-Date: 2013-04-28 17:46+0000\n"
 "PO-Revision-Date: 2013-04-01 12:55:03+0000\n"
 "Language-Team: Brazilian Portuguese <https://translatewiki.net/wiki/Portal:"
 "pt-br>\n"
@@ -175,7 +175,7 @@ msgstr "Figura"
 msgid "See also"
 msgstr "Ver também"
 
-#: mwlib/rl/pdfstyles.py:78
+#: mwlib/rl/pdfstyles.py:83
 msgid ""
 "PDF generated using the open source mwlib toolkit. See http://code."
 "pediapress.com/ for more information."

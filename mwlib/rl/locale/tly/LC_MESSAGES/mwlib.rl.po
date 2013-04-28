@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-21 12:27+0000\n"
+"POT-Creation-Date: 2013-04-28 17:46+0000\n"
 "PO-Revision-Date: 2012-09-16 02:30:36+0000\n"
 "Language-Team: толышә зывон <https://translatewiki.net/wiki/Portal:tly>\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -155,7 +155,7 @@ msgstr ""
 msgid "See also"
 msgstr "Һәмән дијәкә"
 
-#: mwlib/rl/pdfstyles.py:78
+#: mwlib/rl/pdfstyles.py:83
 msgid ""
 "PDF generated using the open source mwlib toolkit. See http://code."
 "pediapress.com/ for more information."
