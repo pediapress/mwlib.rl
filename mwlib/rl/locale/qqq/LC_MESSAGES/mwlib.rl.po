@@ -8,18 +8,19 @@
 # Author: Shirayuki
 # Author: Siebrand
 # Author: Tgr
+# Author: Tifinaghes
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-28 17:46+0000\n"
-"PO-Revision-Date: 2013-04-28 17:46:07+0000\n"
+"POT-Creation-Date: 2013-05-09 13:37+0000\n"
+"PO-Revision-Date: 2013-05-09 13:36:48+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-POT-Import-Date: 2012-04-08 21:35:04+0000\n"
 "Language: qqq\n"
 "X-Translation-Project: translatewiki.net <https://translatewiki.net>\n"
-"X-Generator: MediaWiki 1.22alpha (ee54c76); Translate 2013-04-16\n"
+"X-Generator: MediaWiki 1.22alpha (fad3d4c); Translate 2013-04-29\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: mwlib/rl/pdfmessages.py:11
@@ -36,7 +37,7 @@ msgstr "{{Identical|License}}"
 
 #: mwlib/rl/pdfmessages.py:17
 msgid "Contributors:"
-msgstr "{{Identical|Contributor}}"
+msgstr "ⵉⵎⴰⵡⴰⵙⵏ"
 
 #: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:555
 msgid "Article Licenses"
