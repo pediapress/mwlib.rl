@@ -114,6 +114,8 @@ include mwlib/rl/locale/gsw/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/gsw/LC_MESSAGES/mwlib.rl.po
 include mwlib/rl/locale/gu/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/gu/LC_MESSAGES/mwlib.rl.po
+include mwlib/rl/locale/hak/LC_MESSAGES/mwlib.rl.mo
+include mwlib/rl/locale/hak/LC_MESSAGES/mwlib.rl.po
 include mwlib/rl/locale/haw/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/haw/LC_MESSAGES/mwlib.rl.po
 include mwlib/rl/locale/he/LC_MESSAGES/mwlib.rl.mo
@@ -250,6 +252,8 @@ include mwlib/rl/locale/tr/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/tr/LC_MESSAGES/mwlib.rl.po
 include mwlib/rl/locale/tt-cyrl/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/tt-cyrl/LC_MESSAGES/mwlib.rl.po
+include mwlib/rl/locale/tzm/LC_MESSAGES/mwlib.rl.mo
+include mwlib/rl/locale/tzm/LC_MESSAGES/mwlib.rl.po
 include mwlib/rl/locale/ug-arab/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/ug-arab/LC_MESSAGES/mwlib.rl.po
 include mwlib/rl/locale/uk/LC_MESSAGES/mwlib.rl.mo
