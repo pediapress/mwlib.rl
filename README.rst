@@ -53,6 +53,12 @@ The current development version can also be found there.
 
 ChangeLog
 ======================================================================
+2013-05-13 release 0.14.3
+--------------------------
+- require more recent version of mwlib, pygments and mwlib.ext
+- do not expand templates in renderArticleTitle
+- Localisation updates from http://translatewiki.net.
+
 2013-04-23 release 0.14.2
 --------------------------
 - add missing comment for table column sizing
