@@ -78,7 +78,6 @@ import rltables
 from pagetemplates import WikiPage, TitlePage
 
 from mwlib import parser, log, uparser,  timeline
-from mwlib.dummydb import DummyDB
 from mwlib.writer.licensechecker import LicenseChecker
 from mwlib.rl import fontconfig
 from mwlib.rl.customnodetransformer import CustomNodeTransformer
@@ -752,8 +751,7 @@ class RlWriter(object):
                 self.cleanTitle(c)
 
     def renderArticleTitle(self, raw):
-        dummydb = DummyDB()
-        title_node = uparser.parseString(title='', raw=raw, wikidb=dummydb)
+        title_node = uparser.parseString(title='', raw=raw, expandTemplates=False)
         advtree.buildAdvancedTree(title_node)
         title_node.__class__ = advtree.Node
         self.cleanTitle(title_node)
