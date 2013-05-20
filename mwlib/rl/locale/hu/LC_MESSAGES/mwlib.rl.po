@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-12 18:38+0000\n"
+"POT-Creation-Date: 2013-05-20 09:23+0000\n"
 "PO-Revision-Date: 2012-04-04 18:57:14+0000\n"
 "Language-Team: Hungarian <https://translatewiki.net/wiki/Portal:hu>\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -39,7 +39,7 @@ msgstr "Licenc:"
 msgid "Contributors:"
 msgstr "Közreműködők:"
 
-#: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:555
+#: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:554
 msgid "Article Licenses"
 msgstr "Szócikk licencei"
 
@@ -63,7 +63,7 @@ msgstr "Létrehozva:"
 msgid "Contents"
 msgstr "Tartalom"
 
-#: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:460
+#: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:459
 msgid "Articles"
 msgstr "Szócikkek"
 
@@ -104,8 +104,8 @@ msgstr ""
 "is a könyv. Csak az első néhány rész, valamint az index első oldala látható. "
 "A végleges nyomtatott könyvben az itt kimaradt részek is megtalálhatók."
 
-#: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:508
-#: mwlib/rl/rlwriter.py:824
+#: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:507
+#: mwlib/rl/rlwriter.py:822
 msgid "References"
 msgstr "Hivatkozások"
 
@@ -147,13 +147,13 @@ msgstr ""
 "szolgálnak, beleértve a szerzői jogi státuszt, a szerzői jog tulajdonosát és "
 "a licencfeltételeket."
 
-#: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:509
-#: mwlib/rl/rlwriter.py:699
+#: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:508
+#: mwlib/rl/rlwriter.py:698
 msgid "Article Sources and Contributors"
 msgstr "Szócikkek forrása és közreműködői"
 
-#: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:512
-#: mwlib/rl/rlwriter.py:718
+#: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:511
+#: mwlib/rl/rlwriter.py:717
 msgid "Image Sources, Licenses and Contributors"
 msgstr "Képek forrásai, licencei és közreműködői"
 
@@ -161,7 +161,7 @@ msgstr "Képek forrásai, licencei és közreműködői"
 msgid "Image"
 msgstr "Kép"
 
-#: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:691
+#: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:690
 msgid "anonymous edits"
 msgstr "névtelen szerkesztés"
 
@@ -181,12 +181,12 @@ msgstr ""
 "A PDF-et a nyílt forrású mwlib eszközkészlet generálta. Lásd a http://code."
 "pediapress.com/-ot további információkért."
 
-#: mwlib/rl/rlwriter.py:344
+#: mwlib/rl/rlwriter.py:343
 #, python-format
 msgid "mwlib.ext version: %(version)s"
 msgstr "mwlib.ext verziója: %(version)s"
 
-#: mwlib/rl/rlwriter.py:350
+#: mwlib/rl/rlwriter.py:349
 #, python-format
 msgid ""
 "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
@@ -195,23 +195,23 @@ msgstr ""
 "mwlib verziója: %(mwlibversion)s, mwlib.rl verziója: %(mwlibrlversion)s, %"
 "(mwlibextversion)s"
 
-#: mwlib/rl/rlwriter.py:706 mwlib/rl/rlwriter.py:731
+#: mwlib/rl/rlwriter.py:705 mwlib/rl/rlwriter.py:730
 msgid "Source"
 msgstr "Forrás"
 
-#: mwlib/rl/rlwriter.py:708 mwlib/rl/rlwriter.py:734
+#: mwlib/rl/rlwriter.py:707 mwlib/rl/rlwriter.py:733
 msgid "Contributors"
 msgstr "Közreműködők:"
 
-#: mwlib/rl/rlwriter.py:724
+#: mwlib/rl/rlwriter.py:723
 msgid "unknown"
 msgstr "ismeretlen"
 
-#: mwlib/rl/rlwriter.py:726
+#: mwlib/rl/rlwriter.py:725
 msgid "License"
 msgstr "Licenc"
 
-#: mwlib/rl/rlwriter.py:815
+#: mwlib/rl/rlwriter.py:813
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-12 18:38+0000\n"
+"POT-Creation-Date: 2013-05-20 09:23+0000\n"
 "PO-Revision-Date: 2013-03-23 13:23:42+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -33,7 +33,7 @@ msgstr "ଲାଇସେନ୍ସ"
 msgid "Contributors:"
 msgstr "ଅବଦାନକାରୀଗଣ"
 
-#: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:555
+#: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:554
 msgid "Article Licenses"
 msgstr "ପ୍ରସଙ୍ଗ ଲାଇସେନ୍ସ"
 
@@ -57,7 +57,7 @@ msgstr "ତିଆରି ହୋଇଥିବା ଦିନ ହେଇଛି :"
 msgid "Contents"
 msgstr "ବିଷୟସୂଚୀ"
 
-#: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:460
+#: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:459
 msgid "Articles"
 msgstr "ପ୍ରସଙ୍ଗଗୁଡିକ"
 
@@ -98,8 +98,8 @@ msgstr ""
 "ଦେଖାଯାଏ ।ଏହି ଦେଖଣାରେ ଆପଣଙ୍କ ବହିର ପ୍ରଥମ କିଛି ପ୍ରସଙ୍ଗ ତାସହ ସୂଚୀପତ୍ରର ପ୍ରଥମ ପୃଷ୍ଠାଗୁଡିକ "
 "ଦେଖାଯାଇଥାଏ । ସମସ୍ତ ପ୍ରସଙ୍ଗ, ଏପରିକି ଯେଉଁଗୁଡିକ ଦେଖଣାରେ ନାହିଁ, ସବୁ ଛପାବହିରେ ରହିବ ।"
 
-#: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:508
-#: mwlib/rl/rlwriter.py:824
+#: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:507
+#: mwlib/rl/rlwriter.py:822
 msgid "References"
 msgstr "ଆଧାରଗୁଡିକ"
 
@@ -136,13 +136,13 @@ msgstr ""
 "ସମସ୍ତ ଫାଇଲ ପାଇଁ ତାଲିକାଭୁକ୍ତ ହୋଇଥିବା ଅଧାରଗୁଡିକ ନକଲ ଅଧିକାର, ଲାଇସେନ୍ସ, ନକଲ ଅଧିକାରୀ ଏବଂ "
 "ଲାଇସେନ୍ସ ଉପଲବଧି ବିଷୟରେ ଅଧିକ ବିବରଣୀ ପ୍ରଦାନ କରେ ।"
 
-#: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:509
-#: mwlib/rl/rlwriter.py:699
+#: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:508
+#: mwlib/rl/rlwriter.py:698
 msgid "Article Sources and Contributors"
 msgstr "ପ୍ରସଙ୍ଗ ଅଧାରଗୁଡିକ ଏବଂ ଅବଦନକାରୀ"
 
-#: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:512
-#: mwlib/rl/rlwriter.py:718
+#: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:511
+#: mwlib/rl/rlwriter.py:717
 msgid "Image Sources, Licenses and Contributors"
 msgstr "ଛବିଗୁଡିକର ଆଧାର, ଲାଇସେନ୍ସ ଏବଂ ଅବଦନକାରୀମାନେ"
 
@@ -150,7 +150,7 @@ msgstr "ଛବିଗୁଡିକର ଆଧାର, ଲାଇସେନ୍ସ ଏ�
 msgid "Image"
 msgstr "ଛବି"
 
-#: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:691
+#: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:690
 msgid "anonymous edits"
 msgstr "ଯାହିତାହି ସମ୍ପାଦନା"
 
@@ -170,12 +170,12 @@ msgstr ""
 "ପିଡ଼ିଏଫଟି mwlibନାମକ ଖୋଲା ଟୁଲ ଦ୍ଵାରା ବାହାର କରାଯାଇଛି । ଅଧିକ ବିବରଣୀ ପାଇଁ ଦେଖନ୍ତୁ http://"
 "code.pediapress.com/"
 
-#: mwlib/rl/rlwriter.py:344
+#: mwlib/rl/rlwriter.py:343
 #, python-format
 msgid "mwlib.ext version: %(version)s"
 msgstr "mwlib.ext ସଂସ୍କରଣ: %(version)s"
 
-#: mwlib/rl/rlwriter.py:350
+#: mwlib/rl/rlwriter.py:349
 #, python-format
 msgid ""
 "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
@@ -184,23 +184,23 @@ msgstr ""
 "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
 "(mwlibextversion)s"
 
-#: mwlib/rl/rlwriter.py:706 mwlib/rl/rlwriter.py:731
+#: mwlib/rl/rlwriter.py:705 mwlib/rl/rlwriter.py:730
 msgid "Source"
 msgstr "ଆଧାର"
 
-#: mwlib/rl/rlwriter.py:708 mwlib/rl/rlwriter.py:734
+#: mwlib/rl/rlwriter.py:707 mwlib/rl/rlwriter.py:733
 msgid "Contributors"
 msgstr "ଅବଦାନକାରୀଗଣ"
 
-#: mwlib/rl/rlwriter.py:724
+#: mwlib/rl/rlwriter.py:723
 msgid "unknown"
 msgstr "ଅଜଣା"
 
-#: mwlib/rl/rlwriter.py:726
+#: mwlib/rl/rlwriter.py:725
 msgid "License"
 msgstr "ଲାଇସେନ୍ସ"
 
-#: mwlib/rl/rlwriter.py:815
+#: mwlib/rl/rlwriter.py:813
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "

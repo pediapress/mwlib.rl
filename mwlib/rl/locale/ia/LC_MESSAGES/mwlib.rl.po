@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-12 18:38+0000\n"
+"POT-Creation-Date: 2013-05-20 09:23+0000\n"
 "PO-Revision-Date: 2012-04-04 18:57:14+0000\n"
 "Language-Team: Interlingua <https://translatewiki.net/wiki/Portal:ia>\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -35,7 +35,7 @@ msgstr "Licentia:"
 msgid "Contributors:"
 msgstr "Contributores:"
 
-#: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:555
+#: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:554
 msgid "Article Licenses"
 msgstr "Licentias del articulos"
 
@@ -59,7 +59,7 @@ msgstr "Create le:"
 msgid "Contents"
 msgstr "Contento"
 
-#: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:460
+#: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:459
 msgid "Articles"
 msgstr "Articulos"
 
@@ -104,8 +104,8 @@ msgstr ""
 "le articulos, mesmo illos excludite del previsualisation, essera includite "
 "in le libro final imprimite."
 
-#: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:508
-#: mwlib/rl/rlwriter.py:824
+#: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:507
+#: mwlib/rl/rlwriter.py:822
 msgid "References"
 msgstr "Referentias"
 
@@ -145,13 +145,13 @@ msgstr ""
 "super le licentia, como le stato del derectos de autor (copyright), le "
 "detentor de illos, e le conditiones del licentia."
 
-#: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:509
-#: mwlib/rl/rlwriter.py:699
+#: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:508
+#: mwlib/rl/rlwriter.py:698
 msgid "Article Sources and Contributors"
 msgstr "Origines e contributores del articulo"
 
-#: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:512
-#: mwlib/rl/rlwriter.py:718
+#: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:511
+#: mwlib/rl/rlwriter.py:717
 msgid "Image Sources, Licenses and Contributors"
 msgstr "Origines, licentias e contributores del imagine"
 
@@ -159,7 +159,7 @@ msgstr "Origines, licentias e contributores del imagine"
 msgid "Image"
 msgstr "Imagine"
 
-#: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:691
+#: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:690
 msgid "anonymous edits"
 msgstr "modificationes anonyme"
 
@@ -179,12 +179,12 @@ msgstr ""
 "PDF generate con le instrumentario open source mwlib. Vide http://code."
 "pediapress.com/ pro plus information."
 
-#: mwlib/rl/rlwriter.py:344
+#: mwlib/rl/rlwriter.py:343
 #, python-format
 msgid "mwlib.ext version: %(version)s"
 msgstr "version de mwlib.ext: %(version)s"
 
-#: mwlib/rl/rlwriter.py:350
+#: mwlib/rl/rlwriter.py:349
 #, python-format
 msgid ""
 "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
@@ -193,23 +193,23 @@ msgstr ""
 "version de mwlib: %(mwlibversion)s, version de mwlib.rl: %(mwlibrlversion)s, "
 "%(mwlibextversion)s"
 
-#: mwlib/rl/rlwriter.py:706 mwlib/rl/rlwriter.py:731
+#: mwlib/rl/rlwriter.py:705 mwlib/rl/rlwriter.py:730
 msgid "Source"
 msgstr "Origine"
 
-#: mwlib/rl/rlwriter.py:708 mwlib/rl/rlwriter.py:734
+#: mwlib/rl/rlwriter.py:707 mwlib/rl/rlwriter.py:733
 msgid "Contributors"
 msgstr "Contributores"
 
-#: mwlib/rl/rlwriter.py:724
+#: mwlib/rl/rlwriter.py:723
 msgid "unknown"
 msgstr "incognite"
 
-#: mwlib/rl/rlwriter.py:726
+#: mwlib/rl/rlwriter.py:725
 msgid "License"
 msgstr "Licentia"
 
-#: mwlib/rl/rlwriter.py:815
+#: mwlib/rl/rlwriter.py:813
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "

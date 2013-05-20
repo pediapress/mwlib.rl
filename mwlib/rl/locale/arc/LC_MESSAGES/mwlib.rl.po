@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-12 18:38+0000\n"
+"POT-Creation-Date: 2013-05-20 09:23+0000\n"
 "PO-Revision-Date: 2012-04-04 18:57:12+0000\n"
 "Language-Team: Aramaic <https://translatewiki.net/wiki/Portal:arc>\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -34,7 +34,7 @@ msgstr "ܦܣܣܐ:"
 msgid "Contributors:"
 msgstr "ܫܘܬܦܢ̈ܐ:"
 
-#: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:555
+#: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:554
 msgid "Article Licenses"
 msgstr "ܦܣܣ̈ܐ ܕܡܐܡܪܐ"
 
@@ -58,7 +58,7 @@ msgstr "ܐܬܣܝܡܬ ܒ:"
 msgid "Contents"
 msgstr "ܚܒܝܫܬ̈ܐ"
 
-#: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:460
+#: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:459
 msgid "Articles"
 msgstr "ܡܐܡܪ̈ܐ"
 
@@ -96,8 +96,8 @@ msgid ""
 "those left out of the preview, will be included in the final printed book."
 msgstr ""
 
-#: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:508
-#: mwlib/rl/rlwriter.py:824
+#: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:507
+#: mwlib/rl/rlwriter.py:822
 msgid "References"
 msgstr ""
 
@@ -127,13 +127,13 @@ msgid ""
 "license conditions."
 msgstr ""
 
-#: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:509
-#: mwlib/rl/rlwriter.py:699
+#: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:508
+#: mwlib/rl/rlwriter.py:698
 msgid "Article Sources and Contributors"
 msgstr ""
 
-#: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:512
-#: mwlib/rl/rlwriter.py:718
+#: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:511
+#: mwlib/rl/rlwriter.py:717
 msgid "Image Sources, Licenses and Contributors"
 msgstr ""
 
@@ -141,7 +141,7 @@ msgstr ""
 msgid "Image"
 msgstr "ܨܘܪܬܐ"
 
-#: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:691
+#: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:690
 msgid "anonymous edits"
 msgstr ""
 
@@ -161,12 +161,12 @@ msgstr ""
 "ܢܒܗܠܗ PDF ܒܡܦܠܚܬܐ ܕܣܓܝ ܡܐܢ̈ܐ ܕ mwlib ܦܬܝܚ̈ܐ ܡܒܘܥܐ. ܕܥܘܪ ܠ http://code."
 "pediapress.com/ ܠܝܬܝܪ ܡܕܥܢܘܝܬ̈ܐ."
 
-#: mwlib/rl/rlwriter.py:344
+#: mwlib/rl/rlwriter.py:343
 #, python-format
 msgid "mwlib.ext version: %(version)s"
 msgstr "mwlib.ext ܐܨܚܬܐ: %(version)s"
 
-#: mwlib/rl/rlwriter.py:350
+#: mwlib/rl/rlwriter.py:349
 #, python-format
 msgid ""
 "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
@@ -175,23 +175,23 @@ msgstr ""
 "mwlib ܐܨܚܬܐ: %(mwlibversion)s, mwlib.rl ܐܨܚܬܐ: %(mwlibrlversion)s, %"
 "(mwlibextversion)s"
 
-#: mwlib/rl/rlwriter.py:706 mwlib/rl/rlwriter.py:731
+#: mwlib/rl/rlwriter.py:705 mwlib/rl/rlwriter.py:730
 msgid "Source"
 msgstr "ܡܒܘܥܐ"
 
-#: mwlib/rl/rlwriter.py:708 mwlib/rl/rlwriter.py:734
+#: mwlib/rl/rlwriter.py:707 mwlib/rl/rlwriter.py:733
 msgid "Contributors"
 msgstr "ܫܘܬܦܢ̈ܐ"
 
-#: mwlib/rl/rlwriter.py:724
+#: mwlib/rl/rlwriter.py:723
 msgid "unknown"
 msgstr "ܠܐ ܝܕܝܥܐ"
 
-#: mwlib/rl/rlwriter.py:726
+#: mwlib/rl/rlwriter.py:725
 msgid "License"
 msgstr "ܦܣܣܐ"
 
-#: mwlib/rl/rlwriter.py:815
+#: mwlib/rl/rlwriter.py:813
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
