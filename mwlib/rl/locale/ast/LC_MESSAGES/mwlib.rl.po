@@ -1,4 +1,4 @@
-# Translation of Mwlib.rl to Asturian (Asturianu)
+# Translation of Mwlib.rl to Asturian (asturianu)
 # Exported from translatewiki.net
 #
 # Author: Xuacu
@@ -6,14 +6,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-20 09:23+0000\n"
-"PO-Revision-Date: 2012-04-04 18:57:13+0000\n"
+"POT-Creation-Date: 2013-05-26 09:32+0000\n"
+"PO-Revision-Date: 2013-05-26 09:32:33+0000\n"
 "Language-Team: Asturian <https://translatewiki.net/wiki/Portal:ast>\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ast\n"
-"X-POT-Import-Date: 2012-03-11 22:23:36+0000\n"
-"X-Generator: MediaWiki 1.20alpha (f3f3e1b); Translate 2012-03-13\n"
+"X-POT-Import-Date: 2012-04-08 21:35:04+0000\n"
+"X-Generator: MediaWiki 1.22alpha (fdceb16); Translate 2013-04-29\n"
 "X-Translation-Project: translatewiki.net <https://translatewiki.net>\n"
 "X-Language-Code: ast\n"
 "X-Message-Group: #out-mwlibrl\n"
@@ -69,11 +69,11 @@ msgstr "Producíu por:"
 
 #: mwlib/rl/pdfmessages.py:35
 msgid "pdf writer version:"
-msgstr "Versión de pdf writer:"
+msgstr "versión de pdf writer:"
 
 #: mwlib/rl/pdfmessages.py:37
 msgid "mwlib version:"
-msgstr "Versión de mwlib:"
+msgstr "versión de mwlib:"
 
 #: mwlib/rl/pdfmessages.py:39
 msgid "Table of Contents"
@@ -182,7 +182,7 @@ msgstr ""
 #: mwlib/rl/rlwriter.py:343
 #, python-format
 msgid "mwlib.ext version: %(version)s"
-msgstr "Versión de mwlib.ext: %(version)s"
+msgstr "versión de mwlib.ext: %(version)s"
 
 #: mwlib/rl/rlwriter.py:349
 #, python-format
@@ -190,7 +190,7 @@ msgid ""
 "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
 "(mwlibextversion)s"
 msgstr ""
-"Versión de mwlib: %(mwlibversion)s, versión de mwlib.rl: %(mwlibrlversion)s, "
+"versión de mwlib: %(mwlibversion)s, versión de mwlib.rl: %(mwlibrlversion)s, "
 "%(mwlibextversion)s"
 
 #: mwlib/rl/rlwriter.py:705 mwlib/rl/rlwriter.py:730
