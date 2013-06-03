@@ -1,13 +1,16 @@
 GITVERSIONFILE = mwlib/rl/_gitversion.py
 RST2HTML ?= rst2html.py
 
-all:: messages README.html MANIFEST.in
+all:: messages MANIFEST.in
 
 messages::
 	./compile_messages.py all
 
 MANIFEST.in::
 	./make_manifest.py
+
+documentation:: 
+	make README.html
 
 README.html: README.rst
 	$(RST2HTML) README.rst >README.html
