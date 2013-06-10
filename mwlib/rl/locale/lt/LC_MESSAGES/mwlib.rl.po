@@ -1,21 +1,22 @@
-# Translation of Mwlib.rl to Lithuanian (Lietuvių)
+# Translation of Mwlib.rl to Lithuanian (lietuvių)
 # Exported from translatewiki.net
 #
 # Author: Eitvys200
 # Author: Ignas693
+# Author: Mantak111
 # Author: Matasg
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-26 10:18+0000\n"
-"PO-Revision-Date: 2012-04-04 18:57:14+0000\n"
+"POT-Creation-Date: 2013-06-10 08:43+0000\n"
+"PO-Revision-Date: 2013-06-10 08:42:46+0000\n"
 "Language-Team: Lithuanian <https://translatewiki.net/wiki/Portal:lt>\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: lt\n"
-"X-POT-Import-Date: 2012-03-11 22:23:36+0000\n"
-"X-Generator: MediaWiki 1.20alpha (f3f3e1b); Translate 2012-03-13\n"
+"X-POT-Import-Date: 2012-04-08 21:35:04+0000\n"
+"X-Generator: MediaWiki 1.22alpha (76df7ee); Translate 2013-04-29\n"
 "X-Translation-Project: translatewiki.net <https://translatewiki.net>\n"
 "X-Language-Code: lt\n"
 "X-Message-Group: #out-mwlibrl\n"
@@ -217,3 +218,6 @@ msgid ""
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
 "software (b) problematic Mediawiki markup (c) table is too wide"
 msgstr ""
+"<strong>Įspėjimas: Straipsnis negali atvaizduoti paprastojo teksto.</"
+"strong><br>Galimos problemos priežastys: (a) klaidos pdf writer programinėje "
+"įrangoje (b) problematiškoje Mediawiki žymėjimo (c) lentelėje yra per platus"
