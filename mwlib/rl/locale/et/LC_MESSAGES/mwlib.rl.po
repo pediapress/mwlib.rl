@@ -1,19 +1,21 @@
 # Translation of Mwlib.rl to Estonian (eesti)
 # Exported from translatewiki.net
 #
+# Author: AivoK
 # Author: Avjoska
+# Author: KalmerE.
 # Author: Silvar
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-10 08:43+0000\n"
-"PO-Revision-Date: 2012-08-12 18:27:41+0000\n"
+"POT-Creation-Date: 2013-06-17 11:26+0000\n"
+"PO-Revision-Date: 2013-06-17 11:25:38+0000\n"
 "Language-Team: Estonian <https://translatewiki.net/wiki/Portal:et>\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: et\n"
-"X-Generator: MediaWiki 1.20alpha (cc549f1); Translate 2012-07-04\n"
+"X-Generator: MediaWiki 1.22alpha (52405d2); Translate 2013-04-29\n"
 "X-Translation-Project: translatewiki.net <https://translatewiki.net>\n"
 "X-Language-Code: et\n"
 "X-Message-Group: #out-mwlibrl\n"
@@ -22,7 +24,7 @@ msgstr ""
 
 #: mwlib/rl/pdfmessages.py:11
 msgid "Index"
-msgstr ""
+msgstr "Register"
 
 #: mwlib/rl/pdfmessages.py:13
 msgid "Source:"
@@ -46,15 +48,15 @@ msgstr "Pealkiri"
 
 #: mwlib/rl/pdfmessages.py:23
 msgid "Subtitle:"
-msgstr ""
+msgstr "Alapealkiri:"
 
 #: mwlib/rl/pdfmessages.py:25
 msgid "Editor:"
-msgstr ""
+msgstr "Toimetaja:"
 
 #: mwlib/rl/pdfmessages.py:27
 msgid "Created on:"
-msgstr ""
+msgstr "Loodud:"
 
 #: mwlib/rl/pdfmessages.py:29 mwlib/rl/toc.py:46
 msgid "Contents"
@@ -69,23 +71,20 @@ msgid "Produced by:"
 msgstr "Tootja:"
 
 #: mwlib/rl/pdfmessages.py:35
-#, fuzzy
 msgid "pdf writer version:"
-msgstr "mwlib versioon:"
+msgstr "PDF-kirjutustarkvara versioon:"
 
 #: mwlib/rl/pdfmessages.py:37
 msgid "mwlib version:"
 msgstr "mwlib versioon:"
 
 #: mwlib/rl/pdfmessages.py:39
-#, fuzzy
 msgid "Table of Contents"
-msgstr "Kaastöö tegijad"
+msgstr "Sisukord"
 
 #: mwlib/rl/pdfmessages.py:41
-#, fuzzy
 msgid "Skipping Articles!"
-msgstr "Artikli litsentsid"
+msgstr "Jätad artikleid vahele!"
 
 #: mwlib/rl/pdfmessages.py:43
 msgid ""
@@ -104,11 +103,11 @@ msgstr ""
 #: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:507
 #: mwlib/rl/rlwriter.py:822
 msgid "References"
-msgstr ""
+msgstr "Viited"
 
 #: mwlib/rl/pdfmessages.py:49
 msgid "Appendix"
-msgstr ""
+msgstr "Lisa"
 
 #: mwlib/rl/pdfmessages.py:51
 msgid ""
@@ -148,11 +147,11 @@ msgstr "Pilt"
 
 #: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:690
 msgid "anonymous edits"
-msgstr ""
+msgstr "anonüümsed muudatused"
 
 #: mwlib/rl/pdfmessages.py:65
 msgid "Figure"
-msgstr ""
+msgstr "Joonis"
 
 #: mwlib/rl/pdfmessages.py:67
 msgid "See also"
@@ -167,9 +166,9 @@ msgstr ""
 "informatsiooni saamiseks vaata http://code.pediapress.com/"
 
 #: mwlib/rl/rlwriter.py:343
-#, fuzzy, python-format
+#, python-format
 msgid "mwlib.ext version: %(version)s"
-msgstr "mwlib versioon:"
+msgstr "mwlib.ext versioon: %(version)s"
 
 #: mwlib/rl/rlwriter.py:349
 #, python-format
