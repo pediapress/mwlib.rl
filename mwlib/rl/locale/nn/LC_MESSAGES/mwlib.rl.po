@@ -1,4 +1,4 @@
-# Translation of Mwlib.rl to Norwegian Nynorsk (‪norsk (nynorsk)‬)
+# Translation of Mwlib.rl to Norwegian Nynorsk (norsk nynorsk)
 # Exported from translatewiki.net
 #
 # Author: Harald Khan
@@ -8,13 +8,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-17 11:26+0000\n"
-"PO-Revision-Date: 2012-06-10 23:46:00+0000\n"
+"POT-Creation-Date: 2013-06-24 13:44+0000\n"
+"PO-Revision-Date: 2013-06-24 13:43:38+0000\n"
 "Language-Team: Norwegian Nynorsk <https://translatewiki.net/wiki/Portal:nn>\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: nn\n"
-"X-Generator: MediaWiki 1.20alpha (d974795); Translate 2012-06-03\n"
+"X-Generator: MediaWiki 1.22alpha (443b99c); Translate 2013-04-29\n"
 "X-Translation-Project: translatewiki.net <https://translatewiki.net>\n"
 "X-Language-Code: nn\n"
 "X-Message-Group: #out-mwlibrl\n"
@@ -100,6 +100,11 @@ msgid ""
 "of the index, of your book are shown in this preview. All articles, even "
 "those left out of the preview, will be included in the final printed book."
 msgstr ""
+"Merk: Dette er berre ei førehandsvising av boka di, meint for å gje deg ein "
+"idé om korleis boka di ser ut. Berre dei fyrste artiklane og dei fyrste "
+"sidene i innhaldslista i boka di er viste i førehandsvisinga. Alle "
+"artiklane, inkludert dei som ikkje er med i førehandsvisinga, er med i den "
+"endelege trykte boka."
 
 #: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:507
 #: mwlib/rl/rlwriter.py:822
@@ -108,7 +113,7 @@ msgstr "Referansar"
 
 #: mwlib/rl/pdfmessages.py:49
 msgid "Appendix"
-msgstr ""
+msgstr "Vedlegg"
 
 #: mwlib/rl/pdfmessages.py:51
 msgid ""
@@ -122,32 +127,27 @@ msgstr ""
 "opphavsrettsstoda, eigaren av opphavsretten og lisenshøve."
 
 #: mwlib/rl/pdfmessages.py:53
-#, fuzzy
 msgid ""
 "The sources listed for each article provide more detailed licensing "
 "information including the copyright status, the copyright owner, and the "
 "license conditions."
 msgstr ""
-"Dei følgjande bolkane listar opp kjeldene for alle artiklane og bileta nytta "
-"i denne boka. Kjeldene gjev meir detaljert lisensinformasjon, slik som "
-"opphavsrettsstoda, eigaren av opphavsretten og lisenshøve."
+"Kjeldene lista opp for kvar artikkel gjev meir detaljert lisensinformasjon, "
+"inkludert opphavsrettsstoda, opphavsrettseigaren og lisensvilkåra."
 
 #: mwlib/rl/pdfmessages.py:55
-#, fuzzy
 msgid ""
 "The sources listed for each image provide more detailed licensing "
 "information including the copyright status, the copyright owner, and the "
 "license conditions."
 msgstr ""
-"Dei følgjande bolkane listar opp kjeldene for alle artiklane og bileta nytta "
-"i denne boka. Kjeldene gjev meir detaljert lisensinformasjon, slik som "
-"opphavsrettsstoda, eigaren av opphavsretten og lisenshøve."
+"Kjeldene lista opp for kvart bilete gjev meir detaljert lisensinformasjon, "
+"inkludert opphavsrettsstoda, opphavsrettseigaren og lisensvilkåra."
 
 #: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:508
 #: mwlib/rl/rlwriter.py:698
-#, fuzzy
 msgid "Article Sources and Contributors"
-msgstr "Biletkjelder, -lisensar og -bidragsytarar"
+msgstr "Artikkeltkjelder og bidragsytarar"
 
 #: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:511
 #: mwlib/rl/rlwriter.py:717
@@ -175,6 +175,8 @@ msgid ""
 "PDF generated using the open source mwlib toolkit. See http://code."
 "pediapress.com/ for more information."
 msgstr ""
+"PDF oppretta med det opne kjeldekode-verktøyet mwlib. Sjå http://code."
+"pediapress.com/ for meir informasjon."
 
 #: mwlib/rl/rlwriter.py:343
 #, python-format
