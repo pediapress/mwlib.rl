@@ -95,9 +95,14 @@ class TocRenderer(object):
         return self.run_cmd(cmd)
 
     def combinePdfs(self, pdfpath, tocpath, finalpath, has_title_page):
-        retcode = self.pdfsam(pdfpath, tocpath, finalpath, has_title_page=has_title_page)
+        if os.path.splitext(pdfpath)[1] == '.pdf':
+            safe_pdfpath = pdfpath
+        else:
+            safe_pdfpath = pdfpath + '.pdf'
+            shutil.move(pdfpath, safe_pdfpath)
+        retcode = self.pdfsam(safe_pdfpath, tocpath, finalpath, has_title_page=has_title_page)
         if retcode != 0:
-            retcode = self.pdftk(pdfpath, tocpath, finalpath, has_title_page=has_title_page)
+            retcode = self.pdftk(safe_pdfpath, tocpath, finalpath, has_title_page=has_title_page)
         if retcode == 0:
             shutil.move(finalpath, pdfpath)
         if os.path.exists(tocpath):
