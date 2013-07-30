@@ -1,20 +1,21 @@
 # Translation of Mwlib.rl to Malayalam (മലയാളം)
 # Exported from translatewiki.net
 #
+# Author: Akhilan
 # Author: Anoopan
 # Author: Raghith
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-22 15:42+0000\n"
-"PO-Revision-Date: 2013-07-22 15:41:58+0000\n"
+"POT-Creation-Date: 2013-07-30 17:39+0000\n"
+"PO-Revision-Date: 2013-07-30 17:39:16+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-POT-Import-Date: 2012-04-08 21:35:04+0000\n"
 "Language: ml\n"
 "X-Translation-Project: translatewiki.net <https://translatewiki.net>\n"
-"X-Generator: MediaWiki 1.22alpha (f0e6ba9); Translate 2013-04-29\n"
+"X-Generator: MediaWiki 1.22alpha (ef21e54); Translate 2013-04-29\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: mwlib/rl/pdfmessages.py:11
@@ -129,12 +130,12 @@ msgstr ""
 #: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:508
 #: mwlib/rl/rlwriter.py:698
 msgid "Article Sources and Contributors"
-msgstr ""
+msgstr "ലേഖന ഉറവിടങ്ങളും സംഭാവന ചെയ്തവരും"
 
 #: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:511
 #: mwlib/rl/rlwriter.py:717
 msgid "Image Sources, Licenses and Contributors"
-msgstr ""
+msgstr "ചിത്രങ്ങളുടെ ഉറവിടങ്ങൾ, അനുമതികൾ, സംഭാവന ചെയ്തവർ"
 
 #: mwlib/rl/pdfmessages.py:61
 msgid "Image"
@@ -146,7 +147,7 @@ msgstr ""
 
 #: mwlib/rl/pdfmessages.py:65
 msgid "Figure"
-msgstr ""
+msgstr "ചിത്രം"
 
 #: mwlib/rl/pdfmessages.py:67
 msgid "See also"
@@ -176,7 +177,7 @@ msgstr "സ്രോതസ്സ്"
 
 #: mwlib/rl/rlwriter.py:707 mwlib/rl/rlwriter.py:733
 msgid "Contributors"
-msgstr ""
+msgstr "സംഭാവന ചെയ്തവർ"
 
 #: mwlib/rl/rlwriter.py:723
 msgid "unknown"
