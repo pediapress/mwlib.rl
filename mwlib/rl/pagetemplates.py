@@ -7,7 +7,8 @@
 from __future__ import division
 
 from PIL import Image
-from time import gmtime, strftime
+import time
+import locale
 
 from reportlab.platypus.paragraph import Paragraph
 from reportlab.lib.units import cm
@@ -143,7 +144,10 @@ class TitlePage(PageTemplate):
             canvas.line(footer_margin_hor, footer_margin_vert, page_width - footer_margin_hor, footer_margin_vert )
             footertext = [_(titlepagefooter)]
             if pdfstyles.show_creation_date:
-                footertext.append('PDF generated at: %s' % strftime("%a, %d %b %Y %H:%M:%S %Z", gmtime()))
+                locale.setlocale(locale.LC_ALL, '')
+                footertext.append(
+                    pdfstyles.creation_date_txt % time.strftime(
+                        pdfstyles.creation_date_format, time.localtime()))
             p = Paragraph('<br/>'.join([formatter.cleanText(line, escape=False) for line in footertext]),
                           text_style(mode='footer'))
             w,h = p.wrap(print_width, print_height)

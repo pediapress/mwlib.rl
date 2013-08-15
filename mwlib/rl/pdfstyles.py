@@ -88,7 +88,13 @@ title_page_image_size = (12*cm, 17*cm) # max. width, height of image, aspect rat
 title_page_image_pos = (None, None)
 
 titlepagefooter = _(u'PDF generated using the open source mwlib toolkit. See http://code.pediapress.com/ for more information.')
+
+# toggle display of PDF generation date in title page footer
 show_creation_date = True
+# date format as defined in http://docs.python.org/2/library/time.html#time.strftime
+creation_date_format = '%a, %d %b %Y %H:%M:%S %Z'
+# displayed text. %s will be substituted by the date string defined above
+creation_date_txt = 'PDF generated at: %s'
 
 # if enabled a table of contents is printed at the beginning of the pdf
 # note that no TOC is generated if only one article is rendered
