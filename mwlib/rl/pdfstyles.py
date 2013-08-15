@@ -54,6 +54,12 @@ header_margin_vert= 1.5 * cm
 footer_margin_hor = 1.5 * cm
 footer_margin_vert= 1.5 * cm
 
+# margins for title page
+title_margin_left = page_margin_left
+title_margin_right = page_margin_right
+title_margin_top = page_margin_top
+title_margin_bottom = page_margin_bottom
+
 show_title_page = True
 show_title_page_footer = True
 show_page_header = True 

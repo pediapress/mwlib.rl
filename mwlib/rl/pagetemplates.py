@@ -115,7 +115,12 @@ class TitlePage(PageTemplate):
         onPage=_doNothing, onPageEnd=_doNothing, pagesize=(page_width, page_height)):
 
         id = 'TitlePage'
-        frames = Frame(page_margin_left, page_margin_bottom, print_width, print_height)
+        p = pdfstyles
+        frames = Frame(p.title_margin_left,
+                       p.title_margin_bottom,
+                       p.page_width-p.title_margin_left-p.title_margin_right,
+                       p.page_height-p.title_margin_top-p.title_margin_bottom)
+
         PageTemplate.__init__(self,id=id, frames=frames,onPage=onPage,onPageEnd=onPageEnd,pagesize=pagesize)
         self.cover = cover
 
