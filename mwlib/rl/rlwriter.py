@@ -323,6 +323,24 @@ class RlWriter(object):
         else:
             pdfstyles.word_wrap = self.word_wrap
 
+    def handle_page_break(self, node, mode='before'):
+        # mode:
+        # before for page-break-before
+        # after for page-break-after
+        css_style = None
+        if node.vlist:
+            css_style = node.vlist.get('style', None)
+            if css_style:
+                page_break = css_style.get('page-break-{}'.format(mode), None)
+        if css_style and page_break:
+            if page_break in ['always', '100%']:
+                return NotAtTopPageBreak()
+            res = re.search('(\d{1,2})\%', page_break)
+            if res:
+                min_percent = int(res.groups()[0])
+                return CondPageBreak(min_percent/100.0*pdfstyles.print_height)
+        return None
+
     def write(self, obj):
         m = "write" + obj.__class__.__name__
         if not hasattr(self, m):
@@ -336,6 +354,16 @@ class RlWriter(object):
         res = m(obj)
         self.set_rtl(original)
         self.formatter.resetStyle(styles)
+        pb_before = self.handle_page_break(obj, 'before')
+        pb_after = self.handle_page_break(obj, 'after')
+        if pb_before:
+            if not isinstance(res, list):
+                res = [res]
+            res.insert(0, pb_before)
+        if pb_after:
+            if not isinstance(res, list):
+                res = [res]
+            res.append(pb_after)
         return res
 
     def getVersion(self):
