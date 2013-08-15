@@ -68,6 +68,7 @@ page_break_after_article = False
 
 show_article_attribution = True   # Show/Hide article source and contributors
 show_article_hr = True           # Underline each article header by a horizontal rule
+show_wiki_license = True
 
 # NOTE: strings can contain reportlab styling tags the text needs to be xml excaped.
 # more information is available in the reportlab user documentation (http://www.reportlab.com/docs/userguide.pdf)

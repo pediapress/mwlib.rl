@@ -550,6 +550,8 @@ class RlWriter(object):
     def renderLicense(self):
         self.license_mode = True
         elements = []
+        if not pdfstyles.show_wiki_license:
+            return []
         if self.env.getLicenses():
             elements.append(TocEntry(txt=_('Article Licenses'), lvl='group'))
 
