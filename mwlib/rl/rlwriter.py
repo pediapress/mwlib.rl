@@ -331,7 +331,7 @@ class RlWriter(object):
         if node.vlist:
             css_style = node.vlist.get('style', None)
             if css_style:
-                page_break = css_style.get('page-break-{}'.format(mode), None)
+                page_break = css_style.get('page-break-%s' % mode, None)
         if css_style and page_break:
             if page_break in ['always', '100%']:
                 return NotAtTopPageBreak()
