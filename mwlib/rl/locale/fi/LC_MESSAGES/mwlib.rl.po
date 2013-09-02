@@ -1,4 +1,4 @@
-# Translation of Mwlib.rl to Finnish (Suomi)
+# Translation of Mwlib.rl to Finnish (suomi)
 # Exported from translatewiki.net
 #
 # Author: Crt
@@ -11,17 +11,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-02 18:46+0000\n"
-"PO-Revision-Date: 2012-04-04 18:57:13+0000\n"
+"POT-Creation-Date: 2013-09-02 20:30+0000\n"
+"PO-Revision-Date: 2013-09-02 20:28:22+0000\n"
 "Language-Team: Finnish <https://translatewiki.net/wiki/Portal:fi>\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fi\n"
-"X-Generator: MediaWiki 1.20alpha (f3f3e1b); Translate 2012-03-13\n"
+"X-Generator: MediaWiki 1.22alpha (e2d1799); Translate 2013-04-29\n"
 "X-Translation-Project: translatewiki.net <https://translatewiki.net>\n"
 "X-Language-Code: fi\n"
 "X-Message-Group: #out-mwlibrl\n"
-"X-POT-Import-Date: 2012-03-11 22:23:36+0000\n"
+"X-POT-Import-Date: 2012-04-08 21:35:04+0000\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: mwlib/rl/pdfmessages.py:11
@@ -165,7 +165,7 @@ msgstr "Kuva"
 
 #: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:720
 msgid "anonymous edits"
-msgstr "nimettömiä muokkauksia"
+msgstr "nimetöntä muokkausta"
 
 #: mwlib/rl/pdfmessages.py:65
 msgid "Figure"

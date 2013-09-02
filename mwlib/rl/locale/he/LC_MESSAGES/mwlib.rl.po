@@ -9,17 +9,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-02 18:46+0000\n"
-"PO-Revision-Date: 2012-04-04 18:57:14+0000\n"
+"POT-Creation-Date: 2013-09-02 20:30+0000\n"
+"PO-Revision-Date: 2013-09-02 20:28:39+0000\n"
 "Language-Team: Hebrew <https://translatewiki.net/wiki/Portal:he>\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: he\n"
-"X-Generator: MediaWiki 1.20alpha (f3f3e1b); Translate 2012-03-13\n"
+"X-Generator: MediaWiki 1.22alpha (e2d1799); Translate 2013-04-29\n"
 "X-Translation-Project: translatewiki.net <https://translatewiki.net>\n"
 "X-Language-Code: he\n"
 "X-Message-Group: #out-mwlibrl\n"
-"X-POT-Import-Date: 2012-03-11 22:23:36+0000\n"
+"X-POT-Import-Date: 2012-04-08 21:35:04+0000\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: mwlib/rl/pdfmessages.py:11
@@ -68,7 +68,7 @@ msgstr "ערכים"
 
 #: mwlib/rl/pdfmessages.py:33
 msgid "Produced by:"
-msgstr "נוצר על ידי:"
+msgstr "נוצר על־ידי:"
 
 #: mwlib/rl/pdfmessages.py:35
 msgid "pdf writer version:"
@@ -100,9 +100,9 @@ msgid ""
 "those left out of the preview, will be included in the final printed book."
 msgstr ""
 "לתשומת לבכם: זוהי רק תצוגה מקדימה של הספר שלכם שמטרתה להראות לכם כיצד הספר "
-"שלכם ייראה. בתצוגה מקדימה זו יופיעו ערכים ראשונים אחדים  והעמודים הראשונים "
-"של האינדקס. כל הערכים, אפילו אלה שאינם מופיעים בתצוגה המקדימה, יופיעו "
-"במהדורה הסופית המודפסת של הספר."
+"שלכם ייראה. בתצוגה מקדימה זו יופיעו ערכים ראשונים אחדים והעמודים הראשונים של "
+"האינדקס. כל הערכים, אפילו אלה שאינם מופיעים בתצוגה המקדימה, יופיעו במהדורה "
+"הסופית המודפסת של הספר."
 
 #: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:535
 #: mwlib/rl/rlwriter.py:852

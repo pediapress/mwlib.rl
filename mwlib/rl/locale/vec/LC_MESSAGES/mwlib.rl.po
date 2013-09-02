@@ -1,19 +1,21 @@
-# Translation of Mwlib.rl to Vèneto (Vèneto)
+# Translation of Mwlib.rl to vèneto (vèneto)
 # Exported from translatewiki.net
 #
 # Author: Alunardon90
+# Author: GatoSelvadego
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-02 18:47+0000\n"
-"PO-Revision-Date: 2012-05-20 11:10:45+0000\n"
+"POT-Creation-Date: 2013-09-02 20:31+0000\n"
+"PO-Revision-Date: 2013-09-02 20:30:16+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-POT-Import-Date: 2012-04-08 21:35:04+0000\n"
 "X-Translation-Project: translatewiki.net <https://translatewiki.net>\n"
-"X-Generator: MediaWiki 1.20alpha (f112f3a); Translate 2012-04-11\n"
+"X-Generator: MediaWiki 1.22alpha (e2d1799); Translate 2013-04-29\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: vec\n"
 
 #: mwlib/rl/pdfmessages.py:11
 msgid "Index"
@@ -57,7 +59,7 @@ msgstr "Contegnùi:"
 
 #: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:487
 msgid "Articles"
-msgstr "Voxi:"
+msgstr "Voxe:"
 
 #: mwlib/rl/pdfmessages.py:33
 msgid "Produced by:"

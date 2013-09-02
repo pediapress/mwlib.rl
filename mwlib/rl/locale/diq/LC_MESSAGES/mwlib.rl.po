@@ -2,21 +2,23 @@
 # Exported from translatewiki.net
 #
 # Author: Erdemaslancan
+# Author: Mirzali
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-02 18:46+0000\n"
-"PO-Revision-Date: 2012-09-24 18:44:20+0000\n"
+"POT-Creation-Date: 2013-09-02 20:30+0000\n"
+"PO-Revision-Date: 2013-09-02 20:28:11+0000\n"
 "Language-Team: Zazaki <https://translatewiki.net/wiki/Portal:diq>\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-POT-Import-Date: 2012-04-08 21:35:04+0000\n"
-"X-Generator: MediaWiki 1.20alpha (4d5c40f); Translate 2012-07-04\n"
+"X-Generator: MediaWiki 1.22alpha (e2d1799); Translate 2013-04-29\n"
 "X-Translation-Project: translatewiki.net <https://translatewiki.net>\n"
 "X-Language-Code: diq\n"
 "X-Message-Group: #out-mwlibrl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: diq\n"
 
 #: mwlib/rl/pdfmessages.py:11
 msgid "Index"
@@ -32,7 +34,7 @@ msgstr "Lisans:"
 
 #: mwlib/rl/pdfmessages.py:17
 msgid "Contributors:"
-msgstr "Dekerdeni"
+msgstr "İştıraqkeri"
 
 #: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:584
 msgid "Article Licenses"
@@ -193,11 +195,11 @@ msgstr "Çıme"
 
 #: mwlib/rl/rlwriter.py:737 mwlib/rl/rlwriter.py:763
 msgid "Contributors"
-msgstr "Dekerdeni"
+msgstr "İştıraqkeri"
 
 #: mwlib/rl/rlwriter.py:753
 msgid "unknown"
-msgstr "Nêzanıte"
+msgstr "Nêzanayen"
 
 #: mwlib/rl/rlwriter.py:755
 msgid "License"

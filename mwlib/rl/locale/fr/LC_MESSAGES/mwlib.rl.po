@@ -1,26 +1,27 @@
-# Translation of Mwlib.rl to French (Français)
+# Translation of Mwlib.rl to French (français)
 # Exported from translatewiki.net
 #
 # Author: Crochet.david
 # Author: IAlex
 # Author: Od1n
 # Author: Peter17
+# Author: Rastus Vernon
 # Author: Verdy p
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-02 18:46+0000\n"
-"PO-Revision-Date: 2012-04-04 18:57:13+0000\n"
+"POT-Creation-Date: 2013-09-02 20:30+0000\n"
+"PO-Revision-Date: 2013-09-02 20:28:25+0000\n"
 "Language-Team: French <https://translatewiki.net/wiki/Portal:fr>\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fr\n"
-"X-Generator: MediaWiki 1.20alpha (f3f3e1b); Translate 2012-03-13\n"
+"X-Generator: MediaWiki 1.22alpha (e2d1799); Translate 2013-04-29\n"
 "X-Translation-Project: translatewiki.net <https://translatewiki.net>\n"
 "X-Language-Code: fr\n"
 "X-Message-Group: #out-mwlibrl\n"
-"X-POT-Import-Date: 2012-03-11 22:23:36+0000\n"
+"X-POT-Import-Date: 2012-04-08 21:35:04+0000\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: mwlib/rl/pdfmessages.py:11
@@ -180,8 +181,8 @@ msgid ""
 "PDF generated using the open source mwlib toolkit. See http://code."
 "pediapress.com/ for more information."
 msgstr ""
-"PDF générés en utilisant l’atelier en source ouvert « mwlib ». Voir http://"
-"code.pediapress.com/ pour plus d’informations."
+"PDF générés en utilisant l’atelier libre « mwlib ». Voir http://code."
+"pediapress.com/ pour plus d’informations."
 
 #: mwlib/rl/rlwriter.py:371
 #, python-format
@@ -220,6 +221,7 @@ msgid ""
 "software (b) problematic Mediawiki markup (c) table is too wide"
 msgstr ""
 "<strong>AVERTISSEMENT : l’article n’a pas pu être reproduit dans son "
-"intégralité — édition en texte simple.</strong><br/>Les causes potentielles "
-"de ce problème sont : (a) un bogue dans le logiciel PDF-Writer ; (b) un "
-"balisage problématique du code MediaWiki ; (c) un tableau trop large."
+"intégralité—ceci est l'édition en texte simple.</strong><br/>Les causes "
+"potentielles de ce problème sont : (a) un bogue dans le logiciel PDF-"
+"Writer ; (b) un balisage problématique du code MediaWiki ; (c) un tableau "
+"trop large."

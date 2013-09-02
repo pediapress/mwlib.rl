@@ -1,4 +1,4 @@
-# Translation of Mwlib.rl to Kazakh (Cyrillic script) (‪Қазақша (кирил)‬)
+# Translation of Mwlib.rl to Kazakh (Cyrillic script) (қазақша (кирил)‎)
 # Exported from translatewiki.net
 #
 # Author: MrKarahanly
@@ -6,14 +6,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-02 18:46+0000\n"
-"PO-Revision-Date: 2012-04-23 13:15:55+0000\n"
+"POT-Creation-Date: 2013-09-02 20:30+0000\n"
+"PO-Revision-Date: 2013-09-02 20:28:59+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-POT-Import-Date: 2012-04-08 21:35:04+0000\n"
 "X-Translation-Project: translatewiki.net <https://translatewiki.net>\n"
-"X-Generator: MediaWiki 1.20alpha (1f0a982); Translate 2012-04-11\n"
+"X-Generator: MediaWiki 1.22alpha (e2d1799); Translate 2013-04-29\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: kk-Cyrl\n"
 
 #: mwlib/rl/pdfmessages.py:11
 msgid "Index"
