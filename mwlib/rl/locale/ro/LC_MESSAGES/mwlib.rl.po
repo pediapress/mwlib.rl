@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-30 17:39+0000\n"
+"POT-Creation-Date: 2013-09-02 18:46+0000\n"
 "PO-Revision-Date: 2012-04-04 18:57:15+0000\n"
 "Language-Team: Romanian <https://translatewiki.net/wiki/Portal:ro>\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -39,7 +39,7 @@ msgstr "Licență:"
 msgid "Contributors:"
 msgstr "Contribuitori:"
 
-#: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:554
+#: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:584
 msgid "Article Licenses"
 msgstr "Licențele articolelor"
 
@@ -63,7 +63,7 @@ msgstr "Creat la:"
 msgid "Contents"
 msgstr "Conținut"
 
-#: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:459
+#: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:487
 msgid "Articles"
 msgstr "Articole"
 
@@ -109,8 +109,8 @@ msgstr ""
 "sunt afișate în previzualizarea de față, vor fi incluse în varianta finală "
 "tipărită."
 
-#: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:507
-#: mwlib/rl/rlwriter.py:822
+#: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:535
+#: mwlib/rl/rlwriter.py:852
 msgid "References"
 msgstr "Referințe"
 
@@ -150,13 +150,13 @@ msgstr ""
 "informații despre licențe, inclusiv statutul drepturilor de autor, "
 "deținătorul acestora și condițiile și termenii licențelor."
 
-#: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:508
-#: mwlib/rl/rlwriter.py:698
+#: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:536
+#: mwlib/rl/rlwriter.py:728
 msgid "Article Sources and Contributors"
 msgstr "Sursele și contribuitorii articolelor"
 
-#: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:511
-#: mwlib/rl/rlwriter.py:717
+#: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:539
+#: mwlib/rl/rlwriter.py:747
 msgid "Image Sources, Licenses and Contributors"
 msgstr "Sursele, licențele și contribuitorii imaginilor"
 
@@ -164,7 +164,7 @@ msgstr "Sursele, licențele și contribuitorii imaginilor"
 msgid "Image"
 msgstr "Imagine"
 
-#: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:690
+#: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:720
 msgid "anonymous edits"
 msgstr ""
 "{{PLURAL:$1|modificare anonimă|modificări anonime|de modificări anonime}}"
@@ -177,7 +177,7 @@ msgstr "Figură"
 msgid "See also"
 msgstr "Vedeți și"
 
-#: mwlib/rl/pdfstyles.py:83
+#: mwlib/rl/pdfstyles.py:90
 msgid ""
 "PDF generated using the open source mwlib toolkit. See http://code."
 "pediapress.com/ for more information."
@@ -185,12 +185,12 @@ msgstr ""
 "Documentul PDF a fost generat folosind librăria cu sursă deschisă mwlib. "
 "Accesați http://code.pediapress.com/ pentru mai multe informații."
 
-#: mwlib/rl/rlwriter.py:343
+#: mwlib/rl/rlwriter.py:371
 #, python-format
 msgid "mwlib.ext version: %(version)s"
 msgstr "versiune mwlib.ext: %(version)s"
 
-#: mwlib/rl/rlwriter.py:349
+#: mwlib/rl/rlwriter.py:377
 #, python-format
 msgid ""
 "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
@@ -199,23 +199,23 @@ msgstr ""
 "versiune mwlib: %(mwlibversion)s, versiune mwlib.rl: %(mwlibrlversion)s, %"
 "(mwlibextversion)s"
 
-#: mwlib/rl/rlwriter.py:705 mwlib/rl/rlwriter.py:730
+#: mwlib/rl/rlwriter.py:735 mwlib/rl/rlwriter.py:760
 msgid "Source"
 msgstr "Sursă"
 
-#: mwlib/rl/rlwriter.py:707 mwlib/rl/rlwriter.py:733
+#: mwlib/rl/rlwriter.py:737 mwlib/rl/rlwriter.py:763
 msgid "Contributors"
 msgstr "Contribuitori"
 
-#: mwlib/rl/rlwriter.py:723
+#: mwlib/rl/rlwriter.py:753
 msgid "unknown"
 msgstr "necunoscută"
 
-#: mwlib/rl/rlwriter.py:725
+#: mwlib/rl/rlwriter.py:755
 msgid "License"
 msgstr "Licență"
 
-#: mwlib/rl/rlwriter.py:813
+#: mwlib/rl/rlwriter.py:843
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "

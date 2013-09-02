@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-30 17:39+0000\n"
+"POT-Creation-Date: 2013-09-02 18:46+0000\n"
 "PO-Revision-Date: 2012-04-04 18:57:13+0000\n"
 "Language-Team: Persian <https://translatewiki.net/wiki/Portal:fa>\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -37,7 +37,7 @@ msgstr "اجازه‌نامه:"
 msgid "Contributors:"
 msgstr "مشارکت‌کنندگان:"
 
-#: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:554
+#: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:584
 msgid "Article Licenses"
 msgstr "مجوز مقاله‌ها"
 
@@ -61,7 +61,7 @@ msgstr "ایجادشده در:"
 msgid "Contents"
 msgstr "محتویات"
 
-#: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:459
+#: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:487
 msgid "Articles"
 msgstr "مقالات"
 
@@ -106,8 +106,8 @@ msgstr ""
 "است. همه مقاله‌ها، حتی آنهایی که از پیش نمایش خارج شده‌اند، در نسخه نهایی کتاب "
 "چاپ شده گنجانده می‌شوند."
 
-#: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:507
-#: mwlib/rl/rlwriter.py:822
+#: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:535
+#: mwlib/rl/rlwriter.py:852
 msgid "References"
 msgstr "منابع"
 
@@ -144,13 +144,13 @@ msgstr ""
 "منابع فهرست شده برای هر تصویر اطلاعات اجازه نامه بیشتری شامل وضعیت حق تکثیر، "
 "دارنده حق تکثیر و همچنین شرایط مجوز ارائه می‌کنند."
 
-#: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:508
-#: mwlib/rl/rlwriter.py:698
+#: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:536
+#: mwlib/rl/rlwriter.py:728
 msgid "Article Sources and Contributors"
 msgstr "منابع مقاله‌ها و مشارکت‌ها"
 
-#: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:511
-#: mwlib/rl/rlwriter.py:717
+#: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:539
+#: mwlib/rl/rlwriter.py:747
 msgid "Image Sources, Licenses and Contributors"
 msgstr "منابع تصویر، مجوزها و مشارکت‌ها"
 
@@ -158,7 +158,7 @@ msgstr "منابع تصویر، مجوزها و مشارکت‌ها"
 msgid "Image"
 msgstr "تصویر"
 
-#: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:690
+#: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:720
 msgid "anonymous edits"
 msgstr "ویرایش‌های ناشناس"
 
@@ -170,7 +170,7 @@ msgstr "شکل"
 msgid "See also"
 msgstr "جستارهای وابسته"
 
-#: mwlib/rl/pdfstyles.py:83
+#: mwlib/rl/pdfstyles.py:90
 msgid ""
 "PDF generated using the open source mwlib toolkit. See http://code."
 "pediapress.com/ for more information."
@@ -178,12 +178,12 @@ msgstr ""
 "پی‌دی‌اف توسط ابزار متن‌باز mwlib ساخته شده‌است و برای کسب اطلاعات بیشتر به "
 "نشانی http://code.pediapress.com/  مراجعه نمایید."
 
-#: mwlib/rl/rlwriter.py:343
+#: mwlib/rl/rlwriter.py:371
 #, python-format
 msgid "mwlib.ext version: %(version)s"
 msgstr "نسخهٔ mwlib.ext: %(version)s"
 
-#: mwlib/rl/rlwriter.py:349
+#: mwlib/rl/rlwriter.py:377
 #, python-format
 msgid ""
 "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, %"
@@ -192,23 +192,23 @@ msgstr ""
 "نسخهٔ mwlib: %(mwlibversion)s، نسخهٔ mwlib.rl: %(mwlibrlversion)s، %"
 "(mwlibextversion)s"
 
-#: mwlib/rl/rlwriter.py:705 mwlib/rl/rlwriter.py:730
+#: mwlib/rl/rlwriter.py:735 mwlib/rl/rlwriter.py:760
 msgid "Source"
 msgstr "منبع"
 
-#: mwlib/rl/rlwriter.py:707 mwlib/rl/rlwriter.py:733
+#: mwlib/rl/rlwriter.py:737 mwlib/rl/rlwriter.py:763
 msgid "Contributors"
 msgstr "همکاران"
 
-#: mwlib/rl/rlwriter.py:723
+#: mwlib/rl/rlwriter.py:753
 msgid "unknown"
 msgstr "ناشناخته"
 
-#: mwlib/rl/rlwriter.py:725
+#: mwlib/rl/rlwriter.py:755
 msgid "License"
 msgstr "مجوز"
 
-#: mwlib/rl/rlwriter.py:813
+#: mwlib/rl/rlwriter.py:843
 msgid ""
 "<strong>WARNING: Article could not be rendered - ouputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
