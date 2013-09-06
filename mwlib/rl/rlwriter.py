@@ -849,8 +849,13 @@ class RlWriter(object):
         elements = self.tabularizeImages(elements)
 
         if self.references:
-            elements.append(Paragraph('<b>' + _('References') + '</b>', heading_style('section', lvl=3)))
-            elements.extend(self.writeReferenceList())
+            ref_elements = [Paragraph(
+                    '<b>' + _('References') + '</b>', heading_style('section', lvl=3))]
+            ref_elements.extend(self.writeReferenceList())
+            if isinstance(elements[-1], CondPageBreak):
+                elements[-1:-1] = ref_elements
+            else:
+                elements.extend(ref_elements)
 
         if not self.license_mode and not self.fail_safe_rendering:
             self.article_meta_info.append((title, url, getattr(article, 'authors', '')))
