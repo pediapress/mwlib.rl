@@ -8,13 +8,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-02 20:30+0000\n"
-"PO-Revision-Date: 2013-09-02 20:29:03+0000\n"
+"POT-Creation-Date: 2013-09-09 18:45+0000\n"
+"PO-Revision-Date: 2013-09-09 18:44:38+0000\n"
 "Language-Team: Korean <https://translatewiki.net/wiki/Portal:ko>\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ko\n"
-"X-Generator: MediaWiki 1.22alpha (e2d1799); Translate 2013-04-29\n"
+"X-Generator: MediaWiki 1.22alpha (b528962); Translate 2013-04-29\n"
 "X-Translation-Project: translatewiki.net <https://translatewiki.net>\n"
 "X-Language-Code: ko\n"
 "X-Message-Group: #out-mwlibrl\n"
@@ -35,7 +35,7 @@ msgstr "라이선스:"
 
 #: mwlib/rl/pdfmessages.py:17
 msgid "Contributors:"
-msgstr "편집자:"
+msgstr "기여자:"
 
 #: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:584
 msgid "Article Licenses"
@@ -105,7 +105,7 @@ msgstr ""
 "됩니다."
 
 #: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:535
-#: mwlib/rl/rlwriter.py:852
+#: mwlib/rl/rlwriter.py:853
 msgid "References"
 msgstr "참고"
 
@@ -196,7 +196,7 @@ msgstr "출처"
 
 #: mwlib/rl/rlwriter.py:737 mwlib/rl/rlwriter.py:763
 msgid "Contributors"
-msgstr "편집자"
+msgstr "기여자"
 
 #: mwlib/rl/rlwriter.py:753
 msgid "unknown"

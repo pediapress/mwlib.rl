@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-02 20:30+0000\n"
+"POT-Creation-Date: 2013-09-09 18:44+0000\n"
 "PO-Revision-Date: 2013-09-02 20:27:55+0000\n"
 "Language-Team: Bengali <https://translatewiki.net/wiki/Portal:bn>\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -105,7 +105,7 @@ msgstr ""
 "বইটির চূড়ান্ত মুদ্রিত সংস্করণে থাকবে।"
 
 #: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:535
-#: mwlib/rl/rlwriter.py:852
+#: mwlib/rl/rlwriter.py:853
 msgid "References"
 msgstr "তথ্যসূত্র"
 

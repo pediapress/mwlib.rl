@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-02 20:30+0000\n"
+"POT-Creation-Date: 2013-09-09 18:44+0000\n"
 "PO-Revision-Date: 2013-09-02 20:28:34+0000\n"
 "Language-Team: Swiss German <https://translatewiki.net/wiki/Portal:gsw>\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -105,7 +105,7 @@ msgstr ""
 "derno natyrli alli Artikel din, au die, wu in däre Vorschau ewäggloo sin."
 
 #: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:535
-#: mwlib/rl/rlwriter.py:852
+#: mwlib/rl/rlwriter.py:853
 msgid "References"
 msgstr "Quälle un Füeßnote"
 

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-02 20:30+0000\n"
+"POT-Creation-Date: 2013-09-09 18:45+0000\n"
 "PO-Revision-Date: 2013-09-02 20:29:38+0000\n"
 "Language-Team: Brazilian Portuguese <https://translatewiki.net/wiki/Portal:"
 "pt-br>\n"
@@ -109,7 +109,7 @@ msgstr ""
 "todas as páginas, incluindo aquelas que não são apresentadas na previsão."
 
 #: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:535
-#: mwlib/rl/rlwriter.py:852
+#: mwlib/rl/rlwriter.py:853
 msgid "References"
 msgstr "Referências"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-02 20:30+0000\n"
+"POT-Creation-Date: 2013-09-09 18:45+0000\n"
 "PO-Revision-Date: 2013-09-02 20:29:31+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -100,7 +100,7 @@ msgstr ""
 "ਹਨ। ਆਖ਼ਰੀ ਛਾਪੀ ਹੋਈ ਕਿਤਾਬ ਵਿਚ ਸਾਰੇ ਲੇਖ, ਉਹ ਵੀ ਜੋ ਇਸ ਝਲਕ ਵਿਚੋਂ ਛੱਡੇ ਹੋਏ ਹਨ, ਸ਼ਾਮਲ ਹੋਣਗੇ।"
 
 #: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:535
-#: mwlib/rl/rlwriter.py:852
+#: mwlib/rl/rlwriter.py:853
 msgid "References"
 msgstr "ਹਵਾਲੇ"
 
