@@ -3,6 +3,7 @@
 #
 # Author: Gaoxuewei
 # Author: Hydra
+# Author: Hzy980512
 # Author: PhiLiP
 # Author: Shizhao
 # Author: Xiaomingyan
@@ -10,14 +11,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-26 13:08+0000\n"
-"PO-Revision-Date: 2013-09-02 20:30:26+0000\n"
+"POT-Creation-Date: 2013-10-05 22:13+0000\n"
+"PO-Revision-Date: 2013-10-05 22:11:52+0000\n"
 "Language-Team: Simplified Chinese <https://translatewiki.net/wiki/Portal:zh-"
 "hans>\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: zh-Hans\n"
-"X-Generator: MediaWiki 1.22alpha (e2d1799); Translate 2013-04-29\n"
+"X-Generator: MediaWiki 1.22alpha (072d75e); Translate 2013-04-29\n"
 "X-Translation-Project: translatewiki.net <https://translatewiki.net>\n"
 "X-Language-Code: zh-hans\n"
 "X-Message-Group: #out-mwlibrl\n"
@@ -150,7 +151,7 @@ msgstr "文章来源和贡献者"
 #: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:539
 #: mwlib/rl/rlwriter.py:747
 msgid "Image Sources, Licenses and Contributors"
-msgstr "图像源、 许可证和贡献者"
+msgstr "图像源、许可证和贡献者"
 
 #: mwlib/rl/pdfmessages.py:61
 msgid "Image"
@@ -179,7 +180,7 @@ msgstr ""
 #: mwlib/rl/rlwriter.py:371
 #, python-format
 msgid "mwlib.ext version: %(version)s"
-msgstr "mwlib.ext 版本： %(version)s"
+msgstr "mwlib.ext 版本：%(version)s"
 
 #: mwlib/rl/rlwriter.py:377
 #, python-format

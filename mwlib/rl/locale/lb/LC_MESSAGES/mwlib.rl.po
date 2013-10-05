@@ -2,17 +2,18 @@
 # Exported from translatewiki.net
 #
 # Author: Robby
+# Author: Soued031
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-26 13:08+0000\n"
-"PO-Revision-Date: 2013-09-02 20:29:08+0000\n"
+"POT-Creation-Date: 2013-10-05 22:13+0000\n"
+"PO-Revision-Date: 2013-10-05 22:11:49+0000\n"
 "Language-Team: Luxembourgish <https://translatewiki.net/wiki/Portal:lb>\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: lb\n"
-"X-Generator: MediaWiki 1.22alpha (e2d1799); Translate 2013-04-29\n"
+"X-Generator: MediaWiki 1.22alpha (072d75e); Translate 2013-04-29\n"
 "X-Translation-Project: translatewiki.net <https://translatewiki.net>\n"
 "X-Language-Code: lb\n"
 "X-Message-Group: #out-mwlibrl\n"
@@ -99,8 +100,8 @@ msgid ""
 "those left out of the preview, will be included in the final printed book."
 msgstr ""
 "Denkt drun: Dëst ass nëmmen eng Vue vun Ärem Buch, déi Iech eng Impressioun "
-"iwwert d'Buch gi soll. Nëmmen déi éischt Artikelen an déi éischt Säite vum "
-"Index vun Ärem Buch sinn an dëser Vue dran. Alle Artikelen, och déi déi an "
+"iwwer d'Buch gi soll. Nëmmen déi éischt Artikelen an déi éischt Säite vum "
+"Index vun Ärem Buch sinn an dëser Vue dran. All Artikelen, och déi déi an "
 "dëser Vue feelen, wäerte an Ärem Buch selbstverständlech ganz dra sinn."
 
 #: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:535
