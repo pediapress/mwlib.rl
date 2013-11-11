@@ -53,6 +53,19 @@ The current development version can also be found there.
 
 ChangeLog
 ======================================================================
+2013-11-11 release 0.14..4
+---------------------------
+- fix title page footer position
+- fix toc rendering bug with pdfsam and output files without the '.pdf' extension
+- If page ends with a pagebreak the references are before that
+- implement explicit page-breaks
+- Localisation updates from http://translatewiki.net.
+- make display of wiki license configurable
+- make html documentation only on demand - fixes installation error without docutils
+- make title page margins configurable
+- replace format string that requires python 2.7+
+- use localtime for PDF timestamp. make text and time format configurable
+
 2013-05-13 release 0.14.3
 --------------------------
 - require more recent version of mwlib, pygments and mwlib.ext
