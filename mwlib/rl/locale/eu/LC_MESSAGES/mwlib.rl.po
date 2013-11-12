@@ -7,13 +7,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-04 16:08+0000\n"
-"PO-Revision-Date: 2013-10-07 20:05:00+0000\n"
+"POT-Creation-Date: 2013-11-12 13:55+0000\n"
+"PO-Revision-Date: 2013-11-12 13:54:54+0000\n"
 "Language-Team: Basque <https://translatewiki.net/wiki/Portal:eu>\n"
 "Language: eu\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.22alpha (f6375da); Translate 2013-04-29\n"
+"X-Generator: MediaWiki 1.23alpha (2cd534d); Translate 2013-10-28\n"
 "X-Translation-Project: translatewiki.net <https://translatewiki.net>\n"
 "X-Language-Code: eu\n"
 "X-Message-Group: #out-mwlibrl\n"
@@ -132,7 +132,7 @@ msgstr ""
 #: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:536
 #: mwlib/rl/rlwriter.py:728
 msgid "Article Sources and Contributors"
-msgstr "Arikulu Iturriak eta Egileak"
+msgstr "Artikulu iturriak eta egileak"
 
 #: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:539
 #: mwlib/rl/rlwriter.py:747
