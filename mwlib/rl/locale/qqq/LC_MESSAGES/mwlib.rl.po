@@ -13,14 +13,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-21 06:46+0000\n"
-"PO-Revision-Date: 2013-11-21 06:46:00+0000\n"
+"POT-Creation-Date: 2013-12-02 08:32+0000\n"
+"PO-Revision-Date: 2013-12-02 08:32:21+0000\n"
 "Language: qqq\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-POT-Import-Date: 2013-10-07 17:45:25+0000\n"
 "X-Translation-Project: translatewiki.net <https://translatewiki.net>\n"
-"X-Generator: MediaWiki 1.23alpha (614cc9d); Translate 2013-10-28\n"
+"X-Generator: MediaWiki 1.23alpha (ef9d434); Translate 2013-11-27\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: mwlib/rl/pdfmessages.py:11
@@ -65,7 +65,7 @@ msgstr "{{Identical|Content}}"
 
 #: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:487
 msgid "Articles"
-msgstr ""
+msgstr "{{Identical|Article}}"
 
 #: mwlib/rl/pdfmessages.py:33
 msgid "Produced by:"
