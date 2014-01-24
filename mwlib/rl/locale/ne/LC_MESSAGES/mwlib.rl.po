@@ -2,19 +2,20 @@
 # Exported from translatewiki.net
 #
 # Author: Bhawani Gautam
+# Author: Krish Dulal
 # Author: सरोज कुमार ढकाल
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-11 16:59+0000\n"
-"PO-Revision-Date: 2013-11-21 06:45:59+0000\n"
+"POT-Creation-Date: 2014-01-24 20:08+0000\n"
+"PO-Revision-Date: 2014-01-24 20:07:44+0000\n"
 "Language-Team: Nepali <https://translatewiki.net/wiki/Portal:ne>\n"
 "Language: ne\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-POT-Import-Date: 2013-10-07 17:45:25+0000\n"
-"X-Generator: MediaWiki 1.23alpha (614cc9d); Translate 2013-10-28\n"
+"X-Generator: MediaWiki 1.23alpha (9428f4e); Translate 2014-01-01\n"
 "X-Translation-Project: translatewiki.net <https://translatewiki.net>\n"
 "X-Language-Code: ne\n"
 "X-Message-Group: #out-mwlibrl\n"
@@ -62,7 +63,7 @@ msgstr "सामग्री"
 
 #: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:487
 msgid "Articles"
-msgstr "लेखहरु"
+msgstr "लेखहरू"
 
 #: mwlib/rl/pdfmessages.py:33
 msgid "Produced by:"
@@ -82,7 +83,7 @@ msgstr "सामग्री तालिका"
 
 #: mwlib/rl/pdfmessages.py:41
 msgid "Skipping Articles!"
-msgstr "लेखहरु नाँघ्दै"
+msgstr "लेखहरू नाँघ्दै"
 
 #: mwlib/rl/pdfmessages.py:43
 msgid ""
