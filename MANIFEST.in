@@ -96,6 +96,8 @@ include mwlib/rl/locale/dsb/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/dsb/LC_MESSAGES/mwlib.rl.po
 include mwlib/rl/locale/el/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/el/LC_MESSAGES/mwlib.rl.po
+include mwlib/rl/locale/en-gb/LC_MESSAGES/mwlib.rl.mo
+include mwlib/rl/locale/en-gb/LC_MESSAGES/mwlib.rl.po
 include mwlib/rl/locale/en/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/en/LC_MESSAGES/mwlib.rl.po
 include mwlib/rl/locale/eo/LC_MESSAGES/mwlib.rl.mo
@@ -116,6 +118,8 @@ include mwlib/rl/locale/fr/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/fr/LC_MESSAGES/mwlib.rl.po
 include mwlib/rl/locale/frp/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/frp/LC_MESSAGES/mwlib.rl.po
+include mwlib/rl/locale/fur/LC_MESSAGES/mwlib.rl.mo
+include mwlib/rl/locale/fur/LC_MESSAGES/mwlib.rl.po
 include mwlib/rl/locale/ga/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/ga/LC_MESSAGES/mwlib.rl.po
 include mwlib/rl/locale/gd/LC_MESSAGES/mwlib.rl.mo
@@ -184,6 +188,8 @@ include mwlib/rl/locale/lb/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/lb/LC_MESSAGES/mwlib.rl.po
 include mwlib/rl/locale/lez/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/lez/LC_MESSAGES/mwlib.rl.po
+include mwlib/rl/locale/lrc/LC_MESSAGES/mwlib.rl.mo
+include mwlib/rl/locale/lrc/LC_MESSAGES/mwlib.rl.po
 include mwlib/rl/locale/lt/LC_MESSAGES/mwlib.rl.mo
 include mwlib/rl/locale/lt/LC_MESSAGES/mwlib.rl.po
 include mwlib/rl/locale/lus/LC_MESSAGES/mwlib.rl.mo

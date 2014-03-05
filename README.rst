@@ -53,7 +53,13 @@ The current development version can also be found there.
 
 ChangeLog
 ======================================================================
-2013-11-11 release 0.14..4
+2014-02-11 release 0.14.5
+---------------------------
+- skip images with invalid transparency info
+- Localisation updates from http://translatewiki.net.
+- use Pillow instead of PIL when running tests
+
+2013-11-11 release 0.14.4
 ---------------------------
 - fix title page footer position
 - fix toc rendering bug with pdfsam and output files without the '.pdf' extension

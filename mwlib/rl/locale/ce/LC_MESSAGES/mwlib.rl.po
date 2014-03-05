@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-12 13:55+0000\n"
-"PO-Revision-Date: 2013-10-07 20:04:48+0000\n"
+"POT-Creation-Date: 2014-02-09 15:31+0000\n"
+"PO-Revision-Date: 2014-01-24 20:07:43+0000\n"
 "Language: ce\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-POT-Import-Date: 2013-10-07 17:45:25+0000\n"
 "X-Translation-Project: translatewiki.net <https://translatewiki.net>\n"
-"X-Generator: MediaWiki 1.22alpha (f6375da); Translate 2013-04-29\n"
+"X-Generator: MediaWiki 1.23alpha (9428f4e); Translate 2014-01-01\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: mwlib/rl/pdfmessages.py:11
@@ -27,7 +27,7 @@ msgstr ""
 
 #: mwlib/rl/pdfmessages.py:15
 msgid "License:"
-msgstr ""
+msgstr "Лицензи:"
 
 #: mwlib/rl/pdfmessages.py:17
 msgid "Contributors:"
@@ -55,7 +55,7 @@ msgstr ""
 
 #: mwlib/rl/pdfmessages.py:29 mwlib/rl/toc.py:46
 msgid "Contents"
-msgstr ""
+msgstr "Чулацам"
 
 #: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:487
 msgid "Articles"
@@ -184,7 +184,7 @@ msgstr ""
 
 #: mwlib/rl/rlwriter.py:755
 msgid "License"
-msgstr ""
+msgstr "Лицензи"
 
 #: mwlib/rl/rlwriter.py:843
 msgid ""
