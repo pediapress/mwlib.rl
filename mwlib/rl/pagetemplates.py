@@ -148,8 +148,10 @@ class TitlePage(PageTemplate):
                 footertext.append(
                     pdfstyles.creation_date_txt % time.strftime(
                         pdfstyles.creation_date_format, time.localtime()))
-            p = Paragraph('<br/>'.join([formatter.cleanText(line, escape=False) for line in footertext]),
-                          text_style(mode='footer'))
+            lines = [formatter.cleanText(line, escape=False) for line in footertext]
+            txt = '<br/>'.join(line if isinstance(line, unicode) else unicode(line, 'utf-8')
+                               for line in lines)
+            p = Paragraph(txt, text_style(mode='footer'))
             w,h = p.wrap(print_width, print_height)
             canvas.translate( (page_width-w)/2.0, footer_margin_vert - h - 0.25*cm)
             p.canv = canvas
