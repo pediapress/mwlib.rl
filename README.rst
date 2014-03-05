@@ -53,6 +53,10 @@ The current development version can also be found there.
 
 ChangeLog
 ======================================================================
+2014-03-05 release 0.14.6
+---------------------------
+- fix encoding bug
+
 2014-02-11 release 0.14.5
 ---------------------------
 - skip images with invalid transparency info
