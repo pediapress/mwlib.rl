@@ -6,6 +6,7 @@
 # Author: Hamilton Abreu
 # Author: Helder.wiki
 # Author: Heldergeovane
+# Author: Imperadeiro98
 # Author: Luckas
 # Author: Waldir
 # Author: 555
@@ -13,13 +14,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-03-12 12:53+0000\n"
-"PO-Revision-Date: 2013-10-07 20:05:49+0000\n"
+"POT-Creation-Date: 2014-03-12 13:44+0000\n"
+"PO-Revision-Date: 2014-03-12 13:43:37+0000\n"
 "Language-Team: Portuguese <https://translatewiki.net/wiki/Portal:pt>\n"
 "Language: pt\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.22alpha (f6375da); Translate 2013-04-29\n"
+"X-Generator: MediaWiki 1.23alpha (769c4a6); Translate 2014-02-28\n"
 "X-Translation-Project: translatewiki.net <https://translatewiki.net>\n"
 "X-Language-Code: pt\n"
 "X-Message-Group: #out-mwlibrl\n"
@@ -32,7 +33,7 @@ msgstr "Índice"
 
 #: mwlib/rl/pdfmessages.py:13
 msgid "Source:"
-msgstr "Origem:"
+msgstr "Fonte:"
 
 #: mwlib/rl/pdfmessages.py:15
 msgid "License:"
@@ -40,7 +41,7 @@ msgstr "Licença:"
 
 #: mwlib/rl/pdfmessages.py:17
 msgid "Contributors:"
-msgstr "Autores:"
+msgstr "Colaboradores:"
 
 #: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:584
 msgid "Article Licenses"
@@ -205,7 +206,7 @@ msgstr "Fonte"
 
 #: mwlib/rl/rlwriter.py:737 mwlib/rl/rlwriter.py:763
 msgid "Contributors"
-msgstr "Contribuidores"
+msgstr "Colaboradores"
 
 #: mwlib/rl/rlwriter.py:753
 msgid "unknown"

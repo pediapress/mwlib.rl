@@ -10,13 +10,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-03-12 12:53+0000\n"
-"PO-Revision-Date: 2013-10-07 20:04:57+0000\n"
+"POT-Creation-Date: 2014-03-12 13:43+0000\n"
+"PO-Revision-Date: 2014-03-12 13:43:33+0000\n"
 "Language-Team: Greek <https://translatewiki.net/wiki/Portal:el>\n"
 "Language: el\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.22alpha (f6375da); Translate 2013-04-29\n"
+"X-Generator: MediaWiki 1.23alpha (769c4a6); Translate 2014-02-28\n"
 "X-Translation-Project: translatewiki.net <https://translatewiki.net>\n"
 "X-Language-Code: el\n"
 "X-Message-Group: #out-mwlibrl\n"
@@ -85,7 +85,7 @@ msgstr "Πίνακας Περιεχομένων"
 
 #: mwlib/rl/pdfmessages.py:41
 msgid "Skipping Articles!"
-msgstr "Πήδημα Άρθρων!"
+msgstr "Παράκαμψη Άρθρων!"
 
 #: mwlib/rl/pdfmessages.py:43
 msgid ""
@@ -104,8 +104,8 @@ msgid ""
 msgstr ""
 "Σημείωση: Αυτή είναι μόνο μια προεπισκόπηση του βιβλίου σας, που προορίζεται "
 "να δώσει μια ιδέα για το πώς θα δείχνει το βιβλίο σας. Μόνο τα πρώτα άρθρα, "
-"καθώς και οι πρώτες σελίδες του ευτρετήριου του βιβλίου σας εμφανίζονται σε "
-"αυτή την προεπισκόπηση. Όλα τα άρθρα, ακόμα και αυτά που έμειναν εκτός της "
+"καθώς και οι πρώτες σελίδες του ευρετηρίου του βιβλίου σας εμφανίζονται σε "
+"αυτήν την προεπισκόπηση. Όλα τα άρθρα, ακόμα και αυτά που έμειναν εκτός της "
 "προεπισκόπησης, θα περιλαμβάνονται στο τελικό έντυπο βιβλίο."
 
 #: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:535
@@ -135,9 +135,9 @@ msgid ""
 "information including the copyright status, the copyright owner, and the "
 "license conditions."
 msgstr ""
-"Αυτές οι πηγές παρακάτω για κάθε άρθρο περιέχουν περισσότερο λεπτομερείς "
+"Οι πηγές παρακάτω από κάθε άρθρο περιέχουν περισσότερο λεπτομερείς "
 "πληροφορίες σχετικά με το καθεστώς πνευματικής ιδιοκτησίας, τον κάτοχο των "
-"πνευματικών δικαιωμάτων, και όρους άδειας χρήσης."
+"πνευματικών δικαιωμάτων, και όρους της άδειας χρήσης."
 
 #: mwlib/rl/pdfmessages.py:55
 msgid ""
@@ -145,14 +145,14 @@ msgid ""
 "information including the copyright status, the copyright owner, and the "
 "license conditions."
 msgstr ""
-"Αυτές οι πηγές παρακάτω για κάθε εικόνα περιέχουν περισσότερο λεπτομερείς "
+"Οι πηγές παρακάτω από κάθε εικόνα περιέχουν περισσότερο λεπτομερείς "
 "πληροφορίες σχετικά με το καθεστώς πνευματικής ιδιοκτησίας, τον κάτοχο των "
-"πνευματικών δικαιωμάτων, και όρους άδειας χρήσης."
+"πνευματικών δικαιωμάτων, και όρους της άδειας χρήσης."
 
 #: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:536
 #: mwlib/rl/rlwriter.py:728
 msgid "Article Sources and Contributors"
-msgstr "Πηγές άρθρων και Συνεισφέροντες"
+msgstr "Πηγές Άρθρων και Συνεισφέροντες"
 
 #: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:539
 #: mwlib/rl/rlwriter.py:747
@@ -180,8 +180,8 @@ msgid ""
 "PDF generated using the open source mwlib toolkit. See http://code."
 "pediapress.com/ for more information."
 msgstr ""
-"PDF που παράγονται χρησιμοποιώντας την ανοικτού περιεχομένου εργαλειοθήκη "
-"mwlib. Βλέπε http://code.pediapress.com/ για περισσότερες πληροφορίες."
+"PDF που παράγονται χρησιμοποιώντας την εργαλειοθήκη ανοικτού κώδικα mwlib. "
+"Βλέπετε http://code.pediapress.com/ για περισσότερες πληροφορίες."
 
 #: mwlib/rl/rlwriter.py:371
 #, python-format
@@ -221,4 +221,5 @@ msgid ""
 msgstr ""
 "<strong>ΠΡΟΕΙΔΟΠΟΙΗΣΗ: Το άρθρο δεν μπόρεσε να μορφοποιηθεί - εξάγεται απλό "
 "κείμενο.</strong><br/>Πιθανές αιτίες του προβλήματος είναι: (α) σφάλμα στο "
-"λογισμικό εγγραφής pdf (β) προβληματικός κώδικας wiki (γ) πίνακας πολύ ευρύς"
+"λογισμικό εγγραφής PDF (β) προβληματικός κώδικας wiki (γ) ένας πίνακας είναι "
+"πολύ ευρύς"
