@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-09 15:31+0000\n"
-"PO-Revision-Date: 2014-01-24 20:07:43+0000\n"
+"POT-Creation-Date: 2014-03-12 12:53+0000\n"
+"PO-Revision-Date: 2014-03-12 12:52:53+0000\n"
 "Language: ce\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-POT-Import-Date: 2013-10-07 17:45:25+0000\n"
 "X-Translation-Project: translatewiki.net <https://translatewiki.net>\n"
-"X-Generator: MediaWiki 1.23alpha (9428f4e); Translate 2014-01-01\n"
+"X-Generator: MediaWiki 1.23alpha (7c4da7f); Translate 2014-02-28\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: mwlib/rl/pdfmessages.py:11
@@ -98,7 +98,7 @@ msgstr ""
 #: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:535
 #: mwlib/rl/rlwriter.py:853
 msgid "References"
-msgstr "Билгалдаккхар"
+msgstr "Билгалдахарш"
 
 #: mwlib/rl/pdfmessages.py:49
 msgid "Appendix"

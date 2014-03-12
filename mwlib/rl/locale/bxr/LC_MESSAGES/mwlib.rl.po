@@ -1,19 +1,20 @@
 # Translation of Mwlib.rl to буряад (буряад)
 # Exported from translatewiki.net
 #
+# Author: Elvonudinium
 # Author: Губин Михаил
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-09 15:31+0000\n"
-"PO-Revision-Date: 2013-10-07 20:04:47+0000\n"
+"POT-Creation-Date: 2014-03-12 12:53+0000\n"
+"PO-Revision-Date: 2014-03-12 12:52:52+0000\n"
 "Language: bxr\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-POT-Import-Date: 2013-10-07 17:45:25+0000\n"
 "X-Translation-Project: translatewiki.net <https://translatewiki.net>\n"
-"X-Generator: MediaWiki 1.22alpha (f6375da); Translate 2013-04-29\n"
+"X-Generator: MediaWiki 1.23alpha (7c4da7f); Translate 2014-02-28\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: mwlib/rl/pdfmessages.py:11
@@ -74,7 +75,7 @@ msgstr ""
 
 #: mwlib/rl/pdfmessages.py:39
 msgid "Table of Contents"
-msgstr ""
+msgstr "Агуулга"
 
 #: mwlib/rl/pdfmessages.py:41
 msgid "Skipping Articles!"
