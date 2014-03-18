@@ -5,13 +5,13 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-03-12 13:44+0000\n"
-"PO-Revision-Date: 2014-03-12 13:43:39+0000\n"
+"POT-Creation-Date: 2014-03-18 12:26+0000\n"
+"PO-Revision-Date: 2014-03-18 12:25:31+0000\n"
 "Language: sco\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-POT-Import-Date: 2013-10-07 17:45:25+0000\n"
-"X-Generator: MediaWiki 1.23alpha (769c4a6); Translate 2014-02-28\n"
+"X-Generator: MediaWiki 1.23alpha (6a71372); Translate 2014-02-28\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: mwlib/rl/pdfmessages.py:11
@@ -60,7 +60,7 @@ msgstr "Airticles"
 
 #: mwlib/rl/pdfmessages.py:33
 msgid "Produced by:"
-msgstr "Creatit bi:"
+msgstr "Cræftit bi:"
 
 #: mwlib/rl/pdfmessages.py:35
 msgid "pdf writer version:"
@@ -72,7 +72,7 @@ msgstr "mwlib version:"
 
 #: mwlib/rl/pdfmessages.py:39
 msgid "Table of Contents"
-msgstr "Table o Contents"
+msgstr "Buird o Contents"
 
 #: mwlib/rl/pdfmessages.py:41
 msgid "Skipping Articles!"
@@ -83,8 +83,8 @@ msgid ""
 "Please note:  This is only a preview intended to give an idea how the book "
 "is typeset."
 msgstr ""
-"Please note:  This is yinly ae preview intendit tae gie aen idea hou the "
-"buik is typeset."
+"Please mynd:  This is yinlie ae luik ower intendit tae gie ye aen idea hou "
+"the buik is typeset."
 
 #: mwlib/rl/pdfmessages.py:45
 msgid ""
@@ -93,10 +93,11 @@ msgid ""
 "of the index, of your book are shown in this preview. All articles, even "
 "those left out of the preview, will be included in the final printed book."
 msgstr ""
-"Please note: This is yinly ae preview o yer buik, intendit tae gie aen idea "
-"hou yer buik luiks. Yinly the first few airticles, as weel as the first "
-"pages o the index, o yer buik ar shawn in this preview. Aw airticles, e'en "
-"thae left oot o the preview, will be incluidit in the final preentit buik."
+"Please mynd: This is yinlie ae luik ower o yer buik, intendit tae gie aen "
+"idea hou yer buik luiks. Yinlie the first few airticles, aes weel aes the "
+"first pages o the index, o yer buik ar shawn in this luikower. Aw airticles, "
+"even thae left oot o the luikower, will be incluidit in the final prentit "
+"buik."
 
 #: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:535
 #: mwlib/rl/rlwriter.py:853
