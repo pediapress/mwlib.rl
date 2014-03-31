@@ -5,13 +5,13 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-03-18 12:26+0000\n"
-"PO-Revision-Date: 2014-03-18 12:25:31+0000\n"
+"POT-Creation-Date: 2014-03-31 21:39+0000\n"
+"PO-Revision-Date: 2014-03-31 21:39:03+0000\n"
 "Language: sco\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-POT-Import-Date: 2013-10-07 17:45:25+0000\n"
-"X-Generator: MediaWiki 1.23alpha (6a71372); Translate 2014-02-28\n"
+"X-Generator: MediaWiki 1.23alpha (6f3dcaa); Translate 2014-03-31\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: mwlib/rl/pdfmessages.py:11
@@ -20,7 +20,7 @@ msgstr "Indeix"
 
 #: mwlib/rl/pdfmessages.py:13
 msgid "Source:"
-msgstr "Source:"
+msgstr "The Soorce"
 
 #: mwlib/rl/pdfmessages.py:15
 msgid "License:"
@@ -147,11 +147,11 @@ msgstr "Airticle Soorces n Contreebuters"
 #: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:539
 #: mwlib/rl/rlwriter.py:747
 msgid "Image Sources, Licenses and Contributors"
-msgstr "Eimage Sources, Licenses and Contreebuters"
+msgstr "Eemage Soorces, Licenses n Contreebuters"
 
 #: mwlib/rl/pdfmessages.py:61
 msgid "Image"
-msgstr "Eimage"
+msgstr "Eemage"
 
 #: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:720
 msgid "anonymous edits"
@@ -170,7 +170,7 @@ msgid ""
 "PDF generated using the open source mwlib toolkit. See http://code."
 "pediapress.com/ for more information."
 msgstr ""
-"PDF generated uising the apen source mwlib tuilkist. See http://code."
+"PDF generated uisin the apen soorce mwlib tuilkist. See http://code."
 "pediapress.com/ fer mair information."
 
 #: mwlib/rl/rlwriter.py:371
