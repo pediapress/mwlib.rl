@@ -7,19 +7,20 @@
 # Author: Civvì
 # Author: Cyllenius
 # Author: Marco 27
+# Author: Nemo bis
 # Author: Pietrodn
 # Author: Rippitippi
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-12 13:39+0000\n"
-"PO-Revision-Date: 2013-10-07 20:05:18+0000\n"
+"POT-Creation-Date: 2014-06-17 11:07+0000\n"
+"PO-Revision-Date: 2014-06-17 11:07:29+0000\n"
 "Language-Team: Italian <https://translatewiki.net/wiki/Portal:it>\n"
 "Language: it\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.22alpha (f6375da); Translate 2013-04-29\n"
+"X-Generator: MediaWiki 1.24alpha (71b6a19); Translate 2014-04-28\n"
 "X-Translation-Project: translatewiki.net <https://translatewiki.net>\n"
 "X-Language-Code: it\n"
 "X-Message-Group: #out-mwlibrl\n"
@@ -155,7 +156,7 @@ msgstr ""
 #: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:536
 #: mwlib/rl/rlwriter.py:728
 msgid "Article Sources and Contributors"
-msgstr "Fonti e autori delle voci"
+msgstr "Fonti e autori delle pagine"
 
 #: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:539
 #: mwlib/rl/rlwriter.py:747

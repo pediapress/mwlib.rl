@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-12 13:39+0000\n"
-"PO-Revision-Date: 2013-10-07 20:05:24+0000\n"
+"POT-Creation-Date: 2014-06-17 11:07+0000\n"
+"PO-Revision-Date: 2014-06-17 11:07:29+0000\n"
 "Language: kn\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-POT-Import-Date: 2013-10-07 17:45:25+0000\n"
 "X-Translation-Project: translatewiki.net <https://translatewiki.net>\n"
-"X-Generator: MediaWiki 1.22alpha (f6375da); Translate 2013-04-29\n"
+"X-Generator: MediaWiki 1.24alpha (71b6a19); Translate 2014-04-28\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: mwlib/rl/pdfmessages.py:11
@@ -31,7 +31,7 @@ msgstr "ಪರವಾನಗಿ:"
 
 #: mwlib/rl/pdfmessages.py:17
 msgid "Contributors:"
-msgstr ""
+msgstr "ಕಾಣಿಕೆದಾರರು:"
 
 #: mwlib/rl/pdfmessages.py:19 mwlib/rl/rlwriter.py:584
 msgid "Article Licenses"
@@ -43,7 +43,7 @@ msgstr "ಶೀರ್ಷಿಕೆ"
 
 #: mwlib/rl/pdfmessages.py:23
 msgid "Subtitle:"
-msgstr ""
+msgstr "ಉಪಶೀರ್ಷಿಕೆ:"
 
 #: mwlib/rl/pdfmessages.py:25
 msgid "Editor:"
@@ -51,11 +51,11 @@ msgstr "ಸಂಪಾದಕ:"
 
 #: mwlib/rl/pdfmessages.py:27
 msgid "Created on:"
-msgstr ""
+msgstr "ಸೃಷ್ಟಿಸಿದ ದಿನಾಂಕ:"
 
 #: mwlib/rl/pdfmessages.py:29 mwlib/rl/toc.py:46
 msgid "Contents"
-msgstr ""
+msgstr "ಪರಿವಿಡಿ"
 
 #: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:487
 msgid "Articles"
@@ -63,15 +63,15 @@ msgstr "ಲೇಖನಗಳು"
 
 #: mwlib/rl/pdfmessages.py:33
 msgid "Produced by:"
-msgstr ""
+msgstr "ನಿರ್ಮಾಪಕ:"
 
 #: mwlib/rl/pdfmessages.py:35
 msgid "pdf writer version:"
-msgstr ""
+msgstr "pdf ರೈಟರ್ ಆವೃತ್ತಿ:"
 
 #: mwlib/rl/pdfmessages.py:37
 msgid "mwlib version:"
-msgstr ""
+msgstr "mwlib ಆವೃತ್ತಿ:"
 
 #: mwlib/rl/pdfmessages.py:39
 msgid "Table of Contents"
@@ -134,7 +134,7 @@ msgstr "ಲೇಖನ ಮೂಲಗಳು ಮತ್ತು ನೀಡುಗರು"
 #: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:539
 #: mwlib/rl/rlwriter.py:747
 msgid "Image Sources, Licenses and Contributors"
-msgstr ""
+msgstr "ಚಿತ್ರದ ಮೂಲಗಳು, ಪರವಾನಗಿಗಳು ಮತ್ತು ಕಾಣಿಕೆದಾರರು"
 
 #: mwlib/rl/pdfmessages.py:61
 msgid "Image"
@@ -176,7 +176,7 @@ msgstr "ಆಕರ"
 
 #: mwlib/rl/rlwriter.py:737 mwlib/rl/rlwriter.py:763
 msgid "Contributors"
-msgstr ""
+msgstr "ಕಾಣಿಕೆದಾರರು"
 
 #: mwlib/rl/rlwriter.py:753
 msgid "unknown"

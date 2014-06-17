@@ -7,13 +7,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-12 13:39+0000\n"
-"PO-Revision-Date: 2013-10-07 20:06:03+0000\n"
+"POT-Creation-Date: 2014-06-17 11:08+0000\n"
+"PO-Revision-Date: 2014-06-17 11:07:29+0000\n"
 "Language-Team: Telugu <https://translatewiki.net/wiki/Portal:te>\n"
 "Language: te\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.22alpha (f6375da); Translate 2013-04-29\n"
+"X-Generator: MediaWiki 1.24alpha (71b6a19); Translate 2014-04-28\n"
 "X-Translation-Project: translatewiki.net <https://translatewiki.net>\n"
 "X-Language-Code: te\n"
 "X-Message-Group: #out-mwlibrl\n"
@@ -50,11 +50,11 @@ msgstr "ఉపశీర్షిక:"
 
 #: mwlib/rl/pdfmessages.py:25
 msgid "Editor:"
-msgstr ""
+msgstr "సంపాదకుడు:"
 
 #: mwlib/rl/pdfmessages.py:27
 msgid "Created on:"
-msgstr ""
+msgstr "సృష్టించబడిన తేదీ:"
 
 #: mwlib/rl/pdfmessages.py:29 mwlib/rl/toc.py:46
 msgid "Contents"
@@ -66,7 +66,7 @@ msgstr "వ్యాసాలు"
 
 #: mwlib/rl/pdfmessages.py:33
 msgid "Produced by:"
-msgstr ""
+msgstr "ద్వారా సృష్టించబడినది:"
 
 #: mwlib/rl/pdfmessages.py:35
 msgid "pdf writer version:"
@@ -101,7 +101,7 @@ msgstr ""
 #: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:535
 #: mwlib/rl/rlwriter.py:853
 msgid "References"
-msgstr ""
+msgstr "మూలాలు"
 
 #: mwlib/rl/pdfmessages.py:49
 msgid "Appendix"
@@ -141,7 +141,7 @@ msgstr ""
 
 #: mwlib/rl/pdfmessages.py:61
 msgid "Image"
-msgstr ""
+msgstr "బొమ్మ"
 
 #: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:720
 msgid "anonymous edits"
