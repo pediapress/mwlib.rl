@@ -4,6 +4,7 @@
 # Author: Gaoxuewei
 # Author: Hydra
 # Author: Hzy980512
+# Author: Liuxinyu970226
 # Author: PhiLiP
 # Author: Shizhao
 # Author: Xiaomingyan
@@ -11,14 +12,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-06-23 12:43+0000\n"
-"PO-Revision-Date: 2014-06-17 11:07:29+0000\n"
+"POT-Creation-Date: 2014-08-06 16:37+0200\n"
+"PO-Revision-Date: 2014-08-06 14:36:01+0000\n"
 "Language-Team: Simplified Chinese <https://translatewiki.net/wiki/Portal:zh-"
 "hans>\n"
 "Language: zh-Hans\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.24alpha (71b6a19); Translate 2014-04-28\n"
+"X-Generator: MediaWiki 1.24alpha (428b1e9); Translate 2014-07-28\n"
 "X-Translation-Project: translatewiki.net <https://translatewiki.net>\n"
 "X-Language-Code: zh-hans\n"
 "X-Message-Group: #out-mwlibrl\n"
@@ -79,7 +80,7 @@ msgstr "pdf 作家版本："
 
 #: mwlib/rl/pdfmessages.py:37
 msgid "mwlib version:"
-msgstr "mwlib.ext 版本："
+msgstr "mwlib版本："
 
 #: mwlib/rl/pdfmessages.py:39
 msgid "Table of Contents"
