@@ -840,7 +840,7 @@ class RlWriter(object):
         if not hasattr(article, 'renderFailed'): # if rendering of the whole book failed, failed articles are flagged
             elements.extend(self.renderMixed(article))
         else:
-            articleFailText = _('<strong>WARNING: Article could not be rendered - ouputting plain text.</strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer software (b) problematic Mediawiki markup (c) table is too wide')
+            articleFailText = _('<strong>WARNING: Article could not be rendered - outputting plain text.</strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer software (b) problematic Mediawiki markup (c) table is too wide')
             elements.extend(self.renderFailedNode(article, articleFailText))
 
         # check for non-flowables
