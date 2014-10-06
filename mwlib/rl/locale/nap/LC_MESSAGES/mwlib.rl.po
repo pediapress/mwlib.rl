@@ -1,19 +1,20 @@
 # Translation of Mwlib.rl to Neapolitan (Napulitano)
 # Exported from translatewiki.net
 #
+# Author: C.R.
 # Author: Chelin
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-06 16:37+0200\n"
-"PO-Revision-Date: 2013-10-07 20:05:39+0000\n"
+"POT-Creation-Date: 2014-10-06 12:06+0200\n"
+"PO-Revision-Date: 2014-10-06 10:05:51+0000\n"
 "Language: nap\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-POT-Import-Date: 2013-10-07 17:45:25+0000\n"
 "X-Translation-Project: translatewiki.net <https://translatewiki.net>\n"
-"X-Generator: MediaWiki 1.22alpha (f6375da); Translate 2013-04-29\n"
+"X-Generator: MediaWiki 1.25alpha (d8e297c); Translate 2014-09-29\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: mwlib/rl/pdfmessages.py:11
@@ -46,7 +47,7 @@ msgstr "Sottotitulo:"
 
 #: mwlib/rl/pdfmessages.py:25
 msgid "Editor:"
-msgstr ""
+msgstr "Curatore:"
 
 #: mwlib/rl/pdfmessages.py:27
 msgid "Created on:"
@@ -62,7 +63,7 @@ msgstr "Vvoce"
 
 #: mwlib/rl/pdfmessages.py:33
 msgid "Produced by:"
-msgstr ""
+msgstr "Prodotto 'a:"
 
 #: mwlib/rl/pdfmessages.py:35
 msgid "pdf writer version:"
@@ -74,7 +75,7 @@ msgstr "vversione mwlib.ext:"
 
 #: mwlib/rl/pdfmessages.py:39
 msgid "Table of Contents"
-msgstr ""
+msgstr "Tabbella 'e Contenute"
 
 #: mwlib/rl/pdfmessages.py:41
 msgid "Skipping Articles!"
@@ -85,6 +86,8 @@ msgid ""
 "Please note:  This is only a preview intended to give an idea how the book "
 "is typeset."
 msgstr ""
+"Nota: Chest'è sulo n'anteprimma pe' se ffà n'idea 'e comme véne scritto 'o "
+"libbro."
 
 #: mwlib/rl/pdfmessages.py:45
 msgid ""
@@ -93,15 +96,20 @@ msgid ""
 "of the index, of your book are shown in this preview. All articles, even "
 "those left out of the preview, will be included in the final printed book."
 msgstr ""
+"Nota: Chest'è sulo n'anteprimma d' 'o libbro, destinato a dà n'idea 'e comme "
+"cumpare 'o libbro tuo. Sulamente 'e primm'articule, comme pure 'e primme "
+"paggene a l'innece, d' 'o libbro tuo so' mmustate dint'a st'anteprimma. "
+"Tutte l'articule, pure chille lassate fore 'e l'anteprimma, sarranno "
+"cummigliate dint' 'o libbro finale stampato."
 
 #: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:535
 #: mwlib/rl/rlwriter.py:853
 msgid "References"
-msgstr ""
+msgstr "Note"
 
 #: mwlib/rl/pdfmessages.py:49
 msgid "Appendix"
-msgstr ""
+msgstr "Appendice"
 
 #: mwlib/rl/pdfmessages.py:51
 msgid ""
@@ -110,6 +118,10 @@ msgid ""
 "including the copyright status, the copyright owner, and the license "
 "conditions."
 msgstr ""
+"'E sezziune ccà abbascio alencano 'e ffonte relative a l'articule e fiùre "
+"ausate int'a stu libbro. Sti ffonte cunteneno nfurmaziune cchiù ndettaglie "
+"ncopp'a licienza d'uso, iógneno pure 'o stato d' 'e deritte d'autore, 'e "
+"titolare 'e chiste e cundiziune 'e licienza."
 
 #: mwlib/rl/pdfmessages.py:53
 msgid ""
@@ -117,6 +129,9 @@ msgid ""
 "information including the copyright status, the copyright owner, and the "
 "license conditions."
 msgstr ""
+"'E ffonte nnecate p'ogne articolo ce danno nfurmaziune cchiù ndettaglio "
+"ncopp' 'a licienza, ca iógneno pure 'o stato d' 'o copyright, 'o "
+"proprietario d' 'e deritte d'autore e cundiziune 'e licienza."
 
 #: mwlib/rl/pdfmessages.py:55
 msgid ""
@@ -124,16 +139,19 @@ msgid ""
 "information including the copyright status, the copyright owner, and the "
 "license conditions."
 msgstr ""
+"'E ffonte nnecate p'ogne fiúra ce danno nfurmaziune cchiù ndettaglio ncopp' "
+"'a licienza, ca iógneno pure 'o stato d' 'o copyright, 'o proprietario d' 'e "
+"deritte d'autore e cundiziune 'e licienza."
 
 #: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:536
 #: mwlib/rl/rlwriter.py:728
 msgid "Article Sources and Contributors"
-msgstr ""
+msgstr "Ffonte e Autore d' 'e paggene"
 
 #: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:539
 #: mwlib/rl/rlwriter.py:747
 msgid "Image Sources, Licenses and Contributors"
-msgstr ""
+msgstr "Ffonte, Licienze e Autore d' 'e fiùre"
 
 #: mwlib/rl/pdfmessages.py:61
 msgid "Image"
@@ -141,11 +159,11 @@ msgstr "Fiùra"
 
 #: mwlib/rl/pdfmessages.py:63 mwlib/rl/rlwriter.py:720
 msgid "anonymous edits"
-msgstr ""
+msgstr "Cagnamiente anonime"
 
 #: mwlib/rl/pdfmessages.py:65
 msgid "Figure"
-msgstr ""
+msgstr "Fiùre"
 
 #: mwlib/rl/pdfmessages.py:67
 msgid "See also"
@@ -156,11 +174,14 @@ msgid ""
 "PDF generated using the open source mwlib toolkit. See http://code."
 "pediapress.com/ for more information."
 msgstr ""
+"PDF criàto pe' bbia d' 'o toolkit opensource ''mwlib''. Pe n'avé cchiú "
+"nfurmaziune, vire [[http://code.pediapress.com/ http://code.pediapress."
+"com/]]."
 
 #: mwlib/rl/rlwriter.py:371
 #, python-format
 msgid "mwlib.ext version: %(version)s"
-msgstr ""
+msgstr "verziona mwlib.ext: %(version)s"
 
 #: mwlib/rl/rlwriter.py:377
 #, python-format
@@ -168,6 +189,8 @@ msgid ""
 "mwlib version: %(mwlibversion)s, mwlib.rl version: %(mwlibrlversion)s, "
 "%(mwlibextversion)s"
 msgstr ""
+"verziona mwlib: %(mwlibversion)s, verziona mwlib.rl: %(mwlibrlversion)s, "
+"%(mwlibextversion)s"
 
 #: mwlib/rl/rlwriter.py:735 mwlib/rl/rlwriter.py:760
 msgid "Source"
@@ -186,8 +209,13 @@ msgid "License"
 msgstr "Licenza"
 
 #: mwlib/rl/rlwriter.py:843
+#, fuzzy
 msgid ""
-"<strong>WARNING: Article could not be rendered - ouputting plain text.</"
+"<strong>WARNING: Article could not be rendered - outputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
 "software (b) problematic Mediawiki markup (c) table is too wide"
 msgstr ""
+"<strong>ATTENZIÒ: l'interpretazione 'e l'articolo nun se può ffà - è "
+"mmustato comm'a nu testo semprice.</strong><br/>'A causa pusibbele fosse (a) "
+"nu sbaglio int' 'o software ca sta crianno 'e PDF (b) nu sbaglio dint' 'e "
+"codece 'e marcato MediaWiki (c) c' 'a tabbella è troppo grossa"

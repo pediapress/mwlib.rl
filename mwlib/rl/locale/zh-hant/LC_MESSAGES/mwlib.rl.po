@@ -3,20 +3,21 @@
 #
 # Author: Anakmalaysia
 # Author: Hzy980512
+# Author: LNDDYL
 # Author: Lauhenry
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-06 16:37+0200\n"
-"PO-Revision-Date: 2014-03-18 12:25:32+0000\n"
+"POT-Creation-Date: 2014-10-06 12:06+0200\n"
+"PO-Revision-Date: 2014-10-06 10:05:51+0000\n"
 "Language-Team: Traditional Chinese <https://translatewiki.net/wiki/Portal:zh-"
 "hant>\n"
 "Language: zh-Hant\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-POT-Import-Date: 2013-10-07 17:45:25+0000\n"
-"X-Generator: MediaWiki 1.23alpha (6a71372); Translate 2014-02-28\n"
+"X-Generator: MediaWiki 1.25alpha (d8e297c); Translate 2014-09-29\n"
 "X-Translation-Project: translatewiki.net <https://translatewiki.net>\n"
 "X-Language-Code: zh-hant\n"
 "X-Message-Group: #out-mwlibrl\n"
@@ -118,8 +119,8 @@ msgid ""
 "including the copyright status, the copyright owner, and the license "
 "conditions."
 msgstr ""
-"以下各節列出所有文章和在這本書中使用的圖像的源。這些來源提供更詳細的發牌的信"
-"息，包括版權狀態、 版權的所有者和許可證的條件。"
+"以下各節列出所有文章和在這本書中使用的圖像的源。這些來源提供更詳細的發牌的資"
+"訊，包括版權狀態、 版權的所有者和許可證的條件。"
 
 #: mwlib/rl/pdfmessages.py:53
 msgid ""
@@ -136,7 +137,7 @@ msgid ""
 "information including the copyright status, the copyright owner, and the "
 "license conditions."
 msgstr ""
-"列出的每個圖像的來源提供更詳細的發牌的信息，包括版權狀態、 版權的所有者和許可"
+"列出的每個圖像的來源提供更詳細的發牌的資訊，包括版權狀態、 版權的所有者和許可"
 "證的條件。"
 
 #: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:536
@@ -203,8 +204,9 @@ msgid "License"
 msgstr "授權"
 
 #: mwlib/rl/rlwriter.py:843
+#, fuzzy
 msgid ""
-"<strong>WARNING: Article could not be rendered - ouputting plain text.</"
+"<strong>WARNING: Article could not be rendered - outputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
 "software (b) problematic Mediawiki markup (c) table is too wide"
 msgstr ""

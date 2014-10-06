@@ -2,17 +2,18 @@
 # Exported from translatewiki.net
 #
 # Author: CERminator
+# Author: KWiki
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-06 16:36+0200\n"
-"PO-Revision-Date: 2013-10-07 20:04:46+0000\n"
+"POT-Creation-Date: 2014-10-06 12:05+0200\n"
+"PO-Revision-Date: 2014-10-06 10:05:50+0000\n"
 "Language-Team: Bosnian <https://translatewiki.net/wiki/Portal:bs>\n"
 "Language: bs\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.22alpha (f6375da); Translate 2013-04-29\n"
+"X-Generator: MediaWiki 1.25alpha (d8e297c); Translate 2014-09-29\n"
 "X-Translation-Project: translatewiki.net <https://translatewiki.net>\n"
 "X-Language-Code: bs\n"
 "X-Message-Group: #out-mwlibrl\n"
@@ -132,7 +133,7 @@ msgid ""
 "information including the copyright status, the copyright owner, and the "
 "license conditions."
 msgstr ""
-"Izvori prikazani za svaki članak daju detaljnije informacije o licencama "
+"Izvori prikazani za svaki članak daju detaljnije informacije o licencama, "
 "uključujući status autorskih prava, njihovih vlasnika i licence."
 
 #: mwlib/rl/pdfmessages.py:55
@@ -209,11 +210,12 @@ msgid "License"
 msgstr "Licenca"
 
 #: mwlib/rl/rlwriter.py:843
+#, fuzzy
 msgid ""
-"<strong>WARNING: Article could not be rendered - ouputting plain text.</"
+"<strong>WARNING: Article could not be rendered - outputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
 "software (b) problematic Mediawiki markup (c) table is too wide"
 msgstr ""
-"<strong>UPOZORENJE: Članak nije mogao biti iscrtan - ispisat će se obični "
-"tekst.</strong><br/>Mogući uzorci ovog problema su: (a) greška u softveru "
-"pdf-pisača (b) problematični Mediawiki opisi (c) tabela je preširoka"
+"<strong>UPOZORENJE: Članak nije mogao biti prikazan - ispisat će se obični "
+"tekst.</strong><br/>Mogući uzroci ovog problema su: (a) greška u softveru "
+"PDF-pisača (b) problematični Mediawiki opisi (c) tabela je preširoka"

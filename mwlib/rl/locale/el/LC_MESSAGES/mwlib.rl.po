@@ -10,13 +10,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-06 16:36+0200\n"
-"PO-Revision-Date: 2014-03-18 12:25:26+0000\n"
+"POT-Creation-Date: 2014-10-06 12:06+0200\n"
+"PO-Revision-Date: 2014-10-06 10:05:50+0000\n"
 "Language-Team: Greek <https://translatewiki.net/wiki/Portal:el>\n"
 "Language: el\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.23alpha (6a71372); Translate 2014-02-28\n"
+"X-Generator: MediaWiki 1.25alpha (d8e297c); Translate 2014-09-29\n"
 "X-Translation-Project: translatewiki.net <https://translatewiki.net>\n"
 "X-Language-Code: el\n"
 "X-Message-Group: #out-mwlibrl\n"
@@ -65,7 +65,7 @@ msgstr "Περιεχόμενα"
 
 #: mwlib/rl/pdfmessages.py:31 mwlib/rl/rlwriter.py:487
 msgid "Articles"
-msgstr "Άρθρα"
+msgstr "Λήμματα"
 
 #: mwlib/rl/pdfmessages.py:33
 msgid "Produced by:"
@@ -214,8 +214,9 @@ msgid "License"
 msgstr "Άδεια"
 
 #: mwlib/rl/rlwriter.py:843
+#, fuzzy
 msgid ""
-"<strong>WARNING: Article could not be rendered - ouputting plain text.</"
+"<strong>WARNING: Article could not be rendered - outputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
 "software (b) problematic Mediawiki markup (c) table is too wide"
 msgstr ""

@@ -4,18 +4,19 @@
 # Author: AivoK
 # Author: Avjoska
 # Author: KalmerE.
+# Author: Pikne
 # Author: Silvar
 msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-06 16:36+0200\n"
-"PO-Revision-Date: 2013-10-07 20:04:59+0000\n"
+"POT-Creation-Date: 2014-10-06 12:06+0200\n"
+"PO-Revision-Date: 2014-10-06 10:05:50+0000\n"
 "Language-Team: Estonian <https://translatewiki.net/wiki/Portal:et>\n"
 "Language: et\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.22alpha (f6375da); Translate 2013-04-29\n"
+"X-Generator: MediaWiki 1.25alpha (d8e297c); Translate 2014-09-29\n"
 "X-Translation-Project: translatewiki.net <https://translatewiki.net>\n"
 "X-Language-Code: et\n"
 "X-Message-Group: #out-mwlibrl\n"
@@ -76,7 +77,7 @@ msgstr "PDF-kirjutustarkvara versioon:"
 
 #: mwlib/rl/pdfmessages.py:37
 msgid "mwlib version:"
-msgstr "mwlib versioon:"
+msgstr "mwlib-i versioon:"
 
 #: mwlib/rl/pdfmessages.py:39
 msgid "Table of Contents"
@@ -134,12 +135,12 @@ msgstr ""
 #: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:536
 #: mwlib/rl/rlwriter.py:728
 msgid "Article Sources and Contributors"
-msgstr "Artikli Allikad ja Kaastöö tegijad"
+msgstr "Artikli allikad ja kaastöölised"
 
 #: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:539
 #: mwlib/rl/rlwriter.py:747
 msgid "Image Sources, Licenses and Contributors"
-msgstr "Pildi Allikad, Litsentsid ja Kaastöö tegijad"
+msgstr "Pildi allikad, litsentsid ja kaastöölised"
 
 #: mwlib/rl/pdfmessages.py:61
 msgid "Image"
@@ -162,13 +163,13 @@ msgid ""
 "PDF generated using the open source mwlib toolkit. See http://code."
 "pediapress.com/ for more information."
 msgstr ""
-"PDF-i genereerimiseks kasutati avatud koodiga tööriista mwlib. Lisa "
-"informatsiooni saamiseks vaata http://code.pediapress.com/"
+"PDF-i genereerimiseks kasutati avatud lähtekoodiga tööriista mwlib. "
+"Lisateavet leiad aadressilt http://code.pediapress.com/."
 
 #: mwlib/rl/rlwriter.py:371
 #, python-format
 msgid "mwlib.ext version: %(version)s"
-msgstr "mwlib.ext versioon: %(version)s"
+msgstr "mwlib.ext-i versioon: %(version)s"
 
 #: mwlib/rl/rlwriter.py:377
 #, python-format
@@ -183,7 +184,7 @@ msgstr "Allikas"
 
 #: mwlib/rl/rlwriter.py:737 mwlib/rl/rlwriter.py:763
 msgid "Contributors"
-msgstr "Kaastöö tegijad"
+msgstr "Kaastöölised"
 
 #: mwlib/rl/rlwriter.py:753
 msgid "unknown"
@@ -195,7 +196,7 @@ msgstr "Litsents"
 
 #: mwlib/rl/rlwriter.py:843
 msgid ""
-"<strong>WARNING: Article could not be rendered - ouputting plain text.</"
+"<strong>WARNING: Article could not be rendered - outputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
 "software (b) problematic Mediawiki markup (c) table is too wide"
 msgstr ""

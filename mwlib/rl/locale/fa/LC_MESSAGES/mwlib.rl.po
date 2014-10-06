@@ -1,6 +1,7 @@
 # Translation of Mwlib.rl to Persian (فارسی)
 # Exported from translatewiki.net
 #
+# Author: Alirezaaa
 # Author: Ebraminio
 # Author: Mjbmr
 # Author: Reza1615
@@ -8,14 +9,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-06 16:36+0200\n"
-"PO-Revision-Date: 2013-10-27 19:30:49+0000\n"
+"POT-Creation-Date: 2014-10-06 12:06+0200\n"
+"PO-Revision-Date: 2014-10-06 10:05:50+0000\n"
 "Language-Team: Persian <https://translatewiki.net/wiki/Portal:fa>\n"
 "Language: fa\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-POT-Import-Date: 2013-10-07 17:45:25+0000\n"
-"X-Generator: MediaWiki 1.23alpha (00eeed4); Translate 2013-10-15\n"
+"X-Generator: MediaWiki 1.25alpha (d8e297c); Translate 2014-09-29\n"
 "X-Translation-Project: translatewiki.net <https://translatewiki.net>\n"
 "X-Language-Code: fa\n"
 "X-Message-Group: #out-mwlibrl\n"
@@ -91,7 +92,7 @@ msgid ""
 "is typeset."
 msgstr ""
 "لطفاً توجه داشته باشید:  این فقط یک پیش‌نمایش از قبل تعیین‌شده برای دادن یک "
-"ایده برای حروفچینی کتاب است."
+"ایده برای حروف‌چینی کتاب است."
 
 #: mwlib/rl/pdfmessages.py:45
 msgid ""
@@ -100,11 +101,11 @@ msgid ""
 "of the index, of your book are shown in this preview. All articles, even "
 "those left out of the preview, will be included in the final printed book."
 msgstr ""
-"لطفاً توجه داشته باشید: این فقط یک پیش نمایش از کتاب شماست، که برای دادن یک "
+"لطفاً توجه داشته باشید: این فقط یک پیش‌نمایش از کتاب شما است، که برای دادن یک "
 "ایده به کتاب شما که چه طور به نظر می‌رسد در نظر گرفته شده‌است. فقط چند مقالهٔ "
-"اول، و همچنین عنوان صفحهٔ اول، از کتاب شما را در این پیش‌نمایش نشان‌داده‌شده "
-"است. همهٔ مقاله‌ها، حتی آنهایی که از پیش نمایش خارج شده‌اند، در نسخهٔ نهایی کتاب "
-"چاپ شده گنجانده می‌شوند."
+"نخست، و همچنین عنوان صفحهٔ نخست، از کتاب شما در این پیش‌نمایش نشان‌داده‌شده است. "
+"همهٔ مقاله‌ها، حتی آنهایی که از پیش‌نمایش خارج شده‌اند، در نسخهٔ نهایی کتاب "
+"چاپ‌شده گنجانده می‌شوند."
 
 #: mwlib/rl/pdfmessages.py:47 mwlib/rl/rlwriter.py:535
 #: mwlib/rl/rlwriter.py:853
@@ -122,9 +123,9 @@ msgid ""
 "including the copyright status, the copyright owner, and the license "
 "conditions."
 msgstr ""
-"بخش‌های مقابل منابع مقاله‌ها و تصاویر استفاده شده در این مقاله را فهرست "
-"می‌کنند. منابع آن‌ها اطلاعات اجازه نامه بیشتری شامل وضعیت حق تکثیر، دارنده حق "
-"تکثیر و همچنین شرایط مجوز ارائه می‌کنند."
+"بخش‌های مقابل منابع مقاله‌ها و تصاویر استفاده‌شده در این مقاله را فهرست می‌کنند. "
+"منابع آن‌ها اطلاعات اجازه‌نامه بیشتری شامل وضعیت حق تکثیر، دارنده حق تکثیر و "
+"همچنین شرایط مجوز ارائه می‌کنند."
 
 #: mwlib/rl/pdfmessages.py:53
 msgid ""
@@ -141,18 +142,18 @@ msgid ""
 "information including the copyright status, the copyright owner, and the "
 "license conditions."
 msgstr ""
-"منابع فهرست‌شده برای هر تصویر اطلاعات اجازه نامه بیشتری شامل وضعیت حق تکثیر، "
+"منابع فهرست‌شده برای هر تصویر اطلاعات اجازه‌نامه بیشتری شامل وضعیت حق تکثیر، "
 "دارنده حق تکثیر و همچنین شرایط مجوز ارائه می‌کنند."
 
 #: mwlib/rl/pdfmessages.py:57 mwlib/rl/rlwriter.py:536
 #: mwlib/rl/rlwriter.py:728
 msgid "Article Sources and Contributors"
-msgstr "منابع مقاله‌ها و مشارکت‌ها"
+msgstr "منابع مقاله‌ها و مشارکت‌کنندگان"
 
 #: mwlib/rl/pdfmessages.py:59 mwlib/rl/rlwriter.py:539
 #: mwlib/rl/rlwriter.py:747
 msgid "Image Sources, Licenses and Contributors"
-msgstr "منابع تصویر، مجوزها و مشارکت‌ها"
+msgstr "منابع تصویر، مجوزها و مشارکت‌کنندگان"
 
 #: mwlib/rl/pdfmessages.py:61
 msgid "Image"
@@ -175,8 +176,8 @@ msgid ""
 "PDF generated using the open source mwlib toolkit. See http://code."
 "pediapress.com/ for more information."
 msgstr ""
-"پی‌دی‌اف توسط ابزار متن‌باز mwlib ساخته شده‌است و برای کسب اطلاعات بیشتر به "
-"نشانی http://code.pediapress.com/  مراجعه نمایید."
+"پی‌دی‌اف توسط ابزار متن‌باز mwlib ساخته شده‌است. برای کسب اطلاعات بیشتر به نشانی "
+"http://code.pediapress.com/ مراجعه نمایید."
 
 #: mwlib/rl/rlwriter.py:371
 #, python-format
@@ -198,7 +199,7 @@ msgstr "منبع"
 
 #: mwlib/rl/rlwriter.py:737 mwlib/rl/rlwriter.py:763
 msgid "Contributors"
-msgstr "همکاران"
+msgstr "مشارکت‌کنندگان"
 
 #: mwlib/rl/rlwriter.py:753
 msgid "unknown"
@@ -209,8 +210,9 @@ msgid "License"
 msgstr "مجوز"
 
 #: mwlib/rl/rlwriter.py:843
+#, fuzzy
 msgid ""
-"<strong>WARNING: Article could not be rendered - ouputting plain text.</"
+"<strong>WARNING: Article could not be rendered - outputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
 "software (b) problematic Mediawiki markup (c) table is too wide"
 msgstr ""

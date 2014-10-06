@@ -6,6 +6,7 @@
 # Author: BrokenArrow
 # Author: Civvì
 # Author: Cyllenius
+# Author: Macofe
 # Author: Marco 27
 # Author: Nemo bis
 # Author: Pietrodn
@@ -14,13 +15,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mwlib.rl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-06 16:36+0200\n"
-"PO-Revision-Date: 2014-06-17 11:07:29+0000\n"
+"POT-Creation-Date: 2014-10-06 12:06+0200\n"
+"PO-Revision-Date: 2014-10-06 10:05:51+0000\n"
 "Language-Team: Italian <https://translatewiki.net/wiki/Portal:it>\n"
 "Language: it\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: MediaWiki 1.24alpha (71b6a19); Translate 2014-04-28\n"
+"X-Generator: MediaWiki 1.25alpha (d8e297c); Translate 2014-09-29\n"
 "X-Translation-Project: translatewiki.net <https://translatewiki.net>\n"
 "X-Language-Code: it\n"
 "X-Message-Group: #out-mwlibrl\n"
@@ -81,7 +82,7 @@ msgstr "versione pdf writer:"
 
 #: mwlib/rl/pdfmessages.py:37
 msgid "mwlib version:"
-msgstr "versione mwlib.ext:"
+msgstr "versione mwlib:"
 
 #: mwlib/rl/pdfmessages.py:39
 msgid "Table of Contents"
@@ -219,8 +220,9 @@ msgid "License"
 msgstr "Licenza"
 
 #: mwlib/rl/rlwriter.py:843
+#, fuzzy
 msgid ""
-"<strong>WARNING: Article could not be rendered - ouputting plain text.</"
+"<strong>WARNING: Article could not be rendered - outputting plain text.</"
 "strong><br/>Potential causes of the problem are: (a) a bug in the pdf-writer "
 "software (b) problematic Mediawiki markup (c) table is too wide"
 msgstr ""
